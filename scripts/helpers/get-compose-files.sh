@@ -3,12 +3,12 @@
 function get_compose_files() {
     COMPOSE_FILES="-f ./docker/dc.networking.yml -f ./docker/dc.infrastructure.yml"
 
-    [[ -z "$APPS_DIRECTORY" ]] && error "Oops! Environment variable APPS_DIRECTORY is not set. Please set it first."
+    [[ -z "$APPS_DIRECTORY" ]] && error "Oops! Environment variable APPS_DIRECTORY is not set."
 
     APPS_DIRS="$(ls -d "$APPS_DIRECTORY"/*)"
 
     # Check if apps are present
-    [[ -z "$APPS_DIRS" ]] && error "Oops! No apps found in $APPS_DIRECTORY directory. Please install apps first."
+    [[ -z "$APPS_DIRS" ]] && error "Oops! No apps found in $APPS_DIRECTORY directory."
 
     for APP_DIR in $APPS_DIRS; do
         APP_NAME="$(basename "$APP_DIR")"
@@ -17,11 +17,11 @@ function get_compose_files() {
         if [[ -f "$COMPOSE_FILE" ]]; then
             COMPOSE_FILES="$COMPOSE_FILES -f $COMPOSE_FILE"
         else
-            warning "Oops! No docker compose file found for app $APP_NAME. If you want to use this app, please create a compose file for it."
+            warning "Oops! No compose file found for app $APP_NAME. Skiping..."
         fi
     done
 
-    [[ -z "$COMPOSE_FILES" ]] && error "Oops! No docker compose files found. Please verify your apps."
+    [[ -z "$COMPOSE_FILES" ]] && error "Oops! No compose files found. Please verify your apps."
 
     line
 
