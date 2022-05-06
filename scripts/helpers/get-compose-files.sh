@@ -17,7 +17,9 @@ function get_compose_files() {
         if [[ -f "$COMPOSE_FILE" ]]; then
             COMPOSE_FILES="$COMPOSE_FILES -f $COMPOSE_FILE"
         else
-            warning "Oops! No compose file found for app $APP_NAME. Skiping..."
+            [[ "$APP_NAME" == "README.md" ]] && continue
+
+            warning "Oops! No compose file found for $APP_NAME. Skiping..."
         fi
     done
 
