@@ -22,7 +22,7 @@ Clone this repository:
 
 ```sh
 # For convenience, clone this repository to a previously created directory
-# called **turnly or turnly-apps** so it doesn't interfere with
+# called turnly or turnly-apps so it doesn't interfere with
 # other possible development directories.
 
 # Create turnly directory (optional)
