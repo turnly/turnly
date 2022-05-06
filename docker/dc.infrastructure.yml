@@ -1,0 +1,103 @@
+version: '3.9'
+
+services:
+  db:
+    extends:
+      file: dc.common.yml
+      service: common
+    image: postgres:14.2-alpine
+    container_name: turnly_postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USERNAME}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - ${POSTGRES_PORT}:5432
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+
+  redis:
+    extends:
+      file: dc.common.yml
+      service: common
+    image: redis
+    hostname: redis
+    container_name: turnly_redis
+    volumes:
+      - redis_data:/data
+    ports:
+      - ${REDIS_PORT}:${REDIS_PORT}
+
+  minio:
+    extends:
+      file: dc.common.yml
+      service: common
+    container_name: turnly_minio
+    image: quay.io/minio/minio
+    volumes:
+      - minio_data:/data
+    ports:
+      - ${MINIO_PORT}:${MINIO_PORT}
+      - ${MINIO_UI_PORT}:${MINIO_UI_PORT}
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
+    command: server /data --console-address ":${MINIO_UI_PORT}"
+
+  redis-adminer:
+    extends:
+      file: dc.common.yml
+      service: common
+    container_name: turnly_redis_adminer
+    hostname: redis-adminer
+    image: rediscommander/redis-commander:latest
+    depends_on:
+      - redis
+    environment:
+    - REDIS_HOSTS=${REDIS_ADMINER_HOST}
+    ports:
+    - ${REDIS_ADMINER_PORT}:${REDIS_ADMINER_PORT}
+
+  adminer:
+    extends:
+      file: dc.common.yml
+      service: common
+    image: adminer:latest
+    container_name: turnly_database_adminer
+    depends_on:
+      - db
+    ports:
+      - ${ADMINER_PORT}:8080
+
+  zookeeper:
+    extends:
+      file: dc.common.yml
+      service: common
+    image: confluentinc/cp-zookeeper:7.0.1
+    container_name: turnly_zookeeper
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+
+  broker:
+    extends:
+      file: dc.common.yml
+      service: common
+    image: confluentinc/cp-kafka:7.0.1
+    container_name: turnly_broker
+    ports:
+      - ${KAFKA_PORT}:9092
+    depends_on:
+      - zookeeper
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: 'zookeeper:2181'
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_INTERNAL:PLAINTEXT
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:${KAFKA_PORT},PLAINTEXT_INTERNAL://broker:29092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+
+volumes:
+  pg_data:
+  redis_data:
+  minio_data:

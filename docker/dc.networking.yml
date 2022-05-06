@@ -1,0 +1,27 @@
+version: '3.9'
+
+services:
+  networking:
+    image: traefik:v2.7
+    container_name: networking
+    restart: always
+    command:
+      - --accesslog
+      - --api.insecure=true
+      - --providers.docker
+      - --providers.docker.exposedbydefault=false
+      - --entrypoints.http.address=:${HTTP_PORT}
+      - --entrypoints.rpc.address=:${RPC_PORT}
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    ports:
+      - ${APP_PROXY_DASHBOARD_PORT}:8080
+      - ${HTTP_PORT}:${HTTP_PORT}
+      - ${RPC_PORT}:${RPC_PORT}
+    networks:
+      turnly:
+        aliases: 
+          - ${APP_PROXY_HOST:-apps.turnly}
+
+networks:
+  turnly:

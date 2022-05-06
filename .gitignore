@@ -1,0 +1,18 @@
+.vscode/
+.DS_Store
+*.cache
+*.log
+logs/
+tmp/
+
+# Turnly Applications
+apps/*
+apps/**
+!apps/README.md
+!apps/.gitkeep
+
+# Environments
+.env
+.env.local
+.env.prod
+.env.test

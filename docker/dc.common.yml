@@ -1,0 +1,19 @@
+version: '3.9'
+
+x-logging: &logging
+  logging:
+    driver: "json-file"
+    options:
+      tag: ${APP_PROXY_HOST}
+      max-file: 3
+      max-size: 10m
+
+x-common: &common
+  <<: *logging
+  restart: unless-stopped
+  networks:
+    turnly:
+
+services:
+  common:
+    <<: *common

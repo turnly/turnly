@@ -1,0 +1,27 @@
+version: '3.9'
+
+services:
+  bifrost:
+    extends:
+      file: dc.common.yml
+      service: common
+    container_name: bifrost_service
+    image: bifrost:latest
+    build:
+      context: ${COMPOSE_BASE_DIRECTORY}/bifrost
+      dockerfile: ./docker/Dockerfile.dev
+      args:
+        PORT: ${HTTP_PORT}
+        RPC_PORT: ${RPC_PORT}
+    volumes:
+      - ${COMPOSE_BASE_DIRECTORY}/bifrost:/app
+    depends_on:
+      - networking
+      - moss
+    labels:
+      - traefik.enable=true
+
+      - traefik.http.routers.bifrost_http.entrypoints=http
+      - traefik.http.routers.bifrost_http.rule=Path(`/`)
+      - traefik.http.routers.bifrost_http.service=bifrost_http
+      - traefik.http.services.bifrost_http.loadbalancer.server.port=${HTTP_PORT}
