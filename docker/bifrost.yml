@@ -3,7 +3,7 @@ version: '3.9'
 services:
   bifrost:
     extends:
-      file: dc.common.yml
+      file: common.yml
       service: common
     container_name: bifrost_service
     image: bifrost:latest

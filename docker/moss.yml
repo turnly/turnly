@@ -3,7 +3,7 @@ version: '3.9'
 services:
   moss:
     extends:
-      file: dc.common.yml
+      file: common.yml
       service: common
     container_name: moss_service
     image: moss:latest

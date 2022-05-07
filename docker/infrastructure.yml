@@ -3,7 +3,7 @@ version: '3.9'
 services:
   db:
     extends:
-      file: dc.common.yml
+      file: common.yml
       service: common
     image: postgres:14.2-alpine
     container_name: turnly_postgres
@@ -17,7 +17,7 @@ services:
 
   redis:
     extends:
-      file: dc.common.yml
+      file: common.yml
       service: common
     image: redis
     hostname: redis
@@ -29,7 +29,7 @@ services:
 
   minio:
     extends:
-      file: dc.common.yml
+      file: common.yml
       service: common
     container_name: turnly_minio
     image: quay.io/minio/minio
@@ -45,7 +45,7 @@ services:
 
   redis-adminer:
     extends:
-      file: dc.common.yml
+      file: common.yml
       service: common
     container_name: turnly_redis_adminer
     hostname: redis-adminer
@@ -59,7 +59,7 @@ services:
 
   adminer:
     extends:
-      file: dc.common.yml
+      file: common.yml
       service: common
     image: adminer:latest
     container_name: turnly_database_adminer
@@ -70,7 +70,7 @@ services:
 
   zookeeper:
     extends:
-      file: dc.common.yml
+      file: common.yml
       service: common
     image: confluentinc/cp-zookeeper:7.0.1
     container_name: turnly_zookeeper
@@ -80,7 +80,7 @@ services:
 
   broker:
     extends:
-      file: dc.common.yml
+      file: common.yml
       service: common
     image: confluentinc/cp-kafka:7.0.1
     container_name: turnly_broker
