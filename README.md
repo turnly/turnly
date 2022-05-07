@@ -16,7 +16,10 @@ To properly set up the Docker environment, ensure you meet the following require
 - [Node.js](https://nodejs.org/en/)
 - [Yarn package manager](https://yarnpkg.com/getting-started/install)
 
-### Troubleshooting
+- ⚠️ If you are a **Windows** user, make sure to use a Unix/Linux
+based terminal like **Git bash**.
+
+### Troubleshooting 🔥 
 
 If you are a **Windows** user and are getting **Permission denied** errors
 to access your hosts file, you need to do the following:
