@@ -13,21 +13,9 @@ function start() {
   sleep 4
   info "Spinning up all the configured services... DONE ✅ "
 
-  line
+  set_hosts
 
-  info "You can access the apps at the following URLs: 👀 "
-
-  line
-
-  info " 🌐 Traffic Dashboard: http://$APP_PROXY_HOST:$APP_PROXY_DASHBOARD_PORT"
-  info " 🌐 HTTP: http://$APP_PROXY_HOST:$HTTP_PORT"
-  info " 🌐 RPC: http://$APP_PROXY_HOST:$RPC_PORT"
-
-  line
-
-  info "The $APP_PROXY_HOST is equivalent to localhost. 👀 "
-
-  line
+  print_hosts
 
   info "Starting Turnly Apps in development mode with docker... DONE ✅ "
 

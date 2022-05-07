@@ -22,12 +22,12 @@ services:
       - traefik.enable=true
 
       - traefik.http.routers.moss_rpc.entrypoints=rpc
-      - traefik.http.routers.moss_rpc.rule=PathPrefix(`/turnly.moss.v1`)
+      - traefik.http.routers.moss_rpc.rule=PathPrefix(`/turnly.moss.v1`) && Host(`rpc.turnly`) || Host(`host.docker.internal`)
       - traefik.http.routers.moss_rpc.service=moss_rpc
       - traefik.http.services.moss_rpc.loadbalancer.server.port=${RPC_PORT}
       - traefik.http.services.moss_rpc.loadbalancer.server.scheme=h2c
 
       - traefik.http.routers.moss_http.entrypoints=http
-      - traefik.http.routers.moss_http.rule=PathPrefix(`/v1/integrations`, `/v1/workspaces`, `/v1/webhooks`, `/v1/beacons`)
+      - traefik.http.routers.moss_http.rule=Host(`api.turnly`) && PathPrefix(`/v1/integrations`, `/v1/workspaces`, `/v1/webhooks`, `/v1/beacons`)
       - traefik.http.routers.moss_http.service=moss_http
       - traefik.http.services.moss_http.loadbalancer.server.port=${HTTP_PORT}

@@ -7,6 +7,7 @@ services:
     restart: always
     command:
       - --accesslog
+      - --tracing
       - --api.insecure=true
       - --providers.docker
       - --providers.docker.exposedbydefault=false

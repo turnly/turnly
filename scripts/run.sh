@@ -20,6 +20,8 @@ source "$HELPERS/get-env.sh"
 source "$HELPERS/get-compose-files.sh"
 source "$HELPERS/check-ports.sh"
 source "$HELPERS/docker.sh"
+source "$HELPERS/set-hosts.sh"
+source "$HELPERS/print-hosts.sh"
 
 # Commands sources
 source "$COMMANDS/start.sh"
@@ -36,8 +38,14 @@ line
 info "Getting the environment variables... 🔧"
 get_env
 
+line
+
 info "Getting the docker compose files... 🔧"
+
+line
+
 get_compose_files
+
 info "Getting the docker compose files... DONE ✅ "
 
 line
