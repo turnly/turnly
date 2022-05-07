@@ -24,8 +24,6 @@ function set_hosts() {
         id=$(id -u)
         gid=$(id -g)
 
-        [[ "$OS" == "WINDOWS" ]] && id="$(whoami)" && gid="$(whoami)"
-
         info "Choosing the correct permissions for the hosts file... 🔧 "
 
         info "Please type your password if necessary."
