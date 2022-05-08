@@ -17,7 +17,6 @@ services:
       - ${COMPOSE_BASE_DIRECTORY}/bifrost:/app
     depends_on:
       - networking
-      - moss
     labels:
       - traefik.enable=true
 

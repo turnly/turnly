@@ -17,7 +17,7 @@ services:
       - ${COMPOSE_BASE_DIRECTORY}/moss:/app
     depends_on:
       - networking
-      - db
+      - postgres
     labels:
       - traefik.enable=true
 

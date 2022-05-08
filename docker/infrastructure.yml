@@ -1,7 +1,7 @@
 version: '3.9'
 
 services:
-  db:
+  postgres:
     extends:
       file: common.yml
       service: common
@@ -64,7 +64,7 @@ services:
     image: adminer:latest
     container_name: turnly_database_adminer
     depends_on:
-      - db
+      - postgres
     ports:
       - ${ADMINER_PORT}:8080
 
