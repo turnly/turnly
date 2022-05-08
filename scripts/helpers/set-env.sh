@@ -9,7 +9,7 @@ function set_env() {
     info "Checking and setting the environment variables for $APP_NAME..."
 
     [[ -n "$HTTP_PORT" ]] && sed -i '' -e "s#HTTP_PORT=.*#HTTP_PORT=$HTTP_PORT#g" "$ENV_FILE"
-    [[ -n "$HTTP_PORT" ]] && sed -i '' -e "s#HTTP_PORT=.*#HTTP_PORT=$HTTP_PORT#g" "$ENV_FILE"
+    [[ -n "$HTTP_PORT" ]] && sed -i '' -e "s#PORT=.*#PORT=$HTTP_PORT#g" "$ENV_FILE"
 
     [[ -n "$RPC_PORT" ]] && sed -i '' -e "s#RPC_PORT=.*#RPC_PORT=$RPC_PORT#g" "$ENV_FILE"
     [[ -n "$RPC_BIND_ADDRESS" ]] && sed -i '' -e "s#RPC_BIND_ADDRESS=.*#RPC_BIND_ADDRESS=$RPC_BIND_ADDRESS#g" "$ENV_FILE"
