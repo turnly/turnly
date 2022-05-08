@@ -22,6 +22,7 @@ source "$HELPERS/check-ports.sh"
 source "$HELPERS/docker.sh"
 source "$HELPERS/set-hosts.sh"
 source "$HELPERS/print-hosts.sh"
+source "$HELPERS/set-env.sh"
 
 # Commands sources
 source "$COMMANDS/start.sh"

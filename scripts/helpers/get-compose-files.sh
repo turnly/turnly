@@ -18,7 +18,6 @@ function get_compose_files() {
 
     APPS_DIRS="$(ls -d "$APPS_DIRECTORY"/*)"
 
-    # Check if apps are present
     [[ -z "$APPS_DIRS" ]] && error "Oops! No apps found in $APPS_DIRECTORY directory."
 
     for APP_DIR in $APPS_DIRS; do
@@ -27,6 +26,8 @@ function get_compose_files() {
 
         if [[ -f "$COMPOSE_FILE" ]]; then
             COMPOSE_FILES="$COMPOSE_FILES -f $COMPOSE_FILE"
+
+            [[ -f "$APP_DIR/.env" ]] && set_env "$APP_DIR/.env"
         else
             if [[ "${IGNORE_DIRS[*]}" == *"$APP_NAME"* ]] &>/dev/null; then
                 continue
