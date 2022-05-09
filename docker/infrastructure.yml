@@ -6,7 +6,7 @@ services:
       file: common.yml
       service: common
     image: postgres:14.2-alpine
-    container_name: turnly_postgres
+    container_name: postgres
     environment:
       POSTGRES_USER: ${POSTGRES_USERNAME}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
@@ -21,33 +21,32 @@ services:
       service: common
     image: redis
     hostname: redis
-    container_name: turnly_redis
+    container_name: redis
     volumes:
       - redis_data:/data
     ports:
-      - ${REDIS_PORT}:${REDIS_PORT}
+      - ${REDIS_PORT}:6379
 
   minio:
     extends:
       file: common.yml
       service: common
-    container_name: turnly_minio
-    image: quay.io/minio/minio
+    container_name: minio
+    image: bitnami/minio:latest
     volumes:
       - minio_data:/data
     ports:
-      - ${MINIO_PORT}:${MINIO_PORT}
-      - ${MINIO_UI_PORT}:${MINIO_UI_PORT}
+      - ${MINIO_PORT}:9000
+      - ${MINIO_UI_PORT}:9001
     environment:
       MINIO_ROOT_USER: ${MINIO_ROOT_USER}
       MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
-    command: server /data --console-address ":${MINIO_UI_PORT}"
 
   redis-adminer:
     extends:
       file: common.yml
       service: common
-    container_name: turnly_redis_adminer
+    container_name: redis_adminer
     hostname: redis-adminer
     image: rediscommander/redis-commander:latest
     depends_on:
@@ -55,14 +54,14 @@ services:
     environment:
     - REDIS_HOSTS=${REDIS_ADMINER_HOST}
     ports:
-    - ${REDIS_ADMINER_PORT}:${REDIS_ADMINER_PORT}
+    - ${REDIS_ADMINER_PORT}:8081
 
   adminer:
     extends:
       file: common.yml
       service: common
     image: adminer:latest
-    container_name: turnly_database_adminer
+    container_name: database_adminer
     depends_on:
       - postgres
     ports:
@@ -72,32 +71,76 @@ services:
     extends:
       file: common.yml
       service: common
-    image: confluentinc/cp-zookeeper:7.0.1
-    container_name: turnly_zookeeper
+    image: confluentinc/cp-zookeeper:7.1.1
+    hostname: zookeeper
+    container_name: zookeeper
+    ports:
+      - "${ZOOKEEPER_CLIENT_PORT}:2181"
     environment:
-      ZOOKEEPER_CLIENT_PORT: 2181
-      ZOOKEEPER_TICK_TIME: 2000
+      ZOOKEEPER_CLIENT_PORT: ${ZOOKEEPER_CLIENT_PORT}
+      ZOOKEEPER_SERVER_ID: 1
+      ZOOKEEPER_SERVERS: zookeeper:2888:3888
 
-  broker:
+  kafka:
     extends:
       file: common.yml
       service: common
-    image: confluentinc/cp-kafka:7.0.1
-    container_name: turnly_broker
+    image: confluentinc/cp-kafka:7.1.1
+    hostname: kafka
+    container_name: kafka
     ports:
       - ${KAFKA_PORT}:9092
+      - ${KAFKA_EX_PORT}:${KAFKA_EX_PORT}
+    environment:
+      KAFKA_ADVERTISED_LISTENERS: LISTENER_DOCKER_INTERNAL://kafka:19092,LISTENER_DOCKER_EXTERNAL://${DOCKER_HOST_IP:-127.0.0.1}:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: LISTENER_DOCKER_INTERNAL:PLAINTEXT,LISTENER_DOCKER_EXTERNAL:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: LISTENER_DOCKER_INTERNAL
+      KAFKA_ZOOKEEPER_CONNECT: "zookeeper:${ZOOKEEPER_CLIENT_PORT}"
+      KAFKA_BROKER_ID: 1
+      KAFKA_LOG4J_LOGGERS: "kafka.controller=INFO,kafka.producer.async.DefaultEventHandler=INFO,state.change.logger=INFO"
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_JMX_PORT: ${KAFKA_EX_PORT}
+      KAFKA_JMX_HOSTNAME: ${DOCKER_HOST_IP:-127.0.0.1}
+      KAFKA_AUTHORIZER_CLASS_NAME: kafka.security.authorizer.AclAuthorizer
+      KAFKA_ALLOW_EVERYONE_IF_NO_ACL_FOUND: "true"
     depends_on:
       - zookeeper
+
+  elasticsearch:
+    extends:
+      file: common.yml
+      service: common
+    image: elasticsearch:8.2.0
+    container_name: elasticsearch
+    ports:
+      - ${ES_PORT}:9200
+    volumes:
+      - elasticsearch_data:/usr/share/elasticsearch/data:rw
     environment:
-      KAFKA_BROKER_ID: 1
-      KAFKA_ZOOKEEPER_CONNECT: 'zookeeper:2181'
-      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_INTERNAL:PLAINTEXT
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:${KAFKA_PORT},PLAINTEXT_INTERNAL://broker:29092
-      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
-      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
-      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      ES_JAVA_OPTS: -Xms512m -Xmx512m
+      xpack.security.enabled: false
+      discovery.type: single-node
+      http.cors.enabled: true
+      http.cors.allow-origin: '"*"'
+
+  kibana:
+    extends:
+      file: common.yml
+      service: common
+    image: kibana:8.2.0
+    container_name: kibana
+    depends_on:
+      - elasticsearch
+    ports:
+      - ${ES_KIBANA_PORT:-5601}:5601
+    environment:
+      ELASTICSEARCH_HOSTS: http://elasticsearch:${ES_PORT}
 
 volumes:
   pg_data:
   redis_data:
   minio_data:
+  elasticsearch_data:
+  kafka_data:

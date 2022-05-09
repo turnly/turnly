@@ -4,7 +4,6 @@ function docker_exec() {
     COMPOSE_COMMAND="docker compose --env-file .env $COMPOSE_FILES"
 
     for flag in "$@"; do
-        [[ $flag == "--prune" || $flag == "prune" ]] && execute "docker system prune -a"
         [[ $flag == "--up" || $flag == "up" ]] && execute "${COMPOSE_COMMAND} up -d --build"
         [[ $flag == "--down" || $flag == "down" ]] && execute "${COMPOSE_COMMAND} down"
         [[ $flag == "--reload" || $flag == "reload" ]] && execute "${COMPOSE_COMMAND} restart"

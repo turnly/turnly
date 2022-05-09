@@ -9,6 +9,8 @@ function start() {
 
   docker_exec --up
 
+  line
+
   info "Spinning up all the configured services... 🕓 "
   sleep 4
   info "Spinning up all the configured services... DONE ✅ "
