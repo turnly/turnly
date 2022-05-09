@@ -5,13 +5,13 @@ services:
     extends:
       file: common.yml
       service: common
-    container_name: bifrost_service
+    container_name: bifrost
     image: bifrost:latest
     build:
       context: ${COMPOSE_BASE_DIRECTORY}/bifrost
       dockerfile: ./docker/Dockerfile.dev
       args:
-        PORT: ${HTTP_PORT}
+        HTTP_PORT: ${HTTP_PORT}
         RPC_PORT: ${RPC_PORT}
     volumes:
       - ${COMPOSE_BASE_DIRECTORY}/bifrost:/app

@@ -5,13 +5,13 @@ services:
     extends:
       file: common.yml
       service: common
-    container_name: moss_service
+    container_name: moss
     image: moss:latest
     build:
       context: ${COMPOSE_BASE_DIRECTORY}/moss
       dockerfile: ./docker/Dockerfile.dev
       args:
-        PORT: ${HTTP_PORT}
+        HTTP_PORT: ${HTTP_PORT}
         RPC_PORT: ${RPC_PORT}
     volumes:
       - ${COMPOSE_BASE_DIRECTORY}/moss:/app
