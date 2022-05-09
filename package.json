@@ -5,6 +5,7 @@
   "description": "Docker-backed infrastructure provisioning for development environment.",
   "scripts": {
     "start": "bash ./scripts/run.sh develop",
-    "docker": "bash ./scripts/run.sh docker"
+    "docker": "bash ./scripts/run.sh docker",
+    "status": "bash ./scripts/run.sh status"
   }
 }

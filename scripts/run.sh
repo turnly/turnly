@@ -23,6 +23,7 @@ source "$HELPERS/docker.sh"
 source "$HELPERS/set-hosts.sh"
 source "$HELPERS/print-hosts.sh"
 source "$HELPERS/set-env.sh"
+source "$HELPERS/git-status.sh"
 
 # Commands sources
 source "$COMMANDS/start.sh"
@@ -57,6 +58,9 @@ start | dev | develop)
   ;;
 docker)
   docker_exec "$@"
+  ;;
+status)
+  git_status
   ;;
 *)
   error "Unknown command: $COMMAND"
