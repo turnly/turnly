@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function docker_exec() {
-    COMPOSE_COMMAND="docker compose --env-file .env $COMPOSE_FILES"
+    COMPOSE_COMMAND="docker compose --project-name turnly --env-file .env $COMPOSE_FILES"
 
     for flag in "$@"; do
         [[ $flag == "--up" || $flag == "up" ]] && execute "${COMPOSE_COMMAND} up -d --build"

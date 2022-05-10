@@ -1,0 +1,31 @@
+version: '3.9'
+
+services:
+  redis:
+    extends:
+      file: common.yml
+      service: common
+    image: redis
+    hostname: redis
+    container_name: redis
+    volumes:
+      - redis_data:/data
+    ports:
+      - ${REDIS_PORT}:6379
+
+  redis_ui:
+    extends:
+      file: common.yml
+      service: common
+    container_name: redis_ui
+    hostname: redis_ui
+    image: rediscommander/redis-commander:latest
+    depends_on:
+      - redis
+    environment:
+    - REDIS_HOSTS=${REDIS_ADMINER_HOST}
+    ports:
+    - ${REDIS_ADMINER_PORT}:8081
+
+volumes:
+  redis_data:

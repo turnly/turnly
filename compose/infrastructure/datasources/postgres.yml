@@ -1,0 +1,30 @@
+version: '3.9'
+
+services:
+  postgres:
+    extends:
+      file: common.yml
+      service: common
+    image: postgres:14.2-alpine
+    container_name: postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USERNAME}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - ${POSTGRES_PORT}:5432
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+
+  adminer:
+    extends:
+      file: common.yml
+      service: common
+    image: adminer:latest
+    container_name: postgres_ui
+    depends_on:
+      - postgres
+    ports:
+      - ${ADMINER_PORT}:8080
+
+volumes:
+  pg_data:

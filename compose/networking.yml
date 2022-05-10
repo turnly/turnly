@@ -2,6 +2,9 @@ version: '3.9'
 
 services:
   networking:
+    extends:
+      file: common.yml
+      service: common
     image: traefik:v2.7
     container_name: networking
     restart: always
@@ -22,7 +25,7 @@ services:
     networks:
       turnly:
         aliases: 
-          - ${APP_PROXY_HOST:-apps.turnly}
+          - ${APP_PROXY_HOST}
 
 networks:
   turnly:

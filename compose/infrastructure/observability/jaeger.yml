@@ -1,0 +1,12 @@
+version: '3.9'
+
+services:
+  jaeger:
+    extends:
+      file: common.yml
+      service: common
+    image: jaegertracing/all-in-one:1.33
+    container_name: jaeger
+    ports:
+      - ${JAEGER_PORT}:14268
+      - ${JAEGER_UI_PORT}:16686

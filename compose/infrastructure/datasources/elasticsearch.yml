@@ -1,0 +1,35 @@
+version: '3.9'
+
+services:
+  elasticsearch:
+    extends:
+      file: common.yml
+      service: common
+    image: elasticsearch:8.2.0
+    container_name: elasticsearch
+    ports:
+      - ${ES_PORT}:9200
+    volumes:
+      - elasticsearch_data:/usr/share/elasticsearch/data:rw
+    environment:
+      ES_JAVA_OPTS: -Xms512m -Xmx512m
+      xpack.security.enabled: false
+      discovery.type: single-node
+      http.cors.enabled: true
+      http.cors.allow-origin: '"*"'
+
+  kibana:
+    extends:
+      file: common.yml
+      service: common
+    image: kibana:8.2.0
+    container_name: kibana
+    depends_on:
+      - elasticsearch
+    ports:
+      - ${ES_KIBANA_PORT:-5601}:5601
+    environment:
+      ELASTICSEARCH_HOSTS: http://elasticsearch:${ES_PORT}
+
+volumes:
+  elasticsearch_data:

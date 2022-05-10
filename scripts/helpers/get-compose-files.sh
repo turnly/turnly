@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function get_compose_files() {
-    COMPOSE_FILES="-f ./docker/networking.yml -f ./docker/infrastructure.yml"
+    COMPOSE_FILES="-f ./compose/networking.yml"
 
     IGNORE_DIRS=(
         "README.md"
@@ -14,6 +14,12 @@ function get_compose_files() {
         ".github-private"
     )
 
+    INFRA_COMPOSE_FILES=$(find ./compose/infrastructure -name "*.yml" -type f)
+
+    for file in $INFRA_COMPOSE_FILES; do
+        COMPOSE_FILES="$COMPOSE_FILES -f $file"
+    done
+
     [[ -z "$APPS_DIRECTORY" ]] && error "Oops! Environment variable APPS_DIRECTORY is not set."
 
     APPS_DIRS="$(ls -d "$APPS_DIRECTORY"/*)"
@@ -22,7 +28,7 @@ function get_compose_files() {
 
     for APP_DIR in $APPS_DIRS; do
         APP_NAME="$(basename "$APP_DIR")"
-        COMPOSE_FILE="./docker/$APP_NAME.yml"
+        COMPOSE_FILE="./compose/services/$APP_NAME.yml"
 
         if [[ -f "$COMPOSE_FILE" ]]; then
             COMPOSE_FILES="$COMPOSE_FILES -f $COMPOSE_FILE"

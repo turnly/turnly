@@ -19,13 +19,13 @@ source "$BIN/execute.sh"
 source "$HELPERS/get-env.sh"
 source "$HELPERS/get-compose-files.sh"
 source "$HELPERS/check-ports.sh"
-source "$HELPERS/docker.sh"
 source "$HELPERS/set-hosts.sh"
 source "$HELPERS/print-hosts.sh"
 source "$HELPERS/set-env.sh"
-source "$HELPERS/git-status.sh"
 
 # Commands sources
+source "$COMMANDS/docker.sh"
+source "$COMMANDS/git-status.sh"
 source "$COMMANDS/start.sh"
 
 INPUT=$1

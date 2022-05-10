@@ -37,7 +37,10 @@ function print_hosts() {
     info " 🟢 Elastic Search Dashboard: http://$APP_PROXY_HOST:$ES_KIBANA_PORT"
     info " 🟢 Redis Dashboard: http://$APP_PROXY_HOST:$REDIS_ADMINER_PORT"
     info " 🟢 Storage Dashboard: http://$APP_PROXY_HOST:$MINIO_UI_PORT"
-    info " 🟢 Postgres DB Dashboard: http://$APP_PROXY_HOST:$ADMINER_PORT"
+    info " 🟢 Postgres Dashboard: http://$APP_PROXY_HOST:$ADMINER_PORT"
+    info " 🟢 ElasticMQ Dashboard: http://$APP_PROXY_HOST:$SQS_UI_PORT"
+    info " 🟢 RabbitMQ Dashboard: http://$APP_PROXY_HOST:$RABBITMQ_UI_PORT"
+    info " 🟢 Jaeger Dashboard: http://$APP_PROXY_HOST:$JAEGER_UI_PORT"
 
     line
 }
