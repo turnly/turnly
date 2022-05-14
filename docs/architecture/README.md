@@ -49,7 +49,7 @@ Bounded Context is a central pattern in Domain-Driven Design. It is the focus of
 
 #### Onion Architecture
 
-![Onion-Architecture](/docs/architecture/assets/onion-architecture-v2.png)
+![Onion-Architecture](/docs/architecture/assets/onion-architecture.jpeg)
 
 Onion Architecture was introduced by Jeffrey Palermo to provide a better way to build applications in perspective of better testability, maintainability, and dependability. Onion Architecture addresses the challenges faced with 3-tier and n-tier architectures, and to provide a solution for common problems. Onion architecture layers interact to each other by using the Interfaces.
 
