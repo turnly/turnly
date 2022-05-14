@@ -1,19 +1,33 @@
 #!/bin/bash
 
 function set_env() {
-    local ENV_FILE="$1"
+  local ENV_FILE="$1"
+  local LOCAL_ENV=".env"
 
-    [[ ! -f "$ENV_FILE" ]] && error "Oops! No .env file found for $APP_NAME."
+  [[ ! -f "$ENV_FILE" ]] && error "Oops! No .env file found for $APP_NAME."
 
-    line
-    info "Checking and setting the environment variables for $APP_NAME..."
+  line
+  info "Checking and setting the environment variables for $APP_NAME..."
 
-    [[ -n "$HTTP_PORT" ]] && sed -i '' -e "s#HTTP_PORT=.*#HTTP_PORT=$HTTP_PORT#g" "$ENV_FILE"
+  # Read the .env file and save to array for later use in the script itself
+  while IFS='=' read -r key value; do
+    key=$(echo "$key" | tr '.' '_' | sed -e 's/^export //g' | sed -e 's/=/ /g' | awk '{print $1}')
+    value=$(echo "$value" | sed -e 's/^"//g' | sed -e 's/"$//g')
 
-    [[ -n "$RPC_PORT" ]] && sed -i '' -e "s#RPC_PORT=.*#RPC_PORT=$RPC_PORT#g" "$ENV_FILE"
-    [[ -n "$RPC_BIND_ADDRESS" ]] && sed -i '' -e "s#RPC_BIND_ADDRESS=.*#RPC_BIND_ADDRESS=$RPC_BIND_ADDRESS#g" "$ENV_FILE"
-    [[ -n "$RPC_PORT" ]] && sed -i '' -e "s#RPC_CONSUMER_ADDRESS=.*#RPC_CONSUMER_ADDRESS=host.docker.internal:$RPC_PORT#g" "$ENV_FILE"
+    if [[ -n "$key" && -n "$value" ]]; then
+      if grep -q "$key" "$ENV_FILE"; then
+        sed -i '' -e "s#$key=.*#$key=$value#g" "$ENV_FILE"
+      else
+        {
+          echo ""
+          echo "# ci(maverick): auto-generated configuration, do not edit here."
+          echo "$key=$value"
+        } >>"$ENV_FILE"
+      fi
+    fi
 
-    info "Checking and setting the environment variables for $APP_NAME... DONE ✅ "
-    line
+  done <$LOCAL_ENV
+
+  info "Checking and setting the environment variables for $APP_NAME... DONE ✅ "
+  line
 }

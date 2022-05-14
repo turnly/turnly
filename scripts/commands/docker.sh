@@ -8,7 +8,7 @@ function docker_exec() {
         [[ $flag == "--down" || $flag == "down" ]] && execute "${COMPOSE_COMMAND} down"
         [[ $flag == "--reload" || $flag == "reload" ]] && execute "${COMPOSE_COMMAND} restart"
 
-        [[ $flag == "--logs" || $flag == "logs" ]] && eval "${COMPOSE_COMMAND} logs -f"
+        [[ $flag == "--logs" || $flag == "logs" ]] && eval "${COMPOSE_COMMAND} logs -f --tail=all --since=1h"
         [[ $flag == "--logs-all" || $flag == "logs-all" ]] && eval "${COMPOSE_COMMAND} logs -f --tail=all"
         [[ $flag == "--logs-since" || $flag == "logs-since" ]] && eval "${COMPOSE_COMMAND} logs -f --tail=all --since=1h"
         [[ $flag == "--logs-since-until" || $flag == "logs-since-until" ]] && eval "${COMPOSE_COMMAND} logs -f --tail=all --since=1h --until=1h"

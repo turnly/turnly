@@ -1,0 +1,18 @@
+version: '3.9'
+
+services:
+  fluentd:
+    extends:
+      file: common.yml
+      service: common
+    container_name: fluentd
+    build: ./fluentd
+    volumes:
+      - ./fluentd/conf:/fluentd/etc
+    depends_on:
+      - elasticsearch
+    expose:
+      - ${FLUENT_PORT}
+    ports:
+      - ${FLUENT_PORT}:24224
+      - ${FLUENT_PORT}:24224/udp
