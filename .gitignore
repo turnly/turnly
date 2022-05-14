@@ -34,3 +34,6 @@ tmp/
 # Environments
 .env*
 !.env.example
+
+# NVM
+**/.nvmrc
