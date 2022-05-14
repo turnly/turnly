@@ -22,3 +22,12 @@ brennan:
   - apps/brennan/**/*
 polly:
   - apps/polly/**/*
+docker:
+  - apps/**/docker/*
+operator:
+  - compose/**/*
+  - scripts/**/*
+documentation:
+  - docs/**/*
+environment:
+  - .env.example
