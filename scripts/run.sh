@@ -25,7 +25,7 @@ source "$HELPERS/set-env.sh"
 
 # Commands sources
 source "$COMMANDS/docker.sh"
-source "$COMMANDS/git-status.sh"
+source "$COMMANDS/lint.sh"
 source "$COMMANDS/start.sh"
 
 INPUT=$1
@@ -59,8 +59,8 @@ start | dev | develop)
 docker)
   docker_exec "$@"
   ;;
-status)
-  git_status
+lint | lint:format | lint:check | lint:ts:check)
+  lint
   ;;
 *)
   error "Unknown command: $COMMAND"

@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "outDir": "dist"
+  },
+  "extends": "@turnly/eslint-config/tsconfig/tsconfig.app.json",
+  "include": [
+    "src/**/*"
+  ]
+}

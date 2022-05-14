@@ -1,18 +1,36 @@
-.vscode/
-.DS_Store
+**/node_modules
 *.cache
+.DS_Store
+
+# Logs
 *.log
 logs/
 tmp/
 
-# Turnly Applications
-apps/*
-apps/**
-!apps/README.md
-!apps/.gitkeep
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# Builds
+**/tsconfig.tsbuildinfo
+
+# Husky
+.husky/_
+.husky/.gitignore
+
+# Yarn
+.yarn/*
+**/yarn-error.log
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
 
 # Environments
-.env
-.env.local
-.env.prod
-.env.test
+.env*
+!.env.example

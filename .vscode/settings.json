@@ -1,0 +1,34 @@
+{
+  "debug.javascript.unmapMissingSources": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "files.exclude": {
+    "**/.editorconfig": true,
+    "**/.eslint*": true,
+    "**/.git": true,
+    "**/.husky": true,
+    "**/.nvmrc": true,
+    "**/.prettier*": true,
+    "**/dist": true,
+    "**/jest*": true,
+    "**/node_modules": true,
+    "**/tsconfig.tsbuildinfo": true,
+    "**/yarn-error.log": true
+  },
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "eslint.workingDirectories": [
+    "apps/moss",
+    "apps/bifrost",
+    "apps/heimdall",
+    "apps/wayne",
+    "apps/alfred",
+    "apps/shannon",
+    "apps/dorothee",
+    "apps/shelby",
+    "apps/curry",
+    "apps/chanel",
+    "apps/brennan",
+    "apps/polly"
+  ]
+}

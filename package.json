@@ -1,11 +1,32 @@
 {
-  "name": "@turnly/development",
+  "name": "@turnly/maverick",
   "version": "1.0.0",
   "private": true,
-  "description": "Docker-backed infrastructure provisioning for development environment.",
+  "description": "Queue management system for waiting lines & walk-ins at physical locations.",
+  "workspaces": {
+    "packages": [
+      "apps/*"
+    ],
+    "nohoist": [
+      "**"
+    ]
+  },
   "scripts": {
-    "start": "bash ./scripts/run.sh develop",
     "docker": "bash ./scripts/run.sh docker",
-    "status": "bash ./scripts/run.sh status"
+    "prepare": "husky install",
+    "start": "bash ./scripts/run.sh develop"
+  },
+  "commitlint": {
+    "extends": [
+      "@turnly/eslint-config/commits/commitlint.maverick.js"
+    ]
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^16.2.4",
+    "@turnly/eslint-config": "git+https://turnlyapps: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@github.com/turnly/configs.git",
+    "husky": "^8.0.1"
+  },
+  "engines": {
+    "node": ">=16.15.0"
   }
 }

@@ -1,0 +1,24 @@
+moss:
+  - apps/moss/**/*
+bifrost:
+  - apps/bifrost/**/*
+heimdall:
+  - apps/heimdall/**/*
+wayne:
+  - apps/wayne/**/*
+alfred:
+  - apps/alfred/**/*
+shannon:
+  - apps/shannon/**/*
+dorothee:
+  - apps/dorothee/**/*
+shelby:
+  - apps/shelby/**/*
+curry:
+  - apps/curry/**/*
+chanel:
+  - apps/chanel/**/*
+brennan:
+  - apps/brennan/**/*
+polly:
+  - apps/polly/**/*

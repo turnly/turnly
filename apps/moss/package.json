@@ -1,0 +1,71 @@
+{
+  "name": "@turnly/moss",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Service that manages the apps (widgets) built on Turnly by an organization, enables integrations between external systems to share data.",
+  "license": "UNLICENSED",
+  "author": {
+    "name": "Efra",
+    "email": "efra23peralta@gmail.com",
+    "url": "https://github.com/efraa"
+  },
+  "directories": {
+    "test": "tests",
+    "src": "src"
+  },
+  "scripts": {
+    "prebuild": "rimraf dist tsconfig.tsbuildinfo",
+    "build": "tsc",
+    "lint:check": "eslint . --ext .js,.ts",
+    "lint:format": "prettier \"./**/*.{ts,js}\" --check",
+    "lint:ts:check": "tsc --noEmit",
+    "migrate": "yarn typeorm migration:run",
+    "migrate:gen": "yarn typeorm migration:generate",
+    "migrate:revert": "yarn typeorm migration:revert",
+    "protos": "bash ./.scripts/protos.sh",
+    "start": "ROOT_DIR=$(pwd) NODE_PATH=dist/ node -r dotenv/config dist/main.js",
+    "test": "jest --forceExit --detectOpenHandles",
+    "typeorm": "ROOT_DIR=$(pwd) NODE_PATH=./src ts-node $(yarn bin typeorm)",
+    "watch": "nodemon --config node_modules/@turnly/eslint-config/nodemon.json src/main.ts"
+  },
+  "prettier": "@turnly/eslint-config/.prettierrc.js",
+  "eslintConfig": {
+    "extends": "@turnly/eslint-config",
+    "ignorePatterns": [
+      "node_modules",
+      "**/*.md",
+      "dist",
+      "jest*",
+      "tests/**/*.ts",
+      "ormconfig.js"
+    ]
+  },
+  "dependencies": {
+    "@turnly/core": "git+https://turnlyapps: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@github.com/turnly/core.git#latest",
+    "@turnly/eslint-config": "git+https://turnlyapps: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@github.com/turnly/configs.git",
+    "@turnly/rpc": "git+https://turnlyapps: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@github.com/turnly/rpc.git#latest",
+    "@turnly/shared": "git+https://turnlyapps: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@github.com/turnly/shared.git#latest",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "pg": "^8.7.1",
+    "ts-simple-automapper": "^1.0.3",
+    "typeorm": "^0.2.37"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/jest": "^27.0.1",
+    "@types/node": "^16.10.2",
+    "eslint": "^8.14.0",
+    "jest": "^27.0.6",
+    "nodemon": "^2.0.14",
+    "prettier": "^2.3.0",
+    "rimraf": "^3.0.2",
+    "supertest": "^6.1.3",
+    "ts-jest": "^27.0.4",
+    "ts-node": "^10.2.1",
+    "typescript": "^4.4.2"
+  },
+  "engines": {
+    "node": ">=16.15.0"
+  }
+}
