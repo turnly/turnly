@@ -1,6 +1,6 @@
 import { TEntityManager } from '@turnly/core'
-import { IntegrationByIdQuery } from 'packages/integrations/application/queries/IntegrationByIdQuery'
-import { IIntegrationQueryFactory } from 'packages/integrations/domain/contracts/IIntegrationQueryFactory'
+import { IntegrationByIdQuery } from 'modules/integrations/application/queries/IntegrationByIdQuery'
+import { IIntegrationQueryFactory } from 'modules/integrations/domain/contracts/IIntegrationQueryFactory'
 
 import { IIntegrationMapper } from '../contracts/IIntegrationMapper'
 

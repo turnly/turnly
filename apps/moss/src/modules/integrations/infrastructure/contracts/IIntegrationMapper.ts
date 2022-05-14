@@ -1,5 +1,5 @@
 import { IEntityMapper } from '@turnly/core'
-import { Integration } from 'packages/integrations/domain/entities/Integration'
+import { Integration } from 'modules/integrations/domain/entities/Integration'
 
 import { IntegrationModel } from '../persistence/models/Integration'
 

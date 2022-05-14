@@ -1,5 +1,5 @@
 import { Producers } from '@turnly/rpc'
-import { IntegrationsController } from 'packages/integrations/api/controllers'
+import { IntegrationsController } from 'modules/integrations/api/controllers'
 
 import { IntegrationMapper } from '../entity-rpc-mappers/IntegrationMapper'
 

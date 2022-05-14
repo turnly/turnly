@@ -17,20 +17,20 @@ const config = {
   maxQueryExecutionTime: 2000,
   migrationsTableName: 'typeorm_migrations',
   entities: [
-    'src/packages/**/infrastructure/persistence/models/*.ts',
-    'dist/packages/**/infrastructure/persistence/models/*.js',
+    'src/modules/**/infrastructure/persistence/models/*.ts',
+    'dist/modules/**/infrastructure/persistence/models/*.js',
   ],
   migrations: [
-    'src/packages/**/infrastructure/persistence/migrations/*.ts',
+    'src/modules/**/infrastructure/persistence/migrations/*.ts',
   ],
   subscribers: [
-    'src/packages/**/infrastructure/persistence/subscribers/*.ts',
-    'dist/packages/**/infrastructure/persistence/subscribers/*.js',
+    'src/modules/**/infrastructure/persistence/subscribers/*.ts',
+    'dist/modules/**/infrastructure/persistence/subscribers/*.js',
   ],
   cli: {
     migrationsDir:
-      'src/packages/**/infrastructure/persistence/migrations',
-    entitiesDir: 'src/packages/**/infrastructure/persistence/models',
+      'src/modules/**/infrastructure/persistence/migrations',
+    entitiesDir: 'src/modules/**/infrastructure/persistence/models',
   },
 };
 

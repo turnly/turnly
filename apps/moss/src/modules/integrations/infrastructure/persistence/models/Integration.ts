@@ -1,5 +1,5 @@
 import { Model } from '@turnly/core'
-import { IntegrationStatus } from 'packages/integrations/domain/enums/IntegrationStatus'
+import { IntegrationStatus } from 'modules/integrations/domain/enums/IntegrationStatus'
 import { Column, Entity } from 'typeorm'
 
 @Entity({ name: 'integrations' })

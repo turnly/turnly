@@ -1,5 +1,5 @@
 import { Producers } from '@turnly/rpc'
-import { IntegrationFactory } from 'packages/integrations/infrastructure/factories/IntegrationFactory'
+import { IntegrationFactory } from 'modules/integrations/infrastructure/factories/IntegrationFactory'
 
 import { IntegrationsServer } from './servers/integrationsServer'
 

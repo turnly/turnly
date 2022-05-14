@@ -1,6 +1,6 @@
 import { Uuid } from '@turnly/shared'
-import { Integration } from 'packages/integrations/domain/entities/Integration'
-import { IntegrationStatus } from 'packages/integrations/domain/enums/IntegrationStatus'
+import { Integration } from 'modules/integrations/domain/entities/Integration'
+import { IntegrationStatus } from 'modules/integrations/domain/enums/IntegrationStatus'
 import { Mapper, MapProp } from 'ts-simple-automapper'
 
 export class IntegrationDTO {

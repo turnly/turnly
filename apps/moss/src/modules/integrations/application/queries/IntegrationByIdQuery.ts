@@ -1,9 +1,9 @@
 import { Builder, IQuery, Query, TEntityManager } from '@turnly/core'
 import { Nullable } from '@turnly/shared'
-import { Integration } from 'packages/integrations/domain/entities/Integration'
-import { GetIntegrationPayload } from 'packages/integrations/domain/payloads/GetIntegrationPayload'
-import { IIntegrationMapper } from 'packages/integrations/infrastructure/contracts/IIntegrationMapper'
-import { IntegrationModel } from 'packages/integrations/infrastructure/persistence/models/Integration'
+import { Integration } from 'modules/integrations/domain/entities/Integration'
+import { GetIntegrationPayload } from 'modules/integrations/domain/payloads/GetIntegrationPayload'
+import { IIntegrationMapper } from 'modules/integrations/infrastructure/contracts/IIntegrationMapper'
+import { IntegrationModel } from 'modules/integrations/infrastructure/persistence/models/Integration'
 
 export class IntegrationByIdQuery
   extends Query
