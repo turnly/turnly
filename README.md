@@ -1,6 +1,6 @@
-## Turnly Maverick — Microservices that make up much of Turnly's APIs.
+# Turnly Maverick — Microservices
 
-Queue management system for waiting lines & walk-ins at physical locations.
+Microservices that make up much of Turnly's APIs.
 
 ### 🦦 Quick Start — Microservices purpose
 
@@ -27,7 +27,7 @@ Queue management system for waiting lines & walk-ins at physical locations.
 
 #### Software Architecture
 
-Microservices are built using multiple architectural concepts, [Learn about](/docs/architecture)
+Microservices are built using multiple architectural concepts, [learn about.](/docs/architecture)
 
 #### Production & Stage
 
