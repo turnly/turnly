@@ -1,5 +1,4 @@
 import { Database, Startup } from '@turnly/core'
-import { Producers } from '@turnly/rpc'
 
 class Application extends Startup {
   /**
@@ -11,9 +10,7 @@ class Application extends Startup {
     await Database.connect()
 
     const { rest } = await import('presentation/rest')
-    const { rpcServerOptions } = await import('presentation/rpc')
-
-    const rpc = new Producers.Server(rpcServerOptions)
+    const { rpc } = await import('presentation/rpc')
 
     this.setupMonitoring(rest.app)
 

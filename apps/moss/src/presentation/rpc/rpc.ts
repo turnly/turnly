@@ -9,7 +9,7 @@ const services = [
   },
 ]
 
-export const rpcServerOptions = Object.freeze({
+export const rpc = new Producers.Server({
   address: process.env.RPC_BIND_ADDRESS as string,
   services,
 })
