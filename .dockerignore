@@ -2,11 +2,10 @@
 node_modules
 .github
 coverage
-docker-compose.yml
 yarn-error.log
 *.md
 .dockerignore
 .editorconfig
-.eslint*
-.prettierrc*
+**/.eslint*
+**/.prettierrc*
 **/.env
