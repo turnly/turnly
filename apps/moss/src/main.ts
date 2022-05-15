@@ -1,25 +1,25 @@
 import { Database, Startup } from '@turnly/core'
 import { Producers } from '@turnly/rpc'
-import { http } from 'presentations/http/http'
 
-class Main extends Startup {
+class Application extends Startup {
   /**
    * Sets up application.
    *
    * @memberof Startup
    */
   public async setup(): Promise<void> {
-    this.setupMonitoring(http.app)
-
     await Database.connect()
 
-    const { rpcOptions } = await import('./presentations/rpc/rpc')
+    const { rest } = await import('presentation/rest')
+    const { rpcServerOptions } = await import('presentation/rpc')
 
-    const rpc = new Producers.Server(rpcOptions)
+    const rpc = new Producers.Server(rpcServerOptions)
 
-    http.setup()
+    this.setupMonitoring(rest.app)
+
+    rest.setup()
     rpc.setup()
   }
 }
 
-new Main().setup()
+new Application().setup()

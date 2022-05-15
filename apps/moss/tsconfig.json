@@ -5,6 +5,7 @@
   },
   "extends": "@turnly/eslint-config/tsconfig/tsconfig.app.json",
   "include": [
-    "src/**/*"
+    "src/**/*",
+    "src/*.ts"
   ]
 }
