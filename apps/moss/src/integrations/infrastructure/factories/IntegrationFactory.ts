@@ -1,5 +1,5 @@
 import { TEntityManager } from '@turnly/core'
-import { IntegrationsController } from 'integrations/api/controllers'
+import { IntegrationsController } from 'integrations/api/controllers/IntegrationsController'
 import { IIntegrationQueryFactory } from 'integrations/domain/contracts/IIntegrationQueryFactory'
 
 import { IIntegrationMapper } from '../contracts/IIntegrationMapper'
