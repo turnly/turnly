@@ -1,5 +1,5 @@
-const dotenv = require('dotenv');
-dotenv.config();
+const dotenv = require('dotenv')
+dotenv.config()
 
 /**
  * @type {import('typeorm').ConnectionOptions}
@@ -17,21 +17,18 @@ const config = {
   maxQueryExecutionTime: 2000,
   migrationsTableName: 'typeorm_migrations',
   entities: [
-    'src/modules/integrations/infrastructure/persistence/models/*.ts',
-    'dist/modules/integrations/infrastructure/persistence/models/*.js',
+    'src/integrations/infrastructure/persistence/models/*.ts',
+    'dist/integrations/infrastructure/persistence/models/*.js',
   ],
-  migrations: [
-    'src/modules/integrations/infrastructure/persistence/migrations/*.ts',
-  ],
+  migrations: ['src/integrations/infrastructure/persistence/migrations/*.ts'],
   subscribers: [
-    'src/modules/integrations/infrastructure/persistence/subscribers/*.ts',
-    'dist/modules/integrations/infrastructure/persistence/subscribers/*.js',
+    'src/integrations/infrastructure/persistence/subscribers/*.ts',
+    'dist/integrations/infrastructure/persistence/subscribers/*.js',
   ],
   cli: {
-    migrationsDir:
-      'src/modules/integrations/infrastructure/persistence/migrations',
-    entitiesDir: 'src/modules/integrations/infrastructure/persistence/models',
+    migrationsDir: 'src/integrations/infrastructure/persistence/migrations',
+    entitiesDir: 'src/integrations/infrastructure/persistence/models',
   },
-};
+}
 
-module.exports = config;
+module.exports = config
