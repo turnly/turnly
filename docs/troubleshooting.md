@@ -1,4 +1,4 @@
-# Maverick — Troubleshooting 🔥 
+# Athena — Troubleshooting 🔥 
 
 1. If you are a **Windows** user and are getting **Permission denied** errors
 to access your hosts file, you need to do the following:

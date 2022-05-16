@@ -1,4 +1,4 @@
-# Turnly Maverick — Microservices
+# Turnly Athena — Microservices
 
 Microservices that make up much of Turnly's APIs.
 
@@ -7,7 +7,6 @@ Microservices that make up much of Turnly's APIs.
 - [Heimdall IAM - Identity & Access Management](/apps/heimdall)
 - [Alfred - Assistance Centers (Locations)](/apps/alfred)
 - [Shelby - Queuing System](/apps/shelby)
-- [Bifröst - The real-time event bridge](/apps/bifrost)
 - [Dorothee - Business Data Fields](/apps/dorothee)
 - [Curry - Tasks Scheduling](/apps/curry)
 - [Chanel - Notifications](/apps/chanel)

@@ -1,4 +1,4 @@
-# Maverick — Conventions guide
+# Athena — Conventions guide
 
 Conventions as a safe way to interpret and talk to the team. When working with the conventions
 will be sure that all they may understand each iteration of the developer with the application.

@@ -1,4 +1,4 @@
-# Maverick — Development (Docker-backed)
+# Athena — Development (Docker-backed)
 
 Docker-backed infrastructure Provisioning for development environment.
 
@@ -29,7 +29,7 @@ mkdir turnly
 cd turnly
 
 # Clone repository
-git clone git@github.com:turnly/maverick.git
+git clone git@github.com:turnly/athena.git
 ```
 
 #### Install application dependencies
@@ -38,8 +38,8 @@ git clone git@github.com:turnly/maverick.git
 # Go to turnly directory ✅ 
 cd turnly
 
-# Go to maverick directory (inside of turnly) ✅ 
-cd maverick
+# Go to athena directory (inside of turnly) ✅ 
+cd athena
 
 # You just need to run this in root and it will install all the dependencies for each app.
 yarn install
@@ -56,8 +56,8 @@ Run:
 # Go to turnly directory ✅ 
 cd turnly
 
-# Go to maverick directory (inside of turnly) ✅ 
-cd maverick
+# Go to athena directory (inside of turnly) ✅ 
+cd athena
 
 # Run
 yarn start
@@ -69,8 +69,8 @@ yarn start
 # Go to turnly directory ✅ 
 cd turnly
 
-# Go to maverick directory (inside of turnly) ✅ 
-cd maverick
+# Go to athena directory (inside of turnly) ✅ 
+cd athena
 
 # Run
 yarn docker down
@@ -82,8 +82,8 @@ yarn docker down
 # Go to turnly directory ✅ 
 cd turnly
 
-# Go to maverick directory (inside of turnly) ✅ 
-cd maverick
+# Go to athena directory (inside of turnly) ✅ 
+cd athena
 
 # Run
 yarn docker reload
@@ -95,8 +95,8 @@ yarn docker reload
 # Go to turnly directory ✅ 
 cd turnly
 
-# Go to maverick directory (inside of turnly) ✅ 
-cd maverick
+# Go to athena directory (inside of turnly) ✅ 
+cd athena
 
 # Run
 yarn docker logs

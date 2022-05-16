@@ -20,7 +20,7 @@ function set_env() {
       else
         {
           echo ""
-          echo "# ci(maverick): auto-generated configuration, do not edit here."
+          echo "# ci(athena): auto-generated configuration, do not edit here."
           echo "$key=$value"
         } >>"$ENV_FILE"
       fi

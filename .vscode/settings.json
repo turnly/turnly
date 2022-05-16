@@ -19,7 +19,6 @@
   "typescript.tsdk": "node_modules/typescript/lib",
   "eslint.workingDirectories": [
     "apps/moss",
-    "apps/bifrost",
     "apps/heimdall",
     "apps/wayne",
     "apps/alfred",

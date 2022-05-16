@@ -1,7 +1,5 @@
 moss:
   - apps/moss/**/*
-bifrost:
-  - apps/bifrost/**/*
 heimdall:
   - apps/heimdall/**/*
 wayne:

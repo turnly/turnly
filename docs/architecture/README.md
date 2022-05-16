@@ -1,4 +1,4 @@
-# Maverick — Software Architecture
+# Athena — Software Architecture
 
 > This document describes how the architecture provides the ability for teams
 > to adapt and understand the static structure of the application.
