@@ -1,6 +1,6 @@
 #!/bin/bash
 
-COMMAND_LOGS="docker.exec.log"
+COMMAND_LOGS="compose.athena.log"
 
 function exec_command() {
   local COMMAND="$1"

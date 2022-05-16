@@ -54,7 +54,7 @@ line
 
 case $COMMAND in
 start | dev | develop)
- start "$@"
+  start "$@"
   ;;
 docker)
   docker_exec "$@"

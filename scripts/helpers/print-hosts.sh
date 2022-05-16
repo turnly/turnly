@@ -1,45 +1,45 @@
 #!/bin/bash
 
 function print_hosts() {
-    line
+  line
 
-    info "You can access the apps at the following URLs: 👀 "
+  info "You can access the apps at the following URLs: 👀 "
 
-    line
+  line
 
-    info "Backend Services: 📌 "
+  info "Backend Services: 📌 "
 
-    line
+  line
 
-    info " 🟢 RESTful API: http://api.turnly:$HTTP_PORT"
-    info " 🟢 Realtime: http://ws.turnly:$HTTP_PORT"
-    info " 🟢 Heimdall IAM (Auth Service): http://api.iam.turnly:$HTTP_PORT"
-    info " 🟢 RPC - Inter-services communication: http://rpc.turnly:$RPC_PORT"
-    info " 🟢 RPC - Inter-services communication (inside docker): host.docker.internal:$RPC_PORT"
+  info " 🟢 RESTful API: http://api.turnly:$HTTP_PORT"
+  info " 🟢 Realtime: http://ws.turnly:$HTTP_PORT"
+  info " 🟢 Heimdall IAM (Auth Service): http://api.iam.turnly:$HTTP_PORT"
+  info " 🟢 RPC - Inter-services communication: http://rpc.turnly:$RPC_PORT"
+  info " 🟢 RPC - Inter-services communication (inside docker): host.docker.internal:$RPC_PORT"
 
-    line
+  line
 
-    info "Frontend Apps: 📌 "
+  info "Frontend Apps: 📌 "
 
-    line
+  line
 
-    info " 🟢 Heimdall IAM (Auth App): http://iam.turnly:$HTTP_PORT"
-    info " 🟢 Backoffice: http://dashboard.turnly:$HTTP_PORT"
-    info " 🟢 Helpdesk (Queuing System): http://app.turnly:$HTTP_PORT"
+  info " 🟢 Heimdall IAM (Auth App): http://iam.turnly:$HTTP_PORT"
+  info " 🟢 Backoffice: http://dashboard.turnly:$HTTP_PORT"
+  info " 🟢 Helpdesk (Queuing System): http://app.turnly:$HTTP_PORT"
 
-    line
+  line
 
-    info "Local Infrastructure Apps: 📌 "
+  info "Local Infrastructure Apps: 📌 "
 
-    line
+  line
 
-    info " 🟢 Traffic Dashboard: http://$APP_PROXY_HOST:$APP_PROXY_DASHBOARD_PORT"
-    info " 🟢 Elastic Search Dashboard: http://$APP_PROXY_HOST:$ELASTICSEARCH_KIBANA_PORT"
-    info " 🟢 Redis Dashboard: http://$APP_PROXY_HOST:$REDIS_ADMINER_PORT"
-    info " 🟢 Storage Dashboard: http://$APP_PROXY_HOST:$MINIO_UI_PORT"
-    info " 🟢 Postgres Dashboard: http://$APP_PROXY_HOST:$ADMINER_PORT"
-    info " 🟢 ElasticMQ Dashboard: http://$APP_PROXY_HOST:$SQS_UI_PORT"
-    info " 🟢 RabbitMQ Dashboard: http://$APP_PROXY_HOST:$RABBITMQ_UI_PORT"
+  info " 🟢 Traffic Dashboard: http://$APP_PROXY_HOST:$APP_PROXY_DASHBOARD_PORT"
+  info " 🟢 Elastic Search Dashboard: http://$APP_PROXY_HOST:$ELASTICSEARCH_KIBANA_PORT"
+  info " 🟢 Redis Dashboard: http://$APP_PROXY_HOST:$REDIS_ADMINER_PORT"
+  info " 🟢 Storage Dashboard: http://$APP_PROXY_HOST:$MINIO_UI_PORT"
+  info " 🟢 Postgres Dashboard: http://$APP_PROXY_HOST:$ADMINER_PORT"
+  info " 🟢 ElasticMQ Dashboard: http://$APP_PROXY_HOST:$SQS_UI_PORT"
+  info " 🟢 RabbitMQ Dashboard: http://$APP_PROXY_HOST:$RABBITMQ_UI_PORT"
 
-    line
+  line
 }
