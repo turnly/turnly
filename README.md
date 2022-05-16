@@ -14,7 +14,7 @@ Microservices that make up much of Turnly's APIs.
 - [Shannon - Team Management](/apps/shannon)
 - [Polly - Activities History](/apps/polly)
 - [Wayne - Billing service](/apps/wayne)
-- [Moss - Integrations, Workspaces & Webhooks](/apps/moss)
+- [Maverick - Integrations, Workspaces & Webhooks](/apps/maverick)
 
 ##### Shared Modules
 

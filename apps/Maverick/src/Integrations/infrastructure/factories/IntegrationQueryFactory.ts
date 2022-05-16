@@ -2,7 +2,7 @@ import { TEntityManager } from '@turnly/core'
 import { IntegrationByIdQuery } from 'integrations/application/queries/IntegrationByIdQuery'
 import { IIntegrationQueryFactory } from 'integrations/domain/contracts/IIntegrationQueryFactory'
 
-import { IIntegrationMapper } from '../contracts/IIntegrationMapper'
+import { IIntegrationMapper } from '../../domain/contracts/IIntegrationMapper'
 
 export class IntegrationQueryFactory implements IIntegrationQueryFactory {
   public constructor(

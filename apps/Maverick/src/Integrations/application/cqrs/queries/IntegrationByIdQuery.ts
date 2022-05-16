@@ -2,7 +2,7 @@ import { Builder, IQuery, Query, TEntityManager } from '@turnly/core'
 import { Nullable } from '@turnly/shared'
 import { Integration } from 'integrations/domain/entities/Integration'
 import { GetIntegrationPayload } from 'integrations/domain/payloads/GetIntegrationPayload'
-import { IIntegrationMapper } from 'integrations/infrastructure/contracts/IIntegrationMapper'
+import { IIntegrationMapper } from 'Integrations/domain/contracts/IIntegrationMapper'
 import { IntegrationModel } from 'integrations/infrastructure/persistence/models/Integration'
 
 export class IntegrationByIdQuery

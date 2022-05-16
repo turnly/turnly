@@ -1,0 +1,33 @@
+version: '3.9'
+
+services:
+  maverick:
+    extends:
+      file: common.yml
+      service: common
+    container_name: maverick
+    image: maverick:latest
+    build:
+      context: ${COMPOSE_BASE_DIRECTORY}/Maverick
+      dockerfile: ./docker/Dockerfile.dev
+      args:
+        HTTP_PORT: ${HTTP_PORT}
+        RPC_PORT: ${RPC_PORT}
+    volumes:
+      - ${COMPOSE_BASE_DIRECTORY}/Maverick:/app
+    depends_on:
+      - networking
+      - postgres
+    labels:
+      - traefik.enable=true
+
+      - traefik.http.routers.maverick_rpc.entrypoints=rpc
+      - traefik.http.routers.maverick_rpc.rule=PathPrefix(`/turnly.maverick.v1`) && Host(`rpc.turnly`) || Host(`host.docker.internal`)
+      - traefik.http.routers.maverick_rpc.service=maverick_rpc
+      - traefik.http.services.maverick_rpc.loadbalancer.server.port=${RPC_PORT}
+      - traefik.http.services.maverick_rpc.loadbalancer.server.scheme=h2c
+
+      - traefik.http.routers.maverick_http.entrypoints=http
+      - traefik.http.routers.maverick_http.rule=Host(`api.turnly`) && PathPrefix(`/v1/integrations`, `/v1/workspaces`, `/v1/webhooks`, `/v1/beacons`)
+      - traefik.http.routers.maverick_http.service=maverick_http
+      - traefik.http.services.maverick_http.loadbalancer.server.port=${HTTP_PORT}

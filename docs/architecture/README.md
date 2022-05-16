@@ -41,7 +41,7 @@ Domain-Driven Design is an approach to software development that centers the dev
 
 #### CQRS
 
-Command Query Responsibility Segregation is the notion that you can use a different model to update information than the model you use to read information.
+CQRS stands for Command and Query Responsibility Segregation, a pattern that separates read and update operations for a data store. Implementing CQRS in your application can maximize its performance, scalability, and security. The flexibility created by migrating to CQRS allows a system to better evolve over time and prevents update commands from causing merge conflicts at the domain level.
 
 #### Bounded Contexts
 

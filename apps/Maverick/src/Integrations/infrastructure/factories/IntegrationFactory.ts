@@ -2,7 +2,7 @@ import { TEntityManager } from '@turnly/core'
 import { IntegrationsController } from 'integrations/api/controllers/IntegrationsController'
 import { IIntegrationQueryFactory } from 'integrations/domain/contracts/IIntegrationQueryFactory'
 
-import { IIntegrationMapper } from '../contracts/IIntegrationMapper'
+import { IIntegrationMapper } from '../../domain/contracts/IIntegrationMapper'
 import { IntegrationMapper } from '../persistence/repositories/entity-model-mappers/IntegrationMapper'
 import { IntegrationQueryFactory } from './IntegrationQueryFactory'
 

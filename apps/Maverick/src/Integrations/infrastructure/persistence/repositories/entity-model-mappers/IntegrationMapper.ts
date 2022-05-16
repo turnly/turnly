@@ -1,6 +1,6 @@
 import { Mapper, TEntityManager } from '@turnly/core'
 import { Integration } from 'integrations/domain/entities/Integration'
-import { IIntegrationMapper } from 'integrations/infrastructure/contracts/IIntegrationMapper'
+import { IIntegrationMapper } from 'Integrations/domain/contracts/IIntegrationMapper'
 import type { Repository } from 'typeorm'
 
 import { IntegrationModel } from '../../models/Integration'
