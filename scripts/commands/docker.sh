@@ -4,9 +4,26 @@ function docker_exec() {
   COMPOSE_COMMAND="docker compose --project-name turnly --env-file .env $COMPOSE_FILES"
 
   for flag in "$@"; do
-    [[ $flag == "--up" || $flag == "up" ]] && execute "${COMPOSE_COMMAND} up -d --build"
-    [[ $flag == "--down" || $flag == "down" ]] && execute "${COMPOSE_COMMAND} down"
-    [[ $flag == "--reload" || $flag == "reload" ]] && execute "${COMPOSE_COMMAND} restart"
+    if [[ $flag == "--up" || $flag == "up" ]]; then
+      info "Please wait, the next command will take a few minutes... 🕐 "
+
+      line
+      execute "${COMPOSE_COMMAND} up -d --build"
+    fi
+
+    if [[ $flag == "--down" || $flag == "down" ]]; then
+      info "Please wait, the next command will take a few minutes... 🕐 "
+
+      line
+      execute "${COMPOSE_COMMAND} down"
+    fi
+
+    if [[ $flag == "--reload" || $flag == "reload" ]]; then
+      info "Please wait, the next command will take a few minutes... 🕐 "
+
+      line
+      execute "${COMPOSE_COMMAND} restart"
+    fi
 
     [[ $flag == "--logs" || $flag == "logs" ]] && eval "${COMPOSE_COMMAND} logs -f --tail=all --since=1h"
     [[ $flag == "--logs-all" || $flag == "logs-all" ]] && eval "${COMPOSE_COMMAND} logs -f --tail=all"

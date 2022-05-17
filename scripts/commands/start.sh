@@ -1,6 +1,14 @@
 #!/bin/bash
 
 function start() {
+  local HOSTS=(
+    "rpc.turnly"
+    "iam.turnly"
+    "ws.turnly"
+    "api.turnly"
+    "$APP_PROXY_HOST"
+  )
+
   info "Starting Turnly Apps in development mode with docker... 🚀 "
 
   line
@@ -15,7 +23,7 @@ function start() {
   sleep 4
   info "Spinning up all the configured services... DONE ✅ "
 
-  set_hosts
+  set_hosts "${HOSTS[@]}"
 
   print_hosts
 

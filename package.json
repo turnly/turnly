@@ -18,7 +18,7 @@
   },
   "commitlint": {
     "extends": [
-      "@turnly/eslint-config/commits/commitlint.maverick.js"
+      "@turnly/eslint-config/commits/commitlint.athena.js"
     ]
   },
   "devDependencies": {

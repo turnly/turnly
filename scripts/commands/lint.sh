@@ -9,6 +9,8 @@ function lint() {
 
   [[ -z "$APPS_DIRS" ]] && error "Oops! No apps found in $APPS_DIRECTORY directory."
 
+  execute "bash ./scripts/run.sh git:branch-name"
+
   for APP_DIR in $APPS_DIRS; do
     if [[ -f "$APP_DIR/package.json" ]]; then
 

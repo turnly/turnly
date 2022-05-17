@@ -607,9 +607,9 @@
   integrity sha512-j8yRSSqswWi1QqUGKVEKOG03Q7qOoZP6/h2zN2YO+F5h2+DHU0bSrHCK9Y7lo2DI9fBd8qGAw795sf+3Jva4yA==
 
 "@google-cloud/storage@^5.18.3":
-  version "5.20.1"
-  resolved "https://registry.yarnpkg.com/@google-cloud/storage/-/storage-5.20.1.tgz#cb8d00bc70df0745ba2914cac41a6f5f74aa7db7"
-  integrity sha512-ft8emFNudZirOvHAlmbreC0tkAD4xhbN3KeEOGASc0JL6r22moD6NiUEDJaJiQIKfgz7vUN5R7K3TV0GAw27Lw==
+  version "5.20.2"
+  resolved "https://registry.yarnpkg.com/@google-cloud/storage/-/storage-5.20.2.tgz#1766f42e3ce2e971dd5ee5a3c8c41c55d2521bb9"
+  integrity sha512-DoCp2iE/fkbUFQiPhm5OtqnvK7NzsC0B4t3W0r+URLdGjRB4WEi/uxsmAIP80XxxI3ZxXSSotUVyioLMK7+o4A==
   dependencies:
     "@google-cloud/paginator" "^3.0.7"
     "@google-cloud/projectify" "^2.0.0"
@@ -1306,7 +1306,7 @@
 
 "@turnly/eslint-config@git+https://turnlyapps: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@github.com/turnly/configs.git":
   version "1.0.0"
-  resolved "git+https://turnlyapps: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@github.com/turnly/configs.git#a61aa6324301175d6135f3dfa1362ce7afb938e0"
+  resolved "git+https://turnlyapps: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@github.com/turnly/configs.git#148631072bbe5bdb2689fcbfb3ef0a51b1e0b8c2"
   dependencies:
     "@commitlint/cli" "^16.2.4"
     "@commitlint/config-conventional" "^16.2.4"
@@ -1324,7 +1324,7 @@
 
 "@turnly/rpc@git+https://turnlyapps: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@github.com/turnly/rpc.git#latest":
   version "1.0.0"
-  resolved "git+https://turnlyapps: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@github.com/turnly/rpc.git#0c5a1d9f487f2465e19c036fe9143f3015028b67"
+  resolved "git+https://turnlyapps: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@github.com/turnly/rpc.git#f0d05251f800a84e43bb88f807d49a263f5b70a5"
   dependencies:
     "@grpc/grpc-js" "^1.6.7"
     "@turnly/eslint-config" "git+https://turnlyapps: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@github.com/turnly/configs.git"
@@ -1333,7 +1333,7 @@
 
 "@turnly/shared@git+https://turnlyapps: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@github.com/turnly/shared.git#latest":
   version "1.0.0"
-  resolved "git+https://turnlyapps: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@github.com/turnly/shared.git#966dd27257de786cfac979dfb82351338156ba2e"
+  resolved "git+https://turnlyapps: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@github.com/turnly/shared.git#3c765c3f68fbd81aeb4ee3e08057baaafd4015dd"
   dependencies:
     "@opentelemetry/api" "^1.1.0"
     "@opentelemetry/instrumentation-grpc" "^0.28.0"
