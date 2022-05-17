@@ -16,7 +16,11 @@ function set_env() {
 
     if [[ -n "$key" && -n "$value" ]]; then
       if grep -q "$key" "$ENV_FILE"; then
-        sed -i '' -e "s#$key=.*#$key=$value#g" "$ENV_FILE"
+        if [[ "$OS" == "WINDOWS" ]]; then
+          sed -i -e "s#$key=.*#$key=$value#g" "$ENV_FILE"
+        else
+          sed -i '' -e "s#$key=.*#$key=$value#g" "$ENV_FILE"
+        fi
       else
         {
           echo ""
