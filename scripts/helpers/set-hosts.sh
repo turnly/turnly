@@ -3,12 +3,9 @@
 function set_hosts() {
   HOSTS=(
     "rpc.turnly"
-    "api.iam.turnly"
+    "iam.turnly"
     "ws.turnly"
     "api.turnly"
-    "iam.turnly"
-    "app.turnly"
-    "dashboard.turnly"
     "$APP_PROXY_HOST"
   )
 
