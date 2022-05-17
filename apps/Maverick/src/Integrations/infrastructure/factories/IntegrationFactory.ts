@@ -1,7 +1,6 @@
-import { IntegrationsController } from 'Integrations/api/controllers/IntegrationsController'
-import { IIntegrationQueryFactory } from 'Integrations/domain/contracts/IIntegrationQueryFactory'
-
 import { IIntegrationMapper } from '../../domain/contracts/IIntegrationMapper'
+import { IIntegrationQueryFactory } from '../../domain/contracts/IIntegrationQueryFactory'
+import { IntegrationsController } from '../api/controllers/IntegrationsController'
 import { IntegrationMapper } from '../persistence/mongo/entity-model-mappers/IntegrationMapper'
 import { IntegrationRepository } from '../persistence/mongo/repositories/IntegrationRepository'
 import { IntegrationQueryFactory } from './IntegrationQueryFactory'

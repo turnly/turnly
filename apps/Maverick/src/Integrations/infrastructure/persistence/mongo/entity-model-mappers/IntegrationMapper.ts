@@ -1,6 +1,9 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { IIntegrationMapper } from 'Integrations/domain/contracts/IIntegrationMapper'
-import { Integration } from 'Integrations/domain/entities/Integration'
+import {
+  Attributes,
+  Integration,
+} from 'Integrations/domain/entities/Integration'
 
 import {
   IntegrationDocument,
@@ -8,14 +11,16 @@ import {
 } from '../models/IntegrationModel'
 
 export class IntegrationMapper implements IIntegrationMapper {
-  public toEntity({ _id: id, ...document }: IntegrationDocument): Integration {
-    return Integration.create({ ...document, id })
+  public toEntity(document: IntegrationDocument): Integration {
+    const { _id, ...attrs } = document.toObject<Attributes>()
+
+    return Integration.create({ ...attrs, id: String(_id) })
   }
 
   public toModel(entity: Integration): IntegrationDocument {
-    const { id: _id, ...document } = entity.toObject()
+    const { id: _id, ...attrs } = entity.toObject()
 
-    return new IntegrationModel({ ...document, _id })
+    return new IntegrationModel({ ...attrs, _id })
   }
 
   public toEntityList(documents: IntegrationDocument[]): Integration[] {

@@ -1,8 +1,8 @@
 import { Producers } from '@turnly/rpc'
 import { Nullable } from '@turnly/shared'
-import { IntegrationDTO } from 'Integrations/api/dtos/IntegrationDTO'
 import { Integration } from 'Integrations/domain/entities/Integration'
 import { IntegrationStatus } from 'Integrations/domain/enums/IntegrationStatus'
+import { IntegrationDTO } from 'Integrations/infrastructure/api/dtos/IntegrationDTO'
 
 export class IntegrationMapper {
   public static toRPC(
