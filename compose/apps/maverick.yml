@@ -17,7 +17,7 @@ services:
       - ${COMPOSE_BASE_DIRECTORY}/Maverick:/app
     depends_on:
       - networking
-      - postgres
+      - mongo
     labels:
       - traefik.enable=true
 

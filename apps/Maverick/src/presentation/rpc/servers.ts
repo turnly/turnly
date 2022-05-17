@@ -1,5 +1,5 @@
-import { IntegrationsServer } from 'integrations/api/presentation/rpc/integrationsServer'
-import { IntegrationFactory } from 'integrations/infrastructure/factories/IntegrationFactory'
+import { IntegrationsServer } from 'Integrations/api/presentation/rpc/IntegrationsServer'
+import { IntegrationFactory } from 'Integrations/infrastructure/factories/IntegrationFactory'
 
 /**
  * Servers

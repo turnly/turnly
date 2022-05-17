@@ -1,7 +1,7 @@
 import { Controller, InputValidator, TimeoutHandler } from '@turnly/core'
 import { ResourceNotFoundException } from '@turnly/shared'
-import { IIntegrationQueryFactory } from 'integrations/domain/contracts/IIntegrationQueryFactory'
-import { GetIntegrationPayload } from 'integrations/domain/payloads/GetIntegrationPayload'
+import { IIntegrationQueryFactory } from 'Integrations/domain/contracts/IIntegrationQueryFactory'
+import { GetIntegrationPayload } from 'Integrations/domain/payloads/GetIntegrationPayload'
 
 import { IntegrationDTO } from '../dtos/IntegrationDTO'
 import { validator } from '../validators/IntegrationsValidator'

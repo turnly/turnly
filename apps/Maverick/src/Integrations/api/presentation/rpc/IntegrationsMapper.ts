@@ -1,14 +1,14 @@
 import { Producers } from '@turnly/rpc'
 import { Nullable } from '@turnly/shared'
-import { IntegrationDTO } from 'integrations/api/dtos/IntegrationDTO'
-import { Integration } from 'integrations/domain/entities/Integration'
-import { IntegrationStatus } from 'integrations/domain/enums/IntegrationStatus'
+import { IntegrationDTO } from 'Integrations/api/dtos/IntegrationDTO'
+import { Integration } from 'Integrations/domain/entities/Integration'
+import { IntegrationStatus } from 'Integrations/domain/enums/IntegrationStatus'
 
 export class IntegrationMapper {
   public static toRPC(
-    entity: Nullable<IntegrationDTO | Integration> | undefined
-  ): Producers.Integration {
-    const integration = new Producers.Integration()
+    entity: Nullable<IntegrationDTO> | undefined
+  ): Producers.Maverick.Integration {
+    const integration = new Producers.Maverick.Integration()
 
     if (entity) {
       integration.setId(entity.id)
@@ -20,7 +20,7 @@ export class IntegrationMapper {
     return integration
   }
 
-  public static toEntity(model: Producers.Integration): Integration {
+  public static toEntity(model: Producers.Maverick.Integration): Integration {
     return Integration.create({
       id: model.getId(),
       name: model.getName(),

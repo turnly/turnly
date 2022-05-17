@@ -4,7 +4,7 @@ import { integrationsServer } from './servers'
 
 const services = [
   {
-    definition: Producers.IntegrationsService,
+    definition: Producers.Maverick.IntegrationsService,
     implementation: integrationsServer.implementation,
   },
 ]

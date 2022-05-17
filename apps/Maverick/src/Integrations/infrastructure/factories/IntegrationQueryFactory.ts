@@ -1,16 +1,13 @@
-import { TEntityManager } from '@turnly/core'
-import { IntegrationByIdQuery } from 'integrations/application/queries/IntegrationByIdQuery'
-import { IIntegrationQueryFactory } from 'integrations/domain/contracts/IIntegrationQueryFactory'
-
-import { IIntegrationMapper } from '../../domain/contracts/IIntegrationMapper'
+import { IntegrationByIdQuery } from 'Integrations/application/cqrs/queries/IntegrationByIdQuery'
+import { IIntegrationQueryFactory } from 'Integrations/domain/contracts/IIntegrationQueryFactory'
+import { IIntegrationRepository } from 'Integrations/domain/contracts/IIntegrationRepository'
 
 export class IntegrationQueryFactory implements IIntegrationQueryFactory {
   public constructor(
-    private readonly mapper: IIntegrationMapper,
-    private readonly manager?: TEntityManager
+    private readonly integrationsRepository: IIntegrationRepository
   ) {}
 
   public getById() {
-    return new IntegrationByIdQuery(this.mapper, this.manager)
+    return new IntegrationByIdQuery(this.integrationsRepository)
   }
 }

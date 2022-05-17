@@ -9,23 +9,14 @@
     "email": "efra23peralta@gmail.com",
     "url": "https://github.com/efraa"
   },
-  "directories": {
-    "test": "tests",
-    "src": "src"
-  },
   "scripts": {
     "prebuild": "rimraf dist tsconfig.tsbuildinfo",
     "build": "tsc",
     "lint:check": "eslint . --ext .js,.ts",
     "lint:format": "prettier \"./**/*.{ts,js}\" --check",
     "lint:ts:check": "tsc --noEmit",
-    "migrate": "yarn typeorm migration:run",
-    "migrate:gen": "yarn typeorm migration:generate",
-    "migrate:revert": "yarn typeorm migration:revert",
-    "protos": "bash ./.scripts/protos.sh",
     "start": "ROOT_DIR=$(pwd) NODE_PATH=dist/ node -r dotenv/config dist/main.js",
     "test": "jest --forceExit --detectOpenHandles",
-    "typeorm": "ROOT_DIR=$(pwd) NODE_PATH=./src ts-node $(yarn bin typeorm)",
     "watch": "nodemon --config node_modules/@turnly/eslint-config/nodemon.json src/main.ts"
   },
   "prettier": "@turnly/eslint-config/.prettierrc.js",
@@ -36,8 +27,7 @@
       "**/*.md",
       "dist",
       "jest*",
-      "tests/**/*.ts",
-      "ormconfig.js"
+      "tests/**/*.ts"
     ]
   },
   "dependencies": {
@@ -47,9 +37,8 @@
     "@turnly/shared": "git+https://turnlyapps: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@github.com/turnly/shared.git#latest",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "pg": "^8.7.1",
-    "ts-simple-automapper": "^1.0.3",
-    "typeorm": "^0.2.37"
+    "moongose": "^1.0.0",
+    "ts-simple-automapper": "^1.0.3"
   },
   "devDependencies": {
     "@types/express": "^4.17.13",

@@ -1,6 +1,6 @@
 import { IEntityMapper } from '@turnly/core'
-import { Integration } from 'integrations/domain/entities/Integration'
+import { Integration } from 'Integrations/domain/entities/Integration'
 
-import { IntegrationModel } from '../../infrastructure/persistence/models/Integration'
+import { IntegrationDocument } from '../../infrastructure/persistence/mongo/models/IntegrationModel'
 
-export type IIntegrationMapper = IEntityMapper<Integration, IntegrationModel>
+export type IIntegrationMapper = IEntityMapper<Integration, IntegrationDocument>

@@ -8,12 +8,25 @@ services:
     image: mongo
     container_name: mongo
     environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: turnly
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
     ports:
       - ${MONGO_PORT}:27017
     volumes:
       - mongo_data:/data/db
+
+  mongo_ui:
+    extends:
+      file: common.yml
+      service: common
+    container_name: mongo_ui
+    image: mongo-express
+    ports:
+      - ${MONGO_UI_PORT}:8081
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: ${MONGO_USERNAME}
+      ME_CONFIG_MONGODB_ADMINPASSWORD: ${MONGO_PASSWORD}
+      ME_CONFIG_MONGODB_URL: mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@mongo:${MONGO_PORT}/
 
 volumes:
   mongo_data:

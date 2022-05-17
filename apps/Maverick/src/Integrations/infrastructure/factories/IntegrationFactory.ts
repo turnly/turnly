@@ -1,21 +1,25 @@
-import { TEntityManager } from '@turnly/core'
-import { IntegrationsController } from 'integrations/api/controllers/IntegrationsController'
-import { IIntegrationQueryFactory } from 'integrations/domain/contracts/IIntegrationQueryFactory'
+import { IntegrationsController } from 'Integrations/api/controllers/IntegrationsController'
+import { IIntegrationQueryFactory } from 'Integrations/domain/contracts/IIntegrationQueryFactory'
 
 import { IIntegrationMapper } from '../../domain/contracts/IIntegrationMapper'
-import { IntegrationMapper } from '../persistence/repositories/entity-model-mappers/IntegrationMapper'
+import { IntegrationMapper } from '../persistence/mongo/entity-model-mappers/IntegrationMapper'
+import { IntegrationRepository } from '../persistence/mongo/repositories/IntegrationRepository'
 import { IntegrationQueryFactory } from './IntegrationQueryFactory'
 
 export class IntegrationFactory {
-  public static getMapper(manager?: TEntityManager): IIntegrationMapper {
-    return new IntegrationMapper(manager)
+  public static getMapper(): IIntegrationMapper {
+    return new IntegrationMapper()
   }
 
-  public static getQuery(manager?: TEntityManager): IIntegrationQueryFactory {
-    return new IntegrationQueryFactory(this.getMapper(manager), manager)
+  public static getRepository() {
+    return new IntegrationRepository(this.getMapper())
   }
 
-  public static getController(manager?: TEntityManager) {
-    return new IntegrationsController(this.getQuery(manager))
+  public static getQuery(): IIntegrationQueryFactory {
+    return new IntegrationQueryFactory(this.getRepository())
+  }
+
+  public static getController() {
+    return new IntegrationsController(this.getQuery())
   }
 }

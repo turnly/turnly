@@ -3,19 +3,19 @@ import { Uuid } from '@turnly/shared'
 
 import { IntegrationStatus } from '../enums/IntegrationStatus'
 
-interface Attributes {
+export interface Attributes {
   id: Uuid
   name: string
   status: IntegrationStatus
   origins: string[]
 }
 
-export class Integration extends AggregateRoot implements Attributes {
+export class Integration extends AggregateRoot<Attributes> {
   protected constructor(
     id: Uuid,
-    public name: string,
-    public status: IntegrationStatus,
-    public origins: string[]
+    private name: string,
+    private status: IntegrationStatus,
+    private origins: string[]
   ) {
     super(id)
   }
@@ -30,5 +30,14 @@ export class Integration extends AggregateRoot implements Attributes {
       status,
       attributes.origins
     )
+  }
+
+  public toObject(): Attributes {
+    return {
+      id: this.id,
+      name: this.name,
+      status: this.status,
+      origins: this.origins,
+    }
   }
 }

@@ -18,16 +18,16 @@
   },
   "typescript.tsdk": "node_modules/typescript/lib",
   "eslint.workingDirectories": [
-    "apps/maverick",
-    "apps/heimdall",
-    "apps/wayne",
-    "apps/alfred",
-    "apps/shannon",
-    "apps/dorothee",
-    "apps/shelby",
-    "apps/curry",
-    "apps/chanel",
-    "apps/brennan",
-    "apps/polly"
+    "apps/Maverick",
+    "apps/Heimdall",
+    "apps/Wayne",
+    "apps/Alfred",
+    "apps/Shannon",
+    "apps/Dorothee",
+    "apps/Shelby",
+    "apps/Curry",
+    "apps/Chanel",
+    "apps/Brennan",
+    "apps/Polly"
   ]
 }
