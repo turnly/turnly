@@ -607,9 +607,9 @@
   integrity sha512-j8yRSSqswWi1QqUGKVEKOG03Q7qOoZP6/h2zN2YO+F5h2+DHU0bSrHCK9Y7lo2DI9fBd8qGAw795sf+3Jva4yA==
 
 "@google-cloud/storage@^5.18.3":
-  version "5.19.4"
-  resolved "https://registry.yarnpkg.com/@google-cloud/storage/-/storage-5.19.4.tgz#d3377f03b575c66f61e2782ffd0f65419a30ebe0"
-  integrity sha512-Jz7ugcPHhsEmMVvIxM9uoBsdEbKIYwDkh3u07tifsIymEWs47F4/D6+/Tv/W7kLhznqjyOjVJ/0frtBeIC0lJA==
+  version "5.20.3"
+  resolved "https://registry.yarnpkg.com/@google-cloud/storage/-/storage-5.20.3.tgz#10e3b75bdfba5dd9b77b26b6bb6d2e2bf545dc2a"
+  integrity sha512-nVrEB4nhJV8ZgTAaJ21pibcMa+kFS/s0JolVZnV/EDveZeGPv7SC09A8C232U1+bsuZI0v/wGwHY+E73vJa8BQ==
   dependencies:
     "@google-cloud/paginator" "^3.0.7"
     "@google-cloud/projectify" "^2.0.0"
@@ -619,12 +619,10 @@
     async-retry "^1.3.3"
     compressible "^2.0.12"
     configstore "^5.0.0"
-    date-and-time "^2.0.0"
     duplexify "^4.0.0"
     ent "^2.2.0"
     extend "^3.0.2"
     gaxios "^4.0.0"
-    get-stream "^6.0.0"
     google-auth-library "^7.14.1"
     hash-stream-validation "^0.2.2"
     mime "^3.0.0"
@@ -632,7 +630,6 @@
     p-limit "^3.0.1"
     pumpify "^2.0.0"
     retry-request "^4.2.2"
-    snakeize "^0.1.0"
     stream-events "^1.0.4"
     teeny-request "^7.1.3"
     xdg-basedir "^4.0.0"
@@ -1192,12 +1189,6 @@
   version "6.19.7"
   resolved "https://registry.yarnpkg.com/@sentry/tracing/-/tracing-6.19.7.tgz#54bb99ed5705931cd33caf71da347af769f02a4c"
   integrity sha512-ol4TupNnv9Zd+bZei7B6Ygnr9N3Gp1PUrNI761QSlHtPC25xXC5ssSD3GMhBgyQrcvpuRcCFHVNNM97tN5cZiA==
-  dependencies:
-    "@sentry/hub" "6.19.7"
-    "@sentry/minimal" "6.19.7"
-    "@sentry/types" "6.19.7"
-    "@sentry/utils" "6.19.7"
-    tslib "^1.9.3"
 
 "@sentry/types@6.19.7":
   version "6.19.7"
@@ -1292,7 +1283,7 @@
 
 "@turnly/core@git+https://turnlyapps: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@github.com/turnly/core.git#latest":
   version "1.0.0"
-  resolved "git+https://turnlyapps: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@github.com/turnly/core.git#3cb58f7d72441d5f1743aa65821a91ecf1b3097d"
+  resolved "git+https://turnlyapps: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@github.com/turnly/core.git#598a53fb42bbd0eb03cb43dc04e1b39d115e0428"
   dependencies:
     "@elastic/elasticsearch" "^8.2.0-patch.1"
     "@turnly/eslint-config" "git+https://turnlyapps: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@github.com/turnly/configs.git"
@@ -1844,9 +1835,9 @@ asynckit@^0.4.0:
   integrity sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==
 
 aws-sdk@^2.1029.0:
-  version "2.1136.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.1136.0.tgz#d103aed0313af2c254a2dbd54823af8057c7a0b9"
-  integrity sha512-cuXPB1lNoiK/oNTAN+Bud2Pp8/PvY7erL2DYPVN2zsk2nh9e8VG3yldf6KcEO6mm4q/FgZc4X6Zq+fOyuBY/wA==
+  version "2.1137.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.1137.0.tgz#505e51b3c9ed31d54bbd620cb70d005e6086f23b"
+  integrity sha512-iOm81glo7Y3bj6bO6pUEhFlclfANe0ExBJOZ8TxFx2mE8KsaPkofAy8dSzwbn357yOyVxur9tkZgXM2f05ynlA==
   dependencies:
     buffer "4.9.2"
     events "1.1.1"
@@ -2510,11 +2501,6 @@ data-urls@^2.0.0:
     abab "^2.0.3"
     whatwg-mimetype "^2.3.0"
     whatwg-url "^8.0.0"
-
-date-and-time@^2.0.0:
-  version "2.3.1"
-  resolved "https://registry.yarnpkg.com/date-and-time/-/date-and-time-2.3.1.tgz#006675ec4943a0a5f85810e3a3fd6aa96f6130c9"
-  integrity sha512-OaIRmSJXifwEN21rMVVDs0Kz8uhJ3wWPYd86atkRiqN54liaMQYEbbrgjZQea75YXOBWL4ZFb3rG/waenw1TEg==
 
 debug@2.6.9:
   version "2.6.9"
@@ -6027,11 +6013,6 @@ smart-buffer@^4.2.0:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/smart-buffer/-/smart-buffer-4.2.0.tgz#6e1d71fa4f18c05f7d0ff216dd16a481d0e8d9ae"
   integrity sha512-94hK0Hh8rPqQl2xXc3HsaBoOXKV20MToPkcXvwbISWLEs+64sBq5kFgn2kJDHb1Pry9yrP0dxrCI9RRci7RXKg==
-
-snakeize@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/snakeize/-/snakeize-0.1.0.tgz#10c088d8b58eb076b3229bb5a04e232ce126422d"
-  integrity sha1-EMCI2LWOsHazIpu1oE4jLOEmQi0=
 
 socks@^2.6.2:
   version "2.6.2"

@@ -6,9 +6,9 @@ services:
       file: common.yml
       service: common
     container_name: fluentd
-    build: ./fluentd
+    build: ./infrastructure/observability/fluentd
     volumes:
-      - ./fluentd/conf:/fluentd/etc
+      - ./infrastructure/observability/fluentd/conf:/fluentd/etc
     depends_on:
       - elasticsearch
     expose:

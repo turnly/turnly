@@ -1,4 +1,4 @@
-import { MongoClientFactory, Startup } from '@turnly/core'
+import { MongoClientFactory, mongoConfig, Startup } from '@turnly/core'
 
 class Application extends Startup {
   /**
@@ -7,8 +7,8 @@ class Application extends Startup {
    * @memberof Startup
    */
   public async setup(): Promise<void> {
-    await MongoClientFactory.createClient(process.env.APP_NAME as string, {
-      url: process.env.MONGO_URL as string,
+    await MongoClientFactory.createClient(mongoConfig.namespace, {
+      url: mongoConfig.uri,
     })
 
     const { rest } = await import('presentation/rest')
