@@ -8,13 +8,19 @@ function docker_exec() {
       info "Please wait, the next command will take a few minutes... 🕐 "
 
       line
-      execute "${COMPOSE_COMMAND} up -d --build"
+      if [[ $* == *"--build"* ]]; then
+        execute "${COMPOSE_COMMAND} up -d --build"
+      else
+        execute "${COMPOSE_COMMAND} up -d"
+      fi
     fi
 
     if [[ $flag == "--down" || $flag == "down" ]]; then
       info "Please wait, the next command will take a few minutes... 🕐 "
 
       line
+
+      get_yarn_lock_file --down
       execute "${COMPOSE_COMMAND} down"
     fi
 

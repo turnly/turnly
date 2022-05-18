@@ -15,7 +15,13 @@ function start() {
 
   check_ports "$HTTP_PORT" "$RPC_PORT" "$APP_PROXY_DASHBOARD_PORT"
 
-  docker_exec --up
+  get_yarn_lock_file
+
+  if [[ $* == *"--build"* ]]; then
+    docker_exec --up --build
+  else
+    docker_exec --up
+  fi
 
   line
 

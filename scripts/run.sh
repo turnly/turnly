@@ -29,6 +29,7 @@ source "$HELPERS/get-compose-files.sh"
 source "$HELPERS/print-hosts.sh"
 source "$HELPERS/set-env.sh"
 source "$HELPERS/get-config.sh"
+source "$HELPERS/get-yarn-lock-file.sh"
 
 # Commands sources
 source "$COMMANDS/docker.sh"

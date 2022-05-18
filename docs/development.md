@@ -59,8 +59,14 @@ cd turnly
 # Go to athena directory (inside of turnly) ✅ 
 cd athena
 
-# Run
+# RUN:
 yarn start
+
+# OR (VERBOSE=true    Show all outputs of containers.)
+VERBOSE=true yarn start
+
+# OR (--build         Build images before starting containers.)
+yarn start --build
 ```
 
 #### Stop applications

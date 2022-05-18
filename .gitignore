@@ -30,6 +30,7 @@ tmp/
 !.yarn/sdks
 !.yarn/versions
 .pnp.*
+apps/**/yarn.lock
 
 # Environments
 .env*
