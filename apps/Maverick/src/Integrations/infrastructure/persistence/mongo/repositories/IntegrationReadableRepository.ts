@@ -8,7 +8,7 @@ import {
   IntegrationModel,
 } from '../models/IntegrationModel'
 
-export class IntegrationRepository extends MongoRepository<
+export class IntegrationReadableRepository extends MongoRepository<
   Integration,
   IntegrationDocument
 > {

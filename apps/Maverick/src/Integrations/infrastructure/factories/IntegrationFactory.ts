@@ -1,8 +1,10 @@
+import { IIntegrationReadableRepository } from 'Integrations/domain/contracts/IIntegrationRepository'
+
 import { IIntegrationMapper } from '../../domain/contracts/IIntegrationMapper'
 import { IIntegrationQueryFactory } from '../../domain/contracts/IIntegrationQueryFactory'
 import { IntegrationsController } from '../api/controllers/IntegrationsController'
 import { IntegrationMapper } from '../persistence/mongo/entity-model-mappers/IntegrationMapper'
-import { IntegrationRepository } from '../persistence/mongo/repositories/IntegrationRepository'
+import { IntegrationReadableRepository } from '../persistence/mongo/repositories/IntegrationReadableRepository'
 import { IntegrationQueryFactory } from './IntegrationQueryFactory'
 
 export class IntegrationFactory {
@@ -10,12 +12,12 @@ export class IntegrationFactory {
     return new IntegrationMapper()
   }
 
-  public static getRepository() {
-    return new IntegrationRepository(this.getMapper())
+  public static getReadableRepository(): IIntegrationReadableRepository {
+    return new IntegrationReadableRepository(this.getMapper())
   }
 
   public static getQuery(): IIntegrationQueryFactory {
-    return new IntegrationQueryFactory(this.getRepository())
+    return new IntegrationQueryFactory(this.getReadableRepository())
   }
 
   public static getController() {
