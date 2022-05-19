@@ -1,9 +1,11 @@
-import { DomainEvent } from '@turnly/core'
+import { DomainEvent, EntityAttributes } from '@turnly/core'
 
 import { Integration } from '../entities/Integration'
 
-export class IntegrationCreatedEvent extends DomainEvent<Integration> {
-  public constructor(payload: Integration) {
-    super(undefined, payload)
+type Payload = EntityAttributes<Integration>
+
+export class IntegrationCreatedEvent extends DomainEvent<Payload> {
+  public constructor(payload: Payload) {
+    super(payload)
   }
 }

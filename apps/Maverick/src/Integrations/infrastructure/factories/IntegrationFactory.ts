@@ -17,7 +17,7 @@ export class IntegrationFactory {
   }
 
   public static getQueryBus(): IQueryBus {
-    return new InMemoryQueryBus().registerHandler([
+    return new InMemoryQueryBus().register([
       new IntegrationByIdQueryHandler(this.getReadableRepository()),
     ])
   }

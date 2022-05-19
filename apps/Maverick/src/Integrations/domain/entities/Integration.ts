@@ -29,7 +29,7 @@ export class Integration extends AggregateRoot<Attributes> {
       attributes.origins
     )
 
-    integration.register(new IntegrationCreatedEvent(integration))
+    integration.register(new IntegrationCreatedEvent(integration.toObject()))
 
     return integration
   }
