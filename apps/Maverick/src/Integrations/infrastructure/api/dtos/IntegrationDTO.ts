@@ -1,11 +1,11 @@
-import { Uuid } from '@turnly/shared'
+import { Guid } from '@turnly/shared'
 import { Integration } from 'Integrations/domain/entities/Integration'
 import { IntegrationStatus } from 'Integrations/domain/enums/IntegrationStatus'
 import { Mapper, MapProp } from 'ts-simple-automapper'
 
 export class IntegrationDTO {
   @MapProp()
-  id: Uuid
+  id: Guid
 
   @MapProp()
   name: string

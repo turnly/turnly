@@ -1,0 +1,22 @@
+version: '3.9'
+
+services:
+  rabbitmq:
+    extends:
+      file: common.yml
+      service: common
+    image: rabbitmq:3.10.1-management-alpine
+    container_name: rabbitmq
+    restart: always
+    tty: true
+    stdin_open: true
+    ports:
+      # HTTP DASHBOARD FOR MANAGEMENT
+      - ${RABBITMQ_UI_PORT}:15672
+      # AMQP PROTOCOL
+      - 5672:5672
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq/mnesia/
+
+volumes:
+  rabbitmq_data:

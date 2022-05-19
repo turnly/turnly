@@ -1,19 +1,21 @@
-import { IQuery } from '@turnly/core'
+import { IQueryHandler, QueryHandler } from '@turnly/core'
 import { Nullable } from '@turnly/shared'
 import { IIntegrationReadableRepository } from 'Integrations/domain/contracts/IIntegrationRepository'
 import { Integration } from 'Integrations/domain/entities/Integration'
-import { GetIntegrationPayload } from 'Integrations/domain/payloads/GetIntegrationPayload'
 
-export class IntegrationByIdQuery
-  implements IQuery<GetIntegrationPayload, Nullable<Integration>>
+import { IntegrationByIdQuery } from './IntegrationByIdQuery'
+
+@QueryHandler(IntegrationByIdQuery)
+export class IntegrationByIdQueryHandler
+  implements IQueryHandler<IntegrationByIdQuery, Nullable<Integration>>
 {
   public constructor(
     private readonly integrationsRepository: IIntegrationReadableRepository
   ) {}
 
-  public async ask({
-    id,
-  }: GetIntegrationPayload): Promise<Nullable<Integration>> {
+  public async execute({ params }: IntegrationByIdQuery) {
+    const { id } = params
+
     return await this.integrationsRepository.getById(id)
   }
 }

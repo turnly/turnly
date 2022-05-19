@@ -1,5 +1,5 @@
-import { Uuid } from '@turnly/shared'
+import { Guid } from '@turnly/shared'
 
 export type GetIntegrationPayload = {
-  id: Uuid
+  id: Guid
 }
