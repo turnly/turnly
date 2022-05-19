@@ -29,6 +29,6 @@ export class IntegrationsController extends Controller {
 
     if (!integration) throw new ResourceNotFoundException()
 
-    return this.respond.ok(IntegrationDTO.create(integration))
+    return this.respond.ok(IntegrationDTO.create(integration.toObject()))
   }
 }
