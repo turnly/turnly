@@ -21,7 +21,7 @@ export class IntegrationMapper {
   }
 
   public static toEntity(model: Producers.Maverick.Integration): Integration {
-    return Integration.create({
+    return Integration.build({
       id: model.getId(),
       name: model.getName(),
       origins: model.getOriginsList(),

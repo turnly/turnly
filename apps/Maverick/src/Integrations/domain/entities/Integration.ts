@@ -1,7 +1,8 @@
 import { AggregateRoot } from '@turnly/core'
-import { Guid } from '@turnly/shared'
+import { Guid, Identifier } from '@turnly/shared'
 
 import { IntegrationStatus } from '../enums/IntegrationStatus'
+import { IntegrationCreatedEvent } from '../events/IntegrationCreatedEvent'
 
 export interface Attributes {
   id: Guid
@@ -20,14 +21,24 @@ export class Integration extends AggregateRoot<Attributes> {
     super(id)
   }
 
-  public static create({
-    status = IntegrationStatus.ACTIVE,
-    ...attributes
-  }: Attributes): Integration {
+  public static create(attributes: Omit<Attributes, 'id'>): Integration {
+    const integration = new Integration(
+      Identifier.forIntegration(),
+      attributes.name,
+      IntegrationStatus.ACTIVE,
+      attributes.origins
+    )
+
+    integration.register(new IntegrationCreatedEvent(integration))
+
+    return integration
+  }
+
+  public static build(attributes: Attributes): Integration {
     return new Integration(
       attributes.id,
       attributes.name,
-      status,
+      attributes.status,
       attributes.origins
     )
   }

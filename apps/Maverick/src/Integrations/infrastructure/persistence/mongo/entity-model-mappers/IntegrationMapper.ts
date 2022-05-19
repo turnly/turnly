@@ -14,7 +14,7 @@ export class IntegrationMapper implements IIntegrationMapper {
   public toEntity(document: IntegrationDocument): Integration {
     const { _id, ...attrs } = document.toObject<Attributes>()
 
-    return Integration.create({ ...attrs, id: String(_id) })
+    return Integration.build({ ...attrs, id: String(_id) })
   }
 
   public toModel(entity: Integration): IntegrationDocument {
