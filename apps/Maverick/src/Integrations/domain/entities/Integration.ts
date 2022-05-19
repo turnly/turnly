@@ -25,7 +25,7 @@ export class Integration extends AggregateRoot<Attributes> {
     const integration = new Integration(
       Identifier.forIntegration(),
       attributes.name,
-      IntegrationStatus.ACTIVE,
+      attributes.status,
       attributes.origins
     )
 
