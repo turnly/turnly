@@ -1,5 +1,5 @@
 import { InMemoryQueryBus, IQueryBus } from '@turnly/core'
-import { IntegrationByIdQueryHandler } from 'Integrations/application/cqrs/queries/IntegrationByIdQuery'
+import { IntegrationByIdQueryHandler } from 'Integrations/application/queries/IntegrationByIdQuery'
 import { IIntegrationReadableRepository } from 'Integrations/domain/contracts/IIntegrationRepository'
 
 import { IIntegrationMapper } from '../../domain/contracts/IIntegrationMapper'

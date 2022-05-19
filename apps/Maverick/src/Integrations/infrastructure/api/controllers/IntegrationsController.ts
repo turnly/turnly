@@ -5,7 +5,7 @@ import {
   TimeoutHandler,
 } from '@turnly/core'
 import { Nullable, ResourceNotFoundException } from '@turnly/shared'
-import { IntegrationByIdQuery } from 'Integrations/application/cqrs/queries/IntegrationByIdQuery'
+import { IntegrationByIdQuery } from 'Integrations/application/queries/IntegrationByIdQuery'
 import { Integration } from 'Integrations/domain/entities/Integration'
 import { GetIntegrationPayload } from 'Integrations/domain/payloads/GetIntegrationPayload'
 
