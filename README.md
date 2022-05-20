@@ -1,6 +1,6 @@
 # Turnly Athena — Microservices
 
-Microservices that make up much of Turnly's APIs.
+Monorepo of microservices that make up a large part of Turnly's APIs.
 
 ### 🦦 Quick Start — Microservices purpose
 
@@ -20,7 +20,6 @@ Microservices that make up much of Turnly's APIs.
 
 - [Configs - Shared TypeScript configs](https://github.com/turnly/configs)
 - [RPC - Inter-services communication](https://github.com/turnly/rpc)
-- [Realtime - WebSocket servers, easy and friendly.](https://github.com/turnly/realtime)
 - [Shared - Common parts between all apps](https://github.com/turnly/shared)
 - [Core - Implements Turnly's core functionality, low-level services, and utilities.](https://github.com/turnly/core)
 
