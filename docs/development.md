@@ -1,6 +1,6 @@
-# Athena — Development (Docker-backed)
+# Athena — Development with DevO Tool
 
-Docker-backed infrastructure Provisioning for development environment.
+> Docker-backed infrastructure provisioning and systems management for development environment.
 
 ### Getting Started
 
@@ -13,14 +13,10 @@ To properly set up the Docker environment, ensure you meet the following require
 - ⚠️ If you are a **Windows** user, make sure to use a Unix/Linux
 based terminal like **Git bash**.
 
-#### Getting the development sources
-
-Clone this repository:
+#### Install application
 
 ```sh
-# For convenience, clone this repository to a previously created directory
-# called turnly or turnly-apps so it doesn't interfere with
-# other possible development directories.
+# For convenience, clone this repository to a previously created directory called turnly or turnly-apps.
 
 # Create turnly directory (optional)
 mkdir turnly
@@ -32,78 +28,69 @@ cd turnly
 git clone git@github.com:turnly/athena.git
 ```
 
-#### Install application dependencies
+#### Setup application
 
 ```sh
-# Go to turnly directory ✅ 
-cd turnly
-
-# Go to athena directory (inside of turnly) ✅ 
-cd athena
-
-# You just need to run this in root and it will install all the dependencies for each app.
-yarn install
+# This command will do:
+#
+# 1. Install local dependencies.
+# 2. Copy environment files on each app.
+# 3. And other common tasks.
+yarn devo setup
 ```
 
-#### Start applications
-
-Assuming your application(s) were previously configured.
-(environment variables or particular specifications).
-
-Run:
+#### Start command
 
 ```sh
-# Go to turnly directory ✅ 
-cd turnly
+# Start all available services:
+yarn devo start
 
-# Go to athena directory (inside of turnly) ✅ 
-cd athena
+# Start specific services:
+yarn devo start -s maverick -s bifrost
 
-# RUN:
-yarn start
+# OR
 
-# OR (VERBOSE=true    Show all outputs of containers.)
-VERBOSE=true yarn start
+# Use verbose to show all the output of the containers and commands.
+VERBOSE=true yarn devo start
 
-# OR (--build         Build images before starting containers.)
-yarn start --build
+# Build images before starting containers and re-run setup.
+yarn devo start --build
 ```
 
-#### Stop applications
+#### Stop command
 
 ```sh
-# Go to turnly directory ✅ 
-cd turnly
-
-# Go to athena directory (inside of turnly) ✅ 
-cd athena
-
-# Run
-yarn docker down
+yarn devo stop
 ```
 
-#### Reload applications
+#### Reload command
 
 ```sh
-# Go to turnly directory ✅ 
-cd turnly
+# Stop all available services:
+yarn devo reload
 
-# Go to athena directory (inside of turnly) ✅ 
-cd athena
-
-# Run
-yarn docker reload
+# Stop specific services:
+yarn devo reload -s bifrost
 ```
 
-#### Applications logs
+#### Developer tools
 
 ```sh
-# Go to turnly directory ✅ 
-cd turnly
+# Run linters on each services:
+yarn devo lint
 
-# Go to athena directory (inside of turnly) ✅ 
-cd athena
+# Run linters on specific services:
+yarn devo lint -s bifrost
+```
 
-# Run
-yarn docker logs
+#### Workspace commands
+
+You can take advantage of yarn workspaces to interact with apps, for example,
+you can run the commands for one of your services from DevO using:
+
+```sh
+yarn devo bifrost test
+
+# Same as:
+cd apps/Bifrost && yarn run test
 ```

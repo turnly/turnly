@@ -12,9 +12,8 @@
     ]
   },
   "scripts": {
-    "docker": "bash ./scripts/run.sh docker",
     "prepare": "husky install",
-    "start": "bash ./scripts/run.sh develop"
+    "devo": "bash ./.devo/devo.sh"
   },
   "commitlint": {
     "extends": [

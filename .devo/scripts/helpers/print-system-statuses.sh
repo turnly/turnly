@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function print_hosts() {
+function print_system_statuses() {
   line
 
   info "You can access the apps at the following URLs: 👀 "

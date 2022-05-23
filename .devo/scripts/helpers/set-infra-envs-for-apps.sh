@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function set_env() {
+function set_infra_envs_for_apps() {
   local ENV_FILE="$1"
   local LOCAL_ENV=".env"
 
@@ -24,7 +24,7 @@ function set_env() {
       else
         {
           echo ""
-          echo "# ci(athena): auto-generated configuration, do not edit here."
+          echo "# ci(devO): auto-generated configuration, do not edit here."
           echo "$key=$value"
         } >>"$ENV_FILE"
       fi

@@ -1,13 +1,14 @@
 #!/bin/bash
 
-function get_compose_files() {
-  COMPOSE_FILES="-f ./compose/networking.yml"
+function get_composes() {
+  PROVISIONING_DIR="./.devo/provisioning"
+  COMPOSE_FILES="-f $PROVISIONING_DIR/networking.yml"
 
   IGNORE_DIRS=(
     ".gitkeep"
   )
 
-  INFRA_COMPOSE_FILES=$(find ./compose/infrastructure -name "*.yml" -type f)
+  INFRA_COMPOSE_FILES=$(find $PROVISIONING_DIR/infrastructure -name "*.yml" -type f)
 
   for file in $INFRA_COMPOSE_FILES; do
     COMPOSE_FILES="$COMPOSE_FILES -f $file"
@@ -21,12 +22,12 @@ function get_compose_files() {
 
   for APP_DIR in $APPS_DIRS; do
     APP_NAME="$(basename "$APP_DIR")"
-    COMPOSE_FILE="./compose/apps/$APP_NAME.yml"
+    COMPOSE_FILE=$(echo "$PROVISIONING_DIR/apps/$APP_NAME.yml" | awk '{print tolower($0)}')
 
     if [[ -f "$COMPOSE_FILE" ]]; then
       COMPOSE_FILES="$COMPOSE_FILES -f $COMPOSE_FILE"
 
-      [[ -f "$APP_DIR/.env" ]] && set_env "$APP_DIR/.env"
+      [[ -f "$APP_DIR/.env" ]] && set_infra_envs_for_apps "$APP_DIR/.env"
     else
       if [[ "${IGNORE_DIRS[*]}" == *"$APP_NAME"* ]] &>/dev/null; then
         continue

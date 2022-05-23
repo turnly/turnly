@@ -1,0 +1,25 @@
+version: '3.9'
+
+services:
+  bifrost:
+    extends:
+      file: common.yml
+      service: common
+    container_name: bifrost
+    image: bifrost:latest
+    build:
+      context: ${COMPOSE_BASE_DIRECTORY}/Bifrost
+      dockerfile: ./docker/Dockerfile.dev
+      args:
+        HTTP_PORT: ${HTTP_PORT}
+    volumes:
+      - ${COMPOSE_BASE_DIRECTORY}/Bifrost:/app
+    depends_on:
+      - networking
+    labels:
+      - traefik.enable=true
+
+      - traefik.http.routers.bifrost_http.entrypoints=http
+      - traefik.http.routers.bifrost_http.rule=Host(`ws.turnly`) || Host(`host.docker.internal`) && Path(`/`)
+      - traefik.http.routers.bifrost_http.service=bifrost_http
+      - traefik.http.services.bifrost_http.loadbalancer.server.port=${HTTP_PORT}

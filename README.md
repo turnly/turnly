@@ -1,27 +1,36 @@
-# Turnly Athena — Microservices
+# Athena — Back-end applications
 
-Monorepo of microservices that make up a large part of Turnly's APIs.
+Monorepo of back-end applications that make up much of Turnly's APIs.
 
-### 🦦 Quick Start — Microservices purpose
+### Applications Overview
 
-- [Heimdall IAM - Identity & Access Management](/apps/heimdall)
-- [Alfred - Assistance Centers (Locations)](/apps/alfred)
-- [Shelby - Queuing System](/apps/shelby)
-- [Dorothee - Business Data Fields](/apps/dorothee)
-- [Curry - Tasks Scheduling](/apps/curry)
-- [Chanel - Notifications](/apps/chanel)
-- [Brennan - Business Owners](/apps/brennan)
-- [Shannon - Team Management](/apps/shannon)
-- [Polly - Activities History](/apps/polly)
-- [Wayne - Billing service](/apps/wayne)
-- [Maverick - Integrations, Workspaces & Webhooks](/apps/maverick)
+| Name                                       | Description                                  |
+| ------------------------------------------ | -------------------------------------------- |
+| [Heimdall IAM](/apps/Heimdall)             | Identity & Access Management                 |
+| [Alfred](/apps/Alfred)                     | Assistance Centers (Locations)               |
+| [Sherley](/apps/Sherley)                   | Queuing System                               |
+| [Dorothee](/apps/Dorothee)                 | Business Data Fields                         |
+| [Curry](/apps/Curry)                       | Tasks Scheduling                             |
+| [Chanel](/apps/Chanel)                     | Notifications Service                        |
+| [Brennan](/apps/Brennan)                   | Business Owners                              |
+| [Shannon](/apps/Shannon)                   | Team Management                              |
+| [Polly](/apps/Polly)                       | Activities History                           |
+| [Wayne](/apps/Wayne)                       | Billing Service                              |
+| [Maverick](/apps/Maverick)                 | Integrations, Workspaces & Webhooks          |
+| [Bifrost](/apps/Bifrost)                   | Realtime Bridge (WebSocket)                  |
 
-##### Shared Modules
+#### Getting Started as a Developer
 
-- [Configs - Shared TypeScript configs](https://github.com/turnly/configs)
-- [RPC - Inter-services communication](https://github.com/turnly/rpc)
-- [Shared - Common parts between all apps](https://github.com/turnly/shared)
-- [Core - Implements Turnly's core functionality, low-level services, and utilities.](https://github.com/turnly/core)
+1. We highly recommend you review the [troubleshooting docs.](/docs/troubleshooting.md)
+2. Please install the [VScode recommendations](/.vscode/extensions.json) to improve your code style.
+3. We highly recommend you learn about DevO directory in [devo docs.](/docs/devo.md)
+4. If you've understood the purpose of DevO, you're ready to learn [how to set up your development environment.](/docs/development.md)
+
+_Others resources:_
+
+- [Postman Collections](/docs/postman/)
+- [Conventions](/docs/conventions.md)
+- [Disaster Recovery](/docs/disaster-recovery.md)
 
 #### Software Architecture
 
@@ -31,14 +40,6 @@ Microservices are built using multiple architectural concepts, [learn about.](/d
 
 Learn about production deployments in [deployments documentation.](/docs/deployment.md)
 
-#### Getting started (Development)
+#### Authors
 
-Learn how to setup your environment in our [development documentation.](/docs/development.md)
-
-#### Developer Resources
-
-- [Postman Collections](/docs/postman/)
-- [Conventions](/docs/conventions.md)
-- [Disaster Recovery](/docs/disaster-recovery.md)
-- [Troubleshooting](/docs/troubleshooting.md)
-- Please install the [VScode recommendations](/.vscode/extensions.json) to improve your code style.
+- [Efra](https://github.com/efraa)

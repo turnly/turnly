@@ -9,31 +9,27 @@ function lint() {
 
   [[ -z "$APPS_DIRS" ]] && error "Oops! No apps found in $APPS_DIRECTORY directory."
 
-  execute "bash ./scripts/run.sh git:branch-name"
+  check_git_branch_name
 
   for APP_DIR in $APPS_DIRS; do
     if [[ -f "$APP_DIR/package.json" ]]; then
+      APP_NAME=$(echo "@turnly/$(basename "$APP_DIR")" | awk '{print tolower($0)}')
 
-      APP_NAME="$(basename "$APP_DIR")"
       if [[ "${IGNORE_DIRS[*]}" =~ $APP_NAME ]]; then
-        echo "Skipping $APP_NAME ..."
+        info "Skipping $APP_NAME ..."
         continue
       fi
 
-      cd "$APP_DIR" || error "Oops! Could not change directory to $APP_DIR."
-
       line
-      info "Linting $APP_DIR ..."
+      info "Linting $APP_NAME ..."
       line
 
-      yarn lint:format
-      yarn lint:check
-      yarn lint:ts:check
-
-      cd ../../
+      yarn workspace "$APP_NAME" lint:format
+      yarn workspace "$APP_NAME" lint:check
+      yarn workspace "$APP_NAME" lint:ts:check
 
       line
-      info "Linting $APP_DIR ... DONE ✅ "
+      info "Linting $APP_NAME ... DONE ✅ "
       line
     fi
   done

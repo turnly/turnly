@@ -1,18 +1,11 @@
 #!/bin/bash
 
-function get_config() {
+function get_configs() {
   info "Getting the environment variables... 🔧"
   get_env
 
   line
 
   info "Getting the docker compose files... 🔧"
-
-  line
-
-  get_compose_files
-
-  info "Getting the docker compose files... DONE ✅ "
-
-  line
+  get_composes
 }

@@ -1,4 +1,4 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-bash ./scripts/run.sh lint
+yarn devo lint
