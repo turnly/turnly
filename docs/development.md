@@ -78,9 +78,6 @@ yarn devo reload -s bifrost
 ```sh
 # Run linters on each services:
 yarn devo lint
-
-# Run linters on specific services:
-yarn devo lint -s bifrost
 ```
 
 #### Workspace commands
@@ -92,5 +89,12 @@ you can run the commands for one of your services from DevO using:
 yarn devo bifrost test
 
 # Same as:
-cd apps/Bifrost && yarn run test
+cd ./apps/Bifrost && yarn run test
+
+# -------------------------------------
+
+yarn devo maverick build
+
+# Same as:
+cd ./apps/Maverick && yarn run build
 ```
