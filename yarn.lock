@@ -1467,12 +1467,13 @@
 
 "@turnly/core@git+https://turnlyapps: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@github.com/turnly/core.git#latest":
   version "1.0.0"
-  resolved "git+https://turnlyapps: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@github.com/turnly/core.git#e6352c59d9db826bc55bc48db3671aa6d2b9114e"
+  resolved "git+https://turnlyapps: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@github.com/turnly/core.git#3ea5c48f759cdfc782cfe18e7035c31e19a1bd5c"
   dependencies:
     "@elastic/elasticsearch" "^8.2.0-patch.1"
     "@turnly/eslint-config" "git+https://turnlyapps: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@github.com/turnly/configs.git"
     "@turnly/shared" "git+https://turnlyapps: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@github.com/turnly/shared.git#latest"
     amqp-ts "^1.8.0"
+    awilix "^7.0.3"
     bodybuilder "^2.4.0"
     compression "^1.7.4"
     cookie-parser "^1.4.5"
@@ -5842,9 +5843,9 @@ node-int64@^0.4.0:
   integrity sha1-h6kGXNs1XTGC2PlM4RGIuCXGijs=
 
 node-releases@^2.0.3:
-  version "2.0.4"
-  resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-2.0.4.tgz#f38252370c43854dc48aa431c766c6c398f40476"
-  integrity sha512-gbMzqQtTtDz/00jQzZ21PQzdI9PyLYqUSvD0p3naOhX4odFji0ZxYdnVwPTxmSwkmxhcFImpozceidSG+AgoPQ==
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-2.0.5.tgz#280ed5bc3eba0d96ce44897d8aee478bfb3d9666"
+  integrity sha512-U9h1NLROZTq9uE1SNffn6WuPDg8icmi3ns4rEl/oTfIle4iLjTliCzgTsbaIFMq/Xn078/lfY/BL0GWZ+psK4Q==
 
 nodemon@^2.0.14, nodemon@^2.0.15:
   version "2.0.16"
@@ -7237,14 +7238,14 @@ ts-jest@^27.0.4:
     yargs-parser "20.x"
 
 ts-jest@^28.0.2:
-  version "28.0.2"
-  resolved "https://registry.yarnpkg.com/ts-jest/-/ts-jest-28.0.2.tgz#e4026357006731f96a033b94db89d01e0d3c0591"
-  integrity sha512-IOZMb3D0gx6IHO9ywPgiQxJ3Zl4ECylEFwoVpENB55aTn5sdO0Ptyx/7noNBxAaUff708RqQL4XBNxxOVjY0vQ==
+  version "28.0.3"
+  resolved "https://registry.yarnpkg.com/ts-jest/-/ts-jest-28.0.3.tgz#d1c47f167e56eef3989bb51afaf7fc1c87a04c52"
+  integrity sha512-HzgbEDQ2KgVtDmpXToqAcKTyGHdHsG23i/iUjfxji92G5eT09S1m9UHZd7csF0Bfgh9txM4JzwHnv7r1waFPlw==
   dependencies:
     bs-logger "0.x"
     fast-json-stable-stringify "2.x"
     jest-util "^28.0.0"
-    json5 "2.x"
+    json5 "^2.2.1"
     lodash.memoize "4.x"
     make-error "1.x"
     semver "7.x"

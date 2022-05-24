@@ -1,7 +1,7 @@
 import { ICommandHandler, IEventSubscriber, IQueryHandler } from '@turnly/core'
+import { Box } from '@turnly/core'
 import { IntegrationByIdQueryHandler } from 'Integrations/application/queries/IntegrationByIdQuery'
 import { IIntegrationReadableRepository } from 'Integrations/domain/contracts/IIntegrationRepository'
-import { Box } from 'Shared/infrastructure/dependencies'
 
 import { IntegrationsController } from '../api/controllers/IntegrationsController'
 

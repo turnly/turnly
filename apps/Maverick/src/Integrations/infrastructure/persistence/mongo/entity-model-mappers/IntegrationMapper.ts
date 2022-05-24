@@ -10,7 +10,9 @@ import {
   IntegrationModel,
 } from '../models/IntegrationModel'
 
-export class IntegrationMapper implements IIntegrationMapper {
+export class IntegrationMapper
+  implements IIntegrationMapper<IntegrationDocument>
+{
   public toEntity(document: IntegrationDocument): Integration {
     const { _id, ...attrs } = document.toObject<Attributes>()
 

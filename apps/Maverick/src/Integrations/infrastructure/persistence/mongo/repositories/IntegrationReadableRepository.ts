@@ -13,7 +13,9 @@ export class IntegrationReadableRepository
   extends MongoRepository<Integration, IntegrationDocument>
   implements IIntegrationReadableRepository
 {
-  public constructor(private readonly integrationsMapper: IIntegrationMapper) {
+  public constructor(
+    private readonly integrationsMapper: IIntegrationMapper<IntegrationDocument>
+  ) {
     super(IntegrationModel)
   }
 

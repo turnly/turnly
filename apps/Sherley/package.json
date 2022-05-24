@@ -35,7 +35,6 @@
     "@turnly/eslint-config": "git+https://turnlyapps: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@github.com/turnly/configs.git",
     "@turnly/rpc": "git+https://turnlyapps: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@github.com/turnly/rpc.git#latest",
     "@turnly/shared": "git+https://turnlyapps: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@github.com/turnly/shared.git#latest",
-    "awilix": "^7.0.3",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "moongose": "^1.0.0",
