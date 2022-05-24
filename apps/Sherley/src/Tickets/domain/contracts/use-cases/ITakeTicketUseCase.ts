@@ -1,7 +1,6 @@
-import { EntityAttributes, IUseCase } from '@turnly/core'
+import { IUseCase } from '@turnly/core'
+import { CreateTicketPayload } from 'Tickets/domain/payloads/CreateTicketPayload'
 
 import { Ticket } from '../../entities/Ticket'
 
-export type TakeTicketPayload = Omit<EntityAttributes<Ticket>, 'id' | 'status'>
-
-export type ITakeTicketUseCase = IUseCase<TakeTicketPayload, Ticket>
+export type ITakeTicketUseCase = IUseCase<CreateTicketPayload, Ticket>

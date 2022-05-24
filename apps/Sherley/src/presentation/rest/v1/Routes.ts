@@ -1,4 +1,6 @@
 import { BaseRoutes } from '@turnly/core'
+import { TicketsRoutes } from 'Tickets/infrastructure/api/presentation/rest/TicketsRoutes'
+import { TicketFactory } from 'Tickets/infrastructure/factories/TicketFactory'
 
 export class Routes extends BaseRoutes {
   public constructor() {
@@ -7,11 +9,9 @@ export class Routes extends BaseRoutes {
   }
 
   public override setup() {
-    /**
-     * Apps routes
-     *
-     * @description Endpoints partially public to be consumed by the widget or apps.
-     */
-    // this.router.use('/tickets', new TicketsRoutes(TicketsFactory.getController()).router)
+    this.router.use(
+      '/tickets',
+      new TicketsRoutes(TicketFactory.getController()).router
+    )
   }
 }

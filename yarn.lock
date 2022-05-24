@@ -459,25 +459,15 @@
     enabled "2.0.x"
     kuler "^2.0.0"
 
-"@elastic/elasticsearch@^8.2.0-patch.1":
-  version "8.2.0-patch.1"
-  resolved "https://registry.yarnpkg.com/@elastic/elasticsearch/-/elasticsearch-8.2.0-patch.1.tgz#494f3c20df796cd4877aa5bea87ed1bc6d06089a"
-  integrity sha512-ROx9WLPoRrJ/NvT3NEz/4ZhzvGRmB1dSvhkNyuQ+LoHSR2kh4CFqFmxoFtJmWN1uqbw8WvQ0AmMCyLbDI04IVA==
+"@elastic/elasticsearch@7.17.0":
+  version "7.17.0"
+  resolved "https://registry.yarnpkg.com/@elastic/elasticsearch/-/elasticsearch-7.17.0.tgz#589fb219234cf1b0da23744e82b1d25e2fe9a797"
+  integrity sha512-5QLPCjd0uLmLj1lSuKSThjNpq39f6NmlTy9ROLFwG5gjyTgpwSqufDeYG/Fm43Xs05uF7WcscoO7eguI3HuuYA==
   dependencies:
-    "@elastic/transport" "^8.2.0"
-    tslib "^2.4.0"
-
-"@elastic/transport@^8.2.0":
-  version "8.2.0"
-  resolved "https://registry.yarnpkg.com/@elastic/transport/-/transport-8.2.0.tgz#f292cb79c918a36268dd853431e41f13544814ad"
-  integrity sha512-H/HmefMNQfLiBSVTmNExu2lYs5EzwipUnQB53WLr17RCTDaQX0oOLHcWpDsbKQSRhDAMPPzp5YZsZMJxuxPh7A==
-  dependencies:
-    debug "^4.3.4"
-    hpagent "^1.0.0"
+    debug "^4.3.1"
+    hpagent "^0.1.1"
     ms "^2.1.3"
     secure-json-parse "^2.4.0"
-    tslib "^2.4.0"
-    undici "^5.1.1"
 
 "@eslint/eslintrc@^1.3.0":
   version "1.3.0"
@@ -1467,9 +1457,9 @@
 
 "@turnly/core@git+https://turnlyapps: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@github.com/turnly/core.git#latest":
   version "1.0.0"
-  resolved "git+https://turnlyapps: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@github.com/turnly/core.git#3ea5c48f759cdfc782cfe18e7035c31e19a1bd5c"
+  resolved "git+https://turnlyapps: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@github.com/turnly/core.git#f8a82068e23a999652d142db6df6c1768775333e"
   dependencies:
-    "@elastic/elasticsearch" "^8.2.0-patch.1"
+    "@elastic/elasticsearch" "7.17.0"
     "@turnly/eslint-config" "git+https://turnlyapps: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@github.com/turnly/configs.git"
     "@turnly/shared" "git+https://turnlyapps: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@github.com/turnly/shared.git#latest"
     amqp-ts "^1.8.0"
@@ -2833,7 +2823,7 @@ debug@2.6.9:
   dependencies:
     ms "2.0.0"
 
-debug@4, debug@4.x, debug@^4.1.0, debug@^4.1.1, debug@^4.3.2, debug@^4.3.4, debug@~4.3.1, debug@~4.3.2:
+debug@4, debug@4.x, debug@^4.1.0, debug@^4.1.1, debug@^4.3.1, debug@^4.3.2, debug@^4.3.4, debug@~4.3.1, debug@~4.3.2:
   version "4.3.4"
   resolved "https://registry.yarnpkg.com/debug/-/debug-4.3.4.tgz#1319f6579357f2338d3337d2cdd4914bb5dcc865"
   integrity sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==
@@ -3983,10 +3973,10 @@ hosted-git-info@^4.0.1:
   dependencies:
     lru-cache "^6.0.0"
 
-hpagent@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/hpagent/-/hpagent-1.0.0.tgz#c68f68b3df845687dbdc4896546713ce09cc6bee"
-  integrity sha512-SCleE2Uc1bM752ymxg8QXYGW0TWtAV4ZW3TqH1aOnyi6T6YW2xadCcclm5qeVjvMvfQ2RKNtZxO7uVb9CTPt1A==
+hpagent@^0.1.1:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/hpagent/-/hpagent-0.1.2.tgz#cab39c66d4df2d4377dbd212295d878deb9bdaa9"
+  integrity sha512-ePqFXHtSQWAFXYmj+JtOTHr84iNrII4/QRlAAPPE+zqnKy4xJo7Ie1Y4kC7AdB+LxLxSTTzBMASsEcy0q8YyvQ==
 
 html-encoding-sniffer@^2.0.1:
   version "2.0.1"
@@ -7282,7 +7272,7 @@ tslib@^1.8.1, tslib@^1.9.3:
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.14.1.tgz#cf2d38bdc34a134bcaf1091c41f6619e2f672d00"
   integrity sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==
 
-tslib@^2.0.3, tslib@^2.1.0, tslib@^2.4.0:
+tslib@^2.0.3, tslib@^2.1.0:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.4.0.tgz#7cecaa7f073ce680a05847aa77be941098f36dc3"
   integrity sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==
@@ -7379,11 +7369,6 @@ undefsafe@^2.0.5:
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/undefsafe/-/undefsafe-2.0.5.tgz#38733b9327bdcd226db889fb723a6efd162e6e2c"
   integrity sha512-WxONCrssBM8TSPRqN5EmsjVrsv4A8X12J4ArBiiayv3DyyG3ZlIg6yysuuSYdZsVz3TKcTg2fd//Ujd4CHV1iA==
-
-undici@^5.1.1:
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/undici/-/undici-5.2.0.tgz#18c5bd59f8f1b1ed8dcc9dca2f754c44ec994059"
-  integrity sha512-XY6+NS3WH9b3TKOHeNz2CjR+qrVz/k4fO9g3etPpLozRvULoQmZ1+dk9JbIz40ehn27xzFk4jYVU2MU3Nle62A==
 
 unique-string@^2.0.0:
   version "2.0.0"

@@ -6,7 +6,6 @@ import { TicketCreatedEvent } from '../events/TicketCreatedEvent'
 
 export interface Attributes {
   id: Guid
-  name: string
   status: TicketStatus
   displayCode: string
   serviceId: Guid
@@ -18,7 +17,6 @@ export interface Attributes {
 export class Ticket extends AggregateRoot<Attributes> {
   protected constructor(
     id: Guid,
-    private name: string,
     private status: TicketStatus,
     private displayCode: string,
     private serviceId: Guid,
@@ -32,7 +30,6 @@ export class Ticket extends AggregateRoot<Attributes> {
   public static create(attributes: Omit<Attributes, 'id'>): Ticket {
     const ticket = new Ticket(
       Identifier.generate('tkt'),
-      attributes.name,
       attributes.status,
       attributes.displayCode,
       attributes.serviceId,
@@ -49,7 +46,6 @@ export class Ticket extends AggregateRoot<Attributes> {
   public static build(attributes: Attributes): Ticket {
     return new Ticket(
       attributes.id,
-      attributes.name,
       attributes.status,
       attributes.displayCode,
       attributes.serviceId,
@@ -62,7 +58,6 @@ export class Ticket extends AggregateRoot<Attributes> {
   public toObject(): Attributes {
     return {
       id: this.id,
-      name: this.name,
       status: this.status,
       displayCode: this.displayCode,
       serviceId: this.serviceId,

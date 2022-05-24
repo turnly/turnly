@@ -8,10 +8,6 @@ export type ITicketModel = Model<TicketDocument>
 
 const schema = new Schema({
   _id: String,
-  name: {
-    type: String,
-    required: true,
-  },
   status: {
     type: String,
     enum: TicketStatus,

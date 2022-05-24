@@ -10,12 +10,12 @@ export class IntegrationByIdQueryHandler
   implements IQueryHandler<IntegrationByIdQuery, Nullable<Integration>>
 {
   public constructor(
-    private readonly integrationsRepository: IIntegrationReadableRepository
+    private readonly integrationsReadableRepository: IIntegrationReadableRepository
   ) {}
 
   public async execute({ params }: IntegrationByIdQuery) {
     const { id } = params
 
-    return await this.integrationsRepository.getById(id)
+    return await this.integrationsReadableRepository.getById(id)
   }
 }

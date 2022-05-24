@@ -1,14 +1,11 @@
 import { ICommandHandler, IEventSubscriber, IQueryHandler } from '@turnly/core'
 import { Box } from '@turnly/core'
-import { ITicketReadableRepository } from 'Tickets/domain/contracts/ITicketRepository'
+import { CreateTicketCommandHandler } from 'Tickets/application/commands/CreateTicketCommand'
+import { SaveTicketReadingDatabaseSubscriber } from 'Tickets/application/subscribers/SaveTicketReadingDatabaseSubscriber'
 
 import { TicketsController } from '../api/controllers/TicketsController'
 
 export class TicketFactory {
-  public static getReadableRepository(): ITicketReadableRepository {
-    return Box.resolve<ITicketReadableRepository>('ticketsReadableRepository')
-  }
-
   public static getController(): TicketsController {
     return Box.resolve<TicketsController>('ticketsController')
   }
@@ -18,10 +15,16 @@ export class TicketFactory {
   }
 
   public static getCommandHandlers(): ICommandHandler[] {
-    return []
+    return [
+      Box.resolve<CreateTicketCommandHandler>('createTicketCommandHandler'),
+    ]
   }
 
   public static getEventSubscribers(): IEventSubscriber[] {
-    return []
+    return [
+      Box.resolve<SaveTicketReadingDatabaseSubscriber>(
+        'saveTicketReadingDatabaseSubscriber'
+      ),
+    ]
   }
 }
