@@ -11,13 +11,22 @@ export class TicketDTO {
   id: Guid
 
   @MapProp()
-  name: string
+  displayCode: string
 
   @MapProp()
   status: TicketStatus
 
   @MapProp()
-  origins: string[]
+  metadata?: object
+
+  @MapProp()
+  serviceId: Guid
+
+  @MapProp()
+  locationId: Guid
+
+  @MapProp()
+  customerId: Guid
 
   public static create(entity: Entity): TicketDTO {
     return new Mapper().map(entity, new TicketDTO())

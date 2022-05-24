@@ -31,8 +31,7 @@ const schema = new Schema({
     index: true,
   },
   customerId: {
-    type: Schema.Types.ObjectId,
-    ref: 'Customer',
+    type: String,
     required: true,
     index: true,
   },
