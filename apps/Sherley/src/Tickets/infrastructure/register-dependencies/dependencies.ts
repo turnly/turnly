@@ -1,6 +1,7 @@
 import { Box, ioc } from '@turnly/core'
 import { CreateTicketCommandHandler } from 'Tickets/application/commands/CreateTicketCommand'
-import { SaveTicketReadingDatabaseSubscriber } from 'Tickets/application/subscribers/SaveTicketReadingDatabaseSubscriber'
+import { SaveTicketReadingDBCommandHandler } from 'Tickets/application/commands/SaveTicketReadingDBCommand'
+import { SaveTicketReadingDBSubscriber } from 'Tickets/application/subscribers/SaveTicketReadingDBSubscriber'
 import { TakeTicketUseCase } from 'Tickets/application/use-cases/TakeTicketUseCase'
 
 import { TicketsController } from '../api/controllers/TicketsController'
@@ -33,6 +34,9 @@ Box.register({
   createTicketCommandHandler: ioc
     .asClass(CreateTicketCommandHandler)
     .singleton(),
+  saveTicketReadingDBCommandHandler: ioc
+    .asClass(SaveTicketReadingDBCommandHandler)
+    .singleton(),
 })
 
 /**
@@ -40,6 +44,6 @@ Box.register({
  */
 Box.register({
   saveTicketReadingDatabaseSubscriber: ioc
-    .asClass(SaveTicketReadingDatabaseSubscriber)
+    .asClass(SaveTicketReadingDBSubscriber)
     .singleton(),
 })
