@@ -10,7 +10,9 @@ export class TicketReadableRepository
   extends MongoRepository<Ticket, TicketDocument>
   implements ITicketReadableRepository
 {
-  public constructor(private readonly ticketsMapper: ITicketMapper) {
+  public constructor(
+    private readonly ticketsMapper: ITicketMapper<TicketDocument>
+  ) {
     super(TicketModel)
   }
 

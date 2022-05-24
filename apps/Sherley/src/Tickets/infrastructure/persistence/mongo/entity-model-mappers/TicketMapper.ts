@@ -4,7 +4,7 @@ import { Attributes, Ticket } from 'Tickets/domain/entities/Ticket'
 
 import { TicketDocument, TicketModel } from '../models/TicketModel'
 
-export class TicketMapper implements ITicketMapper {
+export class TicketMapper implements ITicketMapper<TicketDocument> {
   public toEntity(document: TicketDocument): Ticket {
     const { _id, ...attrs } = document.toObject<Attributes>()
 

@@ -1,5 +1,5 @@
 import { ICommandHandler, IEventSubscriber, IQueryHandler } from '@turnly/core'
-import { Box } from 'Shared/infrastructure/dependencies'
+import { Box } from '@turnly/core'
 import { ITicketReadableRepository } from 'Tickets/domain/contracts/ITicketRepository'
 
 import { TicketsController } from '../api/controllers/TicketsController'
