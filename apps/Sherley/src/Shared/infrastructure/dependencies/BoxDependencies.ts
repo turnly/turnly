@@ -3,6 +3,7 @@ import { EventBus, InMemoryCommandBus, InMemoryQueryBus } from '@turnly/core'
  * Inversion of Control container for the application.
  */
 import * as ioc from 'awilix'
+import { TakeTicketUseCase } from 'Tickets/application/use-cases/TakeTicketUseCase'
 /**
  * Tickets module
  */
@@ -30,6 +31,13 @@ box.register({
   ticketsMapper: ioc.asClass(TicketMapper).singleton(),
   ticketsReadableRepository: ioc.asClass(TicketReadableRepository).singleton(),
   ticketsController: ioc.asClass(TicketsController).singleton(),
+})
+
+/**
+ * Register the use cases of Tickets module
+ */
+box.register({
+  takeTicketUseCase: ioc.asClass(TakeTicketUseCase).singleton(),
 })
 
 export { box }
