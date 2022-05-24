@@ -1,0 +1,34 @@
+version: '3.9'
+
+services:
+  sherley:
+    extends:
+      file: common.yml
+      service: common
+    container_name: sherley
+    image: sherley:latest
+    build:
+      context: ${COMPOSE_BASE_DIRECTORY}/Sherley
+      dockerfile: ./docker/Dockerfile.dev
+      args:
+        HTTP_PORT: ${HTTP_PORT}
+        RPC_PORT: ${RPC_PORT}
+    volumes:
+      - ${COMPOSE_BASE_DIRECTORY}/Sherley:/app
+    depends_on:
+      - networking
+      - mongo
+      - elasticsearch
+    labels:
+      - traefik.enable=true
+
+      - traefik.http.routers.sherley_rpc.entrypoints=rpc
+      - traefik.http.routers.sherley_rpc.rule=PathPrefix(`/turnly.sherley.v1`) && Host(`rpc.turnly`) || Host(`host.docker.internal`)
+      - traefik.http.routers.sherley_rpc.service=sherley_rpc
+      - traefik.http.services.sherley_rpc.loadbalancer.server.port=${RPC_PORT}
+      - traefik.http.services.sherley_rpc.loadbalancer.server.scheme=h2c
+
+      - traefik.http.routers.sherley_http.entrypoints=http
+      - traefik.http.routers.sherley_http.rule=Host(`api.turnly`) && PathPrefix(`/v1/tickets`, `/v1/customers`)
+      - traefik.http.routers.sherley_http.service=sherley_http
+      - traefik.http.services.sherley_http.loadbalancer.server.port=${HTTP_PORT}
