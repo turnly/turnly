@@ -1,6 +1,7 @@
 import { EntityAttributes } from '@turnly/core'
 import { Guid } from '@turnly/shared'
 import { Field } from 'Fields/domain/entities/Field'
+import { FieldTypes } from 'Fields/domain/enums/FieldTypes'
 import { Mapper, MapProp } from 'ts-simple-automapper'
 
 type Entity = EntityAttributes<Field>
@@ -16,7 +17,7 @@ export class FieldDTO {
   description: string
 
   @MapProp()
-  type: string
+  type: FieldTypes
 
   @MapProp()
   entityType: string

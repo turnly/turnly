@@ -1,11 +1,13 @@
 import { AggregateRoot } from '@turnly/core'
 import { Guid, Identifier } from '@turnly/shared'
 
+import { FieldTypes } from '../enums/FieldTypes'
+
 export interface Attributes {
   id: Guid
   label: string
   description: string
-  type: string
+  type: FieldTypes
   entityType: string
   serviceId: string
   isRequired: boolean
@@ -16,7 +18,7 @@ export class Field extends AggregateRoot<Attributes> {
     id: Guid,
     private label: string,
     private description: string,
-    private type: string,
+    private type: FieldTypes,
     private entityType: string,
     private serviceId: string,
     private isRequired: boolean

@@ -1,6 +1,7 @@
 import { Producers } from '@turnly/rpc'
 import { Nullable } from '@turnly/shared'
 import { Field } from 'Fields/domain/entities/Field'
+import { FieldTypes } from 'Fields/domain/enums/FieldTypes'
 import { FieldDTO } from 'Fields/infrastructure/api/dtos/FieldDTO'
 
 export class FieldMapper {
@@ -27,7 +28,7 @@ export class FieldMapper {
       id: model.getId(),
       label: model.getLabel(),
       description: model.getDescription(),
-      type: model.getType(),
+      type: model.getType() as FieldTypes,
       serviceId: model.getServiceId(),
       entityType: model.getEntityType(),
       isRequired: model.getIsRequired(),

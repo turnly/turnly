@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Attributes as Attrs } from 'Fields/domain/entities/Field'
+import { FieldTypes } from 'Fields/domain/enums/FieldTypes'
 import mongoose, { Document, Model, Schema } from 'mongoose'
 
 export interface FieldDocument extends Omit<Attrs, 'id'>, Document {}
@@ -17,6 +18,7 @@ const schema = new Schema({
   },
   type: {
     type: String,
+    enum: FieldTypes,
     required: true,
   },
   entityType: {
