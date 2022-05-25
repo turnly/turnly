@@ -11,42 +11,36 @@ export class TakeTicketUseCase implements ITakeTicketUseCase {
     /**
      * @todo
      *
-     * Check if location is available
-     * await this.queryBus.ask(new GetLocationAvailabilityQuery(payload.locationId))
+     * Check if the customer has active tickets
+     * await this.queryBus.ask(new GetCustomerActiveTicketsQuery(payload.customerId))
      */
 
     /**
      * @todo
      *
-     * Validate if the location is at its maximum ticket capacity (per service).
-     * await this.queryBus.ask(new GetLocationCapacityQuery(payload.locationId))
+     * Search Business Data Fields for the serviceId
+     * const fields = await this.queryBus.ask(new GetBusinessDataFieldsQuery(payload.serviceId))
      */
 
     /**
      * @todo
      *
-     * Get the number of tickets created and calculate the time to know if the ticket can be attended.
+     * If Business Data Fields are found, validate if the customer filled all the required fields
      *
+     * const requiredFields = fields.filter(field => field.isRequired)
+     *
+     * for (const field of requiredFields) {
+     *   if (!payload.answers[field.id]) {
+     *    throw new Error('The customer did not fill all the required fields')
+     *   }
+     * }
      */
 
     /**
      * @todo
      *
-     * 1. Get Customer data by Id
-     * 2. Check if the customer has another ticket already
-     *
-     * await this.queryBus.ask(new GetCustomerByIdQuery(data.customerId))
-     * await this.queryBus.ask(new GetTicketsByCustomerIdQuery(data.customerId))
-     */
-
-    /**
-     * @todo
-     *
-     * 1. Get business data fields and fill them with data from the request
-     * 2. Create answer for the data fields
-     *
-     * await this.queryBus.ask(new GetBusinessDataFieldsByLocationIdQuery(data.locationId))
-     * await this.commandBus.execute(new CreateAnswerCommand(data.answers))
+     * If Business Data Fields are found, create answers.
+     * const answers = await this.commandBus.execute(new CreateAnswerCommand({ answers, customerId, ticketId }))
      */
 
     return await this.commandBus.execute<CreateTicketCommand, Ticket>(

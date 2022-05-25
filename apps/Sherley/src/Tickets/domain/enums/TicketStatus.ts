@@ -9,11 +9,18 @@
  */
 export enum TicketStatus {
   /**
-   * Active status
+   * Pending status
    *
-   * @description Initial status of tickets, whenever a ticket is created, its status will be active.
+   * @description Initial status of tickets, whenever a ticket is created, its status will be pending.
    */
-  ACTIVE = 'active',
+  PENDING = 'pending',
+
+  /**
+   * Available status
+   *
+   * @description Use it when a ticket passes all the corresponding validations, usually, a ticket can only go to this status if it is in PENDING status.
+   */
+  AVAILABLE = 'available',
 
   /**
    * Announced status

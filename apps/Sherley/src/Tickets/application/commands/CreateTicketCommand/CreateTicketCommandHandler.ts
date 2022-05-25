@@ -19,7 +19,10 @@ export class CreateTicketCommandHandler
   }: CreateTicketCommand) {
     const ticket = Ticket.create({
       ...payload,
-      status: TicketStatus.ACTIVE,
+      status: TicketStatus.PENDING,
+      /**
+       * @todo Create function to get the next ticket number
+       */
       displayCode: Date.now().toString(),
     })
 
