@@ -17,9 +17,6 @@ export class TicketDTO {
   status: TicketStatus
 
   @MapProp()
-  metadata?: object
-
-  @MapProp()
   serviceId: Guid
 
   @MapProp()
@@ -27,6 +24,9 @@ export class TicketDTO {
 
   @MapProp()
   customerId: Guid
+
+  @MapProp()
+  workspaceId: Guid
 
   public static create(entity: Entity): TicketDTO {
     return new Mapper().map(entity, new TicketDTO())

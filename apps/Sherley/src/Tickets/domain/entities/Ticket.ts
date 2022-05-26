@@ -11,18 +11,18 @@ export interface Attributes {
   serviceId: Guid
   locationId: Guid
   customerId: Guid
-  metadata?: object
+  workspaceId: Guid
 }
 
 export class Ticket extends AggregateRoot<Attributes> {
   protected constructor(
     id: Guid,
     private status: TicketStatus,
-    private displayCode: string,
-    private serviceId: Guid,
-    private locationId: Guid,
-    private customerId: Guid,
-    private metadata?: object
+    private readonly displayCode: string,
+    private readonly serviceId: Guid,
+    private readonly locationId: Guid,
+    private readonly customerId: Guid,
+    private readonly workspaceId: Guid
   ) {
     super(id)
   }
@@ -35,7 +35,7 @@ export class Ticket extends AggregateRoot<Attributes> {
       attributes.serviceId,
       attributes.locationId,
       attributes.customerId,
-      attributes.metadata
+      attributes.workspaceId
     )
 
     ticket.register(new TicketCreatedEvent(ticket.toObject()))
@@ -51,7 +51,7 @@ export class Ticket extends AggregateRoot<Attributes> {
       attributes.serviceId,
       attributes.locationId,
       attributes.customerId,
-      attributes.metadata
+      attributes.workspaceId
     )
   }
 
@@ -63,7 +63,7 @@ export class Ticket extends AggregateRoot<Attributes> {
       serviceId: this.serviceId,
       locationId: this.locationId,
       customerId: this.customerId,
-      metadata: this.metadata,
+      workspaceId: this.workspaceId,
     }
   }
 }

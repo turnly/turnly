@@ -22,11 +22,11 @@ export class AllowConnGuard {
    *
    * @memberof AllowConnGuard
    */
-  public use = (): RealtimeMiddle => async (client, next) => {
+  public use = (): RealtimeMiddle => async (connection, next) => {
     try {
       const {
         handshake: { query, headers, ...handshake },
-      } = client
+      } = connection
 
       const origin = headers.referer || handshake.url || headers.origin
 
@@ -68,8 +68,14 @@ export class AllowConnGuard {
        * }
        */
 
-      client.emit(Events.CONNECTED, {
-        integration: { ...integration, originsList: undefined },
+      connection.join(integration.id)
+
+      connection.emit(Events.CONNECTED, {
+        integration: {
+          id: integration.id,
+          name: integration.name,
+          canCustomize: integration.canCustomize,
+        },
       })
 
       next()

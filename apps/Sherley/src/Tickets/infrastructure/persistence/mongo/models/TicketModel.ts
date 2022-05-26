@@ -17,9 +17,6 @@ const schema = new Schema({
     type: String,
     required: true,
   },
-  metadata: {
-    type: Object,
-  },
   serviceId: {
     type: String,
     required: true,
@@ -31,6 +28,11 @@ const schema = new Schema({
     index: true,
   },
   customerId: {
+    type: String,
+    required: true,
+    index: true,
+  },
+  workspaceId: {
     type: String,
     required: true,
     index: true,
