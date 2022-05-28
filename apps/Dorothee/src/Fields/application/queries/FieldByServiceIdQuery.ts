@@ -1,4 +1,4 @@
-import { IQuery } from '@turnly/core'
+import { IQuery } from '@turnly/shared'
 import { GetFieldPayload } from 'Fields/domain/payloads/GetFieldPayload'
 
 export class FieldByServiceIdQuery implements IQuery {

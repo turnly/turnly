@@ -1,4 +1,4 @@
-import { EventsSubscriber, ICommandBus, IEventSubscriber } from '@turnly/core'
+import { EventsSubscriber, ICommandBus, IEventSubscriber } from '@turnly/shared'
 import { TicketCreatedEvent } from 'Tickets/domain/events/TicketCreatedEvent'
 import { TicketUpdatedEvent } from 'Tickets/domain/events/TicketUpdatedEvent'
 

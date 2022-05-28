@@ -1,5 +1,9 @@
-import { ICommandHandler, IEventSubscriber, IQueryHandler } from '@turnly/core'
-import { Box } from '@turnly/core'
+import {
+  ICommandHandler,
+  IEventSubscriber,
+  IQueryHandler,
+} from '@turnly/shared'
+import { Box } from '@turnly/shared'
 import { IntegrationByIdQueryHandler } from 'Integrations/application/queries/IntegrationByIdQuery'
 
 import { IntegrationsController } from '../api/controllers/IntegrationsController'

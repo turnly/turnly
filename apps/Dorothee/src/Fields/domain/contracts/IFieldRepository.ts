@@ -1,4 +1,4 @@
-import { IReadableRepository, IWritableRepository } from '@turnly/core'
+import { IReadableRepository, IWritableRepository } from '@turnly/shared'
 
 import { Field } from '../entities/Field'
 

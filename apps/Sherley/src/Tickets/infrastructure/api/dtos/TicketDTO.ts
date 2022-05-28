@@ -1,5 +1,5 @@
-import { EntityAttributes } from '@turnly/core'
-import { Guid } from '@turnly/shared'
+import { Guid } from '@turnly/common'
+import { EntityAttributes } from '@turnly/shared'
 import { Ticket } from 'Tickets/domain/entities/Ticket'
 import { TicketStatus } from 'Tickets/domain/enums/TicketStatus'
 import { Mapper, MapProp } from 'ts-simple-automapper'

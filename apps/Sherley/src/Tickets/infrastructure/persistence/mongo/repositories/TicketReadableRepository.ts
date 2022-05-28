@@ -1,5 +1,5 @@
-import { Criteria, MongoRepository } from '@turnly/core'
-import { Guid, NotImplementedError, Nullable } from '@turnly/shared'
+import { Guid, NotImplementedError, Nullable } from '@turnly/common'
+import { Criteria, MongoRepository } from '@turnly/shared'
 import { ITicketMapper } from 'Tickets/domain/contracts/ITicketMapper'
 import { ITicketReadableRepository } from 'Tickets/domain/contracts/ITicketRepository'
 import { Ticket } from 'Tickets/domain/entities/Ticket'

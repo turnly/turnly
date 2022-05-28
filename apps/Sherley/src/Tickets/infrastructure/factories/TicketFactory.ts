@@ -1,5 +1,9 @@
-import { ICommandHandler, IEventSubscriber, IQueryHandler } from '@turnly/core'
-import { Box } from '@turnly/core'
+import {
+  ICommandHandler,
+  IEventSubscriber,
+  IQueryHandler,
+} from '@turnly/shared'
+import { Box } from '@turnly/shared'
 import { CreateTicketCommandHandler } from 'Tickets/application/commands/CreateTicketCommand'
 import { SaveTicketReadingDBCommandHandler } from 'Tickets/application/commands/SaveTicketReadingDBCommand'
 import { SaveTicketReadingDBSubscriber } from 'Tickets/application/subscribers/SaveTicketReadingDBSubscriber'

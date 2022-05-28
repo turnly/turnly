@@ -1,10 +1,10 @@
+import { Nullable, ResourceNotFoundException } from '@turnly/common'
 import {
   Controller,
   InputValidator,
   IQueryBus,
   TimeoutHandler,
-} from '@turnly/core'
-import { Nullable, ResourceNotFoundException } from '@turnly/shared'
+} from '@turnly/shared'
 import { IntegrationByIdQuery } from 'Integrations/application/queries/IntegrationByIdQuery'
 import { Integration } from 'Integrations/domain/entities/Integration'
 import { GetIntegrationPayload } from 'Integrations/domain/payloads/GetIntegrationPayload'

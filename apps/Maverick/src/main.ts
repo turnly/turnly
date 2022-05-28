@@ -1,6 +1,6 @@
 import 'Integrations/infrastructure/register-dependencies'
 
-import { eventBus } from '@turnly/core'
+import { eventBus } from '@turnly/shared'
 import { Application } from 'Application'
 
 async function bootstrap() {

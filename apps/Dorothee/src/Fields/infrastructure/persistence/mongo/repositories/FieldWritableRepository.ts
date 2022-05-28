@@ -1,4 +1,4 @@
-import { MongoRepository } from '@turnly/core'
+import { MongoRepository } from '@turnly/shared'
 import { IFieldMapper } from 'Fields/domain/contracts/IFieldMapper'
 import { IFieldWritableRepository } from 'Fields/domain/contracts/IFieldRepository'
 import { Field } from 'Fields/domain/entities/Field'

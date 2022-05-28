@@ -1,4 +1,4 @@
-import { ICommandBus } from '@turnly/core'
+import { ICommandBus } from '@turnly/shared'
 import { CreateAnswerCommand } from 'Answers/application/commands/CreateAnswerCommand'
 import { ICreateAnswerUseCase } from 'Answers/domain/contracts/use-cases/ICreateAnswerUseCase'
 import { Answer } from 'Answers/domain/entities/Answer'

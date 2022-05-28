@@ -1,5 +1,5 @@
-import { Criteria, MongoRepository } from '@turnly/core'
-import { Guid, NotImplementedError, Nullable } from '@turnly/shared'
+import { Guid, NotImplementedError, Nullable } from '@turnly/common'
+import { Criteria, MongoRepository } from '@turnly/shared'
 import { IIntegrationMapper } from 'Integrations/domain/contracts/IIntegrationMapper'
 import { IIntegrationReadableRepository } from 'Integrations/domain/contracts/IIntegrationRepository'
 import { Integration } from 'Integrations/domain/entities/Integration'

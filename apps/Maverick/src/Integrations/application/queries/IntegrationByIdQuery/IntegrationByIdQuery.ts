@@ -1,4 +1,4 @@
-import { IQuery } from '@turnly/core'
+import { IQuery } from '@turnly/shared'
 import { GetIntegrationPayload } from 'Integrations/domain/payloads/GetIntegrationPayload'
 
 export class IntegrationByIdQuery implements IQuery {

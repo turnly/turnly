@@ -1,5 +1,5 @@
-import { AggregateRoot } from '@turnly/core'
-import { Guid, Identifier } from '@turnly/shared'
+import { Guid, Identifier } from '@turnly/common'
+import { AggregateRoot } from '@turnly/shared'
 
 import { IntegrationStatus } from '../enums/IntegrationStatus'
 import { IntegrationCreatedEvent } from '../events/IntegrationCreatedEvent'

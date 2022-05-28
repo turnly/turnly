@@ -1,5 +1,5 @@
-import { DomainEvent, EntityAttributes } from '@turnly/core'
-import { Guid } from '@turnly/shared'
+import { Guid } from '@turnly/common'
+import { DomainEvent, EntityAttributes } from '@turnly/shared'
 
 import { Ticket } from '../entities/Ticket'
 

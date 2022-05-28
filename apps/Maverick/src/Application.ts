@@ -1,4 +1,4 @@
-import { MongoClientFactory, mongoConfig, Startup } from '@turnly/core'
+import { MongoClientFactory, mongoConfig, Startup } from '@turnly/shared'
 
 export class Application extends Startup {
   /**

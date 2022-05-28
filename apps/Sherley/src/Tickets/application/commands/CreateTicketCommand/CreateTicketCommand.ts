@@ -1,4 +1,4 @@
-import { ICommand } from '@turnly/core'
+import { ICommand } from '@turnly/shared'
 import { CreateTicketPayload } from 'Tickets/domain/payloads/CreateTicketPayload'
 
 export class CreateTicketCommand implements ICommand {

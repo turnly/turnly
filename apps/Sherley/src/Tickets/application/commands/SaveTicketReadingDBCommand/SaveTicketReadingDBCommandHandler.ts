@@ -1,4 +1,4 @@
-import { CommandHandler, ICommandHandler } from '@turnly/core'
+import { CommandHandler, ICommandHandler } from '@turnly/shared'
 import { ITicketWritableRepository } from 'Tickets/domain/contracts/ITicketRepository'
 import { Ticket } from 'Tickets/domain/entities/Ticket'
 

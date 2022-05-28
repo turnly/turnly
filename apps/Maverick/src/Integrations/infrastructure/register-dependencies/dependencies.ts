@@ -1,4 +1,4 @@
-import { Box, ioc } from '@turnly/core'
+import { Box, ioc } from '@turnly/shared'
 import { IntegrationByIdQueryHandler } from 'Integrations/application/queries/IntegrationByIdQuery'
 import { IntegrationMapper } from 'Integrations/infrastructure/persistence/mongo/entity-model-mappers/IntegrationMapper'
 import { IntegrationReadableRepository } from 'Integrations/infrastructure/persistence/mongo/repositories/IntegrationReadableRepository'

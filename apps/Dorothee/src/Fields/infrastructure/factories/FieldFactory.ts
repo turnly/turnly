@@ -1,5 +1,5 @@
-import { ICommandHandler, IQueryHandler } from '@turnly/core'
-import { Box } from '@turnly/core'
+import { ICommandHandler, IQueryHandler } from '@turnly/shared'
+import { Box } from '@turnly/shared'
 import { CreateFieldCommandHandler } from 'Fields/application/commands/CreateFieldCommand'
 import { SaveFieldReadingDBCommandHandler } from 'Fields/application/commands/SaveFieldReadingDBCommand'
 import { FieldByIdQueryHandler } from 'Fields/application/queries'

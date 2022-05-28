@@ -1,4 +1,4 @@
-import { Controller, InputValidator, TimeoutHandler } from '@turnly/core'
+import { Controller, InputValidator, TimeoutHandler } from '@turnly/shared'
 import { TakeTicketUseCase } from 'Tickets/application/use-cases/TakeTicketUseCase'
 import { CreateTicketPayload } from 'Tickets/domain/payloads/CreateTicketPayload'
 

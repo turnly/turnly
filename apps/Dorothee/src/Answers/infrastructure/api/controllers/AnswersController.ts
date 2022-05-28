@@ -1,4 +1,4 @@
-import { Controller, TimeoutHandler } from '@turnly/core'
+import { Controller, TimeoutHandler } from '@turnly/shared'
 import { CreateAnswerUseCase } from 'Answers/application/use-cases/CreateAnswerUseCase'
 import { CreateAnswerPayload } from 'Answers/domain/payloads/CreateAnswerPayload'
 

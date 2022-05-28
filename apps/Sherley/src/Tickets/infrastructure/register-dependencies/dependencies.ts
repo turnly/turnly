@@ -1,4 +1,4 @@
-import { Box, ioc } from '@turnly/core'
+import { Box, ioc } from '@turnly/shared'
 import { CreateTicketCommandHandler } from 'Tickets/application/commands/CreateTicketCommand'
 import { SaveTicketReadingDBCommandHandler } from 'Tickets/application/commands/SaveTicketReadingDBCommand'
 import { SaveTicketReadingDBSubscriber } from 'Tickets/application/subscribers/SaveTicketReadingDBSubscriber'

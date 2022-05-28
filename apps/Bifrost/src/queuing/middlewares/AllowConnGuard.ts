@@ -1,10 +1,11 @@
-import { Events, RealtimeMiddle } from '@turnly/realtime'
 import {
   BadRequestException,
+  Guid,
   ResourceNotFoundException,
   UnauthorizedException,
-} from '@turnly/shared'
-import { Environment } from '@turnly/shared/dist/config/environment'
+} from '@turnly/common'
+import { Environment } from '@turnly/common/dist/config/environment'
+import { Events, IRealtimeClient, RealtimeMiddle } from '@turnly/realtime'
 
 import { Integrations } from '../../consumers/integrations'
 
@@ -24,19 +25,15 @@ export class AllowConnGuard {
    */
   public use = (): RealtimeMiddle => async (connection, next) => {
     try {
-      const {
-        handshake: { query, headers, ...handshake },
-      } = connection
+      const { origin, integrationId } = this.toParams(connection)
 
-      const origin = headers.referer || handshake.url || headers.origin
-
-      if (!query.key || !origin)
+      if (!integrationId || !origin)
         throw new BadRequestException(
           "The request doesn't meet the parameters required for a secure connection."
         )
 
       const { meta, data: integration } = await Integrations.getIntegration({
-        id: query.key as string,
+        id: integrationId,
       })
 
       if (!integration) throw new ResourceNotFoundException(meta?.message)
@@ -68,7 +65,7 @@ export class AllowConnGuard {
        * }
        */
 
-      connection.join(integration.id)
+      connection.join([integration.id /* customer.id */])
 
       connection.emit(Events.CONNECTED, {
         integration: {
@@ -81,6 +78,19 @@ export class AllowConnGuard {
       next()
     } catch (error: any) {
       next(error)
+    }
+  }
+
+  private toParams(connection: IRealtimeClient) {
+    const {
+      handshake: { query, headers, ...handshake },
+    } = connection
+
+    const origin = headers.referer || handshake.url || headers.origin || ''
+
+    return {
+      origin,
+      integrationId: query.key as Guid,
     }
   }
 }

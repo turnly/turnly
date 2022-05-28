@@ -1,4 +1,4 @@
-import { BaseRoutes, RequestDecorator, RequestHandler } from '@turnly/core'
+import { BaseRoutes, RequestDecorator, RequestHandler } from '@turnly/shared'
 import { NextFunction, Request, Response as ExpressResponse } from 'express'
 import { CreateTicketPayload } from 'Tickets/domain/payloads/CreateTicketPayload'
 

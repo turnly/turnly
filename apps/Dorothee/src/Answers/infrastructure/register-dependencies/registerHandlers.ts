@@ -1,4 +1,4 @@
-import { commandBus, queryBus } from '@turnly/core'
+import { commandBus, queryBus } from '@turnly/shared'
 
 import { AnswerFactory } from '../factories/AnswerFactory'
 

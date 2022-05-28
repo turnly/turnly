@@ -1,5 +1,9 @@
-import { ElasticClient, ElasticIndexes, ElasticRepository } from '@turnly/core'
-import { ResourceNotCreatedError } from '@turnly/shared'
+import { ResourceNotCreatedError } from '@turnly/common'
+import {
+  ElasticClient,
+  ElasticIndexes,
+  ElasticRepository,
+} from '@turnly/shared'
 import { ITicketWritableRepository } from 'Tickets/domain/contracts/ITicketRepository'
 import { Ticket } from 'Tickets/domain/entities/Ticket'
 

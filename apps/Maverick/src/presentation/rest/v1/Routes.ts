@@ -1,4 +1,4 @@
-import { BaseRoutes } from '@turnly/core'
+import { BaseRoutes } from '@turnly/shared'
 
 export class Routes extends BaseRoutes {
   public constructor() {

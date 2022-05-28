@@ -1,4 +1,4 @@
-import { EntityAttributes } from '@turnly/core'
+import { EntityAttributes } from '@turnly/shared'
 
 import { Ticket } from '../entities/Ticket'
 

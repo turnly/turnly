@@ -1,4 +1,4 @@
-// import { Http, Versions } from '@turnly/core'
+// import { Http, Versions } from '@turnly/shared'
 
 // import { Routes as v1 } from './v1/Routes'
 

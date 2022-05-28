@@ -1,4 +1,4 @@
-import { ICommand } from '@turnly/core'
+import { ICommand } from '@turnly/shared'
 import { CreateFieldPayload } from 'Fields/domain/payloads/CreateFieldPayload'
 
 export class CreateFieldCommand implements ICommand {

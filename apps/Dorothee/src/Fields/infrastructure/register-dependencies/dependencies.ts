@@ -1,4 +1,4 @@
-import { Box, ioc } from '@turnly/core'
+import { Box, ioc } from '@turnly/shared'
 import { CreateFieldCommandHandler } from 'Fields/application/commands/CreateFieldCommand'
 import { SaveFieldReadingDBCommandHandler } from 'Fields/application/commands/SaveFieldReadingDBCommand'
 import { FieldByIdQueryHandler } from 'Fields/application/queries'

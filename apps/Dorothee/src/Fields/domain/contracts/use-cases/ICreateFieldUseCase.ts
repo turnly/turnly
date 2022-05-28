@@ -1,4 +1,4 @@
-import { IUseCase } from '@turnly/core'
+import { IUseCase } from '@turnly/shared'
 import { CreateFieldPayload } from 'Fields/domain/payloads/CreateFieldPayload'
 
 import { Field } from '../../entities/Field'

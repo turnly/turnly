@@ -1,4 +1,4 @@
-import { commandBus, eventBus, queryBus } from '@turnly/core'
+import { commandBus, eventBus, queryBus } from '@turnly/shared'
 
 import { IntegrationFactory } from '../factories/IntegrationFactory'
 

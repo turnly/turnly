@@ -1,10 +1,10 @@
-import { ICommandBus, IEventBus, IQueryBus } from '@turnly/core'
 import {
   BadRequestException,
   ConflictException,
   Guid,
   Nullable,
-} from '@turnly/shared'
+} from '@turnly/common'
+import { ICommandBus, IEventBus, IQueryBus } from '@turnly/shared'
 import { CreateTicketCommand } from 'Tickets/application/commands/CreateTicketCommand'
 import { ITakeTicketUseCase } from 'Tickets/domain/contracts/use-cases/ITakeTicketUseCase'
 import { Ticket } from 'Tickets/domain/entities/Ticket'

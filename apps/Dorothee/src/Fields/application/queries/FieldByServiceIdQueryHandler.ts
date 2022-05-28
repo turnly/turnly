@@ -1,5 +1,5 @@
-import { IQueryHandler, QueryHandler } from '@turnly/core'
-import { Nullable } from '@turnly/shared'
+import { Nullable } from '@turnly/common'
+import { IQueryHandler, QueryHandler } from '@turnly/shared'
 import { IFieldReadableRepository } from 'Fields/domain/contracts/IFieldRepository'
 import { Field } from 'Fields/domain/entities/Field'
 

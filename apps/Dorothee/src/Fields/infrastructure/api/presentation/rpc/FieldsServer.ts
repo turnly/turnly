@@ -17,7 +17,7 @@ export class FieldsServer extends Producers.ServerImplementation<Producers.Dorot
     callback: Producers.ICallback<Producers.Dorothee.SearchFieldsResponse>
   ) {
     const { data, meta } = await this.fieldsController.get({
-      id: call.request.getServiceId(),
+      id: /* call.request.getServiceId(), */ '',
     })
 
     const response = new Producers.Dorothee.SearchFieldsResponse()

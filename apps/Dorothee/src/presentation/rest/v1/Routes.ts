@@ -1,4 +1,4 @@
-// import { BaseRoutes } from '@turnly/core'
+// import { BaseRoutes } from '@turnly/shared'
 // import { TicketsRoutes } from 'Answers/infrastructure/api/presentation/rest/AnswersRoutes'
 // import { TicketFactory } from 'Answers/infrastructure/factories/AnswerFactory'
 

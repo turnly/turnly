@@ -1,4 +1,4 @@
-import { CommandHandler, ICommandHandler, IEventBus } from '@turnly/core'
+import { CommandHandler, ICommandHandler, IEventBus } from '@turnly/shared'
 import { IAnswerWritableRepository } from 'Answers/domain/contracts/IAnswerRepository'
 import { Answer } from 'Answers/domain/entities/Answer'
 

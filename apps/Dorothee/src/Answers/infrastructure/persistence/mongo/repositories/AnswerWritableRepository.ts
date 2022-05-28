@@ -1,4 +1,4 @@
-import { MongoRepository } from '@turnly/core'
+import { MongoRepository } from '@turnly/shared'
 import { IAnswerMapper } from 'Answers/domain/contracts/IAnswerMapper'
 import { IAnswerWritableRepository } from 'Answers/domain/contracts/IAnswerRepository'
 import { Answer } from 'Answers/domain/entities/Answer'

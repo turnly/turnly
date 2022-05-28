@@ -1,4 +1,4 @@
-import { ICommandBus } from '@turnly/core'
+import { ICommandBus } from '@turnly/shared'
 import { CreateFieldCommand } from 'Fields/application/commands/CreateFieldCommand'
 import { ICreateFieldUseCase } from 'Fields/domain/contracts/use-cases/ICreateFieldUseCase'
 import { Field } from 'Fields/domain/entities/Field'

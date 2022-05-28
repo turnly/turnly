@@ -1,5 +1,5 @@
-import { ICommandHandler, IQueryHandler } from '@turnly/core'
-import { Box } from '@turnly/core'
+import { ICommandHandler, IQueryHandler } from '@turnly/shared'
+import { Box } from '@turnly/shared'
 import { CreateAnswerCommandHandler } from 'Answers/application/commands/CreateAnswerCommand'
 import { SaveAnswerReadingDBCommandHandler } from 'Answers/application/commands/SaveAnswerReadingDBCommand'
 

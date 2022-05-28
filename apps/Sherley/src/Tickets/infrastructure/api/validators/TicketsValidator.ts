@@ -1,4 +1,4 @@
-import { Validator } from '@turnly/core'
+import { Validator } from '@turnly/shared'
 
 const create = Validator.object({
   serviceId: Validator.isId(),

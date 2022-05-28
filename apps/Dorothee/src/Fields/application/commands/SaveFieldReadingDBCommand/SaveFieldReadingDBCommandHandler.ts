@@ -1,4 +1,4 @@
-import { CommandHandler, ICommandHandler } from '@turnly/core'
+import { CommandHandler, ICommandHandler } from '@turnly/shared'
 import { IFieldWritableRepository } from 'Fields/domain/contracts/IFieldRepository'
 import { Field } from 'Fields/domain/entities/Field'
 

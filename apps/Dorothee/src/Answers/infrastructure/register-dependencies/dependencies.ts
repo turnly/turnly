@@ -1,4 +1,4 @@
-import { Box, ioc } from '@turnly/core'
+import { Box, ioc } from '@turnly/shared'
 import { CreateAnswerCommandHandler } from 'Answers/application/commands/CreateAnswerCommand'
 import { SaveAnswerReadingDBCommandHandler } from 'Answers/application/commands/SaveAnswerReadingDBCommand'
 import { CreateAnswerUseCase } from 'Answers/application/use-cases/CreateAnswerUseCase'

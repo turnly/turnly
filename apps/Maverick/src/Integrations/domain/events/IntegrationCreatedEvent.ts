@@ -1,4 +1,4 @@
-import { DomainEvent, EntityAttributes } from '@turnly/core'
+import { DomainEvent, EntityAttributes } from '@turnly/shared'
 
 import { Integration } from '../entities/Integration'
 

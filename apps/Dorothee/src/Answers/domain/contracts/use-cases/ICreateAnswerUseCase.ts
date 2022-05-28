@@ -1,4 +1,4 @@
-import { IUseCase } from '@turnly/core'
+import { IUseCase } from '@turnly/shared'
 import { CreateAnswerPayload } from 'Answers/domain/payloads/CreateAnswerPayload'
 
 import { Answer } from '../../entities/Answer'

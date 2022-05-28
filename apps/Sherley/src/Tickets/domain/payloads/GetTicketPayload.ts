@@ -1,4 +1,4 @@
-import { Guid } from '@turnly/shared'
+import { Guid } from '@turnly/common'
 
 export type GetTicketPayload = {
   id: Guid
