@@ -7,7 +7,6 @@ services:
       service: common
     image: rabbitmq:3.10.1-management-alpine
     container_name: rabbitmq
-    restart: always
     tty: true
     stdin_open: true
     ports:

@@ -1,0 +1,33 @@
+version: '3.9'
+
+services:
+  dorothee:
+    extends:
+      file: common.yml
+      service: common
+    container_name: dorothee
+    image: dorothee:latest
+    build:
+      context: ${COMPOSE_BASE_DIRECTORY}/Dorothee
+      dockerfile: ./docker/Dockerfile.dev
+      args:
+        HTTP_PORT: ${HTTP_PORT}
+        RPC_PORT: ${RPC_PORT}
+    volumes:
+      - ${COMPOSE_BASE_DIRECTORY}/Dorothee:/app
+    depends_on:
+      - networking
+      - mongo
+    labels:
+      - traefik.enable=true
+
+      - traefik.http.routers.dorothee_rpc.entrypoints=rpc
+      - traefik.http.routers.dorothee_rpc.rule=PathPrefix(`/turnly.dorothee.v1`) && Host(`rpc.turnly`) || Host(`host.docker.internal`)
+      - traefik.http.routers.dorothee_rpc.service=dorothee_rpc
+      - traefik.http.services.dorothee_rpc.loadbalancer.server.port=${RPC_PORT}
+      - traefik.http.services.dorothee_rpc.loadbalancer.server.scheme=h2c
+
+      - traefik.http.routers.dorothee_http.entrypoints=http
+      - traefik.http.routers.dorothee_http.rule=Host(`api.turnly`) && PathPrefix(`/v1/fields`, `/v1/answers`)
+      - traefik.http.routers.dorothee_http.service=dorothee_http
+      - traefik.http.services.dorothee_http.loadbalancer.server.port=${HTTP_PORT}

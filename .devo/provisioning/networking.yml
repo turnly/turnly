@@ -7,7 +7,6 @@ services:
       service: common
     image: traefik:v2.7
     container_name: networking
-    restart: always
     command:
       - --accesslog
       - --tracing
@@ -24,7 +23,7 @@ services:
       - ${RPC_PORT}:${RPC_PORT}
     networks:
       turnly:
-        aliases: 
+        aliases:
           - ${APP_PROXY_HOST}
 
 networks:

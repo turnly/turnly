@@ -10,7 +10,7 @@ x-logging: &logging
 
 x-common: &common
   <<: *logging
-  restart: unless-stopped
+  restart: always
   networks:
     turnly:
 
