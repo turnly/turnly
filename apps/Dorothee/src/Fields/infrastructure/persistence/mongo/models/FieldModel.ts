@@ -14,7 +14,6 @@ const schema = new Schema({
   },
   description: {
     type: String,
-    required: true,
   },
   type: {
     type: String,
@@ -25,12 +24,21 @@ const schema = new Schema({
     type: String,
     required: true,
   },
-  serviceId: {
+  workspaceId: {
     type: String,
     required: true,
+    index: true,
   },
   isRequired: {
     type: Boolean,
+  },
+  extra: {
+    type: [
+      {
+        key: String,
+        value: String,
+      },
+    ],
   },
 })
 

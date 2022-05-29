@@ -1,4 +1,4 @@
-import { Guid } from '@turnly/common'
+import { Extra, Guid, Nullable } from '@turnly/common'
 import { EntityAttributes } from '@turnly/shared'
 import { Ticket } from 'Tickets/domain/entities/Ticket'
 import { TicketStatus } from 'Tickets/domain/enums/TicketStatus'
@@ -11,10 +11,10 @@ export class TicketDTO {
   id: Guid
 
   @MapProp()
-  displayCode: string
+  status: TicketStatus
 
   @MapProp()
-  status: TicketStatus
+  displayCode: string
 
   @MapProp()
   serviceId: Guid
@@ -27,6 +27,12 @@ export class TicketDTO {
 
   @MapProp()
   workspaceId: Guid
+
+  @MapProp()
+  assignedToId: Nullable<Guid>
+
+  @MapProp()
+  extra: Nullable<Extra[]>
 
   public static create(entity: Entity): TicketDTO {
     return new Mapper().map(entity, new TicketDTO())

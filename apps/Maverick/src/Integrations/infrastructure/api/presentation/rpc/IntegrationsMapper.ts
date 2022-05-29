@@ -1,7 +1,5 @@
 import { Nullable } from '@turnly/common'
 import { Producers } from '@turnly/rpc'
-import { Integration } from 'Integrations/domain/entities/Integration'
-import { IntegrationStatus } from 'Integrations/domain/enums/IntegrationStatus'
 import { IntegrationDTO } from 'Integrations/infrastructure/api/dtos/IntegrationDTO'
 
 export class IntegrationMapper {
@@ -18,14 +16,5 @@ export class IntegrationMapper {
     }
 
     return integration
-  }
-
-  public static toEntity(model: Producers.Maverick.Integration): Integration {
-    return Integration.build({
-      id: model.getId(),
-      name: model.getName(),
-      origins: model.getOriginsList(),
-      status: IntegrationStatus.ACTIVE,
-    })
   }
 }

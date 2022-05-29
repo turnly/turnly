@@ -37,6 +37,22 @@ const schema = new Schema({
     required: true,
     index: true,
   },
+  assignedToId: {
+    type: String,
+    index: true,
+  },
+  createdAt: {
+    type: Date,
+    required: true,
+  },
+  extra: {
+    type: [
+      {
+        key: String,
+        value: String,
+      },
+    ],
+  },
 })
 
 export const TicketModel = mongoose.model<TicketDocument, ITicketModel>(

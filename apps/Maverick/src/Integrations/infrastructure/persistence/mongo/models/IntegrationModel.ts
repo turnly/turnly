@@ -21,6 +21,11 @@ const schema = new Schema({
     type: [String],
     required: true,
   },
+  workspaceId: {
+    type: String,
+    required: true,
+    index: true,
+  },
 })
 
 export const IntegrationModel = mongoose.model<

@@ -2,12 +2,11 @@ import { EntityAttributes } from '@turnly/shared'
 
 import { Ticket } from '../entities/Ticket'
 
-type AdditionalData = {
-  answers?: {
-    fieldId: string
-    value: string
-  }[]
-}
+type IgnoreAttrs =
+  | 'id'
+  | 'status'
+  | 'displayCode'
+  | 'assignedToId'
+  | 'createdAt'
 
-export type CreateTicketPayload = AdditionalData &
-  Omit<EntityAttributes<Ticket>, 'id' | 'status' | 'displayCode'>
+export type CreateTicketPayload = Omit<EntityAttributes<Ticket>, IgnoreAttrs>

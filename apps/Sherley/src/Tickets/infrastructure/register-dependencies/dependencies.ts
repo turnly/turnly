@@ -2,7 +2,7 @@ import { Box, ioc } from '@turnly/shared'
 import { CreateTicketCommandHandler } from 'Tickets/application/commands/CreateTicketCommand'
 import { SaveTicketReadingDBCommandHandler } from 'Tickets/application/commands/SaveTicketReadingDBCommand'
 import { SaveTicketReadingDBSubscriber } from 'Tickets/application/subscribers/SaveTicketReadingDBSubscriber'
-import { TakeTicketUseCase } from 'Tickets/application/use-cases/TakeTicketUseCase'
+import { CreateTicketUseCase } from 'Tickets/application/use-cases/CreateTicketUseCase'
 
 import { TicketsController } from '../api/controllers/TicketsController'
 import { TicketWritableElasticRepository } from '../persistence/elasticsearch/repositories/TicketWritableElasticRepository'
@@ -24,7 +24,7 @@ Box.register({
  * Use cases
  */
 Box.register({
-  takeTicketUseCase: ioc.asClass(TakeTicketUseCase).singleton(),
+  createTicketUseCase: ioc.asClass(CreateTicketUseCase).singleton(),
 })
 
 /**

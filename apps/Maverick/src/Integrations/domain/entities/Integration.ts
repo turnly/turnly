@@ -9,24 +9,69 @@ export interface Attributes {
   name: string
   status: IntegrationStatus
   origins: string[]
+  workspaceId: Guid
 }
 
+/**
+ * Integration
+ *
+ * @description Represent an Integration that is used to connect
+ * to a third-party service or applications.
+ *
+ * @author Turnly
+ */
 export class Integration extends AggregateRoot<Attributes> {
   protected constructor(
+    /**
+     * ID
+     *
+     * @description Unique identifier for the Integration
+     */
     id: Guid,
+
+    /**
+     * Name
+     *
+     * @description The name of the Integration.
+     */
     private name: string,
+
+    /**
+     * Status
+     *
+     * @description Represents the life-cycle of an Integration.
+     */
     private status: IntegrationStatus,
-    private origins: string[]
+
+    /**
+     * Origins
+     *
+     * @description The white-listed origins that are allowed to access the Integration.
+     */
+    private origins: string[],
+
+    /**
+     * Workspace
+     *
+     * @description The Workspace that the Integration belongs to.
+     */
+    private readonly workspaceId: Guid
   ) {
     super(id)
   }
 
+  /**
+   * Create Integration
+   *
+   * @description Creates a new Integration.
+   */
   public static create(attributes: Omit<Attributes, 'id'>): Integration {
     const integration = new Integration(
       Identifier.forIntegration(),
       attributes.name,
       attributes.status,
-      attributes.origins
+      attributes.origins,
+      attributes.workspaceId
     )
 
     integration.register(new IntegrationCreatedEvent(integration.toObject()))
@@ -34,21 +79,33 @@ export class Integration extends AggregateRoot<Attributes> {
     return integration
   }
 
+  /**
+   * Build Integration
+   *
+   * @description Builds an Integration from an object.
+   */
   public static build(attributes: Attributes): Integration {
     return new Integration(
       attributes.id,
       attributes.name,
       attributes.status,
-      attributes.origins
+      attributes.origins,
+      attributes.workspaceId
     )
   }
 
+  /**
+   * Integration object
+   *
+   * @description Returns the Integration as an object.
+   */
   public toObject(): Attributes {
     return {
       id: this.id,
       name: this.name,
       status: this.status,
       origins: this.origins,
+      workspaceId: this.workspaceId,
     }
   }
 }

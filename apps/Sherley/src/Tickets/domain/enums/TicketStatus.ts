@@ -41,7 +41,7 @@ export enum TicketStatus {
    *
    * @description Use it when the agent has called the customer multiple times.
    */
-  RECALLED = 'recalled',
+  RECALLED = 're_called',
 
   /**
    * Cancelled status

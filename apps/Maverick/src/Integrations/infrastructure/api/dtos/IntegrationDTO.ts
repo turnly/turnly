@@ -19,6 +19,9 @@ export class IntegrationDTO {
   @MapProp()
   origins: string[]
 
+  @MapProp()
+  workspaceId: Guid
+
   public static create(entity: Entity): IntegrationDTO {
     return new Mapper().map(entity, new IntegrationDTO())
   }

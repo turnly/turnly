@@ -1,7 +1,6 @@
 import { CommandHandler, ICommandHandler, IEventBus } from '@turnly/shared'
 import { ITicketWritableRepository } from 'Tickets/domain/contracts/ITicketRepository'
 import { Ticket } from 'Tickets/domain/entities/Ticket'
-import { TicketStatus } from 'Tickets/domain/enums/TicketStatus'
 
 import { CreateTicketCommand } from './CreateTicketCommand'
 
@@ -17,14 +16,7 @@ export class CreateTicketCommandHandler
   public async execute({
     params: { payload, publishEventsInstantly },
   }: CreateTicketCommand) {
-    const ticket = Ticket.create({
-      ...payload,
-      status: TicketStatus.BOOKED,
-      /**
-       * @todo Create function to get the next ticket number
-       */
-      displayCode: Date.now().toString(),
-    })
+    const ticket = Ticket.create(payload)
 
     await this.ticketsWritableRepository.save(ticket)
 

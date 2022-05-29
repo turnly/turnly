@@ -1,4 +1,4 @@
-import { Guid } from '@turnly/common'
+import { Extra, Guid, Nullable } from '@turnly/common'
 import { EntityAttributes } from '@turnly/shared'
 import { Field } from 'Fields/domain/entities/Field'
 import { FieldTypes } from 'Fields/domain/enums/FieldTypes'
@@ -14,7 +14,7 @@ export class FieldDTO {
   label: string
 
   @MapProp()
-  description: string
+  description: Nullable<string>
 
   @MapProp()
   type: FieldTypes
@@ -23,10 +23,13 @@ export class FieldDTO {
   entityType: string
 
   @MapProp()
-  serviceId: string
+  isRequired: boolean
 
   @MapProp()
-  isRequired: boolean
+  workspaceId: Guid
+
+  @MapProp()
+  extra: Nullable<Extra[]>
 
   public static create(entity: Entity): FieldDTO {
     return new Mapper().map(entity, new FieldDTO())
