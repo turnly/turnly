@@ -2,6 +2,8 @@
 
 Monorepo of back-end applications that make up much of Turnly's APIs.
 
+![dynamic-communication](/docs/architecture/assets/api.png)
+
 ### Applications Overview
 
 | Name                                       | Description                                  |
