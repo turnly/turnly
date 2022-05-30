@@ -12,7 +12,7 @@ export interface Attributes {
   serviceId: Guid
   locationId: Guid
   customerId: Guid
-  workspaceId: Guid
+  companyId: Guid
   assignedToId: Nullable<Guid>
   createdAt: Date
   extra: Nullable<Extra[]>
@@ -71,11 +71,11 @@ export class Ticket extends AggregateRoot<Attributes> {
     private readonly customerId: Guid,
 
     /**
-     * Workspace
+     * Company
      *
-     * @description The Workspace that the Ticket belongs to.
+     * @description The Company that the Ticket belongs to.
      */
-    private readonly workspaceId: Guid,
+    private readonly companyId: Guid,
 
     /**
      * Assigned To
@@ -123,7 +123,7 @@ export class Ticket extends AggregateRoot<Attributes> {
       attributes.serviceId,
       attributes.locationId,
       attributes.customerId,
-      attributes.workspaceId,
+      attributes.companyId,
       null,
       new Date(),
       attributes.extra
@@ -147,7 +147,7 @@ export class Ticket extends AggregateRoot<Attributes> {
       attributes.serviceId,
       attributes.locationId,
       attributes.customerId,
-      attributes.workspaceId,
+      attributes.companyId,
       attributes.assignedToId,
       attributes.createdAt,
       attributes.extra
@@ -167,7 +167,7 @@ export class Ticket extends AggregateRoot<Attributes> {
       serviceId: this.serviceId,
       locationId: this.locationId,
       customerId: this.customerId,
-      workspaceId: this.workspaceId,
+      companyId: this.companyId,
       assignedToId: this.assignedToId,
       createdAt: this.createdAt,
       extra: this.extra,

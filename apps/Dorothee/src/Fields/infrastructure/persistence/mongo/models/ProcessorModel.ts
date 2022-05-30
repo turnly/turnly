@@ -14,7 +14,7 @@ const schema = new Schema({
   description: {
     type: String,
   },
-  workspaceId: {
+  companyId: {
     type: String,
     required: true,
     index: true,

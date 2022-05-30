@@ -26,7 +26,7 @@ export class TicketDTO {
   customerId: Guid
 
   @MapProp()
-  workspaceId: Guid
+  companyId: Guid
 
   @MapProp()
   assignedToId: Nullable<Guid>

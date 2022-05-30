@@ -11,7 +11,7 @@ export interface Attributes {
   type: FieldTypes
   entityType: string
   isRequired: boolean
-  workspaceId: Guid
+  companyId: Guid
   processors: Nullable<Processor[]>
   extra: Nullable<Extra[]>
 }
@@ -68,11 +68,11 @@ export class Field extends AggregateRoot<Attributes> {
     private isRequired: boolean = false,
 
     /**
-     * Workspace
+     * Company
      *
-     * @description The Workspace that the Field belongs to.
+     * @description The Company that the Field belongs to.
      */
-    private readonly workspaceId: Guid,
+    private readonly companyId: Guid,
 
     /**
      * Processors
@@ -105,7 +105,7 @@ export class Field extends AggregateRoot<Attributes> {
       attributes.type,
       attributes.entityType,
       attributes.isRequired,
-      attributes.workspaceId,
+      attributes.companyId,
       attributes.processors,
       attributes.extra
     )
@@ -124,7 +124,7 @@ export class Field extends AggregateRoot<Attributes> {
       attributes.type,
       attributes.entityType,
       attributes.isRequired,
-      attributes.workspaceId,
+      attributes.companyId,
       attributes.processors,
       attributes.extra
     )
@@ -143,7 +143,7 @@ export class Field extends AggregateRoot<Attributes> {
       type: this.type,
       entityType: this.entityType,
       isRequired: this.isRequired,
-      workspaceId: this.workspaceId,
+      companyId: this.companyId,
       processors: this.processors,
       extra: this.extra,
     }

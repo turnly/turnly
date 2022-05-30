@@ -18,7 +18,7 @@ Monorepo of back-end applications that make up much of Turnly's APIs.
 | [Shannon](/apps/Shannon)                   | Team Management                              |
 | [Polly](/apps/Polly)                       | Activities History                           |
 | [Wayne](/apps/Wayne)                       | Billing Service                              |
-| [Maverick](/apps/Maverick)                 | Integrations, Workspaces & Webhooks          |
+| [Maverick](/apps/Maverick)                 | Integrations, Webhooks & Beacons             |
 | [Bifrost](/apps/Bifrost)                   | Realtime Bridge (WebSocket)                  |
 
 ### BFF (Back-end for Front-end)

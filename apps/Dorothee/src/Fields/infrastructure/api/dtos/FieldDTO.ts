@@ -26,7 +26,7 @@ export class FieldDTO {
   isRequired: boolean
 
   @MapProp()
-  workspaceId: Guid
+  companyId: Guid
 
   @MapProp()
   extra: Nullable<Extra[]>

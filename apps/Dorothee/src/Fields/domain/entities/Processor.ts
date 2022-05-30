@@ -5,7 +5,7 @@ export interface Attributes {
   id: Guid
   name: string
   description: Nullable<string>
-  workspaceId: Guid
+  companyId: Guid
   url: string
   signature: string
   isActive: boolean
@@ -43,11 +43,11 @@ export class Processor extends AggregateRoot<Attributes> {
     private description: Nullable<string>,
 
     /**
-     * Workspace
+     * Company
      *
-     * @description The Workspace that the Processor belongs to.
+     * @description The Company that the Processor belongs to.
      */
-    private readonly workspaceId: Guid,
+    private readonly companyId: Guid,
 
     /**
      * URL
@@ -90,7 +90,7 @@ export class Processor extends AggregateRoot<Attributes> {
       Identifier.generate('pr'),
       attributes.name,
       attributes.description,
-      attributes.workspaceId,
+      attributes.companyId,
       attributes.url,
       attributes.signature,
       attributes.isActive,
@@ -108,7 +108,7 @@ export class Processor extends AggregateRoot<Attributes> {
       attributes.id,
       attributes.name,
       attributes.description,
-      attributes.workspaceId,
+      attributes.companyId,
       attributes.url,
       attributes.signature,
       attributes.isActive,
@@ -126,7 +126,7 @@ export class Processor extends AggregateRoot<Attributes> {
       id: this.id,
       name: this.name,
       description: this.description,
-      workspaceId: this.workspaceId,
+      companyId: this.companyId,
       url: this.url,
       signature: this.signature,
       isActive: this.isActive,

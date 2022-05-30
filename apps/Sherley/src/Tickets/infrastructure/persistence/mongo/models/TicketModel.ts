@@ -32,7 +32,7 @@ const schema = new Schema({
     required: true,
     index: true,
   },
-  workspaceId: {
+  companyId: {
     type: String,
     required: true,
     index: true,

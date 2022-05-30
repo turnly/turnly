@@ -9,7 +9,7 @@ export interface Attributes {
   name: string
   status: IntegrationStatus
   origins: string[]
-  workspaceId: Guid
+  companyId: Guid
 }
 
 /**
@@ -51,11 +51,11 @@ export class Integration extends AggregateRoot<Attributes> {
     private origins: string[],
 
     /**
-     * Workspace
+     * Company
      *
-     * @description The Workspace that the Integration belongs to.
+     * @description The Company that the Integration belongs to.
      */
-    private readonly workspaceId: Guid
+    private readonly companyId: Guid
   ) {
     super(id)
   }
@@ -71,7 +71,7 @@ export class Integration extends AggregateRoot<Attributes> {
       attributes.name,
       attributes.status,
       attributes.origins,
-      attributes.workspaceId
+      attributes.companyId
     )
 
     integration.register(new IntegrationCreatedEvent(integration.toObject()))
@@ -90,7 +90,7 @@ export class Integration extends AggregateRoot<Attributes> {
       attributes.name,
       attributes.status,
       attributes.origins,
-      attributes.workspaceId
+      attributes.companyId
     )
   }
 
@@ -105,7 +105,7 @@ export class Integration extends AggregateRoot<Attributes> {
       name: this.name,
       status: this.status,
       origins: this.origins,
-      workspaceId: this.workspaceId,
+      companyId: this.companyId,
     }
   }
 }

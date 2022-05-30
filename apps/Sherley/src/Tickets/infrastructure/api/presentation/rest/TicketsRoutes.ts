@@ -21,14 +21,14 @@ export class TicketsRoutes extends BaseRoutes {
     _res: ExpressResponse,
     _next: NextFunction
   ) {
-    const { customerId, locationId, serviceId, workspaceId, extra } =
+    const { customerId, locationId, serviceId, companyId, extra } =
       new RequestDecorator<CreateTicketPayload>(req).toData()
 
     return await this.ticketsController.take({
       customerId,
       locationId,
       serviceId,
-      workspaceId,
+      companyId,
       extra,
     })
   }
