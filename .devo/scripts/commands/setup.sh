@@ -6,6 +6,7 @@ function setup() {
     "iam.turnly"
     "ws.turnly"
     "api.turnly"
+    "widgets.turnly"
     "$APP_PROXY_HOST"
   )
 

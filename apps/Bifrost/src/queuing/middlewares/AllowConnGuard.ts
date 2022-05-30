@@ -7,7 +7,7 @@ import {
 import { Environment } from '@turnly/common/dist/config/environment'
 import { Events, IRealtimeClient, RealtimeMiddle } from '@turnly/realtime'
 
-import { Integrations } from '../../consumers/integrations'
+import { Integrations } from '../../services'
 
 /**
  * Allow connection guard
@@ -90,7 +90,7 @@ export class AllowConnGuard {
 
     return {
       origin,
-      integrationId: query.key as Guid,
+      integrationId: query.widgetId as Guid,
     }
   }
 }
