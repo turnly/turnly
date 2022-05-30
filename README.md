@@ -4,7 +4,7 @@ Monorepo of back-end applications that make up much of Turnly's APIs.
 
 ![dynamic-communication](/docs/architecture/assets/api.png)
 
-### Applications Overview
+### Microservices
 
 | Name                                       | Description                                  |
 | ------------------------------------------ | -------------------------------------------- |
@@ -20,6 +20,12 @@ Monorepo of back-end applications that make up much of Turnly's APIs.
 | [Wayne](/apps/Wayne)                       | Billing Service                              |
 | [Maverick](/apps/Maverick)                 | Integrations, Workspaces & Webhooks          |
 | [Bifrost](/apps/Bifrost)                   | Realtime Bridge (WebSocket)                  |
+
+### BFF (Back-end for Front-end)
+
+| Name                                       | Description                                  |
+| ------------------------------------------ | -------------------------------------------- |
+| [Widgets BFF](/apps/WidgetsBFF)            | GraphQL API for widgets clients              |
 
 #### Getting Started as a Developer
 
