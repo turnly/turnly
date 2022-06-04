@@ -2,7 +2,7 @@
 
 Monorepo of back-end applications that make up much of Turnly's APIs.
 
-![dynamic-communication](/docs/architecture/assets/api.png)
+![high-level-architecture](/docs/diagrams/high-level-architecture.png)
 
 ### Microservices
 
