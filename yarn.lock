@@ -1491,28 +1491,9 @@
     opossum "^6.3.0"
     winston "^3.3.3"
 
-"@turnly/eslint-config@git+https://turnlyapps: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@github.com/turnly/configs.git":
-  version "1.0.0"
-  uid "5b9665c934c96d45f2c43173d5962087aca6006c"
-  resolved "git+https://turnlyapps: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@github.com/turnly/configs.git#5b9665c934c96d45f2c43173d5962087aca6006c"
-  dependencies:
-    "@commitlint/cli" "^16.2.4"
-    "@commitlint/config-conventional" "^16.2.4"
-    "@typescript-eslint/eslint-plugin" "^5.23.0"
-    "@typescript-eslint/parser" "^5.23.0"
-    dotenv "^16.0.1"
-    eslint "^8.15.0"
-    eslint-config-prettier "^8.3.0"
-    eslint-plugin-prettier "^4.0.0"
-    eslint-plugin-security-node "^1.0.14"
-    eslint-plugin-simple-import-sort "^7.0.0"
-    eslint-plugin-sonarjs "^0.13.0"
-    prettier "^2.3.0"
-    ts-jest "^28.0.2"
-
 "@turnly/eslint-config@github:turnly/configs":
   version "1.0.0"
-  resolved "https://codeload.github.com/turnly/configs/tar.gz/5b9665c934c96d45f2c43173d5962087aca6006c"
+  resolved "https://codeload.github.com/turnly/configs/tar.gz/7f732c814b334724b5f3e112bd959bf8a4c184f5"
   dependencies:
     "@commitlint/cli" "^16.2.4"
     "@commitlint/config-conventional" "^16.2.4"
@@ -1537,11 +1518,10 @@
 
 "@turnly/rpc@git+https://turnlyapps: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@github.com/turnly/rpc.git#latest":
   version "1.0.0"
-  resolved "git+https://turnlyapps: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@github.com/turnly/rpc.git#6ac0ee52b0650497a433aa89271ac8f5689ea895"
+  resolved "git+https://turnlyapps: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@github.com/turnly/rpc.git#f12790c1a627f4cea5779538aa3cc8d03ce71dcf"
   dependencies:
     "@grpc/grpc-js" "^1.6.7"
     "@turnly/common" "git+https://turnlyapps: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@github.com/turnly/common.git#latest"
-    "@turnly/eslint-config" "git+https://turnlyapps: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@github.com/turnly/configs.git"
     google-protobuf "^3.20.1"
 
 "@turnly/shared@git+https://turnlyapps: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@github.com/turnly/shared.git#latest":

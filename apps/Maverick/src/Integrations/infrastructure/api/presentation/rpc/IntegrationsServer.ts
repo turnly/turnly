@@ -11,7 +11,7 @@ export class IntegrationsServer extends Producers.ServerImplementation<Producers
   }
 
   @Producers.CallHandler(Producers.Maverick.GetIntegrationResponse)
-  public async getIntegration(
+  public async get(
     call: Producers.ServerUnaryCall<
       Producers.Maverick.GetIntegrationRequest,
       Producers.Maverick.GetIntegrationResponse
@@ -33,7 +33,7 @@ export class IntegrationsServer extends Producers.ServerImplementation<Producers
 
   public get implementation() {
     return {
-      getIntegration: this.getIntegration.bind(this),
+      get: this.get.bind(this),
     }
   }
 }

@@ -8,10 +8,6 @@ export class Application extends Startup {
    */
   public async setup(): Promise<void> {
     await this.setupDatabase()
-
-    const { rpc } = await import('presentation/rpc')
-
-    rpc.setup()
   }
 
   public async setupDatabase(): Promise<void> {

@@ -9,9 +9,7 @@ import { FieldByServiceIdQuery } from './FieldByServiceIdQuery'
 export class FieldByIdQueryHandler
   implements IQueryHandler<FieldByServiceIdQuery, Nullable<Field>>
 {
-  public constructor(
-    private readonly fieldsReadableRepo: IFieldReadableRepo
-  ) {}
+  public constructor(private readonly fieldsReadableRepo: IFieldReadableRepo) {}
 
   public async execute({ params }: FieldByServiceIdQuery) {
     const { id } = params

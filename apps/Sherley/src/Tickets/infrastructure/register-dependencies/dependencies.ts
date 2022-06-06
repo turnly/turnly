@@ -14,7 +14,7 @@ Box.register({
   ticketsMapper: ioc.asClass(TicketMapper).singleton(),
   ticketsReadableRepo: ioc.asClass(TicketReadableRepo).singleton(),
   ticketsWritableRepo: ioc.asClass(TicketWritableRepo).singleton(),
-  ticketWritableElasticRepo: ioc
+  ticketsWritableElasticRepo: ioc
     .asClass(TicketWritableElasticRepo)
     .singleton(),
   ticketsController: ioc.asClass(TicketsController).singleton(),

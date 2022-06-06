@@ -9,12 +9,12 @@ export class SaveTicketReadingDBCommandHandler
   implements ICommandHandler<SaveTicketReadingDBCommand, void>
 {
   public constructor(
-    private readonly ticketWritableElasticRepo: ITicketWritableRepo
+    private readonly ticketsWritableElasticRepo: ITicketWritableRepo
   ) {}
 
   public async execute({ payload }: SaveTicketReadingDBCommand) {
     const ticket = Ticket.build(payload)
 
-    await this.ticketWritableElasticRepo.save(ticket)
+    await this.ticketsWritableElasticRepo.save(ticket)
   }
 }
