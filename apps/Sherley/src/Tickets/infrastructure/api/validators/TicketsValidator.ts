@@ -13,6 +13,12 @@ const create = Validator.object({
   extra: Validator.getBuilder().array().items(extra).optional(),
 })
 
+const get = Validator.object({
+  id: Validator.isId(),
+  companyId: Validator.isId(),
+})
+
 export const validator = {
   create,
+  get,
 }

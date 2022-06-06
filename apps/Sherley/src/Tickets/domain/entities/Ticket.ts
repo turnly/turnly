@@ -145,6 +145,10 @@ export class Ticket extends AggregateRoot {
     ].includes(this.status)
   }
 
+  public isOwnedBy(companyId: Guid): boolean {
+    return this.companyId === companyId
+  }
+
   /**
    * Create Ticket
    *

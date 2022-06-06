@@ -38,12 +38,32 @@ export class TicketsServer extends Producers.ServerImplementation<Producers.Sher
     callback(null, response)
   }
 
+  @Producers.CallHandler(Producers.Sherley.GetTicketResponse)
+  public async get(
+    call: Producers.ServerUnaryCall<
+      Producers.Sherley.GetTicketRequest,
+      Producers.Sherley.GetTicketResponse
+    >,
+    callback: Producers.ICallback<Producers.Sherley.GetTicketResponse>
+  ) {
+    const { data, meta } = await this.ticketsController.get({
+      id: call.request.getId(),
+      companyId: call.request.getCompanyId(),
+    })
+
+    const response = new Producers.Sherley.GetTicketResponse()
+    const ticket = TicketMapper.toRPC(data)
+
+    response.setData(ticket)
+    response.setMeta(Producers.MetaMapper.toRPC(meta))
+
+    callback(null, response)
+  }
+
   public get implementation() {
     return {
       create: this.create.bind(this),
-      get: () => {
-        throw new NotImplementedError()
-      },
+      get: this.get.bind(this),
       leave: () => {
         throw new NotImplementedError()
       },
