@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "@turnly/shared": "git+https://turnlyapps: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@github.com/turnly/shared.git#latest",
-    "@turnly/eslint-config": "git+https://turnlyapps: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@github.com/turnly/configs.git",
+    "@turnly/eslint-config": "github:turnly/configs",
     "@turnly/rpc": "git+https://turnlyapps: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@github.com/turnly/rpc.git#latest",
     "@turnly/common": "git+https://turnlyapps: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@github.com/turnly/common.git#latest",
     "dotenv": "^10.0.0",

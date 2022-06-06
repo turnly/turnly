@@ -12,17 +12,17 @@
     ]
   },
   "scripts": {
-    "prepare": "husky install",
-    "devo": "bash ./.devo/devo.sh"
+    "devo": "bash ./.devo/devo.sh",
+    "prepare": "husky install"
   },
   "commitlint": {
     "extends": [
-      "@turnly/eslint-config/commits/commitlint.athena.js"
+      "@turnly/eslint-config/commits/commitlint.js"
     ]
   },
   "devDependencies": {
     "@commitlint/cli": "^16.2.4",
-    "@turnly/eslint-config": "git+https://turnlyapps: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@github.com/turnly/configs.git",
+    "@turnly/eslint-config": "github:turnly/configs",
     "husky": "^8.0.1"
   },
   "engines": {
