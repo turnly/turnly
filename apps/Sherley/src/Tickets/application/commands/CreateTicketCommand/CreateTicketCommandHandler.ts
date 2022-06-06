@@ -1,6 +1,8 @@
 import { CommandHandler, ICommandHandler, IEventBus } from '@turnly/shared'
-import { ITicketWritableRepo } from 'Tickets/domain/contracts/ITicketRepo'
+import { ITicketsWritableRepo } from 'Tickets/domain/contracts/ITicketsRepo'
 import { Ticket } from 'Tickets/domain/entities/Ticket'
+import { TicketPriority } from 'Tickets/domain/enums/TicketPriority'
+import { TicketStatus } from 'Tickets/domain/enums/TicketStatus'
 
 import { CreateTicketCommand } from './CreateTicketCommand'
 
@@ -10,18 +12,28 @@ export class CreateTicketCommandHandler
 {
   public constructor(
     private readonly eventBus: IEventBus,
-    private readonly ticketsWritableRepo: ITicketWritableRepo
+    private readonly ticketsWritableRepo: ITicketsWritableRepo
   ) {}
 
-  public async execute({
-    params: { payload, publishEventsInstantly },
-  }: CreateTicketCommand) {
-    const ticket = Ticket.create(payload)
+  public async execute({ payload }: CreateTicketCommand) {
+    const ticket = Ticket.create({
+      ...payload,
+      status: TicketStatus.BOOKED,
+      priority: TicketPriority.NORMAL,
+      displayCode: await this.generateDisplayCode(),
+    })
 
     await this.ticketsWritableRepo.save(ticket)
 
-    if (publishEventsInstantly) this.eventBus.publish(ticket.pull())
+    this.eventBus.publish(ticket.pull())
 
     return ticket
+  }
+
+  private async generateDisplayCode() {
+    /**
+     * @todo Create a unique display code generator. This is a temporary solution.
+     */
+    return new Date().toTimeString()
   }
 }

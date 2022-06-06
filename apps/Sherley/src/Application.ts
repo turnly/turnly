@@ -9,11 +9,11 @@ export class Application extends Startup {
   public async setup(): Promise<void> {
     await this.setupDatabase()
 
-    const { rest } = await import('presentation/rest')
+    const { rpc } = await import('presentation/rpc')
 
-    this.setupMonitoring(rest.app)
+    this.setupMonitoring()
 
-    rest.setup()
+    rpc.setup()
   }
 
   public async setupDatabase(): Promise<void> {

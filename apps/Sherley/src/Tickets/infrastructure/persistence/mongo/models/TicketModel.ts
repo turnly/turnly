@@ -1,9 +1,15 @@
 /* eslint-disable @typescript-eslint/naming-convention */
+import { EntityAttributes } from '@turnly/shared'
 import mongoose, { Document, Model, Schema } from 'mongoose'
-import { Attributes as Attrs } from 'Tickets/domain/entities/Ticket'
+import { Ticket } from 'Tickets/domain/entities/Ticket'
+import { TicketPriority } from 'Tickets/domain/enums/TicketPriority'
+import { TicketScore } from 'Tickets/domain/enums/TicketScore'
 import { TicketStatus } from 'Tickets/domain/enums/TicketStatus'
 
-export interface TicketDocument extends Omit<Attrs, 'id'>, Document {}
+export interface TicketDocument
+  extends Omit<EntityAttributes<Ticket>, 'id'>,
+    Document {}
+
 export type ITicketModel = Model<TicketDocument>
 
 const schema = new Schema({
@@ -11,6 +17,11 @@ const schema = new Schema({
   status: {
     type: String,
     enum: TicketStatus,
+    required: true,
+  },
+  priority: {
+    type: String,
+    enum: TicketPriority,
     required: true,
   },
   displayCode: {
@@ -37,13 +48,19 @@ const schema = new Schema({
     required: true,
     index: true,
   },
-  assignedToId: {
+  assigneeId: {
     type: String,
     index: true,
   },
   createdAt: {
     type: Date,
     required: true,
+  },
+  rating: {
+    type: {
+      score: TicketScore,
+      comment: String,
+    },
   },
   extra: {
     type: [

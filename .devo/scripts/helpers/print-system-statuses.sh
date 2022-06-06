@@ -11,11 +11,12 @@ function print_system_statuses() {
 
   line
 
-  info " 🟢 RESTful API: http://api.turnly:$HTTP_PORT"
-  info " 🟢 Widgets API: http://widgets.turnly:$HTTP_PORT"
-  info " 🟢 Realtime: http://ws.turnly:$HTTP_PORT"
-  info " 🟢 Heimdall IAM (Auth Service): http://iam.turnly:$HTTP_PORT"
-  info " 🟢 RPC - Inter-services communication: http://rpc.turnly:$RPC_PORT"
+  info " 🟢 Global API                           : http://api.turnly:$HTTP_PORT"
+  info " 🟢 Widgets API                          : http://widgets.turnly:$HTTP_PORT"
+  info " 🟢 Auth API                             : http://accounts.turnly:$HTTP_PORT"
+
+  info " 🟢 Streaming API                        : http://stream.turnly:$HTTP_PORT"
+  info " 🟢 RPC - Inter-services communication   : http://rpc.turnly:$RPC_PORT"
 
   line
 

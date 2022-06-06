@@ -1518,7 +1518,7 @@
 
 "@turnly/rpc@git+https://turnlyapps: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@github.com/turnly/rpc.git#latest":
   version "1.0.0"
-  resolved "git+https://turnlyapps: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@github.com/turnly/rpc.git#f12790c1a627f4cea5779538aa3cc8d03ce71dcf"
+  resolved "git+https://turnlyapps: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@github.com/turnly/rpc.git#68c448a121fecbfb63fece6499f896a837545ed5"
   dependencies:
     "@grpc/grpc-js" "^1.6.7"
     "@turnly/common" "git+https://turnlyapps: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@github.com/turnly/common.git#latest"
@@ -1526,7 +1526,7 @@
 
 "@turnly/shared@git+https://turnlyapps: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@github.com/turnly/shared.git#latest":
   version "1.0.0"
-  resolved "git+https://turnlyapps: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@github.com/turnly/shared.git#83842f6dcecdd85fa686f5cd3f3531a79c20ab52"
+  resolved "git+https://turnlyapps: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@github.com/turnly/shared.git#315bde508b738b51e19793a5b126ed981bbe6873"
   dependencies:
     "@elastic/elasticsearch" "7.17.0"
     "@turnly/common" "git+https://turnlyapps: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@github.com/turnly/common.git#latest"

@@ -20,6 +20,6 @@ services:
       - traefik.enable=true
 
       - traefik.http.routers.bifrost_http.entrypoints=http
-      - traefik.http.routers.bifrost_http.rule=Host(`ws.turnly`) || Host(`host.docker.internal`) && Path(`/`)
+      - traefik.http.routers.bifrost_http.rule=Host(`stream.turnly`) || Host(`host.docker.internal`) && Path(`/`)
       - traefik.http.routers.bifrost_http.service=bifrost_http
       - traefik.http.services.bifrost_http.loadbalancer.server.port=${HTTP_PORT}

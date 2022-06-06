@@ -1,22 +1,11 @@
 import { Extra, Guid, Identifier, Nullable } from '@turnly/common'
-import { AggregateRoot } from '@turnly/shared'
+import { AggregateRoot, EntityAttributes } from '@turnly/shared'
 
+import { TicketPriority } from '../enums/TicketPriority'
+import { TicketScore } from '../enums/TicketScore'
 import { TicketStatus } from '../enums/TicketStatus'
 import { TicketCreatedEvent } from '../events/TicketCreatedEvent'
 import { CreateTicketPayload } from '../payloads/CreateTicketPayload'
-
-export interface Attributes {
-  id: Guid
-  status: TicketStatus
-  displayCode: string
-  serviceId: Guid
-  locationId: Guid
-  customerId: Guid
-  companyId: Guid
-  assignedToId: Nullable<Guid>
-  createdAt: Date
-  extra: Nullable<Extra[]>
-}
 
 /**
  * Ticket
@@ -26,7 +15,7 @@ export interface Attributes {
  *
  * @author Turnly
  */
-export class Ticket extends AggregateRoot<Attributes> {
+export class Ticket extends AggregateRoot {
   protected constructor(
     /**
      * ID
@@ -41,6 +30,13 @@ export class Ticket extends AggregateRoot<Attributes> {
      * @description Represents the life-cycle of a Ticket.
      */
     private status: TicketStatus,
+
+    /**
+     * Priority
+     *
+     * @description Represents the priority of a Ticket.
+     */
+    private readonly priority: TicketPriority,
 
     /**
      * Display Code
@@ -82,7 +78,7 @@ export class Ticket extends AggregateRoot<Attributes> {
      *
      * @description The Agent that is currently assigned to the Ticket.
      */
-    private assignedToId: Nullable<Guid>,
+    private assigneeId: Nullable<Guid>,
 
     /**
      * Created At
@@ -90,6 +86,16 @@ export class Ticket extends AggregateRoot<Attributes> {
      * @description The date and time the Ticket was created.
      */
     private readonly createdAt: Date,
+
+    /**
+     * Rating
+     *
+     * @description The Customer's rating for the experience at the Location.
+     */
+    private rating?: Nullable<{
+      score: TicketScore
+      comment: Nullable<string>
+    }>,
 
     /**
      * Extra
@@ -108,24 +114,18 @@ export class Ticket extends AggregateRoot<Attributes> {
    * @description Creates a new Ticket.
    */
   public static create(attributes: CreateTicketPayload): Ticket {
-    const status = TicketStatus.BOOKED
-    const id = Identifier.generate('tk')
-
-    /**
-     * @todo Create functionality to generate display code
-     */
-    const displayCode = Date.now().toString()
-
     const ticket = new Ticket(
-      id,
-      status,
-      displayCode,
+      Identifier.generate('tk'),
+      attributes.status,
+      attributes.priority,
+      attributes.displayCode,
       attributes.serviceId,
       attributes.locationId,
       attributes.customerId,
       attributes.companyId,
       null,
       new Date(),
+      null,
       attributes.extra
     )
 
@@ -139,17 +139,19 @@ export class Ticket extends AggregateRoot<Attributes> {
    *
    * @description Builds a Ticket from an object.
    */
-  public static build(attributes: Attributes): Ticket {
+  public static build(attributes: EntityAttributes<Ticket>): Ticket {
     return new Ticket(
       attributes.id,
       attributes.status,
+      attributes.priority,
       attributes.displayCode,
       attributes.serviceId,
       attributes.locationId,
       attributes.customerId,
       attributes.companyId,
-      attributes.assignedToId,
+      attributes.assigneeId,
       attributes.createdAt,
+      attributes.rating,
       attributes.extra
     )
   }
@@ -159,17 +161,19 @@ export class Ticket extends AggregateRoot<Attributes> {
    *
    * @description Returns the Ticket as an object.
    */
-  public toObject(): Attributes {
+  public toObject() {
     return {
       id: this.id,
       status: this.status,
+      priority: this.priority,
       displayCode: this.displayCode,
       serviceId: this.serviceId,
       locationId: this.locationId,
       customerId: this.customerId,
       companyId: this.companyId,
-      assignedToId: this.assignedToId,
+      assigneeId: this.assigneeId,
       createdAt: this.createdAt,
+      rating: this.rating,
       extra: this.extra,
     }
   }

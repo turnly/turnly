@@ -1,21 +1,19 @@
 import { Box, ioc } from '@turnly/shared'
 import { CreateTicketCommandHandler } from 'Tickets/application/commands/CreateTicketCommand'
-import { SaveTicketReadingDBCommandHandler } from 'Tickets/application/commands/SaveTicketReadingDBCommand'
-import { SaveTicketReadingDBSubscriber } from 'Tickets/application/subscribers/SaveTicketReadingDBSubscriber'
+import { CreateTicketReadingDBCommandHandler } from 'Tickets/application/commands/CreateTicketReadingDBCommand'
+import { CreateTicketReadingDBSubscriber } from 'Tickets/application/subscribers/CreateTicketReadingDBSubscriber'
 import { CreateTicketUseCase } from 'Tickets/application/use-cases/CreateTicketUseCase'
 
 import { TicketsController } from '../api/controllers/TicketsController'
-import { TicketWritableElasticRepo } from '../persistence/elasticsearch/repositories/TicketWritableElasticRepo'
+import { TicketsWritableForReadableRepo } from '../persistence/elasticsearch/repositories/TicketsWritableForReadableRepo'
 import { TicketMapper } from '../persistence/mongo/entity-model-mappers/TicketMapper'
-import { TicketReadableRepo } from '../persistence/mongo/repositories/TicketReadableRepo'
-import { TicketWritableRepo } from '../persistence/mongo/repositories/TicketWritableRepo'
+import { TicketsWritableRepo } from '../persistence/mongo/repositories/TicketsWritableRepo'
 
 Box.register({
   ticketsMapper: ioc.asClass(TicketMapper).singleton(),
-  ticketsReadableRepo: ioc.asClass(TicketReadableRepo).singleton(),
-  ticketsWritableRepo: ioc.asClass(TicketWritableRepo).singleton(),
-  ticketsWritableElasticRepo: ioc
-    .asClass(TicketWritableElasticRepo)
+  ticketsWritableRepo: ioc.asClass(TicketsWritableRepo).singleton(),
+  ticketsWritableForReadableRepo: ioc
+    .asClass(TicketsWritableForReadableRepo)
     .singleton(),
   ticketsController: ioc.asClass(TicketsController).singleton(),
 })
@@ -34,8 +32,8 @@ Box.register({
   createTicketCommandHandler: ioc
     .asClass(CreateTicketCommandHandler)
     .singleton(),
-  saveTicketReadingDBCommandHandler: ioc
-    .asClass(SaveTicketReadingDBCommandHandler)
+  createTicketReadingDBCommandHandler: ioc
+    .asClass(CreateTicketReadingDBCommandHandler)
     .singleton(),
 })
 
@@ -43,7 +41,7 @@ Box.register({
  * Event subscribers
  */
 Box.register({
-  saveTicketReadingDatabaseSubscriber: ioc
-    .asClass(SaveTicketReadingDBSubscriber)
+  createTicketReadingDatabaseSubscriber: ioc
+    .asClass(CreateTicketReadingDBSubscriber)
     .singleton(),
 })

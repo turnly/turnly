@@ -3,8 +3,8 @@
 function setup() {
   local HOSTS=(
     "rpc.turnly"
-    "iam.turnly"
-    "ws.turnly"
+    "accounts.turnly"
+    "stream.turnly"
     "api.turnly"
     "widgets.turnly"
     "$APP_PROXY_HOST"

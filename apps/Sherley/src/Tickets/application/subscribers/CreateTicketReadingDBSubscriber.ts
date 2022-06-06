@@ -1,10 +1,10 @@
 import { EventsSubscriber, ICommandBus, IEventSubscriber } from '@turnly/shared'
 import { TicketCreatedEvent } from 'Tickets/domain/events/TicketCreatedEvent'
 
-import { SaveTicketReadingDBCommand } from '../commands/SaveTicketReadingDBCommand'
+import { CreateTicketReadingDBCommand } from '../commands/CreateTicketReadingDBCommand'
 
 @EventsSubscriber(TicketCreatedEvent)
-export class SaveTicketReadingDBSubscriber
+export class CreateTicketReadingDBSubscriber
   implements IEventSubscriber<TicketCreatedEvent>
 {
   public constructor(private readonly commandBus: ICommandBus) {}
@@ -13,6 +13,6 @@ export class SaveTicketReadingDBSubscriber
     const { payload } = event
 
     if (payload)
-      await this.commandBus.execute(new SaveTicketReadingDBCommand(payload))
+      await this.commandBus.execute(new CreateTicketReadingDBCommand(payload))
   }
 }

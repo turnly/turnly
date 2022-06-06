@@ -1,12 +1,13 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import { ITicketMapper } from 'Tickets/domain/contracts/ITicketMapper'
-import { Attributes, Ticket } from 'Tickets/domain/entities/Ticket'
+import { EntityAttributes } from '@turnly/shared'
+import { ITicketMapper } from 'Tickets/domain/contracts/ITicketsMapper'
+import { Ticket } from 'Tickets/domain/entities/Ticket'
 
 import { TicketDocument, TicketModel } from '../models/TicketModel'
 
 export class TicketMapper implements ITicketMapper<TicketDocument> {
   public toEntity(document: TicketDocument): Ticket {
-    const { _id, ...attrs } = document.toObject<Attributes>()
+    const { _id, ...attrs } = document.toObject<EntityAttributes<Ticket>>()
 
     return Ticket.build({ ...attrs, id: String(_id) })
   }

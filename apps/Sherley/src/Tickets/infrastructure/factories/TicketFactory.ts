@@ -5,8 +5,8 @@ import {
 } from '@turnly/shared'
 import { Box } from '@turnly/shared'
 import { CreateTicketCommandHandler } from 'Tickets/application/commands/CreateTicketCommand'
-import { SaveTicketReadingDBCommandHandler } from 'Tickets/application/commands/SaveTicketReadingDBCommand'
-import { SaveTicketReadingDBSubscriber } from 'Tickets/application/subscribers/SaveTicketReadingDBSubscriber'
+import { CreateTicketReadingDBCommandHandler } from 'Tickets/application/commands/CreateTicketReadingDBCommand'
+import { CreateTicketReadingDBSubscriber } from 'Tickets/application/subscribers/CreateTicketReadingDBSubscriber'
 
 import { TicketsController } from '../api/controllers/TicketsController'
 
@@ -22,16 +22,16 @@ export class TicketFactory {
   public static getCommandHandlers(): ICommandHandler[] {
     return [
       Box.resolve<CreateTicketCommandHandler>('createTicketCommandHandler'),
-      Box.resolve<SaveTicketReadingDBCommandHandler>(
-        'saveTicketReadingDBCommandHandler'
+      Box.resolve<CreateTicketReadingDBCommandHandler>(
+        'createTicketReadingDBCommandHandler'
       ),
     ]
   }
 
   public static getEventSubscribers(): IEventSubscriber[] {
     return [
-      Box.resolve<SaveTicketReadingDBSubscriber>(
-        'saveTicketReadingDatabaseSubscriber'
+      Box.resolve<CreateTicketReadingDBSubscriber>(
+        'createTicketReadingDatabaseSubscriber'
       ),
     ]
   }

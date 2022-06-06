@@ -4,12 +4,12 @@ import {
   ElasticIndexes,
   ElasticRepository,
 } from '@turnly/shared'
-import { ITicketWritableRepo } from 'Tickets/domain/contracts/ITicketRepo'
+import { ITicketsWritableRepo } from 'Tickets/domain/contracts/ITicketsRepo'
 import { Ticket } from 'Tickets/domain/entities/Ticket'
 
-export class TicketWritableElasticRepo
+export class TicketsWritableForReadableRepo
   extends ElasticRepository<Ticket>
-  implements ITicketWritableRepo
+  implements ITicketsWritableRepo
 {
   public constructor(elasticSearchClient: ElasticClient) {
     super(elasticSearchClient, ElasticIndexes.TICKETS)
