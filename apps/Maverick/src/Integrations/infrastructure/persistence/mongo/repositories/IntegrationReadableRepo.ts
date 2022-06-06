@@ -1,7 +1,7 @@
 import { Guid, NotImplementedError, Nullable } from '@turnly/common'
 import { Criteria, MongoRepository } from '@turnly/shared'
 import { IIntegrationMapper } from 'Integrations/domain/contracts/IIntegrationMapper'
-import { IIntegrationReadableRepository } from 'Integrations/domain/contracts/IIntegrationRepository'
+import { IIntegrationReadableRepo } from 'Integrations/domain/contracts/IIntegrationRepo'
 import { Integration } from 'Integrations/domain/entities/Integration'
 
 import {
@@ -9,9 +9,9 @@ import {
   IntegrationModel,
 } from '../models/IntegrationModel'
 
-export class IntegrationReadableRepository
+export class IntegrationReadableRepo
   extends MongoRepository<Integration, IntegrationDocument>
-  implements IIntegrationReadableRepository
+  implements IIntegrationReadableRepo
 {
   public constructor(
     private readonly integrationsMapper: IIntegrationMapper<IntegrationDocument>

@@ -3,13 +3,13 @@ import { FieldByIdQueryHandler } from 'Fields/application/queries'
 
 import { FieldsController } from '../api/controllers/FieldsController'
 import { FieldMapper } from '../persistence/mongo/entity-model-mappers/FieldMapper'
-import { FieldReadableRepository } from '../persistence/mongo/repositories/FieldReadableRepository'
-import { FieldWritableRepository } from '../persistence/mongo/repositories/FieldWritableRepository'
+import { FieldReadableRepo } from '../persistence/mongo/repositories/FieldReadableRepo'
+import { FieldWritableRepo } from '../persistence/mongo/repositories/FieldWritableRepo'
 
 Box.register({
   fieldsMapper: ioc.asClass(FieldMapper).singleton(),
-  fieldsReadableRepository: ioc.asClass(FieldReadableRepository).singleton(),
-  fieldsWritableRepository: ioc.asClass(FieldWritableRepository).singleton(),
+  fieldsReadableRepo: ioc.asClass(FieldReadableRepo).singleton(),
+  fieldsWritableRepo: ioc.asClass(FieldWritableRepo).singleton(),
   fieldsController: ioc.asClass(FieldsController).singleton(),
 })
 

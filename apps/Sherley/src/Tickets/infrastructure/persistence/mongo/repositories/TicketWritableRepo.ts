@@ -1,13 +1,13 @@
 import { MongoRepository } from '@turnly/shared'
 import { ITicketMapper } from 'Tickets/domain/contracts/ITicketMapper'
-import { ITicketWritableRepository } from 'Tickets/domain/contracts/ITicketRepository'
+import { ITicketWritableRepo } from 'Tickets/domain/contracts/ITicketRepo'
 import { Ticket } from 'Tickets/domain/entities/Ticket'
 
 import { TicketDocument, TicketModel } from '../models/TicketModel'
 
-export class TicketWritableRepository
+export class TicketWritableRepo
   extends MongoRepository<Ticket, TicketDocument>
-  implements ITicketWritableRepository
+  implements ITicketWritableRepo
 {
   public constructor(
     private readonly ticketsMapper: ITicketMapper<TicketDocument>

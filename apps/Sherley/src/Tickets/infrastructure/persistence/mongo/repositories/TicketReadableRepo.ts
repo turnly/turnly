@@ -1,14 +1,14 @@
 import { Guid, NotImplementedError, Nullable } from '@turnly/common'
 import { Criteria, MongoRepository } from '@turnly/shared'
 import { ITicketMapper } from 'Tickets/domain/contracts/ITicketMapper'
-import { ITicketReadableRepository } from 'Tickets/domain/contracts/ITicketRepository'
+import { ITicketReadableRepo } from 'Tickets/domain/contracts/ITicketRepo'
 import { Ticket } from 'Tickets/domain/entities/Ticket'
 
 import { TicketDocument, TicketModel } from '../models/TicketModel'
 
-export class TicketReadableRepository
+export class TicketReadableRepo
   extends MongoRepository<Ticket, TicketDocument>
-  implements ITicketReadableRepository
+  implements ITicketReadableRepo
 {
   public constructor(
     private readonly ticketsMapper: ITicketMapper<TicketDocument>

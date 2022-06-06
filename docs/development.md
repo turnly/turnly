@@ -16,7 +16,7 @@ based terminal like **Git bash**.
 #### Install application
 
 ```sh
-# For convenience, clone this repository to a previously created directory called turnly or turnly-apps.
+# For convenience, clone this repo to a previously created directory called turnly or turnly-apps.
 
 # Create turnly directory (optional)
 mkdir turnly
@@ -24,7 +24,7 @@ mkdir turnly
 # Go to turnly directory
 cd turnly
 
-# Clone repository
+# Clone repo
 git clone git@github.com:turnly/athena.git
 ```
 

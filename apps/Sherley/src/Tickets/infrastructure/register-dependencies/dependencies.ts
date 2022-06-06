@@ -5,17 +5,17 @@ import { SaveTicketReadingDBSubscriber } from 'Tickets/application/subscribers/S
 import { CreateTicketUseCase } from 'Tickets/application/use-cases/CreateTicketUseCase'
 
 import { TicketsController } from '../api/controllers/TicketsController'
-import { TicketWritableElasticRepository } from '../persistence/elasticsearch/repositories/TicketWritableElasticRepository'
+import { TicketWritableElasticRepo } from '../persistence/elasticsearch/repositories/TicketWritableElasticRepo'
 import { TicketMapper } from '../persistence/mongo/entity-model-mappers/TicketMapper'
-import { TicketReadableRepository } from '../persistence/mongo/repositories/TicketReadableRepository'
-import { TicketWritableRepository } from '../persistence/mongo/repositories/TicketWritableRepository'
+import { TicketReadableRepo } from '../persistence/mongo/repositories/TicketReadableRepo'
+import { TicketWritableRepo } from '../persistence/mongo/repositories/TicketWritableRepo'
 
 Box.register({
   ticketsMapper: ioc.asClass(TicketMapper).singleton(),
-  ticketsReadableRepository: ioc.asClass(TicketReadableRepository).singleton(),
-  ticketsWritableRepository: ioc.asClass(TicketWritableRepository).singleton(),
-  ticketWritableElasticRepository: ioc
-    .asClass(TicketWritableElasticRepository)
+  ticketsReadableRepo: ioc.asClass(TicketReadableRepo).singleton(),
+  ticketsWritableRepo: ioc.asClass(TicketWritableRepo).singleton(),
+  ticketWritableElasticRepo: ioc
+    .asClass(TicketWritableElasticRepo)
     .singleton(),
   ticketsController: ioc.asClass(TicketsController).singleton(),
 })

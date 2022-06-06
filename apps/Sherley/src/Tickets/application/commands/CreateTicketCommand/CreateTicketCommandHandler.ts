@@ -1,5 +1,5 @@
 import { CommandHandler, ICommandHandler, IEventBus } from '@turnly/shared'
-import { ITicketWritableRepository } from 'Tickets/domain/contracts/ITicketRepository'
+import { ITicketWritableRepo } from 'Tickets/domain/contracts/ITicketRepo'
 import { Ticket } from 'Tickets/domain/entities/Ticket'
 
 import { CreateTicketCommand } from './CreateTicketCommand'
@@ -10,7 +10,7 @@ export class CreateTicketCommandHandler
 {
   public constructor(
     private readonly eventBus: IEventBus,
-    private readonly ticketsWritableRepository: ITicketWritableRepository
+    private readonly ticketsWritableRepo: ITicketWritableRepo
   ) {}
 
   public async execute({
@@ -18,7 +18,7 @@ export class CreateTicketCommandHandler
   }: CreateTicketCommand) {
     const ticket = Ticket.create(payload)
 
-    await this.ticketsWritableRepository.save(ticket)
+    await this.ticketsWritableRepo.save(ticket)
 
     if (publishEventsInstantly) this.eventBus.publish(ticket.pull())
 
