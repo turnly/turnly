@@ -57,10 +57,13 @@ const schema = new Schema({
     required: true,
   },
   rating: {
-    type: {
-      score: TicketScore,
-      comment: String,
+    score: {
+      type: String,
+      enum: TicketScore,
+      required: true,
+      index: true,
     },
+    comment: String,
   },
   extra: {
     type: [

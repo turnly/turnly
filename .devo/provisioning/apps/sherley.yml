@@ -27,8 +27,3 @@ services:
       - traefik.http.routers.sherley_rpc.service=sherley_rpc
       - traefik.http.services.sherley_rpc.loadbalancer.server.port=${RPC_PORT}
       - traefik.http.services.sherley_rpc.loadbalancer.server.scheme=h2c
-
-      - traefik.http.routers.sherley_http.entrypoints=http
-      - traefik.http.routers.sherley_http.rule=Host(`api.turnly`) && PathPrefix(`/v1/tickets`, `/v1/customers`)
-      - traefik.http.routers.sherley_http.service=sherley_http
-      - traefik.http.services.sherley_http.loadbalancer.server.port=${HTTP_PORT}

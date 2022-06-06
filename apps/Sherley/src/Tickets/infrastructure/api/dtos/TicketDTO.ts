@@ -2,8 +2,8 @@ import { Extra, Guid, Nullable } from '@turnly/common'
 import { EntityAttributes } from '@turnly/shared'
 import { Ticket } from 'Tickets/domain/entities/Ticket'
 import { TicketPriority } from 'Tickets/domain/enums/TicketPriority'
-import { TicketScore } from 'Tickets/domain/enums/TicketScore'
 import { TicketStatus } from 'Tickets/domain/enums/TicketStatus'
+import { RatingPayload } from 'Tickets/domain/payloads/RatingPayload'
 import { Mapper, MapProp } from 'ts-simple-automapper'
 
 type Entity = EntityAttributes<Ticket>
@@ -40,10 +40,7 @@ export class TicketDTO {
   createdAt: Date
 
   @MapProp()
-  rating: Nullable<{
-    score: TicketScore
-    comment: Nullable<string>
-  }>
+  rating: Nullable<RatingPayload>
 
   @MapProp()
   extra: Nullable<Extra[]>

@@ -1,11 +1,19 @@
-import { Extra, Guid, Identifier, Nullable } from '@turnly/common'
+import {
+  Extra,
+  Guid,
+  Identifier,
+  InvalidStateException,
+  Nullable,
+} from '@turnly/common'
 import { AggregateRoot, EntityAttributes } from '@turnly/shared'
 
 import { TicketPriority } from '../enums/TicketPriority'
-import { TicketScore } from '../enums/TicketScore'
 import { TicketStatus } from '../enums/TicketStatus'
+import { TicketAnnouncedEvent } from '../events/TicketAnnouncedEvent'
+import { TicketCancelledEvent } from '../events/TicketCancelledEvent'
 import { TicketCreatedEvent } from '../events/TicketCreatedEvent'
 import { CreateTicketPayload } from '../payloads/CreateTicketPayload'
+import { RatingPayload } from '../payloads/RatingPayload'
 
 /**
  * Ticket
@@ -74,13 +82,6 @@ export class Ticket extends AggregateRoot {
     private readonly companyId: Guid,
 
     /**
-     * Assigned To
-     *
-     * @description The Agent that is currently assigned to the Ticket.
-     */
-    private assigneeId: Nullable<Guid>,
-
-    /**
      * Created At
      *
      * @description The date and time the Ticket was created.
@@ -88,14 +89,18 @@ export class Ticket extends AggregateRoot {
     private readonly createdAt: Date,
 
     /**
+     * Assignee
+     *
+     * @description The Agent that is currently assigned to the Ticket.
+     */
+    private assigneeId: Nullable<Guid> = null,
+
+    /**
      * Rating
      *
      * @description The Customer's rating for the experience at the Location.
      */
-    private rating?: Nullable<{
-      score: TicketScore
-      comment: Nullable<string>
-    }>,
+    private rating: Nullable<RatingPayload> = null,
 
     /**
      * Extra
@@ -106,6 +111,38 @@ export class Ticket extends AggregateRoot {
     private readonly extra: Nullable<Extra[]> = null
   ) {
     super(id)
+  }
+
+  public leave(rating: Nullable<RatingPayload> = null): void {
+    if (!this.isActive())
+      throw new InvalidStateException('Oops!, you can not leave this ticket.')
+
+    this.rating = rating
+    this.status = TicketStatus.CANCELLED
+
+    this.register(new TicketCancelledEvent(this.toObject()))
+  }
+
+  public announce(): Ticket {
+    if (this.status !== TicketStatus.AVAILABLE)
+      throw new InvalidStateException(
+        'Oops!, you can not announce this ticket, it is not available.'
+      )
+
+    this.status = TicketStatus.ANNOUNCED
+
+    this.register(new TicketAnnouncedEvent(this.toObject()))
+
+    return this
+  }
+
+  public isActive(): boolean {
+    return ![
+      TicketStatus.CANCELLED,
+      TicketStatus.COMPLETED,
+      TicketStatus.DISCARDED,
+      TicketStatus.INACTIVE,
+    ].includes(this.status)
   }
 
   /**
@@ -123,8 +160,8 @@ export class Ticket extends AggregateRoot {
       attributes.locationId,
       attributes.customerId,
       attributes.companyId,
-      null,
       new Date(),
+      null,
       null,
       attributes.extra
     )
@@ -149,8 +186,8 @@ export class Ticket extends AggregateRoot {
       attributes.locationId,
       attributes.customerId,
       attributes.companyId,
-      attributes.assigneeId,
       attributes.createdAt,
+      attributes.assigneeId,
       attributes.rating,
       attributes.extra
     )

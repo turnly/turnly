@@ -10,9 +10,7 @@ const create = Validator.object({
   locationId: Validator.isId(),
   customerId: Validator.isId(),
   companyId: Validator.isId(),
-  extra: Validator.getBuilder()
-    .alternatives()
-    .try(extra, Validator.array(extra)),
+  extra: Validator.getBuilder().array().items(extra).optional(),
 })
 
 export const validator = {
