@@ -5,7 +5,7 @@ services:
     extends:
       file: common.yml
       service: common
-    image: rabbitmq:3.10.1-management-alpine
+    image: rabbitmq:3.10.5-management-alpine
     container_name: rabbitmq
     tty: true
     stdin_open: true
