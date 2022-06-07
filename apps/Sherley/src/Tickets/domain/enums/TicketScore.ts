@@ -8,18 +8,18 @@
  */
 export enum TicketScore {
   /**
-   * Bad
+   * Very poor
+   *
+   * @description The Customer is not happy with the service, and the service is not working as expected.
+   */
+  VERY_POOR = 'very_poor',
+
+  /**
+   * Poor
    *
    * @description The Customer is not happy with the service, and the service should be improved.
    */
-  BAD = 'bad',
-
-  /**
-   * Not Good
-   *
-   * @description The Customer is not happy with the service but not bad.
-   */
-  NOT_GOOD = 'not_good',
+  POOR = 'poor',
 
   /**
    * Good
@@ -29,11 +29,11 @@ export enum TicketScore {
   GOOD = 'good',
 
   /**
-   * Very Good
+   * Great
    *
-   * @description The Customer is happy with the service.
+   * @description The Customer is very happy with the service.
    */
-  VERY_GOOD = 'very_good',
+  GREAT = 'great',
 
   /**
    * Excellent

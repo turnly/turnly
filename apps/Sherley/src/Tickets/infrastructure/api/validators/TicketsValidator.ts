@@ -18,7 +18,13 @@ const get = Validator.object({
   companyId: Validator.isId(),
 })
 
+const leave = Validator.object({
+  id: Validator.isId(),
+  companyId: Validator.isId(),
+})
+
 export const validator = {
   create,
   get,
+  leave,
 }

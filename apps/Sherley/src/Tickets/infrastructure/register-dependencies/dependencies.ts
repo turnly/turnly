@@ -1,6 +1,7 @@
 import { Box, ioc } from '@turnly/shared'
 import { CreateTicketCommandHandler } from 'Tickets/application/commands/CreateTicketCommand'
 import { CreateTicketReadingDBCommandHandler } from 'Tickets/application/commands/CreateTicketReadingDBCommand'
+import { LeaveTicketCommandHandler } from 'Tickets/application/commands/LeaveTicketCommand'
 import { TicketByIdQueryHandler } from 'Tickets/application/queries/TicketByIdQuery'
 import { CreateTicketReadingDBSubscriber } from 'Tickets/application/subscribers/CreateTicketReadingDBSubscriber'
 import { CreateTicketUseCase } from 'Tickets/application/use-cases/CreateTicketUseCase'
@@ -38,6 +39,7 @@ Box.register({
   createTicketReadingDBCommandHandler: ioc
     .asClass(CreateTicketReadingDBCommandHandler)
     .singleton(),
+  leaveTicketCommandHandler: ioc.asClass(LeaveTicketCommandHandler).singleton(),
 })
 
 /**

@@ -51,13 +51,6 @@ export enum TicketStatus {
   CANCELLED = 'cancelled',
 
   /**
-   * Completed status
-   *
-   * @description Use it when the ticket has been attended by an agent.
-   */
-  COMPLETED = 'completed',
-
-  /**
    * Discarded status
    *
    * @description Use when the customer doesn't show up on the call and remove them from the row.
@@ -84,4 +77,18 @@ export enum TicketStatus {
    * @description Use it when the customer will be removed from the waiting row.
    */
   REMOVED = 'removed',
+
+  /**
+   * Completed without feedback status
+   *
+   * @description Use it when the ticket has been attended and the customer has not yet rated the service provider.
+   */
+  COMPLETED_WITHOUT_RATING = 'completed_without_rating',
+
+  /**
+   * Completed with feedback status
+   *
+   * @description Use it when the ticket has been attended by an agent and the customer has rated the service provider.
+   */
+  COMPLETED_WITH_RATING = 'completed_with_rating',
 }

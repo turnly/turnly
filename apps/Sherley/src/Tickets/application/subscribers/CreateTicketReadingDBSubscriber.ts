@@ -1,16 +1,22 @@
 import { EventsSubscriber, ICommandBus, IEventSubscriber } from '@turnly/shared'
 import { TicketAnnouncedEvent } from 'Tickets/domain/events/TicketAnnouncedEvent'
 import { TicketCancelledEvent } from 'Tickets/domain/events/TicketCancelledEvent'
+import { TicketCompletedEvent } from 'Tickets/domain/events/TicketCompletedEvent'
 import { TicketCreatedEvent } from 'Tickets/domain/events/TicketCreatedEvent'
 
 import { CreateTicketReadingDBCommand } from '../commands/CreateTicketReadingDBCommand'
 
-type Event = TicketAnnouncedEvent | TicketCancelledEvent | TicketCreatedEvent
+type Event =
+  | TicketAnnouncedEvent
+  | TicketCancelledEvent
+  | TicketCreatedEvent
+  | TicketCompletedEvent
 
 @EventsSubscriber(
   TicketCreatedEvent,
   TicketCancelledEvent,
-  TicketAnnouncedEvent
+  TicketAnnouncedEvent,
+  TicketCompletedEvent
 )
 export class CreateTicketReadingDBSubscriber
   implements IEventSubscriber<Event>

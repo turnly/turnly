@@ -60,13 +60,33 @@ export class TicketsServer extends Producers.ServerImplementation<Producers.Sher
     callback(null, response)
   }
 
+  @Producers.CallHandler(Producers.Sherley.LeaveTicketResponse)
+  public async leave(
+    call: Producers.ServerUnaryCall<
+      Producers.Sherley.LeaveTicketRequest,
+      Producers.Sherley.LeaveTicketResponse
+    >,
+    callback: Producers.ICallback<Producers.Sherley.LeaveTicketResponse>
+  ) {
+    const { data, meta } = await this.ticketsController.leave({
+      id: call.request.getId(),
+      companyId: call.request.getCompanyId(),
+    })
+
+    const response = new Producers.Sherley.LeaveTicketResponse()
+    const ticket = TicketMapper.toRPC(data)
+
+    response.setData(ticket)
+    response.setMeta(Producers.MetaMapper.toRPC(meta))
+
+    callback(null, response)
+  }
+
   public get implementation() {
     return {
       create: this.create.bind(this),
       get: this.get.bind(this),
-      leave: () => {
-        throw new NotImplementedError()
-      },
+      leave: this.leave.bind(this),
       announce: () => {
         throw new NotImplementedError()
       },

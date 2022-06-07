@@ -1,4 +1,6 @@
 import {
+  BadRequestException,
+  ConflictException,
   Extra,
   Guid,
   Identifier,
@@ -8,9 +10,11 @@ import {
 import { AggregateRoot, EntityAttributes } from '@turnly/shared'
 
 import { TicketPriority } from '../enums/TicketPriority'
+import { TicketScore } from '../enums/TicketScore'
 import { TicketStatus } from '../enums/TicketStatus'
 import { TicketAnnouncedEvent } from '../events/TicketAnnouncedEvent'
 import { TicketCancelledEvent } from '../events/TicketCancelledEvent'
+import { TicketCompletedEvent } from '../events/TicketCompletedEvent'
 import { TicketCreatedEvent } from '../events/TicketCreatedEvent'
 import { CreateTicketPayload } from '../payloads/CreateTicketPayload'
 import { RatingPayload } from '../payloads/RatingPayload'
@@ -113,17 +117,16 @@ export class Ticket extends AggregateRoot {
     super(id)
   }
 
-  public leave(rating: Nullable<RatingPayload> = null): void {
+  public leave(): void {
     if (!this.isActive())
       throw new InvalidStateException('Oops!, you can not leave this ticket.')
 
-    this.rating = rating
     this.status = TicketStatus.CANCELLED
 
     this.register(new TicketCancelledEvent(this.toObject()))
   }
 
-  public announce(): Ticket {
+  public announce(): void {
     if (this.status !== TicketStatus.AVAILABLE)
       throw new InvalidStateException(
         'Oops!, you can not announce this ticket, it is not available.'
@@ -132,21 +135,43 @@ export class Ticket extends AggregateRoot {
     this.status = TicketStatus.ANNOUNCED
 
     this.register(new TicketAnnouncedEvent(this.toObject()))
+  }
 
-    return this
+  public addRating(rating: RatingPayload): void {
+    const isUnknownScore = !Object.values(TicketScore).includes(rating.score)
+
+    if (isUnknownScore)
+      throw new BadRequestException(
+        'Oops!, you can not add a rating with an invalid score.'
+      )
+
+    if (!this.isPendingForRating())
+      throw new ConflictException(
+        "Oops!, can't add a rating because the ticket is not in a valid state or it has already been rated."
+      )
+
+    this.rating = rating
+    this.status = TicketStatus.COMPLETED_WITH_RATING
+
+    this.register(new TicketCompletedEvent(this.toObject()))
+  }
+
+  public isOwnedBy(companyId: Guid): boolean {
+    return this.companyId === companyId
   }
 
   public isActive(): boolean {
     return ![
       TicketStatus.CANCELLED,
-      TicketStatus.COMPLETED,
       TicketStatus.DISCARDED,
       TicketStatus.INACTIVE,
+      TicketStatus.COMPLETED_WITHOUT_RATING,
+      TicketStatus.COMPLETED_WITH_RATING,
     ].includes(this.status)
   }
 
-  public isOwnedBy(companyId: Guid): boolean {
-    return this.companyId === companyId
+  public isPendingForRating(): boolean {
+    return this.status === TicketStatus.COMPLETED_WITHOUT_RATING
   }
 
   /**
