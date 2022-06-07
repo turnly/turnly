@@ -4,6 +4,7 @@ import {
   IQueryHandler,
 } from '@turnly/shared'
 import { Box } from '@turnly/shared'
+import { AnnounceTicketCommandHandler } from 'Tickets/application/commands/AnnounceTicketCommand'
 import { CreateTicketCommandHandler } from 'Tickets/application/commands/CreateTicketCommand'
 import { CreateTicketReadingDBCommandHandler } from 'Tickets/application/commands/CreateTicketReadingDBCommand'
 import { LeaveTicketCommandHandler } from 'Tickets/application/commands/LeaveTicketCommand'
@@ -28,6 +29,7 @@ export class TicketFactory {
         'createTicketReadingDBCommandHandler'
       ),
       Box.resolve<LeaveTicketCommandHandler>('leaveTicketCommandHandler'),
+      Box.resolve<AnnounceTicketCommandHandler>('announceTicketCommandHandler'),
     ]
   }
 

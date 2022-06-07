@@ -1,4 +1,5 @@
 import { Box, ioc } from '@turnly/shared'
+import { AnnounceTicketCommandHandler } from 'Tickets/application/commands/AnnounceTicketCommand'
 import { CreateTicketCommandHandler } from 'Tickets/application/commands/CreateTicketCommand'
 import { CreateTicketReadingDBCommandHandler } from 'Tickets/application/commands/CreateTicketReadingDBCommand'
 import { LeaveTicketCommandHandler } from 'Tickets/application/commands/LeaveTicketCommand'
@@ -40,6 +41,9 @@ Box.register({
     .asClass(CreateTicketReadingDBCommandHandler)
     .singleton(),
   leaveTicketCommandHandler: ioc.asClass(LeaveTicketCommandHandler).singleton(),
+  announceTicketCommandHandler: ioc
+    .asClass(AnnounceTicketCommandHandler)
+    .singleton(),
 })
 
 /**

@@ -6,6 +6,10 @@ import {
   IQueryBus,
   TimeoutHandler,
 } from '@turnly/shared'
+import {
+  AnnounceTicketCommand,
+  AnnounceTicketPayload,
+} from 'Tickets/application/commands/AnnounceTicketCommand'
 import { CreateTicketCommandPayload } from 'Tickets/application/commands/CreateTicketCommand'
 import {
   LeaveTicketCommand,
@@ -53,6 +57,16 @@ export class TicketsController extends Controller {
       new LeaveTicketCommand(params)
     )
 
-    return this.respond.created(TicketDTO.create(ticket.toObject()))
+    return this.respond.ok(TicketDTO.create(ticket.toObject()))
+  }
+
+  @TimeoutHandler()
+  @InputValidator(validator.announce)
+  public async announce(params: AnnounceTicketPayload) {
+    const ticket = await this.commandBus.execute<AnnounceTicketCommand, Ticket>(
+      new AnnounceTicketCommand(params)
+    )
+
+    return this.respond.ok(TicketDTO.create(ticket.toObject()))
   }
 }
