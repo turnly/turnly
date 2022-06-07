@@ -49,7 +49,7 @@ export class Field extends AggregateRoot<Attributes> {
     /**
      * Type
      *
-     * @description The front-end type of the Field.
+     * @description The frontend type of the Field.
      */
     private readonly type: FieldTypes,
 

@@ -1,7 +1,7 @@
 /**
  * Field types
  *
- * @description Enum of the different types based on front-end types.
+ * @description Enum of the different types based on frontend types.
  */
 export enum FieldTypes {
   NATIONAL_IDENTITY_CARD = 'national_identity_card',

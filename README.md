@@ -1,8 +1,17 @@
-# Athena — Back-end applications
+# Athena — Backend applications
 
-Monorepo of back-end applications that make up much of Turnly's APIs.
+Monorepo of backend applications that make up much of Turnly's APIs.
 
 ![high-level-architecture](/docs/diagrams/high-level-architecture.png)
+
+### APIs (Backend for Frontend)
+
+| Name                                       | Description                                  |
+| ------------------------------------------ | -------------------------------------------- |
+| [Widgets API](/apps/Widgets.API)           | GraphQL API for widgets clients              |
+| [Bifröst API](/apps/Bifrost.API)           | Streaming API (WebSocket)                    |
+
+> What about [BFF?](/docs/architecture/BFF.md)
 
 ### Microservices
 
@@ -19,13 +28,6 @@ Monorepo of back-end applications that make up much of Turnly's APIs.
 | [Polly](/apps/Polly)                       | Activities History                           |
 | [Wayne](/apps/Wayne)                       | Billing Service                              |
 | [Maverick](/apps/Maverick)                 | Integrations, Webhooks & Beacons             |
-| [Bifrost](/apps/Bifrost)                   | Streaming API (WebSocket)                    |
-
-### BFF (Back-end for Front-end)
-
-| Name                                       | Description                                  |
-| ------------------------------------------ | -------------------------------------------- |
-| [Widgets BFF](/apps/Widgets.BFF)            | GraphQL API for widgets clients              |
 
 #### Getting Started as a Developer
 
@@ -34,19 +36,20 @@ Monorepo of back-end applications that make up much of Turnly's APIs.
 3. We highly recommend you learn about DevO directory in [devo docs.](/docs/devo.md)
 4. If you've understood the purpose of DevO, you're ready to learn [how to set up your development environment.](/docs/development.md)
 
-_Others resources:_
-
-- [Postman Collections](/docs/postman/)
-- [Conventions](/docs/conventions.md)
-- [Disaster Recovery](/docs/disaster-recovery.md)
-
 #### Software Architecture
 
-Microservices are built using multiple architectural concepts, [learn about.](/docs/architecture)
+Microservices are built using multiple architectural concepts,
+we highly recommend you review the [docs.](/docs/architecture)
 
 #### Production & Stage
 
 Learn about production deployments in [deployments documentation.](/docs/deployment.md)
+
+#### Others resources
+
+- [Postman Collections](/docs/postman/)
+- [Conventions](/docs/conventions.md)
+- [Disaster Recovery](/docs/disaster-recovery.md)
 
 #### Authors
 

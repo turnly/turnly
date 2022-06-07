@@ -1,7 +1,7 @@
 import { BadRequestException, NotImplementedError } from '@turnly/common'
 import { Producers } from '@turnly/rpc'
 
-import { TicketsController } from '../../controllers/TicketsController'
+import { TicketsController } from '../controllers/TicketsController'
 import { TicketMapper } from './TicketsMapper'
 
 export class TicketsServer extends Producers.ServerImplementation<Producers.Sherley.ITicketsServer> {

@@ -1,10 +1,11 @@
 import { Nullable } from '@turnly/common'
 import { Producers } from '@turnly/rpc'
-import { TicketDTO } from 'Tickets/infrastructure/api/dtos/TicketDTO'
+import { EntityAttributes } from '@turnly/shared'
+import { Ticket } from 'Tickets/domain/entities/Ticket'
 
 export class TicketMapper {
   public static toRPC(
-    entity: Nullable<TicketDTO> | undefined
+    entity: Nullable<EntityAttributes<Ticket>> | undefined
   ): Producers.Sherley.Ticket {
     const ticket = new Producers.Sherley.Ticket()
 

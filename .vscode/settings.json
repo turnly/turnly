@@ -30,6 +30,6 @@
     "apps/Brennan",
     "apps/Polly",
     "apps/Bifrost",
-    "apps/Widgets.BFF"
+    "apps/Widgets.API"
   ]
 }

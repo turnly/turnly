@@ -5,7 +5,7 @@ services:
     extends:
       file: common.yml
       service: common
-    container_name: bifrost
+    container_name: bifrost.api
     image: bifrost:latest
     build:
       context: ${COMPOSE_BASE_DIRECTORY}/Bifrost
@@ -20,6 +20,6 @@ services:
       - traefik.enable=true
 
       - traefik.http.routers.bifrost_http.entrypoints=http
-      - traefik.http.routers.bifrost_http.rule=Host(`stream.turnly`) || Host(`host.docker.internal`) && Path(`/`)
+      - traefik.http.routers.bifrost_http.rule=Host(`stream.turnly`) && Path(`/`)
       - traefik.http.routers.bifrost_http.service=bifrost_http
       - traefik.http.services.bifrost_http.loadbalancer.server.port=${HTTP_PORT}

@@ -22,7 +22,6 @@ import { TicketByIdQuery } from 'Tickets/application/queries/TicketByIdQuery'
 import { Ticket } from 'Tickets/domain/entities/Ticket'
 import { GetTicketPayload } from 'Tickets/domain/payloads/GetTicketPayload'
 
-import { TicketDTO } from '../dtos/TicketDTO'
 import { validator } from '../validators/TicketsValidator'
 
 export class TicketsController extends Controller {
@@ -40,7 +39,7 @@ export class TicketsController extends Controller {
       new CreateTicketCommand(params)
     )
 
-    return this.respond.created(TicketDTO.create(ticket.toObject()))
+    return this.respond.created(ticket.toObject())
   }
 
   @TimeoutHandler()
@@ -50,7 +49,7 @@ export class TicketsController extends Controller {
 
     if (!ticket) throw new ResourceNotFoundException()
 
-    return this.respond.ok(TicketDTO.create(ticket.toObject()))
+    return this.respond.ok(ticket.toObject())
   }
 
   @TimeoutHandler()
@@ -60,7 +59,7 @@ export class TicketsController extends Controller {
       new LeaveTicketCommand(params)
     )
 
-    return this.respond.ok(TicketDTO.create(ticket.toObject()))
+    return this.respond.ok(ticket.toObject())
   }
 
   @TimeoutHandler()
@@ -70,6 +69,6 @@ export class TicketsController extends Controller {
       new AnnounceTicketCommand(params)
     )
 
-    return this.respond.ok(TicketDTO.create(ticket.toObject()))
+    return this.respond.ok(ticket.toObject())
   }
 }

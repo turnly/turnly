@@ -5,16 +5,16 @@ services:
     extends:
       file: common.yml
       service: common
-    container_name: widgets.bff
+    container_name: widgets.api
     image: widgets:latest
     build:
-      context: ${COMPOSE_BASE_DIRECTORY}/Widgets.BFF
+      context: ${COMPOSE_BASE_DIRECTORY}/Widgets.API
       dockerfile: ./docker/Dockerfile.dev
       args:
         HTTP_PORT: ${HTTP_PORT}
         RPC_PORT: ${RPC_PORT}
     volumes:
-      - ${COMPOSE_BASE_DIRECTORY}/Widgets.BFF:/app
+      - ${COMPOSE_BASE_DIRECTORY}/Widgets.API:/app
     depends_on:
       - networking
     labels:
