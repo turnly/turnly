@@ -28,6 +28,10 @@ export class AnnounceTicketCommandHandler
 
     if (!ticket) throw new ResourceNotFoundException()
 
+    /**
+     * @todo Implement the logic to validate the device location of the customer
+     */
+
     ticket.announce()
 
     await this.ticketsWritableRepo.save(ticket)
