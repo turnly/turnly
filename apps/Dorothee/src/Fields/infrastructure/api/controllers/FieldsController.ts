@@ -4,8 +4,6 @@ import { FieldByServiceIdQuery } from 'Fields/application/queries'
 import { Field } from 'Fields/domain/entities/Field'
 import { GetFieldPayload } from 'Fields/domain/payloads/GetFieldPayload'
 
-import { FieldDTO } from '../dtos/FieldDTO'
-
 export class FieldsController extends Controller {
   public constructor(private readonly queryBus: IQueryBus) {
     super()
@@ -23,6 +21,6 @@ export class FieldsController extends Controller {
 
     if (!field) throw new ResourceNotFoundException()
 
-    return this.respond.ok(FieldDTO.create(field.toObject()))
+    return this.respond.ok(field.toObject())
   }
 }

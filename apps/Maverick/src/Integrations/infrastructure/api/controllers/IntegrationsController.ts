@@ -9,7 +9,6 @@ import { IntegrationByIdQuery } from 'Integrations/application/queries/Integrati
 import { Integration } from 'Integrations/domain/entities/Integration'
 import { GetIntegrationPayload } from 'Integrations/domain/payloads/GetIntegrationPayload'
 
-import { IntegrationDTO } from '../dtos/IntegrationDTO'
 import { validator } from '../validators/IntegrationsValidator'
 
 export class IntegrationsController extends Controller {
@@ -29,6 +28,6 @@ export class IntegrationsController extends Controller {
 
     if (!integration) throw new ResourceNotFoundException()
 
-    return this.respond.ok(IntegrationDTO.create(integration.toObject()))
+    return this.respond.ok(integration.toObject())
   }
 }

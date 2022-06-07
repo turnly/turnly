@@ -1,6 +1,6 @@
 import { Producers } from '@turnly/rpc'
 
-import { IntegrationsController } from '../../controllers/IntegrationsController'
+import { IntegrationsController } from '../controllers/IntegrationsController'
 import { IntegrationMapper } from './IntegrationsMapper'
 
 export class IntegrationsServer extends Producers.ServerImplementation<Producers.Maverick.IIntegrationsServer> {

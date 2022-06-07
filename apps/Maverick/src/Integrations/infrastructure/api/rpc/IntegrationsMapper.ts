@@ -1,10 +1,11 @@
 import { Nullable } from '@turnly/common'
 import { Producers } from '@turnly/rpc'
-import { IntegrationDTO } from 'Integrations/infrastructure/api/dtos/IntegrationDTO'
+import { EntityAttributes } from '@turnly/shared'
+import { Integration } from 'Integrations/domain/entities/Integration'
 
 export class IntegrationMapper {
   public static toRPC(
-    entity: Nullable<IntegrationDTO> | undefined
+    entity: Nullable<EntityAttributes<Integration>> | undefined
   ): Producers.Maverick.Integration {
     const integration = new Producers.Maverick.Integration()
 

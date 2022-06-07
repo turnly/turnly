@@ -8,9 +8,17 @@ export class Application extends Startup {
    */
   public async setup(): Promise<void> {
     await this.setupDatabase()
+    this.setupMonitoring()
+    await this.setupPresentations()
   }
 
-  public async setupDatabase(): Promise<void> {
+  private async setupPresentations(): Promise<void> {
+    const { rpc } = await import('./RPCServer')
+
+    rpc.setup()
+  }
+
+  private async setupDatabase(): Promise<void> {
     await MongoClientFactory.createClient(mongoConfig.namespace, {
       url: mongoConfig.uri,
     })
