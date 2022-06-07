@@ -5,7 +5,6 @@ import { CreateTicketReadingDBCommandHandler } from 'Tickets/application/command
 import { LeaveTicketCommandHandler } from 'Tickets/application/commands/LeaveTicketCommand'
 import { TicketByIdQueryHandler } from 'Tickets/application/queries/TicketByIdQuery'
 import { CreateTicketReadingDBSubscriber } from 'Tickets/application/subscribers/CreateTicketReadingDBSubscriber'
-import { CreateTicketUseCase } from 'Tickets/application/use-cases/CreateTicketUseCase'
 
 import { TicketsController } from '../api/controllers/TicketsController'
 import { TicketsWritableForReadableRepo } from '../persistence/elasticsearch/repositories/TicketsWritableForReadableRepo'
@@ -21,13 +20,6 @@ Box.register({
     .asClass(TicketsWritableForReadableRepo)
     .singleton(),
   ticketsController: ioc.asClass(TicketsController).singleton(),
-})
-
-/**
- * Use cases
- */
-Box.register({
-  createTicketUseCase: ioc.asClass(CreateTicketUseCase).singleton(),
 })
 
 /**

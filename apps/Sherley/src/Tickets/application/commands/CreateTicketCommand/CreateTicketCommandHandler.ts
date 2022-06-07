@@ -1,4 +1,11 @@
-import { CommandHandler, ICommandHandler, IEventBus } from '@turnly/shared'
+import { ConflictException, Nullable } from '@turnly/common'
+import {
+  CommandHandler,
+  ICommandHandler,
+  IEventBus,
+  IQueryBus,
+} from '@turnly/shared'
+import { GetActiveTicketsByCustomerQuery } from 'Tickets/application/queries/GetActiveTicketsByCustomerQuery'
 import { ITicketsWritableRepo } from 'Tickets/domain/contracts/ITicketsRepo'
 import { Ticket } from 'Tickets/domain/entities/Ticket'
 import { TicketPriority } from 'Tickets/domain/enums/TicketPriority'
@@ -12,10 +19,21 @@ export class CreateTicketCommandHandler
 {
   public constructor(
     private readonly eventBus: IEventBus,
+    private readonly queryBus: IQueryBus,
     private readonly ticketsWritableRepo: ITicketsWritableRepo
   ) {}
 
   public async execute({ payload }: CreateTicketCommand) {
+    const tickets = await this.queryBus.ask<
+      GetActiveTicketsByCustomerQuery,
+      Nullable<Ticket[]>
+    >(new GetActiveTicketsByCustomerQuery(payload.customerId))
+
+    if (tickets)
+      throw new ConflictException(
+        'Customer already has tickets, cannot create new ticket.'
+      )
+
     const ticket = Ticket.create({
       ...payload,
       status: TicketStatus.BOOKED,

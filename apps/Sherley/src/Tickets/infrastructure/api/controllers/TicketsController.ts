@@ -10,13 +10,15 @@ import {
   AnnounceTicketCommand,
   AnnounceTicketPayload,
 } from 'Tickets/application/commands/AnnounceTicketCommand'
-import { CreateTicketCommandPayload } from 'Tickets/application/commands/CreateTicketCommand'
+import {
+  CreateTicketCommand,
+  CreateTicketCommandPayload,
+} from 'Tickets/application/commands/CreateTicketCommand'
 import {
   LeaveTicketCommand,
   LeaveTicketPayload,
 } from 'Tickets/application/commands/LeaveTicketCommand'
 import { TicketByIdQuery } from 'Tickets/application/queries/TicketByIdQuery'
-import { ICreateTicketUseCase } from 'Tickets/domain/contracts/use-cases/ICreateTicketUseCase'
 import { Ticket } from 'Tickets/domain/entities/Ticket'
 import { GetTicketPayload } from 'Tickets/domain/payloads/GetTicketPayload'
 
@@ -25,7 +27,6 @@ import { validator } from '../validators/TicketsValidator'
 
 export class TicketsController extends Controller {
   public constructor(
-    private readonly createTicketUseCase: ICreateTicketUseCase,
     private readonly queryBus: IQueryBus,
     private readonly commandBus: ICommandBus
   ) {
@@ -35,7 +36,9 @@ export class TicketsController extends Controller {
   @TimeoutHandler()
   @InputValidator(validator.create)
   public async create(params: CreateTicketCommandPayload) {
-    const ticket = await this.createTicketUseCase.present(params)
+    const ticket = await this.commandBus.execute<CreateTicketCommand, Ticket>(
+      new CreateTicketCommand(params)
+    )
 
     return this.respond.created(TicketDTO.create(ticket.toObject()))
   }
