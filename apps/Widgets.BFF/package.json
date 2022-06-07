@@ -2,7 +2,7 @@
   "name": "@turnly/widgets.bff",
   "version": "1.0.0",
   "private": true,
-  "description": "The Streaming API provides read-only access to a selected set of data.",
+  "description": "...",
   "license": "UNLICENSED",
   "author": {
     "name": "Efra",
@@ -33,7 +33,11 @@
   "dependencies": {
     "@turnly/common": "git+https://turnlyapps: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@github.com/turnly/common.git#latest",
     "@turnly/rpc": "git+https://turnlyapps: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@github.com/turnly/rpc.git#latest",
-    "dotenv": "^16.0.0"
+    "apollo-server-express": "^3.8.2",
+    "dotenv": "^16.0.0",
+    "graphql": "^16.5.0",
+    "reflect-metadata": "^0.1.13",
+    "type-graphql": "^1.1.1"
   },
   "devDependencies": {
     "@turnly/eslint-config": "github:turnly/configs",

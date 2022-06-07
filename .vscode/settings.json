@@ -29,6 +29,7 @@
     "apps/Chanel",
     "apps/Brennan",
     "apps/Polly",
-    "apps/Bifrost"
+    "apps/Bifrost",
+    "apps/Widgets.BFF"
   ]
 }

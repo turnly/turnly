@@ -1,0 +1,26 @@
+version: '3.9'
+
+services:
+  widgets:
+    extends:
+      file: common.yml
+      service: common
+    container_name: widgets.bff
+    image: widgets:latest
+    build:
+      context: ${COMPOSE_BASE_DIRECTORY}/Widgets.BFF
+      dockerfile: ./docker/Dockerfile.dev
+      args:
+        HTTP_PORT: ${HTTP_PORT}
+        RPC_PORT: ${RPC_PORT}
+    volumes:
+      - ${COMPOSE_BASE_DIRECTORY}/Widgets.BFF:/app
+    depends_on:
+      - networking
+    labels:
+      - traefik.enable=true
+
+      - traefik.http.routers.widgets_http.entrypoints=http
+      - traefik.http.routers.widgets_http.rule=Host(`widgets.turnly`)
+      - traefik.http.routers.widgets_http.service=widgets_http
+      - traefik.http.services.widgets_http.loadbalancer.server.port=${HTTP_PORT}
