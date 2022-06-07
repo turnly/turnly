@@ -8,12 +8,12 @@ services:
     container_name: bifrost.api
     image: bifrost:latest
     build:
-      context: ${COMPOSE_BASE_DIRECTORY}/Bifrost
+      context: ${COMPOSE_BASE_DIRECTORY}/Bifrost.API
       dockerfile: ./docker/Dockerfile.dev
       args:
         HTTP_PORT: ${HTTP_PORT}
     volumes:
-      - ${COMPOSE_BASE_DIRECTORY}/Bifrost:/app
+      - ${COMPOSE_BASE_DIRECTORY}/Bifrost.API:/app
     depends_on:
       - networking
     labels:

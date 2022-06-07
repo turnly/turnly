@@ -29,7 +29,7 @@
     "apps/Chanel",
     "apps/Brennan",
     "apps/Polly",
-    "apps/Bifrost",
+    "apps/Bifrost.API",
     "apps/Widgets.API"
   ]
 }

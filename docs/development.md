@@ -89,7 +89,7 @@ you can run the commands for one of your services from DevO using:
 yarn devo bifrost test
 
 # Same as:
-cd ./apps/Bifrost && yarn run test
+cd ./apps/Bifrost.API && yarn run test
 
 # -------------------------------------
 

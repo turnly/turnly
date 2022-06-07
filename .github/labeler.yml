@@ -21,7 +21,7 @@ brennan:
 polly:
   - apps/Polly/**/*
 bifrost:
-  - apps/Bifrost/**/*
+  - apps/Bifrost.API/**/*
 docker:
   - apps/**/docker/*
 operator:
