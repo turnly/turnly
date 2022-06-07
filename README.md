@@ -25,7 +25,7 @@ Monorepo of back-end applications that make up much of Turnly's APIs.
 
 | Name                                       | Description                                  |
 | ------------------------------------------ | -------------------------------------------- |
-| [Widgets BFF](/apps/WidgetsBFF)            | GraphQL API for widgets clients              |
+| [Widgets BFF](/apps/Widgets.BFF)            | GraphQL API for widgets clients              |
 
 #### Getting Started as a Developer
 

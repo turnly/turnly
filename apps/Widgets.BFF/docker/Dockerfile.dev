@@ -1,0 +1,48 @@
+##
+## Docker image for development environment
+##
+
+##
+## Shared Configuration
+##
+ARG NODE_VERSION=lts-alpine
+ARG NODE_ENV=development
+ARG HTTP_PORT=4000
+
+##
+## Dependencies
+##
+FROM node:${NODE_VERSION} AS deps
+
+WORKDIR /app
+
+RUN apk add --no-cache libc6-compat g++ git cmake make python3
+
+# copy the package.json to install dependencies
+COPY package.json yarn.lock ./
+RUN yarn install --frozen-lockfile --ignore-scripts
+
+##
+## Runner
+##
+FROM node:${NODE_VERSION} AS runner
+
+ARG NODE_ENV
+ARG HTTP_PORT
+
+ENV NODE_ENV=${NODE_ENV}
+ENV HTTP_PORT=${HTTP_PORT}
+
+WORKDIR /app
+
+RUN addgroup -g 1001 -S docker && \
+    adduser -S turnly -u 1001
+
+COPY . .
+COPY --from=deps /app/node_modules ./node_modules
+
+USER turnly
+
+EXPOSE ${HTTP_PORT}
+
+CMD ["yarn", "watch"]
