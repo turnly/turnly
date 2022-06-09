@@ -73,6 +73,7 @@ export class AllowConnGuard {
           name: integration.name,
           canCustomize: integration.canCustomize,
         },
+        customer: {},
       })
 
       next()
