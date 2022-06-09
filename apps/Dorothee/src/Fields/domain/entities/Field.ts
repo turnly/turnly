@@ -1,7 +1,8 @@
 import { Extra, Guid, Identifier, Nullable } from '@turnly/common'
-import { AggregateRoot } from '@turnly/shared'
+import { AggregateRoot, EntityAttributes } from '@turnly/shared'
 
 import { FieldTypes } from '../enums/FieldTypes'
+import { CreateFieldPayload } from '../payloads/CreateFieldPayload'
 import { Processor } from './Processor'
 
 export interface Attributes {
@@ -23,7 +24,7 @@ export interface Attributes {
  *
  * @author Turnly
  */
-export class Field extends AggregateRoot<Attributes> {
+export class Field extends AggregateRoot {
   protected constructor(
     /**
      * ID
@@ -97,7 +98,7 @@ export class Field extends AggregateRoot<Attributes> {
    *
    * @description Creates a new Field.
    */
-  public static create(attributes: Omit<Attributes, 'id'>): Field {
+  public static create(attributes: CreateFieldPayload): Field {
     return new Field(
       Identifier.generate('fld'),
       attributes.label,
@@ -116,7 +117,7 @@ export class Field extends AggregateRoot<Attributes> {
    *
    * @description Builds a Field from an object.
    */
-  public static build(attributes: Attributes): Field {
+  public static build(attributes: EntityAttributes<Field>): Field {
     return new Field(
       attributes.id,
       attributes.label,
@@ -135,7 +136,7 @@ export class Field extends AggregateRoot<Attributes> {
    *
    * @description Returns the Field as an object.
    */
-  public toObject(): Attributes {
+  public toObject() {
     return {
       id: this.id,
       label: this.label,

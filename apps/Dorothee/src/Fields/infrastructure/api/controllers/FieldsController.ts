@@ -1,6 +1,6 @@
 import { Nullable, ResourceNotFoundException } from '@turnly/common'
 import { Controller, IQueryBus, TimeoutHandler } from '@turnly/shared'
-import { FieldByServiceIdQuery } from 'Fields/application/queries'
+import { FieldByServiceIdQuery } from 'Fields/application/queries/FieldByServiceIdQuery'
 import { Field } from 'Fields/domain/entities/Field'
 import { GetFieldPayload } from 'Fields/domain/payloads/GetFieldPayload'
 
