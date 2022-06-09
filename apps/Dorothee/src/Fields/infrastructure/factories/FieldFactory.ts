@@ -1,7 +1,7 @@
 import { ICommandHandler, IQueryHandler } from '@turnly/shared'
 import { Box } from '@turnly/shared'
-import { FieldByIdQueryHandler } from 'Fields/application/queries/FieldByServiceIdQuery'
 
+// import { FieldByIdQueryHandler } from 'Fields/application/queries/FieldByServiceIdQuery'
 import { FieldsController } from '../api/controllers/FieldsController'
 
 export class FieldFactory {
@@ -10,7 +10,7 @@ export class FieldFactory {
   }
 
   public static getQueryHandlers(): IQueryHandler[] {
-    return [Box.resolve<FieldByIdQueryHandler>('fieldByServiceIdQueryHandler')]
+    return []
   }
 
   public static getCommandHandlers(): ICommandHandler[] {

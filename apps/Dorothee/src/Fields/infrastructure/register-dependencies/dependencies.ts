@@ -1,6 +1,6 @@
 import { Box, ioc } from '@turnly/shared'
-import { FieldByIdQueryHandler } from 'Fields/application/queries/FieldByServiceIdQuery'
 
+// import { FieldByIdQueryHandler } from 'Fields/application/queries/FieldByServiceIdQuery'
 import { FieldsController } from '../api/controllers/FieldsController'
 import { FieldMapper } from '../persistence/mongo/entity-model-mappers/FieldMapper'
 import { FieldReadableRepo } from '../persistence/mongo/repositories/FieldReadableRepo'
@@ -16,6 +16,6 @@ Box.register({
 /**
  * Query handlers
  */
-Box.register({
-  fieldByIdQueryHandler: ioc.asClass(FieldByIdQueryHandler).singleton(),
-})
+// Box.register({
+//   fieldByIdQueryHandler: ioc.asClass(FieldByIdQueryHandler).singleton(),
+// })

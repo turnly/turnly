@@ -1,4 +1,5 @@
 import 'Fields/infrastructure/register-dependencies'
+import 'Answers/infrastructure/register-dependencies'
 
 import { eventBus } from '@turnly/shared'
 import { Application } from 'Application'
