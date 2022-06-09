@@ -22,7 +22,7 @@
   },
   "devDependencies": {
     "@commitlint/cli": "^16.2.4",
-    "@turnly/eslint-config": "github:turnly/configs",
+    "@turnly/eslint-config": "git+https://turnlyapps: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@github.com/turnly/configs.git",
     "husky": "^8.0.1"
   },
   "engines": {

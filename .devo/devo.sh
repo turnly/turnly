@@ -6,7 +6,7 @@ BASE_DIR=$(dirname "$0")
 SHARED="$BASE_DIR/../node_modules/@turnly/eslint-config/scripts"
 
 if [[ ! -d "$SHARED" ]]; then
-  yarn add git+https://turnlyapps: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@github.com/turnly/configs.git -W
+  yarn add git+https://turnlyapps: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@github.com/turnly/configs.git -W
 fi
 
 COMMANDS="$BASE_DIR/scripts/commands"

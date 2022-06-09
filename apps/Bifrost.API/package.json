@@ -31,10 +31,10 @@
     ]
   },
   "dependencies": {
-    "@turnly/common": "git+https://turnlyapps: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@github.com/turnly/common.git#latest",
+    "@turnly/common": "git+https://turnlyapps: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@github.com/turnly/common.git#latest",
     "@turnly/eslint-config": "github:turnly/configs",
-    "@turnly/realtime": "git+https://turnlyapps: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@github.com/turnly/realtime.git#latest",
-    "@turnly/rpc": "git+https://turnlyapps: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@github.com/turnly/rpc.git#latest",
+    "@turnly/realtime": "git+https://turnlyapps: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@github.com/turnly/realtime.git#latest",
+    "@turnly/rpc": "git+https://turnlyapps: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@github.com/turnly/rpc.git#latest",
     "dotenv": "^16.0.0"
   },
   "devDependencies": {
