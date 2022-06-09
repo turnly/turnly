@@ -51,5 +51,5 @@ docker exec -it {MONGO_CONTAINER_NAME} mongo --username {MONGO_USERNAME} --passw
 show roles
 ```
 
-3. Copy the content of `/.devo/provisioning/infrastructure/datasources/mongo/init-mongo.sh`.
+3. Copy the content of [/.devo/provisioning/infrastructure/datasources/mongo/init-mongo.sh](/.devo/provisioning/infrastructure/datasources/mongo/init-mongo.sh)
 4. Replace the `$MONGO_INITDB_ROOT_*` values with your credentials and execute it in the terminal.
