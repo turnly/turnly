@@ -16,6 +16,6 @@ export class IntegrationByIdQueryHandler
   public async execute({ params }: IntegrationByIdQuery) {
     const { id } = params
 
-    return await this.integrationsReadableRepo.getById(id)
+    return await this.integrationsReadableRepo.getOne(id)
   }
 }
