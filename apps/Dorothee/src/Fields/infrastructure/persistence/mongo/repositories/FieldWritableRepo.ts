@@ -9,20 +9,7 @@ export class FieldWritableRepo
   extends MongoRepository<Field, FieldDocument>
   implements IFieldWritableRepo
 {
-  public constructor(
-    private readonly fieldsMapper: IFieldMapper<FieldDocument>
-  ) {
-    super(FieldModel)
-  }
-
-  public async save(entities: Field | Field[]): Promise<void> {
-    Array.isArray(entities)
-      ? await this.bulk(
-          entities.map(entity => ({
-            id: entity.toObject().id,
-            entity,
-          }))
-        )
-      : await this.persist(entities.toObject().id, entities)
+  public constructor(fieldsMapper: IFieldMapper<FieldDocument>) {
+    super(FieldModel, fieldsMapper)
   }
 }

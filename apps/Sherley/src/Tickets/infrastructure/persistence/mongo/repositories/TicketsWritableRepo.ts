@@ -9,20 +9,7 @@ export class TicketsWritableRepo
   extends MongoRepository<Ticket, TicketDocument>
   implements ITicketsWritableRepo
 {
-  public constructor(
-    private readonly ticketsMapper: ITicketMapper<TicketDocument>
-  ) {
-    super(TicketModel)
-  }
-
-  public async save(entities: Ticket | Ticket[]): Promise<void> {
-    Array.isArray(entities)
-      ? await this.bulk(
-          entities.map(entity => ({
-            id: entity.toObject().id,
-            entity,
-          }))
-        )
-      : await this.persist(entities.toObject().id, entities)
+  public constructor(ticketsMapper: ITicketMapper<TicketDocument>) {
+    super(TicketModel, ticketsMapper)
   }
 }

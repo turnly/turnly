@@ -9,15 +9,4 @@ export class TicketsWritableForReadableRepo
   public constructor(ticketsElasticClient: ElasticClient) {
     super(ticketsElasticClient)
   }
-
-  public async save(entities: Ticket | Ticket[]): Promise<void> {
-    Array.isArray(entities)
-      ? await this.bulk(
-          entities.map(entity => ({
-            id: entity.toObject().id,
-            entity,
-          }))
-        )
-      : await this.persist(entities.toObject().id, entities)
-  }
 }
