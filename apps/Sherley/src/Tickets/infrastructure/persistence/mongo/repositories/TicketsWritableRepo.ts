@@ -15,9 +15,14 @@ export class TicketsWritableRepo
     super(TicketModel)
   }
 
-  public async save(entity: Ticket): Promise<Ticket> {
-    const document = await this.persist(entity.toObject().id, entity)
-
-    return this.ticketsMapper.toEntity(document)
+  public async save(entities: Ticket | Ticket[]): Promise<void> {
+    Array.isArray(entities)
+      ? await this.bulk(
+          entities.map(entity => ({
+            id: entity.toObject().id,
+            entity,
+          }))
+        )
+      : await this.persist(entities.toObject().id, entities)
   }
 }

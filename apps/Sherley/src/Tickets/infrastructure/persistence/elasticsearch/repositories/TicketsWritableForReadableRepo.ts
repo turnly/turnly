@@ -1,9 +1,4 @@
-import { ResourceNotCreatedError } from '@turnly/common'
-import {
-  ElasticClient,
-  ElasticIndexes,
-  ElasticRepository,
-} from '@turnly/shared'
+import { ElasticClient, ElasticRepository } from '@turnly/shared'
 import { ITicketsWritableRepo } from 'Tickets/domain/contracts/ITicketsRepo'
 import { Ticket } from 'Tickets/domain/entities/Ticket'
 
@@ -11,15 +6,18 @@ export class TicketsWritableForReadableRepo
   extends ElasticRepository<Ticket>
   implements ITicketsWritableRepo
 {
-  public constructor(elasticSearchClient: ElasticClient) {
-    super(elasticSearchClient, ElasticIndexes.TICKETS)
+  public constructor(ticketsElasticClient: ElasticClient) {
+    super(ticketsElasticClient)
   }
 
-  public async save(entity: Ticket): Promise<Ticket> {
-    const response = await this.persist(entity.toObject().id, entity)
-
-    if (!response) throw new ResourceNotCreatedError()
-
-    return entity
+  public async save(entities: Ticket | Ticket[]): Promise<void> {
+    Array.isArray(entities)
+      ? await this.bulk(
+          entities.map(entity => ({
+            id: entity.toObject().id,
+            entity,
+          }))
+        )
+      : await this.persist(entities.toObject().id, entities)
   }
 }

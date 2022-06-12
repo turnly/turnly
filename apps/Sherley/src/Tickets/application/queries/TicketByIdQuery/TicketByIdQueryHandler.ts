@@ -16,7 +16,7 @@ export class TicketByIdQueryHandler
   public async execute({ params }: TicketByIdQuery) {
     const { id, companyId } = params
 
-    const ticket = await this.ticketsReadableRepo.getById(id)
+    const ticket = await this.ticketsReadableRepo.getOne(id)
 
     return ticket?.isOwnedBy(companyId) ? ticket : null
   }

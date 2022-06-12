@@ -1,4 +1,4 @@
-import { Box, ioc } from '@turnly/shared'
+import { Box, ElasticClient, ElasticIndexes, ioc } from '@turnly/shared'
 import { AnnounceTicketCommandHandler } from 'Tickets/application/commands/AnnounceTicketCommand'
 import { CreateTicketCommandHandler } from 'Tickets/application/commands/CreateTicketCommand'
 import { CreateTicketReadingDBCommandHandler } from 'Tickets/application/commands/CreateTicketReadingDBCommand'
@@ -11,6 +11,27 @@ import { TicketsWritableForReadableRepo } from '../persistence/elasticsearch/rep
 import { TicketMapper } from '../persistence/mongo/entity-model-mappers/TicketMapper'
 import { TicketReadableRepo } from '../persistence/mongo/repositories/TicketsReadableRepo'
 import { TicketsWritableRepo } from '../persistence/mongo/repositories/TicketsWritableRepo'
+
+/**
+ * Registers dependencies for the Tickets repos
+ */
+Box.register({
+  ticketsElasticClient: ioc
+    .asFunction(
+      async () =>
+        await new ElasticClient({
+          node: process.env.ELASTICSEARCH_URI as string,
+          index: {
+            name: ElasticIndexes.TICKETS,
+            /**
+             * @todo - add mappings for ticket
+             */
+            configs: {},
+          },
+        }).connect()
+    )
+    .singleton(),
+})
 
 Box.register({
   ticketsMapper: ioc.asClass(TicketMapper).singleton(),
