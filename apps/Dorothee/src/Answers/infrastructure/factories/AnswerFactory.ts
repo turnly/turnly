@@ -1,6 +1,6 @@
 import { ICommandHandler, IQueryHandler } from '@turnly/shared'
 import { Box } from '@turnly/shared'
-import { CreateAnswerBatchCommandHandler } from 'Answers/application/commands/CreateAnswerBatchCommand'
+import { CreateAnswerBulkCommandHandler } from 'Answers/application/commands/CreateAnswerBulkCommand'
 
 import { AnswersController } from '../api/controllers/AnswersController'
 
@@ -15,8 +15,8 @@ export class AnswerFactory {
 
   public static getCommandHandlers(): ICommandHandler[] {
     return [
-      Box.resolve<CreateAnswerBatchCommandHandler>(
-        'createAnswerBatchCommandHandler'
+      Box.resolve<CreateAnswerBulkCommandHandler>(
+        'createAnswerBulkCommandHandler'
       ),
     ]
   }

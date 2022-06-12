@@ -15,9 +15,14 @@ export class FieldWritableRepo
     super(FieldModel)
   }
 
-  public async save(entity: Field): Promise<Field> {
-    const document = await this.persist(entity.toObject().id, entity)
-
-    return this.fieldsMapper.toEntity(document)
+  public async save(entities: Field | Field[]): Promise<void> {
+    Array.isArray(entities)
+      ? await this.bulk(
+          entities.map(entity => ({
+            id: entity.toObject().id,
+            entity,
+          }))
+        )
+      : await this.persist(entities.toObject().id, entities)
   }
 }

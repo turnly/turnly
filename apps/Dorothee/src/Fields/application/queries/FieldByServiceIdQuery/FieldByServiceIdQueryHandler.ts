@@ -14,6 +14,6 @@ export class FieldByIdQueryHandler
   public async execute({ params }: FieldByServiceIdQuery) {
     const { id } = params
 
-    return await this.fieldsReadableRepo.getById(id)
+    return await this.fieldsReadableRepo.getOne(id)
   }
 }

@@ -15,9 +15,14 @@ export class AnswerWritableRepo
     super(AnswerModel)
   }
 
-  public async save(entity: Answer): Promise<Answer> {
-    const document = await this.persist(entity.toObject().id, entity)
-
-    return this.answersMapper.toEntity(document)
+  public async save(entities: Answer | Answer[]): Promise<void> {
+    Array.isArray(entities)
+      ? await this.bulk(
+          entities.map(entity => ({
+            id: entity.toObject().id,
+            entity,
+          }))
+        )
+      : await this.persist(entities.toObject().id, entities)
   }
 }

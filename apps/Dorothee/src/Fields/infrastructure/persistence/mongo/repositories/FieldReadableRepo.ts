@@ -1,5 +1,5 @@
-import { Guid, NotImplementedError, Nullable } from '@turnly/common'
-import { Criteria, MongoRepository } from '@turnly/shared'
+import { Guid, Nullable } from '@turnly/common'
+import { MongoRepository, QueryBuilderObject } from '@turnly/shared'
 import { IFieldMapper } from 'Fields/domain/contracts/IFieldMapper'
 import { IFieldReadableRepo } from 'Fields/domain/contracts/IFieldRepo'
 import { Field } from 'Fields/domain/entities/Field'
@@ -16,13 +16,21 @@ export class FieldReadableRepo
     super(FieldModel)
   }
 
-  public async getById(id: Guid): Promise<Nullable<Field>> {
+  public async getOne(id: Guid): Promise<Nullable<Field>> {
     const document = await this.model.findById(id)
 
     return document ? this.fieldsMapper.toEntity(document) : null
   }
 
-  public async search(_query: Criteria): Promise<Nullable<Field[]>> {
-    throw new NotImplementedError()
+  public async find(
+    query: QueryBuilderObject<Field>
+  ): Promise<Field[] | Nullable<Field>> {
+    const documents = await this.search(query)
+
+    return Array.isArray(documents)
+      ? this.fieldsMapper.toEntityList(documents)
+      : documents
+      ? this.fieldsMapper.toEntity(documents)
+      : null
   }
 }
