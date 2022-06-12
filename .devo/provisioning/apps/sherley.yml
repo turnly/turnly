@@ -16,7 +16,7 @@ services:
     volumes:
       - ${COMPOSE_BASE_DIRECTORY}/Sherley:/app
     depends_on:
-      - networking
+      - gateway
       - mongo
       - elasticsearch
     labels:

@@ -23,4 +23,4 @@ jobs:
 
       - name: Run linters on each app
         run: |
-          yarn devo lint
+          yarn devo lint --all

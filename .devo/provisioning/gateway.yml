@@ -1,20 +1,15 @@
 version: '3.9'
 
 services:
-  networking:
+  gateway:
     extends:
       file: common.yml
       service: common
-    image: traefik:v2.7
-    container_name: networking
-    command:
-      - --accesslog
-      - --tracing
-      - --api.insecure=true
-      - --providers.docker
-      - --providers.docker.exposedbydefault=false
-      - --entrypoints.http.address=:${HTTP_PORT}
-      - --entrypoints.rpc.address=:${RPC_PORT}
+    image: gateway:latest
+    container_name: gateway
+    build:
+      context: ${COMPOSE_BASE_DIRECTORY}/Gateway
+      dockerfile: ./docker/Dockerfile
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
     ports:

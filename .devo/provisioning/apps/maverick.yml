@@ -16,7 +16,7 @@ services:
     volumes:
       - ${COMPOSE_BASE_DIRECTORY}/Maverick:/app
     depends_on:
-      - networking
+      - gateway
       - mongo
     labels:
       - traefik.enable=true

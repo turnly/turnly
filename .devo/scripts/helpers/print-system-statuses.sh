@@ -24,7 +24,7 @@ function print_system_statuses() {
 
   line
 
-  info " 🟢 Traffic Dashboard                    : http://$APP_PROXY_HOST:$APP_PROXY_DASHBOARD_PORT"
+  info " 🟢 Traefik Dashboard                    : http://$APP_PROXY_HOST:$APP_PROXY_DASHBOARD_PORT"
   info " 🟢 Elastic Search Dashboard             : http://$APP_PROXY_HOST:$ELASTICSEARCH_KIBANA_PORT"
   info " 🟢 Mongo Dashboard                      : http://$APP_PROXY_HOST:$MONGO_UI_PORT"
   info " 🟢 Redis Dashboard                      : http://$APP_PROXY_HOST:$REDIS_ADMINER_PORT"

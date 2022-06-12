@@ -1,6 +1,11 @@
 #!/bin/bash
 
 function yarn_lock() {
+  IGNORE_DIRS=(
+    ".gitkeep"
+    "Gateway"
+  )
+
   [[ -z "$APPS_DIRECTORY" ]] && error "Oops! Environment variable APPS_DIRECTORY is not set."
 
   APPS_DIRS="$(ls -d "$APPS_DIRECTORY"/*)"
@@ -8,6 +13,10 @@ function yarn_lock() {
   [[ -z "$APPS_DIRS" ]] && error "Oops! No apps found in $APPS_DIRECTORY directory."
 
   for APP_DIR in $APPS_DIRS; do
+    if [[ "${IGNORE_DIRS[*]}" == *"$APP_NAME"* ]] &>/dev/null; then
+      continue
+    fi
+
     if [[ $* == *"--remove"* ]]; then
       rm -f "$APP_DIR/yarn.lock"
     fi

@@ -16,7 +16,7 @@ services:
     volumes:
       - ${COMPOSE_BASE_DIRECTORY}/Widgets.API:/app
     depends_on:
-      - networking
+      - gateway
     labels:
       - traefik.enable=true
 

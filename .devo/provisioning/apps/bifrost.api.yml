@@ -15,7 +15,7 @@ services:
     volumes:
       - ${COMPOSE_BASE_DIRECTORY}/Bifrost.API:/app
     depends_on:
-      - networking
+      - gateway
     labels:
       - traefik.enable=true
 

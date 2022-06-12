@@ -1,0 +1,19 @@
+## traefik.yml
+
+accesslog: true
+
+api:
+  insecure: true
+  dashboard: true
+  debug: true
+
+entryPoints:
+  http:
+    address: :6030
+  rpc:
+    address: :6050
+
+providers:
+  docker:
+    exposedbydefault: false
+    watch: true

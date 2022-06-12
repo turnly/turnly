@@ -37,6 +37,11 @@ git clone git@github.com:turnly/athena.git
 # 2. Copy environment files on each app.
 # 3. And other common tasks.
 yarn devo setup
+
+# OR
+
+# Use verbose to show all the output of commands.
+yarn devo setup --verbose
 ```
 
 #### Start command
@@ -51,7 +56,7 @@ yarn devo start -s maverick -s bifrost
 # OR
 
 # Use verbose to show all the output of the containers and commands.
-VERBOSE=true yarn devo start
+yarn devo start --verbose
 
 # Build images before starting containers and re-run setup.
 yarn devo start --build
@@ -61,6 +66,11 @@ yarn devo start --build
 
 ```sh
 yarn devo stop
+
+# OR
+
+# Use verbose to show all the output of commands.
+yarn devo stop --verbose
 ```
 
 #### Reload command
@@ -77,7 +87,15 @@ yarn devo reload -s bifrost
 
 ```sh
 # Run linters on each services:
+yarn devo lint --all
+
+# Run linters only if the apps has changed since last commit
 yarn devo lint
+
+# OR
+
+# Use verbose to show all the output of commands.
+yarn devo lint --all --verbose
 ```
 
 #### Workspace commands

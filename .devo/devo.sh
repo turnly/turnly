@@ -6,7 +6,7 @@ BASE_DIR=$(dirname "$0")
 SHARED="$BASE_DIR/../node_modules/@turnly/eslint-config/scripts"
 
 if [[ ! -d "$SHARED" ]]; then
-  yarn add git+https://turnlyapps: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@github.com/turnly/configs.git -W
+  yarn add https://github.com/turnly/configs.git -W
 fi
 
 COMMANDS="$BASE_DIR/scripts/commands"
@@ -33,10 +33,13 @@ info "Turnly Docker-backed infrastructure provisioning and development systems m
 
 line
 
+# Sets verbose mode to true if the command includes the "--verbose" flag
+[[ $* == *"--verbose"* ]] && VERBOSE=true
+
 # Sets the default infrastructure services
 if [[ $* == *"-s"* ]]; then
   EXECUTE_SERVICES=(
-    "networking"
+    "gateway"
     "elasticsearch"
     "kibana"
     "fluentd"

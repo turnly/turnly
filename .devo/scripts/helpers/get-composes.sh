@@ -2,10 +2,11 @@
 
 function get_composes() {
   PROVISIONING_DIR="./.devo/provisioning"
-  COMPOSE_FILES="-f $PROVISIONING_DIR/networking.yml"
+  COMPOSE_FILES="-f $PROVISIONING_DIR/gateway.yml"
 
   IGNORE_DIRS=(
     ".gitkeep"
+    "Gateway"
   )
 
   INFRA_COMPOSE_FILES=$(find $PROVISIONING_DIR/infrastructure -name "*.yml" -type f)
