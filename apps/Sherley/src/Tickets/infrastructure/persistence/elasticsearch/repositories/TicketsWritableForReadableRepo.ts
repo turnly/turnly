@@ -1,9 +1,9 @@
-import { ElasticClient, ElasticRepository } from '@turnly/shared'
+import { ElasticClient, ElasticWritableRepo } from '@turnly/shared'
 import { ITicketsWritableRepo } from 'Tickets/domain/contracts/ITicketsRepo'
 import { Ticket } from 'Tickets/domain/entities/Ticket'
 
 export class TicketsWritableForReadableRepo
-  extends ElasticRepository<Ticket>
+  extends ElasticWritableRepo<Ticket>
   implements ITicketsWritableRepo
 {
   public constructor(ticketsElasticClient: ElasticClient) {

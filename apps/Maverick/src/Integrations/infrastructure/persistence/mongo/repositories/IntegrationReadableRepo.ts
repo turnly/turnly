@@ -1,4 +1,4 @@
-import { MongoRepository } from '@turnly/shared'
+import { MongoReadableRepo } from '@turnly/shared'
 import { IIntegrationMapper } from 'Integrations/domain/contracts/IIntegrationMapper'
 import { IIntegrationReadableRepo } from 'Integrations/domain/contracts/IIntegrationRepo'
 import { Integration } from 'Integrations/domain/entities/Integration'
@@ -9,7 +9,7 @@ import {
 } from '../models/IntegrationModel'
 
 export class IntegrationReadableRepo
-  extends MongoRepository<Integration, IntegrationDocument>
+  extends MongoReadableRepo<Integration, IntegrationDocument>
   implements IIntegrationReadableRepo
 {
   public constructor(
