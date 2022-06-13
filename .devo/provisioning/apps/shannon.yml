@@ -1,0 +1,33 @@
+version: '3.9'
+
+services:
+  shannon:
+    extends:
+      file: common.yml
+      service: common
+    container_name: shannon
+    image: shannon:latest
+    build:
+      context: ${COMPOSE_BASE_DIRECTORY}/Dorothee
+      dockerfile: ./docker/Dockerfile.dev
+      args:
+        HTTP_PORT: ${HTTP_PORT}
+        RPC_PORT: ${RPC_PORT}
+    volumes:
+      - ${COMPOSE_BASE_DIRECTORY}/Dorothee:/app
+    depends_on:
+      - gateway
+      - mongo
+    labels:
+      - traefik.enable=true
+
+      - traefik.http.routers.shannon_rpc.entrypoints=rpc
+      - traefik.http.routers.shannon_rpc.rule=PathPrefix(`/turnly.shannon.v1`) && Host(`rpc.turnly`) || Host(`host.docker.internal`)
+      - traefik.http.routers.shannon_rpc.service=shannon_rpc
+      - traefik.http.services.shannon_rpc.loadbalancer.server.port=${RPC_PORT}
+      - traefik.http.services.shannon_rpc.loadbalancer.server.scheme=h2c
+
+      - traefik.http.routers.shannon_http.entrypoints=http
+      - traefik.http.routers.shannon_http.rule=Host(`api.turnly`) && PathPrefix(`/v1/fields`, `/v1/answers`)
+      - traefik.http.routers.shannon_http.service=shannon_http
+      - traefik.http.services.shannon_http.loadbalancer.server.port=${HTTP_PORT}
