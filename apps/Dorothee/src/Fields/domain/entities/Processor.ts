@@ -15,7 +15,7 @@ export interface Attributes {
 /**
  * Processor
  *
- * @description Represents fields that can be used to create custom forms for any entity.
+ * @description A processor is a component that can be used to process data.
  *
  * @author Turnly
  */
