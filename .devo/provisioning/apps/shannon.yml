@@ -8,13 +8,13 @@ services:
     container_name: shannon
     image: shannon:latest
     build:
-      context: ${COMPOSE_BASE_DIRECTORY}/Dorothee
+      context: ${COMPOSE_BASE_DIRECTORY}/Shannon
       dockerfile: ./docker/Dockerfile.dev
       args:
         HTTP_PORT: ${HTTP_PORT}
         RPC_PORT: ${RPC_PORT}
     volumes:
-      - ${COMPOSE_BASE_DIRECTORY}/Dorothee:/app
+      - ${COMPOSE_BASE_DIRECTORY}/Shannon:/app
     depends_on:
       - gateway
       - mongo

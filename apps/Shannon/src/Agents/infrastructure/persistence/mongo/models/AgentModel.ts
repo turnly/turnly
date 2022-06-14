@@ -37,7 +37,7 @@ const schema = new Schema({
     required: true,
     index: true,
   },
-  servicesId: {
+  servingFromIds: {
     type: String,
     required: true,
   },

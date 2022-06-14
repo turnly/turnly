@@ -34,32 +34,11 @@ export class Agent extends AggregateRoot {
     private lastname: string,
 
     /**
-     * Type
-     *
-     * @description The frontend type of the Agent.
-     */
-    private nick: Nullable<string>,
-
-    /**
-     * Entity Type
-     *
-     * @description The entity type that the Agent is associated with.
-     */
-    private readonly position: Nullable<string>,
-
-    /**
      * Company
      *
      * @description The Company that the Agent belongs to.
      */
     private readonly companyId: Guid,
-
-    /**
-     * Company
-     *
-     * @description The Company that the Agent belongs to.
-     */
-    private readonly deskId: Nullable<string>,
 
     /**
      * Location
@@ -69,11 +48,32 @@ export class Agent extends AggregateRoot {
     private readonly locationId: Guid,
 
     /**
+     * Type
+     *
+     * @description The frontend type of the Agent.
+     */
+    private nick: Nullable<string> = null,
+
+    /**
+     * Entity Type
+     *
+     * @description The entity type that the Agent is associated with.
+     */
+    private readonly position: Nullable<string> = null,
+
+    /**
+     * Company
+     *
+     * @description The Company that the Agent belongs to.
+     */
+    private readonly deskId: Nullable<string> = null,
+
+    /**
      * Service
      *
      * @description The Service that the Agent expects to serve at the Location.
      */
-    private readonly servicesId: Guid,
+    private readonly servingFromIds: Nullable<Guid[]> = null,
 
     /**
      * Extra
@@ -96,12 +96,12 @@ export class Agent extends AggregateRoot {
       Identifier.generate('agt'),
       attributes.name,
       attributes.lastname,
+      attributes.companyId,
+      attributes.locationId,
       attributes.nick,
       attributes.position,
-      attributes.companyId,
       attributes.deskId,
-      attributes.locationId,
-      attributes.servicesId,
+      attributes.servingFromIds,
       attributes.extra
     )
   }
@@ -116,12 +116,12 @@ export class Agent extends AggregateRoot {
       attributes.id,
       attributes.name,
       attributes.lastname,
+      attributes.companyId,
+      attributes.locationId,
       attributes.nick,
       attributes.position,
-      attributes.companyId,
       attributes.deskId,
-      attributes.locationId,
-      attributes.servicesId,
+      attributes.servingFromIds,
       attributes.extra
     )
   }
@@ -136,12 +136,12 @@ export class Agent extends AggregateRoot {
       id: this.id,
       name: this.name,
       lastname: this.lastname,
+      companyId: this.companyId,
+      locationId: this.locationId,
       nick: this.nick,
       position: this.position,
-      companyId: this.companyId,
       deskId: this.deskId,
-      locationId: this.locationId,
-      servicesId: this.servicesId,
+      servingFromIds: this.servingFromIds,
       extra: this.extra,
     }
   }

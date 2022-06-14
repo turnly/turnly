@@ -1,4 +1,4 @@
-import { MongoClientFactory, mongoConfig, Startup } from '@turnly/shared'
+import { MongoClient, mongoConfig, Startup } from '@turnly/shared'
 
 export class Application extends Startup {
   /**
@@ -7,8 +7,9 @@ export class Application extends Startup {
    * @memberof Startup
    */
   public async setup(): Promise<void> {
-    await this.setupDatabase()
     this.setupMonitoring()
+
+    await this.setupDatabase()
     await this.setupPresentations()
   }
 
@@ -19,8 +20,6 @@ export class Application extends Startup {
   }
 
   private async setupDatabase(): Promise<void> {
-    await MongoClientFactory.createClient(mongoConfig.namespace, {
-      url: mongoConfig.uri,
-    })
+    await new MongoClient(mongoConfig).connect()
   }
 }
