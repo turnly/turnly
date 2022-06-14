@@ -1,2 +1,2 @@
-export * from './FieldByServiceIdQuery'
-export * from './FieldByServiceIdQueryHandler'
+export * from './SearchCustomerFieldsByServiceQuery'
+export * from './SearchCustomerFieldsByServiceQueryHandler'

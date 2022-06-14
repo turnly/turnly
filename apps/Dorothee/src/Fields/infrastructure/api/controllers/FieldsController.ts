@@ -1,8 +1,15 @@
 import { Nullable, ResourceNotFoundException } from '@turnly/common'
-import { Controller, IQueryBus, TimeoutHandler } from '@turnly/shared'
-import { FieldByServiceIdQuery } from 'Fields/application/queries/FieldByServiceIdQuery'
+import {
+  Controller,
+  InputValidator,
+  IQueryBus,
+  TimeoutHandler,
+} from '@turnly/shared'
+import { SearchCustomerFieldsByServiceQuery } from 'Fields/application/queries/FieldByServiceIdQuery'
 import { Field } from 'Fields/domain/entities/Field'
-import { GetFieldPayload } from 'Fields/domain/payloads/GetFieldPayload'
+import { SearchCustomerFieldsByServicePayload } from 'Fields/domain/payloads/SearchCustomerFieldsByServicePayload'
+
+import { validator } from '../validators/FieldValidator'
 
 export class FieldsController extends Controller {
   public constructor(private readonly queryBus: IQueryBus) {
@@ -10,17 +17,19 @@ export class FieldsController extends Controller {
   }
 
   @TimeoutHandler()
-  // @InputValidator(validator.get)
-  public async get(params: GetFieldPayload) {
-    const query = new FieldByServiceIdQuery(params)
+  @InputValidator(validator.searchCustomerFieldsByService)
+  public async searchCustomerFieldsByService(
+    params: SearchCustomerFieldsByServicePayload
+  ) {
+    const query = new SearchCustomerFieldsByServiceQuery(params)
 
-    const field = await this.queryBus.ask<
-      FieldByServiceIdQuery,
-      Nullable<Field>
+    const fields = await this.queryBus.ask<
+      SearchCustomerFieldsByServiceQuery,
+      Nullable<Field[]>
     >(query)
 
-    if (!field) throw new ResourceNotFoundException()
+    if (!fields?.length) throw new ResourceNotFoundException()
 
-    return this.respond.ok(field.toObject())
+    return this.respond.ok(fields.map(field => field.toObject()))
   }
 }

@@ -1632,7 +1632,7 @@
 
 "@turnly/rpc@git+https://turnlyapps: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@github.com/turnly/rpc.git#latest":
   version "1.0.0"
-  resolved "git+https://turnlyapps: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@github.com/turnly/rpc.git#d0f5f12aae94a9f546d2d50d5f7911548a5438c5"
+  resolved "git+https://turnlyapps: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@github.com/turnly/rpc.git#0578ac277e05fe01eed739df14a4efb35b8fc23d"
   dependencies:
     "@grpc/grpc-js" "^1.6.7"
     "@turnly/common" "git+https://turnlyapps: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@github.com/turnly/common.git#latest"
@@ -1640,7 +1640,7 @@
 
 "@turnly/shared@git+https://turnlyapps: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@github.com/turnly/shared.git#latest":
   version "1.0.0"
-  resolved "git+https://turnlyapps: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@github.com/turnly/shared.git#da9983d4df2c040a1f0b50517991943ddeacf055"
+  resolved "git+https://turnlyapps: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@github.com/turnly/shared.git#166d5bbd61c259bb09ded08204c9aa62b55c289f"
   dependencies:
     "@elastic/elasticsearch" "7.17.0"
     "@turnly/common" "git+https://turnlyapps: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@github.com/turnly/common.git#latest"
@@ -1735,10 +1735,19 @@
   resolved "https://registry.yarnpkg.com/@types/cors/-/cors-2.8.12.tgz#6b2c510a7ad7039e98e7b8d3d6598f4359e5c080"
   integrity sha512-vt+kDhq/M2ayberEtJcIN/hxXy1Pk+59g2FV/ZQceeaTyCtCucjL2Q7FXlFjtWn4n15KCr1NE2lNNFhp0lEThw==
 
-"@types/express-serve-static-core@4.17.28", "@types/express-serve-static-core@^4.17.18":
+"@types/express-serve-static-core@4.17.28":
   version "4.17.28"
   resolved "https://registry.yarnpkg.com/@types/express-serve-static-core/-/express-serve-static-core-4.17.28.tgz#c47def9f34ec81dc6328d0b1b5303d1ec98d86b8"
   integrity sha512-P1BJAEAW3E2DJUlkgq4tOL3RyMunoWXqbSCygWo5ZIWTjUgN1YnaXWW4VWl/oc8vs/XoYibEGBKP0uZyF4AHig==
+  dependencies:
+    "@types/node" "*"
+    "@types/qs" "*"
+    "@types/range-parser" "*"
+
+"@types/express-serve-static-core@^4.17.18":
+  version "4.17.29"
+  resolved "https://registry.yarnpkg.com/@types/express-serve-static-core/-/express-serve-static-core-4.17.29.tgz#2a1795ea8e9e9c91b4a4bbe475034b20c1ec711c"
+  integrity sha512-uMd++6dMKS32EOuw1Uli3e3BPgdLIXmezcfHv7N4c1s3gkhikBplORPpMq3fuWkxncZN1reb16d5n8yhQ80x7Q==
   dependencies:
     "@types/node" "*"
     "@types/qs" "*"
@@ -2344,9 +2353,9 @@ awilix@^7.0.3:
     fast-glob "^3.2.11"
 
 aws-sdk@^2.1029.0:
-  version "2.1153.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.1153.0.tgz#63394dff05166d12d29594beda909e85897aa56d"
-  integrity sha512-afuYFy5jc2eQ7fGL6bsMiDGJ74nSvQyCWwQ0j3lJp+9BbMCxqc03lozWh3W07tknr4xmL+5YhfkmViNLoz2huA==
+  version "2.1154.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.1154.0.tgz#94c9406aeb69b7320a16714eb4958a9569cbb7f4"
+  integrity sha512-SIxLcWGsnW9Sl2P+a+uoqebBsfjeAZZOQokzgDj3VoESnFzsjI+2REi9CdvvSvwlfFUP7sFr6A0khrYNDJLebQ==
   dependencies:
     buffer "4.9.2"
     events "1.1.1"

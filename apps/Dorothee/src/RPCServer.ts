@@ -1,11 +1,14 @@
 import { Producers } from '@turnly/rpc'
 import { AnswersServer } from 'Answers/infrastructure/api/rpc'
 import { AnswerFactory } from 'Answers/infrastructure/factories/AnswerFactory'
+import { FieldsServer } from 'Fields/infrastructure/api/rpc'
+import { FieldFactory } from 'Fields/infrastructure/factories/FieldFactory'
 
 /**
  * Servers
  */
 export const answersServer = new AnswersServer(AnswerFactory.getController())
+export const fieldsServer = new FieldsServer(FieldFactory.getController())
 
 /**
  * Services (RPC)
@@ -16,6 +19,10 @@ const services = [
   {
     definition: Producers.Dorothee.AnswersService,
     implementation: answersServer.implementation,
+  },
+  {
+    definition: Producers.Dorothee.FieldsService,
+    implementation: fieldsServer.implementation,
   },
 ]
 

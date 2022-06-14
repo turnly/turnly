@@ -1,12 +1,10 @@
 import { Validator } from '@turnly/shared'
 
-const create = Validator.object({
+const searchCustomerFieldsByService = Validator.object({
   serviceId: Validator.isId(),
-  locationId: Validator.isId(),
-  customerId: Validator.isId(),
-  metadata: Validator.getBuilder().object().optional(),
+  companyId: Validator.isId(),
 })
 
 export const validator = {
-  create,
+  searchCustomerFieldsByService,
 }
