@@ -38,8 +38,7 @@ const schema = new Schema({
     index: true,
   },
   servingFromIds: {
-    type: String,
-    required: true,
+    type: [String],
   },
 })
 
