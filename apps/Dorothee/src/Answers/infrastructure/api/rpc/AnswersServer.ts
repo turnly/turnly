@@ -8,13 +8,13 @@ export class AnswersServer extends Producers.ServerImplementation<Producers.Doro
     super()
   }
 
-  @Producers.CallHandler(Producers.Dorothee.CreateAnswerResponse)
+  @Producers.CallHandler(Producers.Dorothee.CreateAnswersResponse)
   public async create(
     call: Producers.ServerUnaryCall<
-      Producers.Dorothee.CreateAnswerRequest,
-      Producers.Dorothee.CreateAnswerResponse
+      Producers.Dorothee.CreateAnswersRequest,
+      Producers.Dorothee.CreateAnswersResponse
     >,
-    callback: Producers.ICallback<Producers.Dorothee.CreateAnswerResponse>
+    callback: Producers.ICallback<Producers.Dorothee.CreateAnswersResponse>
   ) {
     const answers = call.request.getAnswersList().map(answer => ({
       ...answer.toObject(),
@@ -23,7 +23,7 @@ export class AnswersServer extends Producers.ServerImplementation<Producers.Doro
 
     const { data, meta } = await this.answersController.create(answers)
 
-    const response = new Producers.Dorothee.CreateAnswerResponse()
+    const response = new Producers.Dorothee.CreateAnswersResponse()
 
     if (data)
       response.setDataList(data.map(answer => AnswerMapper.toRPC(answer)))

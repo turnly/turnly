@@ -1,9 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
+import { EntityAttributes } from '@turnly/shared'
 import { IIntegrationMapper } from 'Integrations/domain/contracts/IIntegrationMapper'
-import {
-  Attributes,
-  Integration,
-} from 'Integrations/domain/entities/Integration'
+import { Integration } from 'Integrations/domain/entities/Integration'
 
 import {
   IntegrationDocument,
@@ -14,7 +12,7 @@ export class IntegrationMapper
   implements IIntegrationMapper<IntegrationDocument>
 {
   public toEntity(document: IntegrationDocument): Integration {
-    const { _id, ...attrs } = document.toObject<Attributes>()
+    const { _id, ...attrs } = document.toObject<EntityAttributes<Integration>>()
 
     return Integration.build({ ...attrs, id: String(_id) })
   }
