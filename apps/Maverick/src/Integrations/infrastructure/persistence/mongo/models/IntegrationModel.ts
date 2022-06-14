@@ -1,9 +1,13 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import { Attributes as Attrs } from 'Integrations/domain/entities/Integration'
+import { EntityAttributes } from '@turnly/shared'
+import { Integration } from 'Integrations/domain/entities/Integration'
 import { IntegrationStatus } from 'Integrations/domain/enums/IntegrationStatus'
 import mongoose, { Document, Model, Schema } from 'mongoose'
 
-export interface IntegrationDocument extends Omit<Attrs, 'id'>, Document {}
+export interface IntegrationDocument
+  extends Omit<EntityAttributes<Integration>, 'id'>,
+    Document {}
+
 export type IIntegrationModel = Model<IntegrationDocument>
 
 const schema = new Schema({

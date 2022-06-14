@@ -6,6 +6,7 @@ import mongoose, { Document, Model, Schema } from 'mongoose'
 export interface AnswerDocument
   extends Omit<EntityAttributes<Answer>, 'id'>,
     Document {}
+
 export type IAnswerModel = Model<AnswerDocument>
 
 const schema = new Schema({

@@ -9,7 +9,7 @@ export class AnswersController extends Controller {
   }
 
   @TimeoutHandler()
-  public async batch(params: CreateAnswerPayload[]) {
+  public async create(params: CreateAnswerPayload[]) {
     const answers = await this.commandBus.execute<
       CreateAnswersBulkCommand,
       Answer[]

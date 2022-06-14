@@ -1,8 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import { Attributes as Attrs } from 'Fields/domain/entities/Processor'
+import { EntityAttributes } from '@turnly/shared'
+import { Processor } from 'Fields/domain/entities/Processor'
 import mongoose, { Document, Model, Schema } from 'mongoose'
 
-export interface ProcessorDocument extends Omit<Attrs, 'id'>, Document {}
+export interface ProcessorDocument
+  extends Omit<EntityAttributes<Processor>, 'id'>,
+    Document {}
+
 export type IProcessorModel = Model<ProcessorDocument>
 
 const schema = new Schema({

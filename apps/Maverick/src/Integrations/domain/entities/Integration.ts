@@ -1,16 +1,8 @@
 import { Guid, Identifier } from '@turnly/common'
-import { AggregateRoot } from '@turnly/shared'
+import { AggregateRoot, EntityAttributes } from '@turnly/shared'
 
 import { IntegrationStatus } from '../enums/IntegrationStatus'
 import { IntegrationCreatedEvent } from '../events/IntegrationCreatedEvent'
-
-export interface Attributes {
-  id: Guid
-  name: string
-  status: IntegrationStatus
-  origins: string[]
-  companyId: Guid
-}
 
 /**
  * Integration
@@ -20,7 +12,7 @@ export interface Attributes {
  *
  * @author Turnly
  */
-export class Integration extends AggregateRoot<Attributes> {
+export class Integration extends AggregateRoot {
   protected constructor(
     /**
      * ID
@@ -65,7 +57,9 @@ export class Integration extends AggregateRoot<Attributes> {
    *
    * @description Creates a new Integration.
    */
-  public static create(attributes: Omit<Attributes, 'id'>): Integration {
+  public static create(
+    attributes: Omit<EntityAttributes<Integration>, 'id'>
+  ): Integration {
     const integration = new Integration(
       Identifier.generate('in'),
       attributes.name,
@@ -84,7 +78,7 @@ export class Integration extends AggregateRoot<Attributes> {
    *
    * @description Builds an Integration from an object.
    */
-  public static build(attributes: Attributes): Integration {
+  public static build(attributes: EntityAttributes<Integration>): Integration {
     return new Integration(
       attributes.id,
       attributes.name,
@@ -99,7 +93,7 @@ export class Integration extends AggregateRoot<Attributes> {
    *
    * @description Returns the Integration as an object.
    */
-  public toObject(): Attributes {
+  public toObject() {
     return {
       id: this.id,
       name: this.name,

@@ -21,7 +21,7 @@ export class AnswersServer extends Producers.ServerImplementation<Producers.Doro
       extra: answer.getExtrasList().map(e => e.toObject()),
     }))
 
-    const { data, meta } = await this.answersController.batch(answers)
+    const { data, meta } = await this.answersController.create(answers)
 
     const response = new Producers.Dorothee.CreateAnswerResponse()
 

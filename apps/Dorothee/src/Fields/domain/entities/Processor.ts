@@ -1,16 +1,5 @@
 import { Guid, Identifier, Nullable } from '@turnly/common'
-import { AggregateRoot } from '@turnly/shared'
-
-export interface Attributes {
-  id: Guid
-  name: string
-  description: Nullable<string>
-  companyId: Guid
-  url: string
-  signature: string
-  isActive: boolean
-  lastFiredAt: Nullable<Date>
-}
+import { AggregateRoot, EntityAttributes } from '@turnly/shared'
 
 /**
  * Processor
@@ -19,7 +8,7 @@ export interface Attributes {
  *
  * @author Turnly
  */
-export class Processor extends AggregateRoot<Attributes> {
+export class Processor extends AggregateRoot {
   protected constructor(
     /**
      * ID
@@ -85,7 +74,9 @@ export class Processor extends AggregateRoot<Attributes> {
    *
    * @description Creates a new Processor.
    */
-  public static create(attributes: Omit<Attributes, 'id'>): Processor {
+  public static create(
+    attributes: Omit<EntityAttributes<Processor>, 'id'>
+  ): Processor {
     return new Processor(
       Identifier.generate('pr'),
       attributes.name,
@@ -103,7 +94,7 @@ export class Processor extends AggregateRoot<Attributes> {
    *
    * @description Builds a Processor from an object.
    */
-  public static build(attributes: Attributes): Processor {
+  public static build(attributes: EntityAttributes<Processor>): Processor {
     return new Processor(
       attributes.id,
       attributes.name,
@@ -121,7 +112,7 @@ export class Processor extends AggregateRoot<Attributes> {
    *
    * @description Returns the Processor as an object.
    */
-  public toObject(): Attributes {
+  public toObject() {
     return {
       id: this.id,
       name: this.name,

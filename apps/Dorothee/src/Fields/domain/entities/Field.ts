@@ -5,18 +5,6 @@ import { FieldTypes } from '../enums/FieldTypes'
 import { CreateFieldPayload } from '../payloads/CreateFieldPayload'
 import { Processor } from './Processor'
 
-export interface Attributes {
-  id: Guid
-  label: string
-  description: Nullable<string>
-  type: FieldTypes
-  entityType: string
-  isRequired: boolean
-  companyId: Guid
-  processors: Nullable<Processor[]>
-  extra: Nullable<Extra[]>
-}
-
 /**
  * Field
  *
