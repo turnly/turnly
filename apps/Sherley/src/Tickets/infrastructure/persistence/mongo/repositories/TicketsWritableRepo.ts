@@ -1,4 +1,5 @@
 import { MongoWritableRepo } from '@turnly/shared'
+import { ITicketMapper } from 'Tickets/domain/contracts/ITicketsMapper'
 import { ITicketsWritableRepo } from 'Tickets/domain/contracts/ITicketsRepo'
 import { Ticket } from 'Tickets/domain/entities/Ticket'
 
@@ -8,7 +9,7 @@ export class TicketsWritableRepo
   extends MongoWritableRepo<Ticket, TicketDocument>
   implements ITicketsWritableRepo
 {
-  public constructor() {
-    super(TicketModel)
+  public constructor(ticketsMapper: ITicketMapper<TicketDocument>) {
+    super(TicketModel, ticketsMapper)
   }
 }
