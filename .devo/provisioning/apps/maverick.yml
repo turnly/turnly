@@ -26,8 +26,3 @@ services:
       - traefik.http.routers.maverick_rpc.service=maverick_rpc
       - traefik.http.services.maverick_rpc.loadbalancer.server.port=${RPC_PORT}
       - traefik.http.services.maverick_rpc.loadbalancer.server.scheme=h2c
-
-      - traefik.http.routers.maverick_http.entrypoints=http
-      - traefik.http.routers.maverick_http.rule=Host(`api.turnly`) && PathPrefix(`/v1/integrations`, `/v1/webhooks`, `/v1/beacons`)
-      - traefik.http.routers.maverick_http.service=maverick_http
-      - traefik.http.services.maverick_http.loadbalancer.server.port=${HTTP_PORT}

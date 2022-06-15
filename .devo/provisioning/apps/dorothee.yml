@@ -26,8 +26,3 @@ services:
       - traefik.http.routers.dorothee_rpc.service=dorothee_rpc
       - traefik.http.services.dorothee_rpc.loadbalancer.server.port=${RPC_PORT}
       - traefik.http.services.dorothee_rpc.loadbalancer.server.scheme=h2c
-
-      - traefik.http.routers.dorothee_http.entrypoints=http
-      - traefik.http.routers.dorothee_http.rule=Host(`api.turnly`) && PathPrefix(`/v1/fields`, `/v1/answers`)
-      - traefik.http.routers.dorothee_http.service=dorothee_http
-      - traefik.http.services.dorothee_http.loadbalancer.server.port=${HTTP_PORT}
