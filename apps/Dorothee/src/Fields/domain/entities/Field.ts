@@ -88,7 +88,7 @@ export class Field extends AggregateRoot {
    */
   public static create(attributes: CreateFieldPayload): Field {
     return new Field(
-      Identifier.generate('fld'),
+      Identifier.generate('field'),
       attributes.label,
       attributes.description,
       attributes.type,

@@ -163,10 +163,6 @@ export class Ticket extends AggregateRoot {
     this.register(new TicketCompletedEvent(this.toObject()))
   }
 
-  public isOwnedBy(companyId: Guid): boolean {
-    return this.companyId === companyId
-  }
-
   public isActive(): boolean {
     return ![
       TicketStatus.CANCELLED,
@@ -188,7 +184,7 @@ export class Ticket extends AggregateRoot {
    */
   public static create(attributes: CreateTicketPayload): Ticket {
     const ticket = new Ticket(
-      Identifier.generate('tk'),
+      Identifier.generate('tkt'),
       attributes.status,
       attributes.priority,
       attributes.displayCode,

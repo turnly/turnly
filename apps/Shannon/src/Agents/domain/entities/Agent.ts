@@ -93,7 +93,7 @@ export class Agent extends AggregateRoot {
    */
   public static create(attributes: CreateAgentPayload): Agent {
     return new Agent(
-      Identifier.generate('agt'),
+      Identifier.generate('agent'),
       attributes.name,
       attributes.lastname,
       attributes.companyId,

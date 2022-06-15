@@ -61,7 +61,7 @@ export class Integration extends AggregateRoot {
     attributes: Omit<EntityAttributes<Integration>, 'id'>
   ): Integration {
     const integration = new Integration(
-      Identifier.generate('in'),
+      Identifier.generate('int'),
       attributes.name,
       attributes.status,
       attributes.origins,

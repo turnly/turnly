@@ -20,20 +20,6 @@ export class Service extends AggregateRoot {
     id: Guid,
 
     /**
-     * Company
-     *
-     * @description The Company that the Service belongs to.
-     */
-    private readonly companyId: Guid,
-
-    /**
-     * Company
-     *
-     * @description The Location that the Service belongs to.
-     */
-    private readonly locationId: Guid,
-
-    /**
      * Name
      *
      * @description A human-readable name for the Service.
@@ -41,11 +27,25 @@ export class Service extends AggregateRoot {
     private name: string,
 
     /**
-     * Lastname
+     * Description
      *
-     * @description A description of the Service.
+     * @description A human-readable description of the Service.
      */
-    private description: string
+    private description: string,
+
+    /**
+     * Company
+     *
+     * @description The Company that the Service belongs to.
+     */
+    private readonly companyId: Guid,
+
+    /**
+     * Location
+     *
+     * @description The Location that the Service belongs to.
+     */
+    private readonly locationId: Guid
   ) {
     super(id)
   }
@@ -58,10 +58,10 @@ export class Service extends AggregateRoot {
   public static create(attributes: CreateServicePayload): Service {
     return new Service(
       Identifier.generate('srv'),
-      attributes.companyId,
-      attributes.locationId,
       attributes.name,
-      attributes.description
+      attributes.description,
+      attributes.companyId,
+      attributes.locationId
     )
   }
 
@@ -73,10 +73,10 @@ export class Service extends AggregateRoot {
   public static build(attributes: EntityAttributes<Service>): Service {
     return new Service(
       attributes.id,
-      attributes.companyId,
-      attributes.locationId,
       attributes.name,
-      attributes.description
+      attributes.description,
+      attributes.companyId,
+      attributes.locationId
     )
   }
 
@@ -88,10 +88,10 @@ export class Service extends AggregateRoot {
   public toObject() {
     return {
       id: this.id,
-      companyId: this.companyId,
-      locationId: this.locationId,
       name: this.name,
       description: this.description,
+      companyId: this.companyId,
+      locationId: this.locationId,
     }
   }
 }

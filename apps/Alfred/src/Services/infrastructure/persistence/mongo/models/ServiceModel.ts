@@ -6,11 +6,19 @@ import { Service } from 'Services/domain/entities/Service'
 export interface ServiceDocument
   extends Omit<EntityAttributes<Service>, 'id'>,
     Document {}
+
 export type IServiceModel = Model<ServiceDocument>
 
 const schema = new Schema(
   {
     _id: String,
+    name: {
+      type: String,
+      required: true,
+    },
+    description: {
+      type: String,
+    },
     companyId: {
       type: String,
       required: true,
@@ -20,14 +28,6 @@ const schema = new Schema(
       type: String,
       required: true,
       index: true,
-    },
-    name: {
-      type: String,
-      required: true,
-    },
-    description: {
-      type: String,
-      required: true,
     },
   },
   { timestamps: true }

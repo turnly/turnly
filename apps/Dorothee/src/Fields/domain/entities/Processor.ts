@@ -78,7 +78,7 @@ export class Processor extends AggregateRoot {
     attributes: Omit<EntityAttributes<Processor>, 'id'>
   ): Processor {
     return new Processor(
-      Identifier.generate('pr'),
+      Identifier.generate('proc'),
       attributes.name,
       attributes.description,
       attributes.companyId,
