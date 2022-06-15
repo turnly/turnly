@@ -1,6 +1,6 @@
 import { Box, ElasticClient, ioc } from '@turnly/shared'
 
-import { SearchCustomerFieldsByServiceQueryHandler } from '../../application/queries/FieldByServiceIdQuery'
+import { SearchCustomerFieldsByServiceQueryHandler } from '../../application/queries/SearchCustomerFieldsByServiceQuery'
 import { FieldsController } from '../api/controllers/FieldsController'
 import { FIELDS_ELASTIC_CLIENT_CONFIG } from '../configs/FieldsElasticClient'
 import { FieldMapper } from '../persistence/mongo/entity-model-mappers/FieldMapper'

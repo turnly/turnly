@@ -5,7 +5,7 @@ import {
   IQueryBus,
   TimeoutHandler,
 } from '@turnly/shared'
-import { SearchCustomerFieldsByServiceQuery } from 'Fields/application/queries/FieldByServiceIdQuery'
+import { SearchCustomerFieldsByServiceQuery } from 'Fields/application/queries/SearchCustomerFieldsByServiceQuery'
 import { Field } from 'Fields/domain/entities/Field'
 import { SearchCustomerFieldsByServicePayload } from 'Fields/domain/payloads/SearchCustomerFieldsByServicePayload'
 

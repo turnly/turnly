@@ -1,6 +1,6 @@
 import { ICommandHandler, IQueryHandler } from '@turnly/shared'
 import { Box } from '@turnly/shared'
-import { SearchCustomerFieldsByServiceQueryHandler } from 'Fields/application/queries/FieldByServiceIdQuery'
+import { SearchCustomerFieldsByServiceQueryHandler } from 'Fields/application/queries/SearchCustomerFieldsByServiceQuery'
 
 import { FieldsController } from '../api/controllers/FieldsController'
 
