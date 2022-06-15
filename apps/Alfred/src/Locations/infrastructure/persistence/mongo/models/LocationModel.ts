@@ -4,8 +4,14 @@ import { Location } from 'Locations/domain/entities/Location'
 import mongoose, { Document, Model, Schema } from 'mongoose'
 
 export interface LocationDocument
-  extends Omit<EntityAttributes<Location>, 'id'>,
-    Document {}
+  extends Omit<EntityAttributes<Location>, 'id' | 'coordinates'>,
+    Document {
+  coordinates: {
+    type: string
+    coordinates: number[]
+  }
+}
+
 export type ILocationModel = Model<LocationDocument>
 
 const schema = new Schema({
@@ -17,20 +23,29 @@ const schema = new Schema({
   },
   name: {
     type: String,
+    required: true,
   },
   address: {
     type: String,
+    required: true,
   },
   country: {
     type: String,
+    required: true,
   },
-  latitude: {
-    type: Number,
+  coordinates: {
+    type: {
+      type: String,
+      default: 'Point',
+      required: true,
+    },
+    coordinates: {
+      type: [Number],
+      required: true,
+    },
+    index: '2dsphere',
   },
-  longitude: {
-    type: Number,
-  },
-  stopServingBefore: {
+  stopServingBeforeInMinutes: {
     type: Number,
   },
 })

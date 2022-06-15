@@ -15,8 +15,8 @@ export class LocationMapper {
       location.setName(entity.name)
       location.setAddress(entity.address)
       location.setCountry(entity.country)
-      location.setLatitude(entity.latitude)
-      location.setLongitude(entity.longitude)
+      location.setLatitude(entity.coordinates.lat)
+      location.setLongitude(entity.coordinates.lng)
       location.setStopServingBeforeInMinutes(entity.stopServingBeforeInMinutes)
     }
 

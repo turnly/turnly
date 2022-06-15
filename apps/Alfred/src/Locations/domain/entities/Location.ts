@@ -29,42 +29,38 @@ export class Location extends AggregateRoot {
     /**
      * Name
      *
-     * @description
+     * @description The name of the Location.
      */
     private name: string,
 
     /**
-     * Lastname
+     * Address
      *
-     * @description A description of the Location.
+     * @description The address of the Location.
      */
     private address: string,
 
     /**
-     * Lastname
+     * Country
      *
-     * @description A description of the Location.
+     * @description The country of the Location.
      */
     private country: string,
 
     /**
-     * Name
+     * Coordinates
      *
-     * @description A human-readable name for the Location.
+     * @description The coordinates of the Location.
      */
-    private latitude: number,
+    private coordinates: {
+      lat: number
+      lng: number
+    },
 
     /**
-     * Name
+     * Stop Serving Before
      *
-     * @description
-     */
-    private longitude: number,
-
-    /**
-     * Name
-     *
-     * @description
+     * @description The time in minutes before the Location stops serving.
      */
     private stopServingBeforeInMinutes: number
   ) {
@@ -83,8 +79,7 @@ export class Location extends AggregateRoot {
       attributes.name,
       attributes.address,
       attributes.country,
-      attributes.latitude,
-      attributes.longitude,
+      attributes.coordinates,
       attributes.stopServingBeforeInMinutes
     )
   }
@@ -101,8 +96,7 @@ export class Location extends AggregateRoot {
       attributes.name,
       attributes.address,
       attributes.country,
-      attributes.latitude,
-      attributes.longitude,
+      attributes.coordinates,
       attributes.stopServingBeforeInMinutes
     )
   }
@@ -119,8 +113,7 @@ export class Location extends AggregateRoot {
       name: this.name,
       address: this.address,
       country: this.country,
-      latitude: this.latitude,
-      longitude: this.longitude,
+      coordinates: this.coordinates,
       stopServingBeforeInMinutes: this.stopServingBeforeInMinutes,
     }
   }

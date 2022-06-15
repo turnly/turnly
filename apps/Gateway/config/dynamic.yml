@@ -1,0 +1,11 @@
+# http:
+#   routers:
+#     routerTest:
+#       service: srv-grpc
+#       rule: Host(`frontend.local`)
+
+#   services:
+#     srv-grpc:
+#       loadBalancer:
+#         servers:
+#         - url: h2c://backend.local:8080

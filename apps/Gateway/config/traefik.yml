@@ -1,6 +1,7 @@
-## traefik.yml
-
 accesslog: true
+
+log:
+  level: DEBUG
 
 api:
   insecure: true
