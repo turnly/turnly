@@ -1,0 +1,56 @@
+{
+  "name": "@turnly/alfred",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Alfred Assistance Centers (Locations).",
+  "license": "UNLICENSED",
+  "author": {
+    "name": "Wardner",
+    "email": "wanerlara1999@gmail.com",
+    "url": "https://github.com/wardner"
+  },
+  "scripts": {
+    "prebuild": "rimraf dist tsconfig.tsbuildinfo",
+    "build": "tsc",
+    "lint:check": "eslint . --ext .js,.ts",
+    "lint:format": "prettier \"./**/*.{ts,js}\" --check",
+    "lint:ts:check": "tsc --noEmit",
+    "start": "ROOT_DIR=$(pwd) NODE_PATH=dist/ node -r dotenv/config dist/main.js",
+    "test": "jest --forceExit --detectOpenHandles",
+    "watch": "nodemon --config node_modules/@turnly/eslint-config/nodemon.json src/main.ts"
+  },
+  "prettier": "@turnly/eslint-config/.prettierrc.js",
+  "eslintConfig": {
+    "extends": "@turnly/eslint-config",
+    "ignorePatterns": [
+      "node_modules",
+      "**/*.md",
+      "dist",
+      "jest*",
+      "tests/**/*.ts"
+    ]
+  },
+  "dependencies": {
+    "@turnly/shared": "git+https://turnlyapps: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@github.com/turnly/shared.git#latest",
+    "@turnly/eslint-config": "github:turnly/configs",
+    "@turnly/rpc": "git+https://turnlyapps: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@github.com/turnly/rpc.git#latest",
+    "@turnly/common": "git+https://turnlyapps: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@github.com/turnly/common.git#latest",
+    "moongose": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.0.1",
+    "@types/node": "^16.10.2",
+    "eslint": "^8.14.0",
+    "jest": "^27.0.6",
+    "nodemon": "^2.0.14",
+    "prettier": "^2.3.0",
+    "rimraf": "^3.0.2",
+    "supertest": "^6.1.3",
+    "ts-jest": "^27.0.4",
+    "ts-node": "^10.2.1",
+    "typescript": "^4.4.2"
+  },
+  "engines": {
+    "node": ">=16.15.0"
+  }
+}
