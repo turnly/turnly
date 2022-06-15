@@ -1,4 +1,5 @@
 import 'Tickets/infrastructure/register-dependencies'
+import 'Customers/infrastructure/register-dependencies'
 
 import { eventBus } from '@turnly/shared'
 import { Application } from 'Application'
