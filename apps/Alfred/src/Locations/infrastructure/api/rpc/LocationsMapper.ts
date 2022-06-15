@@ -11,7 +11,7 @@ export class LocationMapper {
 
     if (entity) {
       location.setId(entity.id)
-      // location.setCompanyId(entity.companyId)
+      location.setCompanyId(entity.companyId)
       location.setName(entity.name)
       location.setAddress(entity.address)
       location.setCountry(entity.country)
