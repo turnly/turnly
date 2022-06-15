@@ -23,7 +23,7 @@ export class CustomersController extends Controller {
   }
 
   @TimeoutHandler()
-  // @InputValidator(validator.create)
+  @InputValidator(validator.create)
   public async create(params: CreateCustomerPayload) {
     const customer = await this.commandBus.execute<
       CreateCustomersCommand,

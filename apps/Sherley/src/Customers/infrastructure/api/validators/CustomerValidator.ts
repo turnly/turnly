@@ -11,8 +11,8 @@ const create = Validator.object({
   email: Validator.email().optional(),
   country: Validator.string().optional(),
   phone: Validator.string(),
-  // hasWhatsapp: Validator.
-  // showNameSignage: Validator.
+  hasWhatsapp: Validator.getBuilder().boolean().optional(),
+  showNameSignage: Validator.getBuilder().boolean().optional(),
   companyId: Validator.isId(),
   extra: Validator.getBuilder().array().items(extra).optional(),
 })
