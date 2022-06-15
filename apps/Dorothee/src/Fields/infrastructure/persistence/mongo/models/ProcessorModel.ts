@@ -9,35 +9,38 @@ export interface ProcessorDocument
 
 export type IProcessorModel = Model<ProcessorDocument>
 
-const schema = new Schema({
-  _id: String,
-  name: {
-    type: String,
-    required: true,
+const schema = new Schema(
+  {
+    _id: String,
+    name: {
+      type: String,
+      required: true,
+    },
+    description: {
+      type: String,
+    },
+    companyId: {
+      type: String,
+      required: true,
+      index: true,
+    },
+    url: {
+      type: String,
+      required: true,
+    },
+    signature: {
+      type: String,
+      required: true,
+    },
+    isActive: {
+      type: Boolean,
+    },
+    lastFiredAt: {
+      type: Date,
+    },
   },
-  description: {
-    type: String,
-  },
-  companyId: {
-    type: String,
-    required: true,
-    index: true,
-  },
-  url: {
-    type: String,
-    required: true,
-  },
-  signature: {
-    type: String,
-    required: true,
-  },
-  isActive: {
-    type: Boolean,
-  },
-  lastFiredAt: {
-    type: Date,
-  },
-})
+  { timestamps: true }
+)
 
 export const ProcessorModel = mongoose.model<
   ProcessorDocument,

@@ -12,68 +12,71 @@ export interface TicketDocument
 
 export type ITicketModel = Model<TicketDocument>
 
-const schema = new Schema({
-  _id: String,
-  status: {
-    type: String,
-    enum: TicketStatus,
-    required: true,
-  },
-  priority: {
-    type: String,
-    enum: TicketPriority,
-    required: true,
-  },
-  displayCode: {
-    type: String,
-    required: true,
-  },
-  serviceId: {
-    type: String,
-    required: true,
-    index: true,
-  },
-  locationId: {
-    type: String,
-    required: true,
-    index: true,
-  },
-  customerId: {
-    type: String,
-    required: true,
-    index: true,
-  },
-  companyId: {
-    type: String,
-    required: true,
-    index: true,
-  },
-  assigneeId: {
-    type: String,
-    index: true,
-  },
-  createdAt: {
-    type: Date,
-    required: true,
-  },
-  rating: {
-    score: {
+const schema = new Schema(
+  {
+    _id: String,
+    status: {
       type: String,
-      enum: TicketScore,
+      enum: TicketStatus,
+      required: true,
+    },
+    priority: {
+      type: String,
+      enum: TicketPriority,
+      required: true,
+    },
+    displayCode: {
+      type: String,
+      required: true,
+    },
+    serviceId: {
+      type: String,
       required: true,
       index: true,
     },
-    comment: String,
-  },
-  extra: {
-    type: [
-      {
-        key: String,
-        value: String,
+    locationId: {
+      type: String,
+      required: true,
+      index: true,
+    },
+    customerId: {
+      type: String,
+      required: true,
+      index: true,
+    },
+    companyId: {
+      type: String,
+      required: true,
+      index: true,
+    },
+    assigneeId: {
+      type: String,
+      index: true,
+    },
+    createdAt: {
+      type: Date,
+      required: true,
+    },
+    rating: {
+      score: {
+        type: String,
+        enum: TicketScore,
+        required: true,
+        index: true,
       },
-    ],
+      comment: String,
+    },
+    extra: {
+      type: [
+        {
+          key: String,
+          value: String,
+        },
+      ],
+    },
   },
-})
+  { timestamps: true }
+)
 
 export const TicketModel = mongoose.model<TicketDocument, ITicketModel>(
   'Ticket',

@@ -8,27 +8,30 @@ export interface ServiceDocument
     Document {}
 export type IServiceModel = Model<ServiceDocument>
 
-const schema = new Schema({
-  _id: String,
-  companyId: {
-    type: String,
-    required: true,
-    index: true,
+const schema = new Schema(
+  {
+    _id: String,
+    companyId: {
+      type: String,
+      required: true,
+      index: true,
+    },
+    locationId: {
+      type: String,
+      required: true,
+      index: true,
+    },
+    name: {
+      type: String,
+      required: true,
+    },
+    description: {
+      type: String,
+      required: true,
+    },
   },
-  locationId: {
-    type: String,
-    required: true,
-    index: true,
-  },
-  name: {
-    type: String,
-    required: true,
-  },
-  description: {
-    type: String,
-    required: true,
-  },
-})
+  { timestamps: true }
+)
 
 export const ServiceModel = mongoose.model<ServiceDocument, IServiceModel>(
   'Service',

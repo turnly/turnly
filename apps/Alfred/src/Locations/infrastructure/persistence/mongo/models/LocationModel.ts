@@ -14,41 +14,44 @@ export interface LocationDocument
 
 export type ILocationModel = Model<LocationDocument>
 
-const schema = new Schema({
-  _id: String,
-  companyId: {
-    type: String,
-    required: true,
-    index: true,
-  },
-  name: {
-    type: String,
-    required: true,
-  },
-  address: {
-    type: String,
-    required: true,
-  },
-  country: {
-    type: String,
-    required: true,
-  },
-  coordinates: {
-    type: {
+const schema = new Schema(
+  {
+    _id: String,
+    companyId: {
       type: String,
-      default: 'Point',
+      required: true,
+      index: true,
+    },
+    name: {
+      type: String,
+      required: true,
+    },
+    address: {
+      type: String,
+      required: true,
+    },
+    country: {
+      type: String,
       required: true,
     },
     coordinates: {
-      type: [Number],
-      required: true,
+      type: {
+        type: String,
+        default: 'Point',
+        required: true,
+      },
+      coordinates: {
+        type: [Number],
+        required: true,
+      },
+      index: '2dsphere',
     },
-    index: '2dsphere',
+    stopServingBeforeInMinutes: {
+      type: Number,
+    },
   },
-  stopServingBeforeInMinutes: {
-    type: Number,
-  },
-})
+  { timestamps: true }
+)
 
 export const LocationModel = mongoose.model<LocationDocument, ILocationModel>(
   'Location',

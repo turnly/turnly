@@ -10,27 +10,30 @@ export interface IntegrationDocument
 
 export type IIntegrationModel = Model<IntegrationDocument>
 
-const schema = new Schema({
-  _id: String,
-  name: {
-    type: String,
-    required: true,
+const schema = new Schema(
+  {
+    _id: String,
+    name: {
+      type: String,
+      required: true,
+    },
+    status: {
+      type: String,
+      enum: IntegrationStatus,
+      required: true,
+    },
+    origins: {
+      type: [String],
+      required: true,
+    },
+    companyId: {
+      type: String,
+      required: true,
+      index: true,
+    },
   },
-  status: {
-    type: String,
-    enum: IntegrationStatus,
-    required: true,
-  },
-  origins: {
-    type: [String],
-    required: true,
-  },
-  companyId: {
-    type: String,
-    required: true,
-    index: true,
-  },
-})
+  { timestamps: true }
+)
 
 export const IntegrationModel = mongoose.model<
   IntegrationDocument,

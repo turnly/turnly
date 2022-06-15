@@ -8,39 +8,42 @@ export interface AgentDocument
     Document {}
 export type IAgentModel = Model<AgentDocument>
 
-const schema = new Schema({
-  _id: String,
-  name: {
-    type: String,
-    required: true,
+const schema = new Schema(
+  {
+    _id: String,
+    name: {
+      type: String,
+      required: true,
+    },
+    lastname: {
+      type: String,
+      required: true,
+    },
+    nick: {
+      type: String,
+    },
+    position: {
+      type: String,
+    },
+    companyId: {
+      type: String,
+      required: true,
+      index: true,
+    },
+    deskId: {
+      type: String,
+    },
+    locationId: {
+      type: String,
+      required: true,
+      index: true,
+    },
+    servingFromIds: {
+      type: [String],
+    },
   },
-  lastname: {
-    type: String,
-    required: true,
-  },
-  nick: {
-    type: String,
-  },
-  position: {
-    type: String,
-  },
-  companyId: {
-    type: String,
-    required: true,
-    index: true,
-  },
-  deskId: {
-    type: String,
-  },
-  locationId: {
-    type: String,
-    required: true,
-    index: true,
-  },
-  servingFromIds: {
-    type: [String],
-  },
-})
+  { timestamps: true }
+)
 
 export const AgentModel = mongoose.model<AgentDocument, IAgentModel>(
   'Agent',

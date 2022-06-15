@@ -9,38 +9,41 @@ export interface AnswerDocument
 
 export type IAnswerModel = Model<AnswerDocument>
 
-const schema = new Schema({
-  _id: String,
-  value: {
-    type: String,
-    required: true,
+const schema = new Schema(
+  {
+    _id: String,
+    value: {
+      type: String,
+      required: true,
+    },
+    fieldId: {
+      type: String,
+      required: true,
+    },
+    entityId: {
+      type: String,
+      required: true,
+    },
+    entityType: {
+      type: String,
+      required: true,
+    },
+    companyId: {
+      type: String,
+      required: true,
+      index: true,
+    },
+    extra: {
+      type: [
+        {
+          key: String,
+          value: String,
+        },
+      ],
+    },
   },
-  fieldId: {
-    type: String,
-    required: true,
-  },
-  entityId: {
-    type: String,
-    required: true,
-  },
-  entityType: {
-    type: String,
-    required: true,
-  },
-  companyId: {
-    type: String,
-    required: true,
-    index: true,
-  },
-  extra: {
-    type: [
-      {
-        key: String,
-        value: String,
-      },
-    ],
-  },
-})
+  { timestamps: true }
+)
 
 export const AnswerModel = mongoose.model<AnswerDocument, IAnswerModel>(
   'Answer',

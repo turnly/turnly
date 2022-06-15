@@ -10,41 +10,44 @@ export interface FieldDocument
 
 export type IFieldModel = Model<FieldDocument>
 
-const schema = new Schema({
-  _id: String,
-  label: {
-    type: String,
-    required: true,
+const schema = new Schema(
+  {
+    _id: String,
+    label: {
+      type: String,
+      required: true,
+    },
+    description: {
+      type: String,
+    },
+    type: {
+      type: String,
+      enum: FieldTypes,
+      required: true,
+    },
+    entityType: {
+      type: String,
+      required: true,
+    },
+    companyId: {
+      type: String,
+      required: true,
+      index: true,
+    },
+    isRequired: {
+      type: Boolean,
+    },
+    extra: {
+      type: [
+        {
+          key: String,
+          value: String,
+        },
+      ],
+    },
   },
-  description: {
-    type: String,
-  },
-  type: {
-    type: String,
-    enum: FieldTypes,
-    required: true,
-  },
-  entityType: {
-    type: String,
-    required: true,
-  },
-  companyId: {
-    type: String,
-    required: true,
-    index: true,
-  },
-  isRequired: {
-    type: Boolean,
-  },
-  extra: {
-    type: [
-      {
-        key: String,
-        value: String,
-      },
-    ],
-  },
-})
+  { timestamps: true }
+)
 
 export const FieldModel = mongoose.model<FieldDocument, IFieldModel>(
   'Field',
