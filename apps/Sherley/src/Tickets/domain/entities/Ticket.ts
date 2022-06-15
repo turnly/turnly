@@ -86,11 +86,26 @@ export class Ticket extends AggregateRoot {
     private readonly companyId: Guid,
 
     /**
+     * Extra
+     *
+     * @description Free-form data as name/value pairs that can be used
+     * to store additional information about the Ticket.
+     */
+    private readonly extra: Nullable<Extra[]> = null,
+
+    /**
      * Created At
      *
      * @description The date and time the Ticket was created.
      */
-    private readonly createdAt: Date,
+    private readonly createdAt: Nullable<Date> = null,
+
+    /**
+     * Update At
+     *
+     * @description The date and time the Ticket was updated.
+     */
+    private readonly updatedAt: Nullable<Date> = null,
 
     /**
      * Assignee
@@ -104,15 +119,7 @@ export class Ticket extends AggregateRoot {
      *
      * @description The Customer's rating for the experience at the Location.
      */
-    private rating: Nullable<RatingPayload> = null,
-
-    /**
-     * Extra
-     *
-     * @description Free-form data as name/value pairs that can be used
-     * to store additional information about the Ticket.
-     */
-    private readonly extra: Nullable<Extra[]> = null
+    private rating: Nullable<RatingPayload> = null
   ) {
     super(id)
   }
@@ -189,9 +196,6 @@ export class Ticket extends AggregateRoot {
       attributes.locationId,
       attributes.customerId,
       attributes.companyId,
-      new Date(),
-      null,
-      null,
       attributes.extra
     )
 
@@ -215,10 +219,11 @@ export class Ticket extends AggregateRoot {
       attributes.locationId,
       attributes.customerId,
       attributes.companyId,
+      attributes.extra,
       attributes.createdAt,
+      attributes.updatedAt,
       attributes.assigneeId,
-      attributes.rating,
-      attributes.extra
+      attributes.rating
     )
   }
 
@@ -239,6 +244,7 @@ export class Ticket extends AggregateRoot {
       companyId: this.companyId,
       assigneeId: this.assigneeId,
       createdAt: this.createdAt,
+      updatedAt: this.updatedAt,
       rating: this.rating,
       extra: this.extra,
     }
