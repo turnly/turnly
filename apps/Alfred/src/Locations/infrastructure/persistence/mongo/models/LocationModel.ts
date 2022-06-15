@@ -44,7 +44,6 @@ const schema = new Schema(
         type: [Number],
         required: true,
       },
-      index: '2dsphere',
     },
     stopServingBeforeInMinutes: {
       type: Number,
@@ -52,6 +51,8 @@ const schema = new Schema(
   },
   { timestamps: true }
 )
+
+schema.index({ coordinates: '2dsphere' })
 
 export const LocationModel = mongoose.model<LocationDocument, ILocationModel>(
   'Location',
