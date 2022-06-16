@@ -3,6 +3,7 @@ import { AnnounceTicketCommandHandler } from 'Tickets/application/commands/Annou
 import { CreateTicketCommandHandler } from 'Tickets/application/commands/CreateTicketCommand'
 import { CreateTicketReadingDBCommandHandler } from 'Tickets/application/commands/CreateTicketReadingDBCommand'
 import { LeaveTicketCommandHandler } from 'Tickets/application/commands/LeaveTicketCommand'
+import { GetActiveTicketsByCustomerQueryHandler } from 'Tickets/application/queries/GetActiveTicketsByCustomerQuery'
 import { TicketByIdQueryHandler } from 'Tickets/application/queries/TicketByIdQuery'
 import { CreateTicketReadingDBSubscriber } from 'Tickets/application/subscribers/CreateTicketReadingDBSubscriber'
 
@@ -64,4 +65,7 @@ Box.register({
  */
 Box.register({
   ticketByIdQueryHandler: ioc.asClass(TicketByIdQueryHandler).singleton(),
+  getActiveTicketsByCustomerQueryHandler: ioc
+    .asClass(GetActiveTicketsByCustomerQueryHandler)
+    .singleton(),
 })
