@@ -73,7 +73,7 @@ export class Answer extends AggregateRoot {
    */
   public static create(attributes: CreateAnswerPayload): Answer {
     const answer = new Answer(
-      Identifier.generate('ans'),
+      Identifier.generate('answer'),
       attributes.value,
       attributes.fieldId,
       attributes.entityId,

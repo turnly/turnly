@@ -9,6 +9,8 @@ import { CreateTicketCommandHandler } from 'Tickets/application/commands/CreateT
 import { CreateTicketReadingDBCommandHandler } from 'Tickets/application/commands/CreateTicketReadingDBCommand'
 import { LeaveTicketCommandHandler } from 'Tickets/application/commands/LeaveTicketCommand'
 import { GetActiveTicketsByCustomerQueryHandler } from 'Tickets/application/queries/GetActiveTicketsByCustomerQuery'
+import { GetTicketsBeforeYoursQueryHandler } from 'Tickets/application/queries/GetTicketsBeforeYoursQuery'
+import { GetTicketsWaitingForServiceQueryHandler } from 'Tickets/application/queries/GetTicketsWaitingForServiceQuery'
 import { TicketByIdQueryHandler } from 'Tickets/application/queries/TicketByIdQuery'
 import { CreateTicketReadingDBSubscriber } from 'Tickets/application/subscribers/CreateTicketReadingDBSubscriber'
 
@@ -24,6 +26,12 @@ export class TicketFactory {
       Box.resolve<TicketByIdQueryHandler>('ticketByIdQueryHandler'),
       Box.resolve<GetActiveTicketsByCustomerQueryHandler>(
         'getActiveTicketsByCustomerQueryHandler'
+      ),
+      Box.resolve<GetTicketsBeforeYoursQueryHandler>(
+        'getTicketsBeforeYoursQueryHandler'
+      ),
+      Box.resolve<GetTicketsWaitingForServiceQueryHandler>(
+        'getTicketsWaitingForServiceQueryHandler'
       ),
     ]
   }

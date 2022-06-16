@@ -125,7 +125,7 @@ export class Ticket extends AggregateRoot {
   }
 
   public leave(): void {
-    if (!this.isActive())
+    if (this.isCompleted())
       throw new InvalidStateException('Oops!, you can not leave this ticket.')
 
     this.status = TicketStatus.CANCELLED
@@ -164,17 +164,51 @@ export class Ticket extends AggregateRoot {
   }
 
   public isActive(): boolean {
-    return ![
-      TicketStatus.CANCELLED,
-      TicketStatus.DISCARDED,
-      TicketStatus.INACTIVE,
-      TicketStatus.COMPLETED_WITHOUT_RATING,
-      TicketStatus.COMPLETED_WITH_RATING,
-    ].includes(this.status)
+    return Ticket.getActiveStatus().includes(this.status)
   }
 
   public isPendingForRating(): boolean {
     return this.status === TicketStatus.COMPLETED_WITHOUT_RATING
+  }
+
+  public isCompleted(): boolean {
+    return Ticket.getCompletedStatus().includes(this.status)
+  }
+
+  public isToAttend(): boolean {
+    return Ticket.getToAttendStatus().includes(this.status)
+  }
+
+  public static getActiveStatus(): TicketStatus[] {
+    return [
+      TicketStatus.BOOKED,
+      TicketStatus.AVAILABLE,
+      TicketStatus.ANNOUNCED,
+      TicketStatus.CALLED,
+      TicketStatus.RECALLED,
+      TicketStatus.NEAR_ATTENTION,
+    ]
+  }
+
+  public static getCompletedStatus(): TicketStatus[] {
+    return [
+      TicketStatus.DISCARDED,
+      TicketStatus.REMOVED,
+      TicketStatus.INACTIVE,
+      TicketStatus.CANCELLED,
+      TicketStatus.COMPLETED_WITH_RATING,
+      TicketStatus.COMPLETED_WITHOUT_RATING,
+    ]
+  }
+
+  public static getToAttendStatus(): TicketStatus[] {
+    return [
+      TicketStatus.BOOKED,
+      TicketStatus.AVAILABLE,
+      TicketStatus.ANNOUNCED,
+      TicketStatus.CALLED,
+      TicketStatus.RECALLED,
+    ]
   }
 
   /**
@@ -184,7 +218,7 @@ export class Ticket extends AggregateRoot {
    */
   public static create(attributes: CreateTicketPayload): Ticket {
     const ticket = new Ticket(
-      Identifier.generate('tkt'),
+      Identifier.generate('ticket'),
       attributes.status,
       attributes.priority,
       attributes.displayCode,

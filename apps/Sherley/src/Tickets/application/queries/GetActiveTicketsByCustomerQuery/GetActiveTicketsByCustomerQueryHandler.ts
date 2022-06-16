@@ -7,7 +7,6 @@ import {
 } from '@turnly/shared'
 import { ITicketReadableRepo } from 'Tickets/domain/contracts/ITicketsRepo'
 import { Ticket } from 'Tickets/domain/entities/Ticket'
-import { TicketStatus } from 'Tickets/domain/enums/TicketStatus'
 
 import { GetActiveTicketsByCustomerQuery } from './GetActiveTicketsByCustomerQuery'
 
@@ -28,7 +27,7 @@ export class GetActiveTicketsByCustomerQueryHandler
       .equal('customerId', customerId)
       .equal('companyId', companyId)
       .gte('createdAt', lastHour)
-      .in('status', [TicketStatus.BOOKED, TicketStatus.AVAILABLE])
+      .in('status', Ticket.getToAttendStatus())
       .getMany()
 
     return await this.ticketsReadableRepo.find(query)

@@ -94,7 +94,7 @@ export class Customer extends AggregateRoot {
    */
   public static create(attributes: CreateCustomerPayload): Customer {
     const customer = new Customer(
-      Identifier.generate('cus'),
+      Identifier.generate('cust'),
       attributes.name,
       attributes.lastname,
       attributes.email,
