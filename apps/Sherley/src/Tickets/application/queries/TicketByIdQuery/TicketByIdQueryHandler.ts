@@ -1,5 +1,5 @@
 import { Nullable } from '@turnly/common'
-import { IQueryHandler, QueryHandler } from '@turnly/shared'
+import { IQueryHandler, QueryBuilder, QueryHandler } from '@turnly/shared'
 import { ITicketReadableRepo } from 'Tickets/domain/contracts/ITicketsRepo'
 import { Ticket } from 'Tickets/domain/entities/Ticket'
 
@@ -16,8 +16,11 @@ export class TicketByIdQueryHandler
   public async execute({ params }: TicketByIdQuery) {
     const { id, companyId } = params
 
-    const ticket = await this.ticketsReadableRepo.getOne(id)
+    const query = new QueryBuilder<Ticket>()
+      .equal('id', id)
+      .equal('companyId', companyId)
+      .getOne()
 
-    return ticket?.isOwnedBy(companyId) ? ticket : null
+    return await this.ticketsReadableRepo.getOne(query)
   }
 }

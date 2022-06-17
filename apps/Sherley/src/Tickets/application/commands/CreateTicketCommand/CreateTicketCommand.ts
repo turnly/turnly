@@ -3,7 +3,7 @@ import { CreateTicketPayload } from 'Tickets/domain/payloads/CreateTicketPayload
 
 export type CreateTicketCommandPayload = Omit<
   CreateTicketPayload,
-  'displayCode' | 'status' | 'priority' | 'rating'
+  'displayCode' | 'status' | 'priority' | 'rating' | 'updatedAt' | 'createdAt'
 >
 
 export class CreateTicketCommand implements ICommand {

@@ -1,6 +1,6 @@
 import { Nullable } from '@turnly/common'
 import { Producers } from '@turnly/rpc'
-import { EntityAttributes } from '@turnly/shared'
+import { DateTime, EntityAttributes } from '@turnly/shared'
 import { Ticket } from 'Tickets/domain/entities/Ticket'
 
 export class TicketMapper {
@@ -17,8 +17,10 @@ export class TicketMapper {
       ticket.setLocationId(entity.locationId)
       ticket.setCustomerId(entity.customerId)
       ticket.setCompanyId(entity.companyId)
-      ticket.setCreatedAt(entity.createdAt.toDateString())
       ticket.setPriority(entity.priority)
+
+      if (entity.createdAt)
+        ticket.setCreatedAt(DateTime.fromJSDate(entity.createdAt).toISO())
 
       if (entity.assigneeId) ticket.setAssigneeId(entity.assigneeId)
 
