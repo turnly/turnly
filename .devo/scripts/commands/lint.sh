@@ -22,21 +22,23 @@ function lint() {
         continue
       fi
 
-      if [[ $* == *"--all"* ]] || git diff --name-only | grep -q "$(basename "$APP_DIR")"; then
-        line
-        info "Linting $APP_DIR ..."
-        line
+      line
+      info "Linting $APP_DIR ..."
+      line
 
+      if [[ $* == *"--all"* ]]; then
         yarn workspace "$APP_NAME" lint:format
         yarn workspace "$APP_NAME" lint:check
         yarn workspace "$APP_NAME" lint:ts:check
-
-        line
-        info "Linting $APP_DIR ... DONE ✅ "
-        line
-      else
-        info "No changes found in $APP_DIR ..."
+      elif git diff --name-only | grep -q "$(basename "$APP_DIR")"; then
+        yarn workspace "$APP_NAME" lint:format
+        yarn workspace "$APP_NAME" lint:check
+        yarn workspace "$APP_NAME" lint:ts:check
       fi
+
+      line
+      info "Linting $APP_DIR ... DONE ✅ "
+      line
     fi
   done
 }
