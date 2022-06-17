@@ -6,7 +6,7 @@ export type GetActiveTicketsByCustomerPayload = {
   companyId: Guid
 }
 
-export class GetActiveTicketsByCustomerQuery implements IQuery {
+export class ActiveTicketsByCustomerQuery implements IQuery {
   public constructor(
     public readonly payload: GetActiveTicketsByCustomerPayload
   ) {}

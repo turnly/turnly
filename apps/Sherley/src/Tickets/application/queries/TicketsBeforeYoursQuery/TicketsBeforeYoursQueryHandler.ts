@@ -11,17 +11,17 @@ import {
 import { ITicketReadableRepo } from 'Tickets/domain/contracts/ITicketsRepo'
 import { Ticket } from 'Tickets/domain/entities/Ticket'
 
-import { GetTicketsBeforeYoursQuery } from './GetTicketsBeforeYoursQuery'
+import { TicketsBeforeYoursQuery } from './TicketsBeforeYoursQuery'
 
-@QueryHandler(GetTicketsBeforeYoursQuery)
-export class GetTicketsBeforeYoursQueryHandler
-  implements IQueryHandler<GetTicketsBeforeYoursQuery, Ticket[]>
+@QueryHandler(TicketsBeforeYoursQuery)
+export class TicketsBeforeYoursQueryHandler
+  implements IQueryHandler<TicketsBeforeYoursQuery, Ticket[]>
 {
   public constructor(
     private readonly ticketsReadableRepo: ITicketReadableRepo
   ) {}
 
-  public async execute({ payload }: GetTicketsBeforeYoursQuery) {
+  public async execute({ payload }: TicketsBeforeYoursQuery) {
     const { ticketId, customerId, companyId } = payload
 
     const ticket = await this.ticketsReadableRepo.getOne(

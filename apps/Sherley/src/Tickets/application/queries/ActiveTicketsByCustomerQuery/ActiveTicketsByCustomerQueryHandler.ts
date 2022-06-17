@@ -8,17 +8,17 @@ import {
 import { ITicketReadableRepo } from 'Tickets/domain/contracts/ITicketsRepo'
 import { Ticket } from 'Tickets/domain/entities/Ticket'
 
-import { GetActiveTicketsByCustomerQuery } from './GetActiveTicketsByCustomerQuery'
+import { ActiveTicketsByCustomerQuery } from './ActiveTicketsByCustomerQuery'
 
-@QueryHandler(GetActiveTicketsByCustomerQuery)
-export class GetActiveTicketsByCustomerQueryHandler
-  implements IQueryHandler<GetActiveTicketsByCustomerQuery, Nullable<Ticket[]>>
+@QueryHandler(ActiveTicketsByCustomerQuery)
+export class ActiveTicketsByCustomerQueryHandler
+  implements IQueryHandler<ActiveTicketsByCustomerQuery, Nullable<Ticket[]>>
 {
   public constructor(
     private readonly ticketsReadableRepo: ITicketReadableRepo
   ) {}
 
-  public async execute({ payload }: GetActiveTicketsByCustomerQuery) {
+  public async execute({ payload }: ActiveTicketsByCustomerQuery) {
     const { customerId, companyId } = payload
 
     const lastHour = DateTime.utc().minusHours(1).toJSDate()

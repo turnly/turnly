@@ -7,17 +7,17 @@ import {
 import { ITicketReadableRepo } from 'Tickets/domain/contracts/ITicketsRepo'
 import { Ticket } from 'Tickets/domain/entities/Ticket'
 
-import { GetTicketsWaitingForServiceQuery } from './GetTicketsWaitingForServiceQuery'
+import { TicketsWaitingForServiceQuery } from './TicketsWaitingForServiceQuery'
 
-@QueryHandler(GetTicketsWaitingForServiceQuery)
-export class GetTicketsWaitingForServiceQueryHandler
-  implements IQueryHandler<GetTicketsWaitingForServiceQuery, Ticket[]>
+@QueryHandler(TicketsWaitingForServiceQuery)
+export class TicketsWaitingForServiceQueryHandler
+  implements IQueryHandler<TicketsWaitingForServiceQuery, Ticket[]>
 {
   public constructor(
     private readonly ticketsReadableRepo: ITicketReadableRepo
   ) {}
 
-  public async execute({ payload }: GetTicketsWaitingForServiceQuery) {
+  public async execute({ payload }: TicketsWaitingForServiceQuery) {
     const { serviceId, companyId } = payload
 
     const today = DateTime.utc().startOfDay().toJSDate()

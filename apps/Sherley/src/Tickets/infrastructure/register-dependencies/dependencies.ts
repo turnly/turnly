@@ -3,9 +3,9 @@ import { AnnounceTicketCommandHandler } from 'Tickets/application/commands/Annou
 import { CreateTicketCommandHandler } from 'Tickets/application/commands/CreateTicketCommand'
 import { CreateTicketReadingDBCommandHandler } from 'Tickets/application/commands/CreateTicketReadingDBCommand'
 import { LeaveTicketCommandHandler } from 'Tickets/application/commands/LeaveTicketCommand'
-import { GetActiveTicketsByCustomerQueryHandler } from 'Tickets/application/queries/GetActiveTicketsByCustomerQuery'
-import { GetTicketsBeforeYoursQueryHandler } from 'Tickets/application/queries/GetTicketsBeforeYoursQuery'
-import { GetTicketsWaitingForServiceQueryHandler } from 'Tickets/application/queries/GetTicketsWaitingForServiceQuery'
+import { ActiveTicketsByCustomerQueryHandler } from 'Tickets/application/queries/ActiveTicketsByCustomerQuery'
+import { TicketsBeforeYoursQueryHandler } from 'Tickets/application/queries/TicketsBeforeYoursQuery'
+import { TicketsWaitingForServiceQueryHandler } from 'Tickets/application/queries/TicketsWaitingForServiceQuery'
 import { TicketByIdQueryHandler } from 'Tickets/application/queries/TicketByIdQuery'
 import { CreateTicketReadingDBSubscriber } from 'Tickets/application/subscribers/CreateTicketReadingDBSubscriber'
 
@@ -55,13 +55,13 @@ Box.register({
  */
 Box.register({
   ticketByIdQueryHandler: ioc.asClass(TicketByIdQueryHandler).singleton(),
-  getActiveTicketsByCustomerQueryHandler: ioc
-    .asClass(GetActiveTicketsByCustomerQueryHandler)
+  activeTicketsByCustomerQueryHandler: ioc
+    .asClass(ActiveTicketsByCustomerQueryHandler)
     .singleton(),
-  getTicketsBeforeYoursQueryHandler: ioc
-    .asClass(GetTicketsBeforeYoursQueryHandler)
+  ticketsBeforeYoursQueryHandler: ioc
+    .asClass(TicketsBeforeYoursQueryHandler)
     .singleton(),
-  getTicketsWaitingForServiceQueryHandler: ioc
-    .asClass(GetTicketsWaitingForServiceQueryHandler)
+  ticketsWaitingForServiceQueryHandler: ioc
+    .asClass(TicketsWaitingForServiceQueryHandler)
     .singleton(),
 })

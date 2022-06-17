@@ -5,7 +5,7 @@ import {
   IEventBus,
   IQueryBus,
 } from '@turnly/shared'
-import { GetActiveTicketsByCustomerQuery } from 'Tickets/application/queries/GetActiveTicketsByCustomerQuery'
+import { ActiveTicketsByCustomerQuery } from 'Tickets/application/queries/ActiveTicketsByCustomerQuery'
 import { ITicketsWritableRepo } from 'Tickets/domain/contracts/ITicketsRepo'
 import { Ticket } from 'Tickets/domain/entities/Ticket'
 import { TicketPriority } from 'Tickets/domain/enums/TicketPriority'
@@ -25,10 +25,10 @@ export class CreateTicketCommandHandler
 
   public async execute({ params }: CreateTicketCommand) {
     const tickets = await this.queryBus.ask<
-      GetActiveTicketsByCustomerQuery,
+      ActiveTicketsByCustomerQuery,
       Nullable<Ticket[]>
     >(
-      new GetActiveTicketsByCustomerQuery({
+      new ActiveTicketsByCustomerQuery({
         customerId: params.customerId,
         companyId: params.companyId,
       })
