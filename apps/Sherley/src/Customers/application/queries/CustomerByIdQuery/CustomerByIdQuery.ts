@@ -1,6 +1,9 @@
+import { Guid } from '@turnly/common'
 import { IQuery } from '@turnly/shared'
-import { GetCustomerPayload } from 'Customers/domain/payloads/GetCustomerPayload'
 
 export class CustomerByIdQuery implements IQuery {
-  public constructor(public readonly params: GetCustomerPayload) {}
+  public constructor(
+    public readonly id: Guid,
+    public readonly companyId: Guid
+  ) {}
 }

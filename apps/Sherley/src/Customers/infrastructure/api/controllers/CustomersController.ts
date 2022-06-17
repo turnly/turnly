@@ -1,4 +1,4 @@
-import { ResourceNotFoundException } from '@turnly/common'
+import { Nullable, ResourceNotFoundException } from '@turnly/common'
 import {
   Controller,
   ICommandBus,
@@ -6,11 +6,12 @@ import {
   IQueryBus,
   TimeoutHandler,
 } from '@turnly/shared'
-import { CreateCustomersCommand } from 'Customers/application/commands/CreateCustomerCommand'
-import { CustomerByIdQuery } from 'Customers/application/queries'
+import {
+  CreateCustomerParams,
+  CreateCustomersCommand,
+} from 'Customers/application/commands/CreateCustomerCommand'
+import { CustomerByIdQuery } from 'Customers/application/queries/CustomerByIdQuery'
 import { Customer } from 'Customers/domain/entities/Customer'
-import { CreateCustomerPayload } from 'Customers/domain/payloads/CreateCustomerPayload'
-import { GetCustomerPayload } from 'Customers/domain/payloads/GetCustomerPayload'
 
 import { validator } from '../validators/CustomerValidator'
 
@@ -24,7 +25,7 @@ export class CustomersController extends Controller {
 
   @TimeoutHandler()
   @InputValidator(validator.create)
-  public async create(params: CreateCustomerPayload) {
+  public async create(params: CreateCustomerParams) {
     const customer = await this.commandBus.execute<
       CreateCustomersCommand,
       Customer
@@ -35,8 +36,11 @@ export class CustomersController extends Controller {
 
   @TimeoutHandler()
   @InputValidator(validator.get)
-  public async get(params: GetCustomerPayload) {
-    const customer = await this.queryBus.ask(new CustomerByIdQuery(params))
+  public async get(params: CustomerByIdQuery) {
+    const customer = await this.queryBus.ask<
+      CustomerByIdQuery,
+      Nullable<Customer>
+    >(new CustomerByIdQuery(params.id, params.companyId))
 
     if (!customer) throw new ResourceNotFoundException()
 

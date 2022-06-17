@@ -1,4 +1,8 @@
-import { ICommandHandler, IQueryHandler } from '@turnly/shared'
+import {
+  ICommandHandler,
+  IEventSubscriber,
+  IQueryHandler,
+} from '@turnly/shared'
 import { Box } from '@turnly/shared'
 import {
   ServiceByIdQueryHandler,
@@ -22,6 +26,10 @@ export class ServiceFactory {
   }
 
   public static getCommandHandlers(): ICommandHandler[] {
+    return []
+  }
+
+  public static getEventSubscribers(): IEventSubscriber[] {
     return []
   }
 }

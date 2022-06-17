@@ -1,4 +1,4 @@
-import { ResourceNotFoundException } from '@turnly/common'
+import { Nullable, ResourceNotFoundException } from '@turnly/common'
 import {
   Controller,
   ICommandBus,
@@ -8,19 +8,18 @@ import {
 } from '@turnly/shared'
 import {
   AnnounceTicketCommand,
-  AnnounceTicketPayload,
+  AnnounceTicketParams,
 } from 'Tickets/application/commands/AnnounceTicketCommand'
 import {
   CreateTicketCommand,
-  CreateTicketCommandPayload,
+  CreateTicketCommandParams,
 } from 'Tickets/application/commands/CreateTicketCommand'
 import {
   LeaveTicketCommand,
-  LeaveTicketPayload,
+  LeaveTicketParams,
 } from 'Tickets/application/commands/LeaveTicketCommand'
 import { TicketByIdQuery } from 'Tickets/application/queries/TicketByIdQuery'
 import { Ticket } from 'Tickets/domain/entities/Ticket'
-import { GetTicketPayload } from 'Tickets/domain/payloads/GetTicketPayload'
 
 import { validator } from '../validators/TicketsValidator'
 
@@ -34,7 +33,7 @@ export class TicketsController extends Controller {
 
   @TimeoutHandler()
   @InputValidator(validator.create)
-  public async create(params: CreateTicketCommandPayload) {
+  public async create(params: CreateTicketCommandParams) {
     const ticket = await this.commandBus.execute<CreateTicketCommand, Ticket>(
       new CreateTicketCommand(params)
     )
@@ -44,8 +43,10 @@ export class TicketsController extends Controller {
 
   @TimeoutHandler()
   @InputValidator(validator.get)
-  public async get(params: GetTicketPayload) {
-    const ticket = await this.queryBus.ask(new TicketByIdQuery(params))
+  public async get(params: TicketByIdQuery) {
+    const ticket = await this.queryBus.ask<TicketByIdQuery, Nullable<Ticket>>(
+      new TicketByIdQuery(params.id, params.companyId)
+    )
 
     if (!ticket) throw new ResourceNotFoundException()
 
@@ -54,7 +55,7 @@ export class TicketsController extends Controller {
 
   @TimeoutHandler()
   @InputValidator(validator.leave)
-  public async leave(params: LeaveTicketPayload) {
+  public async leave(params: LeaveTicketParams) {
     const ticket = await this.commandBus.execute<LeaveTicketCommand, Ticket>(
       new LeaveTicketCommand(params)
     )
@@ -64,7 +65,7 @@ export class TicketsController extends Controller {
 
   @TimeoutHandler()
   @InputValidator(validator.announce)
-  public async announce(params: AnnounceTicketPayload) {
+  public async announce(params: AnnounceTicketParams) {
     const ticket = await this.commandBus.execute<AnnounceTicketCommand, Ticket>(
       new AnnounceTicketCommand(params)
     )

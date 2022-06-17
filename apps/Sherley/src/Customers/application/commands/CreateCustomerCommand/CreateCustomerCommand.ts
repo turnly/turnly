@@ -1,8 +1,8 @@
-import { ICommand } from '@turnly/shared'
-import { CreateCustomerPayload } from 'Customers/domain/payloads/CreateCustomerPayload'
+import { EntityAttributes, ICommand } from '@turnly/shared'
+import { Customer } from 'Customers/domain/entities/Customer'
 
-export type CreateCustomerCommandPayload = CreateCustomerPayload
+export type CreateCustomerParams = Omit<EntityAttributes<Customer>, 'id'>
 
 export class CreateCustomersCommand implements ICommand {
-  public constructor(public readonly payload: CreateCustomerCommandPayload) {}
+  public constructor(public readonly params: CreateCustomerParams) {}
 }

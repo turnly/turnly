@@ -1,6 +1,6 @@
 import { Box, ioc } from '@turnly/shared'
-import { CreateCustomerCommandHandler } from 'Customers/application/commands'
-import { CustomerByIdQueryHandler } from 'Customers/application/queries'
+import { CreateCustomerCommandHandler } from 'Customers/application/commands/CreateCustomerCommand'
+import { CustomerByIdQueryHandler } from 'Customers/application/queries/CustomerByIdQuery'
 
 import { CustomersController } from '../api/controllers/CustomersController'
 import { CustomerMapper } from '../persistence/mongo/entity-model-mappers/CustomerMapper'

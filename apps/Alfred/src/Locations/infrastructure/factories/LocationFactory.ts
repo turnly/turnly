@@ -1,4 +1,8 @@
-import { ICommandHandler, IQueryHandler } from '@turnly/shared'
+import {
+  ICommandHandler,
+  IEventSubscriber,
+  IQueryHandler,
+} from '@turnly/shared'
 import { Box } from '@turnly/shared'
 import { LocationByIdQueryHandler } from 'Locations/application/queries'
 
@@ -14,6 +18,10 @@ export class LocationFactory {
   }
 
   public static getCommandHandlers(): ICommandHandler[] {
+    return []
+  }
+
+  public static getEventSubscribers(): IEventSubscriber[] {
     return []
   }
 }

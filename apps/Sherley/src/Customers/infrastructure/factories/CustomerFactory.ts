@@ -1,7 +1,11 @@
-import { ICommandHandler, IQueryHandler } from '@turnly/shared'
+import {
+  ICommandHandler,
+  IEventSubscriber,
+  IQueryHandler,
+} from '@turnly/shared'
 import { Box } from '@turnly/shared'
 import { CreateCustomerCommandHandler } from 'Customers/application/commands/CreateCustomerCommand'
-import { CustomerByIdQueryHandler } from 'Customers/application/queries'
+import { CustomerByIdQueryHandler } from 'Customers/application/queries/CustomerByIdQuery'
 
 import { CustomersController } from '../api/controllers/CustomersController'
 
@@ -18,5 +22,9 @@ export class CustomerFactory {
     return [
       Box.resolve<CreateCustomerCommandHandler>('createCustomerCommandHandler'),
     ]
+  }
+
+  public static getEventSubscribers(): IEventSubscriber[] {
+    return []
   }
 }

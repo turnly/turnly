@@ -1,7 +1,7 @@
 import { Guid } from '@turnly/common'
 import { ICommand } from '@turnly/shared'
 
-export type AnnounceTicketPayload = {
+export type AnnounceTicketParams = {
   id: Guid
   companyId: Guid
   /**
@@ -15,5 +15,5 @@ export type AnnounceTicketPayload = {
 }
 
 export class AnnounceTicketCommand implements ICommand {
-  public constructor(public readonly payload: AnnounceTicketPayload) {}
+  public constructor(public readonly params: AnnounceTicketParams) {}
 }

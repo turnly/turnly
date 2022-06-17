@@ -1,4 +1,4 @@
-import { commandBus, queryBus } from '@turnly/shared'
+import { commandBus, eventBus, queryBus } from '@turnly/shared'
 
 import { FieldFactory } from '../factories/FieldFactory'
 
@@ -7,3 +7,4 @@ import { FieldFactory } from '../factories/FieldFactory'
  */
 queryBus.register(FieldFactory.getQueryHandlers())
 commandBus.register(FieldFactory.getCommandHandlers())
+eventBus.subscribe(FieldFactory.getEventSubscribers())

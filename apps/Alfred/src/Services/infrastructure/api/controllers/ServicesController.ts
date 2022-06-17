@@ -1,4 +1,4 @@
-import { ResourceNotFoundException } from '@turnly/common'
+import { Nullable, ResourceNotFoundException } from '@turnly/common'
 import {
   Controller,
   InputValidator,
@@ -9,6 +9,7 @@ import {
   ServiceByIdQuery,
   ServiceByLocationIdQuery,
 } from 'Services/application/queries'
+import { Service } from 'Services/domain/entities/Service'
 import {
   GetServiceByLocationPayload,
   GetServicePayload,
@@ -24,7 +25,10 @@ export class ServicesController extends Controller {
   @TimeoutHandler()
   @InputValidator(validator.get)
   public async get(params: GetServicePayload) {
-    const service = await this.queryBus.ask(new ServiceByIdQuery(params))
+    const service = await this.queryBus.ask<
+      ServiceByIdQuery,
+      Nullable<Service>
+    >(new ServiceByIdQuery(params))
 
     if (!service) throw new ResourceNotFoundException()
 
@@ -34,9 +38,10 @@ export class ServicesController extends Controller {
   @TimeoutHandler()
   @InputValidator(validator.getServiceByLocationId)
   public async getByLocationId(params: GetServiceByLocationPayload) {
-    const service = await this.queryBus.ask(
-      new ServiceByLocationIdQuery(params)
-    )
+    const service = await this.queryBus.ask<
+      ServiceByLocationIdQuery,
+      Nullable<Service>
+    >(new ServiceByLocationIdQuery(params))
 
     if (!service) throw new ResourceNotFoundException()
 

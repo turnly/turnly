@@ -21,9 +21,9 @@ export class LeaveTicketCommandHandler
     private readonly ticketsWritableRepo: ITicketsWritableRepo
   ) {}
 
-  public async execute({ payload }: LeaveTicketCommand) {
+  public async execute({ params }: LeaveTicketCommand) {
     const ticket = await this.queryBus.ask<TicketByIdQuery, Nullable<Ticket>>(
-      new TicketByIdQuery(payload)
+      new TicketByIdQuery(params.id, params.companyId)
     )
 
     if (!ticket) throw new ResourceNotFoundException()

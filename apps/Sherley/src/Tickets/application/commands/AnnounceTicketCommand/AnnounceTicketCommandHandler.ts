@@ -21,9 +21,9 @@ export class AnnounceTicketCommandHandler
     private readonly ticketsWritableRepo: ITicketsWritableRepo
   ) {}
 
-  public async execute({ payload }: AnnounceTicketCommand) {
+  public async execute({ params }: AnnounceTicketCommand) {
     const ticket = await this.queryBus.ask<TicketByIdQuery, Nullable<Ticket>>(
-      new TicketByIdQuery(payload)
+      new TicketByIdQuery(params.id, params.companyId)
     )
 
     if (!ticket) throw new ResourceNotFoundException()

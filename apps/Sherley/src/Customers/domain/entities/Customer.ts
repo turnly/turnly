@@ -2,7 +2,6 @@ import { Extra, Guid, Identifier, Nullable } from '@turnly/common'
 import { AggregateRoot, EntityAttributes } from '@turnly/shared'
 
 import { CustomerCreatedEvent } from '../events/CustomerCreatedEvent'
-import { CreateCustomerPayload } from '../payloads/CreateCustomerPayload'
 
 /**
  * Customer
@@ -92,7 +91,9 @@ export class Customer extends AggregateRoot {
    *
    * @description Creates a new Customer.
    */
-  public static create(attributes: CreateCustomerPayload): Customer {
+  public static create(
+    attributes: Omit<EntityAttributes<Customer>, 'id'>
+  ): Customer {
     const customer = new Customer(
       Identifier.generate('cust'),
       attributes.name,

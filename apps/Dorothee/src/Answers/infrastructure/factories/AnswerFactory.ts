@@ -1,4 +1,8 @@
-import { ICommandHandler, IQueryHandler } from '@turnly/shared'
+import {
+  ICommandHandler,
+  IEventSubscriber,
+  IQueryHandler,
+} from '@turnly/shared'
 import { Box } from '@turnly/shared'
 import { CreateAnswerBulkCommandHandler } from 'Answers/application/commands/CreateAnswerBulkCommand'
 
@@ -19,5 +23,9 @@ export class AnswerFactory {
         'createAnswerBulkCommandHandler'
       ),
     ]
+  }
+
+  public static getEventSubscribers(): IEventSubscriber[] {
+    return []
   }
 }

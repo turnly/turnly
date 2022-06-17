@@ -16,8 +16,10 @@ import { TicketAnnouncedEvent } from '../events/TicketAnnouncedEvent'
 import { TicketCancelledEvent } from '../events/TicketCancelledEvent'
 import { TicketCompletedEvent } from '../events/TicketCompletedEvent'
 import { TicketCreatedEvent } from '../events/TicketCreatedEvent'
-import { CreateTicketPayload } from '../payloads/CreateTicketPayload'
-import { RatingPayload } from '../payloads/RatingPayload'
+import { Rating } from './Rating'
+
+type IgnoreAttrs = 'id' | 'assigneeId' | 'createdAt' | 'rating' | 'updatedAt'
+export type CreateTicketParams = Omit<EntityAttributes<Ticket>, IgnoreAttrs>
 
 /**
  * Ticket
@@ -119,7 +121,7 @@ export class Ticket extends AggregateRoot {
      *
      * @description The Customer's rating for the experience at the Location.
      */
-    private rating: Nullable<RatingPayload> = null
+    private rating: Nullable<Rating> = null
   ) {
     super(id)
   }
@@ -144,7 +146,7 @@ export class Ticket extends AggregateRoot {
     this.register(new TicketAnnouncedEvent(this.toObject()))
   }
 
-  public addRating(rating: RatingPayload): void {
+  public addRating(rating: Rating): void {
     const isUnknownScore = !Object.values(TicketScore).includes(rating.score)
 
     if (isUnknownScore)
@@ -216,7 +218,7 @@ export class Ticket extends AggregateRoot {
    *
    * @description Creates a new Ticket.
    */
-  public static create(attributes: CreateTicketPayload): Ticket {
+  public static create(attributes: CreateTicketParams): Ticket {
     const ticket = new Ticket(
       Identifier.generate('ticket'),
       attributes.status,
