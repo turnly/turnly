@@ -1,7 +1,7 @@
 import { Box, ioc } from '@turnly/shared'
 import {
   ServiceByIdQueryHandler,
-  ServiceByLocationIdQueryHandler,
+  ServicesByLocationQueryHandler,
 } from 'Services/application/queries'
 
 import { ServicesController } from '../api/controllers/ServicesController'
@@ -20,6 +20,6 @@ Box.register({
 Box.register({
   serviceByIdQueryHandler: ioc.asClass(ServiceByIdQueryHandler).singleton(),
   serviceByLocationIdQueryHandler: ioc
-    .asClass(ServiceByLocationIdQueryHandler)
+    .asClass(ServicesByLocationQueryHandler)
     .singleton(),
 })

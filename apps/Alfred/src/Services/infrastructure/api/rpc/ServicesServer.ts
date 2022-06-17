@@ -30,23 +30,27 @@ export class ServicesServer extends Producers.ServerImplementation<Producers.Alf
     callback(null, response)
   }
 
-  @Producers.CallHandler(Producers.Alfred.GetByLocationResponse)
-  public async getByLocation(
+  @Producers.CallHandler(Producers.Alfred.FindByLocationResponse)
+  public async findByLocation(
     call: Producers.ServerUnaryCall<
-      Producers.Alfred.GetByLocationRequest,
-      Producers.Alfred.GetByLocationResponse
+      Producers.Alfred.FindByLocationRequest,
+      Producers.Alfred.FindByLocationResponse
     >,
-    callback: Producers.ICallback<Producers.Alfred.GetByLocationResponse>
+    callback: Producers.ICallback<Producers.Alfred.FindByLocationResponse>
   ) {
-    const { data, meta } = await this.servicesController.getByLocationId({
+    const { data, meta } = await this.servicesController.getServicesByLocation({
       locationId: call.request.getLocationId(),
       companyId: call.request.getCompanyId(),
     })
 
-    const response = new Producers.Alfred.GetByLocationResponse()
-    const service = ServiceMapper.toRPC(data)
+    const response = new Producers.Alfred.FindByLocationResponse()
 
-    response.setData(service)
+    if (data) {
+      const services = data.map(service => ServiceMapper.toRPC(service))
+
+      response.setDataList(services)
+    }
+
     response.setMeta(Producers.MetaMapper.toRPC(meta))
 
     callback(null, response)
@@ -55,7 +59,7 @@ export class ServicesServer extends Producers.ServerImplementation<Producers.Alf
   public get implementation() {
     return {
       get: this.get.bind(this),
-      getByLocation: this.getByLocation.bind(this),
+      findByLocation: this.findByLocation.bind(this),
     }
   }
 }

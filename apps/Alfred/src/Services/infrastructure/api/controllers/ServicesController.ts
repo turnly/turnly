@@ -5,15 +5,13 @@ import {
   IQueryBus,
   TimeoutHandler,
 } from '@turnly/shared'
+import { ServiceByIdQuery } from 'Services/application/queries/ServiceByIdQuery'
 import {
-  ServiceByIdQuery,
-  ServiceByLocationIdQuery,
-} from 'Services/application/queries'
+  ServicesByLocationParams,
+  ServicesByLocationQuery,
+} from 'Services/application/queries/ServicesByLocationQuery'
 import { Service } from 'Services/domain/entities/Service'
-import {
-  GetServiceByLocationPayload,
-  GetServicePayload,
-} from 'Services/domain/payloads'
+import { GetServicePayload } from 'Services/domain/payloads'
 
 import { validator } from '../validators/ServiceValidator'
 
@@ -36,15 +34,15 @@ export class ServicesController extends Controller {
   }
 
   @TimeoutHandler()
-  @InputValidator(validator.getServiceByLocationId)
-  public async getByLocationId(params: GetServiceByLocationPayload) {
-    const service = await this.queryBus.ask<
-      ServiceByLocationIdQuery,
-      Nullable<Service>
-    >(new ServiceByLocationIdQuery(params))
+  @InputValidator(validator.getServicesByLocation)
+  public async getServicesByLocation(params: ServicesByLocationParams) {
+    const services = await this.queryBus.ask<
+      ServicesByLocationQuery,
+      Nullable<Service[]>
+    >(new ServicesByLocationQuery(params))
 
-    if (!service) throw new ResourceNotFoundException()
+    if (!services) throw new ResourceNotFoundException()
 
-    return this.respond.ok(service.toObject())
+    return this.respond.ok(services.map(service => service.toObject()))
   }
 }

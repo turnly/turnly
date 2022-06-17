@@ -6,7 +6,7 @@ import {
 import { Box } from '@turnly/shared'
 import {
   ServiceByIdQueryHandler,
-  ServiceByLocationIdQueryHandler,
+  ServicesByLocationQueryHandler,
 } from 'Services/application/queries'
 
 import { ServicesController } from '../api/controllers/ServicesController'
@@ -19,7 +19,7 @@ export class ServiceFactory {
   public static getQueryHandlers(): IQueryHandler[] {
     return [
       Box.resolve<ServiceByIdQueryHandler>('serviceByIdQueryHandler'),
-      Box.resolve<ServiceByLocationIdQueryHandler>(
+      Box.resolve<ServicesByLocationQueryHandler>(
         'serviceByLocationIdQueryHandler'
       ),
     ]

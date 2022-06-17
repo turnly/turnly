@@ -5,12 +5,12 @@ const get = Validator.object({
   companyId: Validator.isId(),
 })
 
-const getServiceByLocationId = Validator.object({
+const getServicesByLocation = Validator.object({
   locationId: Validator.isId(),
   companyId: Validator.isId(),
 })
 
 export const validator = {
   get,
-  getServiceByLocationId,
+  getServicesByLocation,
 }
