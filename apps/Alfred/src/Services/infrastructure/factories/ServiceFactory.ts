@@ -4,10 +4,8 @@ import {
   IQueryHandler,
 } from '@turnly/shared'
 import { Box } from '@turnly/shared'
-import {
-  ServiceByIdQueryHandler,
-  ServicesByLocationQueryHandler,
-} from 'Services/application/queries'
+import { ServiceByIdQueryHandler } from 'Services/application/queries/ServiceByIdQuery'
+import { ServicesByLocationQueryHandler } from 'Services/application/queries/ServicesByLocationQuery'
 
 import { ServicesController } from '../api/controllers/ServicesController'
 
