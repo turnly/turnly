@@ -1,3 +1,4 @@
+import { Guid } from '@turnly/common'
 import {
   DateTime,
   IQueryHandler,
@@ -9,27 +10,39 @@ import { Ticket } from 'Tickets/domain/entities/Ticket'
 
 import { TicketsWaitingForServiceQuery } from './TicketsWaitingForServiceQuery'
 
+export type TicketsWaitingFor = {
+  waitingFor: Guid
+  tickets: Ticket[]
+}
+
 @QueryHandler(TicketsWaitingForServiceQuery)
 export class TicketsWaitingForServiceQueryHandler
-  implements IQueryHandler<TicketsWaitingForServiceQuery, Ticket[]>
+  implements IQueryHandler<TicketsWaitingForServiceQuery, TicketsWaitingFor[]>
 {
   public constructor(
     private readonly ticketsReadableRepo: ITicketReadableRepo
   ) {}
 
   public async execute({
-    serviceId,
+    serviceIds,
     companyId,
   }: TicketsWaitingForServiceQuery) {
     const today = DateTime.utc().startOfDay().toJSDate()
 
-    return await this.ticketsReadableRepo.find(
+    const tickets = await this.ticketsReadableRepo.find(
       new QueryBuilder<Ticket>()
         .equal('companyId', companyId)
-        .equal('serviceId', serviceId)
+        .in('serviceId', serviceIds)
         .in('status', Ticket.getToAttendStatus())
         .gte('createdAt', today)
         .getMany()
     )
+
+    return serviceIds.map(serviceId => ({
+      waitingFor: serviceId,
+      tickets: tickets.filter(
+        ticket => ticket.toObject().serviceId === serviceId
+      ),
+    }))
   }
 }

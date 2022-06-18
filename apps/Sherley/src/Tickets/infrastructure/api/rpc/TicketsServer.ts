@@ -140,13 +140,20 @@ export class TicketsServer extends Producers.ServerImplementation<Producers.Sher
   ) {
     const { data, meta } =
       await this.ticketsController.getTicketsWaitingForService({
-        serviceId: call.request.getServiceId(),
+        serviceIds: call.request.getServiceIdsList(),
         companyId: call.request.getCompanyId(),
       })
 
     const response = new Producers.Sherley.GetTicketsWaitingForServiceResponse()
 
-    if (data) response.setDataList(data.map(TicketMapper.toRPC))
+    if (data)
+      response.setDataList(
+        data.map(({ waitingFor, tickets }) =>
+          new Producers.Sherley.GetTicketsWaitingForServiceResponse.ServiceTickets()
+            .setWaitingFor(waitingFor)
+            .setTicketsList(tickets.map(TicketMapper.toRPC))
+        )
+      )
 
     response.setMeta(Producers.MetaMapper.toRPC(meta))
 

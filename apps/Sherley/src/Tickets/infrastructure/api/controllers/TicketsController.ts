@@ -20,7 +20,10 @@ import {
 } from 'Tickets/application/commands/LeaveTicketCommand'
 import { TicketByIdQuery } from 'Tickets/application/queries/TicketByIdQuery'
 import { TicketsBeforeYoursQuery } from 'Tickets/application/queries/TicketsBeforeYoursQuery'
-import { TicketsWaitingForServiceQuery } from 'Tickets/application/queries/TicketsWaitingForServiceQuery'
+import {
+  TicketsWaitingFor,
+  TicketsWaitingForServiceQuery,
+} from 'Tickets/application/queries/TicketsWaitingForServiceQuery'
 import { Ticket } from 'Tickets/domain/entities/Ticket'
 
 import { validator } from '../validators/TicketsValidator'
@@ -101,11 +104,16 @@ export class TicketsController extends Controller {
   ) {
     const tickets = await this.queryBus.ask<
       TicketsWaitingForServiceQuery,
-      Nullable<Ticket[]>
-    >(new TicketsWaitingForServiceQuery(params.serviceId, params.companyId))
+      TicketsWaitingFor[]
+    >(new TicketsWaitingForServiceQuery(params.serviceIds, params.companyId))
 
     if (!tickets) throw new ResourceNotFoundException()
 
-    return this.respond.ok(tickets.map(ticket => ticket.toObject()))
+    return this.respond.ok(
+      tickets.map(({ waitingFor, tickets }) => ({
+        waitingFor,
+        tickets: tickets.map(ticket => ticket.toObject()),
+      }))
+    )
   }
 }

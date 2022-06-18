@@ -26,7 +26,7 @@ const getTicketsBeforeYours = Validator.object({
 })
 
 const getTicketsWaitingForService = Validator.object({
-  serviceId: Validator.isId(),
+  serviceIds: Validator.getBuilder().array().items(Validator.isId()),
   companyId: Validator.isId(),
 })
 
