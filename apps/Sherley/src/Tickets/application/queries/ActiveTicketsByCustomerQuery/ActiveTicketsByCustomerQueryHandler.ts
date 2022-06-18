@@ -18,9 +18,10 @@ export class ActiveTicketsByCustomerQueryHandler
     private readonly ticketsReadableRepo: ITicketReadableRepo
   ) {}
 
-  public async execute({ payload }: ActiveTicketsByCustomerQuery) {
-    const { customerId, companyId } = payload
-
+  public async execute({
+    customerId,
+    companyId,
+  }: ActiveTicketsByCustomerQuery) {
     const lastHour = DateTime.utc().minusHours(1).toJSDate()
 
     const query = new QueryBuilder<Ticket>()

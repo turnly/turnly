@@ -45,11 +45,7 @@ export class ServicesServer extends Producers.ServerImplementation<Producers.Alf
 
     const response = new Producers.Alfred.FindByLocationResponse()
 
-    if (data) {
-      const services = data.map(service => ServiceMapper.toRPC(service))
-
-      response.setDataList(services)
-    }
+    if (data) response.setDataList(data.map(ServiceMapper.toRPC))
 
     response.setMeta(Producers.MetaMapper.toRPC(meta))
 

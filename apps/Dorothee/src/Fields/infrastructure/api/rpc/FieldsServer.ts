@@ -28,7 +28,7 @@ export class FieldsServer extends Producers.ServerImplementation<Producers.Dorot
     const response =
       new Producers.Dorothee.SearchCustomerFieldsByServiceResponse()
 
-    if (data) response.setDataList(data.map(field => FieldMapper.toRPC(field)))
+    if (data) response.setDataList(data.map(FieldMapper.toRPC))
 
     response.setMeta(Producers.MetaMapper.toRPC(meta))
 

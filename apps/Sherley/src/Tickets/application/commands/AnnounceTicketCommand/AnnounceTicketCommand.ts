@@ -4,6 +4,7 @@ import { ICommand } from '@turnly/shared'
 export type AnnounceTicketParams = {
   id: Guid
   companyId: Guid
+  customerId: Guid
   /**
    * @todo Implement the logic to validate the device location of the customer
    *

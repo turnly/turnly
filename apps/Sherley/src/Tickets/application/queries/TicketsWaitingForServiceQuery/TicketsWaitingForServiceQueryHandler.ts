@@ -17,9 +17,10 @@ export class TicketsWaitingForServiceQueryHandler
     private readonly ticketsReadableRepo: ITicketReadableRepo
   ) {}
 
-  public async execute({ payload }: TicketsWaitingForServiceQuery) {
-    const { serviceId, companyId } = payload
-
+  public async execute({
+    serviceId,
+    companyId,
+  }: TicketsWaitingForServiceQuery) {
     const today = DateTime.utc().startOfDay().toJSDate()
 
     return await this.ticketsReadableRepo.find(

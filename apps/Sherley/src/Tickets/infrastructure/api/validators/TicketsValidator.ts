@@ -16,6 +16,18 @@ const create = Validator.object({
 const get = Validator.object({
   id: Validator.isId(),
   companyId: Validator.isId(),
+  customerId: Validator.isId(),
+})
+
+const getTicketsBeforeYours = Validator.object({
+  ticketId: Validator.isId(),
+  customerId: Validator.isId(),
+  companyId: Validator.isId(),
+})
+
+const getTicketsWaitingForService = Validator.object({
+  serviceId: Validator.isId(),
+  companyId: Validator.isId(),
 })
 
 export const validator = {
@@ -23,4 +35,6 @@ export const validator = {
   get,
   leave: get,
   announce: get,
+  getTicketsBeforeYours,
+  getTicketsWaitingForService,
 }

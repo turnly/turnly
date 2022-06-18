@@ -27,12 +27,7 @@ export class CreateTicketCommandHandler
     const tickets = await this.queryBus.ask<
       ActiveTicketsByCustomerQuery,
       Nullable<Ticket[]>
-    >(
-      new ActiveTicketsByCustomerQuery({
-        customerId: params.customerId,
-        companyId: params.companyId,
-      })
-    )
+    >(new ActiveTicketsByCustomerQuery(params.customerId, params.companyId))
 
     if (tickets)
       throw new ConflictException(

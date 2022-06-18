@@ -25,8 +25,7 @@ export class AnswersServer extends Producers.ServerImplementation<Producers.Doro
 
     const response = new Producers.Dorothee.CreateAnswersResponse()
 
-    if (data)
-      response.setDataList(data.map(answer => AnswerMapper.toRPC(answer)))
+    if (data) response.setDataList(data.map(AnswerMapper.toRPC))
 
     response.setMeta(Producers.MetaMapper.toRPC(meta))
 

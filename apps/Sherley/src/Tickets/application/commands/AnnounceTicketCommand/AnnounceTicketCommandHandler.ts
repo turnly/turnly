@@ -23,7 +23,7 @@ export class AnnounceTicketCommandHandler
 
   public async execute({ params }: AnnounceTicketCommand) {
     const ticket = await this.queryBus.ask<TicketByIdQuery, Nullable<Ticket>>(
-      new TicketByIdQuery(params.id, params.companyId)
+      new TicketByIdQuery(params.id, params.customerId, params.companyId)
     )
 
     if (!ticket) throw new ResourceNotFoundException()

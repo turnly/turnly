@@ -21,9 +21,11 @@ export class TicketsBeforeYoursQueryHandler
     private readonly ticketsReadableRepo: ITicketReadableRepo
   ) {}
 
-  public async execute({ payload }: TicketsBeforeYoursQuery) {
-    const { ticketId, customerId, companyId } = payload
-
+  public async execute({
+    ticketId,
+    customerId,
+    companyId,
+  }: TicketsBeforeYoursQuery) {
     const ticket = await this.ticketsReadableRepo.getOne(
       new QueryBuilder<Ticket>()
         .equal('id', ticketId)

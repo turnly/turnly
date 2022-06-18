@@ -13,9 +13,10 @@ export class TicketByIdQueryHandler
     private readonly ticketsReadableRepo: ITicketReadableRepo
   ) {}
 
-  public async execute({ id, companyId }: TicketByIdQuery) {
+  public async execute({ id, customerId, companyId }: TicketByIdQuery) {
     const query = new QueryBuilder<Ticket>()
       .equal('id', id)
+      .equal('customerId', customerId)
       .equal('companyId', companyId)
       .getOne()
 

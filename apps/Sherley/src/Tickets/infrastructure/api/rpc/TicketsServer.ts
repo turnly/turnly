@@ -1,4 +1,4 @@
-import { BadRequestException, NotImplementedError } from '@turnly/common'
+import { BadRequestException } from '@turnly/common'
 import { Producers } from '@turnly/rpc'
 
 import { TicketsController } from '../controllers/TicketsController'
@@ -49,6 +49,7 @@ export class TicketsServer extends Producers.ServerImplementation<Producers.Sher
     const { data, meta } = await this.ticketsController.get({
       id: call.request.getId(),
       companyId: call.request.getCompanyId(),
+      customerId: call.request.getCustomerId(),
     })
 
     const response = new Producers.Sherley.GetTicketResponse()
@@ -71,6 +72,7 @@ export class TicketsServer extends Producers.ServerImplementation<Producers.Sher
     const { data, meta } = await this.ticketsController.leave({
       id: call.request.getId(),
       companyId: call.request.getCompanyId(),
+      customerId: call.request.getCustomerId(),
     })
 
     const response = new Producers.Sherley.LeaveTicketResponse()
@@ -93,6 +95,7 @@ export class TicketsServer extends Producers.ServerImplementation<Producers.Sher
     const { data, meta } = await this.ticketsController.announce({
       id: call.request.getId(),
       companyId: call.request.getCompanyId(),
+      customerId: call.request.getCustomerId(),
     })
 
     const response = new Producers.Sherley.AnnounceTicketResponse()
@@ -104,18 +107,60 @@ export class TicketsServer extends Producers.ServerImplementation<Producers.Sher
     callback(null, response)
   }
 
+  @Producers.CallHandler(Producers.Sherley.GetTicketsBeforeYoursResponse)
+  public async getTicketsBeforeYours(
+    call: Producers.ServerUnaryCall<
+      Producers.Sherley.GetTicketsBeforeYoursRequest,
+      Producers.Sherley.GetTicketsBeforeYoursResponse
+    >,
+    callback: Producers.ICallback<Producers.Sherley.GetTicketsBeforeYoursResponse>
+  ) {
+    const { data, meta } = await this.ticketsController.getTicketsBeforeYours({
+      ticketId: call.request.getId(),
+      customerId: call.request.getCustomerId(),
+      companyId: call.request.getCompanyId(),
+    })
+
+    const response = new Producers.Sherley.GetTicketsBeforeYoursResponse()
+
+    if (data) response.setDataList(data.map(TicketMapper.toRPC))
+
+    response.setMeta(Producers.MetaMapper.toRPC(meta))
+
+    callback(null, response)
+  }
+
+  @Producers.CallHandler(Producers.Sherley.GetTicketsWaitingForServiceResponse)
+  public async getTicketsWaitingForService(
+    call: Producers.ServerUnaryCall<
+      Producers.Sherley.GetTicketsWaitingForServiceRequest,
+      Producers.Sherley.GetTicketsWaitingForServiceResponse
+    >,
+    callback: Producers.ICallback<Producers.Sherley.GetTicketsWaitingForServiceResponse>
+  ) {
+    const { data, meta } =
+      await this.ticketsController.getTicketsWaitingForService({
+        serviceId: call.request.getServiceId(),
+        companyId: call.request.getCompanyId(),
+      })
+
+    const response = new Producers.Sherley.GetTicketsWaitingForServiceResponse()
+
+    if (data) response.setDataList(data.map(TicketMapper.toRPC))
+
+    response.setMeta(Producers.MetaMapper.toRPC(meta))
+
+    callback(null, response)
+  }
+
   public get implementation() {
     return {
       create: this.create.bind(this),
       get: this.get.bind(this),
       leave: this.leave.bind(this),
       announce: this.announce.bind(this),
-      getTicketsBeforeYours: () => {
-        throw new NotImplementedError()
-      },
-      getTicketsWaitingForService: () => {
-        throw new NotImplementedError()
-      },
+      getTicketsBeforeYours: this.getTicketsBeforeYours.bind(this),
+      getTicketsWaitingForService: this.getTicketsWaitingForService.bind(this),
     }
   }
 }
