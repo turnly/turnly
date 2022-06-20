@@ -1,4 +1,3 @@
-import { Nullable } from '@turnly/common'
 import {
   DateTime,
   IQueryHandler,
@@ -12,7 +11,7 @@ import { ActiveTicketsByCustomerQuery } from './ActiveTicketsByCustomerQuery'
 
 @QueryHandler(ActiveTicketsByCustomerQuery)
 export class ActiveTicketsByCustomerQueryHandler
-  implements IQueryHandler<ActiveTicketsByCustomerQuery, Nullable<Ticket[]>>
+  implements IQueryHandler<ActiveTicketsByCustomerQuery, Ticket[]>
 {
   public constructor(
     private readonly ticketsReadableRepo: ITicketReadableRepo

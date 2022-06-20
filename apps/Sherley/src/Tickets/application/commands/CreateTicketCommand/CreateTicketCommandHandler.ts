@@ -1,4 +1,4 @@
-import { ConflictException, Nullable } from '@turnly/common'
+import { ConflictException } from '@turnly/common'
 import {
   CommandHandler,
   ICommandHandler,
@@ -26,10 +26,10 @@ export class CreateTicketCommandHandler
   public async execute({ params }: CreateTicketCommand) {
     const tickets = await this.queryBus.ask<
       ActiveTicketsByCustomerQuery,
-      Nullable<Ticket[]>
+      Ticket[]
     >(new ActiveTicketsByCustomerQuery(params.customerId, params.companyId))
 
-    if (tickets)
+    if (tickets.length)
       throw new ConflictException(
         'Customer already has tickets, cannot create new ticket.'
       )

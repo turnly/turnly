@@ -1,7 +1,4 @@
-import {
-  InvalidStateException,
-  ResourceNotFoundException,
-} from '@turnly/common'
+import { ResourceNotFoundException } from '@turnly/common'
 import {
   DateTime,
   IQueryHandler,
@@ -26,12 +23,15 @@ export class TicketsBeforeYoursQueryHandler
     customerId,
     companyId,
   }: TicketsBeforeYoursQuery) {
+    const today = DateTime.utc().startOfDay().toJSDate()
+
     const ticket = await this.ticketsReadableRepo.getOne(
       new QueryBuilder<Ticket>()
         .equal('id', ticketId)
         .equal('customerId', customerId)
         .equal('companyId', companyId)
         .in('status', Ticket.getToAttendStatus())
+        .gte('createdAt', today)
         .getOne()
     )
 
@@ -39,18 +39,15 @@ export class TicketsBeforeYoursQueryHandler
 
     const { createdAt, serviceId } = ticket.toObject()
 
-    if (!createdAt)
-      throw new InvalidStateException('Oops!, ticket has invalid state')
-
-    const today = DateTime.utc().startOfDay().toJSDate()
-
     return await this.ticketsReadableRepo.find(
       new QueryBuilder<Ticket>()
         .equal('companyId', companyId)
         .equal('serviceId', serviceId)
+        .notEqual('id', ticketId)
         .in('status', Ticket.getToAttendStatus())
         .gte('createdAt', today)
         .lte('createdAt', createdAt)
+        .orderByOldest('createdAt')
         .getMany()
     )
   }

@@ -100,7 +100,7 @@ export class Ticket extends AggregateRoot {
      *
      * @description The date and time the Ticket was created.
      */
-    private readonly createdAt: Nullable<Date> = null,
+    private readonly createdAt?: Nullable<Date>,
 
     /**
      * Update At
@@ -275,8 +275,8 @@ export class Ticket extends AggregateRoot {
       customerId: this.customerId,
       companyId: this.companyId,
       assigneeId: this.assigneeId,
-      createdAt: this.createdAt,
-      updatedAt: this.updatedAt,
+      createdAt: this.createdAt as Date,
+      updatedAt: this.updatedAt as Date,
       rating: this.rating,
       extra: this.extra,
     }
