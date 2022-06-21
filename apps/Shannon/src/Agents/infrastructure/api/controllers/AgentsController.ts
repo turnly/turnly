@@ -7,9 +7,8 @@ import {
 } from '@turnly/shared'
 import { AgentByIdQuery } from 'Agents/application/queries/AgentByIdQuery'
 import { Agent } from 'Agents/domain/entities/Agent'
-import { GetAgentPayload } from 'Agents/domain/payloads/GetAgentPayload'
 
-import { validator } from '../validators/AgentValidator'
+import { validator } from '../validators/AgentsValidator'
 
 export class AgentsController extends Controller {
   public constructor(private readonly queryBus: IQueryBus) {
@@ -18,9 +17,9 @@ export class AgentsController extends Controller {
 
   @TimeoutHandler()
   @InputValidator(validator.get)
-  public async get(params: GetAgentPayload) {
+  public async get(params: AgentByIdQuery) {
     const agent = await this.queryBus.ask<AgentByIdQuery, Nullable<Agent>>(
-      new AgentByIdQuery(params)
+      new AgentByIdQuery(params.id, params.companyId)
     )
 
     if (!agent) throw new ResourceNotFoundException()

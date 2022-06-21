@@ -8,7 +8,7 @@ import { AgentByIdQueryHandler } from 'Agents/application/queries/AgentByIdQuery
 
 import { AgentsController } from '../api/controllers/AgentsController'
 
-export class AgentFactory {
+export class AgentsFactory {
   public static getController(): AgentsController {
     return Box.resolve<AgentsController>('agentsController')
   }

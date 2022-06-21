@@ -1,7 +1,7 @@
 import { Producers } from '@turnly/rpc'
 
 import { AgentsController } from '../controllers/AgentsController'
-import { AgentMapper } from './AgentsMapper'
+import { AgentsMapper } from './AgentsMapper'
 
 export class AgentsServer extends Producers.ServerImplementation<Producers.Shannon.IAgentsServer> {
   public constructor(private readonly agentsController: AgentsController) {
@@ -22,7 +22,7 @@ export class AgentsServer extends Producers.ServerImplementation<Producers.Shann
     })
 
     const response = new Producers.Shannon.GetAgentResponse()
-    const agent = AgentMapper.toRPC(data)
+    const agent = AgentsMapper.toRPC(data)
 
     response.setData(agent)
     response.setMeta(Producers.MetaMapper.toRPC(meta))

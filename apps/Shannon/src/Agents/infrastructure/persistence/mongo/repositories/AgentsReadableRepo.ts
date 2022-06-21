@@ -1,15 +1,15 @@
 import { MongoReadableRepo } from '@turnly/shared'
 import { IAgentsMapper } from 'Agents/domain/contracts/IAgentsMapper'
-import { IAgentReadableRepo } from 'Agents/domain/contracts/IAgentsRepo'
+import { IAgentsReadableRepo } from 'Agents/domain/contracts/IAgentsRepo'
 import { Agent } from 'Agents/domain/entities/Agent'
 
-import { AgentDocument, AgentModel } from '../models/AgentModel'
+import { AgentModel, IAgentDocument } from '../models/AgentModel'
 
-export class AgentReadableRepo
-  extends MongoReadableRepo<Agent, AgentDocument>
-  implements IAgentReadableRepo
+export class AgentsReadableRepo
+  extends MongoReadableRepo<Agent, IAgentDocument>
+  implements IAgentsReadableRepo
 {
-  public constructor(agentsMapper: IAgentsMapper<AgentDocument>) {
+  public constructor(agentsMapper: IAgentsMapper<IAgentDocument>) {
     super(AgentModel, agentsMapper)
   }
 }

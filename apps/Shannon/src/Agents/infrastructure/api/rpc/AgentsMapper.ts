@@ -3,7 +3,7 @@ import { Producers } from '@turnly/rpc'
 import { EntityAttributes } from '@turnly/shared'
 import { Agent } from 'Agents/domain/entities/Agent'
 
-export class AgentMapper {
+export class AgentsMapper {
   public static toRPC(
     entity: Nullable<EntityAttributes<Agent>> | undefined
   ): Producers.Shannon.Agent {

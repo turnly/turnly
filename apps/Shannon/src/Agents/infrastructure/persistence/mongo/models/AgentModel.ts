@@ -3,10 +3,11 @@ import { EntityAttributes } from '@turnly/shared'
 import { Agent } from 'Agents/domain/entities/Agent'
 import mongoose, { Document, Model, Schema } from 'mongoose'
 
-export interface AgentDocument
+export interface IAgentDocument
   extends Omit<EntityAttributes<Agent>, 'id'>,
     Document {}
-export type IAgentModel = Model<AgentDocument>
+
+export type IAgentModel = Model<IAgentDocument>
 
 const schema = new Schema(
   {
@@ -45,7 +46,7 @@ const schema = new Schema(
   { timestamps: true }
 )
 
-export const AgentModel = mongoose.model<AgentDocument, IAgentModel>(
+export const AgentModel = mongoose.model<IAgentDocument, IAgentModel>(
   'Agent',
   schema
 )

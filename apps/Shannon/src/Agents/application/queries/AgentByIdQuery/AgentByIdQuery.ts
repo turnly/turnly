@@ -1,6 +1,9 @@
+import { Guid } from '@turnly/common'
 import { IQuery } from '@turnly/shared'
-import { GetAgentPayload } from 'Agents/domain/payloads/GetAgentPayload'
 
 export class AgentByIdQuery implements IQuery {
-  public constructor(public readonly params: GetAgentPayload) {}
+  public constructor(
+    public readonly id: Guid,
+    public readonly companyId: Guid
+  ) {}
 }

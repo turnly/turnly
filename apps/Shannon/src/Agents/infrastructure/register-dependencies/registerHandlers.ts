@@ -1,10 +1,10 @@
 import { commandBus, eventBus, queryBus } from '@turnly/shared'
 
-import { AgentFactory } from '../factories/AgentFactory'
+import { AgentsFactory } from '../factories/AgentsFactory'
 
 /**
  * Agent module
  */
-queryBus.register(AgentFactory.getQueryHandlers())
-commandBus.register(AgentFactory.getCommandHandlers())
-eventBus.subscribe(AgentFactory.getEventSubscribers())
+queryBus.register(AgentsFactory.getQueryHandlers())
+commandBus.register(AgentsFactory.getCommandHandlers())
+eventBus.subscribe(AgentsFactory.getEventSubscribers())

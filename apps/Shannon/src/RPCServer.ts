@@ -1,11 +1,11 @@
 import { Producers } from '@turnly/rpc'
 import { AgentsServer } from 'Agents/infrastructure/api/rpc'
-import { AgentFactory } from 'Agents/infrastructure/factories/AgentFactory'
+import { AgentsFactory } from 'Agents/infrastructure/factories/AgentsFactory'
 
 /**
  * Servers
  */
-const agentsServer = new AgentsServer(AgentFactory.getController())
+const agentsServer = new AgentsServer(AgentsFactory.getController())
 
 /**
  * Services (RPC)

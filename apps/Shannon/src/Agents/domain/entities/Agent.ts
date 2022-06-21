@@ -1,8 +1,6 @@
 import { Extra, Guid, Identifier, Nullable } from '@turnly/common'
 import { AggregateRoot, EntityAttributes } from '@turnly/shared'
 
-import { CreateAgentPayload } from '../payloads/CreateAgentPayload'
-
 /**
  * Agent
  *
@@ -91,7 +89,7 @@ export class Agent extends AggregateRoot {
    *
    * @description Creates a new Agent.
    */
-  public static create(attributes: CreateAgentPayload): Agent {
+  public static create(attributes: Omit<EntityAttributes<Agent>, 'id'>): Agent {
     return new Agent(
       Identifier.generate('agent'),
       attributes.name,
