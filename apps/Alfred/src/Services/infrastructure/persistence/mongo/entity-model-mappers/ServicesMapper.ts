@@ -3,26 +3,26 @@ import { EntityAttributes } from '@turnly/shared'
 import { IServicesMapper } from 'Services/domain/contracts/IServicesMapper'
 import { Service } from 'Services/domain/entities/Service'
 
-import { ServiceDocument, ServiceModel } from '../models/ServiceModel'
+import { IServiceDocument, ServiceModel } from '../models/ServiceModel'
 
-export class ServiceMapper implements IServicesMapper<ServiceDocument> {
-  public toEntity(document: ServiceDocument): Service {
+export class ServicesMapper implements IServicesMapper<IServiceDocument> {
+  public toEntity(document: IServiceDocument): Service {
     const { _id, ...attrs } = document.toObject<EntityAttributes<Service>>()
 
     return Service.build({ ...attrs, id: String(_id) })
   }
 
-  public toModel(entity: Service): ServiceDocument {
+  public toModel(entity: Service): IServiceDocument {
     const { id: _id, ...attrs } = entity.toObject()
 
     return new ServiceModel({ ...attrs, _id })
   }
 
-  public toEntityList(documents: ServiceDocument[]): Service[] {
+  public toEntityList(documents: IServiceDocument[]): Service[] {
     return documents?.map(document => this.toEntity(document))
   }
 
-  public toModelList(entities: Service[]): ServiceDocument[] {
+  public toModelList(entities: Service[]): IServiceDocument[] {
     return entities?.map(entity => this.toModel(entity))
   }
 }

@@ -1,7 +1,7 @@
 import { Producers } from '@turnly/rpc'
 
 import { ServicesController } from '../controllers/ServicesController'
-import { ServiceMapper } from './ServicesMapper'
+import { ServicesMapper } from './ServicesMapper'
 
 export class ServicesServer extends Producers.ServerImplementation<Producers.Alfred.IServicesServer> {
   public constructor(private readonly servicesController: ServicesController) {
@@ -22,7 +22,7 @@ export class ServicesServer extends Producers.ServerImplementation<Producers.Alf
     })
 
     const response = new Producers.Alfred.GetServiceResponse()
-    const service = ServiceMapper.toRPC(data)
+    const service = ServicesMapper.toRPC(data)
 
     response.setData(service)
     response.setMeta(Producers.MetaMapper.toRPC(meta))
@@ -45,7 +45,7 @@ export class ServicesServer extends Producers.ServerImplementation<Producers.Alf
 
     const response = new Producers.Alfred.FindByLocationResponse()
 
-    if (data) response.setDataList(data.map(ServiceMapper.toRPC))
+    if (data) response.setDataList(data.map(ServicesMapper.toRPC))
 
     response.setMeta(Producers.MetaMapper.toRPC(meta))
 

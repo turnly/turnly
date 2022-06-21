@@ -1,8 +1,6 @@
 import { Guid, Identifier } from '@turnly/common'
 import { AggregateRoot, EntityAttributes } from '@turnly/shared'
 
-import { CreateServicePayload } from '../payloads/CreateServicePayload'
-
 /**
  * Service
  *
@@ -55,7 +53,9 @@ export class Service extends AggregateRoot {
    *
    * @description Creates a new Service.
    */
-  public static create(attributes: CreateServicePayload): Service {
+  public static create(
+    attributes: Omit<EntityAttributes<Service>, 'id'>
+  ): Service {
     return new Service(
       Identifier.generate('srv'),
       attributes.name,

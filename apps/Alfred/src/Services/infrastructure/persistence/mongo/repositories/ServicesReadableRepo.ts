@@ -1,15 +1,15 @@
 import { MongoReadableRepo } from '@turnly/shared'
 import { IServicesMapper } from 'Services/domain/contracts/IServicesMapper'
-import { IServiceReadableRepo } from 'Services/domain/contracts/IServicesRepo'
+import { IServicesReadableRepo } from 'Services/domain/contracts/IServicesRepo'
 import { Service } from 'Services/domain/entities/Service'
 
-import { ServiceDocument, ServiceModel } from '../models/ServiceModel'
+import { IServiceDocument, ServiceModel } from '../models/ServiceModel'
 
-export class ServiceReadableRepo
-  extends MongoReadableRepo<Service, ServiceDocument>
-  implements IServiceReadableRepo
+export class ServicesReadableRepo
+  extends MongoReadableRepo<Service, IServiceDocument>
+  implements IServicesReadableRepo
 {
-  public constructor(servicesMapper: IServicesMapper<ServiceDocument>) {
+  public constructor(servicesMapper: IServicesMapper<IServiceDocument>) {
     super(ServiceModel, servicesMapper)
   }
 }

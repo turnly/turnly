@@ -2,7 +2,7 @@ import { NotImplementedError } from '@turnly/common'
 import { Producers } from '@turnly/rpc'
 
 import { LocationsController } from '../controllers/LocationsController'
-import { LocationMapper } from './LocationsMapper'
+import { LocationsMapper } from './LocationsMapper'
 
 export class LocationsServer extends Producers.ServerImplementation<Producers.Alfred.ILocationsServer> {
   public constructor(
@@ -25,7 +25,7 @@ export class LocationsServer extends Producers.ServerImplementation<Producers.Al
     })
 
     const response = new Producers.Alfred.GetLocationResponse()
-    const location = LocationMapper.toRPC(data)
+    const location = LocationsMapper.toRPC(data)
 
     response.setData(location)
     response.setMeta(Producers.MetaMapper.toRPC(meta))

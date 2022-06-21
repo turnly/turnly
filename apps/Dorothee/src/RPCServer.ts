@@ -7,8 +7,8 @@ import { FieldFactory } from 'Fields/infrastructure/factories/FieldFactory'
 /**
  * Servers
  */
-export const answersServer = new AnswersServer(AnswerFactory.getController())
-export const fieldsServer = new FieldsServer(FieldFactory.getController())
+const answersServer = new AnswersServer(AnswerFactory.getController())
+const fieldsServer = new FieldsServer(FieldFactory.getController())
 
 /**
  * Services (RPC)

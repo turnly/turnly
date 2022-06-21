@@ -3,7 +3,7 @@ import { Producers } from '@turnly/rpc'
 import { EntityAttributes } from '@turnly/shared'
 import { Service } from 'Services/domain/entities/Service'
 
-export class ServiceMapper {
+export class ServicesMapper {
   public static toRPC(
     entity: Nullable<EntityAttributes<Service>> | undefined
   ): Producers.Alfred.Service {

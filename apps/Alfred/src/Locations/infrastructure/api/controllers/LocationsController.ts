@@ -5,11 +5,10 @@ import {
   IQueryBus,
   TimeoutHandler,
 } from '@turnly/shared'
-import { LocationByIdQuery } from 'Locations/application/queries'
+import { LocationByIdQuery } from 'Locations/application/queries/LocationByIdQuery'
 import { Location } from 'Locations/domain/entities/Location'
-import { GetLocationPayload } from 'Locations/domain/payloads'
 
-import { validator } from '../validators/LocationValidator'
+import { validator } from '../validators/LocationsValidator'
 
 export class LocationsController extends Controller {
   public constructor(private readonly queryBus: IQueryBus) {
@@ -18,11 +17,11 @@ export class LocationsController extends Controller {
 
   @TimeoutHandler()
   @InputValidator(validator.get)
-  public async get(params: GetLocationPayload) {
+  public async get(params: LocationByIdQuery) {
     const location = await this.queryBus.ask<
       LocationByIdQuery,
       Nullable<Location>
-    >(new LocationByIdQuery(params))
+    >(new LocationByIdQuery(params.id, params.companyId))
 
     if (!location) throw new ResourceNotFoundException()
 

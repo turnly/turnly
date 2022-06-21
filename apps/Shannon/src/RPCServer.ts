@@ -5,7 +5,7 @@ import { AgentFactory } from 'Agents/infrastructure/factories/AgentFactory'
 /**
  * Servers
  */
-export const agentsServer = new AgentsServer(AgentFactory.getController())
+const agentsServer = new AgentsServer(AgentFactory.getController())
 
 /**
  * Services (RPC)

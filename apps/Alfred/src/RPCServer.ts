@@ -1,16 +1,14 @@
 import { Producers } from '@turnly/rpc'
 import { LocationsServer } from 'Locations/infrastructure/api/rpc'
-import { LocationFactory } from 'Locations/infrastructure/factories/LocationFactory'
+import { LocationsFactory } from 'Locations/infrastructure/factories/LocationsFactory'
 import { ServicesServer } from 'Services/infrastructure/api/rpc'
-import { ServiceFactory } from 'Services/infrastructure/factories/ServiceFactory'
+import { ServicesFactory } from 'Services/infrastructure/factories/ServicesFactory'
 
 /**
  * Servers
  */
-export const servicesServer = new ServicesServer(ServiceFactory.getController())
-export const locationsServer = new LocationsServer(
-  LocationFactory.getController()
-)
+const servicesServer = new ServicesServer(ServicesFactory.getController())
+const locationsServer = new LocationsServer(LocationsFactory.getController())
 
 /**
  * Services (RPC)

@@ -5,7 +5,7 @@ import { IntegrationFactory } from 'Integrations/infrastructure/factories/Integr
 /**
  * Servers
  */
-export const integrationsServer = new IntegrationsServer(
+const integrationsServer = new IntegrationsServer(
   IntegrationFactory.getController()
 )
 

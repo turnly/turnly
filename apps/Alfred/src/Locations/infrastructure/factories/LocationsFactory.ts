@@ -4,11 +4,11 @@ import {
   IQueryHandler,
 } from '@turnly/shared'
 import { Box } from '@turnly/shared'
-import { LocationByIdQueryHandler } from 'Locations/application/queries'
+import { LocationByIdQueryHandler } from 'Locations/application/queries/LocationByIdQuery'
 
 import { LocationsController } from '../api/controllers/LocationsController'
 
-export class LocationFactory {
+export class LocationsFactory {
   public static getController(): LocationsController {
     return Box.resolve<LocationsController>('locationsController')
   }

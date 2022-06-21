@@ -3,11 +3,11 @@ import { EntityAttributes } from '@turnly/shared'
 import mongoose, { Document, Model, Schema } from 'mongoose'
 import { Service } from 'Services/domain/entities/Service'
 
-export interface ServiceDocument
+export interface IServiceDocument
   extends Omit<EntityAttributes<Service>, 'id'>,
     Document {}
 
-export type IServiceModel = Model<ServiceDocument>
+export type IServiceModel = Model<IServiceDocument>
 
 const schema = new Schema(
   {
@@ -33,7 +33,7 @@ const schema = new Schema(
   { timestamps: true }
 )
 
-export const ServiceModel = mongoose.model<ServiceDocument, IServiceModel>(
+export const ServiceModel = mongoose.model<IServiceDocument, IServiceModel>(
   'Service',
   schema
 )

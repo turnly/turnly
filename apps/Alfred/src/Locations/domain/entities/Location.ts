@@ -1,8 +1,6 @@
 import { Guid, Identifier } from '@turnly/common'
 import { AggregateRoot, EntityAttributes } from '@turnly/shared'
 
-import { CreateLocationPayload } from '../payloads/CreateLocationPayload'
-
 /**
  * Location
  *
@@ -18,13 +16,6 @@ export class Location extends AggregateRoot {
      * @description Unique identifier for the Location
      */
     id: Guid,
-
-    /**
-     * Company
-     *
-     * @description The Company that the Location belongs to.
-     */
-    private readonly companyId: Guid,
 
     /**
      * Name
@@ -62,7 +53,14 @@ export class Location extends AggregateRoot {
      *
      * @description The time in minutes before the Location stops serving.
      */
-    private stopServingBeforeInMinutes: number
+    private stopServingBeforeInMinutes: number,
+
+    /**
+     * Company
+     *
+     * @description The Company that the Location belongs to.
+     */
+    private readonly companyId: Guid
   ) {
     super(id)
   }
@@ -72,15 +70,17 @@ export class Location extends AggregateRoot {
    *
    * @description Creates a new Location.
    */
-  public static create(attributes: CreateLocationPayload): Location {
+  public static create(
+    attributes: Omit<EntityAttributes<Location>, 'id'>
+  ): Location {
     return new Location(
       Identifier.generate('loc'),
       attributes.companyId,
       attributes.name,
       attributes.address,
-      attributes.country,
       attributes.coordinates,
-      attributes.stopServingBeforeInMinutes
+      attributes.stopServingBeforeInMinutes,
+      attributes.country
     )
   }
 
@@ -95,9 +95,9 @@ export class Location extends AggregateRoot {
       attributes.companyId,
       attributes.name,
       attributes.address,
-      attributes.country,
       attributes.coordinates,
-      attributes.stopServingBeforeInMinutes
+      attributes.stopServingBeforeInMinutes,
+      attributes.country
     )
   }
 
@@ -109,11 +109,11 @@ export class Location extends AggregateRoot {
   public toObject() {
     return {
       id: this.id,
-      companyId: this.companyId,
       name: this.name,
       address: this.address,
       country: this.country,
       coordinates: this.coordinates,
+      companyId: this.companyId,
       stopServingBeforeInMinutes: this.stopServingBeforeInMinutes,
     }
   }

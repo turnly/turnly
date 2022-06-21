@@ -3,7 +3,7 @@ import { EntityAttributes } from '@turnly/shared'
 import { Location } from 'Locations/domain/entities/Location'
 import mongoose, { Document, Model, Schema } from 'mongoose'
 
-export interface LocationDocument
+export interface ILocationDocument
   extends Omit<EntityAttributes<Location>, 'id' | 'coordinates'>,
     Document {
   coordinates: {
@@ -12,9 +12,9 @@ export interface LocationDocument
   }
 }
 
-export type ILocationModel = Model<LocationDocument>
+export type ILocationModel = Model<ILocationDocument>
 
-const schema = new Schema(
+const schema = new Schema<ILocationDocument>(
   {
     _id: String,
     companyId: {
@@ -54,7 +54,7 @@ const schema = new Schema(
 
 schema.index({ coordinates: '2dsphere' })
 
-export const LocationModel = mongoose.model<LocationDocument, ILocationModel>(
+export const LocationModel = mongoose.model<ILocationDocument, ILocationModel>(
   'Location',
   schema
 )

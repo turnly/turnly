@@ -7,10 +7,8 @@ import { TicketFactory } from 'Tickets/infrastructure/factories/TicketFactory'
 /**
  * Servers
  */
-export const ticketsServer = new TicketsServer(TicketFactory.getController())
-export const customersServer = new CustomersServer(
-  CustomerFactory.getController()
-)
+const ticketsServer = new TicketsServer(TicketFactory.getController())
+const customersServer = new CustomersServer(CustomerFactory.getController())
 
 /**
  * Services (RPC)

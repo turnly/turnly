@@ -2,4 +2,4 @@ import { IReadableRepository } from '@turnly/shared'
 
 import { Service } from '../entities/Service'
 
-export type IServiceReadableRepo = IReadableRepository<Service>
+export type IServicesReadableRepo = IReadableRepository<Service>

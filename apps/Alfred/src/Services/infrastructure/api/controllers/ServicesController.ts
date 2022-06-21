@@ -6,14 +6,10 @@ import {
   TimeoutHandler,
 } from '@turnly/shared'
 import { ServiceByIdQuery } from 'Services/application/queries/ServiceByIdQuery'
-import {
-  ServicesByLocationParams,
-  ServicesByLocationQuery,
-} from 'Services/application/queries/ServicesByLocationQuery'
+import { ServicesByLocationQuery } from 'Services/application/queries/ServicesByLocationQuery'
 import { Service } from 'Services/domain/entities/Service'
-import { GetServicePayload } from 'Services/domain/payloads'
 
-import { validator } from '../validators/ServiceValidator'
+import { validator } from '../validators/ServicesValidator'
 
 export class ServicesController extends Controller {
   public constructor(private readonly queryBus: IQueryBus) {
@@ -22,11 +18,11 @@ export class ServicesController extends Controller {
 
   @TimeoutHandler()
   @InputValidator(validator.get)
-  public async get(params: GetServicePayload) {
+  public async get(params: ServiceByIdQuery) {
     const service = await this.queryBus.ask<
       ServiceByIdQuery,
       Nullable<Service>
-    >(new ServiceByIdQuery(params))
+    >(new ServiceByIdQuery(params.id, params.companyId))
 
     if (!service) throw new ResourceNotFoundException()
 
@@ -35,11 +31,11 @@ export class ServicesController extends Controller {
 
   @TimeoutHandler()
   @InputValidator(validator.getServicesByLocation)
-  public async getServicesByLocation(params: ServicesByLocationParams) {
+  public async getServicesByLocation(params: ServicesByLocationQuery) {
     const services = await this.queryBus.ask<
       ServicesByLocationQuery,
       Nullable<Service[]>
-    >(new ServicesByLocationQuery(params))
+    >(new ServicesByLocationQuery(params.locationId, params.companyId))
 
     if (!services) throw new ResourceNotFoundException()
 

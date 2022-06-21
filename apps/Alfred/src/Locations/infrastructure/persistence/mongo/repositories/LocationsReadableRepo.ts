@@ -1,15 +1,15 @@
 import { MongoReadableRepo } from '@turnly/shared'
 import { ILocationsMapper } from 'Locations/domain/contracts/ILocationsMapper'
-import { ILocationReadableRepo } from 'Locations/domain/contracts/ILocationsRepo'
+import { ILocationsReadableRepo } from 'Locations/domain/contracts/ILocationsRepo'
 import { Location } from 'Locations/domain/entities/Location'
 
-import { LocationDocument, LocationModel } from '../models/LocationModel'
+import { ILocationDocument, LocationModel } from '../models/LocationModel'
 
-export class LocationReadableRepo
-  extends MongoReadableRepo<Location, LocationDocument>
-  implements ILocationReadableRepo
+export class LocationsReadableRepo
+  extends MongoReadableRepo<Location, ILocationDocument>
+  implements ILocationsReadableRepo
 {
-  public constructor(locationsMapper: ILocationsMapper<LocationDocument>) {
+  public constructor(locationsMapper: ILocationsMapper<ILocationDocument>) {
     super(LocationModel, locationsMapper)
   }
 }

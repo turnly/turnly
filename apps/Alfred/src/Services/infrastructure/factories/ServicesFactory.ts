@@ -9,7 +9,7 @@ import { ServicesByLocationQueryHandler } from 'Services/application/queries/Ser
 
 import { ServicesController } from '../api/controllers/ServicesController'
 
-export class ServiceFactory {
+export class ServicesFactory {
   public static getController(): ServicesController {
     return Box.resolve<ServicesController>('servicesController')
   }

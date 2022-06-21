@@ -3,12 +3,12 @@ import { ServiceByIdQueryHandler } from 'Services/application/queries/ServiceByI
 import { ServicesByLocationQueryHandler } from 'Services/application/queries/ServicesByLocationQuery'
 
 import { ServicesController } from '../api/controllers/ServicesController'
-import { ServiceMapper } from '../persistence/mongo/entity-model-mappers/ServiceMapper'
-import { ServiceReadableRepo } from '../persistence/mongo/repositories/ServicesReadableRepo'
+import { ServicesMapper } from '../persistence/mongo/entity-model-mappers/ServicesMapper'
+import { ServicesReadableRepo } from '../persistence/mongo/repositories/ServicesReadableRepo'
 
 Box.register({
-  servicesMapper: ioc.asClass(ServiceMapper).singleton(),
-  servicesReadableRepo: ioc.asClass(ServiceReadableRepo).singleton(),
+  servicesMapper: ioc.asClass(ServicesMapper).singleton(),
+  servicesReadableRepo: ioc.asClass(ServicesReadableRepo).singleton(),
   servicesController: ioc.asClass(ServicesController).singleton(),
 })
 

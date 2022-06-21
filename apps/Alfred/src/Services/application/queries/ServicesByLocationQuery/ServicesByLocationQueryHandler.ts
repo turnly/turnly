@@ -1,6 +1,6 @@
 import { Nullable } from '@turnly/common'
 import { IQueryHandler, QueryBuilder, QueryHandler } from '@turnly/shared'
-import { IServiceReadableRepo } from 'Services/domain/contracts/IServicesRepo'
+import { IServicesReadableRepo } from 'Services/domain/contracts/IServicesRepo'
 import { Service } from 'Services/domain/entities/Service'
 
 import { ServicesByLocationQuery } from './ServicesByLocationQuery'
@@ -10,12 +10,10 @@ export class ServicesByLocationQueryHandler
   implements IQueryHandler<ServicesByLocationQuery, Nullable<Service[]>>
 {
   public constructor(
-    private readonly servicesReadableRepo: IServiceReadableRepo
+    private readonly servicesReadableRepo: IServicesReadableRepo
   ) {}
 
-  public async execute({ params }: ServicesByLocationQuery) {
-    const { locationId, companyId } = params
-
+  public async execute({ locationId, companyId }: ServicesByLocationQuery) {
     const query = new QueryBuilder<Service>()
       .equal('locationId', locationId)
       .equal('companyId', companyId)
