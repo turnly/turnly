@@ -2,7 +2,6 @@ import { Extra, Guid, Identifier, Nullable } from '@turnly/common'
 import { AggregateRoot, EntityAttributes } from '@turnly/shared'
 
 import { FieldTypes } from '../enums/FieldTypes'
-import { CreateFieldPayload } from '../payloads/CreateFieldPayload'
 import { Processor } from './Processor'
 
 /**
@@ -86,7 +85,7 @@ export class Field extends AggregateRoot {
    *
    * @description Creates a new Field.
    */
-  public static create(attributes: CreateFieldPayload): Field {
+  public static create(attributes: Omit<EntityAttributes<Field>, 'id'>): Field {
     return new Field(
       Identifier.generate('field'),
       attributes.label,

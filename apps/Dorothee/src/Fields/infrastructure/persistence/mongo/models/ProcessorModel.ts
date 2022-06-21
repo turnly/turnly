@@ -3,11 +3,11 @@ import { EntityAttributes } from '@turnly/shared'
 import { Processor } from 'Fields/domain/entities/Processor'
 import mongoose, { Document, Model, Schema } from 'mongoose'
 
-export interface ProcessorDocument
+export interface IProcessorDocument
   extends Omit<EntityAttributes<Processor>, 'id'>,
     Document {}
 
-export type IProcessorModel = Model<ProcessorDocument>
+export type IProcessorModel = Model<IProcessorDocument>
 
 const schema = new Schema(
   {
@@ -43,6 +43,6 @@ const schema = new Schema(
 )
 
 export const ProcessorModel = mongoose.model<
-  ProcessorDocument,
+  IProcessorDocument,
   IProcessorModel
 >('Processor', schema)

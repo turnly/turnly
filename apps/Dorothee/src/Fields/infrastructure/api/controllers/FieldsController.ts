@@ -7,7 +7,6 @@ import {
 } from '@turnly/shared'
 import { SearchCustomerFieldsByServiceQuery } from 'Fields/application/queries/SearchCustomerFieldsByServiceQuery'
 import { Field } from 'Fields/domain/entities/Field'
-import { SearchCustomerFieldsByServicePayload } from 'Fields/domain/payloads/SearchCustomerFieldsByServicePayload'
 
 import { validator } from '../validators/FieldValidator'
 
@@ -19,9 +18,12 @@ export class FieldsController extends Controller {
   @TimeoutHandler()
   @InputValidator(validator.searchCustomerFieldsByService)
   public async searchCustomerFieldsByService(
-    params: SearchCustomerFieldsByServicePayload
+    params: SearchCustomerFieldsByServiceQuery
   ) {
-    const query = new SearchCustomerFieldsByServiceQuery(params)
+    const query = new SearchCustomerFieldsByServiceQuery(
+      params.serviceId,
+      params.companyId
+    )
 
     const fields = await this.queryBus.ask<
       SearchCustomerFieldsByServiceQuery,

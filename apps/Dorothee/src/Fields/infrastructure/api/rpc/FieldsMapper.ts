@@ -3,7 +3,7 @@ import { Producers } from '@turnly/rpc'
 import { EntityAttributes } from '@turnly/shared'
 import { Field } from 'Fields/domain/entities/Field'
 
-export class FieldMapper {
+export class FieldsMapper {
   public static toRPC(
     entity: Nullable<EntityAttributes<Field>> | undefined
   ): Producers.Dorothee.Field {

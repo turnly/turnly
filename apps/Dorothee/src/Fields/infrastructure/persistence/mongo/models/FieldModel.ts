@@ -4,11 +4,11 @@ import { Field } from 'Fields/domain/entities/Field'
 import { FieldTypes } from 'Fields/domain/enums/FieldTypes'
 import mongoose, { Document, Model, Schema } from 'mongoose'
 
-export interface FieldDocument
+export interface IFieldDocument
   extends Omit<EntityAttributes<Field>, 'id'>,
     Document {}
 
-export type IFieldModel = Model<FieldDocument>
+export type IFieldModel = Model<IFieldDocument>
 
 const schema = new Schema(
   {
@@ -49,7 +49,7 @@ const schema = new Schema(
   { timestamps: true }
 )
 
-export const FieldModel = mongoose.model<FieldDocument, IFieldModel>(
+export const FieldModel = mongoose.model<IFieldDocument, IFieldModel>(
   'Field',
   schema
 )

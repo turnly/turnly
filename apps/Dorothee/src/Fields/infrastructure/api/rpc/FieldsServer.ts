@@ -2,7 +2,7 @@ import { NotImplementedError } from '@turnly/common'
 import { Producers } from '@turnly/rpc'
 
 import { FieldsController } from '../controllers/FieldsController'
-import { FieldMapper } from './FieldsMapper'
+import { FieldsMapper } from './FieldsMapper'
 
 export class FieldsServer extends Producers.ServerImplementation<Producers.Dorothee.IFieldsServer> {
   public constructor(private readonly fieldsController: FieldsController) {
@@ -28,7 +28,7 @@ export class FieldsServer extends Producers.ServerImplementation<Producers.Dorot
     const response =
       new Producers.Dorothee.SearchCustomerFieldsByServiceResponse()
 
-    if (data) response.setDataList(data.map(FieldMapper.toRPC))
+    if (data) response.setDataList(data.map(FieldsMapper.toRPC))
 
     response.setMeta(Producers.MetaMapper.toRPC(meta))
 
