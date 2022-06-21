@@ -8,7 +8,7 @@ import { CreateAnswerBulkCommandHandler } from 'Answers/application/commands/Cre
 
 import { AnswersController } from '../api/controllers/AnswersController'
 
-export class AnswerFactory {
+export class AnswersFactory {
   public static getController(): AnswersController {
     return Box.resolve<AnswersController>('answersController')
   }

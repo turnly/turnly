@@ -2,7 +2,6 @@ import { Extra, Guid, Identifier, Nullable } from '@turnly/common'
 import { AggregateRoot, EntityAttributes } from '@turnly/shared'
 
 import { AnswerCreatedEvent } from '../events/AnswerCreatedEvent'
-import { CreateAnswerPayload } from '../payloads/CreateAnswerPayload'
 
 /**
  * Answer
@@ -71,7 +70,9 @@ export class Answer extends AggregateRoot {
    *
    * @description Creates a new Answer.
    */
-  public static create(attributes: CreateAnswerPayload): Answer {
+  public static create(
+    attributes: Omit<EntityAttributes<Answer>, 'id'>
+  ): Answer {
     const answer = new Answer(
       Identifier.generate('answer'),
       attributes.value,

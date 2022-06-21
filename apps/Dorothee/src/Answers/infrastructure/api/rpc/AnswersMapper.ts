@@ -3,7 +3,7 @@ import { Producers } from '@turnly/rpc'
 import { EntityAttributes } from '@turnly/shared'
 import { Answer } from 'Answers/domain/entities/Answer'
 
-export class AnswerMapper {
+export class AnswersMapper {
   public static toRPC(
     entity: Nullable<EntityAttributes<Answer>> | undefined
   ): Producers.Dorothee.Answer {

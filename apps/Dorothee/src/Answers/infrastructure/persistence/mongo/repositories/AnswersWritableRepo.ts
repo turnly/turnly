@@ -5,7 +5,7 @@ import { Answer } from 'Answers/domain/entities/Answer'
 
 import { AnswerDocument, AnswerModel } from '../models/AnswerModel'
 
-export class AnswerWritableRepo
+export class AnswersWritableRepo
   extends MongoWritableRepo<Answer, AnswerDocument>
   implements IAnswersWritableRepo
 {

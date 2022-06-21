@@ -1,13 +1,13 @@
 import { Producers } from '@turnly/rpc'
 import { AnswersServer } from 'Answers/infrastructure/api/rpc'
-import { AnswerFactory } from 'Answers/infrastructure/factories/AnswerFactory'
+import { AnswersFactory } from 'Answers/infrastructure/factories/AnswersFactory'
 import { FieldsServer } from 'Fields/infrastructure/api/rpc'
 import { FieldFactory } from 'Fields/infrastructure/factories/FieldFactory'
 
 /**
  * Servers
  */
-const answersServer = new AnswersServer(AnswerFactory.getController())
+const answersServer = new AnswersServer(AnswersFactory.getController())
 const fieldsServer = new FieldsServer(FieldFactory.getController())
 
 /**

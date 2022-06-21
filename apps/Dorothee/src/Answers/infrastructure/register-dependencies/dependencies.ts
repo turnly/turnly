@@ -2,12 +2,12 @@ import { Box, ioc } from '@turnly/shared'
 import { CreateAnswerBulkCommandHandler } from 'Answers/application/commands/CreateAnswerBulkCommand'
 
 import { AnswersController } from '../api/controllers/AnswersController'
-import { AnswerMapper } from '../persistence/mongo/entity-model-mappers/AnswerMapper'
-import { AnswerWritableRepo } from '../persistence/mongo/repositories/AnswerWritableRepo'
+import { AnswersMapper } from '../persistence/mongo/entity-model-mappers/AnswersMapper'
+import { AnswersWritableRepo } from '../persistence/mongo/repositories/AnswersWritableRepo'
 
 Box.register({
-  answersMapper: ioc.asClass(AnswerMapper).singleton(),
-  answersWritableRepo: ioc.asClass(AnswerWritableRepo).singleton(),
+  answersMapper: ioc.asClass(AnswersMapper).singleton(),
+  answersWritableRepo: ioc.asClass(AnswersWritableRepo).singleton(),
   answersController: ioc.asClass(AnswersController).singleton(),
 })
 

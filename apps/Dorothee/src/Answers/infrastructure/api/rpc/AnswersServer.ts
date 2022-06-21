@@ -1,7 +1,7 @@
 import { Producers } from '@turnly/rpc'
 
 import { AnswersController } from '../controllers/AnswersController'
-import { AnswerMapper } from './AnswersMapper'
+import { AnswersMapper } from './AnswersMapper'
 
 export class AnswersServer extends Producers.ServerImplementation<Producers.Dorothee.IAnswersServer> {
   public constructor(private readonly answersController: AnswersController) {
@@ -25,7 +25,7 @@ export class AnswersServer extends Producers.ServerImplementation<Producers.Doro
 
     const response = new Producers.Dorothee.CreateAnswersResponse()
 
-    if (data) response.setDataList(data.map(AnswerMapper.toRPC))
+    if (data) response.setDataList(data.map(AnswersMapper.toRPC))
 
     response.setMeta(Producers.MetaMapper.toRPC(meta))
 

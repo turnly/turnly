@@ -5,7 +5,7 @@ import { Answer } from 'Answers/domain/entities/Answer'
 
 import { AnswerDocument, AnswerModel } from '../models/AnswerModel'
 
-export class AnswerMapper implements IAnswersMapper<AnswerDocument> {
+export class AnswersMapper implements IAnswersMapper<AnswerDocument> {
   public toEntity(document: AnswerDocument): Answer {
     const { _id, ...attrs } = document.toObject<EntityAttributes<Answer>>()
 

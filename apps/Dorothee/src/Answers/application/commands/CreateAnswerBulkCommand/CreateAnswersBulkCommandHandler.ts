@@ -13,8 +13,8 @@ export class CreateAnswerBulkCommandHandler
     private readonly answersWritableRepo: IAnswersWritableRepo
   ) {}
 
-  public async execute({ payload }: CreateAnswersBulkCommand) {
-    const answers = payload.map(answer => Answer.create(answer))
+  public async execute({ params }: CreateAnswersBulkCommand) {
+    const answers = params.map(Answer.create)
 
     await this.answersWritableRepo.save(answers)
 
