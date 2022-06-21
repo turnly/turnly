@@ -3,7 +3,7 @@ import { Producers } from '@turnly/rpc'
 import { EntityAttributes } from '@turnly/shared'
 import { Integration } from 'Integrations/domain/entities/Integration'
 
-export class IntegrationMapper {
+export class IntegrationsMapper {
   public static toRPC(
     entity: Nullable<EntityAttributes<Integration>> | undefined
   ): Producers.Maverick.Integration {

@@ -1,4 +1,4 @@
-import { Nullable, ResourceNotFoundException } from '@turnly/common'
+import { Guid, Nullable, ResourceNotFoundException } from '@turnly/common'
 import {
   Controller,
   InputValidator,
@@ -7,7 +7,6 @@ import {
 } from '@turnly/shared'
 import { IntegrationByIdQuery } from 'Integrations/application/queries/IntegrationByIdQuery'
 import { Integration } from 'Integrations/domain/entities/Integration'
-import { GetIntegrationPayload } from 'Integrations/domain/payloads/GetIntegrationPayload'
 
 import { validator } from '../validators/IntegrationsValidator'
 
@@ -18,8 +17,8 @@ export class IntegrationsController extends Controller {
 
   @TimeoutHandler()
   @InputValidator(validator.get)
-  public async get(params: GetIntegrationPayload) {
-    const query = new IntegrationByIdQuery(params)
+  public async get(id: Guid) {
+    const query = new IntegrationByIdQuery(id)
 
     const integration = await this.queryBus.ask<
       IntegrationByIdQuery,

@@ -1,6 +1,6 @@
 import { Nullable } from '@turnly/common'
 import { IQueryHandler, QueryBuilder, QueryHandler } from '@turnly/shared'
-import { IIntegrationReadableRepo } from 'Integrations/domain/contracts/IIntegrationRepo'
+import { IIntegrationsReadableRepo } from 'Integrations/domain/contracts/IIntegrationsRepo'
 import { Integration } from 'Integrations/domain/entities/Integration'
 
 import { IntegrationByIdQuery } from './IntegrationByIdQuery'
@@ -10,12 +10,10 @@ export class IntegrationByIdQueryHandler
   implements IQueryHandler<IntegrationByIdQuery, Nullable<Integration>>
 {
   public constructor(
-    private readonly integrationsReadableRepo: IIntegrationReadableRepo
+    private readonly integrationsReadableRepo: IIntegrationsReadableRepo
   ) {}
 
-  public async execute({ params }: IntegrationByIdQuery) {
-    const { id } = params
-
+  public async execute({ id }: IntegrationByIdQuery) {
     const query = new QueryBuilder<Integration>().equal('id', id).getOne()
 
     return await this.integrationsReadableRepo.getOne(query)

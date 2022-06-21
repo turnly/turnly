@@ -4,11 +4,11 @@ import { Integration } from 'Integrations/domain/entities/Integration'
 import { IntegrationStatus } from 'Integrations/domain/enums/IntegrationStatus'
 import mongoose, { Document, Model, Schema } from 'mongoose'
 
-export interface IntegrationDocument
+export interface IIntegrationDocument
   extends Omit<EntityAttributes<Integration>, 'id'>,
     Document {}
 
-export type IIntegrationModel = Model<IntegrationDocument>
+export type IIntegrationModel = Model<IIntegrationDocument>
 
 const schema = new Schema(
   {
@@ -36,6 +36,6 @@ const schema = new Schema(
 )
 
 export const IntegrationModel = mongoose.model<
-  IntegrationDocument,
+  IIntegrationDocument,
   IIntegrationModel
 >('Integration', schema)

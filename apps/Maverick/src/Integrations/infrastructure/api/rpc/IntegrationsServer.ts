@@ -1,7 +1,7 @@
 import { Producers } from '@turnly/rpc'
 
 import { IntegrationsController } from '../controllers/IntegrationsController'
-import { IntegrationMapper } from './IntegrationsMapper'
+import { IntegrationsMapper } from './IntegrationsMapper'
 
 export class IntegrationsServer extends Producers.ServerImplementation<Producers.Maverick.IIntegrationsServer> {
   public constructor(
@@ -18,12 +18,12 @@ export class IntegrationsServer extends Producers.ServerImplementation<Producers
     >,
     callback: Producers.ICallback<Producers.Maverick.GetIntegrationResponse>
   ) {
-    const { data, meta } = await this.integrationsController.get({
-      id: call.request.getId(),
-    })
+    const { data, meta } = await this.integrationsController.get(
+      call.request.getId()
+    )
 
     const response = new Producers.Maverick.GetIntegrationResponse()
-    const integration = IntegrationMapper.toRPC(data)
+    const integration = IntegrationsMapper.toRPC(data)
 
     response.setData(integration)
     response.setMeta(Producers.MetaMapper.toRPC(meta))

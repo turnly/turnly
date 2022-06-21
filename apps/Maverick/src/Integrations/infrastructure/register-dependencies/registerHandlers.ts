@@ -1,10 +1,10 @@
 import { commandBus, eventBus, queryBus } from '@turnly/shared'
 
-import { IntegrationFactory } from '../factories/IntegrationFactory'
+import { IntegrationsFactory } from '../factories/IntegrationsFactory'
 
 /**
  * Integrations module
  */
-queryBus.register(IntegrationFactory.getQueryHandlers())
-commandBus.register(IntegrationFactory.getCommandHandlers())
-eventBus.subscribe(IntegrationFactory.getEventSubscribers())
+queryBus.register(IntegrationsFactory.getQueryHandlers())
+commandBus.register(IntegrationsFactory.getCommandHandlers())
+eventBus.subscribe(IntegrationsFactory.getEventSubscribers())

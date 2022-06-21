@@ -1,12 +1,12 @@
 import { Producers } from '@turnly/rpc'
 import { IntegrationsServer } from 'Integrations/infrastructure/api/rpc'
-import { IntegrationFactory } from 'Integrations/infrastructure/factories/IntegrationFactory'
+import { IntegrationsFactory } from 'Integrations/infrastructure/factories/IntegrationsFactory'
 
 /**
  * Servers
  */
 const integrationsServer = new IntegrationsServer(
-  IntegrationFactory.getController()
+  IntegrationsFactory.getController()
 )
 
 /**

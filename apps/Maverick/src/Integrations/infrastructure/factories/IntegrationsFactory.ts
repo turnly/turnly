@@ -8,7 +8,7 @@ import { IntegrationByIdQueryHandler } from 'Integrations/application/queries/In
 
 import { IntegrationsController } from '../api/controllers/IntegrationsController'
 
-export class IntegrationFactory {
+export class IntegrationsFactory {
   public static getController(): IntegrationsController {
     return Box.resolve<IntegrationsController>('integrationsController')
   }
