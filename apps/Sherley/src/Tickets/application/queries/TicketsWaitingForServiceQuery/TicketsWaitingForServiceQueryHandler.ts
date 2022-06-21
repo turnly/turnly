@@ -5,7 +5,7 @@ import {
   QueryBuilder,
   QueryHandler,
 } from '@turnly/shared'
-import { ITicketReadableRepo } from 'Tickets/domain/contracts/ITicketsRepo'
+import { ITicketsReadableRepo } from 'Tickets/domain/contracts/ITicketsRepo'
 import { Ticket } from 'Tickets/domain/entities/Ticket'
 
 import { TicketsWaitingForServiceQuery } from './TicketsWaitingForServiceQuery'
@@ -20,7 +20,7 @@ export class TicketsWaitingForServiceQueryHandler
   implements IQueryHandler<TicketsWaitingForServiceQuery, TicketsWaitingFor[]>
 {
   public constructor(
-    private readonly ticketsReadableRepo: ITicketReadableRepo
+    private readonly ticketsReadableRepo: ITicketsReadableRepo
   ) {}
 
   public async execute({

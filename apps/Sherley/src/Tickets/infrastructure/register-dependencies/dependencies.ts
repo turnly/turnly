@@ -11,13 +11,13 @@ import { CreateTicketReadingDBSubscriber } from 'Tickets/application/subscribers
 
 import { TicketsController } from '../api/controllers/TicketsController'
 import { TicketsWritableForReadableRepo } from '../persistence/elasticsearch/repositories/TicketsWritableForReadableRepo'
-import { TicketMapper } from '../persistence/mongo/entity-model-mappers/TicketMapper'
-import { TicketReadableRepo } from '../persistence/mongo/repositories/TicketsReadableRepo'
+import { TicketsMapper } from '../persistence/mongo/entity-model-mappers/TicketsMapper'
+import { TicketsReadableRepo } from '../persistence/mongo/repositories/TicketsReadableRepo'
 import { TicketsWritableRepo } from '../persistence/mongo/repositories/TicketsWritableRepo'
 
 Box.register({
-  ticketsMapper: ioc.asClass(TicketMapper).singleton(),
-  ticketsReadableRepo: ioc.asClass(TicketReadableRepo).singleton(),
+  ticketsMapper: ioc.asClass(TicketsMapper).singleton(),
+  ticketsReadableRepo: ioc.asClass(TicketsReadableRepo).singleton(),
   ticketsWritableRepo: ioc.asClass(TicketsWritableRepo).singleton(),
   ticketsWritableForReadableRepo: ioc
     .asClass(TicketsWritableForReadableRepo)

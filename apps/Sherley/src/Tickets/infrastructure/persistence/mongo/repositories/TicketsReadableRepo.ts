@@ -1,15 +1,15 @@
 import { MongoReadableRepo } from '@turnly/shared'
-import { ITicketMapper } from 'Tickets/domain/contracts/ITicketsMapper'
-import { ITicketReadableRepo } from 'Tickets/domain/contracts/ITicketsRepo'
+import { ITicketsMapper } from 'Tickets/domain/contracts/ITicketsMapper'
+import { ITicketsReadableRepo } from 'Tickets/domain/contracts/ITicketsRepo'
 import { Ticket } from 'Tickets/domain/entities/Ticket'
 
-import { TicketDocument, TicketModel } from '../models/TicketModel'
+import { ITicketDocument, TicketModel } from '../models/TicketModel'
 
-export class TicketReadableRepo
-  extends MongoReadableRepo<Ticket, TicketDocument>
-  implements ITicketReadableRepo
+export class TicketsReadableRepo
+  extends MongoReadableRepo<Ticket, ITicketDocument>
+  implements ITicketsReadableRepo
 {
-  public constructor(ticketsMapper: ITicketMapper<TicketDocument>) {
+  public constructor(ticketsMapper: ITicketsMapper<ITicketDocument>) {
     super(TicketModel, ticketsMapper)
   }
 }

@@ -2,7 +2,7 @@ import { BadRequestException } from '@turnly/common'
 import { Producers } from '@turnly/rpc'
 
 import { TicketsController } from '../controllers/TicketsController'
-import { TicketMapper } from './TicketsMapper'
+import { TicketsMapper } from './TicketsMapper'
 
 export class TicketsServer extends Producers.ServerImplementation<Producers.Sherley.ITicketsServer> {
   public constructor(private readonly ticketsController: TicketsController) {
@@ -30,7 +30,7 @@ export class TicketsServer extends Producers.ServerImplementation<Producers.Sher
     })
 
     const response = new Producers.Sherley.CreateTicketResponse()
-    const ticket = TicketMapper.toRPC(data)
+    const ticket = TicketsMapper.toRPC(data)
 
     response.setData(ticket)
     response.setMeta(Producers.MetaMapper.toRPC(meta))
@@ -53,7 +53,7 @@ export class TicketsServer extends Producers.ServerImplementation<Producers.Sher
     })
 
     const response = new Producers.Sherley.GetTicketResponse()
-    const ticket = TicketMapper.toRPC(data)
+    const ticket = TicketsMapper.toRPC(data)
 
     response.setData(ticket)
     response.setMeta(Producers.MetaMapper.toRPC(meta))
@@ -76,7 +76,7 @@ export class TicketsServer extends Producers.ServerImplementation<Producers.Sher
     })
 
     const response = new Producers.Sherley.LeaveTicketResponse()
-    const ticket = TicketMapper.toRPC(data)
+    const ticket = TicketsMapper.toRPC(data)
 
     response.setData(ticket)
     response.setMeta(Producers.MetaMapper.toRPC(meta))
@@ -99,7 +99,7 @@ export class TicketsServer extends Producers.ServerImplementation<Producers.Sher
     })
 
     const response = new Producers.Sherley.AnnounceTicketResponse()
-    const ticket = TicketMapper.toRPC(data)
+    const ticket = TicketsMapper.toRPC(data)
 
     response.setData(ticket)
     response.setMeta(Producers.MetaMapper.toRPC(meta))
@@ -123,7 +123,7 @@ export class TicketsServer extends Producers.ServerImplementation<Producers.Sher
 
     const response = new Producers.Sherley.GetTicketsBeforeYoursResponse()
 
-    if (data) response.setDataList(data.map(TicketMapper.toRPC))
+    if (data) response.setDataList(data.map(TicketsMapper.toRPC))
 
     response.setMeta(Producers.MetaMapper.toRPC(meta))
 
@@ -151,7 +151,7 @@ export class TicketsServer extends Producers.ServerImplementation<Producers.Sher
         data.map(({ waitingFor, tickets }) =>
           new Producers.Sherley.GetTicketsWaitingForServiceResponse.ServiceTickets()
             .setWaitingFor(waitingFor)
-            .setTicketsList(tickets.map(TicketMapper.toRPC))
+            .setTicketsList(tickets.map(TicketsMapper.toRPC))
         )
       )
 

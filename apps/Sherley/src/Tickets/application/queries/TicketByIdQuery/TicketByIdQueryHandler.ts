@@ -1,6 +1,6 @@
 import { Nullable } from '@turnly/common'
 import { IQueryHandler, QueryBuilder, QueryHandler } from '@turnly/shared'
-import { ITicketReadableRepo } from 'Tickets/domain/contracts/ITicketsRepo'
+import { ITicketsReadableRepo } from 'Tickets/domain/contracts/ITicketsRepo'
 import { Ticket } from 'Tickets/domain/entities/Ticket'
 
 import { TicketByIdQuery } from './TicketByIdQuery'
@@ -10,7 +10,7 @@ export class TicketByIdQueryHandler
   implements IQueryHandler<TicketByIdQuery, Nullable<Ticket>>
 {
   public constructor(
-    private readonly ticketsReadableRepo: ITicketReadableRepo
+    private readonly ticketsReadableRepo: ITicketsReadableRepo
   ) {}
 
   public async execute({ id, customerId, companyId }: TicketByIdQuery) {

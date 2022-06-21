@@ -6,11 +6,11 @@ import { TicketPriority } from 'Tickets/domain/enums/TicketPriority'
 import { TicketScore } from 'Tickets/domain/enums/TicketScore'
 import { TicketStatus } from 'Tickets/domain/enums/TicketStatus'
 
-export interface TicketDocument
+export interface ITicketDocument
   extends Omit<EntityAttributes<Ticket>, 'id'>,
     Document {}
 
-export type ITicketModel = Model<TicketDocument>
+export type ITicketModel = Model<ITicketDocument>
 
 const schema = new Schema(
   {
@@ -78,7 +78,7 @@ const schema = new Schema(
   { timestamps: true }
 )
 
-export const TicketModel = mongoose.model<TicketDocument, ITicketModel>(
+export const TicketModel = mongoose.model<ITicketDocument, ITicketModel>(
   'Ticket',
   schema
 )

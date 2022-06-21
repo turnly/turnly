@@ -3,7 +3,7 @@ import { Producers } from '@turnly/rpc'
 import { DateTime, EntityAttributes } from '@turnly/shared'
 import { Ticket } from 'Tickets/domain/entities/Ticket'
 
-export class TicketMapper {
+export class TicketsMapper {
   public static toRPC(
     entity: Nullable<EntityAttributes<Ticket>> | undefined
   ): Producers.Sherley.Ticket {

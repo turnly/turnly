@@ -16,7 +16,7 @@ import { CreateTicketReadingDBSubscriber } from 'Tickets/application/subscribers
 
 import { TicketsController } from '../api/controllers/TicketsController'
 
-export class TicketFactory {
+export class TicketsFactory {
   public static getController(): TicketsController {
     return Box.resolve<TicketsController>('ticketsController')
   }
