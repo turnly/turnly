@@ -21,7 +21,7 @@ export class ActiveTicketsByCustomerQueryHandler
     customerId,
     companyId,
   }: ActiveTicketsByCustomerQuery) {
-    const lastHour = DateTime.utc().minusHours(1).toJSDate()
+    const lastHour = DateTime.now().minusHours(1).toJSDate()
 
     const query = new QueryBuilder<Ticket>()
       .equal('customerId', customerId)

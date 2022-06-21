@@ -23,7 +23,7 @@ export class TicketsBeforeYoursQueryHandler
     customerId,
     companyId,
   }: TicketsBeforeYoursQuery) {
-    const today = DateTime.utc().startOfDay().toJSDate()
+    const today = DateTime.today().toJSDate()
 
     const ticket = await this.ticketsReadableRepo.getOne(
       new QueryBuilder<Ticket>()

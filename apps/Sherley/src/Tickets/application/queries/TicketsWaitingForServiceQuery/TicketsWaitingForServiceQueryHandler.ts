@@ -27,7 +27,7 @@ export class TicketsWaitingForServiceQueryHandler
     serviceIds,
     companyId,
   }: TicketsWaitingForServiceQuery) {
-    const today = DateTime.utc().startOfDay().toJSDate()
+    const today = DateTime.today().toJSDate()
 
     const tickets = await this.ticketsReadableRepo.find(
       new QueryBuilder<Ticket>()
