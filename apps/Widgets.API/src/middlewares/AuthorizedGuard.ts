@@ -3,16 +3,12 @@ import { IContext } from '@types'
 import { Services } from 'services'
 import { AuthChecker } from 'type-graphql'
 
-export const AuthorizedGuard: AuthChecker<IContext> = async ({
-  context: {
-    req: { headers },
-  },
-}) => {
+export const AuthorizedGuard: AuthChecker<IContext> = async ({ context }) => {
   Observability.ExceptionHandler.setUser(null)
 
   const [integrationId, customerId] = [
-    headers['x-integration-id'],
-    headers['x-customer-id'],
+    context.req.headers['x-integration-id'],
+    context.req.headers['x-customer-id'],
   ]
 
   if (!integrationId || !customerId) return false
@@ -33,6 +29,9 @@ export const AuthorizedGuard: AuthChecker<IContext> = async ({
   })
 
   if (!customer) return false
+
+  context.req.customer = customer
+  context.req.integration = integration
 
   Observability.ExceptionHandler.setUser(customer)
 

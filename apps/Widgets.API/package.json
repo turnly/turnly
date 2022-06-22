@@ -36,7 +36,7 @@
     "@turnly/shared": "git+https://turnlyapps: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@github.com/turnly/shared.git#latest",
     "apollo-server-express": "^3.9.0",
     "dotenv": "^16.0.0",
-    "graphql": "^16.5.0",
+    "graphql": "15.3.0",
     "reflect-metadata": "^0.1.13",
     "type-graphql": "^1.1.1"
   },

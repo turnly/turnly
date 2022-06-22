@@ -53,7 +53,7 @@ export enum TicketStatus {
   /**
    * Discarded status
    *
-   * @description Use when the customer doesn't show up on the call and remove them from the row.
+   * @description Use when the customer doesn't show up on the call and remove them from the queue.
    */
   DISCARDED = 'discarded',
 

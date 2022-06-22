@@ -1,4 +1,3 @@
-import { Guid } from '@turnly/common'
 import { Field, ID, ObjectType } from 'type-graphql'
 
 @ObjectType()
@@ -13,13 +12,13 @@ export class Ticket {
   displayCode: string
 
   @Field()
-  serviceId: Guid
+  serviceId: string
 
   @Field()
-  locationId: Guid
+  locationId: string
 
   @Field()
-  customerId: Guid
+  customerId: string
 
   @Field()
   createdAt: Date
