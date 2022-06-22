@@ -1,7 +1,7 @@
-export class App {
-  constructor() {
-    console.log('Hello World!')
-  }
+import { Application } from 'Application'
+
+async function bootstrap() {
+  await new Application().setup()
 }
 
-new App()
+void bootstrap()
