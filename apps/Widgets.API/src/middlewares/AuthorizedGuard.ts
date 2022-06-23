@@ -1,39 +1,53 @@
-import { Observability } from '@turnly/common'
+import { Logger, Observability } from '@turnly/common'
 import { IContext } from '@types'
-import { Services } from 'services'
+import { Customers, Integrations } from 'services'
 import { AuthChecker } from 'type-graphql'
 
 export const AuthorizedGuard: AuthChecker<IContext> = async ({ context }) => {
-  Observability.ExceptionHandler.setUser(null)
+  try {
+    Observability.ExceptionHandler.setUser(null)
 
-  const [integrationId, customerId] = [
-    context.req.headers['x-integration-id'],
-    context.req.headers['x-customer-id'],
-  ]
+    Logger.debug('Executing AuthorizedGuard for current context...')
 
-  if (!integrationId || !customerId) return false
+    const [integrationId, customerId] = [
+      context.req.headers['x-integration-id'],
+      context.req.headers['x-customer-id'],
+    ]
 
-  /**
-   * @todo Add cache with datasources
-   * https://www.apollographql.com/docs/apollo-server/data/data-sources/
-   */
-  const { data: integration } = await Services.Integrations.get({
-    id: String(integrationId),
-  })
+    if (!integrationId || !customerId) return false
 
-  if (!integration) return false
+    Logger.debug('Checking if integration is authorized...', { integrationId })
 
-  const { data: customer } = await Services.Customers.get({
-    id: String(customerId),
-    companyId: integration.companyId,
-  })
+    /**
+     * @todo Add cache with datasources
+     * https://www.apollographql.com/docs/apollo-server/data/data-sources/
+     */
+    const { data: integration } = await Integrations.get({
+      id: String(integrationId),
+    })
 
-  if (!customer) return false
+    if (!integration) return false
 
-  context.req.customer = customer
-  context.req.integration = integration
+    Logger.debug('Checking if customer is authorized...', { customerId })
 
-  Observability.ExceptionHandler.setUser(customer)
+    const { data: customer } = await Customers.get({
+      id: String(customerId),
+      companyId: integration.companyId,
+    })
 
-  return true
+    if (!customer) return false
+
+    context.req.customer = customer
+    context.req.integration = integration
+
+    Observability.ExceptionHandler.setUser(customer)
+
+    Logger.debug('AuthorizedGuard executed successfully!', { integration })
+
+    return true
+  } catch (error) {
+    Observability.ExceptionHandler.handle(error)
+
+    return false
+  }
 }

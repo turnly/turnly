@@ -1,7 +1,7 @@
 import { IContext } from '@types'
 import { Location } from 'models/Location'
 import { Service } from 'models/Service'
-import { Services } from 'services'
+import { Services, Tickets } from 'services'
 import { Arg, Authorized, Ctx, Query, Resolver } from 'type-graphql'
 
 @Resolver(Location)
@@ -13,7 +13,7 @@ export class LocationsResolver {
     @Ctx() { req: { customer } }: IContext
   ): Promise<Service[]> {
     const services = (
-      await Services.Services.findByLocation({
+      await Services.findByLocation({
         locationId,
         companyId: customer.companyId,
       })
@@ -24,7 +24,7 @@ export class LocationsResolver {
     const serviceIdsList = services.map(service => service.id)
 
     const ticketsWaiting = (
-      await Services.Tickets.getTicketsWaitingForService({
+      await Tickets.getTicketsWaitingForService({
         serviceIdsList,
         companyId: customer.companyId,
         customerId: customer.id,
