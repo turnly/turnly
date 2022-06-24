@@ -8,13 +8,13 @@ services:
     container_name: shannon
     image: shannon:latest
     build:
-      context: ${COMPOSE_BASE_DIRECTORY}/Shannon
+      context: ${DOCKER_RELATIVE_APPS_DIR}/Shannon
       dockerfile: ./docker/Dockerfile.dev
       args:
         HTTP_PORT: ${HTTP_PORT}
         RPC_PORT: ${RPC_PORT}
     volumes:
-      - ${COMPOSE_BASE_DIRECTORY}/Shannon:/app
+      - ${DOCKER_RELATIVE_APPS_DIR}/Shannon:/app
     depends_on:
       - gateway
       - mongo
@@ -22,7 +22,7 @@ services:
       - traefik.enable=true
 
       - traefik.http.routers.shannon_rpc.entrypoints=rpc
-      - traefik.http.routers.shannon_rpc.rule=PathPrefix(`/turnly.shannon.v1`) && Host(`rpc.turnly`) || Host(`host.docker.internal`)
+      - traefik.http.routers.shannon_rpc.rule=PathPrefix(`/turnly.shannon.v1`)
       - traefik.http.routers.shannon_rpc.service=shannon_rpc
       - traefik.http.services.shannon_rpc.loadbalancer.server.port=${RPC_PORT}
       - traefik.http.services.shannon_rpc.loadbalancer.server.scheme=h2c

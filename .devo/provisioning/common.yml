@@ -4,7 +4,7 @@ x-logging: &logging
   logging:
     driver: "json-file"
     options:
-      tag: ${APP_PROXY_HOST}
+      tag: turnly
       max-file: 3
       max-size: 10m
 

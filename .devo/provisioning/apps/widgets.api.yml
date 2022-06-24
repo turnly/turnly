@@ -8,13 +8,13 @@ services:
     container_name: widgets.api
     image: widgets:latest
     build:
-      context: ${COMPOSE_BASE_DIRECTORY}/Widgets.API
+      context: ${DOCKER_RELATIVE_APPS_DIR}/Widgets.API
       dockerfile: ./docker/Dockerfile.dev
       args:
         HTTP_PORT: ${HTTP_PORT}
         RPC_PORT: ${RPC_PORT}
     volumes:
-      - ${COMPOSE_BASE_DIRECTORY}/Widgets.API:/app
+      - ${DOCKER_RELATIVE_APPS_DIR}/Widgets.API:/app
     depends_on:
       - gateway
     labels:

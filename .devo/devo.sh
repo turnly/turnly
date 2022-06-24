@@ -11,6 +11,10 @@ fi
 
 COMMANDS="$BASE_DIR/scripts/commands"
 HELPERS="$BASE_DIR/scripts/helpers"
+CONFIGS="$BASE_DIR/scripts/configs"
+
+# Configs sources
+source "$CONFIGS/configs.sh"
 
 # Helpers and bin sources
 source "$HELPERS/helpers.sh"

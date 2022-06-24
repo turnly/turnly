@@ -1,16 +1,6 @@
 #!/bin/bash
 
 function setup() {
-  local HOSTS=(
-    "rpc.turnly"
-    "accounts.turnly"
-    "stream.turnly"
-    "api.turnly"
-    "widgets.turnly"
-    "billing.turnly"
-    "$APP_PROXY_HOST"
-  )
-
   info "Setting up Athena in development mode with docker... 🚀 "
 
   line
@@ -25,7 +15,7 @@ function setup() {
   line
 
   info "Setting up the hosts for proxy network communication... 📡 "
-  set_hosts "${HOSTS[@]}"
+  set_hosts "${TURNLY_DOMAINS[@]}"
 
   line
 

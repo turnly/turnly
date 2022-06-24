@@ -8,13 +8,13 @@ services:
     container_name: alfred
     image: alfred:latest
     build:
-      context: ${COMPOSE_BASE_DIRECTORY}/Alfred
+      context: ${DOCKER_RELATIVE_APPS_DIR}/Alfred
       dockerfile: ./docker/Dockerfile.dev
       args:
         HTTP_PORT: ${HTTP_PORT}
         RPC_PORT: ${RPC_PORT}
     volumes:
-      - ${COMPOSE_BASE_DIRECTORY}/Alfred:/app
+      - ${DOCKER_RELATIVE_APPS_DIR}/Alfred:/app
     depends_on:
       - gateway
       - mongo
@@ -22,7 +22,7 @@ services:
       - traefik.enable=true
 
       - traefik.http.routers.alfred_rpc.entrypoints=rpc
-      - traefik.http.routers.alfred_rpc.rule=PathPrefix(`/turnly.alfred.v1`) && Host(`rpc.turnly`) || Host(`host.docker.internal`)
+      - traefik.http.routers.alfred_rpc.rule=PathPrefix(`/turnly.alfred.v1`)
       - traefik.http.routers.alfred_rpc.service=alfred_rpc
       - traefik.http.services.alfred_rpc.loadbalancer.server.port=${RPC_PORT}
       - traefik.http.services.alfred_rpc.loadbalancer.server.scheme=h2c

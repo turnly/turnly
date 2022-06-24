@@ -8,13 +8,13 @@ services:
     container_name: sherley
     image: sherley:latest
     build:
-      context: ${COMPOSE_BASE_DIRECTORY}/Sherley
+      context: ${DOCKER_RELATIVE_APPS_DIR}/Sherley
       dockerfile: ./docker/Dockerfile.dev
       args:
         HTTP_PORT: ${HTTP_PORT}
         RPC_PORT: ${RPC_PORT}
     volumes:
-      - ${COMPOSE_BASE_DIRECTORY}/Sherley:/app
+      - ${DOCKER_RELATIVE_APPS_DIR}/Sherley:/app
     depends_on:
       - gateway
       - mongo
@@ -23,7 +23,7 @@ services:
       - traefik.enable=true
 
       - traefik.http.routers.sherley_rpc.entrypoints=rpc
-      - traefik.http.routers.sherley_rpc.rule=PathPrefix(`/turnly.sherley.v1`) && Host(`rpc.turnly`) || Host(`host.docker.internal`)
+      - traefik.http.routers.sherley_rpc.rule=PathPrefix(`/turnly.sherley.v1`)
       - traefik.http.routers.sherley_rpc.service=sherley_rpc
       - traefik.http.services.sherley_rpc.loadbalancer.server.port=${RPC_PORT}
       - traefik.http.services.sherley_rpc.loadbalancer.server.scheme=h2c

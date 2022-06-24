@@ -8,13 +8,13 @@ services:
     container_name: dorothee
     image: dorothee:latest
     build:
-      context: ${COMPOSE_BASE_DIRECTORY}/Dorothee
+      context: ${DOCKER_RELATIVE_APPS_DIR}/Dorothee
       dockerfile: ./docker/Dockerfile.dev
       args:
         HTTP_PORT: ${HTTP_PORT}
         RPC_PORT: ${RPC_PORT}
     volumes:
-      - ${COMPOSE_BASE_DIRECTORY}/Dorothee:/app
+      - ${DOCKER_RELATIVE_APPS_DIR}/Dorothee:/app
     depends_on:
       - gateway
       - mongo
@@ -22,7 +22,7 @@ services:
       - traefik.enable=true
 
       - traefik.http.routers.dorothee_rpc.entrypoints=rpc
-      - traefik.http.routers.dorothee_rpc.rule=PathPrefix(`/turnly.dorothee.v1`) && Host(`rpc.turnly`) || Host(`host.docker.internal`)
+      - traefik.http.routers.dorothee_rpc.rule=PathPrefix(`/turnly.dorothee.v1`)
       - traefik.http.routers.dorothee_rpc.service=dorothee_rpc
       - traefik.http.services.dorothee_rpc.loadbalancer.server.port=${RPC_PORT}
       - traefik.http.services.dorothee_rpc.loadbalancer.server.scheme=h2c

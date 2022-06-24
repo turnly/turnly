@@ -4,7 +4,6 @@ import {
   ResourceNotFoundException,
   UnauthorizedException,
 } from '@turnly/common'
-import { Environment } from '@turnly/common/dist/config/environment'
 import { Events, IRealtimeClient, RealtimeMiddle } from '@turnly/realtime'
 
 import { Integrations } from '../../services'
@@ -38,15 +37,13 @@ export class AllowConnGuard {
 
       if (!integration) throw new ResourceNotFoundException(meta?.message)
 
-      if (Environment.isNotDevelopment()) {
-        const { origin: formatted } = new URL(origin)
-        const isTrustworthy = !integration.originsList.includes(formatted)
+      const { origin: formatted } = new URL(origin)
+      const isTrustworthy = !integration.originsList.includes(formatted)
 
-        if (!isTrustworthy)
-          throw new UnauthorizedException(
-            'You are not allowed to connect, please try again later.'
-          )
-      }
+      if (!isTrustworthy)
+        throw new UnauthorizedException(
+          'You are not allowed to connect, please try again later.'
+        )
 
       /**
        * @todo Check if customer exists in the request connection
@@ -87,7 +84,7 @@ export class AllowConnGuard {
       handshake: { query, headers, ...handshake },
     } = connection
 
-    const origin = headers.referer || handshake.url || headers.origin || ''
+    const origin = headers.origin || headers.referer || handshake.url || ''
 
     return {
       origin,
