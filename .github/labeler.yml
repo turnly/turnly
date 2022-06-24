@@ -10,8 +10,8 @@ shannon:
   - apps/Shannon/**/*
 dorothee:
   - apps/Dorothee/**/*
-sherley:
-  - apps/Sherley/**/*
+queuing-system:
+  - apps/queuing-system/**/*
 curry:
   - apps/Curry/**/*
 chanel:

@@ -1,8 +1,8 @@
 {
-  "name": "@turnly/sherley",
+  "name": "@turnly/queuing-system",
   "version": "1.0.0",
   "private": true,
-  "description": "Sherley is the core service for the queuing system, Customer management and everything related to the life-cycle of a Ticket.",
+  "description": "The core service for the queuing system, Customer management and everything related to the life-cycle of a Ticket.",
   "license": "UNLICENSED",
   "author": {
     "name": "Efra",
@@ -31,10 +31,10 @@
     ]
   },
   "dependencies": {
-    "@turnly/shared": "git+https://turnlyapps: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@github.com/turnly/shared.git#latest",
+    "@turnly/common": "git+https://turnlyapps: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@github.com/turnly/common.git#latest",
     "@turnly/eslint-config": "github:turnly/configs",
     "@turnly/rpc": "git+https://turnlyapps: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@github.com/turnly/rpc.git#latest",
-    "@turnly/common": "git+https://turnlyapps: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@github.com/turnly/common.git#latest",
+    "@turnly/shared": "git+https://turnlyapps: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@github.com/turnly/shared.git#latest",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "moongose": "^1.0.0"
