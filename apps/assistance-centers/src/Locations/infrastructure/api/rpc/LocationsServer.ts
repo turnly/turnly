@@ -4,27 +4,27 @@ import { Producers } from '@turnly/rpc'
 import { LocationsController } from '../controllers/LocationsController'
 import { LocationsMapper } from './LocationsMapper'
 
-export class LocationsServer extends Producers.ServerImplementation<Producers.Alfred.ILocationsServer> {
+export class LocationsServer extends Producers.ServerImplementation<Producers.AssistanceCenters.ILocationsServer> {
   public constructor(
     private readonly locationsController: LocationsController
   ) {
     super()
   }
 
-  @Producers.CallHandler(Producers.Alfred.GetLocationResponse)
-  public async get(
+  @Producers.CallHandler(Producers.AssistanceCenters.GetLocationResponse)
+  public async getOne(
     call: Producers.ServerUnaryCall<
-      Producers.Alfred.GetLocationRequest,
-      Producers.Alfred.GetLocationResponse
+      Producers.AssistanceCenters.GetLocationRequest,
+      Producers.AssistanceCenters.GetLocationResponse
     >,
-    callback: Producers.ICallback<Producers.Alfred.GetLocationResponse>
+    callback: Producers.ICallback<Producers.AssistanceCenters.GetLocationResponse>
   ) {
-    const { data, meta } = await this.locationsController.get({
+    const { data, meta } = await this.locationsController.getOne({
       id: call.request.getId(),
       companyId: call.request.getCompanyId(),
     })
 
-    const response = new Producers.Alfred.GetLocationResponse()
+    const response = new Producers.AssistanceCenters.GetLocationResponse()
     const location = LocationsMapper.toRPC(data)
 
     response.setData(location)
@@ -35,8 +35,8 @@ export class LocationsServer extends Producers.ServerImplementation<Producers.Al
 
   public get implementation() {
     return {
-      get: this.get.bind(this),
-      search: () => {
+      getOne: this.getOne.bind(this),
+      find: () => {
         throw new NotImplementedError()
       },
     }

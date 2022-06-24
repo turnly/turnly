@@ -3,25 +3,25 @@ import { Producers } from '@turnly/rpc'
 import { ServicesController } from '../controllers/ServicesController'
 import { ServicesMapper } from './ServicesMapper'
 
-export class ServicesServer extends Producers.ServerImplementation<Producers.Alfred.IServicesServer> {
+export class ServicesServer extends Producers.ServerImplementation<Producers.AssistanceCenters.IServicesServer> {
   public constructor(private readonly servicesController: ServicesController) {
     super()
   }
 
-  @Producers.CallHandler(Producers.Alfred.GetServiceResponse)
-  public async get(
+  @Producers.CallHandler(Producers.AssistanceCenters.GetServiceResponse)
+  public async getOne(
     call: Producers.ServerUnaryCall<
-      Producers.Alfred.GetServiceRequest,
-      Producers.Alfred.GetServiceResponse
+      Producers.AssistanceCenters.GetServiceRequest,
+      Producers.AssistanceCenters.GetServiceResponse
     >,
-    callback: Producers.ICallback<Producers.Alfred.GetServiceResponse>
+    callback: Producers.ICallback<Producers.AssistanceCenters.GetServiceResponse>
   ) {
-    const { data, meta } = await this.servicesController.get({
+    const { data, meta } = await this.servicesController.getOne({
       id: call.request.getId(),
       companyId: call.request.getCompanyId(),
     })
 
-    const response = new Producers.Alfred.GetServiceResponse()
+    const response = new Producers.AssistanceCenters.GetServiceResponse()
     const service = ServicesMapper.toRPC(data)
 
     response.setData(service)
@@ -30,20 +30,20 @@ export class ServicesServer extends Producers.ServerImplementation<Producers.Alf
     callback(null, response)
   }
 
-  @Producers.CallHandler(Producers.Alfred.FindByLocationResponse)
+  @Producers.CallHandler(Producers.AssistanceCenters.FindByLocationResponse)
   public async findByLocation(
     call: Producers.ServerUnaryCall<
-      Producers.Alfred.FindByLocationRequest,
-      Producers.Alfred.FindByLocationResponse
+      Producers.AssistanceCenters.FindByLocationRequest,
+      Producers.AssistanceCenters.FindByLocationResponse
     >,
-    callback: Producers.ICallback<Producers.Alfred.FindByLocationResponse>
+    callback: Producers.ICallback<Producers.AssistanceCenters.FindByLocationResponse>
   ) {
     const { data, meta } = await this.servicesController.getServicesByLocation({
       locationId: call.request.getLocationId(),
       companyId: call.request.getCompanyId(),
     })
 
-    const response = new Producers.Alfred.FindByLocationResponse()
+    const response = new Producers.AssistanceCenters.FindByLocationResponse()
 
     if (data) response.setDataList(data.map(ServicesMapper.toRPC))
 
@@ -54,7 +54,7 @@ export class ServicesServer extends Producers.ServerImplementation<Producers.Alf
 
   public get implementation() {
     return {
-      get: this.get.bind(this),
+      getOne: this.getOne.bind(this),
       findByLocation: this.findByLocation.bind(this),
     }
   }

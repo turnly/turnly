@@ -17,11 +17,11 @@ const fieldsServer = new FieldsServer(FieldFactory.getController())
  */
 const services = [
   {
-    definition: Producers.Dorothee.AnswersService,
+    definition: Producers.CustomFields.AnswersService,
     implementation: answersServer.implementation,
   },
   {
-    definition: Producers.Dorothee.FieldsService,
+    definition: Producers.CustomFields.FieldsService,
     implementation: fieldsServer.implementation,
   },
 ]

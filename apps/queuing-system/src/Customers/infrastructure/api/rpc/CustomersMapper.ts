@@ -6,8 +6,8 @@ import { Customer } from 'Customers/domain/entities/Customer'
 export class CustomerMapper {
   public static toRPC(
     entity: Nullable<EntityAttributes<Customer>> | undefined
-  ): Producers.Sherley.Customer {
-    const customer = new Producers.Sherley.Customer()
+  ): Producers.QueuingSystem.Customer {
+    const customer = new Producers.QueuingSystem.Customer()
 
     if (entity) {
       customer.setId(entity.id)
@@ -24,7 +24,9 @@ export class CustomerMapper {
 
       if (entity.extra) {
         const extras = entity.extra.map(extra =>
-          new Producers.Sherley.Extra().setKey(extra.key).setValue(extra.value)
+          new Producers.QueuingSystem.Extra()
+            .setKey(extra.key)
+            .setValue(extra.value)
         )
 
         customer.setExtrasList(extras)

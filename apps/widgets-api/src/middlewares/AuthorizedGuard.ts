@@ -22,7 +22,7 @@ export const AuthorizedGuard: AuthChecker<IContext> = async ({ context }) => {
      * @todo Add cache with datasources
      * https://www.apollographql.com/docs/apollo-server/data/data-sources/
      */
-    const { data: integration } = await Integrations.get({
+    const { data: integration } = await Integrations.getOne({
       id: String(integrationId),
     })
 
@@ -30,7 +30,7 @@ export const AuthorizedGuard: AuthChecker<IContext> = async ({ context }) => {
 
     Logger.debug('Checking if customer is authorized...', { customerId })
 
-    const { data: customer } = await Customers.get({
+    const { data: customer } = await Customers.getOne({
       id: String(customerId),
       companyId: integration.companyId,
     })

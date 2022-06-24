@@ -6,8 +6,8 @@ import { Service } from 'Services/domain/entities/Service'
 export class ServicesMapper {
   public static toRPC(
     entity: Nullable<EntityAttributes<Service>> | undefined
-  ): Producers.Alfred.Service {
-    const service = new Producers.Alfred.Service()
+  ): Producers.AssistanceCenters.Service {
+    const service = new Producers.AssistanceCenters.Service()
 
     if (entity) {
       service.setId(entity.id)

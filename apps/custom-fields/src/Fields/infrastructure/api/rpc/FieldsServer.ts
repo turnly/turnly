@@ -4,29 +4,29 @@ import { Producers } from '@turnly/rpc'
 import { FieldsController } from '../controllers/FieldsController'
 import { FieldsMapper } from './FieldsMapper'
 
-export class FieldsServer extends Producers.ServerImplementation<Producers.Dorothee.IFieldsServer> {
+export class FieldsServer extends Producers.ServerImplementation<Producers.CustomFields.IFieldsServer> {
   public constructor(private readonly fieldsController: FieldsController) {
     super()
   }
 
   @Producers.CallHandler(
-    Producers.Dorothee.SearchCustomerFieldsByServiceResponse
+    Producers.CustomFields.FindCustomerFieldsByServiceResponse
   )
-  public async searchCustomerFieldsByService(
+  public async findCustomerFieldsByService(
     call: Producers.ServerUnaryCall<
-      Producers.Dorothee.SearchCustomerFieldsByServiceRequest,
-      Producers.Dorothee.SearchCustomerFieldsByServiceResponse
+      Producers.CustomFields.FindCustomerFieldsByServiceRequest,
+      Producers.CustomFields.FindCustomerFieldsByServiceResponse
     >,
-    callback: Producers.ICallback<Producers.Dorothee.SearchCustomerFieldsByServiceResponse>
+    callback: Producers.ICallback<Producers.CustomFields.FindCustomerFieldsByServiceResponse>
   ) {
     const { data, meta } =
-      await this.fieldsController.searchCustomerFieldsByService({
+      await this.fieldsController.findCustomerFieldsByService({
         serviceId: call.request.getServiceId(),
         companyId: call.request.getCompanyId(),
       })
 
     const response =
-      new Producers.Dorothee.SearchCustomerFieldsByServiceResponse()
+      new Producers.CustomFields.FindCustomerFieldsByServiceResponse()
 
     if (data) response.setDataList(data.map(FieldsMapper.toRPC))
 
@@ -37,8 +37,7 @@ export class FieldsServer extends Producers.ServerImplementation<Producers.Dorot
 
   public get implementation() {
     return {
-      searchCustomerFieldsByService:
-        this.searchCustomerFieldsByService.bind(this),
+      findCustomerFieldsByService: this.findCustomerFieldsByService.bind(this),
       runProcessors: () => {
         throw new NotImplementedError()
       },

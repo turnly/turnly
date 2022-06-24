@@ -3,26 +3,26 @@ import { Producers } from '@turnly/rpc'
 import { IntegrationsController } from '../controllers/IntegrationsController'
 import { IntegrationsMapper } from './IntegrationsMapper'
 
-export class IntegrationsServer extends Producers.ServerImplementation<Producers.Maverick.IIntegrationsServer> {
+export class IntegrationsServer extends Producers.ServerImplementation<Producers.Addons.IIntegrationsServer> {
   public constructor(
     private readonly integrationsController: IntegrationsController
   ) {
     super()
   }
 
-  @Producers.CallHandler(Producers.Maverick.GetIntegrationResponse)
-  public async get(
+  @Producers.CallHandler(Producers.Addons.GetIntegrationResponse)
+  public async getOne(
     call: Producers.ServerUnaryCall<
-      Producers.Maverick.GetIntegrationRequest,
-      Producers.Maverick.GetIntegrationResponse
+      Producers.Addons.GetIntegrationRequest,
+      Producers.Addons.GetIntegrationResponse
     >,
-    callback: Producers.ICallback<Producers.Maverick.GetIntegrationResponse>
+    callback: Producers.ICallback<Producers.Addons.GetIntegrationResponse>
   ) {
-    const { data, meta } = await this.integrationsController.get(
+    const { data, meta } = await this.integrationsController.getOne(
       call.request.getId()
     )
 
-    const response = new Producers.Maverick.GetIntegrationResponse()
+    const response = new Producers.Addons.GetIntegrationResponse()
     const integration = IntegrationsMapper.toRPC(data)
 
     response.setData(integration)
@@ -33,7 +33,7 @@ export class IntegrationsServer extends Producers.ServerImplementation<Producers
 
   public get implementation() {
     return {
-      get: this.get.bind(this),
+      getOne: this.getOne.bind(this),
     }
   }
 }

@@ -17,7 +17,7 @@ export class AgentsController extends Controller {
 
   @TimeoutHandler()
   @InputValidator(validator.get)
-  public async get(params: AgentByIdQuery) {
+  public async getOne(params: AgentByIdQuery) {
     const agent = await this.queryBus.ask<AgentByIdQuery, Nullable<Agent>>(
       new AgentByIdQuery(params.id, params.companyId)
     )

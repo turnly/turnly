@@ -1,5 +1,5 @@
-import type { Integration } from '@turnly/rpc/dist/producers/Maverick'
-import type { Customer } from '@turnly/rpc/dist/producers/Sherley'
+import type { Integration } from '@turnly/rpc/dist/producers/addons'
+import type { Customer } from '@turnly/rpc/dist/producers/queuing-system'
 import type { Request, Response } from 'express'
 
 interface IRequest extends Request {

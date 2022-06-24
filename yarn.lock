@@ -1640,7 +1640,7 @@
 
 "@turnly/rpc@git+https://turnlyapps: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@github.com/turnly/rpc.git#latest":
   version "1.0.0"
-  resolved "git+https://turnlyapps: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@github.com/turnly/rpc.git#2aafefa257fb1ce6f17daa02d6eea1cf99a90199"
+  resolved "git+https://turnlyapps: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@github.com/turnly/rpc.git#2ce4d8d1d5920527da3bb4bbb6071a9fa14f6a4f"
   dependencies:
     "@grpc/grpc-js" "^1.6.7"
     "@turnly/common" "git+https://turnlyapps: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@github.com/turnly/common.git#latest"

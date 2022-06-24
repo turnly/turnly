@@ -31,7 +31,7 @@ export class AllowConnGuard {
           "The request doesn't meet the parameters required for a secure connection."
         )
 
-      const { meta, data: integration } = await Integrations.get({
+      const { meta, data: integration } = await Integrations.getOne({
         id: integrationId,
       })
 

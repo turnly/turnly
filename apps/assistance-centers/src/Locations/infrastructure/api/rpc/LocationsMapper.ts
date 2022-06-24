@@ -6,8 +6,8 @@ import { Location } from 'Locations/domain/entities/Location'
 export class LocationsMapper {
   public static toRPC(
     entity: Nullable<EntityAttributes<Location>> | undefined
-  ): Producers.Alfred.Location {
-    const location = new Producers.Alfred.Location()
+  ): Producers.AssistanceCenters.Location {
+    const location = new Producers.AssistanceCenters.Location()
 
     if (entity) {
       location.setId(entity.id)

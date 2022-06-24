@@ -4,18 +4,18 @@ import { Producers } from '@turnly/rpc'
 import { TicketsController } from '../controllers/TicketsController'
 import { TicketsMapper } from './TicketsMapper'
 
-export class TicketsServer extends Producers.ServerImplementation<Producers.Sherley.ITicketsServer> {
+export class TicketsServer extends Producers.ServerImplementation<Producers.QueuingSystem.ITicketsServer> {
   public constructor(private readonly ticketsController: TicketsController) {
     super()
   }
 
-  @Producers.CallHandler(Producers.Sherley.CreateTicketResponse)
+  @Producers.CallHandler(Producers.QueuingSystem.CreateTicketResponse)
   public async create(
     call: Producers.ServerUnaryCall<
-      Producers.Sherley.CreateTicketRequest,
-      Producers.Sherley.CreateTicketResponse
+      Producers.QueuingSystem.CreateTicketRequest,
+      Producers.QueuingSystem.CreateTicketResponse
     >,
-    callback: Producers.ICallback<Producers.Sherley.CreateTicketResponse>
+    callback: Producers.ICallback<Producers.QueuingSystem.CreateTicketResponse>
   ) {
     const payload = call.request.getTicket()
 
@@ -29,7 +29,7 @@ export class TicketsServer extends Producers.ServerImplementation<Producers.Sher
       extra: payload.getExtrasList().map(e => e.toObject()),
     })
 
-    const response = new Producers.Sherley.CreateTicketResponse()
+    const response = new Producers.QueuingSystem.CreateTicketResponse()
     const ticket = TicketsMapper.toRPC(data)
 
     response.setData(ticket)
@@ -38,21 +38,21 @@ export class TicketsServer extends Producers.ServerImplementation<Producers.Sher
     callback(null, response)
   }
 
-  @Producers.CallHandler(Producers.Sherley.GetTicketResponse)
-  public async get(
+  @Producers.CallHandler(Producers.QueuingSystem.GetTicketResponse)
+  public async getOne(
     call: Producers.ServerUnaryCall<
-      Producers.Sherley.GetTicketRequest,
-      Producers.Sherley.GetTicketResponse
+      Producers.QueuingSystem.GetTicketRequest,
+      Producers.QueuingSystem.GetTicketResponse
     >,
-    callback: Producers.ICallback<Producers.Sherley.GetTicketResponse>
+    callback: Producers.ICallback<Producers.QueuingSystem.GetTicketResponse>
   ) {
-    const { data, meta } = await this.ticketsController.get({
+    const { data, meta } = await this.ticketsController.getOne({
       id: call.request.getId(),
       companyId: call.request.getCompanyId(),
       customerId: call.request.getCustomerId(),
     })
 
-    const response = new Producers.Sherley.GetTicketResponse()
+    const response = new Producers.QueuingSystem.GetTicketResponse()
     const ticket = TicketsMapper.toRPC(data)
 
     response.setData(ticket)
@@ -61,13 +61,13 @@ export class TicketsServer extends Producers.ServerImplementation<Producers.Sher
     callback(null, response)
   }
 
-  @Producers.CallHandler(Producers.Sherley.LeaveTicketResponse)
+  @Producers.CallHandler(Producers.QueuingSystem.LeaveTicketResponse)
   public async leave(
     call: Producers.ServerUnaryCall<
-      Producers.Sherley.LeaveTicketRequest,
-      Producers.Sherley.LeaveTicketResponse
+      Producers.QueuingSystem.LeaveTicketRequest,
+      Producers.QueuingSystem.LeaveTicketResponse
     >,
-    callback: Producers.ICallback<Producers.Sherley.LeaveTicketResponse>
+    callback: Producers.ICallback<Producers.QueuingSystem.LeaveTicketResponse>
   ) {
     const { data, meta } = await this.ticketsController.leave({
       id: call.request.getId(),
@@ -75,7 +75,7 @@ export class TicketsServer extends Producers.ServerImplementation<Producers.Sher
       customerId: call.request.getCustomerId(),
     })
 
-    const response = new Producers.Sherley.LeaveTicketResponse()
+    const response = new Producers.QueuingSystem.LeaveTicketResponse()
     const ticket = TicketsMapper.toRPC(data)
 
     response.setData(ticket)
@@ -84,13 +84,13 @@ export class TicketsServer extends Producers.ServerImplementation<Producers.Sher
     callback(null, response)
   }
 
-  @Producers.CallHandler(Producers.Sherley.AnnounceTicketResponse)
+  @Producers.CallHandler(Producers.QueuingSystem.AnnounceTicketResponse)
   public async announce(
     call: Producers.ServerUnaryCall<
-      Producers.Sherley.AnnounceTicketRequest,
-      Producers.Sherley.AnnounceTicketResponse
+      Producers.QueuingSystem.AnnounceTicketRequest,
+      Producers.QueuingSystem.AnnounceTicketResponse
     >,
-    callback: Producers.ICallback<Producers.Sherley.AnnounceTicketResponse>
+    callback: Producers.ICallback<Producers.QueuingSystem.AnnounceTicketResponse>
   ) {
     const { data, meta } = await this.ticketsController.announce({
       id: call.request.getId(),
@@ -98,7 +98,7 @@ export class TicketsServer extends Producers.ServerImplementation<Producers.Sher
       customerId: call.request.getCustomerId(),
     })
 
-    const response = new Producers.Sherley.AnnounceTicketResponse()
+    const response = new Producers.QueuingSystem.AnnounceTicketResponse()
     const ticket = TicketsMapper.toRPC(data)
 
     response.setData(ticket)
@@ -107,13 +107,13 @@ export class TicketsServer extends Producers.ServerImplementation<Producers.Sher
     callback(null, response)
   }
 
-  @Producers.CallHandler(Producers.Sherley.GetTicketsBeforeYoursResponse)
+  @Producers.CallHandler(Producers.QueuingSystem.GetTicketsBeforeYoursResponse)
   public async getTicketsBeforeYours(
     call: Producers.ServerUnaryCall<
-      Producers.Sherley.GetTicketsBeforeYoursRequest,
-      Producers.Sherley.GetTicketsBeforeYoursResponse
+      Producers.QueuingSystem.GetTicketsBeforeYoursRequest,
+      Producers.QueuingSystem.GetTicketsBeforeYoursResponse
     >,
-    callback: Producers.ICallback<Producers.Sherley.GetTicketsBeforeYoursResponse>
+    callback: Producers.ICallback<Producers.QueuingSystem.GetTicketsBeforeYoursResponse>
   ) {
     const { data, meta } = await this.ticketsController.getTicketsBeforeYours({
       ticketId: call.request.getId(),
@@ -121,7 +121,7 @@ export class TicketsServer extends Producers.ServerImplementation<Producers.Sher
       companyId: call.request.getCompanyId(),
     })
 
-    const response = new Producers.Sherley.GetTicketsBeforeYoursResponse()
+    const response = new Producers.QueuingSystem.GetTicketsBeforeYoursResponse()
 
     if (data) response.setDataList(data.map(TicketsMapper.toRPC))
 
@@ -130,13 +130,15 @@ export class TicketsServer extends Producers.ServerImplementation<Producers.Sher
     callback(null, response)
   }
 
-  @Producers.CallHandler(Producers.Sherley.GetTicketsWaitingForServiceResponse)
+  @Producers.CallHandler(
+    Producers.QueuingSystem.GetTicketsWaitingForServiceResponse
+  )
   public async getTicketsWaitingForService(
     call: Producers.ServerUnaryCall<
-      Producers.Sherley.GetTicketsWaitingForServiceRequest,
-      Producers.Sherley.GetTicketsWaitingForServiceResponse
+      Producers.QueuingSystem.GetTicketsWaitingForServiceRequest,
+      Producers.QueuingSystem.GetTicketsWaitingForServiceResponse
     >,
-    callback: Producers.ICallback<Producers.Sherley.GetTicketsWaitingForServiceResponse>
+    callback: Producers.ICallback<Producers.QueuingSystem.GetTicketsWaitingForServiceResponse>
   ) {
     const { data, meta } =
       await this.ticketsController.getTicketsWaitingForService({
@@ -144,12 +146,13 @@ export class TicketsServer extends Producers.ServerImplementation<Producers.Sher
         companyId: call.request.getCompanyId(),
       })
 
-    const response = new Producers.Sherley.GetTicketsWaitingForServiceResponse()
+    const response =
+      new Producers.QueuingSystem.GetTicketsWaitingForServiceResponse()
 
     if (data)
       response.setDataList(
         data.map(({ waitingFor, tickets }) =>
-          new Producers.Sherley.GetTicketsWaitingForServiceResponse.ServiceTickets()
+          new Producers.QueuingSystem.GetTicketsWaitingForServiceResponse.ServiceTickets()
             .setWaitingFor(waitingFor)
             .setTicketsList(tickets.map(TicketsMapper.toRPC))
         )
@@ -163,7 +166,7 @@ export class TicketsServer extends Producers.ServerImplementation<Producers.Sher
   public get implementation() {
     return {
       create: this.create.bind(this),
-      get: this.get.bind(this),
+      getOne: this.getOne.bind(this),
       leave: this.leave.bind(this),
       announce: this.announce.bind(this),
       getTicketsBeforeYours: this.getTicketsBeforeYours.bind(this),

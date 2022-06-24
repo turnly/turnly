@@ -17,7 +17,7 @@ export class IntegrationsController extends Controller {
 
   @TimeoutHandler()
   @InputValidator(validator.get)
-  public async get(id: Guid) {
+  public async getOne(id: Guid) {
     const query = new IntegrationByIdQuery(id)
 
     const integration = await this.queryBus.ask<

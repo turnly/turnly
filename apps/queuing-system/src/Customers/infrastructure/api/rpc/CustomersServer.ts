@@ -4,20 +4,20 @@ import { Producers } from '@turnly/rpc'
 import { CustomersController } from '../controllers/CustomersController'
 import { CustomerMapper } from './CustomersMapper'
 
-export class CustomersServer extends Producers.ServerImplementation<Producers.Sherley.ICustomersServer> {
+export class CustomersServer extends Producers.ServerImplementation<Producers.QueuingSystem.ICustomersServer> {
   public constructor(
     private readonly customersController: CustomersController
   ) {
     super()
   }
 
-  @Producers.CallHandler(Producers.Sherley.CreateCustomerResponse)
+  @Producers.CallHandler(Producers.QueuingSystem.CreateCustomerResponse)
   public async create(
     call: Producers.ServerUnaryCall<
-      Producers.Sherley.CreateCustomerRequest,
-      Producers.Sherley.CreateCustomerResponse
+      Producers.QueuingSystem.CreateCustomerRequest,
+      Producers.QueuingSystem.CreateCustomerResponse
     >,
-    callback: Producers.ICallback<Producers.Sherley.CreateCustomerResponse>
+    callback: Producers.ICallback<Producers.QueuingSystem.CreateCustomerResponse>
   ) {
     const payload = call.request.getCustomer()
 
@@ -35,7 +35,7 @@ export class CustomersServer extends Producers.ServerImplementation<Producers.Sh
       extra: payload.getExtrasList().map(e => e.toObject()),
     })
 
-    const response = new Producers.Sherley.CreateCustomerResponse()
+    const response = new Producers.QueuingSystem.CreateCustomerResponse()
     const customer = CustomerMapper.toRPC(data)
 
     response.setData(customer)
@@ -44,20 +44,20 @@ export class CustomersServer extends Producers.ServerImplementation<Producers.Sh
     callback(null, response)
   }
 
-  @Producers.CallHandler(Producers.Sherley.GetCustomerResponse)
-  public async get(
+  @Producers.CallHandler(Producers.QueuingSystem.GetCustomerResponse)
+  public async getOne(
     call: Producers.ServerUnaryCall<
-      Producers.Sherley.GetCustomerRequest,
-      Producers.Sherley.GetCustomerResponse
+      Producers.QueuingSystem.GetCustomerRequest,
+      Producers.QueuingSystem.GetCustomerResponse
     >,
-    callback: Producers.ICallback<Producers.Sherley.GetCustomerResponse>
+    callback: Producers.ICallback<Producers.QueuingSystem.GetCustomerResponse>
   ) {
-    const { data, meta } = await this.customersController.get({
+    const { data, meta } = await this.customersController.getOne({
       id: call.request.getId(),
       companyId: call.request.getCompanyId(),
     })
 
-    const response = new Producers.Sherley.GetCustomerResponse()
+    const response = new Producers.QueuingSystem.GetCustomerResponse()
     const customer = CustomerMapper.toRPC(data)
 
     response.setData(customer)
@@ -69,7 +69,7 @@ export class CustomersServer extends Producers.ServerImplementation<Producers.Sh
   public get implementation() {
     return {
       create: this.create.bind(this),
-      get: this.get.bind(this),
+      getOne: this.getOne.bind(this),
     }
   }
 }

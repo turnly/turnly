@@ -1,3 +1,3 @@
 import { Consumers } from '@turnly/rpc'
 
-export const Customers = new Consumers.Sherley.Customers()
+export const Customers = new Consumers.QueuingSystem.Customers()

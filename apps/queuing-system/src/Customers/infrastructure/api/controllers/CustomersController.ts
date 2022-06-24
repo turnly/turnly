@@ -36,7 +36,7 @@ export class CustomersController extends Controller {
 
   @TimeoutHandler()
   @InputValidator(validator.get)
-  public async get(params: CustomerByIdQuery) {
+  public async getOne(params: CustomerByIdQuery) {
     const customer = await this.queryBus.ask<
       CustomerByIdQuery,
       Nullable<Customer>

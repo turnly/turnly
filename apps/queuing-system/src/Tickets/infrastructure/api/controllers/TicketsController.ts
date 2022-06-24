@@ -48,7 +48,7 @@ export class TicketsController extends Controller {
 
   @TimeoutHandler()
   @InputValidator(validator.get)
-  public async get(params: TicketByIdQuery) {
+  public async getOne(params: TicketByIdQuery) {
     const ticket = await this.queryBus.ask<TicketByIdQuery, Nullable<Ticket>>(
       new TicketByIdQuery(params.id, params.customerId, params.companyId)
     )

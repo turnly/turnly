@@ -17,7 +17,7 @@ Box.register({
  * Query handlers
  */
 Box.register({
-  searchCustomerFieldsByServiceQueryHandler: ioc
+  findCustomerFieldsByServiceQueryHandler: ioc
     .asClass(SearchCustomerFieldsByServiceQueryHandler)
     .singleton(),
 })

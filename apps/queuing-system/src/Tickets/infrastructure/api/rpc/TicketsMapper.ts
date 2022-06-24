@@ -6,8 +6,8 @@ import { Ticket } from 'Tickets/domain/entities/Ticket'
 export class TicketsMapper {
   public static toRPC(
     entity: Nullable<EntityAttributes<Ticket>> | undefined
-  ): Producers.Sherley.Ticket {
-    const ticket = new Producers.Sherley.Ticket()
+  ): Producers.QueuingSystem.Ticket {
+    const ticket = new Producers.QueuingSystem.Ticket()
 
     if (entity) {
       ticket.setId(entity.id)
@@ -25,7 +25,7 @@ export class TicketsMapper {
       if (entity.assigneeId) ticket.setAssigneeId(entity.assigneeId)
 
       if (entity.rating) {
-        const rating = new Producers.Sherley.Ticket.Rating()
+        const rating = new Producers.QueuingSystem.Ticket.Rating()
           .setScore(entity.rating.score)
           .setComment(entity.rating.comment ?? '')
 
@@ -34,7 +34,9 @@ export class TicketsMapper {
 
       if (entity.extra) {
         const extras = entity.extra.map(extra =>
-          new Producers.Sherley.Extra().setKey(extra.key).setValue(extra.value)
+          new Producers.QueuingSystem.Extra()
+            .setKey(extra.key)
+            .setValue(extra.value)
         )
 
         ticket.setExtrasList(extras)

@@ -16,8 +16,8 @@ export class FieldsController extends Controller {
   }
 
   @TimeoutHandler()
-  @InputValidator(validator.searchCustomerFieldsByService)
-  public async searchCustomerFieldsByService(
+  @InputValidator(validator.findCustomerFieldsByService)
+  public async findCustomerFieldsByService(
     params: SearchCustomerFieldsByServiceQuery
   ) {
     const query = new SearchCustomerFieldsByServiceQuery(

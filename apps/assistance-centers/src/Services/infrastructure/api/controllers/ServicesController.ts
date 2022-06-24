@@ -18,7 +18,7 @@ export class ServicesController extends Controller {
 
   @TimeoutHandler()
   @InputValidator(validator.get)
-  public async get(params: ServiceByIdQuery) {
+  public async getOne(params: ServiceByIdQuery) {
     const service = await this.queryBus.ask<
       ServiceByIdQuery,
       Nullable<Service>

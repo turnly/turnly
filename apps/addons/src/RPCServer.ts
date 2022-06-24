@@ -16,7 +16,7 @@ const integrationsServer = new IntegrationsServer(
  */
 const services = [
   {
-    definition: Producers.Maverick.IntegrationsService,
+    definition: Producers.Addons.IntegrationsService,
     implementation: integrationsServer.implementation,
   },
 ]

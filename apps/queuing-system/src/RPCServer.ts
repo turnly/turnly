@@ -17,11 +17,11 @@ const customersServer = new CustomersServer(CustomerFactory.getController())
  */
 const services = [
   {
-    definition: Producers.Sherley.TicketsService,
+    definition: Producers.QueuingSystem.TicketsService,
     implementation: ticketsServer.implementation,
   },
   {
-    definition: Producers.Sherley.CustomersService,
+    definition: Producers.QueuingSystem.CustomersService,
     implementation: customersServer.implementation,
   },
 ]

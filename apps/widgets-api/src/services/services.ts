@@ -1,29 +1,29 @@
 import { Consumers } from '@turnly/rpc'
 
 /**
- * Alfred Service
+ * Assistance Centers Service
  */
-export const Locations = new Consumers.Alfred.Locations()
-export const Services = new Consumers.Alfred.Services()
+export const Locations = new Consumers.AssistanceCenters.Locations()
+export const Services = new Consumers.AssistanceCenters.Services()
 
 /**
- * Dorothee Service
+ * Custom Fields Service
  */
-export const Answers = new Consumers.Dorothee.Answers()
-export const Fields = new Consumers.Dorothee.Fields()
+export const Answers = new Consumers.CustomFields.Answers()
+export const Fields = new Consumers.CustomFields.Fields()
 
 /**
- * Shannon Service
+ * Team Service
  */
-export const Agents = new Consumers.Shannon.Agents()
+export const Agents = new Consumers.Team.Agents()
 
 /**
- * Sherley Service
+ * Queuing System Service
  */
-export const Customers = new Consumers.Sherley.Customers()
-export const Tickets = new Consumers.Sherley.Tickets()
+export const Customers = new Consumers.QueuingSystem.Customers()
+export const Tickets = new Consumers.QueuingSystem.Tickets()
 
 /**
- * Maverick Service
+ * Add-ons Service
  */
-export const Integrations = new Consumers.Maverick.Integrations()
+export const Integrations = new Consumers.Addons.Integrations()

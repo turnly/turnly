@@ -16,7 +16,7 @@ export class FieldFactory {
   public static getQueryHandlers(): IQueryHandler[] {
     return [
       Box.resolve<SearchCustomerFieldsByServiceQueryHandler>(
-        'searchCustomerFieldsByServiceQueryHandler'
+        'findCustomerFieldsByServiceQueryHandler'
       ),
     ]
   }

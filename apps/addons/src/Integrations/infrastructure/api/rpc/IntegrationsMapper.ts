@@ -6,8 +6,8 @@ import { Integration } from 'Integrations/domain/entities/Integration'
 export class IntegrationsMapper {
   public static toRPC(
     entity: Nullable<EntityAttributes<Integration>> | undefined
-  ): Producers.Maverick.Integration {
-    const integration = new Producers.Maverick.Integration()
+  ): Producers.Addons.Integration {
+    const integration = new Producers.Addons.Integration()
 
     if (entity) {
       integration.setId(entity.id)

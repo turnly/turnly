@@ -6,8 +6,8 @@ import { Field } from 'Fields/domain/entities/Field'
 export class FieldsMapper {
   public static toRPC(
     entity: Nullable<EntityAttributes<Field>> | undefined
-  ): Producers.Dorothee.Field {
-    const field = new Producers.Dorothee.Field()
+  ): Producers.CustomFields.Field {
+    const field = new Producers.CustomFields.Field()
 
     if (entity) {
       field.setId(entity.id)
@@ -21,15 +21,18 @@ export class FieldsMapper {
       field.setIsRequired(entity.isRequired)
 
       if (entity.processors) {
-        const pross = entity.processors.map(processor =>
-          new Producers.Dorothee.Processor().setId(processor.toObject().id)
+        const processors = entity.processors.map(processor =>
+          new Producers.CustomFields.Processor().setId(processor.toObject().id)
         )
-        field.setProcessorsList(pross)
+
+        field.setProcessorsList(processors)
       }
 
       if (entity.extra) {
         const extras = entity.extra.map(extra =>
-          new Producers.Dorothee.Extra().setKey(extra.key).setValue(extra.value)
+          new Producers.CustomFields.Extra()
+            .setKey(extra.key)
+            .setValue(extra.value)
         )
 
         field.setExtrasList(extras)

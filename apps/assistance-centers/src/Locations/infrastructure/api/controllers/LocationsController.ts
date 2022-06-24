@@ -17,7 +17,7 @@ export class LocationsController extends Controller {
 
   @TimeoutHandler()
   @InputValidator(validator.get)
-  public async get(params: LocationByIdQuery) {
+  public async getOne(params: LocationByIdQuery) {
     const location = await this.queryBus.ask<
       LocationByIdQuery,
       Nullable<Location>

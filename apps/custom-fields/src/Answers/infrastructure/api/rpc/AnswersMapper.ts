@@ -6,8 +6,8 @@ import { Answer } from 'Answers/domain/entities/Answer'
 export class AnswersMapper {
   public static toRPC(
     entity: Nullable<EntityAttributes<Answer>> | undefined
-  ): Producers.Dorothee.Answer {
-    const answer = new Producers.Dorothee.Answer()
+  ): Producers.CustomFields.Answer {
+    const answer = new Producers.CustomFields.Answer()
 
     if (entity) {
       answer.setId(entity.id)
@@ -19,7 +19,9 @@ export class AnswersMapper {
 
       if (entity.extra) {
         const extras = entity.extra.map(extra =>
-          new Producers.Dorothee.Extra().setKey(extra.key).setValue(extra.value)
+          new Producers.CustomFields.Extra()
+            .setKey(extra.key)
+            .setValue(extra.value)
         )
 
         answer.setExtrasList(extras)

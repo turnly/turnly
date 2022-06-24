@@ -17,11 +17,11 @@ const locationsServer = new LocationsServer(LocationsFactory.getController())
  */
 const services = [
   {
-    definition: Producers.Alfred.ServicesService,
+    definition: Producers.AssistanceCenters.ServicesService,
     implementation: servicesServer.implementation,
   },
   {
-    definition: Producers.Alfred.LocationsService,
+    definition: Producers.AssistanceCenters.LocationsService,
     implementation: locationsServer.implementation,
   },
 ]
