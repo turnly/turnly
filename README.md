@@ -8,7 +8,7 @@ Monorepo of backend applications that make up much of Turnly's APIs.
 
 | Name                                       | Description                                  |
 | ------------------------------------------ | -------------------------------------------- |
-| [Gateway](/apps/Gateway)                   | API entry point and access management        |
+| [Gateway](/apps/gateway)                   | API entry point and access management        |
 | [Widgets API](/apps/Widgets.API)           | GraphQL API for widgets clients              |
 | [Bifröst API](/apps/Bifrost.API)           | Streaming API (WebSocket)                    |
 
@@ -20,7 +20,7 @@ Monorepo of backend applications that make up much of Turnly's APIs.
 | ------------------------------------------ | -------------------------------------------- |
 | [Heimdall IAM](/apps/Heimdall)             | Identity & Access Management                 |
 | [Alfred](/apps/Alfred)                     | Assistance Centers (Locations)               |
-| [Queuing System](/apps/queuing-system)     | TODO                                         |
+| [Queuing System](/apps/queuing-system)     | Queuing System                               |
 | [Dorothee](/apps/Dorothee)                 | Business Data Fields                         |
 | [Curry](/apps/Curry)                       | Tasks Scheduling                             |
 | [Chanel](/apps/Chanel)                     | Notifications Service                        |
