@@ -8,8 +8,8 @@ assistance-centers:
   - apps/assistance-centers/**/*
 shannon:
   - apps/Shannon/**/*
-dorothee:
-  - apps/Dorothee/**/*
+custom-fields:
+  - apps/custom-fields/**/*
 queuing-system:
   - apps/queuing-system/**/*
 curry:

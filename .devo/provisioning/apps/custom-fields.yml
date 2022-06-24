@@ -1,0 +1,28 @@
+version: '3.9'
+
+services:
+  custom-fields:
+    extends:
+      file: common.yml
+      service: common
+    container_name: custom-fields
+    image: custom-fields:latest
+    build:
+      context: ${DOCKER_RELATIVE_APPS_DIR}/custom-fields
+      dockerfile: ./docker/Dockerfile.dev
+      args:
+        HTTP_PORT: ${HTTP_PORT}
+        RPC_PORT: ${RPC_PORT}
+    volumes:
+      - ${DOCKER_RELATIVE_APPS_DIR}/custom-fields:/app
+    depends_on:
+      - gateway
+      - mongo
+    labels:
+      - traefik.enable=true
+
+      - traefik.http.routers.custom-fields-rpc.entrypoints=rpc
+      - traefik.http.routers.custom-fields-rpc.rule=PathPrefix(`/turnly.custom-fields.v1`)
+      - traefik.http.routers.custom-fields-rpc.service=custom-fields-rpc
+      - traefik.http.services.custom-fields-rpc.loadbalancer.server.port=${RPC_PORT}
+      - traefik.http.services.custom-fields-rpc.loadbalancer.server.scheme=h2c

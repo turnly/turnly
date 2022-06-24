@@ -21,7 +21,7 @@ Monorepo of backend applications that make up much of Turnly's APIs.
 | [Heimdall IAM](/apps/heimdall)                  | Identity & Access Management                 |
 | [Assistance Centers](/apps/assistance-centers)  | Assistance Centers (Locations)               |
 | [Queuing System](/apps/queuing-system)          | Queuing System                               |
-| [Dorothee](/apps/Dorothee)                      | Business Data Fields                         |
+| [Custom Fields](/apps/custom-fields)            | Business Data Fields                         |
 | [Curry](/apps/Curry)                            | Tasks Scheduling                             |
 | [Chanel](/apps/Chanel)                          | Notifications Service                        |
 | [Brennan](/apps/Brennan)                        | Business Owners                              |
