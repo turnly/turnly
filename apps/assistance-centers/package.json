@@ -1,8 +1,8 @@
 {
-  "name": "@turnly/alfred",
+  "name": "@turnly/assistance-centers",
   "version": "1.0.0",
   "private": true,
-  "description": "Alfred Assistance Centers (Locations).",
+  "description": "assistance-centers Assistance Centers (Locations).",
   "license": "UNLICENSED",
   "author": {
     "name": "Wardner",

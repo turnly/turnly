@@ -16,19 +16,19 @@ Monorepo of backend applications that make up much of Turnly's APIs.
 
 ### Microservices
 
-| Name                                       | Description                                  |
-| ------------------------------------------ | -------------------------------------------- |
-| [Heimdall IAM](/apps/heimdall)             | Identity & Access Management                 |
-| [Alfred](/apps/Alfred)                     | Assistance Centers (Locations)               |
-| [Queuing System](/apps/queuing-system)     | Queuing System                               |
-| [Dorothee](/apps/Dorothee)                 | Business Data Fields                         |
-| [Curry](/apps/Curry)                       | Tasks Scheduling                             |
-| [Chanel](/apps/Chanel)                     | Notifications Service                        |
-| [Brennan](/apps/Brennan)                   | Business Owners                              |
-| [Shannon](/apps/Shannon)                   | Team Management                              |
-| [Polly](/apps/Polly)                       | Activities History                           |
-| [Wayne](/apps/Wayne)                       | Billing Service                              |
-| [Maverick](/apps/Maverick)                 | Integrations, Webhooks & Beacons             |
+| Name                                            | Description                                  |
+| ----------------------------------------------- | -------------------------------------------- |
+| [Heimdall IAM](/apps/heimdall)                  | Identity & Access Management                 |
+| [Assistance Centers](/apps/assistance-centers)  | Assistance Centers (Locations)               |
+| [Queuing System](/apps/queuing-system)          | Queuing System                               |
+| [Dorothee](/apps/Dorothee)                      | Business Data Fields                         |
+| [Curry](/apps/Curry)                            | Tasks Scheduling                             |
+| [Chanel](/apps/Chanel)                          | Notifications Service                        |
+| [Brennan](/apps/Brennan)                        | Business Owners                              |
+| [Shannon](/apps/Shannon)                        | Team Management                              |
+| [Polly](/apps/Polly)                            | Activities History                           |
+| [Wayne](/apps/Wayne)                            | Billing Service                              |
+| [Maverick](/apps/Maverick)                      | Integrations, Webhooks & Beacons             |
 
 #### Getting Started as a Developer
 

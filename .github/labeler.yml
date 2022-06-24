@@ -4,8 +4,8 @@ heimdall:
   - apps/heimdall/**/*
 wayne:
   - apps/Wayne/**/*
-alfred:
-  - apps/Alfred/**/*
+assistance-centers:
+  - apps/assistance-centers/**/*
 shannon:
   - apps/Shannon/**/*
 dorothee:

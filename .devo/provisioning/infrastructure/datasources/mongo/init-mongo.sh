@@ -9,7 +9,7 @@ const databases = [
   "maverick",
   "heimdall",
   "wayne",
-  "alfred",
+  "assistance-centers",
   "shannon",
   "dorothee",
   "queuing-system",

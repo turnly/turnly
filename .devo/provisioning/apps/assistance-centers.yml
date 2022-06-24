@@ -1,0 +1,28 @@
+version: '3.9'
+
+services:
+  assistance-centers:
+    extends:
+      file: common.yml
+      service: common
+    container_name: assistance-centers
+    image: assistance-centers:latest
+    build:
+      context: ${DOCKER_RELATIVE_APPS_DIR}/assistance-centers
+      dockerfile: ./docker/Dockerfile.dev
+      args:
+        HTTP_PORT: ${HTTP_PORT}
+        RPC_PORT: ${RPC_PORT}
+    volumes:
+      - ${DOCKER_RELATIVE_APPS_DIR}/assistance-centers:/app
+    depends_on:
+      - gateway
+      - mongo
+    labels:
+      - traefik.enable=true
+
+      - traefik.http.routers.assistance-centers-rpc.entrypoints=rpc
+      - traefik.http.routers.assistance-centers-rpc.rule=PathPrefix(`/turnly.assistance-centers.v1`)
+      - traefik.http.routers.assistance-centers-rpc.service=assistance-centers-rpc
+      - traefik.http.services.assistance-centers-rpc.loadbalancer.server.port=${RPC_PORT}
+      - traefik.http.services.assistance-centers-rpc.loadbalancer.server.scheme=h2c
