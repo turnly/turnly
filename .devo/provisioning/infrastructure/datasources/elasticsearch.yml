@@ -13,6 +13,13 @@ services:
       - ${ELASTICSEARCH_PORT}
     environment:
       discovery.type: "single-node"
+      node.name: "turnly"
+      bootstrap.memory_lock: true
+      ES_JAVA_OPTS: "-Xms1g -Xmx1g"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
     ports:
        - ${ELASTICSEARCH_PORT}:9200
 
