@@ -13,10 +13,10 @@ function print_system_statuses() {
 
   info " 🟢 Global API                           : http://api.turnly:$HTTP_PORT"
   info " 🟢 Widgets API                          : http://widgets.turnly:$HTTP_PORT"
-  info " 🔴 Auth API                             : http://accounts.turnly:$HTTP_PORT"
-
   info " 🟢 Streaming API                        : http://stream.turnly:$HTTP_PORT"
+  info " 🟢 Billing API                          : http://billing.turnly:$HTTP_PORT"
   info " 🟢 RPC - Inter-services communication   : http://rpc.turnly:$RPC_PORT"
+  info " 🔴 Auth API                             : http://accounts.turnly:$HTTP_PORT"
 
   line
 

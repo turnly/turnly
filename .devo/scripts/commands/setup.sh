@@ -7,6 +7,7 @@ function setup() {
     "stream.turnly"
     "api.turnly"
     "widgets.turnly"
+    "billing.turnly"
     "$APP_PROXY_HOST"
   )
 
