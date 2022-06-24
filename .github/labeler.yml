@@ -1,7 +1,7 @@
 maverick:
   - apps/Maverick/**/*
 heimdall:
-  - apps/Heimdall/**/*
+  - apps/heimdall/**/*
 wayne:
   - apps/Wayne/**/*
 alfred:

@@ -18,7 +18,7 @@ Monorepo of backend applications that make up much of Turnly's APIs.
 
 | Name                                       | Description                                  |
 | ------------------------------------------ | -------------------------------------------- |
-| [Heimdall IAM](/apps/Heimdall)             | Identity & Access Management                 |
+| [Heimdall IAM](/apps/heimdall)             | Identity & Access Management                 |
 | [Alfred](/apps/Alfred)                     | Assistance Centers (Locations)               |
 | [Queuing System](/apps/queuing-system)     | Queuing System                               |
 | [Dorothee](/apps/Dorothee)                 | Business Data Fields                         |

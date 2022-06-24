@@ -19,7 +19,7 @@
   "typescript.tsdk": "node_modules/typescript/lib",
   "eslint.workingDirectories": [
     "apps/Maverick",
-    "apps/Heimdall",
+    "apps/heimdall",
     "apps/Wayne",
     "apps/Alfred",
     "apps/Shannon",
