@@ -1,5 +1,5 @@
 {
-  "name": "@turnly/maverick",
+  "name": "@turnly/addons",
   "version": "1.0.0",
   "private": true,
   "description": "Service that manages the apps (widgets) built on Turnly by an organization, enables integrations between external systems to share data.",
@@ -31,10 +31,10 @@
     ]
   },
   "dependencies": {
-    "@turnly/shared": "git+https://turnlyapps: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@github.com/turnly/shared.git#latest",
+    "@turnly/common": "git+https://turnlyapps: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@github.com/turnly/common.git#latest",
     "@turnly/eslint-config": "github:turnly/configs",
     "@turnly/rpc": "git+https://turnlyapps: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@github.com/turnly/rpc.git#latest",
-    "@turnly/common": "git+https://turnlyapps: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@github.com/turnly/common.git#latest",
+    "@turnly/shared": "git+https://turnlyapps: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@github.com/turnly/shared.git#latest",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "moongose": "^1.0.0"

@@ -22,13 +22,13 @@ Monorepo of backend applications that make up much of Turnly's APIs.
 | [Assistance Centers](/apps/assistance-centers)  | Assistance Centers (Locations)               |
 | [Queuing System](/apps/queuing-system)          | Queuing System                               |
 | [Custom Fields](/apps/custom-fields)            | Business Data Fields                         |
-| [Curry](/apps/Curry)                            | Tasks Scheduling                             |
-| [Chanel](/apps/Chanel)                          | Notifications Service                        |
-| [Brennan](/apps/Brennan)                        | Business Owners                              |
-| [Shannon](/apps/Shannon)                        | Team Management                              |
-| [Polly](/apps/Polly)                            | Activities History                           |
-| [Wayne](/apps/Wayne)                            | Billing Service                              |
-| [Maverick](/apps/Maverick)                      | Integrations, Webhooks & Beacons             |
+| [Tasks Scheduling](/apps/tasks-scheduling)      | Tasks Scheduling                             |
+| [Notifications](/apps/notifications)            | Notifications Service                        |
+| [Business Owners](/apps/business-owners)        | Business Owners                              |
+| [Team Management](/apps/team)                   | Team Management                              |
+| [Interactions](/apps/interactions)              | Activities History                           |
+| [Billing](/apps/billing)                        | Billing Service                              |
+| [Add-ons](/apps/addons)                         | Integrations, Webhooks & Beacons             |
 
 #### Getting Started as a Developer
 

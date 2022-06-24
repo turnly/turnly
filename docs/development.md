@@ -51,7 +51,7 @@ yarn devo setup --verbose
 yarn devo start
 
 # Start specific services:
-yarn devo start -s maverick -s streaming-api
+yarn devo start -s addons -s streaming-api
 
 # OR
 
@@ -111,8 +111,8 @@ cd ./apps/streaming-api && yarn run test
 
 # -------------------------------------
 
-yarn devo maverick build
+yarn devo addons build
 
 # Same as:
-cd ./apps/Maverick && yarn run build
+cd ./apps/addons && yarn run build
 ```

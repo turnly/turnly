@@ -6,17 +6,17 @@ mongo <<EOF
 print("Creating athena databases...");
 
 const databases = [
-  "maverick",
+  "addons",
   "heimdall",
-  "wayne",
+  "billing",
   "assistance-centers",
-  "shannon",
+  "team",
   "custom-fields",
   "queuing-system",
-  "curry",
-  "chanel",
-  "brennan",
-  "polly",
+  "tasks-scheduling",
+  "notifications",
+  "business-owners",
+  "interactions",
 ];
 
 for (const database of databases) {

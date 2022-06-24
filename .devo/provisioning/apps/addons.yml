@@ -1,0 +1,28 @@
+version: '3.9'
+
+services:
+  addons:
+    extends:
+      file: common.yml
+      service: common
+    container_name: addons
+    image: addons:latest
+    build:
+      context: ${DOCKER_RELATIVE_APPS_DIR}/addons
+      dockerfile: ./docker/Dockerfile.dev
+      args:
+        HTTP_PORT: ${HTTP_PORT}
+        RPC_PORT: ${RPC_PORT}
+    volumes:
+      - ${DOCKER_RELATIVE_APPS_DIR}/addons:/app
+    depends_on:
+      - gateway
+      - mongo
+    labels:
+      - traefik.enable=true
+
+      - traefik.http.routers.addons-rpc.entrypoints=rpc
+      - traefik.http.routers.addons-rpc.rule=PathPrefix(`/turnly.addons.v1`)
+      - traefik.http.routers.addons-rpc.service=addons-rpc
+      - traefik.http.services.addons-rpc.loadbalancer.server.port=${RPC_PORT}
+      - traefik.http.services.addons-rpc.loadbalancer.server.scheme=h2c

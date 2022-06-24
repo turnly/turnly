@@ -1,25 +1,25 @@
-maverick:
-  - apps/Maverick/**/*
+addons:
+  - apps/addons/**/*
 heimdall:
   - apps/heimdall/**/*
-wayne:
-  - apps/Wayne/**/*
+billing:
+  - apps/billing/**/*
 assistance-centers:
   - apps/assistance-centers/**/*
-shannon:
-  - apps/Shannon/**/*
+team:
+  - apps/team/**/*
 custom-fields:
   - apps/custom-fields/**/*
 queuing-system:
   - apps/queuing-system/**/*
-curry:
-  - apps/Curry/**/*
-chanel:
-  - apps/Chanel/**/*
-brennan:
-  - apps/Brennan/**/*
-polly:
-  - apps/Polly/**/*
+tasks-scheduling:
+  - apps/tasks-scheduling/**/*
+notifications:
+  - apps/notifications/**/*
+business-owners:
+  - apps/business-owners/**/*
+interactions:
+  - apps/interactions/**/*
 streaming-api:
   - apps/streaming-api/**/*
 docker:

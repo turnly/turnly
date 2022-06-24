@@ -1,8 +1,8 @@
 {
-  "name": "@turnly/shannon",
+  "name": "@turnly/team",
   "version": "1.0.0",
   "private": true,
-  "description": "Shannon is a team management service.",
+  "description": "team is a team management service.",
   "license": "UNLICENSED",
   "author": {
     "name": "Wardner",
@@ -31,10 +31,10 @@
     ]
   },
   "dependencies": {
-    "@turnly/shared": "git+https://turnlyapps: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@github.com/turnly/shared.git#latest",
+    "@turnly/common": "git+https://turnlyapps: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@github.com/turnly/common.git#latest",
     "@turnly/eslint-config": "github:turnly/configs",
     "@turnly/rpc": "git+https://turnlyapps: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@github.com/turnly/rpc.git#latest",
-    "@turnly/common": "git+https://turnlyapps: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@github.com/turnly/common.git#latest",
+    "@turnly/shared": "git+https://turnlyapps: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@github.com/turnly/shared.git#latest",
     "moongose": "^1.0.0"
   },
   "devDependencies": {
