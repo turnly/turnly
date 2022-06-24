@@ -20,8 +20,8 @@ brennan:
   - apps/Brennan/**/*
 polly:
   - apps/Polly/**/*
-bifrost:
-  - apps/Bifrost.API/**/*
+streaming-api:
+  - apps/streaming-api/**/*
 docker:
   - apps/**/docker/*
 operator:

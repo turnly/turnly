@@ -1,0 +1,25 @@
+version: '3.9'
+
+services:
+  streaming-api:
+    extends:
+      file: common.yml
+      service: common
+    container_name: streaming-api
+    image: streaming-api:latest
+    build:
+      context: ${DOCKER_RELATIVE_APPS_DIR}/streaming-api
+      dockerfile: ./docker/Dockerfile.dev
+      args:
+        HTTP_PORT: ${HTTP_PORT}
+    volumes:
+      - ${DOCKER_RELATIVE_APPS_DIR}/streaming-api:/app
+    depends_on:
+      - gateway
+    labels:
+      - traefik.enable=true
+
+      - traefik.http.routers.streaming-api-http.entrypoints=http
+      - traefik.http.routers.streaming-api-http.rule=Host(`stream.turnly`)
+      - traefik.http.routers.streaming-api-http.service=streaming-api-http
+      - traefik.http.services.streaming-api-http.loadbalancer.server.port=${HTTP_PORT}

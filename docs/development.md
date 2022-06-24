@@ -51,7 +51,7 @@ yarn devo setup --verbose
 yarn devo start
 
 # Start specific services:
-yarn devo start -s maverick -s bifrost
+yarn devo start -s maverick -s streaming-api
 
 # OR
 
@@ -80,7 +80,7 @@ yarn devo stop --verbose
 yarn devo reload
 
 # Stop specific services:
-yarn devo reload -s bifrost
+yarn devo reload -s streaming-api
 ```
 
 #### Developer tools
@@ -104,10 +104,10 @@ You can take advantage of yarn workspaces to interact with apps, for example,
 you can run the commands for one of your services from DevO using:
 
 ```sh
-yarn devo bifrost test
+yarn devo streaming-api test
 
 # Same as:
-cd ./apps/Bifrost.API && yarn run test
+cd ./apps/streaming-api && yarn run test
 
 # -------------------------------------
 

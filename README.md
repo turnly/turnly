@@ -10,7 +10,7 @@ Monorepo of backend applications that make up much of Turnly's APIs.
 | ------------------------------------------ | -------------------------------------------- |
 | [Gateway](/apps/gateway)                   | API entry point and access management        |
 | [Widgets API](/apps/widgets-api)           | GraphQL API for widgets clients              |
-| [Bifröst API](/apps/Bifrost.API)           | Streaming API (WebSocket)                    |
+| [Streaming API](/apps/streaming-api)       | Streaming API (WebSocket)                    |
 
 > What about [BFF (Backend for Frontend)?](/docs/architecture/BFF.md)
 
