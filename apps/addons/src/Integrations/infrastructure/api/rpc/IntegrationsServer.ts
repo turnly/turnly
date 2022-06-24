@@ -18,9 +18,9 @@ export class IntegrationsServer extends Producers.ServerImplementation<Producers
     >,
     callback: Producers.ICallback<Producers.Addons.GetIntegrationResponse>
   ) {
-    const { data, meta } = await this.integrationsController.getOne(
-      call.request.getId()
-    )
+    const { data, meta } = await this.integrationsController.getOne({
+      id: call.request.getId(),
+    })
 
     const response = new Producers.Addons.GetIntegrationResponse()
     const integration = IntegrationsMapper.toRPC(data)

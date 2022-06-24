@@ -13,7 +13,7 @@ import {
 import { CustomerByIdQuery } from 'Customers/application/queries/CustomerByIdQuery'
 import { Customer } from 'Customers/domain/entities/Customer'
 
-import { validator } from '../validators/CustomerValidator'
+import { validator } from '../validators/CustomersValidator'
 
 export class CustomersController extends Controller {
   public constructor(

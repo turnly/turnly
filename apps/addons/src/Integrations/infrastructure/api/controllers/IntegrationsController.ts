@@ -17,13 +17,11 @@ export class IntegrationsController extends Controller {
 
   @TimeoutHandler()
   @InputValidator(validator.get)
-  public async getOne(id: Guid) {
-    const query = new IntegrationByIdQuery(id)
-
+  public async getOne(params: { id: Guid }) {
     const integration = await this.queryBus.ask<
       IntegrationByIdQuery,
       Nullable<Integration>
-    >(query)
+    >(new IntegrationByIdQuery(params.id))
 
     if (!integration) throw new ResourceNotFoundException()
 
