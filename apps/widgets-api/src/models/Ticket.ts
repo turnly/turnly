@@ -66,9 +66,6 @@ export class Ticket {
   @Field(() => Customer)
   customer: Customer
 
-  @Field()
-  createdAt: Date
-
   @Field(() => Int)
   beforeYours: number
 

@@ -1,5 +1,4 @@
 import { Ticket as T } from '@turnly/rpc/dist/producers/queuing-system'
-import { DateTime } from '@turnly/shared'
 import { Ticket } from 'models/Ticket'
 
 export class TicketsMapper {
@@ -16,7 +15,6 @@ export class TicketsMapper {
       customerId: ticket.customerId,
       serviceId: ticket.serviceId,
       locationId: ticket.locationId,
-      createdAt: DateTime.fromISO(ticket.createdAt).toJSDate(),
     }
   }
 }
