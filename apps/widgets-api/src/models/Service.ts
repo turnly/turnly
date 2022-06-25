@@ -1,19 +1,19 @@
-import { Field, ID, ObjectType } from 'type-graphql'
+import { Field, ID, Int, ObjectType } from 'type-graphql'
 
 @ObjectType()
 export class Service {
-  @Field(_ => ID)
+  @Field(() => ID)
   id: string
 
   @Field()
   name: string
 
-  @Field()
+  @Field(() => String, { nullable: true })
   description: string
 
-  @Field()
+  @Field(() => ID)
   locationId: string
 
-  @Field()
-  tickets: number
+  @Field(() => Int)
+  ticketsWaiting: number
 }

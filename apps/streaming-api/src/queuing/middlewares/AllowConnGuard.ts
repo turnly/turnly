@@ -24,21 +24,21 @@ export class AllowConnGuard {
    */
   public use = (): RealtimeMiddle => async (connection, next) => {
     try {
-      const { origin, integrationId } = this.toParams(connection)
+      const { origin, widgetId } = this.toParams(connection)
 
-      if (!integrationId || !origin)
+      if (!widgetId || !origin)
         throw new BadRequestException(
           "The request doesn't meet the parameters required for a secure connection."
         )
 
-      const { meta, data: integration } = await Integrations.getOne({
-        id: integrationId,
+      const { meta, data: widget } = await Integrations.getOne({
+        id: widgetId,
       })
 
-      if (!integration) throw new ResourceNotFoundException(meta?.message)
+      if (!widget) throw new ResourceNotFoundException(meta?.message)
 
       const { origin: formatted } = new URL(origin)
-      const isTrustworthy = !integration.originsList.includes(formatted)
+      const isTrustworthy = !widget.originsList.includes(formatted)
 
       if (!isTrustworthy)
         throw new UnauthorizedException(
@@ -62,13 +62,13 @@ export class AllowConnGuard {
        * }
        */
 
-      connection.join([integration.id /* customer.id */])
+      connection.join([widget.id /* customer.id */])
 
       connection.emit(Events.CONNECTED, {
-        integration: {
-          id: integration.id,
-          name: integration.name,
-          canCustomize: integration.canCustomize,
+        widget: {
+          id: widget.id,
+          name: widget.name,
+          canCustomize: widget.canCustomize,
         },
         customer: {},
       })
@@ -81,14 +81,14 @@ export class AllowConnGuard {
 
   private toParams(connection: IRealtimeClient) {
     const {
-      handshake: { query, headers, ...handshake },
+      handshake: { query, headers },
     } = connection
 
-    const origin = headers.origin || headers.referer || handshake.url || ''
+    const origin = headers.origin || headers.referer || ''
 
     return {
       origin,
-      integrationId: query.widgetId as Guid,
+      widgetId: query.widgetId as Guid,
     }
   }
 }

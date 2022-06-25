@@ -1,8 +1,45 @@
-import { Field, ID, ObjectType } from 'type-graphql'
+import { Field, ID, InputType, Int, ObjectType } from 'type-graphql'
+
+import { Customer } from './Customer'
+import { Location } from './Location'
+import { Service } from './Service'
+
+@InputType()
+export class Answers {
+  @Field()
+  fieldId: string
+
+  @Field()
+  value: string
+}
+
+@InputType()
+export class Extra {
+  @Field()
+  key: string
+
+  @Field()
+  value: string
+}
+
+@InputType()
+export class TicketInput {
+  @Field(() => ID)
+  serviceId: string
+
+  @Field(() => ID)
+  locationId: string
+
+  @Field(() => [Answers], { nullable: true })
+  answers: Answers[]
+
+  @Field(() => [Extra], { nullable: true })
+  extra: Extra[]
+}
 
 @ObjectType()
 export class Ticket {
-  @Field(_ => ID)
+  @Field(() => ID)
   id: string
 
   @Field()
@@ -11,15 +48,30 @@ export class Ticket {
   @Field()
   displayCode: string
 
-  @Field()
+  @Field(() => ID)
   serviceId: string
 
-  @Field()
+  @Field(() => Service)
+  service: Service
+
+  @Field(() => ID)
   locationId: string
 
-  @Field()
+  @Field(() => Location)
+  location: Location
+
+  @Field(() => ID)
   customerId: string
+
+  @Field(() => Customer)
+  customer: Customer
 
   @Field()
   createdAt: Date
+
+  @Field(() => Int)
+  beforeYours: number
+
+  @Field(() => String, { nullable: true })
+  calledTo: string | null
 }
