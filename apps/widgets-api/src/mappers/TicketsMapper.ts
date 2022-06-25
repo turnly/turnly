@@ -1,11 +1,11 @@
 import { Ticket as T } from '@turnly/rpc/dist/producers/queuing-system'
-import { Ticket } from 'models/Ticket'
+import { TicketModel } from 'models/TicketModel'
 
 export class TicketsMapper {
   public static toDTO(
     ticket: T.AsObject
   ): Omit<
-    Ticket,
+    TicketModel,
     'customer' | 'location' | 'service' | 'calledTo' | 'beforeYours'
   > {
     return {

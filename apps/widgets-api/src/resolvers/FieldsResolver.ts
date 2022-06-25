@@ -1,16 +1,16 @@
 import { IContext } from '@types'
-import { Field } from 'models/Field'
-import { Fields } from 'services'
+import { Fields } from 'datasources'
+import { FieldModel } from 'models/FieldModel'
 import { Arg, Authorized, Ctx, ID, Query, Resolver } from 'type-graphql'
 
-@Resolver(Field)
+@Resolver(FieldModel)
 export class FieldsResolver {
   @Authorized()
-  @Query(() => [Field])
+  @Query(() => [FieldModel])
   public async getServiceFields(
     @Arg('serviceId', () => ID) serviceId: string,
     @Ctx() { req: { companyId } }: IContext
-  ): Promise<Field[]> {
+  ): Promise<FieldModel[]> {
     const fields = (
       await Fields.findCustomerFieldsByService({
         serviceId,

@@ -1,6 +1,6 @@
 import { IContext } from '@types'
-import { Service } from 'models/Service'
-import { Services, Tickets } from 'services'
+import { Services, Tickets } from 'datasources'
+import { ServiceModel } from 'models/ServiceModel'
 import {
   Arg,
   Authorized,
@@ -13,10 +13,10 @@ import {
   Root,
 } from 'type-graphql'
 
-@Resolver(Service)
+@Resolver(ServiceModel)
 export class ServicesResolver {
   @Authorized()
-  @Query(() => [Service])
+  @Query(() => [ServiceModel])
   public async getLocationServices(
     @Arg('locationId', () => ID) locationId: string,
     @Ctx() { req: { companyId } }: IContext
@@ -35,7 +35,7 @@ export class ServicesResolver {
 
   @FieldResolver(() => Int)
   public async ticketsWaiting(
-    @Root() service: Service,
+    @Root() service: ServiceModel,
     @Ctx() { req: { companyId, customer } }: IContext
   ): Promise<number> {
     const services = (

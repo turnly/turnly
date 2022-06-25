@@ -1,8 +1,8 @@
 import { Field, ID, InputType, Int, ObjectType } from 'type-graphql'
 
-import { Customer } from './Customer'
-import { Location } from './Location'
-import { Service } from './Service'
+import { CustomerModel } from './CustomerModel'
+import { LocationModel } from './LocationModel'
+import { ServiceModel } from './ServiceModel'
 
 @InputType()
 export class Answers {
@@ -38,7 +38,7 @@ export class TicketInput {
 }
 
 @ObjectType()
-export class Ticket {
+export class TicketModel {
   @Field(() => ID)
   id: string
 
@@ -51,20 +51,20 @@ export class Ticket {
   @Field(() => ID)
   serviceId: string
 
-  @Field(() => Service)
-  service: Service
+  @Field(() => ServiceModel)
+  service: ServiceModel
 
   @Field(() => ID)
   locationId: string
 
-  @Field(() => Location)
-  location: Location
+  @Field(() => LocationModel)
+  location: LocationModel
 
   @Field(() => ID)
   customerId: string
 
-  @Field(() => Customer)
-  customer: Customer
+  @Field(() => CustomerModel)
+  customer: CustomerModel
 
   @Field(() => Int)
   beforeYours: number

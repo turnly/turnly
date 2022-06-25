@@ -1,7 +1,7 @@
 import { Field, ID, Int, ObjectType } from 'type-graphql'
 
 @ObjectType()
-export class Service {
+export class ServiceModel {
   @Field(() => ID)
   id: string
 

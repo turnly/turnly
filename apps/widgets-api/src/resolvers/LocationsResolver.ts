@@ -1,5 +1,5 @@
-import { Location } from 'models/Location'
+import { LocationModel } from 'models/LocationModel'
 import { Resolver } from 'type-graphql'
 
-@Resolver(Location)
+@Resolver(LocationModel)
 export class LocationsResolver {}

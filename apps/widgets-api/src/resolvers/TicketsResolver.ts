@@ -1,10 +1,10 @@
 import { IContext } from '@types'
+import { Locations, Services, Tickets } from 'datasources'
 import { TicketsMapper } from 'mappers/TicketsMapper'
-import { Customer } from 'models/Customer'
-import { Location } from 'models/Location'
-import { Service } from 'models/Service'
-import { Ticket, TicketInput } from 'models/Ticket'
-import { Locations, Services, Tickets } from 'services'
+import { CustomerModel } from 'models/CustomerModel'
+import { LocationModel } from 'models/LocationModel'
+import { ServiceModel } from 'models/ServiceModel'
+import { TicketInput, TicketModel } from 'models/TicketModel'
 import { GraphException } from 'shared/GraphException'
 import {
   Arg,
@@ -19,10 +19,10 @@ import {
   Root,
 } from 'type-graphql'
 
-@Resolver(Ticket)
+@Resolver(TicketModel)
 export class TicketsResolver {
   @Authorized()
-  @Mutation(() => Ticket)
+  @Mutation(() => TicketModel)
   public async takeTicket(
     @Arg('input') input: TicketInput,
     @Ctx() { req: { companyId, customer } }: IContext
@@ -61,7 +61,7 @@ export class TicketsResolver {
   }
 
   @Authorized()
-  @Mutation(() => Ticket)
+  @Mutation(() => TicketModel)
   public async announceTicket(
     @Arg('id', () => String) id: string,
     @Ctx() { req: { companyId, customer } }: IContext
@@ -78,7 +78,7 @@ export class TicketsResolver {
   }
 
   @Authorized()
-  @Mutation(() => Ticket)
+  @Mutation(() => TicketModel)
   public async leaveTicket(
     @Arg('id', () => String) id: string,
     @Ctx() { req: { companyId, customer } }: IContext
@@ -95,7 +95,7 @@ export class TicketsResolver {
   }
 
   @Authorized()
-  @Query(() => Ticket)
+  @Query(() => TicketModel)
   public async getTicket(
     @Arg('id', () => ID) id: string,
     @Ctx() { req: { companyId, customer } }: IContext
@@ -111,9 +111,9 @@ export class TicketsResolver {
     return TicketsMapper.toDTO(ticket)
   }
 
-  @FieldResolver(() => Service)
+  @FieldResolver(() => ServiceModel)
   public async service(
-    @Root() ticket: Ticket,
+    @Root() ticket: TicketModel,
     @Ctx() { req: { companyId } }: IContext
   ) {
     const { data: service, meta } = await Services.getOne({
@@ -126,9 +126,9 @@ export class TicketsResolver {
     return service
   }
 
-  @FieldResolver(() => Location)
+  @FieldResolver(() => LocationModel)
   public async location(
-    @Root() ticket: Ticket,
+    @Root() ticket: TicketModel,
     @Ctx() { req: { companyId } }: IContext
   ) {
     const { data: location, meta } = await Locations.getOne({
@@ -141,9 +141,9 @@ export class TicketsResolver {
     return location
   }
 
-  @FieldResolver(() => Customer)
+  @FieldResolver(() => CustomerModel)
   public async customer(
-    @Root() ticket: Ticket,
+    @Root() ticket: TicketModel,
     @Ctx() { req: { customer } }: IContext
   ) {
     return customer
@@ -151,7 +151,7 @@ export class TicketsResolver {
 
   @FieldResolver(() => Int)
   public async beforeYours(
-    @Root() ticket: Ticket,
+    @Root() ticket: TicketModel,
     @Ctx() { req: { companyId } }: IContext
   ) {
     const { dataList } = await Tickets.getTicketsBeforeYours({
@@ -166,7 +166,7 @@ export class TicketsResolver {
   }
 
   @FieldResolver(() => String, { nullable: true })
-  public async calledTo(@Root() _: Ticket) {
+  public async calledTo(@Root() _: TicketModel) {
     /**
      * @todo Implement method to get calledTo (AssignedTo -> Desk)
      */

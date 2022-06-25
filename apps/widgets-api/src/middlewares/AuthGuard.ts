@@ -5,7 +5,7 @@ import {
   UnauthorizedException,
 } from '@turnly/common'
 import { IContext } from '@types'
-import { Customers, Integrations } from 'services'
+import { Customers, Integrations } from 'datasources'
 import { AuthChecker } from 'type-graphql'
 
 export const AuthGuard: AuthChecker<IContext> = async ({ context }) => {
