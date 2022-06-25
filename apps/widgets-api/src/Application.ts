@@ -3,15 +3,7 @@ import 'reflect-metadata'
 import { Http, Startup } from '@turnly/shared'
 import { ApolloServerPluginDrainHttpServer } from 'apollo-server-core'
 import { ApolloServer } from 'apollo-server-express'
-import {
-  CustomersDataSource,
-  DataSource,
-  FieldsDataSource,
-  IntegrationsDataSource,
-  LocationsDataSource,
-  ServicesDataSource,
-  TicketsDataSource,
-} from 'datasources'
+import { createSources, DataSource } from 'datasources'
 import { AuthGuard as authChecker } from 'middlewares/AuthGuard'
 import { buildSchema } from 'type-graphql'
 
@@ -45,14 +37,7 @@ export class Application extends Startup {
         }),
       ],
       context: ({ req, res }) => ({ req, res }),
-      dataSources: () => ({
-        fields: new FieldsDataSource(),
-        customers: new CustomersDataSource(),
-        locations: new LocationsDataSource(),
-        integrations: new IntegrationsDataSource(),
-        services: new ServicesDataSource(),
-        tickets: new TicketsDataSource(),
-      }),
+      dataSources: () => createSources(),
     })
 
     await apollo.start()

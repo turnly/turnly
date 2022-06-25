@@ -1,9 +1,9 @@
 import { Guid } from '@turnly/common'
 import { FieldModel } from 'models/FieldModel'
 
-import { CacheSource } from './CacheSource'
-import { DataSource } from './DataSource'
-import { Fields } from './services'
+import { CacheSource } from './common/CacheSource'
+import { DataSource } from './common/DataSource'
+import { Fields } from './common/services'
 
 @CacheSource()
 export class FieldsDataSource extends DataSource {

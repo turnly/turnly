@@ -140,7 +140,7 @@ export class TicketsResolver {
   }
 
   @FieldResolver(() => String, { nullable: true })
-  public async calledTo(
+  public async calledToDesk(
     @Root() ticket: TicketModel,
     @Ctx() { req: { companyId }, dataSources }: IContext
   ) {

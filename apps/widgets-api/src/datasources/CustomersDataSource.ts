@@ -1,8 +1,8 @@
 import { Guid } from '@turnly/common'
 
-import { CacheSource } from './CacheSource'
-import { DataSource } from './DataSource'
-import { Customers } from './services'
+import { CacheSource } from './common/CacheSource'
+import { DataSource } from './common/DataSource'
+import { Customers } from './common/services'
 
 @CacheSource()
 export class CustomersDataSource extends DataSource {
