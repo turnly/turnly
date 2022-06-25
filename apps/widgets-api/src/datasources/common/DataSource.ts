@@ -1,9 +1,9 @@
+import { InMemoryLRUCache } from '@apollo/utils.keyvaluecache'
 import { IContext } from '@types'
 import {
   DataSource as ApolloDataSource,
   DataSourceConfig,
 } from 'apollo-datasource'
-import { InMemoryLRUCache } from 'apollo-server-caching'
 import { KeyValueCache } from 'apollo-server-core'
 
 export abstract class DataSource extends ApolloDataSource {

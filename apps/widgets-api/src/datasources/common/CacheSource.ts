@@ -1,27 +1,46 @@
 /* eslint-disable sonarjs/cognitive-complexity */
 import 'reflect-metadata'
 
-import crypto from 'crypto'
+import { CacheSourceParams } from '@types'
 
 import { DataSource } from './DataSource'
+import { paramsToKey } from './paramsToKey'
 
-const paramsToKey = (...params: unknown[]): string =>
-  crypto.createHash('sha1').update(JSON.stringify(params)).digest('base64')
+const defaultOptions: CacheSourceParams = {
+  /**
+   * TTL in seconds
+   *
+   * @description Specified in **seconds**, the time-to-live (TTL) value
+   * limits the lifespan of the data being stored in the cache.
+   */
+  ttl: 60, // 1 minute
 
-export const CacheSource = (ttl = 5): ClassDecorator => {
+  /**
+   * Ignore methods
+   *
+   * @description Class methods to ignore when caching
+   */
+  ignore: [],
+}
+
+export const CacheSource = (
+  options: CacheSourceParams = defaultOptions
+): ClassDecorator => {
   return <T extends Function>(target: T) => {
     const descriptors = Object.getOwnPropertyDescriptors(target.prototype)
 
-    for (const [key, descriptor] of Object.entries(descriptors)) {
+    for (const [name, descriptor] of Object.entries(descriptors)) {
+      if (options.ignore && options.ignore.includes(name)) return
+
       if (typeof descriptor.value === 'function') {
         const method = descriptor.value as (
           ...args: unknown[]
         ) => Promise<unknown>
 
         descriptor.value = async function (...args) {
-          if (!args.length) return await method.apply(this, args)
+          if (!args?.length) return await method.apply(this, args)
 
-          const key = paramsToKey(args)
+          const key = paramsToKey(`${target?.name}.${name}`, args)
 
           const cached = await DataSource.getCache().get(key)
 
@@ -30,21 +49,21 @@ export const CacheSource = (ttl = 5): ClassDecorator => {
           const data = await method.apply(this, args)
 
           if (data) {
-            await DataSource.getCache().set(key, JSON.stringify(data), { ttl })
+            await DataSource.getCache().set(key, JSON.stringify(data), options)
           }
 
           return data
         }
 
         if (method != descriptor.value) {
-          for (const key of Reflect.getMetadataKeys(method)) {
-            const value = Reflect.getMetadata(key, method)
+          for (const meta of Reflect.getMetadataKeys(method)) {
+            const value = Reflect.getMetadata(meta, method)
 
-            Reflect.defineMetadata(key, value, descriptor.value)
+            Reflect.defineMetadata(meta, value, descriptor.value)
           }
         }
 
-        Object.defineProperty(target.prototype, key, descriptor)
+        Object.defineProperty(target.prototype, name, descriptor)
       }
     }
   }
