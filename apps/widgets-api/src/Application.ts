@@ -1,7 +1,7 @@
 import { Http, Startup } from '@turnly/shared'
 import { ApolloServerPluginDrainHttpServer } from 'apollo-server-core'
 import { ApolloServer } from 'apollo-server-express'
-import { AuthorizedGuard as authChecker } from 'middlewares/AuthorizedGuard'
+import { AuthGuard as authChecker } from 'middlewares/AuthGuard'
 import { buildSchema } from 'type-graphql'
 
 import { resolvers } from './resolvers'
