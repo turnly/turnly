@@ -1,29 +1,27 @@
-import { Consumers } from '@turnly/rpc'
+import { IContext } from '@types'
+import {
+  DataSource as ApolloDataSource,
+  DataSourceConfig,
+} from 'apollo-datasource'
+import { InMemoryLRUCache } from 'apollo-server-caching'
+import { KeyValueCache } from 'apollo-server-core'
 
-/**
- * Assistance Centers Service
- */
-export const Locations = new Consumers.AssistanceCenters.Locations()
-export const Services = new Consumers.AssistanceCenters.Services()
+export abstract class DataSource extends ApolloDataSource {
+  private static readonly inMemoryCache: KeyValueCache = new InMemoryLRUCache()
 
-/**
- * Custom Fields Service
- */
-export const Answers = new Consumers.CustomFields.Answers()
-export const Fields = new Consumers.CustomFields.Fields()
+  public context: IContext
+  public cache!: KeyValueCache
 
-/**
- * Team Service
- */
-export const Agents = new Consumers.Team.Agents()
+  public constructor() {
+    super()
+  }
 
-/**
- * Queuing System Service
- */
-export const Customers = new Consumers.QueuingSystem.Customers()
-export const Tickets = new Consumers.QueuingSystem.Tickets()
+  public override initialize(config: DataSourceConfig<IContext>) {
+    this.context = config.context
+    this.cache = config.cache
+  }
 
-/**
- * Add-ons Service
- */
-export const Integrations = new Consumers.Addons.Integrations()
+  public static getCache(): KeyValueCache {
+    return DataSource.inMemoryCache
+  }
+}

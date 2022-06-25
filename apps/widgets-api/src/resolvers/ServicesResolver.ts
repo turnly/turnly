@@ -1,5 +1,4 @@
 import { IContext } from '@types'
-import { Services, Tickets } from 'datasources'
 import { ServiceModel } from 'models/ServiceModel'
 import {
   Arg,
@@ -19,35 +18,20 @@ export class ServicesResolver {
   @Query(() => [ServiceModel])
   public async getLocationServices(
     @Arg('locationId', () => ID) locationId: string,
-    @Ctx() { req: { companyId } }: IContext
+    @Ctx() { req: { companyId }, dataSources }: IContext
   ) {
-    const services = (
-      await Services.findByLocation({
-        locationId,
-        companyId,
-      })
-    ).dataList
-
-    if (!services) return []
-
-    return services
+    return await dataSources.services.getLocationServices(locationId, companyId)
   }
 
   @FieldResolver(() => Int)
   public async ticketsWaiting(
     @Root() service: ServiceModel,
-    @Ctx() { req: { companyId, customer } }: IContext
+    @Ctx() { req: { companyId, customer }, dataSources }: IContext
   ): Promise<number> {
-    const services = (
-      await Tickets.getTicketsWaitingForService({
-        serviceIdsList: [service.id],
-        companyId,
-        customerId: customer.id,
-      })
-    ).dataList
-
-    if (!services.length) return 0
-
-    return services[0].ticketsList.length
+    return await dataSources.services.getTicketsWaitingForService(
+      service.id,
+      customer.id,
+      companyId
+    )
   }
 }

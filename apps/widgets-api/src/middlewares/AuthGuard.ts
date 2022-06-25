@@ -5,7 +5,6 @@ import {
   UnauthorizedException,
 } from '@turnly/common'
 import { IContext } from '@types'
-import { Customers, Integrations } from 'datasources'
 import { AuthChecker } from 'type-graphql'
 
 export const AuthGuard: AuthChecker<IContext> = async ({ context }) => {
@@ -32,13 +31,9 @@ export const AuthGuard: AuthChecker<IContext> = async ({ context }) => {
 
   Logger.debug('Checking if widget is authorized...', { widgetId })
 
-  /**
-   * @todo Add cache with datasources
-   * https://www.apollographql.com/docs/apollo-server/data/data-sources/
-   */
-  const { data: widget } = await Integrations.getOne({
-    id: String(widgetId),
-  })
+  const { data: widget } = await context.dataSources.integrations.getOne(
+    String(widgetId)
+  )
 
   if (!widget) {
     throw new UnauthenticatedException(
@@ -48,10 +43,10 @@ export const AuthGuard: AuthChecker<IContext> = async ({ context }) => {
 
   Logger.debug('Checking if customer is authorized...', { customerId })
 
-  const { data: customer } = await Customers.getOne({
-    id: String(customerId),
-    companyId: widget.companyId,
-  })
+  const { data: customer } = await context.dataSources.customers.getOne(
+    String(customerId),
+    widget.companyId
+  )
 
   if (!customer) {
     throw new UnauthenticatedException(
