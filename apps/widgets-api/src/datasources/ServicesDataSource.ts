@@ -1,9 +1,9 @@
 import { Guid } from '@turnly/common'
 import { GraphException } from 'shared/GraphException'
 
+import { Services, Tickets } from '../shared/services'
 import { CacheSource } from './common/CacheSource'
 import { DataSource } from './common/DataSource'
-import { Services, Tickets } from './common/services'
 
 @CacheSource()
 export class ServicesDataSource extends DataSource {

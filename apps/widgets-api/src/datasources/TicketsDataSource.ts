@@ -2,9 +2,9 @@ import { Guid } from '@turnly/common'
 import { TicketsMapper } from 'mappers/TicketsMapper'
 import { GraphException } from 'shared/GraphException'
 
+import { Tickets } from '../shared/services'
 import { CacheSource } from './common/CacheSource'
 import { DataSource } from './common/DataSource'
-import { Tickets } from './common/services'
 
 @CacheSource()
 export class TicketsDataSource extends DataSource {

@@ -2,9 +2,10 @@
 import 'reflect-metadata'
 
 import { CacheSourceParams } from '@types'
+import { CacheTTL } from 'shared/CacheTTL'
 
+import { paramsToKey } from '../../shared/paramsToKey'
 import { DataSource } from './DataSource'
-import { paramsToKey } from './paramsToKey'
 
 const defaultOptions: CacheSourceParams = {
   /**
@@ -13,7 +14,7 @@ const defaultOptions: CacheSourceParams = {
    * @description Specified in **seconds**, the time-to-live (TTL) value
    * limits the lifespan of the data being stored in the cache.
    */
-  ttl: 60, // 1 minute
+  ttl: CacheTTL.ONE_MINUTE,
 
   /**
    * Ignore methods

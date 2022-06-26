@@ -1,11 +1,12 @@
 import { Guid } from '@turnly/common'
 import { FieldModel } from 'models/FieldModel'
+import { CacheTTL } from 'shared/CacheTTL'
 
+import { Fields } from '../shared/services'
 import { CacheSource } from './common/CacheSource'
 import { DataSource } from './common/DataSource'
-import { Fields } from './common/services'
 
-@CacheSource()
+@CacheSource({ ttl: CacheTTL.THREE_MINUTES })
 export class FieldsDataSource extends DataSource {
   public constructor() {
     super()

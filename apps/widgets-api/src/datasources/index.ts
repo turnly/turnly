@@ -1,6 +1,6 @@
+export * from '../shared/services'
 export * from './common/CacheSource'
 export * from './common/DataSource'
-export * from './common/services'
 export * from './createSources'
 export * from './CustomersDataSource'
 export * from './FieldsDataSource'
