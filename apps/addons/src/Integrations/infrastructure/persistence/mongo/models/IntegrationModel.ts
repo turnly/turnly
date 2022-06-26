@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import { EntityAttributes } from '@turnly/shared'
+import { EntityAttributes, timestamps } from '@turnly/shared'
 import { Integration } from 'Integrations/domain/entities/Integration'
 import { IntegrationStatus } from 'Integrations/domain/enums/IntegrationStatus'
 import mongoose, { Document, Model, Schema } from 'mongoose'
@@ -32,7 +32,7 @@ const schema = new Schema(
       index: true,
     },
   },
-  { timestamps: true }
+  { timestamps }
 )
 
 export const IntegrationModel = mongoose.model<

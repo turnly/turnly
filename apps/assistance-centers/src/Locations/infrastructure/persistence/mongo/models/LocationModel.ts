@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import { EntityAttributes } from '@turnly/shared'
+import { EntityAttributes, timestamps } from '@turnly/shared'
 import { Location } from 'Locations/domain/entities/Location'
 import mongoose, { Document, Model, Schema } from 'mongoose'
 
@@ -49,7 +49,7 @@ const schema = new Schema<ILocationDocument>(
       type: Number,
     },
   },
-  { timestamps: true }
+  { timestamps }
 )
 
 schema.index({ coordinates: '2dsphere' })

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import { EntityAttributes } from '@turnly/shared'
+import { EntityAttributes, timestamps } from '@turnly/shared'
 import { Field } from 'Fields/domain/entities/Field'
 import { FieldTypes } from 'Fields/domain/enums/FieldTypes'
 import mongoose, { Document, Model, Schema } from 'mongoose'
@@ -46,7 +46,7 @@ const schema = new Schema(
       ],
     },
   },
-  { timestamps: true }
+  { timestamps }
 )
 
 export const FieldModel = mongoose.model<IFieldDocument, IFieldModel>(

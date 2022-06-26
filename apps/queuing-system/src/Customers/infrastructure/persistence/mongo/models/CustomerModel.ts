@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import { EntityAttributes } from '@turnly/shared'
+import { EntityAttributes, timestamps } from '@turnly/shared'
 import { Customer } from 'Customers/domain/entities/Customer'
 import mongoose, { Document, Model, Schema } from 'mongoose'
 
@@ -50,7 +50,7 @@ const schema = new Schema(
       ],
     },
   },
-  { timestamps: true }
+  { timestamps }
 )
 
 export const CustomerModel = mongoose.model<CustomerDocument, ICustomerModel>(

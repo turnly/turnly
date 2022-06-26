@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import { EntityAttributes } from '@turnly/shared'
+import { EntityAttributes, timestamps } from '@turnly/shared'
 import mongoose, { Document, Model, Schema } from 'mongoose'
 import { Ticket } from 'Tickets/domain/entities/Ticket'
 import { TicketPriority } from 'Tickets/domain/enums/TicketPriority'
@@ -56,6 +56,7 @@ const schema = new Schema(
     createdAt: {
       type: Date,
       required: true,
+      immutable: true,
     },
     rating: {
       score: {
@@ -75,7 +76,7 @@ const schema = new Schema(
       ],
     },
   },
-  { timestamps: true }
+  { timestamps }
 )
 
 export const TicketModel = mongoose.model<ITicketDocument, ITicketModel>(
