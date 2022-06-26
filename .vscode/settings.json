@@ -29,7 +29,7 @@
     "apps/notifications",
     "apps/business-owners",
     "apps/interactions",
-    "apps/streaming-api",
+    "apps/realtime-api",
     "apps/widgets-api"
   ]
 }

@@ -9,7 +9,7 @@ export class Application extends Startup {
    */
   public async setup(): Promise<void> {
     this.setupMonitoring()
-    this.setupStream()
+    this.setupRealtime()
 
     await this.setupDatabase()
     await this.setupPresentations()
@@ -25,9 +25,11 @@ export class Application extends Startup {
     await new MongoClient(mongoConfig).connect()
   }
 
-  private setupStream() {
+  private setupRealtime() {
     Box.register({
-      stream: ioc.asFunction(() => io(process.env.STREAM_API_URI as string)),
+      realtime: ioc.asFunction(() =>
+        io(process.env.REALTIME_API_URL as string)
+      ),
     })
   }
 }

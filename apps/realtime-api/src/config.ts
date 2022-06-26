@@ -6,4 +6,5 @@ export const serverOptions = Object.freeze({
 export enum Channels {
   QUEUING = '/queuing',
   HELPDESK = '/helpdesk',
+  STREAM = '/stream',
 }

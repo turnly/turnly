@@ -20,8 +20,8 @@ business-owners:
   - apps/business-owners/**/*
 interactions:
   - apps/interactions/**/*
-streaming-api:
-  - apps/streaming-api/**/*
+realtime-api:
+  - apps/realtime-api/**/*
 docker:
   - apps/**/docker/*
 operator:
