@@ -4,6 +4,7 @@ import { helpdeskHandlers } from 'helpdesk/handlers'
 import { queuingHandlers } from 'queuing/handlers'
 import { AllowConnGuard } from 'queuing/middlewares/AllowConnGuard'
 import { streamHandlers } from 'stream/handlers'
+import { AuthorizedConnGuard } from 'stream/middlewares/AuthorizedConnGuard'
 
 const Server = new Realtime(serverOptions)
 
@@ -16,17 +17,8 @@ const helpdesk = Server.listen(Channels.HELPDESK)
 
 /**
  * Sets up the middleware
- *
- * @todo set up the middleware for stream
- *
- * stream.use(new InternalConnGuard().use())
- *
- * Only accept connections from the internal network
  */
-
-/**
- * Sets up the middleware
- */
+stream.use(new AuthorizedConnGuard().use())
 queuing.use(new AllowConnGuard().use())
 
 stream.subscribe(streamHandlers)

@@ -13,6 +13,7 @@ import { TicketByIdQueryHandler } from 'Tickets/application/queries/TicketByIdQu
 import { TicketsBeforeYoursQueryHandler } from 'Tickets/application/queries/TicketsBeforeYoursQuery'
 import { TicketsWaitingForServiceQueryHandler } from 'Tickets/application/queries/TicketsWaitingForServiceQuery'
 import { CreateTicketReadingDBSubscriber } from 'Tickets/application/subscribers/CreateTicketReadingDBSubscriber'
+import { RealtimeSubscriber } from 'Tickets/application/subscribers/RealtimeSubscriber'
 
 import { TicketsController } from '../api/controllers/TicketsController'
 
@@ -49,6 +50,10 @@ export class TicketsFactory {
 
   public static getEventSubscribers(): IEventSubscriber[] {
     return [
+      /**
+       * NOTE: Execute the realtime subscriber after the other subscribers.
+       */
+      Box.resolve<RealtimeSubscriber>('realtimeSubscriber'),
       Box.resolve<CreateTicketReadingDBSubscriber>(
         'createTicketReadingDatabaseSubscriber'
       ),
