@@ -1,5 +1,4 @@
-import { Box, ioc, MongoClient, mongoConfig, Startup } from '@turnly/shared'
-import io from 'socket.io-client'
+import { MongoClient, mongoConfig, Startup } from '@turnly/shared'
 
 export class Application extends Startup {
   /**
@@ -9,7 +8,6 @@ export class Application extends Startup {
    */
   public async setup(): Promise<void> {
     this.setupMonitoring()
-    this.setupRealtime()
 
     await this.setupDatabase()
     await this.setupPresentations()
@@ -23,13 +21,5 @@ export class Application extends Startup {
 
   private async setupDatabase(): Promise<void> {
     await new MongoClient(mongoConfig).connect()
-  }
-
-  private setupRealtime() {
-    Box.register({
-      realtime: ioc.asFunction(() =>
-        io(process.env.REALTIME_API_URL as string)
-      ),
-    })
   }
 }

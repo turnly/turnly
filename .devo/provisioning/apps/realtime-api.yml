@@ -20,6 +20,6 @@ services:
       - traefik.enable=true
 
       - traefik.http.routers.realtime-api-http.entrypoints=http
-      - traefik.http.routers.realtime-api-http.rule=Host(`realtime.turnly`)
+      - traefik.http.routers.realtime-api-http.rule=PathPrefix(`/wss`) || PathPrefix(`/realtime`)
       - traefik.http.routers.realtime-api-http.service=realtime-api-http
       - traefik.http.services.realtime-api-http.loadbalancer.server.port=${HTTP_PORT}
