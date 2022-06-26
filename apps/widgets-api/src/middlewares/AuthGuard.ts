@@ -7,15 +7,29 @@ import {
 import { IContext } from '@types'
 import { AuthChecker } from 'type-graphql'
 
+const getCredentials = ({ req: { headers } }: IContext) => {
+  const authorization = headers.authorization
+
+  if (!authorization) {
+    throw new UnauthenticatedException()
+  }
+
+  if (!authorization.startsWith('Basic ')) {
+    throw new UnauthorizedException()
+  }
+
+  const token = authorization.split(' ')[1]
+  const credentials = Buffer.from(token, 'base64').toString('ascii')
+
+  const [widgetId, customerId] = credentials.split(':')
+
+  return { widgetId, customerId }
+}
+
 export const AuthGuard: AuthChecker<IContext> = async ({ context }) => {
   Observability.ExceptionHandler.setUser(null)
 
-  Logger.debug('Executing AuthGuard for current context...')
-
-  const [widgetId, customerId] = [
-    context.req.headers['x-turnly-widget'],
-    context.req.headers['x-turnly-customer'],
-  ]
+  const { widgetId, customerId } = getCredentials(context)
 
   if (!widgetId) {
     throw new UnauthorizedException(
