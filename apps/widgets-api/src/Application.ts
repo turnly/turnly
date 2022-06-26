@@ -18,13 +18,13 @@ export class Application extends Startup {
    */
   public async setup(): Promise<void> {
     this.setupMonitoring()
+    this.server.setup()
 
     await this.setupPresentations()
+    await this.server.listen()
   }
 
   private async setupPresentations(): Promise<void> {
-    this.server.setup()
-
     const schema = await buildSchema({ resolvers, authChecker })
 
     const apollo = new ApolloServer({
@@ -43,7 +43,5 @@ export class Application extends Startup {
     await apollo.start()
 
     apollo.applyMiddleware({ app: this.server.app })
-
-    await this.server.listen()
   }
 }
