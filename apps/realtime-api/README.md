@@ -1,4 +1,4 @@
-# Realtime API
+# Real Time Messaging API (RTM API)
 
-The Realtime API provides read-only access to a selected set of data. Once your application
-establishes a connection to a streaming endpoint, a feed of events is delivered to your app.
+The RTM API is a WebSocket-based API that allows you to receive
+read-only access to a selected set of data from Turnly in realtime.

@@ -1654,7 +1654,7 @@
 
 "@turnly/shared@git+https://turnlyapps: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@github.com/turnly/shared.git#latest":
   version "1.0.0"
-  resolved "git+https://turnlyapps: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@github.com/turnly/shared.git#c5e03e6732400c499b387755a075d3eae358d06e"
+  resolved "git+https://turnlyapps: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@github.com/turnly/shared.git#df9db0adc9edde0bae8b5064584abadc4cc70089"
   dependencies:
     "@elastic/elasticsearch" "7.17.0"
     "@turnly/common" "git+https://turnlyapps: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@github.com/turnly/common.git#latest"
