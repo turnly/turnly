@@ -35,6 +35,7 @@
     "@turnly/eslint-config": "github:turnly/configs",
     "@turnly/realtime": "git+https://turnlyapps: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@github.com/turnly/realtime.git#latest",
     "@turnly/rpc": "git+https://turnlyapps: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@github.com/turnly/rpc.git#latest",
+    "@turnly/shared": "git+https://turnlyapps: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@github.com/turnly/shared.git#latest",
     "dotenv": "^16.0.0"
   },
   "devDependencies": {

@@ -8,7 +8,6 @@ import { TicketByIdQueryHandler } from 'Tickets/application/queries/TicketByIdQu
 import { TicketsBeforeYoursQueryHandler } from 'Tickets/application/queries/TicketsBeforeYoursQuery'
 import { TicketsWaitingForServiceQueryHandler } from 'Tickets/application/queries/TicketsWaitingForServiceQuery'
 import { CreateTicketReadingDBSubscriber } from 'Tickets/application/subscribers/CreateTicketReadingDBSubscriber'
-import { RealtimeSubscriber } from 'Tickets/application/subscribers/RealtimeSubscriber'
 
 import { TicketsController } from '../api/controllers/TicketsController'
 import { TicketsWritableForReadableRepo } from '../persistence/elasticsearch/repositories/TicketsWritableForReadableRepo'
@@ -49,7 +48,6 @@ Box.register({
   createTicketReadingDatabaseSubscriber: ioc
     .asClass(CreateTicketReadingDBSubscriber)
     .singleton(),
-  realtimeSubscriber: ioc.asClass(RealtimeSubscriber).singleton(),
 })
 
 /**
