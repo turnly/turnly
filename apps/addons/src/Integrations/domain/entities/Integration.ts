@@ -43,11 +43,11 @@ export class Integration extends AggregateRoot {
     private origins: string[],
 
     /**
-     * Company
+     * Organization
      *
-     * @description The Company that the Integration belongs to.
+     * @description The Organization that the Integration belongs to.
      */
-    private readonly companyId: Guid
+    private readonly organizationId: Guid
   ) {
     super(id)
   }
@@ -65,7 +65,7 @@ export class Integration extends AggregateRoot {
       attributes.name,
       attributes.status,
       attributes.origins,
-      attributes.companyId
+      attributes.organizationId
     )
 
     integration.register(new IntegrationCreatedEvent(integration.toObject()))
@@ -84,7 +84,7 @@ export class Integration extends AggregateRoot {
       attributes.name,
       attributes.status,
       attributes.origins,
-      attributes.companyId
+      attributes.organizationId
     )
   }
 
@@ -99,7 +99,7 @@ export class Integration extends AggregateRoot {
       name: this.name,
       status: this.status,
       origins: this.origins,
-      companyId: this.companyId,
+      organizationId: this.organizationId,
     }
   }
 }

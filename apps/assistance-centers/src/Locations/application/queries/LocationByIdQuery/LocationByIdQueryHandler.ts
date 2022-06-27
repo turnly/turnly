@@ -13,10 +13,10 @@ export class LocationByIdQueryHandler
     private readonly locationsReadableRepo: ILocationsReadableRepo
   ) {}
 
-  public async execute({ id, companyId }: LocationByIdQuery) {
+  public async execute({ id, organizationId }: LocationByIdQuery) {
     const query = new QueryBuilder<Location>()
       .equal('id', id)
-      .equal('companyId', companyId)
+      .equal('organizationId', organizationId)
       .getOne()
 
     return await this.locationsReadableRepo.getOne(query)

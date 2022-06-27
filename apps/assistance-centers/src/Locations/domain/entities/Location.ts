@@ -56,11 +56,11 @@ export class Location extends AggregateRoot {
     private stopServingBeforeInMinutes: number,
 
     /**
-     * Company
+     * Organization
      *
-     * @description The Company that the Location belongs to.
+     * @description The Organization that the Location belongs to.
      */
-    private readonly companyId: Guid
+    private readonly organizationId: Guid
   ) {
     super(id)
   }
@@ -75,7 +75,7 @@ export class Location extends AggregateRoot {
   ): Location {
     return new Location(
       Identifier.generate('loc'),
-      attributes.companyId,
+      attributes.organizationId,
       attributes.name,
       attributes.address,
       attributes.coordinates,
@@ -92,7 +92,7 @@ export class Location extends AggregateRoot {
   public static build(attributes: EntityAttributes<Location>): Location {
     return new Location(
       attributes.id,
-      attributes.companyId,
+      attributes.organizationId,
       attributes.name,
       attributes.address,
       attributes.coordinates,
@@ -113,7 +113,7 @@ export class Location extends AggregateRoot {
       address: this.address,
       country: this.country,
       coordinates: this.coordinates,
-      companyId: this.companyId,
+      organizationId: this.organizationId,
       stopServingBeforeInMinutes: this.stopServingBeforeInMinutes,
     }
   }

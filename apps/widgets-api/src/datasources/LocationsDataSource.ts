@@ -11,11 +11,11 @@ export class LocationsDataSource extends DataSource {
     super()
   }
 
-  public async getOne(id: Guid, companyId: Guid) {
+  public async getOne(id: Guid, organizationId: Guid) {
     const { data: location, meta } = await Locations.getOne({
       id,
 
-      companyId,
+      organizationId,
     })
 
     if (!location) throw new GraphException(meta)

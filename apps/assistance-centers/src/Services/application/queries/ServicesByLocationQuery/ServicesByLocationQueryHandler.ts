@@ -13,10 +13,13 @@ export class ServicesByLocationQueryHandler
     private readonly servicesReadableRepo: IServicesReadableRepo
   ) {}
 
-  public async execute({ locationId, companyId }: ServicesByLocationQuery) {
+  public async execute({
+    locationId,
+    organizationId,
+  }: ServicesByLocationQuery) {
     const query = new QueryBuilder<Service>()
       .equal('locationId', locationId)
-      .equal('companyId', companyId)
+      .equal('organizationId', organizationId)
       .getMany()
 
     return await this.servicesReadableRepo.find(query)

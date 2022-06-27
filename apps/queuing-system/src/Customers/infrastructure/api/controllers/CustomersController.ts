@@ -27,8 +27,8 @@ export class CustomersController extends Controller {
   @InputValidator(validator.create)
   public async create(params: CreateCustomerParams) {
     const customer = await this.commandBus.execute<
-      CreateCustomersCommand,
-      Customer
+      Customer,
+      CreateCustomersCommand
     >(new CreateCustomersCommand(params))
 
     return this.respond.created(customer.toObject())
@@ -37,10 +37,9 @@ export class CustomersController extends Controller {
   @TimeoutHandler()
   @InputValidator(validator.get)
   public async getOne(params: CustomerByIdQuery) {
-    const customer = await this.queryBus.ask<
-      CustomerByIdQuery,
-      Nullable<Customer>
-    >(new CustomerByIdQuery(params.id, params.companyId))
+    const customer = await this.queryBus.ask<Nullable<Customer>>(
+      new CustomerByIdQuery(params.id, params.organizationId)
+    )
 
     if (!customer) throw new ResourceNotFoundException()
 

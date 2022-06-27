@@ -11,7 +11,7 @@ export class FieldsMapper {
 
     if (entity) {
       field.setId(entity.id)
-      field.setCompanyId(entity.companyId)
+      field.setOrganizationId(entity.organizationId)
       field.setLabel(entity.label)
 
       if (entity.description) field.setDescription(entity.description)

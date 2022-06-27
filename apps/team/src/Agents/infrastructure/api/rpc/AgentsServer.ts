@@ -18,7 +18,7 @@ export class AgentsServer extends Producers.ServerImplementation<Producers.Team.
   ) {
     const { data, meta } = await this.agentsController.getOne({
       id: call.request.getId(),
-      companyId: call.request.getCompanyId(),
+      organizationId: call.request.getOrganizationId(),
     })
 
     const response = new Producers.Team.GetAgentResponse()

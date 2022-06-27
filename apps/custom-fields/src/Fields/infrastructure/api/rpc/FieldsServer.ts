@@ -22,7 +22,7 @@ export class FieldsServer extends Producers.ServerImplementation<Producers.Custo
     const { data, meta } =
       await this.fieldsController.findCustomerFieldsByService({
         serviceId: call.request.getServiceId(),
-        companyId: call.request.getCompanyId(),
+        organizationId: call.request.getOrganizationId(),
       })
 
     const response =

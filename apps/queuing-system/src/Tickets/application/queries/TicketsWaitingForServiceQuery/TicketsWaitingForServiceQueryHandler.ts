@@ -25,13 +25,13 @@ export class TicketsWaitingForServiceQueryHandler
 
   public async execute({
     serviceIds,
-    companyId,
+    organizationId,
   }: TicketsWaitingForServiceQuery) {
     const today = DateTime.today().toJSDate()
 
     const tickets = await this.ticketsReadableRepo.find(
       new QueryBuilder<Ticket>()
-        .equal('companyId', companyId)
+        .equal('organizationId', organizationId)
         .in('serviceId', serviceIds)
         .in('status', Ticket.getToAttendStatus())
         .gte('createdAt', today)

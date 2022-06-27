@@ -5,6 +5,6 @@ export class TicketByIdQuery implements IQuery {
   public constructor(
     public readonly id: Guid,
     public readonly customerId: Guid,
-    public readonly companyId: Guid
+    public readonly organizationId: Guid
   ) {}
 }

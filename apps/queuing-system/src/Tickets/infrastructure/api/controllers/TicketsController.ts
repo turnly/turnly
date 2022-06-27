@@ -39,7 +39,7 @@ export class TicketsController extends Controller {
   @TimeoutHandler()
   @InputValidator(validator.create)
   public async create(params: CreateTicketCommandParams) {
-    const ticket = await this.commandBus.execute<CreateTicketCommand, Ticket>(
+    const ticket = await this.commandBus.execute<Ticket, CreateTicketCommand>(
       new CreateTicketCommand(params)
     )
 
@@ -49,8 +49,8 @@ export class TicketsController extends Controller {
   @TimeoutHandler()
   @InputValidator(validator.get)
   public async getOne(params: TicketByIdQuery) {
-    const ticket = await this.queryBus.ask<TicketByIdQuery, Nullable<Ticket>>(
-      new TicketByIdQuery(params.id, params.customerId, params.companyId)
+    const ticket = await this.queryBus.ask<Nullable<Ticket>>(
+      new TicketByIdQuery(params.id, params.customerId, params.organizationId)
     )
 
     if (!ticket) throw new ResourceNotFoundException()
@@ -61,7 +61,7 @@ export class TicketsController extends Controller {
   @TimeoutHandler()
   @InputValidator(validator.leave)
   public async leave(params: LeaveTicketParams) {
-    const ticket = await this.commandBus.execute<LeaveTicketCommand, Ticket>(
+    const ticket = await this.commandBus.execute<Ticket, LeaveTicketCommand>(
       new LeaveTicketCommand(params)
     )
 
@@ -71,7 +71,7 @@ export class TicketsController extends Controller {
   @TimeoutHandler()
   @InputValidator(validator.announce)
   public async announce(params: AnnounceTicketParams) {
-    const ticket = await this.commandBus.execute<AnnounceTicketCommand, Ticket>(
+    const ticket = await this.commandBus.execute<Ticket, AnnounceTicketCommand>(
       new AnnounceTicketCommand(params)
     )
 
@@ -81,14 +81,11 @@ export class TicketsController extends Controller {
   @TimeoutHandler()
   @InputValidator(validator.getTicketsBeforeYours)
   public async getTicketsBeforeYours(params: TicketsBeforeYoursQuery) {
-    const tickets = await this.queryBus.ask<
-      TicketsBeforeYoursQuery,
-      Nullable<Ticket[]>
-    >(
+    const tickets = await this.queryBus.ask<Nullable<Ticket[]>>(
       new TicketsBeforeYoursQuery(
         params.ticketId,
         params.customerId,
-        params.companyId
+        params.organizationId
       )
     )
 
@@ -102,10 +99,12 @@ export class TicketsController extends Controller {
   public async getTicketsWaitingForService(
     params: TicketsWaitingForServiceQuery
   ) {
-    const tickets = await this.queryBus.ask<
-      TicketsWaitingForServiceQuery,
-      TicketsWaitingFor[]
-    >(new TicketsWaitingForServiceQuery(params.serviceIds, params.companyId))
+    const tickets = await this.queryBus.ask<TicketsWaitingFor[]>(
+      new TicketsWaitingForServiceQuery(
+        params.serviceIds,
+        params.organizationId
+      )
+    )
 
     if (!tickets) throw new ResourceNotFoundException()
 

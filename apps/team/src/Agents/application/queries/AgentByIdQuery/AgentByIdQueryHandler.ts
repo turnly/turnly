@@ -13,10 +13,10 @@ export class AgentByIdQueryHandler
     private readonly agentsReadableRepo: IAgentsReadableRepo
   ) {}
 
-  public async execute({ id, companyId }: AgentByIdQuery) {
+  public async execute({ id, organizationId }: AgentByIdQuery) {
     const query = new QueryBuilder<Agent>()
       .equal('id', id)
-      .equal('companyId', companyId)
+      .equal('organizationId', organizationId)
       .getOne()
 
     const agent = await this.agentsReadableRepo.find(query)

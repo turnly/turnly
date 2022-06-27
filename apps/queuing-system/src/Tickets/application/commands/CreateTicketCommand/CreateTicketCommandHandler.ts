@@ -24,10 +24,9 @@ export class CreateTicketCommandHandler
   ) {}
 
   public async execute({ params }: CreateTicketCommand) {
-    const tickets = await this.queryBus.ask<
-      ActiveTicketsByCustomerQuery,
-      Ticket[]
-    >(new ActiveTicketsByCustomerQuery(params.customerId, params.companyId))
+    const tickets = await this.queryBus.ask<Ticket[]>(
+      new ActiveTicketsByCustomerQuery(params.customerId, params.organizationId)
+    )
 
     if (tickets.length)
       throw new ConflictException(

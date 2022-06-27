@@ -4,6 +4,6 @@ import { IQuery } from '@turnly/shared'
 export class TicketsWaitingForServiceQuery implements IQuery {
   public constructor(
     public readonly serviceIds: Guid[],
-    public readonly companyId: Guid
+    public readonly organizationId: Guid
   ) {}
 }

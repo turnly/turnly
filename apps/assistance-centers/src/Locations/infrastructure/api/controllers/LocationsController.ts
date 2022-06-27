@@ -18,10 +18,9 @@ export class LocationsController extends Controller {
   @TimeoutHandler()
   @InputValidator(validator.get)
   public async getOne(params: LocationByIdQuery) {
-    const location = await this.queryBus.ask<
-      LocationByIdQuery,
-      Nullable<Location>
-    >(new LocationByIdQuery(params.id, params.companyId))
+    const location = await this.queryBus.ask<Nullable<Location>>(
+      new LocationByIdQuery(params.id, params.organizationId)
+    )
 
     if (!location) throw new ResourceNotFoundException()
 

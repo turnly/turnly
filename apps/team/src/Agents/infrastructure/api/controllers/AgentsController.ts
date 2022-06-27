@@ -18,8 +18,8 @@ export class AgentsController extends Controller {
   @TimeoutHandler()
   @InputValidator(validator.get)
   public async getOne(params: AgentByIdQuery) {
-    const agent = await this.queryBus.ask<AgentByIdQuery, Nullable<Agent>>(
-      new AgentByIdQuery(params.id, params.companyId)
+    const agent = await this.queryBus.ask<Nullable<Agent>>(
+      new AgentByIdQuery(params.id, params.organizationId)
     )
 
     if (!agent) throw new ResourceNotFoundException()

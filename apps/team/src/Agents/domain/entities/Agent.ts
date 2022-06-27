@@ -32,11 +32,11 @@ export class Agent extends AggregateRoot {
     private lastname: string,
 
     /**
-     * Company
+     * Organization
      *
-     * @description The Company that the Agent belongs to.
+     * @description The Organization that the Agent belongs to.
      */
-    private readonly companyId: Guid,
+    private readonly organizationId: Guid,
 
     /**
      * Location
@@ -60,9 +60,9 @@ export class Agent extends AggregateRoot {
     private readonly position: Nullable<string> = null,
 
     /**
-     * Company
+     * Organization
      *
-     * @description The Company that the Agent belongs to.
+     * @description The Organization that the Agent belongs to.
      */
     private readonly deskId: Nullable<string> = null,
 
@@ -94,7 +94,7 @@ export class Agent extends AggregateRoot {
       Identifier.generate('agent'),
       attributes.name,
       attributes.lastname,
-      attributes.companyId,
+      attributes.organizationId,
       attributes.locationId,
       attributes.nick,
       attributes.position,
@@ -114,7 +114,7 @@ export class Agent extends AggregateRoot {
       attributes.id,
       attributes.name,
       attributes.lastname,
-      attributes.companyId,
+      attributes.organizationId,
       attributes.locationId,
       attributes.nick,
       attributes.position,
@@ -134,7 +134,7 @@ export class Agent extends AggregateRoot {
       id: this.id,
       name: this.name,
       lastname: this.lastname,
-      companyId: this.companyId,
+      organizationId: this.organizationId,
       locationId: this.locationId,
       nick: this.nick,
       position: this.position,

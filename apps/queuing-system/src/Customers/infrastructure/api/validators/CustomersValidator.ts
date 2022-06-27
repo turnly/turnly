@@ -13,13 +13,13 @@ const create = Validator.object({
   phone: Validator.string(),
   hasWhatsapp: Validator.getBuilder().boolean().optional(),
   showNameSignage: Validator.getBuilder().boolean().optional(),
-  companyId: Validator.isId(),
+  organizationId: Validator.isId(),
   extra: Validator.getBuilder().array().items(extra).optional(),
 })
 
 const get = Validator.object({
   id: Validator.isId(),
-  companyId: Validator.isId(),
+  organizationId: Validator.isId(),
 })
 
 export const validator = {

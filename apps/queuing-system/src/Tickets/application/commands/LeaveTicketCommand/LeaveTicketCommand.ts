@@ -3,7 +3,7 @@ import { ICommand } from '@turnly/shared'
 
 export type LeaveTicketParams = {
   id: Guid
-  companyId: Guid
+  organizationId: Guid
   customerId: Guid
 }
 

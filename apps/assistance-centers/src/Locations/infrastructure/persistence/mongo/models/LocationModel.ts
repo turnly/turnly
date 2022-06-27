@@ -17,7 +17,7 @@ export type ILocationModel = Model<ILocationDocument>
 const schema = new Schema<ILocationDocument>(
   {
     _id: String,
-    companyId: {
+    organizationId: {
       type: String,
       required: true,
       index: true,

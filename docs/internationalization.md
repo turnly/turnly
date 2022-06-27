@@ -34,10 +34,10 @@ for the database and backend services and to use the local time zone for the fro
 We need to define the displayed currencies and settlement currency.
 We also need to design a foreign exchange service for quoting prices.
 
-#### Company entity and accounting
+#### Organization entity and accounting
 
 Since we need to set up different entities for individual countries, and
 these entities follow different regulations and accounting standards,
-the system needs to support multiple bookkeeping methods. Company-level
+the system needs to support multiple bookkeeping methods. Organization-level
 treasury management is often needed. We also need to extract business
 logic to account for different usage habits in different countries or regions.

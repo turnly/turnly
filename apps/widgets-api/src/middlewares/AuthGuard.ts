@@ -59,7 +59,7 @@ export const AuthGuard: AuthChecker<IContext> = async ({ context }) => {
 
   const { data: customer } = await context.dataSources.customers.getOne(
     String(customerId),
-    widget.companyId
+    widget.organizationId
   )
 
   if (!customer) {
@@ -70,7 +70,7 @@ export const AuthGuard: AuthChecker<IContext> = async ({ context }) => {
 
   context.req['customer'] = customer
   context.req['widget'] = widget
-  context.req['companyId'] = widget.companyId
+  context.req['organizationId'] = widget.organizationId
 
   Observability.ExceptionHandler.setUser(customer)
 

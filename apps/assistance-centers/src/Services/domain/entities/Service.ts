@@ -32,11 +32,11 @@ export class Service extends AggregateRoot {
     private description: string,
 
     /**
-     * Company
+     * Organization
      *
-     * @description The Company that the Service belongs to.
+     * @description The Organization that the Service belongs to.
      */
-    private readonly companyId: Guid,
+    private readonly organizationId: Guid,
 
     /**
      * Location
@@ -60,7 +60,7 @@ export class Service extends AggregateRoot {
       Identifier.generate('srv'),
       attributes.name,
       attributes.description,
-      attributes.companyId,
+      attributes.organizationId,
       attributes.locationId
     )
   }
@@ -75,7 +75,7 @@ export class Service extends AggregateRoot {
       attributes.id,
       attributes.name,
       attributes.description,
-      attributes.companyId,
+      attributes.organizationId,
       attributes.locationId
     )
   }
@@ -90,7 +90,7 @@ export class Service extends AggregateRoot {
       id: this.id,
       name: this.name,
       description: this.description,
-      companyId: this.companyId,
+      organizationId: this.organizationId,
       locationId: this.locationId,
     }
   }

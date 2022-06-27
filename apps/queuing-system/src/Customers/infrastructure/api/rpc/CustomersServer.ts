@@ -31,7 +31,7 @@ export class CustomersServer extends Producers.ServerImplementation<Producers.Qu
       country: payload.getCountry(),
       hasWhatsapp: payload.getHasWhatsapp(),
       showNameSignage: payload.getShowNameSignage(),
-      companyId: payload.getCompanyId(),
+      organizationId: payload.getOrganizationId(),
       extra: payload.getExtrasList().map(e => e.toObject()),
     })
 
@@ -54,7 +54,7 @@ export class CustomersServer extends Producers.ServerImplementation<Producers.Qu
   ) {
     const { data, meta } = await this.customersController.getOne({
       id: call.request.getId(),
-      companyId: call.request.getCompanyId(),
+      organizationId: call.request.getOrganizationId(),
     })
 
     const response = new Producers.QueuingSystem.GetCustomerResponse()

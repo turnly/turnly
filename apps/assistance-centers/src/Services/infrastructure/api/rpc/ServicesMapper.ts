@@ -11,7 +11,7 @@ export class ServicesMapper {
 
     if (entity) {
       service.setId(entity.id)
-      service.setCompanyId(entity.companyId)
+      service.setOrganizationId(entity.organizationId)
       service.setLocationId(entity.locationId)
       service.setName(entity.name)
       service.setDescription(entity.description)

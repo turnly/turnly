@@ -36,7 +36,7 @@ const schema = new Schema(
     showNameSignage: {
       type: Boolean,
     },
-    companyId: {
+    organizationId: {
       type: String,
       required: true,
       index: true,

@@ -22,13 +22,10 @@ export class FieldsController extends Controller {
   ) {
     const query = new SearchCustomerFieldsByServiceQuery(
       params.serviceId,
-      params.companyId
+      params.organizationId
     )
 
-    const fields = await this.queryBus.ask<
-      SearchCustomerFieldsByServiceQuery,
-      Nullable<Field[]>
-    >(query)
+    const fields = await this.queryBus.ask<Nullable<Field[]>>(query)
 
     if (!fields?.length) throw new ResourceNotFoundException()
 

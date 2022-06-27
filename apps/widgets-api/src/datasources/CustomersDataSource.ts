@@ -11,7 +11,7 @@ export class CustomersDataSource extends DataSource {
     super()
   }
 
-  public async getOne(id: Guid, companyId: Guid) {
-    return await Customers.getOne({ id, companyId })
+  public async getOne(id: Guid, organizationId: Guid) {
+    return await Customers.getOne({ id, organizationId })
   }
 }

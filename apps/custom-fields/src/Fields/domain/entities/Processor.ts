@@ -32,11 +32,11 @@ export class Processor extends AggregateRoot {
     private description: Nullable<string>,
 
     /**
-     * Company
+     * Organization
      *
-     * @description The Company that the Processor belongs to.
+     * @description The Organization that the Processor belongs to.
      */
-    private readonly companyId: Guid,
+    private readonly organizationId: Guid,
 
     /**
      * URL
@@ -81,7 +81,7 @@ export class Processor extends AggregateRoot {
       Identifier.generate('proc'),
       attributes.name,
       attributes.description,
-      attributes.companyId,
+      attributes.organizationId,
       attributes.url,
       attributes.signature,
       attributes.isActive,
@@ -99,7 +99,7 @@ export class Processor extends AggregateRoot {
       attributes.id,
       attributes.name,
       attributes.description,
-      attributes.companyId,
+      attributes.organizationId,
       attributes.url,
       attributes.signature,
       attributes.isActive,
@@ -117,7 +117,7 @@ export class Processor extends AggregateRoot {
       id: this.id,
       name: this.name,
       description: this.description,
-      companyId: this.companyId,
+      organizationId: this.organizationId,
       url: this.url,
       signature: this.signature,
       isActive: this.isActive,

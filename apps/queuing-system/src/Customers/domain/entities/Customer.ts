@@ -69,11 +69,11 @@ export class Customer extends AggregateRoot {
     private showNameSignage: boolean,
 
     /**
-     * Company
+     * Organization
      *
-     * @description The Company that the Customer belongs to.
+     * @description The Organization that the Customer belongs to.
      */
-    private readonly companyId: Guid,
+    private readonly organizationId: Guid,
 
     /**
      * Extra
@@ -103,7 +103,7 @@ export class Customer extends AggregateRoot {
       attributes.country,
       attributes.hasWhatsapp,
       attributes.showNameSignage,
-      attributes.companyId,
+      attributes.organizationId,
       attributes.extra
     )
 
@@ -127,7 +127,7 @@ export class Customer extends AggregateRoot {
       attributes.country,
       attributes.hasWhatsapp,
       attributes.showNameSignage,
-      attributes.companyId,
+      attributes.organizationId,
       attributes.extra
     )
   }
@@ -147,7 +147,7 @@ export class Customer extends AggregateRoot {
       country: this.country,
       hasWhatsapp: this.hasWhatsapp,
       showNameSignage: this.showNameSignage,
-      companyId: this.companyId,
+      organizationId: this.organizationId,
       extra: this.extra,
     }
   }

@@ -19,13 +19,13 @@ export class ActiveTicketsByCustomerQueryHandler
 
   public async execute({
     customerId,
-    companyId,
+    organizationId,
   }: ActiveTicketsByCustomerQuery) {
     const lastHour = DateTime.now().minusHours(1).toJSDate()
 
     const query = new QueryBuilder<Ticket>()
       .equal('customerId', customerId)
-      .equal('companyId', companyId)
+      .equal('organizationId', organizationId)
       .gte('createdAt', lastHour)
       .in('status', Ticket.getToAttendStatus())
       .getMany()

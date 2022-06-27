@@ -18,10 +18,9 @@ export class IntegrationsController extends Controller {
   @TimeoutHandler()
   @InputValidator(validator.get)
   public async getOne(params: { id: Guid }) {
-    const integration = await this.queryBus.ask<
-      IntegrationByIdQuery,
-      Nullable<Integration>
-    >(new IntegrationByIdQuery(params.id))
+    const integration = await this.queryBus.ask<Nullable<Integration>>(
+      new IntegrationByIdQuery(params.id)
+    )
 
     if (!integration) throw new ResourceNotFoundException()
 

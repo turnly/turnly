@@ -25,7 +25,7 @@ export class TicketsServer extends Producers.ServerImplementation<Producers.Queu
       locationId: payload.getLocationId(),
       customerId: payload.getCustomerId(),
       serviceId: payload.getServiceId(),
-      companyId: payload.getCompanyId(),
+      organizationId: payload.getOrganizationId(),
       extra: payload.getExtrasList().map(e => e.toObject()),
     })
 
@@ -48,7 +48,7 @@ export class TicketsServer extends Producers.ServerImplementation<Producers.Queu
   ) {
     const { data, meta } = await this.ticketsController.getOne({
       id: call.request.getId(),
-      companyId: call.request.getCompanyId(),
+      organizationId: call.request.getOrganizationId(),
       customerId: call.request.getCustomerId(),
     })
 
@@ -71,7 +71,7 @@ export class TicketsServer extends Producers.ServerImplementation<Producers.Queu
   ) {
     const { data, meta } = await this.ticketsController.leave({
       id: call.request.getId(),
-      companyId: call.request.getCompanyId(),
+      organizationId: call.request.getOrganizationId(),
       customerId: call.request.getCustomerId(),
     })
 
@@ -94,7 +94,7 @@ export class TicketsServer extends Producers.ServerImplementation<Producers.Queu
   ) {
     const { data, meta } = await this.ticketsController.announce({
       id: call.request.getId(),
-      companyId: call.request.getCompanyId(),
+      organizationId: call.request.getOrganizationId(),
       customerId: call.request.getCustomerId(),
     })
 
@@ -118,7 +118,7 @@ export class TicketsServer extends Producers.ServerImplementation<Producers.Queu
     const { data, meta } = await this.ticketsController.getTicketsBeforeYours({
       ticketId: call.request.getId(),
       customerId: call.request.getCustomerId(),
-      companyId: call.request.getCompanyId(),
+      organizationId: call.request.getOrganizationId(),
     })
 
     const response = new Producers.QueuingSystem.GetTicketsBeforeYoursResponse()
@@ -143,7 +143,7 @@ export class TicketsServer extends Producers.ServerImplementation<Producers.Queu
     const { data, meta } =
       await this.ticketsController.getTicketsWaitingForService({
         serviceIds: call.request.getServiceIdsList(),
-        companyId: call.request.getCompanyId(),
+        organizationId: call.request.getOrganizationId(),
       })
 
     const response =

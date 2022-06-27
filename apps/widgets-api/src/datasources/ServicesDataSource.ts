@@ -11,11 +11,11 @@ export class ServicesDataSource extends DataSource {
     super()
   }
 
-  public async getOne(id: Guid, companyId: Guid) {
+  public async getOne(id: Guid, organizationId: Guid) {
     const { data: service, meta } = await Services.getOne({
       id,
 
-      companyId,
+      organizationId,
     })
 
     if (!service) throw new GraphException(meta)
@@ -23,11 +23,11 @@ export class ServicesDataSource extends DataSource {
     return service
   }
 
-  public async getLocationServices(locationId: Guid, companyId: Guid) {
+  public async getLocationServices(locationId: Guid, organizationId: Guid) {
     const services = (
       await Services.findByLocation({
         locationId,
-        companyId,
+        organizationId,
       })
     ).dataList
 
@@ -39,12 +39,12 @@ export class ServicesDataSource extends DataSource {
   public async getTicketsWaitingForService(
     serviceId: Guid,
     customerId: Guid,
-    companyId: Guid
+    organizationId: Guid
   ): Promise<number> {
     const services = (
       await Tickets.getTicketsWaitingForService({
         serviceIdsList: [serviceId],
-        companyId,
+        organizationId,
         customerId,
       })
     ).dataList

@@ -13,10 +13,10 @@ export class ServiceByIdQueryHandler
     private readonly servicesReadableRepo: IServicesReadableRepo
   ) {}
 
-  public async execute({ id, companyId }: ServiceByIdQuery) {
+  public async execute({ id, organizationId }: ServiceByIdQuery) {
     const query = new QueryBuilder<Service>()
       .equal('id', id)
-      .equal('companyId', companyId)
+      .equal('organizationId', organizationId)
       .getOne()
 
     return await this.servicesReadableRepo.getOne(query)

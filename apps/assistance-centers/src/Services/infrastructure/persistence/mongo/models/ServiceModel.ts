@@ -19,7 +19,7 @@ const schema = new Schema(
     description: {
       type: String,
     },
-    companyId: {
+    organizationId: {
       type: String,
       required: true,
       index: true,

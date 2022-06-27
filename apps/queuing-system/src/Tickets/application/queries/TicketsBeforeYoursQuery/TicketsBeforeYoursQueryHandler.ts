@@ -21,7 +21,7 @@ export class TicketsBeforeYoursQueryHandler
   public async execute({
     ticketId,
     customerId,
-    companyId,
+    organizationId,
   }: TicketsBeforeYoursQuery) {
     const today = DateTime.today().toJSDate()
 
@@ -29,7 +29,7 @@ export class TicketsBeforeYoursQueryHandler
       new QueryBuilder<Ticket>()
         .equal('id', ticketId)
         .equal('customerId', customerId)
-        .equal('companyId', companyId)
+        .equal('organizationId', organizationId)
         .in('status', Ticket.getToAttendStatus())
         .gte('createdAt', today)
         .getOne()
@@ -41,7 +41,7 @@ export class TicketsBeforeYoursQueryHandler
 
     return await this.ticketsReadableRepo.find(
       new QueryBuilder<Ticket>()
-        .equal('companyId', companyId)
+        .equal('organizationId', organizationId)
         .equal('serviceId', serviceId)
         .notEqual('id', ticketId)
         .in('status', Ticket.getToAttendStatus())

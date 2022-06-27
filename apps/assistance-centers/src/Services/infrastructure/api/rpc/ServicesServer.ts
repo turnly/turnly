@@ -18,7 +18,7 @@ export class ServicesServer extends Producers.ServerImplementation<Producers.Ass
   ) {
     const { data, meta } = await this.servicesController.getOne({
       id: call.request.getId(),
-      companyId: call.request.getCompanyId(),
+      organizationId: call.request.getOrganizationId(),
     })
 
     const response = new Producers.AssistanceCenters.GetServiceResponse()
@@ -40,7 +40,7 @@ export class ServicesServer extends Producers.ServerImplementation<Producers.Ass
   ) {
     const { data, meta } = await this.servicesController.getServicesByLocation({
       locationId: call.request.getLocationId(),
-      companyId: call.request.getCompanyId(),
+      organizationId: call.request.getOrganizationId(),
     })
 
     const response = new Producers.AssistanceCenters.FindByLocationResponse()

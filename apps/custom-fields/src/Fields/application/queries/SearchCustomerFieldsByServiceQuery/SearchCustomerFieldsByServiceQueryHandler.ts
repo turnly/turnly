@@ -15,11 +15,11 @@ export class SearchCustomerFieldsByServiceQueryHandler
   ) {}
 
   public async execute({
-    companyId,
+    organizationId,
     serviceId,
   }: SearchCustomerFieldsByServiceQuery) {
     const query = new QueryBuilder<Field>()
-      .equal('companyId', companyId)
+      .equal('organizationId', organizationId)
       .equal('entityType', 'customer')
       .inExtra('serviceId', serviceId)
       .getMany()

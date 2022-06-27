@@ -21,7 +21,7 @@ export class LocationsServer extends Producers.ServerImplementation<Producers.As
   ) {
     const { data, meta } = await this.locationsController.getOne({
       id: call.request.getId(),
-      companyId: call.request.getCompanyId(),
+      organizationId: call.request.getOrganizationId(),
     })
 
     const response = new Producers.AssistanceCenters.GetLocationResponse()

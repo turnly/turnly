@@ -12,11 +12,11 @@ export class TicketsDataSource extends DataSource {
     super()
   }
 
-  public async getOne(id: Guid, customerId: Guid, companyId: Guid) {
+  public async getOne(id: Guid, customerId: Guid, organizationId: Guid) {
     const { data: ticket, meta } = await Tickets.getOne({
       id,
       customerId,
-      companyId,
+      organizationId,
     })
 
     if (!ticket) throw new GraphException(meta)
@@ -27,11 +27,11 @@ export class TicketsDataSource extends DataSource {
   public async getTicketsBeforeYours(
     id: Guid,
     customerId: Guid,
-    companyId: Guid
+    organizationId: Guid
   ) {
     const { dataList } = await Tickets.getTicketsBeforeYours({
       id,
-      companyId,
+      organizationId,
       customerId,
     })
 
@@ -40,7 +40,7 @@ export class TicketsDataSource extends DataSource {
     return dataList.length
   }
 
-  public async getCalledTo(_id: Guid, _customerId: Guid, _companyId: Guid) {
+  public async getCalledTo(_id: Guid, _customerId: Guid, _organizationId: Guid) {
     /**
      * @todo Implement method to get calledTo (AssignedTo -> Desk)
      */

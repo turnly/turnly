@@ -13,10 +13,10 @@ export class CustomerByIdQueryHandler
     private readonly customerReadableRepo: ICustomerReadableRepo
   ) {}
 
-  public async execute({ id, companyId }: CustomerByIdQuery) {
+  public async execute({ id, organizationId }: CustomerByIdQuery) {
     const query = new QueryBuilder<Customer>()
       .equal('id', id)
-      .equal('companyId', companyId)
+      .equal('organizationId', organizationId)
       .getOne()
 
     return await this.customerReadableRepo.getOne(query)

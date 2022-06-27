@@ -48,11 +48,11 @@ export class Answer extends AggregateRoot {
     private readonly entityType: string,
 
     /**
-     * Company
+     * Organization
      *
-     * @description The Company that the Answer belongs to.
+     * @description The Organization that the Answer belongs to.
      */
-    private readonly companyId: Guid,
+    private readonly organizationId: Guid,
 
     /**
      * Extra
@@ -79,7 +79,7 @@ export class Answer extends AggregateRoot {
       attributes.fieldId,
       attributes.entityId,
       attributes.entityType,
-      attributes.companyId,
+      attributes.organizationId,
       attributes.extra
     )
 
@@ -100,7 +100,7 @@ export class Answer extends AggregateRoot {
       attributes.fieldId,
       attributes.entityId,
       attributes.entityType,
-      attributes.companyId,
+      attributes.organizationId,
       attributes.extra
     )
   }
@@ -117,7 +117,7 @@ export class Answer extends AggregateRoot {
       fieldId: this.fieldId,
       entityId: this.entityId,
       entityType: this.entityType,
-      companyId: this.companyId,
+      organizationId: this.organizationId,
       extra: this.extra,
     }
   }

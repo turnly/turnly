@@ -56,11 +56,11 @@ export class Field extends AggregateRoot {
     private isRequired: boolean = false,
 
     /**
-     * Company
+     * Organization
      *
-     * @description The Company that the Field belongs to.
+     * @description The Organization that the Field belongs to.
      */
-    private readonly companyId: Guid,
+    private readonly organizationId: Guid,
 
     /**
      * Processors
@@ -93,7 +93,7 @@ export class Field extends AggregateRoot {
       attributes.type,
       attributes.entityType,
       attributes.isRequired,
-      attributes.companyId,
+      attributes.organizationId,
       attributes.processors,
       attributes.extra
     )
@@ -112,7 +112,7 @@ export class Field extends AggregateRoot {
       attributes.type,
       attributes.entityType,
       attributes.isRequired,
-      attributes.companyId,
+      attributes.organizationId,
       attributes.processors,
       attributes.extra
     )
@@ -131,7 +131,7 @@ export class Field extends AggregateRoot {
       type: this.type,
       entityType: this.entityType,
       isRequired: this.isRequired,
-      companyId: this.companyId,
+      organizationId: this.organizationId,
       processors: this.processors,
       extra: this.extra,
     }

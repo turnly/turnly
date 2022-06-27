@@ -81,11 +81,11 @@ export class Ticket extends AggregateRoot {
     private readonly customerId: Guid,
 
     /**
-     * Company
+     * Organization
      *
-     * @description The Company that the Ticket belongs to.
+     * @description The Organization that the Ticket belongs to.
      */
-    private readonly companyId: Guid,
+    private readonly organizationId: Guid,
 
     /**
      * Extra
@@ -227,7 +227,7 @@ export class Ticket extends AggregateRoot {
       attributes.serviceId,
       attributes.locationId,
       attributes.customerId,
-      attributes.companyId,
+      attributes.organizationId,
       attributes.extra
     )
 
@@ -250,7 +250,7 @@ export class Ticket extends AggregateRoot {
       attributes.serviceId,
       attributes.locationId,
       attributes.customerId,
-      attributes.companyId,
+      attributes.organizationId,
       attributes.extra,
       attributes.createdAt,
       attributes.updatedAt,
@@ -273,7 +273,7 @@ export class Ticket extends AggregateRoot {
       serviceId: this.serviceId,
       locationId: this.locationId,
       customerId: this.customerId,
-      companyId: this.companyId,
+      organizationId: this.organizationId,
       assigneeId: this.assigneeId,
       createdAt: this.createdAt as Date,
       updatedAt: this.updatedAt as Date,

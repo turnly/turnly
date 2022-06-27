@@ -20,7 +20,7 @@ export class CustomerMapper {
       customer.setCountry(entity.country)
       customer.setHasWhatsapp(entity.hasWhatsapp)
       customer.setShowNameSignage(entity.showNameSignage)
-      customer.setCompanyId(entity.companyId)
+      customer.setOrganizationId(entity.organizationId)
 
       if (entity.extra) {
         const extras = entity.extra.map(extra =>

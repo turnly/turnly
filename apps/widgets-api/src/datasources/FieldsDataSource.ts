@@ -14,12 +14,12 @@ export class FieldsDataSource extends DataSource {
 
   public async findCustomerFieldsByService(
     serviceId: Guid,
-    companyId: Guid
+    organizationId: Guid
   ): Promise<FieldModel[]> {
     const data = (
       await Fields.findCustomerFieldsByService({
         serviceId,
-        companyId,
+        organizationId,
       })
     ).dataList
 

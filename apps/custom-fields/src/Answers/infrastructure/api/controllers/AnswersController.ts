@@ -19,8 +19,8 @@ export class AnswersController extends Controller {
   @InputValidator(validator.create)
   public async create(params: Omit<EntityAttributes<Answer>, 'id'>[]) {
     const answers = await this.commandBus.execute<
-      CreateAnswersBulkCommand,
-      Answer[]
+      Answer[],
+      CreateAnswersBulkCommand
     >(new CreateAnswersBulkCommand(params))
 
     return this.respond.created(answers.map(answer => answer.toObject()))

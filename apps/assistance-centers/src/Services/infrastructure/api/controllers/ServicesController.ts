@@ -19,10 +19,9 @@ export class ServicesController extends Controller {
   @TimeoutHandler()
   @InputValidator(validator.get)
   public async getOne(params: ServiceByIdQuery) {
-    const service = await this.queryBus.ask<
-      ServiceByIdQuery,
-      Nullable<Service>
-    >(new ServiceByIdQuery(params.id, params.companyId))
+    const service = await this.queryBus.ask<Nullable<Service>>(
+      new ServiceByIdQuery(params.id, params.organizationId)
+    )
 
     if (!service) throw new ResourceNotFoundException()
 
@@ -32,10 +31,9 @@ export class ServicesController extends Controller {
   @TimeoutHandler()
   @InputValidator(validator.getServicesByLocation)
   public async getServicesByLocation(params: ServicesByLocationQuery) {
-    const services = await this.queryBus.ask<
-      ServicesByLocationQuery,
-      Nullable<Service[]>
-    >(new ServicesByLocationQuery(params.locationId, params.companyId))
+    const services = await this.queryBus.ask<Nullable<Service[]>>(
+      new ServicesByLocationQuery(params.locationId, params.organizationId)
+    )
 
     if (!services) throw new ResourceNotFoundException()
 

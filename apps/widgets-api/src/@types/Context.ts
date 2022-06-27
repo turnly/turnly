@@ -7,7 +7,7 @@ import type { Request, Response } from 'express'
 interface IRequest extends Request {
   customer: Customer.AsObject
   widget: Integration.AsObject
-  companyId: Guid
+  organizationId: Guid
 }
 
 export interface IContext {
