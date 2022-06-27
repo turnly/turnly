@@ -1,4 +1,5 @@
 import { Producers } from '@turnly/rpc'
+import { Client } from '@turnly/rpc/dist/consumers'
 
 import { ServicesController } from '../controllers/ServicesController'
 import { ServicesMapper } from './ServicesMapper'
@@ -18,7 +19,7 @@ export class ServicesServer extends Producers.ServerImplementation<Producers.Ass
   ) {
     const { data, meta } = await this.servicesController.getOne({
       id: call.request.getId(),
-      organizationId: call.request.getOrganizationId(),
+      organizationId: Client.getOrganizationId(call),
     })
 
     const response = new Producers.AssistanceCenters.GetServiceResponse()
@@ -40,7 +41,7 @@ export class ServicesServer extends Producers.ServerImplementation<Producers.Ass
   ) {
     const { data, meta } = await this.servicesController.getServicesByLocation({
       locationId: call.request.getLocationId(),
-      organizationId: call.request.getOrganizationId(),
+      organizationId: Client.getOrganizationId(call),
     })
 
     const response = new Producers.AssistanceCenters.FindByLocationResponse()

@@ -14,7 +14,6 @@ export class IntegrationsMapper {
       integration.setName(entity.name)
       integration.setOriginsList(entity.origins)
       integration.setCanCustomize(true)
-      integration.setOrganizationId(entity.organizationId)
     }
 
     return integration

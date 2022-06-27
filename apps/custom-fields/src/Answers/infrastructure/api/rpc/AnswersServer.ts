@@ -1,4 +1,5 @@
 import { Producers } from '@turnly/rpc'
+import { Client } from '@turnly/rpc/dist/consumers'
 
 import { AnswersController } from '../controllers/AnswersController'
 import { AnswersMapper } from './AnswersMapper'
@@ -18,6 +19,7 @@ export class AnswersServer extends Producers.ServerImplementation<Producers.Cust
   ) {
     const answers = call.request.getAnswersList().map(answer => ({
       ...answer.toObject(),
+      organizationId: Client.getOrganizationId(call),
       extra: answer.getExtrasList().map(e => e.toObject()),
     }))
 

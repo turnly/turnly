@@ -15,7 +15,6 @@ export class AnswersMapper {
       answer.setFieldId(entity.fieldId)
       answer.setEntityId(entity.entityId)
       answer.setEntityType(entity.entityType)
-      answer.setOrganizationId(entity.organizationId)
 
       if (entity.extra) {
         const extras = entity.extra.map(extra =>

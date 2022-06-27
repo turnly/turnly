@@ -13,7 +13,6 @@ export class AgentsMapper {
       agent.setId(entity.id)
       agent.setName(entity.name)
       agent.setLastname(entity.lastname)
-      agent.setOrganizationId(entity.organizationId)
       agent.setLocationId(entity.locationId)
 
       if (entity.nick) agent.setNick(entity.nick)

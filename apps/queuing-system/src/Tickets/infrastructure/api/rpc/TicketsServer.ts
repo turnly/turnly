@@ -1,5 +1,6 @@
 import { BadRequestException } from '@turnly/common'
 import { Producers } from '@turnly/rpc'
+import { Client } from '@turnly/rpc/dist/consumers'
 
 import { TicketsController } from '../controllers/TicketsController'
 import { TicketsMapper } from './TicketsMapper'
@@ -25,7 +26,7 @@ export class TicketsServer extends Producers.ServerImplementation<Producers.Queu
       locationId: payload.getLocationId(),
       customerId: payload.getCustomerId(),
       serviceId: payload.getServiceId(),
-      organizationId: payload.getOrganizationId(),
+      organizationId: Client.getOrganizationId(call),
       extra: payload.getExtrasList().map(e => e.toObject()),
     })
 
@@ -48,7 +49,7 @@ export class TicketsServer extends Producers.ServerImplementation<Producers.Queu
   ) {
     const { data, meta } = await this.ticketsController.getOne({
       id: call.request.getId(),
-      organizationId: call.request.getOrganizationId(),
+      organizationId: Client.getOrganizationId(call),
       customerId: call.request.getCustomerId(),
     })
 
@@ -71,7 +72,7 @@ export class TicketsServer extends Producers.ServerImplementation<Producers.Queu
   ) {
     const { data, meta } = await this.ticketsController.leave({
       id: call.request.getId(),
-      organizationId: call.request.getOrganizationId(),
+      organizationId: Client.getOrganizationId(call),
       customerId: call.request.getCustomerId(),
     })
 
@@ -94,7 +95,7 @@ export class TicketsServer extends Producers.ServerImplementation<Producers.Queu
   ) {
     const { data, meta } = await this.ticketsController.announce({
       id: call.request.getId(),
-      organizationId: call.request.getOrganizationId(),
+      organizationId: Client.getOrganizationId(call),
       customerId: call.request.getCustomerId(),
     })
 
@@ -118,7 +119,7 @@ export class TicketsServer extends Producers.ServerImplementation<Producers.Queu
     const { data, meta } = await this.ticketsController.getTicketsBeforeYours({
       ticketId: call.request.getId(),
       customerId: call.request.getCustomerId(),
-      organizationId: call.request.getOrganizationId(),
+      organizationId: Client.getOrganizationId(call),
     })
 
     const response = new Producers.QueuingSystem.GetTicketsBeforeYoursResponse()
@@ -143,7 +144,7 @@ export class TicketsServer extends Producers.ServerImplementation<Producers.Queu
     const { data, meta } =
       await this.ticketsController.getTicketsWaitingForService({
         serviceIds: call.request.getServiceIdsList(),
-        organizationId: call.request.getOrganizationId(),
+        organizationId: Client.getOrganizationId(call),
       })
 
     const response =

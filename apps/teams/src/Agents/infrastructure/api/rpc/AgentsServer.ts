@@ -1,4 +1,5 @@
 import { Producers } from '@turnly/rpc'
+import { Client } from '@turnly/rpc/dist/consumers'
 
 import { AgentsController } from '../controllers/AgentsController'
 import { AgentsMapper } from './AgentsMapper'
@@ -18,7 +19,7 @@ export class AgentsServer extends Producers.ServerImplementation<Producers.Teams
   ) {
     const { data, meta } = await this.agentsController.getOne({
       id: call.request.getId(),
-      organizationId: call.request.getOrganizationId(),
+      organizationId: Client.getOrganizationId(call),
     })
 
     const response = new Producers.Teams.GetAgentResponse()

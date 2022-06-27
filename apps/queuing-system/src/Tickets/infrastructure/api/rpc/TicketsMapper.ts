@@ -16,7 +16,6 @@ export class TicketsMapper {
       ticket.setServiceId(entity.serviceId)
       ticket.setLocationId(entity.locationId)
       ticket.setCustomerId(entity.customerId)
-      ticket.setOrganizationId(entity.organizationId)
       ticket.setPriority(entity.priority)
 
       if (entity.createdAt)

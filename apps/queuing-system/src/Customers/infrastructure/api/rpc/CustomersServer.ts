@@ -1,5 +1,6 @@
 import { BadRequestException } from '@turnly/common'
 import { Producers } from '@turnly/rpc'
+import { Client } from '@turnly/rpc/dist/consumers'
 
 import { CustomersController } from '../controllers/CustomersController'
 import { CustomerMapper } from './CustomersMapper'
@@ -31,7 +32,7 @@ export class CustomersServer extends Producers.ServerImplementation<Producers.Qu
       country: payload.getCountry(),
       hasWhatsapp: payload.getHasWhatsapp(),
       showNameSignage: payload.getShowNameSignage(),
-      organizationId: payload.getOrganizationId(),
+      organizationId: Client.getOrganizationId(call),
       extra: payload.getExtrasList().map(e => e.toObject()),
     })
 
@@ -54,7 +55,7 @@ export class CustomersServer extends Producers.ServerImplementation<Producers.Qu
   ) {
     const { data, meta } = await this.customersController.getOne({
       id: call.request.getId(),
-      organizationId: call.request.getOrganizationId(),
+      organizationId: Client.getOrganizationId(call),
     })
 
     const response = new Producers.QueuingSystem.GetCustomerResponse()

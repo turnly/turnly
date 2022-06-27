@@ -1,5 +1,6 @@
 import { NotImplementedError } from '@turnly/common'
 import { Producers } from '@turnly/rpc'
+import { Client } from '@turnly/rpc/dist/consumers'
 
 import { LocationsController } from '../controllers/LocationsController'
 import { LocationsMapper } from './LocationsMapper'
@@ -21,7 +22,7 @@ export class LocationsServer extends Producers.ServerImplementation<Producers.As
   ) {
     const { data, meta } = await this.locationsController.getOne({
       id: call.request.getId(),
-      organizationId: call.request.getOrganizationId(),
+      organizationId: Client.getOrganizationId(call),
     })
 
     const response = new Producers.AssistanceCenters.GetLocationResponse()

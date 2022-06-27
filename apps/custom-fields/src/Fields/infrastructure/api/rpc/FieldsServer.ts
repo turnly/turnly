@@ -1,5 +1,6 @@
 import { NotImplementedError } from '@turnly/common'
 import { Producers } from '@turnly/rpc'
+import { Client } from '@turnly/rpc/dist/consumers'
 
 import { FieldsController } from '../controllers/FieldsController'
 import { FieldsMapper } from './FieldsMapper'
@@ -22,7 +23,7 @@ export class FieldsServer extends Producers.ServerImplementation<Producers.Custo
     const { data, meta } =
       await this.fieldsController.findCustomerFieldsByService({
         serviceId: call.request.getServiceId(),
-        organizationId: call.request.getOrganizationId(),
+        organizationId: Client.getOrganizationId(call),
       })
 
     const response =
