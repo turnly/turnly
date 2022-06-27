@@ -10,7 +10,7 @@ const databases = [
   "heimdall",
   "billing",
   "assistance-centers",
-  "team",
+  "teams",
   "custom-fields",
   "queuing-system",
   "tasks-scheduling",

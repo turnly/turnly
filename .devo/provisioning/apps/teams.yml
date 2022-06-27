@@ -1,0 +1,28 @@
+version: '3.9'
+
+services:
+  teams:
+    extends:
+      file: common.yml
+      service: common
+    container_name: teams
+    image: teams:latest
+    build:
+      context: ${DOCKER_RELATIVE_APPS_DIR}/teams
+      dockerfile: ./docker/Dockerfile.dev
+      args:
+        HTTP_PORT: ${HTTP_PORT}
+        RPC_PORT: ${RPC_PORT}
+    volumes:
+      - ${DOCKER_RELATIVE_APPS_DIR}/teams:/app
+    depends_on:
+      - gateway
+      - mongo
+    labels:
+      - traefik.enable=true
+
+      - traefik.http.routers.teams-rpc.entrypoints=rpc
+      - traefik.http.routers.teams-rpc.rule=PathPrefix(`/turnly.teams.v1`)
+      - traefik.http.routers.teams-rpc.service=teams-rpc
+      - traefik.http.services.teams-rpc.loadbalancer.server.port=${RPC_PORT}
+      - traefik.http.services.teams-rpc.loadbalancer.server.scheme=h2c

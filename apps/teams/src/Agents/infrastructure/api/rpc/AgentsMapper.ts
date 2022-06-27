@@ -6,8 +6,8 @@ import { Agent } from 'Agents/domain/entities/Agent'
 export class AgentsMapper {
   public static toRPC(
     entity: Nullable<EntityAttributes<Agent>> | undefined
-  ): Producers.Team.Agent {
-    const agent = new Producers.Team.Agent()
+  ): Producers.Teams.Agent {
+    const agent = new Producers.Teams.Agent()
 
     if (entity) {
       agent.setId(entity.id)

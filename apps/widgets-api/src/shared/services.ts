@@ -13,9 +13,9 @@ export const Answers = new Consumers.CustomFields.Answers()
 export const Fields = new Consumers.CustomFields.Fields()
 
 /**
- * Team Service
+ * Teams Service
  */
-export const Agents = new Consumers.Team.Agents()
+export const Agents = new Consumers.Teams.Agents()
 
 /**
  * Queuing System Service

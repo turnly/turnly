@@ -14,7 +14,7 @@ const agentsServer = new AgentsServer(AgentsFactory.getController())
  */
 const services = [
   {
-    definition: Producers.Team.AgentsService,
+    definition: Producers.Teams.AgentsService,
     implementation: agentsServer.implementation,
   },
 ]

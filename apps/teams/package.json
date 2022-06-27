@@ -1,8 +1,8 @@
 {
-  "name": "@turnly/team",
+  "name": "@turnly/teams",
   "version": "1.0.0",
   "private": true,
-  "description": "team is a team management service.",
+  "description": "a teams management service.",
   "license": "UNLICENSED",
   "author": {
     "name": "Wardner",

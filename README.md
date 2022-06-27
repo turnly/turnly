@@ -25,7 +25,7 @@ Monorepo of backend applications that make up much of Turnly's APIs.
 | [Tasks Scheduling](/apps/tasks-scheduling)      | Tasks Scheduling                             |
 | [Notifications](/apps/notifications)            | Notifications Service                        |
 | [Business Owners](/apps/business-owners)        | Business Owners                              |
-| [Team Management](/apps/team)                   | Team Management                              |
+| [Teams Management](/apps/teams)                 | Teams Management                             |
 | [Interactions](/apps/interactions)              | Activities History                           |
 | [Billing](/apps/billing)                        | Billing Service                              |
 | [Add-ons](/apps/addons)                         | Integrations, Webhooks & Beacons             |

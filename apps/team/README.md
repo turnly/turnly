@@ -1,3 +1,0 @@
-# Team Management System
-
-TODO
