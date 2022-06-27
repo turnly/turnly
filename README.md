@@ -1,12 +1,12 @@
-# Athena — Monorepo of backend applications
+# Turnly — Athena
+
+Monorepo of back-end applications that make up much of Turnly's APIs.
 
 We are building the next queue management and customer experience system
 for walk-ins at physical locations.
 
-We replace take-a-number systems with a web widget-based system, which your customers
-can access via any device from your website. This allows you to offer a personalized service,
-obtain prior information required for service, and collect data associated with
-your customers for Service Intelligence.
+We replace take-a-number systems with a web widget-based system,
+which your customers can access via any device from your website.
 
 ### Getting Started
 
@@ -31,15 +31,15 @@ your customers for Service Intelligence.
 | ----------------------------------------------- | -------------------------------------------- |
 | [Add-ons](/apps/addons)                         | Integrations, Webhooks & Beacons             |
 | [Assistance Centers](/apps/assistance-centers)  | Assistance Centers (Locations)               |
+| [Business Owners](/apps/business-owners)        | Business Owners                              |
 | [Billing](/apps/billing)                        | Billing Service                              |
 | [Custom Fields](/apps/custom-fields)            | Business Data Fields                         |
-| [Queuing System](/apps/queuing-system)          | Queuing System                               |
-| [Teams Management](/apps/teams)                 | Teams Management                             |
-| [Interactions](/apps/interactions)              | Activities History                           |
 | [Heimdall IAM](/apps/heimdall)                  | Identity & Access Management                 |
+| [Interactions](/apps/interactions)              | Activities History                           |
 | [Notifications](/apps/notifications)            | Notifications Service                        |
+| [Queuing System](/apps/queuing-system)          | Queuing System                               |
 | [Tasks Scheduling](/apps/tasks-scheduling)      | Tasks Scheduling                             |
-| [Business Owners](/apps/business-owners)        | Business Owners                              |
+| [Teams Management](/apps/teams)                 | Teams Management                             |
 
 ### The most notable features
 
