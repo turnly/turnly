@@ -116,3 +116,8 @@ yarn devo addons build
 # Same as:
 cd ./apps/addons && yarn run build
 ```
+
+#### How to create a new application (For developers)
+
+> If you intend to add a new service, BFF, application, or others,
+> use [this guide](/docs/how-to-create-new-application.md) to ensure a successful addition.

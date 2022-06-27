@@ -26,7 +26,6 @@ export class CreateTicketReadingDBSubscriber
   public async execute(event: Event) {
     const { payload } = event
 
-    if (payload)
-      await this.commandBus.execute(new CreateTicketReadingDBCommand(payload))
+    await this.commandBus.execute(new CreateTicketReadingDBCommand(payload))
   }
 }

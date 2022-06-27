@@ -13,6 +13,7 @@ export class IntegrationsMapper {
       integration.setId(entity.id)
       integration.setName(entity.name)
       integration.setOriginsList(entity.origins)
+      integration.setOrganizationId(entity.organizationId)
       integration.setCanCustomize(true)
     }
 
