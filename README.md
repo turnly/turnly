@@ -29,17 +29,17 @@ your customers for Service Intelligence.
 
 | Name                                            | Description                                  |
 | ----------------------------------------------- | -------------------------------------------- |
-| [Heimdall IAM](/apps/heimdall)                  | Identity & Access Management                 |
+| [Add-ons](/apps/addons)                         | Integrations, Webhooks & Beacons             |
 | [Assistance Centers](/apps/assistance-centers)  | Assistance Centers (Locations)               |
-| [Queuing System](/apps/queuing-system)          | Queuing System                               |
+| [Billing](/apps/billing)                        | Billing Service                              |
 | [Custom Fields](/apps/custom-fields)            | Business Data Fields                         |
-| [Tasks Scheduling](/apps/tasks-scheduling)      | Tasks Scheduling                             |
-| [Notifications](/apps/notifications)            | Notifications Service                        |
-| [Business Owners](/apps/business-owners)        | Business Owners                              |
+| [Queuing System](/apps/queuing-system)          | Queuing System                               |
 | [Teams Management](/apps/teams)                 | Teams Management                             |
 | [Interactions](/apps/interactions)              | Activities History                           |
-| [Billing](/apps/billing)                        | Billing Service                              |
-| [Add-ons](/apps/addons)                         | Integrations, Webhooks & Beacons             |
+| [Heimdall IAM](/apps/heimdall)                  | Identity & Access Management                 |
+| [Notifications](/apps/notifications)            | Notifications Service                        |
+| [Tasks Scheduling](/apps/tasks-scheduling)      | Tasks Scheduling                             |
+| [Business Owners](/apps/business-owners)        | Business Owners                              |
 
 ### The most notable features
 
@@ -106,14 +106,14 @@ and the process for submitting pull requests to us.
 We use [SemVer](http://semver.org) for versioning. For the versions available,
 see the tags on this repository.
 
-### Authors
-
-- [Efra](https://github.com/efraa)
-- [Wardner](https://github.com/wardner)
-
 ### Others resources
 
 - [How to create a new application](/docs/how-to-create-new-application.md)
 - [Postman Collections](/docs/postman/)
 - [Conventions](/docs/conventions.md)
 - [Disaster Recovery](/docs/disaster-recovery.md)
+
+### Authors
+
+- [Efra](https://github.com/efraa)
+- [Wardner](https://github.com/wardner)
