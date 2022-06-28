@@ -1,3 +1,7 @@
 import { IRealtimeHandler } from '@turnly/realtime'
 
-export const streamHandlers: IRealtimeHandler[] = []
+import { StreamingDataToOrganization } from './StreamingDataToOrganization'
+
+export const streamHandlers: IRealtimeHandler[] = [
+  new StreamingDataToOrganization(),
+]

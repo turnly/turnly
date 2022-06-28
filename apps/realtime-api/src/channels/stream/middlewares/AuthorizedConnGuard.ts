@@ -16,13 +16,6 @@ export class AuthorizedConnGuard {
     try {
       /**
        * @todo Implement authorization
-       *
-       * @description Authorizing connections from microservices.
-       * We need to create a utility that allows creating signed tokens (JWT)
-       * for the authorization of connections to realtime API.
-       *
-       * Only accept connections from the internal network
-       * const { authorization } = this.toParams(connection)
        */
       next()
     } catch (error: any) {
