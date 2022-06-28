@@ -50,6 +50,8 @@ export class Application {
    * @description Register broadcasting subscriber to event bus.
    */
   private setupBroadcastingEvents() {
-    eventBus.subscribe([new BroadcastingEventsSubscriber()])
+    const subscriber = new BroadcastingEventsSubscriber(this.realtime)
+
+    eventBus.subscribe([subscriber])
   }
 }

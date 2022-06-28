@@ -1,0 +1,16 @@
+{
+  "name": "Broadcastable events",
+  "description": "Events can be broadcasted to all connected clients",
+  "events": [
+    "ticket.created",
+    "ticket.cancelled",
+    "ticket.announced",
+    "ticket.completed",
+    "ticket.deleted",
+    "ticket.assigned",
+    "ticket.unassigned",
+    "customer.created",
+    "customer.updated",
+    "customer.deleted"
+  ]
+}
