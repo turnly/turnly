@@ -2,7 +2,7 @@ import { Guid } from '@turnly/common'
 import { FieldModel } from 'models/FieldModel'
 import { CacheTTL } from 'shared/CacheTTL'
 
-import { Fields } from '../shared/services'
+import { Fields } from '../shared/api'
 import { CacheSource } from './common/CacheSource'
 import { DataSource } from './common/DataSource'
 

@@ -6,7 +6,7 @@ import {
 } from '@turnly/common'
 import { Events, IRealtimeClient, RealtimeMiddle } from '@turnly/realtime'
 
-import { Integrations } from '../../services'
+import { Integrations } from '../../../shared/api'
 
 /**
  * Allow connection guard

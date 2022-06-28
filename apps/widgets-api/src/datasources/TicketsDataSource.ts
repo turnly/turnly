@@ -2,7 +2,7 @@ import { Guid } from '@turnly/common'
 import { TicketsMapper } from 'mappers/TicketsMapper'
 import { GraphException } from 'shared/GraphException'
 
-import { Tickets } from '../shared/services'
+import { Tickets } from '../shared/api'
 import { CacheSource } from './common/CacheSource'
 import { DataSource } from './common/DataSource'
 
@@ -40,7 +40,11 @@ export class TicketsDataSource extends DataSource {
     return dataList.length
   }
 
-  public async getCalledTo(_id: Guid, _customerId: Guid, _organizationId: Guid) {
+  public async getCalledTo(
+    _id: Guid,
+    _customerId: Guid,
+    _organizationId: Guid
+  ) {
     /**
      * @todo Implement method to get calledTo (AssignedTo -> Desk)
      */

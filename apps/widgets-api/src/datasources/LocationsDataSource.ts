@@ -1,7 +1,7 @@
 import { Guid } from '@turnly/common'
 import { GraphException } from 'shared/GraphException'
 
-import { Locations } from '../shared/services'
+import { Locations } from '../shared/api'
 import { CacheSource } from './common/CacheSource'
 import { DataSource } from './common/DataSource'
 

@@ -1,7 +1,7 @@
 import { Guid } from '@turnly/common'
 import { CacheTTL } from 'shared/CacheTTL'
 
-import { Integrations } from '../shared/services'
+import { Integrations } from '../shared/api'
 import { CacheSource } from './common/CacheSource'
 import { DataSource } from './common/DataSource'
 

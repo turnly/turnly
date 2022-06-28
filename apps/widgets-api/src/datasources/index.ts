@@ -1,4 +1,4 @@
-export * from '../shared/services'
+export * from '../shared/api'
 export * from './common/CacheSource'
 export * from './common/DataSource'
 export * from './createSources'
