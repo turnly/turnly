@@ -8,13 +8,7 @@
     "ticket.completed"
   ],
   "queuing": [
-    "ticket.created",
-    "ticket.cancelled",
-    "ticket.announced",
-    "ticket.completed",
-    "ticket.deleted",
-    "ticket.assigned",
-    "ticket.unassigned"
+    "ticket.created"
   ],
   "helpdesk": [
     "ticket.created"

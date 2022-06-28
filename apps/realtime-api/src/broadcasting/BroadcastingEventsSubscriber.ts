@@ -1,22 +1,47 @@
 import { Logger } from '@turnly/common'
-import { Realtime } from '@turnly/realtime'
+import { Channel, Realtime } from '@turnly/realtime'
 import { Event, EventsSubscriber, IEventSubscriber } from '@turnly/shared'
 
-import { events } from './events.json'
+import broadcastable from './broadcastable-events.json'
 
+/**
+ * Broadcasting Events
+ *
+ * @description The broadcasting events allow the server to broadcast events to the clients.
+ */
 @EventsSubscriber()
 export class BroadcastingEventsSubscriber implements IEventSubscriber {
   public constructor(private readonly realtime: Realtime) {}
 
   public async execute(event: Event) {
-    if (events.includes(event.getName())) {
-      Logger.debug(`Broadcasting event: ${event.getName()}`)
+    Logger.verbose(`Broadcasting event: ${event.getName()}`)
 
-      const channels = this.realtime.getChannels().values()
-
-      for (const channel of channels) {
-        channel.onBroadcast(event.getName(), event.payload)
-      }
+    for (const channel of this.broadcastOn(event)) {
+      channel.onBroadcast(event.getName(), event)
     }
+  }
+
+  /**
+   * Broadcast On
+   *
+   * @description Get the channels the event should broadcast on.
+   */
+  private broadcastOn(event: Event) {
+    const channels = Array.from(this.realtime.getChannels())
+
+    return channels.filter(channel => {
+      const events: string[] = broadcastable[this.getChannelName(channel)] || []
+
+      return events.includes(event.getName())
+    })
+  }
+
+  /**
+   * Channel name
+   *
+   * @description Get the name of the channel.
+   */
+  private getChannelName(channel: Channel) {
+    return channel.getName().replace(/^\//, '').trim()
   }
 }
