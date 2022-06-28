@@ -62,7 +62,7 @@ export class AllowConnGuard {
        * }
        */
 
-      connection.join([widget.id /* customer.id */])
+      connection.join([widget.id, widget.organizationId /* customer.id */])
 
       connection.emit(Events.CONNECTED, {
         widget: {
