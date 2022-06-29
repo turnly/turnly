@@ -1,0 +1,28 @@
+version: '3.9'
+
+services:
+  business-owners:
+    extends:
+      file: common.yml
+      service: common
+    container_name: business-owners
+    image: business-owners:latest
+    build:
+      context: ${DOCKER_RELATIVE_APPS_DIR}/business-owners
+      dockerfile: ./docker/Dockerfile.dev
+      args:
+        HTTP_PORT: ${HTTP_PORT}
+        RPC_PORT: ${RPC_PORT}
+    volumes:
+      - ${DOCKER_RELATIVE_APPS_DIR}/business-owners:/app
+    depends_on:
+      - gateway
+      - mongo
+    labels:
+      - traefik.enable=true
+
+      - traefik.http.routers.business-owners-rpc.entrypoints=rpc
+      - traefik.http.routers.business-owners-rpc.rule=PathPrefix(`/turnly.business-owners.v1`)
+      - traefik.http.routers.business-owners-rpc.service=business-owners-rpc
+      - traefik.http.services.business-owners-rpc.loadbalancer.server.port=${RPC_PORT}
+      - traefik.http.services.business-owners-rpc.loadbalancer.server.scheme=h2c
