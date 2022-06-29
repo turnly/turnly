@@ -3,18 +3,18 @@ import { IQueryHandler, QueryBuilder, QueryHandler } from '@turnly/shared'
 import { IOrganizationsReadableRepo } from 'Organizations/domain/contracts/IOrganizationsRepo'
 import { Organization } from 'Organizations/domain/entities/Organization'
 
-import { OrganizationBySubDomainQuery } from './OrganizationBySubDomainQuery'
+import { OrganizationBySubdomainQuery } from './OrganizationBySubdomainQuery'
 
-@QueryHandler(OrganizationBySubDomainQuery)
-export class OrganizationBySubDomainQueryHandler
+@QueryHandler(OrganizationBySubdomainQuery)
+export class OrganizationBySubdomainQueryHandler
   implements
-    IQueryHandler<OrganizationBySubDomainQuery, Nullable<Organization>>
+    IQueryHandler<OrganizationBySubdomainQuery, Nullable<Organization>>
 {
   public constructor(
     private readonly organizationsReadableRepo: IOrganizationsReadableRepo
   ) {}
 
-  public async execute({ subdomain }: OrganizationBySubDomainQuery) {
+  public async execute({ subdomain }: OrganizationBySubdomainQuery) {
     const query = new QueryBuilder<Organization>()
       .equal('subdomain', subdomain)
       .getOne()

@@ -2,6 +2,7 @@ import { Guid, Identifier } from '@turnly/common'
 import { AggregateRoot, EntityAttributes } from '@turnly/shared'
 
 import { OrganizationStatus } from '../enums/OrganizationStatus'
+import { OrganizationCreatedEvent } from '../events/OrganizationCreatedEvent'
 
 /**
  * Organization
@@ -52,12 +53,21 @@ export class Organization extends AggregateRoot {
   public static create(
     attributes: Omit<EntityAttributes<Organization>, 'id'>
   ): Organization {
-    return new Organization(
-      Identifier.generate('int'),
+    const organization = new Organization(
+      Identifier.generate('org'),
       attributes.name,
       attributes.status,
       attributes.subdomain
     )
+
+    /* Solve this typo */
+    const { id, ...payload } = organization.toObject()
+
+    organization.register(
+      new OrganizationCreatedEvent({ ...payload, organizationId: id, id })
+    )
+
+    return organization
   }
 
   /**

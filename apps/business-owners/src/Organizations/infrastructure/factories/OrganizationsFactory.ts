@@ -6,7 +6,7 @@ import {
 import { Box } from '@turnly/shared'
 import {
   OrganizationByIdQueryHandler,
-  OrganizationBySubDomainQueryHandler,
+  OrganizationBySubdomainQueryHandler,
 } from 'Organizations/application/queries'
 
 import { OrganizationsController } from '../api/controllers/OrganizationsController'
@@ -19,8 +19,8 @@ export class OrganizationsFactory {
   public static getQueryHandlers(): IQueryHandler[] {
     return [
       Box.resolve<OrganizationByIdQueryHandler>('organizationByIdQueryHandler'),
-      Box.resolve<OrganizationBySubDomainQueryHandler>(
-        'organizationBySubDomainQueryHandler'
+      Box.resolve<OrganizationBySubdomainQueryHandler>(
+        'organizationBySubdomainQueryHandler'
       ),
     ]
   }

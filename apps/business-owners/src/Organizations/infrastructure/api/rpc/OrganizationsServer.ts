@@ -32,14 +32,14 @@ export class OrganizationsServer extends Producers.ServerImplementation<Producer
   }
 
   @Producers.CallHandler(Producers.BusinessOwners.GetOrganizationResponse)
-  public async getBySubDomain(
+  public async getBySubdomain(
     call: Producers.ServerUnaryCall<
-      Producers.BusinessOwners.GetOrganizationBySubDomainRequest,
+      Producers.BusinessOwners.GetOrganizationBySubdomainRequest,
       Producers.BusinessOwners.GetOrganizationResponse
     >,
     callback: Producers.ICallback<Producers.BusinessOwners.GetOrganizationResponse>
   ) {
-    const { data, meta } = await this.organizationsController.getBySubDomain({
+    const { data, meta } = await this.organizationsController.getBySubdomain({
       subdomain: call.request.getSubdomain(),
     })
 
@@ -55,7 +55,7 @@ export class OrganizationsServer extends Producers.ServerImplementation<Producer
   public get implementation() {
     return {
       getOne: this.getOne.bind(this),
-      getBySubDomain: this.getBySubDomain.bind(this),
+      getBySubdomain: this.getBySubdomain.bind(this),
     }
   }
 }

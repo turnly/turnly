@@ -1,2 +1,2 @@
 export * from './OrganizationByIdQuery'
-export * from './OrganizationBySubDomainQuery'
+export * from './OrganizationBySubdomainQuery'

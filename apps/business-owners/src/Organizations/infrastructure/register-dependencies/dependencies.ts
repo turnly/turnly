@@ -1,7 +1,7 @@
 import { Box, ioc } from '@turnly/shared'
 import {
   OrganizationByIdQueryHandler,
-  OrganizationBySubDomainQueryHandler,
+  OrganizationBySubdomainQueryHandler,
 } from 'Organizations/application/queries'
 import { OrganizationsMapper } from 'Organizations/infrastructure/persistence/mongo/entity-model-mappers/OrganizationsMapper'
 import { OrganizationsReadableRepo } from 'Organizations/infrastructure/persistence/mongo/repositories/OrganizationsReadableRepo'
@@ -21,7 +21,7 @@ Box.register({
   organizationByIdQueryHandler: ioc
     .asClass(OrganizationByIdQueryHandler)
     .singleton(),
-  organizationBySubDomainQueryHandler: ioc
-    .asClass(OrganizationBySubDomainQueryHandler)
+  organizationBySubdomainQueryHandler: ioc
+    .asClass(OrganizationBySubdomainQueryHandler)
     .singleton(),
 })

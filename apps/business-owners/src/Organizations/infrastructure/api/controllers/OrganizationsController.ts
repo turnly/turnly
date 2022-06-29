@@ -7,7 +7,7 @@ import {
 } from '@turnly/shared'
 import {
   OrganizationByIdQuery,
-  OrganizationBySubDomainQuery,
+  OrganizationBySubdomainQuery,
 } from 'Organizations/application/queries'
 import { Organization } from 'Organizations/domain/entities/Organization'
 
@@ -31,9 +31,10 @@ export class OrganizationsController extends Controller {
   }
 
   @TimeoutHandler()
-  public async getBySubDomain(params: { subdomain: string }) {
+  @InputValidator(validator.getBySubdomain)
+  public async getBySubdomain(params: { subdomain: string }) {
     const organization = await this.queryBus.ask<Nullable<Organization>>(
-      new OrganizationBySubDomainQuery(params.subdomain)
+      new OrganizationBySubdomainQuery(params.subdomain)
     )
 
     if (!organization) throw new ResourceNotFoundException()

@@ -1,2 +1,2 @@
-export * from './OrganizationBySubDomainQuery'
-export * from './OrganizationBySubDomainQueryHandler'
+export * from './OrganizationBySubdomainQuery'
+export * from './OrganizationBySubdomainQueryHandler'
