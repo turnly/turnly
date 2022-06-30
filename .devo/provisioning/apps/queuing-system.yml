@@ -11,8 +11,7 @@ services:
       context: ${DOCKER_RELATIVE_APPS_DIR}/queuing-system
       dockerfile: ./docker/Dockerfile.dev
       args:
-        HTTP_PORT: ${HTTP_PORT}
-        RPC_PORT: ${RPC_PORT}
+        PORT: ${HTTP_PORT}
     volumes:
       - ${DOCKER_RELATIVE_APPS_DIR}/queuing-system:/app
     depends_on:
@@ -21,9 +20,7 @@ services:
       - elasticsearch
     labels:
       - traefik.enable=true
-
-      - traefik.http.routers.queuing-system-rpc.entrypoints=rpc
+      - traefik.http.routers.queuing-system-rpc.entrypoints=internal,websecure
       - traefik.http.routers.queuing-system-rpc.rule=PathPrefix(`/turnly.queuing_system.v1`)
       - traefik.http.routers.queuing-system-rpc.service=queuing-system-rpc
-      - traefik.http.services.queuing-system-rpc.loadbalancer.server.port=${RPC_PORT}
       - traefik.http.services.queuing-system-rpc.loadbalancer.server.scheme=h2c

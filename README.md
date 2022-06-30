@@ -32,7 +32,6 @@ which your customers can access via any device from your website.
 | [Add-ons](/apps/addons)                         | Integrations, Webhooks & Beacons             |
 | [Assistance Centers](/apps/assistance-centers)  | Assistance Centers (Locations)               |
 | [Business Owners](/apps/business-owners)        | Business Owners                              |
-| [Billing](/apps/billing)                        | Billing Service                              |
 | [Custom Fields](/apps/custom-fields)            | Business Data Fields                         |
 | [Heimdall IAM](/apps/heimdall)                  | Identity & Access Management                 |
 | [Interactions](/apps/interactions)              | Activities History                           |

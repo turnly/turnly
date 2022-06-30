@@ -23,9 +23,9 @@ services:
     depends_on:
       - redis
     environment:
-    - REDIS_HOSTS=${REDIS_ADMINER_HOST}
+    - REDIS_HOSTS=${REDIS_UI_HOST}
     ports:
-    - ${REDIS_ADMINER_PORT}:8081
+    - ${REDIS_UI_PORT}:8081
 
 volumes:
   redis_data:

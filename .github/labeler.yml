@@ -2,8 +2,6 @@ addons:
   - apps/addons/**/*
 heimdall:
   - apps/heimdall/**/*
-billing:
-  - apps/billing/**/*
 assistance-centers:
   - apps/assistance-centers/**/*
 teams:

@@ -11,7 +11,7 @@ services:
       context: ${DOCKER_RELATIVE_APPS_DIR}/realtime-api
       dockerfile: ./docker/Dockerfile.dev
       args:
-        HTTP_PORT: ${HTTP_PORT}
+        PORT: ${HTTP_PORT}
     volumes:
       - ${DOCKER_RELATIVE_APPS_DIR}/realtime-api:/app
     depends_on:
@@ -19,7 +19,7 @@ services:
     labels:
       - traefik.enable=true
 
-      - traefik.http.routers.realtime-api-http.entrypoints=http
-      - traefik.http.routers.realtime-api-http.rule=PathPrefix(`/wss`) || PathPrefix(`/realtime`)
+      - traefik.http.routers.realtime-api-http.entrypoints=internal,websecure
+      - traefik.http.routers.realtime-api-http.rule=HostRegexp(`{subdomain:[a-z]+}.${APP_URL}`) && PathPrefix(`/rtm/v1`)
       - traefik.http.routers.realtime-api-http.service=realtime-api-http
       - traefik.http.services.realtime-api-http.loadbalancer.server.port=${HTTP_PORT}

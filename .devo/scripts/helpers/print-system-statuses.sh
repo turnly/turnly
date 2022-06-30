@@ -11,25 +11,28 @@ function print_system_statuses() {
 
   line
 
-  info " 🔴 Global API                           : http://api.turnly:$HTTP_PORT"
-  info " 🟢 Widgets API                          : http://widgets.turnly:$HTTP_PORT"
-  info " 🟢 Realtime API                        : http://realtime.turnly:$HTTP_PORT"
-  info " 🟢 RPC - Inter-services communication   : http://rpc.turnly:$RPC_PORT"
-  info " 🔴 Billing API                          : http://billing.turnly:$HTTP_PORT"
-  info " 🔴 Auth API                             : http://accounts.turnly:$HTTP_PORT"
+  info " 🔴 -> Unavailable"
+  info " 🟢 -> Available"
+
+  info " 🟢 Widgets API                             : http://{organization}.$APP_URL/api/v1/widgets"
+  info " 🟢 Real Time Messaging API                 : http://{organization}.$APP_URL/api/v1/rtm"
+  info " 🔴 Help Desk API                           : http://{organization}.$APP_URL/api/v1/help_desk"
+  info " 🔴 Bank Office API                         : http://{organization}.$APP_URL/api/v1/bank_office"
+  info " 🔴 Partnership API                         : http://{organization}.$APP_URL/api/v1/partners"
+
+  info " 🔴 Identity & Access Management API        : http://accounts.$APP_URL/api/v1"
 
   line
 
-  info "Local Infrastructure Apps: 📌 "
+  info "Local Infrastructure UIs: 📌 "
 
   line
 
-  info " 🟢 Traefik Dashboard                    : http://apps.turnly:$APP_PROXY_DASHBOARD_PORT"
-  info " 🟢 Elastic Search Dashboard             : http://apps.turnly:$ELASTICSEARCH_KIBANA_PORT"
-  info " 🟢 Mongo Dashboard                      : http://apps.turnly:$MONGO_UI_PORT"
-  info " 🟢 Redis Dashboard                      : http://apps.turnly:$REDIS_ADMINER_PORT"
-  info " 🟢 Storage Dashboard                    : http://apps.turnly:$MINIO_UI_PORT"
-  info " 🟢 RabbitMQ Dashboard                   : http://apps.turnly:$RABBITMQ_UI_PORT"
+  info " 🟢 Elastic Search Dashboard                : http://infra.$APP_URL:$ELASTICSEARCH_UI_PORT"
+  info " 🟢 Mongo Dashboard                         : http://infra.$APP_URL:$MONGO_UI_PORT"
+  info " 🟢 Redis Dashboard                         : http://infra.$APP_URL:$REDIS_UI_PORT"
+  info " 🟢 Storage Dashboard                       : http://infra.$APP_URL:$MINIO_UI_PORT"
+  info " 🟢 RabbitMQ Dashboard                      : http://infra.$APP_URL:$RABBITMQ_UI_PORT"
 
   line
 }

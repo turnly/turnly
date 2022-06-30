@@ -7,7 +7,7 @@
 ##
 ARG NODE_VERSION=16.15.0-alpine
 ARG NODE_ENV=production
-ARG HTTP_PORT=4000
+ARG PORT=4000
 
 ##
 ## Dependencies
@@ -43,10 +43,10 @@ RUN yarn build
 FROM node:${NODE_VERSION} AS runner
 
 ARG NODE_ENV
-ARG HTTP_PORT
+ARG PORT
 
 ENV NODE_ENV=${NODE_ENV}
-ENV HTTP_PORT=${HTTP_PORT}
+ENV PORT=${PORT}
 
 WORKDIR /app
 

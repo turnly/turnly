@@ -11,8 +11,7 @@ services:
       context: ${DOCKER_RELATIVE_APPS_DIR}/addons
       dockerfile: ./docker/Dockerfile.dev
       args:
-        HTTP_PORT: ${HTTP_PORT}
-        RPC_PORT: ${RPC_PORT}
+        PORT: ${HTTP_PORT}
     volumes:
       - ${DOCKER_RELATIVE_APPS_DIR}/addons:/app
     depends_on:
@@ -20,9 +19,7 @@ services:
       - mongo
     labels:
       - traefik.enable=true
-
-      - traefik.http.routers.addons-rpc.entrypoints=rpc
+      - traefik.http.routers.addons-rpc.entrypoints=internal,websecure
       - traefik.http.routers.addons-rpc.rule=PathPrefix(`/turnly.addons.v1`)
       - traefik.http.routers.addons-rpc.service=addons-rpc
-      - traefik.http.services.addons-rpc.loadbalancer.server.port=${RPC_PORT}
       - traefik.http.services.addons-rpc.loadbalancer.server.scheme=h2c

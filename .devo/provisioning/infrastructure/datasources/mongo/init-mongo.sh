@@ -8,7 +8,6 @@ print("Creating athena databases...");
 const databases = [
   "addons",
   "heimdall",
-  "billing",
   "assistance-centers",
   "teams",
   "custom-fields",

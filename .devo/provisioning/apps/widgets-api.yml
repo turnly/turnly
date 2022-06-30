@@ -11,8 +11,7 @@ services:
       context: ${DOCKER_RELATIVE_APPS_DIR}/widgets-api
       dockerfile: ./docker/Dockerfile.dev
       args:
-        HTTP_PORT: ${HTTP_PORT}
-        RPC_PORT: ${RPC_PORT}
+        PORT: ${HTTP_PORT}
     volumes:
       - ${DOCKER_RELATIVE_APPS_DIR}/widgets-api:/app
     depends_on:
@@ -20,7 +19,7 @@ services:
     labels:
       - traefik.enable=true
 
-      - traefik.http.routers.widgets-api-http.entrypoints=http
-      - traefik.http.routers.widgets-api-http.rule=Host(`widgets.turnly`)
+      - traefik.http.routers.widgets-api-http.entrypoints=internal,websecure
+      - traefik.http.routers.widgets-api-http.rule=HostRegexp(`{subdomain:[a-z]+}.${APP_URL}`) && PathPrefix(`/api/v1/widgets`)
       - traefik.http.routers.widgets-api-http.service=widgets-api-http
       - traefik.http.services.widgets-api-http.loadbalancer.server.port=${HTTP_PORT}

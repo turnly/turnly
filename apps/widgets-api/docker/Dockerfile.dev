@@ -7,7 +7,7 @@
 ##
 ARG NODE_VERSION=lts-alpine
 ARG NODE_ENV=development
-ARG HTTP_PORT=4000
+ARG PORT=4000
 
 ##
 ## Dependencies
@@ -28,10 +28,10 @@ RUN yarn install --frozen-lockfile --ignore-scripts
 FROM node:${NODE_VERSION} AS runner
 
 ARG NODE_ENV
-ARG HTTP_PORT
+ARG PORT
 
 ENV NODE_ENV=${NODE_ENV}
-ENV HTTP_PORT=${HTTP_PORT}
+ENV PORT=${PORT}
 
 WORKDIR /app
 
@@ -43,6 +43,6 @@ COPY --from=deps /app/node_modules ./node_modules
 
 USER turnly
 
-EXPOSE ${HTTP_PORT}
+EXPOSE ${PORT}
 
 CMD ["yarn", "watch"]

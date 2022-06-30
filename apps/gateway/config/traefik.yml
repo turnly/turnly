@@ -9,10 +9,10 @@ api:
   debug: true
 
 entryPoints:
-  http:
-    address: :6030
-  rpc:
-    address: :6050
+  internal:
+    address: :80
+  websecure:
+    address: :443
 
 providers:
   docker:

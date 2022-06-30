@@ -11,8 +11,7 @@ services:
       context: ${DOCKER_RELATIVE_APPS_DIR}/custom-fields
       dockerfile: ./docker/Dockerfile.dev
       args:
-        HTTP_PORT: ${HTTP_PORT}
-        RPC_PORT: ${RPC_PORT}
+        PORT: ${HTTP_PORT}
     volumes:
       - ${DOCKER_RELATIVE_APPS_DIR}/custom-fields:/app
     depends_on:
@@ -20,9 +19,7 @@ services:
       - mongo
     labels:
       - traefik.enable=true
-
-      - traefik.http.routers.custom-fields-rpc.entrypoints=rpc
+      - traefik.http.routers.custom-fields-rpc.entrypoints=internal,websecure
       - traefik.http.routers.custom-fields-rpc.rule=PathPrefix(`/turnly.custom_fields.v1`)
       - traefik.http.routers.custom-fields-rpc.service=custom-fields-rpc
-      - traefik.http.services.custom-fields-rpc.loadbalancer.server.port=${RPC_PORT}
       - traefik.http.services.custom-fields-rpc.loadbalancer.server.scheme=h2c

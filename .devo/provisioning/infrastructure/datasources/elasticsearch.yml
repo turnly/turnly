@@ -32,7 +32,7 @@ services:
     depends_on:
       - elasticsearch
     ports:
-      - ${ELASTICSEARCH_KIBANA_PORT}:5601
+      - ${ELASTICSEARCH_UI_PORT}:5601
     environment:
       ELASTICSEARCH_HOSTS: http://elasticsearch:${ELASTICSEARCH_PORT}
 

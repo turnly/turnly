@@ -6,7 +6,7 @@ function start() {
   line
 
   info "Checking available ports... 📡 "
-  check_ports "$HTTP_PORT" "$RPC_PORT" "$APP_PROXY_DASHBOARD_PORT"
+  check_ports "$HTTP_PORT" "$TRAEFIK_UI_PORT"
 
   info "Copying the yarn.lock to each app... 📝 "
   yarn_lock --copy

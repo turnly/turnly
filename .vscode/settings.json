@@ -20,7 +20,6 @@
   "eslint.workingDirectories": [
     "apps/addons",
     "apps/heimdall",
-    "apps/billing",
     "apps/assistance-centers",
     "apps/team",
     "apps/custom-fields",
