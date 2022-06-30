@@ -11,8 +11,7 @@ services:
       context: ${DOCKER_RELATIVE_APPS_DIR}/business-owners
       dockerfile: ./docker/Dockerfile.dev
       args:
-        HTTP_PORT: ${HTTP_PORT}
-        RPC_PORT: ${RPC_PORT}
+        PORT: ${HTTP_PORT}
     volumes:
       - ${DOCKER_RELATIVE_APPS_DIR}/business-owners:/app
     depends_on:
@@ -20,9 +19,7 @@ services:
       - mongo
     labels:
       - traefik.enable=true
-
-      - traefik.http.routers.business-owners-rpc.entrypoints=rpc
-      - traefik.http.routers.business-owners-rpc.rule=PathPrefix(`/turnly.business-owners.v1`)
-      - traefik.http.routers.business-owners-rpc.service=business-owners-rpc
-      - traefik.http.services.business-owners-rpc.loadbalancer.server.port=${RPC_PORT}
-      - traefik.http.services.business-owners-rpc.loadbalancer.server.scheme=h2c
+      - traefik.http.routers.custom-fields-rpc.entrypoints=internal,websecure
+      - traefik.http.routers.custom-fields-rpc.rule=PathPrefix(`/turnly.business_owners.v1`)
+      - traefik.http.routers.custom-fields-rpc.service=custom-fields-rpc
+      - traefik.http.services.custom-fields-rpc.loadbalancer.server.scheme=h2c

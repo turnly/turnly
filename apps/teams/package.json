@@ -4,11 +4,7 @@
   "private": true,
   "description": "a teams management service.",
   "license": "UNLICENSED",
-  "author": {
-    "name": "Wardner",
-    "email": "wanerlara1999@gmail.com",
-    "url": "https://github.com/wardner"
-  },
+  "author": "Turnly Team <devs@turnly.app> (https://turnly.app)",
   "scripts": {
     "prebuild": "rimraf dist tsconfig.tsbuildinfo",
     "build": "tsc",

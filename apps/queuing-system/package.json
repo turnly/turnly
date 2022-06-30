@@ -4,11 +4,7 @@
   "private": true,
   "description": "The core service for the queuing system, Customer management and everything related to the life-cycle of a Ticket.",
   "license": "UNLICENSED",
-  "author": {
-    "name": "Efra",
-    "email": "efra23peralta@gmail.com",
-    "url": "https://github.com/efraa"
-  },
+  "author": "Turnly Team <devs@turnly.app> (https://turnly.app)",
   "scripts": {
     "prebuild": "rimraf dist tsconfig.tsbuildinfo",
     "build": "tsc",

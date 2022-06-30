@@ -2,13 +2,9 @@
   "name": "@turnly/business-owners",
   "version": "1.0.0",
   "private": true,
-  "description": "A service to manage business owners (organizations), such as account management, promotions, exchanges, early adopters, etc. Owners are usually expected to hold a management position in the organization, such as a CTO.",
+  "description": "A service to manage business owners (organizations)",
   "license": "UNLICENSED",
-  "author": {
-    "name": "Wardner",
-    "email": "wanerlara1999@gmail.com",
-    "url": "https://github.com/wardner"
-  },
+  "author": "Turnly Team <devs@turnly.app> (https://turnly.app)",
   "scripts": {
     "prebuild": "rimraf dist tsconfig.tsbuildinfo",
     "build": "tsc",
