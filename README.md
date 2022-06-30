@@ -19,11 +19,11 @@ which your customers can access via any device from your website.
 
 > What about [BFF (Backend for Frontend)?](/docs/architecture/BFF.md)
 
-| Name                                       | Description                                  |
-| ------------------------------------------ | -------------------------------------------- |
-| [Gateway](/apps/gateway)                   | API entry point and access management        |
-| [Widgets API](/apps/widgets-api)           | GraphQL API for widgets clients              |
-| [Realtime API](/apps/realtime-api)         | Realtime API (WebSocket)                     |
+| Name                                                  | Description                                  |
+| ----------------------------------------------------- | -------------------------------------------- |
+| [Gateway](/apps/gateway)                              | API entry point and access management        |
+| [Widgets API](/apps/widgets-api)                      | GraphQL API for widgets clients              |
+| [RTM API](/apps/realtime-api)                         | Real Time & Streaming API                    |
 
 #### Services
 
