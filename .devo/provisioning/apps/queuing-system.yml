@@ -20,7 +20,7 @@ services:
       - elasticsearch
     labels:
       - traefik.enable=true
-      - traefik.http.routers.queuing-system-rpc.entrypoints=internal,websecure
+      - traefik.http.routers.queuing-system-rpc.entrypoints=web,websecure
       - traefik.http.routers.queuing-system-rpc.rule=PathPrefix(`/turnly.queuing_system.v1`)
       - traefik.http.routers.queuing-system-rpc.service=queuing-system-rpc
       - traefik.http.services.queuing-system-rpc.loadbalancer.server.scheme=h2c

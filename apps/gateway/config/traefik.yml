@@ -9,7 +9,7 @@ api:
   debug: true
 
 entryPoints:
-  internal:
+  web:
     address: :80
   websecure:
     address: :443

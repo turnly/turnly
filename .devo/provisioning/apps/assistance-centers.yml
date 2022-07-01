@@ -19,7 +19,7 @@ services:
       - mongo
     labels:
       - traefik.enable=true
-      - traefik.http.routers.assistance-centers-rpc.entrypoints=internal,websecure
+      - traefik.http.routers.assistance-centers-rpc.entrypoints=web,websecure
       - traefik.http.routers.assistance-centers-rpc.rule=PathPrefix(`/turnly.assistance_centers.v1`)
       - traefik.http.routers.assistance-centers-rpc.service=assistance-centers-rpc
       - traefik.http.services.assistance-centers-rpc.loadbalancer.server.scheme=h2c

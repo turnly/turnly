@@ -19,7 +19,7 @@ services:
       - mongo
     labels:
       - traefik.enable=true
-      - traefik.http.routers.teams-rpc.entrypoints=internal,websecure
+      - traefik.http.routers.teams-rpc.entrypoints=web,websecure
       - traefik.http.routers.teams-rpc.rule=PathPrefix(`/turnly.teams.v1`)
       - traefik.http.routers.teams-rpc.service=teams-rpc
       - traefik.http.services.teams-rpc.loadbalancer.server.scheme=h2c
