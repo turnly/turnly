@@ -20,18 +20,4 @@ sending the error to Sentry with all the necessary data to match the error to a 
 
 All requests have a unique identifier that helps track errors in the same transaction.
 
-Data write requests are handled with transactions to avoid data inconsistencies
-if an error occurs within the same transaction.
-
-Sentry and Slack will be your source for monitoring to guide you in troubleshooting your systems.
-
-#### Motivation
-
-The reason for having a plan and great error handling begins to be described at the beginning
-of this document, with the concern of having multiple companies in our systems. When you have
-a multi-tenant application, you may have a lot of responsibility on your shoulders for those
-companies and you must chart the path to solve the problems or disasters in the system.
-
-We must assure these companies that we are in control of what happens in our systems and
-that we have a way to go when it comes to disasters that are inevitable
-in the world of cloud technology and systems.
+Sentry, Elastic, and Slack will be your source for monitoring to guide you in troubleshooting your systems.

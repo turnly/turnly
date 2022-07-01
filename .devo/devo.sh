@@ -72,7 +72,7 @@ reload)
   reload "$@"
   ;;
 lint)
-  get_configs
+  # get_configs
   lint "$@"
   ;;
 *)

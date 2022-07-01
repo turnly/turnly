@@ -5,6 +5,8 @@ function lint() {
     "gateway"
   )
 
+  APPS_DIRECTORY=$(get_env_variable "APPS_DIRECTORY")
+
   [[ -z "$APPS_DIRECTORY" ]] && error "Oops! Environment variable APPS_DIRECTORY is not set."
 
   APPS_DIRS="$(ls -d "$APPS_DIRECTORY"/*)"
