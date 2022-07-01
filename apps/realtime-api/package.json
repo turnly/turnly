@@ -4,7 +4,7 @@
   "private": true,
   "description": "It's the real-time event bridge that sends data between internal services and applications.",
   "license": "UNLICENSED",
-  "author": "Turnly Team <devs@turnly.app> (https://turnly.app)",
+  "author": "Turnly Team <team@turnly.app> (https://turnly.app)",
   "scripts": {
     "prebuild": "rimraf dist tsconfig.tsbuildinfo",
     "build": "tsc",

@@ -4,7 +4,7 @@
   "private": true,
   "description": "Service that manages the apps (widgets) built on Turnly by an organization, enables integrations between external systems to share data.",
   "license": "UNLICENSED",
-  "author": "Turnly Team <devs@turnly.app> (https://turnly.app)",
+  "author": "Turnly Team <team@turnly.app> (https://turnly.app)",
   "scripts": {
     "prebuild": "rimraf dist tsconfig.tsbuildinfo",
     "build": "tsc",
