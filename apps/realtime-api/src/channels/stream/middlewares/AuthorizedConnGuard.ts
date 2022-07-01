@@ -1,3 +1,4 @@
+import { ActionNotAllowedException } from '@turnly/common'
 import { IRealtimeClient, RealtimeMiddle } from '@turnly/realtime'
 
 /**
@@ -14,6 +15,10 @@ export class AuthorizedConnGuard {
    */
   public use = (): RealtimeMiddle => async (connection, next) => {
     try {
+      throw new ActionNotAllowedException(
+        'The streaming channel is temporarily unavailable.'
+      )
+
       /**
        * @todo Implement authorization
        */
