@@ -30,7 +30,7 @@ function lint() {
         yarn workspace "$APP_NAME" lint:format
         yarn workspace "$APP_NAME" lint:check
         yarn workspace "$APP_NAME" lint:ts:check
-      elif git diff --name-only | grep -q "$(basename "$APP_DIR")"; then
+      elif git status -s | grep -q "$(basename "$APP_DIR")"; then
         yarn workspace "$APP_NAME" lint:format
         yarn workspace "$APP_NAME" lint:check
         yarn workspace "$APP_NAME" lint:ts:check
