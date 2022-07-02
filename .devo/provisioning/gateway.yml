@@ -5,7 +5,7 @@ services:
     extends:
       file: common.yml
       service: common
-    image: gateway:latest
+    image: turnly/gateway:latest
     container_name: gateway
     build:
       context: ${DOCKER_RELATIVE_APPS_DIR}/gateway

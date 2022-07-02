@@ -1,13 +1,13 @@
 ##
-## Docker image for production and stage environment
+## Docker image for production and stage
 ##
 
 ##
 ## Shared Configuration
 ##
-ARG NODE_VERSION=16.15.0-alpine
+ARG NODE_VERSION=16.15-alpine3.15
 ARG NODE_ENV=production
-ARG PORT=4000
+ARG PORT=80
 
 ##
 ## Dependencies
@@ -16,11 +16,12 @@ FROM node:${NODE_VERSION} AS deps
 
 WORKDIR /app
 
-RUN apk add --no-cache libc6-compat g++ git cmake make python3
-
-# copy the package.json to install dependencies
 COPY package.json yarn.lock ./
-RUN yarn install --frozen-lockfile --production --ignore-scripts
+
+RUN apk add --no-cache --update libc6-compat g++ git cmake make python3 \
+  && yarn install --frozen-lockfile --production \
+  && apk del --purge --no-cache --force-deps --quiet git cmake make python3 npm \
+  && rm -rf /var/cache/apk/* /tmp/* /var/tmp/*
 
 ##
 ## Build
@@ -58,5 +59,7 @@ COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./package.json
 
 USER turnly
+
+EXPOSE ${PORT}
 
 CMD ["yarn", "start"]

@@ -21,11 +21,9 @@ interactions:
 realtime-api:
   - apps/realtime-api/**/*
 docker:
-  - apps/**/docker/*
-operator:
-  - devo/scripts/**/*
+  - .devo/**/*
 devo:
-  - devo/**/*
+  - .devo/**/*
 documentation:
   - docs/**/*
 environment:

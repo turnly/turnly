@@ -27,8 +27,6 @@ function get_composes() {
 
     if [[ -f "$COMPOSE_FILE" ]]; then
       COMPOSE_FILES="$COMPOSE_FILES -f $COMPOSE_FILE"
-
-      [[ -f "$APP_DIR/.env" ]] && set_infra_envs_for_apps "$APP_DIR/.env"
     else
       if [[ "${IGNORE_DIRS[*]}" == *"$APP_NAME"* ]] &>/dev/null; then
         continue

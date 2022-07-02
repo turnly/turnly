@@ -12,6 +12,7 @@ source "$BIN/execute.sh"
 source "$BIN/hold-on.sh"
 
 # Helpers sources from shared
+source "$SHARED_HELPERS/get-env-variable.sh"
 source "$SHARED_HELPERS/get-env.sh"
 source "$SHARED_HELPERS/check-ports.sh"
 source "$SHARED_HELPERS/set-hosts.sh"
@@ -20,8 +21,6 @@ source "$SHARED_HELPERS/git-branch-name.sh"
 # Helpers sources
 source "$HELPERS/get-composes.sh"
 source "$HELPERS/print-system-statuses.sh"
-source "$HELPERS/set-infra-envs-for-apps.sh"
 source "$HELPERS/get-configs.sh"
 source "$HELPERS/yarn-lock.sh"
 source "$HELPERS/docker-command.sh"
-source "$HELPERS/get-env-variable.sh"

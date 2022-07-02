@@ -6,7 +6,7 @@ services:
       file: common.yml
       service: common
     container_name: custom-fields
-    image: custom-fields:latest
+    image: turnly/custom-fields:latest
     build:
       context: ${DOCKER_RELATIVE_APPS_DIR}/custom-fields
       dockerfile: ./docker/Dockerfile.dev
@@ -23,3 +23,9 @@ services:
       - traefik.http.routers.custom-fields-rpc.rule=PathPrefix(`/turnly.custom_fields.v1`)
       - traefik.http.routers.custom-fields-rpc.service=custom-fields-rpc
       - traefik.http.services.custom-fields-rpc.loadbalancer.server.scheme=h2c
+    environment:
+      # This service shared env variables that extend from common.yml
+      APP_NAME: custom-fields
+      ENCRYPTION_SECRET:
+      RABBITMQ_QUEUE: ${CUSTOM_FIELDS_RABBITMQ_QUEUE:-turnly.ms.custom_fields.queue}
+      MONGO_DB: ${CUSTOM_FIELDS_MONGO_DB:-custom_fields_db}

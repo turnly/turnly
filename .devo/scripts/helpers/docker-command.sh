@@ -10,7 +10,7 @@ function docker_command() {
   line
 
   if [[ $DOCKER_COMMAND == "up" ]]; then
-    execute "${COMPOSE_COMMAND} up -d $*"
+    execute "${COMPOSE_COMMAND} up -d --renew-anon-volumes $*"
   fi
 
   if [[ $DOCKER_COMMAND == "reload" ]]; then
@@ -18,10 +18,6 @@ function docker_command() {
   fi
 
   if [[ $DOCKER_COMMAND == "down" ]]; then
-    execute "${COMPOSE_COMMAND} down"
-  fi
-
-  if [[ $DOCKER_COMMAND == "clean" ]]; then
-    execute "${COMPOSE_COMMAND} down --volumes --remove-orphans --rmi local"
+    execute "${COMPOSE_COMMAND} down --volumes --remove-orphans"
   fi
 }

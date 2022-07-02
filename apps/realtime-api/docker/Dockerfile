@@ -20,7 +20,7 @@ RUN apk add --no-cache libc6-compat g++ git cmake make python3
 
 # copy the package.json to install dependencies
 COPY package.json yarn.lock ./
-RUN yarn install --frozen-lockfile --production --ignore-scripts
+RUN yarn install --frozen-lockfile --production
 
 ##
 ## Build

@@ -6,7 +6,7 @@ services:
       file: common.yml
       service: common
     container_name: addons
-    image: addons:latest
+    image: turnly/addons:latest
     build:
       context: ${DOCKER_RELATIVE_APPS_DIR}/addons
       dockerfile: ./docker/Dockerfile.dev
@@ -23,3 +23,9 @@ services:
       - traefik.http.routers.addons-rpc.rule=PathPrefix(`/turnly.addons.v1`)
       - traefik.http.routers.addons-rpc.service=addons-rpc
       - traefik.http.services.addons-rpc.loadbalancer.server.scheme=h2c
+    environment:
+      # This service shared env variables that extend from common.yml
+      APP_NAME: addons
+      ENCRYPTION_SECRET:
+      RABBITMQ_QUEUE: ${ADDONS_RABBITMQ_QUEUE:-turnly.ms.addons.queue}
+      MONGO_DB: ${ADDONS_MONGO_DB:-addons_db}

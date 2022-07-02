@@ -6,7 +6,7 @@ services:
       file: common.yml
       service: common
     container_name: realtime-api
-    image: realtime-api:latest
+    image: turnly/realtime-api:latest
     build:
       context: ${DOCKER_RELATIVE_APPS_DIR}/realtime-api
       dockerfile: ./docker/Dockerfile.dev
@@ -18,8 +18,11 @@ services:
       - gateway
     labels:
       - traefik.enable=true
-
       - traefik.http.routers.realtime-api-http.entrypoints=web,websecure
       - traefik.http.routers.realtime-api-http.rule=HostRegexp(`{subdomain:[a-z]+}.${APP_URL}`) && PathPrefix(`/api/v1/rtm`)
       - traefik.http.routers.realtime-api-http.service=realtime-api-http
       - traefik.http.services.realtime-api-http.loadbalancer.server.port=${HTTP_PORT}
+    environment:
+      # This service shared env variables that extend from common.yml
+      APP_NAME: realtime-api
+      RABBITMQ_QUEUE: ${REALTIME_API_RABBITMQ_QUEUE:-turnly.ms.realtime_api.queue}

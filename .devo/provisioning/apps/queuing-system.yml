@@ -6,7 +6,7 @@ services:
       file: common.yml
       service: common
     container_name: queuing-system
-    image: queuing-system:latest
+    image: turnly/queuing-system:latest
     build:
       context: ${DOCKER_RELATIVE_APPS_DIR}/queuing-system
       dockerfile: ./docker/Dockerfile.dev
@@ -24,3 +24,9 @@ services:
       - traefik.http.routers.queuing-system-rpc.rule=PathPrefix(`/turnly.queuing_system.v1`)
       - traefik.http.routers.queuing-system-rpc.service=queuing-system-rpc
       - traefik.http.services.queuing-system-rpc.loadbalancer.server.scheme=h2c
+    environment:
+      # This service shared env variables that extend from common.yml
+      APP_NAME: queuing-system
+      ENCRYPTION_SECRET:
+      RABBITMQ_QUEUE: ${QUEUING_SYSTEM_RABBITMQ_QUEUE:-turnly.ms.queuing_system.queue}
+      MONGO_DB: ${QUEUING_SYSTEM_MONGO_DB:-queuing_system_db}

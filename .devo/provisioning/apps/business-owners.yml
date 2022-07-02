@@ -6,7 +6,7 @@ services:
       file: common.yml
       service: common
     container_name: business-owners
-    image: business-owners:latest
+    image: turnly/business-owners:latest
     build:
       context: ${DOCKER_RELATIVE_APPS_DIR}/business-owners
       dockerfile: ./docker/Dockerfile.dev
@@ -23,3 +23,9 @@ services:
       - traefik.http.routers.custom-fields-rpc.rule=PathPrefix(`/turnly.business_owners.v1`)
       - traefik.http.routers.custom-fields-rpc.service=custom-fields-rpc
       - traefik.http.services.custom-fields-rpc.loadbalancer.server.scheme=h2c
+    environment:
+      # This service shared env variables that extend from common.yml
+      APP_NAME: business-owners
+      ENCRYPTION_SECRET:
+      RABBITMQ_QUEUE: ${BUSINESS_OWNERS_RABBITMQ_QUEUE:-turnly.ms.business_owners.queue}
+      MONGO_DB: ${BUSINESS_OWNERS_MONGO_DB:-business_owners_db}

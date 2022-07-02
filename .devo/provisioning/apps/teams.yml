@@ -6,7 +6,7 @@ services:
       file: common.yml
       service: common
     container_name: teams
-    image: teams:latest
+    image: turnly/teams:latest
     build:
       context: ${DOCKER_RELATIVE_APPS_DIR}/teams
       dockerfile: ./docker/Dockerfile.dev
@@ -23,3 +23,9 @@ services:
       - traefik.http.routers.teams-rpc.rule=PathPrefix(`/turnly.teams.v1`)
       - traefik.http.routers.teams-rpc.service=teams-rpc
       - traefik.http.services.teams-rpc.loadbalancer.server.scheme=h2c
+    environment:
+      # This service shared env variables that extend from common.yml
+      APP_NAME: teams
+      ENCRYPTION_SECRET:
+      RABBITMQ_QUEUE: ${TEAMS_RABBITMQ_QUEUE:-turnly.ms.teams.queue}
+      MONGO_DB: ${TEAMS_MONGO_DB:-teams_db}

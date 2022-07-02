@@ -40,7 +40,7 @@ function start() {
   line
 
   info "Spinning up all the configured services... 🕓 "
-  sleep 6
+  sleep 8
 
   print_system_statuses
 

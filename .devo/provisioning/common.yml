@@ -7,9 +7,68 @@ x-logging: &logging
       max-file: 3
       max-size: 10m
 
+x-env-shared: &env-shared |-
+  # Base URL (domain) of the turnly app - turnly.app, turnly.dev, etc.
+  APP_URL
+
+  # The RPC bind address
+  RPC_BIND_ADDRESS
+
+  # The addresses of the rpc servers for clients
+  RPC_CONSUMER_ADDRESS
+
+  # The exposed port for each application
+  HTTP_PORT
+  HTTPS_PORT
+
+  # The level of logging in the App; verbose, debug, info, warn, error
+  LOGGING_LEVEL
+
+  # Sentry Config
+  SENTRY_ORG
+  SENTRY_DSN
+  SENTRY_SLACK_WEBHOOK
+
+  # Fluentd Config
+  FLUENT_HOST
+  FLUENT_PORT
+
+  # MongoDB config
+  MONGO_PORT
+  MONGO_USERNAME
+  MONGO_PASSWORD
+  MONGO_URI
+
+  # Redis config
+  REDIS_HOST
+  REDIS_PORT
+  REDIS_PASSWORD
+
+  # MinIO - Storage
+  MINIO_PORT
+  MINIO_ROOT_USER
+  MINIO_ROOT_PASSWORD
+
+  # Storage config
+  STORAGE_HOST
+
+  # Elastic Search config
+  ELASTICSEARCH_URI
+  ELASTICSEARCH_PORT
+  ELASTICSEARCH_UI_PORT
+
+  # Broker config
+  RABBITMQ_URI
+  RABBITMQ_EXCHANGE
+
+  # DB Debugging - DO NOT USE IN PRODUCTION
+  DB_DEBUG
+
 x-common: &common
   <<: *logging
   restart: always
+  environment:
+    - *env-shared
   networks:
     turnly:
 
