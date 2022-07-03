@@ -40,6 +40,26 @@ based terminal like **Git bash**.
 
 ### Getting Started
 
+#### Local Domains
+
+Turnly is a SaaS application and all resources are under a custom URL for each organization.
+In development we add the necessary domains for you in your hosts' file and 4 additional
+ones so that you can do tests, we recommend you create your local organization with one of the following names:
+
+* **organization-test**
+* **organization-dev**
+* **org-test**
+* **org-dev**
+
+So when all of this is set up, you will be able to use the following URLs to interact with the APIs:
+
+* `http://{organization}.turnly.local/api/v1/help_desk` → **Help Desk API**
+* `http://{organization}.turnly.local/api/v1/back_office` → **Back Office API**
+* `http://{organization}.turnly.local/api/v1/partners` → **Partnership API**
+* `http://{organization}.turnly.local/api/v1/widgets` → **Widgets API**
+* `http://{organization}.turnly.local/api/v1/rtm` → **Real Time Messaging API**
+* `http://accounts.turnly.local/api/v1` → **Identity & Access Management API**
+
 #### Install application
 
 ```sh

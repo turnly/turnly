@@ -75,6 +75,20 @@ read-only access to a selected set of data from Turnly in realtime.
 Once your application establishes a connection to a streaming endpoint,
 a feed of events is delivered to your app.
 
+#### Custom Subdomain
+
+Your organization gets a subdomain from Turnly.
+The URL you get is the one you should use to interact with your organization's APIs and apps.
+
+You will be able to use the following URLs to interact with the APIs:
+
+* `https://{organization}.turnly.app/api/v1/help_desk` → **Help Desk API**
+* `https://{organization}.turnly.app/api/v1/back_office` → **Back Office API**
+* `https://{organization}.turnly.app/api/v1/partners` → **Partnership API**
+* `https://{organization}.turnly.app/api/v1/widgets` → **Widgets API**
+* `https://{organization}.turnly.app/api/v1/rtm` → **Real Time Messaging API**
+* `http://accounts.turnly.local/api/v1` → **Identity & Access Management API**
+
 ### Give a Star! ⭐
 
 If you like this project or plan to use it in the future, please give it a star. Thanks 🙏
