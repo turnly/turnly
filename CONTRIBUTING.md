@@ -53,12 +53,14 @@ ones so that you can do tests, we recommend you create your local organization w
 
 So when all of this is set up, you will be able to use the following URLs to interact with the APIs:
 
-* `http://{organization}.turnly.local/api/v1/help_desk` → **Help Desk API**
-* `http://{organization}.turnly.local/api/v1/back_office` → **Back Office API**
-* `http://{organization}.turnly.local/api/v1/partners` → **Partnership API**
-* `http://{organization}.turnly.local/api/v1/widgets` → **Widgets API**
-* `http://{organization}.turnly.local/api/v1/rtm` → **Real Time Messaging API**
-* `http://accounts.turnly.local/api/v1` → **Identity & Access Management API**
+| Name                                  | URL                                                       |
+| ------------------------------------- | --------------------------------------------------------- |
+| **Help Desk API**                     | `http://{organization}.turnly.local/api/v1/help_desk`     |
+| **Back Office API**                   | `http://{organization}.turnly.local/api/v1/back_office`   |
+| **Partnership API**                   | `http://{organization}.turnly.local/api/v1/partners`      |
+| **Widgets API**                       | `http://{organization}.turnly.local/api/v1/widgets`       |
+| **Real Time Messaging API**           | `http://{organization}.turnly.local/api/v1/rtm`           |
+| **Identity & Access Management API**  | `http://accounts.turnly.local/api/v1`                     |
 
 #### Install application
 

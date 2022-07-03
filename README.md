@@ -82,12 +82,14 @@ The URL you get is the one you should use to interact with your organization's A
 
 You will be able to use the following URLs to interact with the APIs:
 
-* `https://{organization}.turnly.app/api/v1/help_desk` → **Help Desk API**
-* `https://{organization}.turnly.app/api/v1/back_office` → **Back Office API**
-* `https://{organization}.turnly.app/api/v1/partners` → **Partnership API**
-* `https://{organization}.turnly.app/api/v1/widgets` → **Widgets API**
-* `https://{organization}.turnly.app/api/v1/rtm` → **Real Time Messaging API**
-* `http://accounts.turnly.local/api/v1` → **Identity & Access Management API**
+| Name                                  | URL                                                      |
+| ------------------------------------- | -------------------------------------------------------- |
+| **Help Desk API**                     | `https://{organization}.turnly.app/api/v1/help_desk`     |
+| **Back Office API**                   | `https://{organization}.turnly.app/api/v1/back_office`   |
+| **Partnership API**                   | `https://{organization}.turnly.app/api/v1/partners`      |
+| **Widgets API**                       | `https://{organization}.turnly.app/api/v1/widgets`       |
+| **Real Time Messaging API**           | `https://{organization}.turnly.app/api/v1/rtm`           |
+| **Identity & Access Management API**  | `https://accounts.turnly.app/api/v1`                     |
 
 ### Give a Star! ⭐
 
