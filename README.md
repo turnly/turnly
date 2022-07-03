@@ -1,23 +1,12 @@
-# Turnly — Athena
+# Turnly
 
-Monorepo of back-end applications that make up much of Turnly's APIs.
-
-We are building the next queue management and customer experience system
+The next queue management and customer experience system
 for walk-ins at physical locations.
 
 We replace take-a-number systems with a web widget-based system,
 which your customers can access via any device from your website.
 
-### Getting Started
-
-1. We highly recommend you review the [troubleshooting docs.](/docs/troubleshooting.md)
-2. Please install the [VScode recommendations](/.vscode/extensions.json) to improve your code style.
-3. We highly recommend you learn about [DevO.](/docs/devo.md)
-4. Now you're ready to [set up your development environment.](/docs/development.md)
-
-#### APIs (Backend for Frontend)
-
-> What about [BFF (Backend for Frontend)?](/docs/architecture/BFF.md)
+#### APIs (Backend for Frontend) 🛠️
 
 | Name                                                  | Description                                  |
 | ----------------------------------------------------- | -------------------------------------------- |
@@ -25,7 +14,7 @@ which your customers can access via any device from your website.
 | [Widgets API](/apps/widgets-api)                      | GraphQL API for widgets clients              |
 | [RTM API](/apps/realtime-api)                         | Real Time & Streaming API                    |
 
-#### Services
+#### Microservices 📦
 
 | Name                                            | Description                                  |
 | ----------------------------------------------- | -------------------------------------------- |
@@ -40,7 +29,9 @@ which your customers can access via any device from your website.
 | [Tasks Scheduling](/apps/tasks-scheduling)      | Tasks Scheduling                             |
 | [Teams Management](/apps/teams)                 | Teams Management                             |
 
-### The most notable features
+![high-level-architecture](/docs/diagrams/high-level-architecture.png)
+
+### The most notable features 📦
 
 ##### Assistance Centers
 
@@ -84,35 +75,44 @@ read-only access to a selected set of data from Turnly in realtime.
 Once your application establishes a connection to a streaming endpoint,
 a feed of events is delivered to your app.
 
-### Software Architecture
+### Give a Star! ⭐
 
-Microservices are built using multiple architectural concepts,
-we highly recommend you review the [architecture docs.](/docs/architecture)
+If you like this project or plan to use it in the future, please give it a star. Thanks 🙏
 
-![high-level-architecture](/docs/diagrams/high-level-architecture.png)
-
-### Deployments
-
-Learn about [production & stage deployments.](/docs/deployment.md)
-
-### Contributing
+### Contributing (Developers) ❤️
 
 Please read [CONTRIBUTING.md](/CONTRIBUTING.md) for details on our code of conduct,
 and the process for submitting pull requests to us.
 
-### Versioning
+### Deployments 🚀
+
+Learn about [production & stage deployments.](/docs/deployment.md)
+
+### Security 🔐
+
+Review the [SECURITY](/SECURITY.md)
+
+### Versioning 🏷️
 
 We use [SemVer](http://semver.org) for versioning. For the versions available,
 see the tags on this repository.
 
-### Others resources
+### Team 🎨
 
-- [How to create a new application](/docs/how-to-create-new-application.md)
-- [Postman Collections](/docs/postman/)
-- [Conventions](/docs/conventions.md)
-- [Disaster Recovery](/docs/disaster-recovery.md)
-
-### Authors
+**Owners:**
 
 - [Efra](https://github.com/efraa)
 - [Wardner](https://github.com/wardner)
+
+**DevOps:**
+
+- [Efra](https://github.com/efraa)
+- [Pedro Sanders](https://github.com/psanders)
+
+**Maintainers:**
+
+- [You](https://github.com/settings)
+
+### License 📝
+
+Copyright (C) 2022 by Turnly Inc. MIT License (see [LICENSE](/LICENSE) for details).

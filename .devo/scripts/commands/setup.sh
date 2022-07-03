@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function setup() {
-  info "Setting up Athena in development mode with docker... 🚀 "
+  info "Setting up Turnly in development mode with docker... 🚀 "
 
   line
 

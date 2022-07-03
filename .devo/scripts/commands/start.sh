@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function start() {
-  info "Starting Athena in development mode with docker... 🚀 "
+  info "Starting Turnly in development mode with docker... 🚀 "
 
   line
 
@@ -44,7 +44,7 @@ function start() {
 
   print_system_statuses
 
-  info "Starting Athena in development mode with docker... DONE ✅ "
+  info "Starting Turnly in development mode with docker... DONE ✅ "
 
   line
 }

@@ -1,4 +1,4 @@
-# Athena — How to create a new application
+# Turnly — How to create a new application
 
 > This guide will help you with the addition of new applications, services, BFF, or
 > similar so that you are sure to follow all the basic steps

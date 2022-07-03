@@ -1,5 +1,5 @@
 {
-  "name": "@turnly/athena",
+  "name": "@turnly/turnly",
   "version": "1.0.0",
   "private": true,
   "description": "Queue management system for waiting lines & walk-ins at physical locations.",

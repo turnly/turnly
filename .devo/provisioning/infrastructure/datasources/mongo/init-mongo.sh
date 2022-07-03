@@ -3,7 +3,7 @@
 set -e
 
 mongo <<EOF
-print("Creating athena databases...");
+print("Creating turnly databases...");
 
 const databases = [
   "addons_db",
@@ -27,5 +27,5 @@ for (const database of databases) {
   });
 }
 
-print("Creating athena databases... DONE!");
+print("Creating turnly databases... DONE!");
 EOF

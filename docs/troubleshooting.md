@@ -1,4 +1,4 @@
-# Athena — Troubleshooting 🔥 
+# Turnly — Troubleshooting 🔥 
 
 #### Permission denied (Windows) 
 

@@ -1,4 +1,4 @@
-# Athena — What about Disaster Recovery?
+# Turnly — What about Disaster Recovery?
 
 Hopefully, this goes without saying, enterprise customers tend to view much of their software
 as "critical" and will want to know that it has a reliable history of uptime and systems installed
