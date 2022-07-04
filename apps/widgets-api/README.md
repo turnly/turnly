@@ -17,6 +17,15 @@ Authorization: Basic <credentials>
 Authorization: Basic dHdpbGlvOmFob3kh # Base64 hash
 ```
 
+Request example:
+
+```sh
+curl "https://{organization}.turnly.app/api/v1/widgets/graphql" \
+  --header "Authorization: Basic dHdpbGlvOmFob3kh" \
+  --header "Content-Type: application/json" --request POST \
+  --data "{\"query\": \"query {hello {greeting}}\"}"
+```
+
 ### Technologies stack
 
 | Name                                | Description                                                                   |
