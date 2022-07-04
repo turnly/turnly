@@ -7,6 +7,7 @@ Management of the organization's employees (Agents and Managers).
 | Name               | Description                                                                   |
 | ------------------ | ----------------------------------------------------------------------------- |
 | **Agents**         | Represents the service employee in the organization.                          |
+| **Managers**       | Represents a Manager employee in the organization.                            |
 
 ### Environment Variables
 

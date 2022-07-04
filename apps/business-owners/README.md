@@ -7,6 +7,7 @@ A service to manage business owners (organizations), such as account management,
 | Name               | Description                                                                   |
 | ------------------ | ----------------------------------------------------------------------------- |
 | **Organizations**  | Represents the organization.                                                  |
+| **Promotions**     | TO DO                                                                         |
 
 ### Environment Variables
 

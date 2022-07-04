@@ -9,6 +9,7 @@ enables integrations between external systems to share data.
 | ------------------ | ----------------------------------------------------------------------------- |
 | **Integrations**   | Represents a widget or a third-party service or application.                  |
 | **Webhooks**       | We use webhooks to notify your app when an event occurs in your organization. |
+| **Beacons**        | TO DO                                                                         |
 
 ### Environment Variables
 
