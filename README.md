@@ -81,6 +81,10 @@ You will be able to use the following URLs to interact with the APIs:
 - [ ] Public Beta: Stable enough for most non-enterprise use-cases.
 - [ ] Live: Ahoy!, production-ready. (v1.0.0)
 
+#### Roadmap
+
+Check out our [roadmap](https://github.com/orgs/turnly/projects/2) to get informed of the latest features released and the upcoming ones.
+
 #### APIs (Backend for Frontend) 📦
 
 | Name                                                  | Description                                  |
