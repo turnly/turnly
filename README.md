@@ -72,6 +72,17 @@ You will be able to use the following URLs to interact with the APIs:
 
 ### Applications 📦
 
+#### Status
+
+- [X] Starting: We are constantly developing to bring value to Turnly.
+- [ ] Demo: We are testing Turnly Widgets with a closed set of customers.
+- [ ] Demo: We are testing Turnly Help Desk with a closed set of customers.
+- [ ] Demo: We are testing Turnly Back Office with a closed set of customers.
+- [ ] Alpha: We are testing Turnly with a closed set of customers.
+- [ ] Public Alpha: Anyone can sign up over at [turnly.app](https://turnly.app).
+- [ ] Public Beta: Stable enough for most non-enterprise use-cases.
+- [ ] Live: Ahoy!, production-ready. (v1.0.0)
+
 #### APIs (Backend for Frontend)
 
 | Name                                                  | Description                                  |
@@ -99,8 +110,7 @@ You will be able to use the following URLs to interact with the APIs:
 
 ### Contributing (Developers) ❤️
 
-Please read [CONTRIBUTING.md](/CONTRIBUTING.md) for details on our code of conduct,
-and the process for submitting pull requests to us.
+Ahoy!, go to [CONTRIBUTING](/CONTRIBUTING.md) for details.
 
 ### Deployments 🚀
 
@@ -108,7 +118,7 @@ Learn about [production & stage deployments.](/docs/deployment.md)
 
 ### Security 🔐
 
-Review the [SECURITY](/SECURITY.md)
+Looking to report a vulnerability? Please refer our [SECURITY](/SECURITY.md) file.
 
 ### Versioning 🏷️
 
@@ -130,4 +140,4 @@ Check out our [owners' document](/OWNERS.md) to meet our great maintainers and f
 
 ### License 📝
 
-Copyright (C) 2022 by Turnly Inc. MIT License (see [LICENSE](/LICENSE) for details).
+Copyright © 2022 by Turnly Inc. Released under the [MIT License](/LICENSE).
