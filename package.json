@@ -2,7 +2,8 @@
   "name": "@turnly/turnly",
   "version": "1.0.0",
   "private": true,
-  "description": "Queue management system for waiting lines & walk-ins at physical locations.",
+  "description": "Open source queue management and customer experience system for walk-ins at physical locations.",
+  "license": "MIT",
   "workspaces": {
     "packages": [
       "apps/*"

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "description": "A service to manage business owners (organizations)",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "author": "Turnly Team <team@turnly.app> (https://turnly.app)",
   "scripts": {
     "prebuild": "rimraf dist tsconfig.tsbuildinfo",

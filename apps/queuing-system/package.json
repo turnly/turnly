@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "description": "The core service for the queuing system, Customer management and everything related to the life-cycle of a Ticket.",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "author": "Turnly Team <team@turnly.app> (https://turnly.app)",
   "scripts": {
     "prebuild": "rimraf dist tsconfig.tsbuildinfo",
