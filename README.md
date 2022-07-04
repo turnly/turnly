@@ -70,9 +70,7 @@ You will be able to use the following URLs to interact with the APIs:
 | **Real Time Messaging API**           | `https://{organization}.turnly.app/api/v1/rtm`           | 🟢   |
 | **Identity & Access Management API**  | `https://accounts.turnly.app/api/v1`                     | 🔴   |
 
-### Applications 📦
-
-#### Status
+#### Status 🚧
 
 - [X] Starting: We are constantly developing to bring value to Turnly.
 - [ ] Demo: We are testing Turnly Widgets with a closed set of customers.
@@ -83,7 +81,7 @@ You will be able to use the following URLs to interact with the APIs:
 - [ ] Public Beta: Stable enough for most non-enterprise use-cases.
 - [ ] Live: Ahoy!, production-ready. (v1.0.0)
 
-#### APIs (Backend for Frontend)
+#### APIs (Backend for Frontend) 📦
 
 | Name                                                  | Description                                  |
 | ----------------------------------------------------- | -------------------------------------------- |
@@ -91,7 +89,7 @@ You will be able to use the following URLs to interact with the APIs:
 | [Widgets API](/apps/widgets-api)                      | GraphQL API for widgets clients              |
 | [Real Time Messaging API (RTM)](/apps/realtime-api)   | A WebSocket-based API for realtime events    |
 
-#### Microservices
+#### Microservices 📦
 
 | Name                                            | Description                                                       |
 | ----------------------------------------------- | ----------------------------------------------------------------- |
