@@ -6,30 +6,9 @@ for walk-ins at physical locations.
 We replace take-a-number systems with a web widget-based system,
 which your customers can access via any device from your website.
 
-#### APIs (Backend for Frontend) 🛠️
+#### Give a Star! ⭐
 
-| Name                                                  | Description                                  |
-| ----------------------------------------------------- | -------------------------------------------- |
-| [Gateway](/apps/gateway)                              | API entry point and access management        |
-| [Widgets API](/apps/widgets-api)                      | GraphQL API for widgets clients              |
-| [RTM API](/apps/realtime-api)                         | Real Time & Streaming API                    |
-
-#### Microservices 📦
-
-| Name                                            | Description                                                       |
-| ----------------------------------------------- | ----------------------------------------------------------------- |
-| [Add-ons](/apps/addons)                         | Integrations, Webhooks & Beacons                                  |
-| [Assistance Centers](/apps/assistance-centers)  | Locations, services offered, working hours, desk, etc.            |
-| [Business Owners](/apps/business-owners)        | Organizations management, promotions, etc.                        |
-| [Custom Fields](/apps/custom-fields)            | Business Data Fields, Customers and Agents answers.               |
-| [Heimdall IAM](/apps/heimdall)                  | Identity & Access Management (SSO).                               |
-| [Interactions](/apps/interactions)              | Activities History, and any data record.                          |
-| [Notifications](/apps/notifications)            | Customers reminders, SMS, Calls, WhatsApp messages.               |
-| [Queuing System](/apps/queuing-system)          | Tickets and Customers management.                                 |
-| [Tasks Scheduling](/apps/tasks-scheduling)      | Scheduling of internal tasks, cleaning, batch, etc.               |
-| [Teams Management](/apps/teams)                 | Management of the organization's employees (Agents and Managers). |
-
-![high-level-architecture](/docs/diagrams/high-level-architecture.png)
+If you like this project or plan to use it in the future, please give it a star. ❤️
 
 ### The most notable features 📦
 
@@ -38,7 +17,7 @@ which your customers can access via any device from your website.
 Capability to manage multiple locations (branches), services offered, working hours,
 desks for support, agents and managers per locations.
 
-#### Business Data Fields & Processors
+#### Custom Fields & Processors
 
 Business data fields (custom fields) for the organizations to obtain the
 necessary data according to their logic and internal processes.
@@ -82,18 +61,41 @@ The URL you get is the one you should use to interact with your organization's A
 
 You will be able to use the following URLs to interact with the APIs:
 
-| Name                                  | URL                                                      |
-| ------------------------------------- | -------------------------------------------------------- |
-| **Help Desk API**                     | `https://{organization}.turnly.app/api/v1/help_desk`     |
-| **Back Office API**                   | `https://{organization}.turnly.app/api/v1/back_office`   |
-| **Partnership API**                   | `https://{organization}.turnly.app/api/v1/partners`      |
-| **Widgets API**                       | `https://{organization}.turnly.app/api/v1/widgets`       |
-| **Real Time Messaging API**           | `https://{organization}.turnly.app/api/v1/rtm`           |
-| **Identity & Access Management API**  | `https://accounts.turnly.app/api/v1`                     |
+| Name                                  | URL                                                      | Live |
+| ------------------------------------- | -------------------------------------------------------- |:----:|
+| **Help Desk API**                     | `https://{organization}.turnly.app/api/v1/help_desk`     | 🔴   |
+| **Back Office API**                   | `https://{organization}.turnly.app/api/v1/back_office`   | 🔴   |
+| **Partnership API**                   | `https://{organization}.turnly.app/api/v1/partners`      | 🔴   |
+| **Widgets API**                       | `https://{organization}.turnly.app/api/v1/widgets`       | 🟢   |
+| **Real Time Messaging API**           | `https://{organization}.turnly.app/api/v1/rtm`           | 🟢   |
+| **Identity & Access Management API**  | `https://accounts.turnly.app/api/v1`                     | 🔴   |
 
-### Give a Star! ⭐
+### Applications 📦
 
-If you like this project or plan to use it in the future, please give it a star. Thanks 🙏
+#### APIs (Backend for Frontend)
+
+| Name                                                  | Description                                  |
+| ----------------------------------------------------- | -------------------------------------------- |
+| [Gateway (Application Proxy)](/apps/gateway)          | API entry point and access management        |
+| [Widgets API](/apps/widgets-api)                      | GraphQL API for widgets clients              |
+| [Real Time Messaging API (RTM)](/apps/realtime-api)   | A WebSocket-based API for realtime events    |
+
+#### Microservices
+
+| Name                                            | Description                                                       |
+| ----------------------------------------------- | ----------------------------------------------------------------- |
+| [Add-ons](/apps/addons)                         | Integrations, Webhooks & Beacons                                  |
+| [Assistance Centers](/apps/assistance-centers)  | Locations, services offered, working hours, desk, etc.            |
+| [Business Owners](/apps/business-owners)        | Organizations management, promotions, etc.                        |
+| [Custom Fields](/apps/custom-fields)            | Business Data Fields, Customers and Agents answers.               |
+| [Heimdall IAM](/apps/heimdall)                  | Identity & Access Management (SSO).                               |
+| [Interactions](/apps/interactions)              | Activities History, and any data record.                          |
+| [Notifications](/apps/notifications)            | Customers reminders, SMS, Calls, WhatsApp messages.               |
+| [Queuing System](/apps/queuing-system)          | Tickets and Customers management.                                 |
+| [Tasks Scheduling](/apps/tasks-scheduling)      | Scheduling of internal tasks, cleaning, batch, etc.               |
+| [Teams Management](/apps/teams)                 | Management of the organization's employees (Agents and Managers). |
+
+![high-level-architecture](/docs/diagrams/high-level-architecture.png)
 
 ### Contributing (Developers) ❤️
 
@@ -110,24 +112,21 @@ Review the [SECURITY](/SECURITY.md)
 
 ### Versioning 🏷️
 
-We use [SemVer](http://semver.org) for versioning. For the versions available,
-see the tags on this repository.
+We use [SemVer](https://semver.org/spec/v2.0.0.html) for versioning.
+For the versions available, see the tags on this repository.
 
-### Team 🎨
+**Summary:**
 
-**Owners:**
+Given a version number MAJOR.MINOR.PATCH, increment the:
 
-- [Efra](https://github.com/efraa)
-- [Wardner](https://github.com/wardner)
+MAJOR version when you make incompatible API changes,
+MINOR version when you add functionality in a backwards compatible manner, and
+PATCH version when you make backwards compatible bug fixes.
+Additional labels for pre-release and build metadata are available as extensions to the MAJOR.MINOR.PATCH format.
 
-**DevOps:**
+### Turnly Team 🎨
 
-- [Efra](https://github.com/efraa)
-- [Pedro Sanders](https://github.com/psanders)
-
-**Maintainers:**
-
-- [You](https://github.com/settings)
+Check out our [owners' document](/OWNERS.md) to meet our great maintainers and friends.
 
 ### License 📝
 

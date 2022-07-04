@@ -85,13 +85,6 @@ Instead of implementing all behaviors on its own, the original object, called co
 
 ## Architecture Resources
 
-- To understand how the onion architecture works, you can refer to
-[Implementing Onion Architecture](https://dev.to/remojansen/implementing-the-onion-architecture-in-nodejs-with-typescript-and-inversifyjs-10ad)
-article that explains in detail all the concepts using TypeScript as a language.
-
-- See how architecture can influence your product's success and growth. 
-[Netflix Experience](https://netflixtechblog.com/ready-for-changes-with-hexagonal-architecture-b315ec967749)
-
 - Appreciate this resource as much as you can, not just the direct link, please take the
 time to look at each section of this [guide. (What’s a design pattern?)](https://refactoring.guru/design-patterns/what-is-pattern)
 
