@@ -1,6 +1,6 @@
 # Turnly
 
-The next queue management and customer experience system
+Open source queue management and customer experience system
 for walk-ins at physical locations.
 
 We replace take-a-number systems with a web widget-based system,
@@ -16,18 +16,18 @@ which your customers can access via any device from your website.
 
 #### Microservices 📦
 
-| Name                                            | Description                                  |
-| ----------------------------------------------- | -------------------------------------------- |
-| [Add-ons](/apps/addons)                         | Integrations, Webhooks & Beacons             |
-| [Assistance Centers](/apps/assistance-centers)  | Assistance Centers (Locations)               |
-| [Business Owners](/apps/business-owners)        | Business Owners                              |
-| [Custom Fields](/apps/custom-fields)            | Business Data Fields                         |
-| [Heimdall IAM](/apps/heimdall)                  | Identity & Access Management                 |
-| [Interactions](/apps/interactions)              | Activities History                           |
-| [Notifications](/apps/notifications)            | Notifications Service                        |
-| [Queuing System](/apps/queuing-system)          | Queuing System                               |
-| [Tasks Scheduling](/apps/tasks-scheduling)      | Tasks Scheduling                             |
-| [Teams Management](/apps/teams)                 | Teams Management                             |
+| Name                                            | Description                                                       |
+| ----------------------------------------------- | ----------------------------------------------------------------- |
+| [Add-ons](/apps/addons)                         | Integrations, Webhooks & Beacons                                  |
+| [Assistance Centers](/apps/assistance-centers)  | Locations, services offered, working hours, desk, etc.            |
+| [Business Owners](/apps/business-owners)        | Organizations management, promotions, etc.                        |
+| [Custom Fields](/apps/custom-fields)            | Business Data Fields, Customers and Agents answers.               |
+| [Heimdall IAM](/apps/heimdall)                  | Identity & Access Management (SSO).                               |
+| [Interactions](/apps/interactions)              | Activities History, and any data record.                          |
+| [Notifications](/apps/notifications)            | Customers reminders, SMS, Calls, WhatsApp messages.               |
+| [Queuing System](/apps/queuing-system)          | Tickets and Customers management.                                 |
+| [Tasks Scheduling](/apps/tasks-scheduling)      | Scheduling of internal tasks, cleaning, batch, etc.               |
+| [Teams Management](/apps/teams)                 | Management of the organization's employees (Agents and Managers). |
 
 ![high-level-architecture](/docs/diagrams/high-level-architecture.png)
 

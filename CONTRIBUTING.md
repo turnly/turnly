@@ -62,7 +62,29 @@ So when all of this is set up, you will be able to use the following URLs to int
 | **Real Time Messaging API**           | `http://{organization}.turnly.local/api/v1/rtm`           |
 | **Identity & Access Management API**  | `http://accounts.turnly.local/api/v1`                     |
 
-#### Install application
+#### Start specific application
+
+If you don't want to run all of Turnly's apps and services,
+you can go to the directory of the app you want to contribute
+to and you'll find a README with details on how to run just that app.
+
+| Application                                     | Description                                                       |
+| ----------------------------------------------- | ----------------------------------------------------------------- |
+| [Gateway](/apps/gateway)                        | API entry point and access management                             |
+| [Widgets API](/apps/widgets-api)                | GraphQL API for widgets clients                                   |
+| [RTM API](/apps/realtime-api)                   | Real Time & Streaming API                                         |
+| [Add-ons](/apps/addons)                         | Integrations, Webhooks & Beacons                                  |
+| [Assistance Centers](/apps/assistance-centers)  | Locations, services offered, working hours, desk, etc.            |
+| [Business Owners](/apps/business-owners)        | Organizations management, promotions, etc.                        |
+| [Custom Fields](/apps/custom-fields)            | Business Data Fields, Customers and Agents answers.               |
+| [Heimdall IAM](/apps/heimdall)                  | Identity & Access Management (SSO).                               |
+| [Interactions](/apps/interactions)              | Activities History, and any data record.                          |
+| [Notifications](/apps/notifications)            | Customers reminders, SMS, Calls, WhatsApp messages.               |
+| [Queuing System](/apps/queuing-system)          | Tickets and Customers management.                                 |
+| [Tasks Scheduling](/apps/tasks-scheduling)      | Scheduling of internal tasks, cleaning, batch, etc.               |
+| [Teams Management](/apps/teams)                 | Management of the organization's employees (Agents and Managers). |
+
+#### Step 1: Install application
 
 ```sh
 # For convenience, clone this repo to a previously created directory called turnly or turnly-apps.
@@ -77,7 +99,7 @@ cd turnly-apps
 git clone git@github.com:turnly/turnly.git
 ```
 
-#### Setup application
+#### Step 2: Setup application
 
 ```sh
 # This command will do:
@@ -93,7 +115,7 @@ yarn devo setup
 yarn devo setup --verbose
 ```
 
-#### Start command
+#### Step: 3 Start command
 
 ```sh
 # Start all available services:
@@ -110,6 +132,8 @@ yarn devo start --verbose
 # Build images before starting containers and re-run setup.
 yarn devo start --verbose --build
 ```
+
+### Helpful for development
 
 #### Stop command
 
@@ -132,7 +156,7 @@ yarn devo reload
 yarn devo reload -s realtime-api
 ```
 
-#### Developer tools
+#### Linting command
 
 ```sh
 # Run linters on each services:
