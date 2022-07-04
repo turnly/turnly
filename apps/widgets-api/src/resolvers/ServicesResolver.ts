@@ -20,7 +20,10 @@ export class ServicesResolver {
     @Arg('locationId', () => ID) locationId: string,
     @Ctx() { req: { organizationId }, dataSources }: IContext
   ) {
-    return await dataSources.services.getLocationServices(locationId, organizationId)
+    return await dataSources.services.getLocationServices(
+      locationId,
+      organizationId
+    )
   }
 
   @FieldResolver(() => Int)
