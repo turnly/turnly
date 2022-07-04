@@ -70,7 +70,6 @@ to and you'll find a README with details on how to run just that app.
 
 | Application                                     | Description                                                       |
 | ----------------------------------------------- | ----------------------------------------------------------------- |
-| [Gateway](/apps/gateway)                        | API entry point and access management                             |
 | [Widgets API](/apps/widgets-api)                | GraphQL API for widgets clients                                   |
 | [RTM API](/apps/realtime-api)                   | Real Time & Streaming API                                         |
 | [Add-ons](/apps/addons)                         | Integrations, Webhooks & Beacons                                  |
@@ -115,7 +114,7 @@ yarn devo setup
 yarn devo setup --verbose
 ```
 
-#### Step: 3 Start command
+#### Step 3: Start command
 
 ```sh
 # Start all available services:
@@ -199,7 +198,7 @@ we highly recommend you review the [architecture docs.](/docs/architecture)
 
 ### Conventions
 
-We highly recommend you review the [conventions doc](/docs/conventions.md)
+We highly recommend you review the [conventions doc.](/docs/conventions.md)
 
 #### How to create a new application
 
