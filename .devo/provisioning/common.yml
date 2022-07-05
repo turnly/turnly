@@ -14,7 +14,7 @@ services:
     networks:
       turnly:
     environment:
-      - APP_URL
+      - APP_DOMAIN
       - RPC_BIND_ADDRESS
       - RPC_CONSUMER_ADDRESS
       - HTTP_PORT
