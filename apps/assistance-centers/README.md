@@ -6,6 +6,17 @@ working hours, location desks, etc.
 Everything related to the assistance center as such is included in this service,
 except the agents and managers.
 
+### Technologies stack
+
+| Name                                | Description                                                                   |
+| ----------------------------------- | ----------------------------------------------------------------------------- |
+| TypeScript                          | Types reduce bugs and increases reliability.                                  |
+| Express.js    (@turnly/shared)      | Fast, unopinionated, minimalist web framework for Node.js                     |
+| Moongose ORM  (@turnly/shared)      | Elegant mongoDB object modeling.                                              |
+| ElasticSearch (@turnly/shared)      | Modern NoSQL database for search and store unstructured data.                 |
+| RabbitMQ      (@turnly/shared)      | A message broker for events.                                                  |
+| gRPC Server   (@turnly/rpc)         | Efficiently connecting polyglot services in microservices architecture.       |
+
 ### Service Modules
 
 | Name               | Description                                                                       |

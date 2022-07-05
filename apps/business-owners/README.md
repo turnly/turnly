@@ -1,6 +1,17 @@
 # Business Owners
 
-A service to manage business owners (organizations), such as account management, promotions, exchanges, early adopters, etc. Owners are usually expected to hold a management position in the organization, such as a CTO.
+A service to manage business owners (organizations), such as account management,
+promotions, exchanges, early adopters, etc.
+
+### Technologies stack
+
+| Name                                | Description                                                                   |
+| ----------------------------------- | ----------------------------------------------------------------------------- |
+| TypeScript                          | Types reduce bugs and increases reliability.                                  |
+| Express.js    (@turnly/shared)      | Fast, unopinionated, minimalist web framework for Node.js                     |
+| Moongose ORM  (@turnly/shared)      | Elegant mongoDB object modeling.                                              |
+| RabbitMQ      (@turnly/shared)      | A message broker for events.                                                  |
+| gRPC Server   (@turnly/rpc)         | Efficiently connecting polyglot services in microservices architecture.       |
 
 ### Service Modules
 

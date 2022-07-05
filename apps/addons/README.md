@@ -3,6 +3,16 @@
 Service that manages the integrations (widgets) built on Turnly by an organization,
 enables integrations between external systems to share data.
 
+### Technologies stack
+
+| Name                                | Description                                                                   |
+| ----------------------------------- | ----------------------------------------------------------------------------- |
+| TypeScript                          | Types reduce bugs and increases reliability.                                  |
+| Express.js    (@turnly/shared)      | Fast, unopinionated, minimalist web framework for Node.js                     |
+| Moongose ORM  (@turnly/shared)      | Elegant mongoDB object modeling.                                              |
+| RabbitMQ      (@turnly/shared)      | A message broker for events.                                                  |
+| gRPC Server   (@turnly/rpc)         | Efficiently connecting polyglot services in microservices architecture.       |
+
 ### Service Modules
 
 | Name               | Description                                                                   |
