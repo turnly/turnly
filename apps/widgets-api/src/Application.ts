@@ -10,6 +10,13 @@ import { buildSchema } from 'type-graphql'
 import { resolvers } from './resolvers'
 
 export class Application extends Startup {
+  /**
+   * Path
+   *
+   * @description The base path for the graphql endpoint.
+   */
+  private readonly path = '/api/v1/widgets/graph'
+
   private readonly server = new Http()
   /**
    * Sets up application.
@@ -42,6 +49,9 @@ export class Application extends Startup {
 
     await apollo.start()
 
-    apollo.applyMiddleware({ app: this.server.app })
+    apollo.applyMiddleware({
+      app: this.server.app,
+      path: this.path,
+    })
   }
 }

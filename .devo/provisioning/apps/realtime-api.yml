@@ -19,7 +19,7 @@ services:
     labels:
       - traefik.enable=true
       - traefik.http.routers.realtime-api-http.entrypoints=web,websecure
-      - traefik.http.routers.realtime-api-http.rule=HostRegexp(`${APP_DOMAIN}`) && PathPrefix(`/api/v1/rtm`)
+      - traefik.http.routers.realtime-api-http.rule=PathPrefix(`/api/v1/rtm`)
       - traefik.http.routers.realtime-api-http.service=realtime-api-http
       - traefik.http.services.realtime-api-http.loadbalancer.server.port=${HTTP_PORT}
     environment:
