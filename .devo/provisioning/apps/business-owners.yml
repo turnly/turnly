@@ -19,10 +19,10 @@ services:
       - mongo
     labels:
       - traefik.enable=true
-      - traefik.http.routers.custom-fields-rpc.entrypoints=web,websecure
-      - traefik.http.routers.custom-fields-rpc.rule=PathPrefix(`/turnly.business_owners.v1`)
-      - traefik.http.routers.custom-fields-rpc.service=custom-fields-rpc
-      - traefik.http.services.custom-fields-rpc.loadbalancer.server.scheme=h2c
+      - traefik.http.routers.business-owners-rpc.entrypoints=web,websecure
+      - traefik.http.routers.business-owners-rpc.rule=PathPrefix(`/turnly.business_owners.v1`)
+      - traefik.http.routers.business-owners-rpc.service=business-owners-rpc
+      - traefik.http.services.business-owners-rpc.loadbalancer.server.scheme=h2c
     environment:
       # This service shared env variables that extend from common.yml
       APP_NAME: business-owners

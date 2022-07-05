@@ -21,7 +21,6 @@ services:
       - traefik.http.routers.widgets-api-http.entrypoints=web,websecure
       - traefik.http.routers.widgets-api-http.rule=HostRegexp(`{subdomain:[a-z]+}.${APP_URL}`) && PathPrefix(`/api/v1/widgets`)
       - traefik.http.routers.widgets-api-http.service=widgets-api-http
-      - traefik.http.services.widgets-api-http.loadbalancer.server.port=${HTTP_PORT}
     environment:
       # This service shared env variables that extend from common.yml
       APP_NAME: widgets-api

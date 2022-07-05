@@ -18,7 +18,6 @@ services:
       - RPC_BIND_ADDRESS
       - RPC_CONSUMER_ADDRESS
       - HTTP_PORT
-      - HTTPS_PORT
       - LOGGING_LEVEL
       - SENTRY_ORG
       - SENTRY_DSN

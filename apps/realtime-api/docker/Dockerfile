@@ -7,7 +7,7 @@
 ##
 ARG NODE_VERSION=16.15-alpine3.15
 ARG NODE_ENV=production
-ARG PORT=80
+ARG PORT=6000
 
 ##
 ## Dependencies
