@@ -127,9 +127,13 @@ Looking to report a vulnerability? Please refer our [SECURITY](/SECURITY.md) fil
 We use [SemVer](https://semver.org/spec/v2.0.0.html) for versioning.
 For the versions available, see the tags on this repository.
 
-### Turnly Team 🎨
+### Our Team 🎨
 
 Check out our [owners' document](/OWNERS.md) to meet our great maintainers and friends.
+
+### FAQ 🎲
+
+Please refer our [FAQ](/FAQ.md) file.
 
 ### License 📝
 
