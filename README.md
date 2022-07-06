@@ -10,6 +10,10 @@ which your customers can access via any device from your website.
 
 If you like this project or plan to use it in the future, please give it a star. ❤️
 
+#### Frontend Apps 🎨
+
+Please refer our [frontend applications](https://github.com/turnly/asgard) repository.
+
 ### Features 📦
 
 #### Assistance Centers
@@ -101,7 +105,7 @@ Looking to report a vulnerability? Please refer our [SECURITY](/SECURITY.md) fil
 We use [SemVer](https://semver.org/spec/v2.0.0.html) for versioning.
 For the versions available, see the tags on this repository.
 
-### Our Team 🎨
+### Our Team 🦦
 
 Check out our [owners' document](/OWNERS.md) to meet our great maintainers and friends.
 
