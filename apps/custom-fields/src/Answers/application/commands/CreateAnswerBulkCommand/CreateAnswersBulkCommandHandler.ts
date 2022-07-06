@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) Turnly Inc. (https://turnly.app)
+ *
+ * Licensed under MIT License. See LICENSE for terms.
+ */
 import { CommandHandler, ICommandHandler, IEventBus } from '@turnly/shared'
 import { IAnswersWritableRepo } from 'Answers/domain/contracts/IAnswersRepo'
 import { Answer } from 'Answers/domain/entities/Answer'

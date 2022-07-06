@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) Turnly Inc. (https://turnly.app)
+ *
+ * Licensed under MIT License. See LICENSE for terms.
+ */
 import { Nullable } from '@turnly/common'
 import { IQueryHandler, QueryBuilder, QueryHandler } from '@turnly/shared'
 import { ILocationsReadableRepo } from 'Locations/domain/contracts/ILocationsRepo'

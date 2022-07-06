@@ -4,6 +4,7 @@
   "private": true,
   "description": "Open source queue management and customer experience system for walk-ins at physical locations.",
   "license": "MIT",
+  "author": "Turnly Team <team@turnly.app> (https://turnly.app)",
   "workspaces": {
     "packages": [
       "apps/*"

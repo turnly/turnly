@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) Turnly Inc. (https://turnly.app)
+ *
+ * Licensed under MIT License. See LICENSE for terms.
+ */
 import { Ticket as T } from '@turnly/rpc/dist/producers/queuing-system'
 import { TicketModel } from 'models/TicketModel'
 

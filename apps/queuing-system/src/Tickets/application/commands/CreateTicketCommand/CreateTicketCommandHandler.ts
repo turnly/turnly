@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) Turnly Inc. (https://turnly.app)
+ *
+ * Licensed under MIT License. See LICENSE for terms.
+ */
 import { ConflictException } from '@turnly/common'
 import {
   CommandHandler,

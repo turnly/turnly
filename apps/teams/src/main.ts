@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) Turnly Inc. (https://turnly.app)
+ *
+ * Licensed under MIT License. See LICENSE for terms.
+ */
 import 'Agents/infrastructure/register-dependencies'
 
 import { eventBus } from '@turnly/shared'

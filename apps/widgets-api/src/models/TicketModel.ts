@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) Turnly Inc. (https://turnly.app)
+ *
+ * Licensed under MIT License. See LICENSE for terms.
+ */
 import { Field, ID, InputType, Int, ObjectType } from 'type-graphql'
 
 import { CustomerModel } from './CustomerModel'

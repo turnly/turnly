@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) Turnly Inc. (https://turnly.app)
+ *
+ * Licensed under MIT License. See LICENSE for terms.
+ */
 import { Box, ioc } from '@turnly/shared'
 import {
   OrganizationByIdQueryHandler,

@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) Turnly Inc. (https://turnly.app)
+ *
+ * Licensed under MIT License. See LICENSE for terms.
+ */
 import { MongoReadableRepo } from '@turnly/shared'
 import { ITicketsMapper } from 'Tickets/domain/contracts/ITicketsMapper'
 import { ITicketsReadableRepo } from 'Tickets/domain/contracts/ITicketsRepo'

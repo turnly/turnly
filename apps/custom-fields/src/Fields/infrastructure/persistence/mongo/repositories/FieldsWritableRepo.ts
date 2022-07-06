@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) Turnly Inc. (https://turnly.app)
+ *
+ * Licensed under MIT License. See LICENSE for terms.
+ */
 import { MongoWritableRepo } from '@turnly/shared'
 import { IFieldsMapper } from 'Fields/domain/contracts/IFieldsMapper'
 import { IFieldsWritableRepo } from 'Fields/domain/contracts/IFieldsRepo'

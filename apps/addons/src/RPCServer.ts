@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) Turnly Inc. (https://turnly.app)
+ *
+ * Licensed under MIT License. See LICENSE for terms.
+ */
 import { Producers } from '@turnly/rpc'
 import { IntegrationsServer } from 'Integrations/infrastructure/api/rpc'
 import { IntegrationsFactory } from 'Integrations/infrastructure/factories/IntegrationsFactory'

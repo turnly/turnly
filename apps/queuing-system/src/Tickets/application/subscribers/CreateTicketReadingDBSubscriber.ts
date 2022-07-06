@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) Turnly Inc. (https://turnly.app)
+ *
+ * Licensed under MIT License. See LICENSE for terms.
+ */
 import { EventsSubscriber, ICommandBus, IEventSubscriber } from '@turnly/shared'
 import { TicketAnnouncedEvent } from 'Tickets/domain/events/TicketAnnouncedEvent'
 import { TicketCancelledEvent } from 'Tickets/domain/events/TicketCancelledEvent'

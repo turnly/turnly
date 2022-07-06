@@ -1,4 +1,9 @@
 /**
+ * Copyright (c) Turnly Inc. (https://turnly.app)
+ *
+ * Licensed under MIT License. See LICENSE for terms.
+ */
+/**
  * Ticket scores
  *
  * @description Tickets can have different scores, this enumeration allows you to identify which score the ticket is in.

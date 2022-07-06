@@ -1,4 +1,9 @@
 /**
+ * Copyright (c) Turnly Inc. (https://turnly.app)
+ *
+ * Licensed under MIT License. See LICENSE for terms.
+ */
+/**
  * Ticket statuses
  *
  * @description Tickets go through various states throughout their life cycle,

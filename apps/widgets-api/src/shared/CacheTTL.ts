@@ -1,4 +1,9 @@
 /**
+ * Copyright (c) Turnly Inc. (https://turnly.app)
+ *
+ * Licensed under MIT License. See LICENSE for terms.
+ */
+/**
  * Specified in **seconds**, the time-to-live (TTL) value limits the lifespan
  * of the data being stored in the cache.
  */

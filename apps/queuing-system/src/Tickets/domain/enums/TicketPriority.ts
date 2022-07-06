@@ -1,4 +1,9 @@
 /**
+ * Copyright (c) Turnly Inc. (https://turnly.app)
+ *
+ * Licensed under MIT License. See LICENSE for terms.
+ */
+/**
  * Ticket priorities
  *
  * @description Tickets can have different priorities, this enumeration allows you to identify which priority the ticket is in.

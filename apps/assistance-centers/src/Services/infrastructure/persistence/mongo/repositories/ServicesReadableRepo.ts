@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) Turnly Inc. (https://turnly.app)
+ *
+ * Licensed under MIT License. See LICENSE for terms.
+ */
 import { MongoReadableRepo } from '@turnly/shared'
 import { IServicesMapper } from 'Services/domain/contracts/IServicesMapper'
 import { IServicesReadableRepo } from 'Services/domain/contracts/IServicesRepo'

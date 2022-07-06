@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) Turnly Inc. (https://turnly.app)
+ *
+ * Licensed under MIT License. See LICENSE for terms.
+ */
 import { MongoReadableRepo } from '@turnly/shared'
 import { IAgentsMapper } from 'Agents/domain/contracts/IAgentsMapper'
 import { IAgentsReadableRepo } from 'Agents/domain/contracts/IAgentsRepo'

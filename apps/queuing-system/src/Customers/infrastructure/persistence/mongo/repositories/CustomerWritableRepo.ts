@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) Turnly Inc. (https://turnly.app)
+ *
+ * Licensed under MIT License. See LICENSE for terms.
+ */
 import { MongoWritableRepo } from '@turnly/shared'
 import { ICustomersMapper } from 'Customers/domain/contracts/ICustomersMapper'
 import { ICustomerWritableRepo } from 'Customers/domain/contracts/ICustomersRepo'

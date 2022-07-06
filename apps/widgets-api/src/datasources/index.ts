@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) Turnly Inc. (https://turnly.app)
+ *
+ * Licensed under MIT License. See LICENSE for terms.
+ */
 export * from '../shared/api'
 export * from './common/CacheSource'
 export * from './common/DataSource'

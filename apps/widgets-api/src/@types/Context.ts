@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) Turnly Inc. (https://turnly.app)
+ *
+ * Licensed under MIT License. See LICENSE for terms.
+ */
 import { Guid } from '@turnly/common'
 import type { Integration } from '@turnly/rpc/dist/producers/addons'
 import type { Customer } from '@turnly/rpc/dist/producers/queuing-system'

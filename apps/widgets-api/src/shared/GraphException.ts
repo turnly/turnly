@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) Turnly Inc. (https://turnly.app)
+ *
+ * Licensed under MIT License. See LICENSE for terms.
+ */
 import { ResponseCodes } from '@turnly/common'
 import { Meta } from '@turnly/rpc/dist/producers/addons'
 import { SharedMessages } from '@turnly/shared'

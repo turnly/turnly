@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) Turnly Inc. (https://turnly.app)
+ *
+ * Licensed under MIT License. See LICENSE for terms.
+ */
 import 'Services/infrastructure/register-dependencies'
 import 'Locations/infrastructure/register-dependencies'
 

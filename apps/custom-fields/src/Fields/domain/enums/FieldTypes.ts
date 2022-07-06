@@ -1,4 +1,9 @@
 /**
+ * Copyright (c) Turnly Inc. (https://turnly.app)
+ *
+ * Licensed under MIT License. See LICENSE for terms.
+ */
+/**
  * Field types
  *
  * @description Enum of the different types based on frontend types.

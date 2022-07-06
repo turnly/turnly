@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) Turnly Inc. (https://turnly.app)
+ *
+ * Licensed under MIT License. See LICENSE for terms.
+ */
 import { CommandHandler, ICommandHandler, IEventBus } from '@turnly/shared'
 import { ICustomerWritableRepo } from 'Customers/domain/contracts/ICustomersRepo'
 import { Customer } from 'Customers/domain/entities/Customer'

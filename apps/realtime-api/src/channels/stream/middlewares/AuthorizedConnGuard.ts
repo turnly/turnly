@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) Turnly Inc. (https://turnly.app)
+ *
+ * Licensed under MIT License. See LICENSE for terms.
+ */
 import { ActionNotAllowedException } from '@turnly/common'
 import { IRealtimeClient, RealtimeMiddle } from '@turnly/realtime'
 

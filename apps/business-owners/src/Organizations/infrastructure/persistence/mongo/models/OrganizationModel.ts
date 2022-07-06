@@ -1,4 +1,8 @@
-/* eslint-disable @typescript-eslint/naming-convention */
+/**
+ * Copyright (c) Turnly Inc. (https://turnly.app)
+ *
+ * Licensed under MIT License. See LICENSE for terms.
+ */
 import { EntityAttributes, timestamps } from '@turnly/shared'
 import mongoose, { Document, Model, Schema } from 'mongoose'
 import { Organization } from 'Organizations/domain/entities/Organization'

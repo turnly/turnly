@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) Turnly Inc. (https://turnly.app)
+ *
+ * Licensed under MIT License. See LICENSE for terms.
+ */
 import { Logger } from '@turnly/common'
 import { AbstractRealtimeHandler, IRealtimeChannel } from '@turnly/realtime'
 import { Event } from '@turnly/shared'

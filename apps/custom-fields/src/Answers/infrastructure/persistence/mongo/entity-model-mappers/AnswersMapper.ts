@@ -1,4 +1,8 @@
-/* eslint-disable @typescript-eslint/naming-convention */
+/**
+ * Copyright (c) Turnly Inc. (https://turnly.app)
+ *
+ * Licensed under MIT License. See LICENSE for terms.
+ */
 import { EntityAttributes } from '@turnly/shared'
 import { IAnswersMapper } from 'Answers/domain/contracts/IAnswersMapper'
 import { Answer } from 'Answers/domain/entities/Answer'

@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) Turnly Inc. (https://turnly.app)
+ *
+ * Licensed under MIT License. See LICENSE for terms.
+ */
 import { IContext } from '@types'
 import { FieldModel } from 'models/FieldModel'
 import { Arg, Authorized, Ctx, ID, Query, Resolver } from 'type-graphql'
