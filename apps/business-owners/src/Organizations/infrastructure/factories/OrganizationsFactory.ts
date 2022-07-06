@@ -10,7 +10,7 @@ import {
 } from '@turnly/shared'
 import { Box } from '@turnly/shared'
 import { OrganizationByIdQueryHandler } from 'Organizations/application/queries/OrganizationByIdQuery'
-import { OrganizationBySubdomainQueryHandler } from 'Organizations/application/queries/OrganizationBySubdomainQuery'
+import { OrganizationBySubdomainQueryHandler } from 'Organizations/application/queries/OrganizationBySubXdomainQuery'
 
 import { OrganizationsController } from '../api/controllers/OrganizationsController'
 
