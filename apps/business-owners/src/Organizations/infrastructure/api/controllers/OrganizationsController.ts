@@ -11,7 +11,7 @@ import {
   TimeoutHandler,
 } from '@turnly/shared'
 import { OrganizationByIdQuery } from 'Organizations/application/queries/OrganizationByIdQuery'
-import { OrganizationBySubdomainQuery } from 'Organizations/application/queries/OrganizationBySubXdomainQuery'
+import { OrganizationBySubdomainQuery } from 'Organizations/application/queries/OrganizationBySubdomainQuery'
 import { Organization } from 'Organizations/domain/entities/Organization'
 
 import { validator } from '../validators/OrganizationsValidator'

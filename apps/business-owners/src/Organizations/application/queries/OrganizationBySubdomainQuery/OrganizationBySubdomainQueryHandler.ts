@@ -8,7 +8,7 @@ import { IQueryHandler, QueryBuilder, QueryHandler } from '@turnly/shared'
 import { IOrganizationsReadableRepo } from 'Organizations/domain/contracts/IOrganizationsRepo'
 import { Organization } from 'Organizations/domain/entities/Organization'
 
-import { OrganizationBySubdomainQuery } from './OrganizationBySubXdomainQuery'
+import { OrganizationBySubdomainQuery } from './OrganizationBySubdomainQuery'
 
 @QueryHandler(OrganizationBySubdomainQuery)
 export class OrganizationBySubdomainQueryHandler
