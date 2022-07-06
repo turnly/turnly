@@ -7,8 +7,7 @@ import { OrganizationCreatedEvent } from '../events/OrganizationCreatedEvent'
 /**
  * Organization
  *
- * @description Represent an Organization that is used to connect
- * to a third-party service or applications.
+ * @description Represents an customer of the Turnly application.
  *
  * @author Turnly
  */
@@ -31,14 +30,15 @@ export class Organization extends AggregateRoot {
     /**
      * Status
      *
-     * @description Represents the life-cycle of an Organization.
+     * @description The status of the Organization.
      */
     private status: OrganizationStatus,
 
     /**
-     * Sub-Domain
+     * Subdomain
      *
-     * @description The sub-domain of the organization.
+     * @description The subdomain is a unique identifier for
+     * the Organization that is used to access the application.
      */
     private subdomain: string
   ) {
@@ -53,18 +53,20 @@ export class Organization extends AggregateRoot {
   public static create(
     attributes: Omit<EntityAttributes<Organization>, 'id'>
   ): Organization {
+    const organizationId = Identifier.generate('org')
+
     const organization = new Organization(
-      Identifier.generate('org'),
+      organizationId,
       attributes.name,
       attributes.status,
       attributes.subdomain
     )
 
-    /* Solve this typo */
-    const { id, ...payload } = organization.toObject()
-
     organization.register(
-      new OrganizationCreatedEvent({ ...payload, organizationId: id, id })
+      new OrganizationCreatedEvent({
+        ...organization.toObject(),
+        organizationId,
+      })
     )
 
     return organization

@@ -10,51 +10,23 @@ which your customers can access via any device from your website.
 
 If you like this project or plan to use it in the future, please give it a star. ❤️
 
-### The most notable features 📦
+### Features 📦
 
-##### Assistance Centers
+#### Assistance Centers
 
 Capability to manage multiple locations (branches), services offered, working hours,
 desks for support, agents and managers per locations.
 
 #### Custom Fields & Processors
 
-Business data fields (custom fields) for the organizations to obtain the
-necessary data according to their logic and internal processes.
-
-A processor can be a lambda function or an external API that performs
-validations or even data transformation.
+Custom fields to obtain the necessary data according to their logic and internal processes.
 
 #### Customer Reminders
 
 Your customers will receive automatic notifications to keep
 them aware of the life cycle of their tickets.
 
-Capability of sending reminders (notifications) through different communication
-channels, such as SMS, Push, Emails, Calls, or WhatsApp messages.
-
-#### Customer Experience Rating
-
-Your customers can send you feedback on how to improve the experience
-in your locations (branches) or even give you the best rating, you can
-use this data for service intelligence.
-
-#### Partnership API
-
-Our APIs are completely based on integration with external systems and
-that is why we offer partner APIs that will allow you to create your own application flow.
-
-Partner APIs, webhooks, and support for Beacons that integrate with mobile apps to detect customer arrival or create proximity-based logic.
-
-#### Real Time Messaging API (Streaming data)
-
-The RTM API is a WebSocket-based API that allows you to receive
-read-only access to a selected set of data from Turnly in realtime.
-
-Once your application establishes a connection to a streaming endpoint,
-a feed of events is delivered to your app.
-
-#### Custom Subdomain
+#### Organization Subdomain
 
 Your organization gets a subdomain from Turnly.
 The URL you get is the one you should use to interact with your organization's APIs and apps.
@@ -69,6 +41,8 @@ You will be able to use the following URLs to interact with the APIs:
 | **Widgets API**                       | `https://{organization}.turnly.app/api/v1/widgets`       | 🟢   |
 | **Real Time Messaging API**           | `https://{organization}.turnly.app/api/v1/rtm`           | 🟢   |
 | **Identity & Access Management API**  | `https://accounts.turnly.app/api/v1`                     | 🔴   |
+
+> You can check the complete list on the [features document](/docs/features.md).
 
 #### Status 🚧
 
@@ -133,7 +107,7 @@ Check out our [owners' document](/OWNERS.md) to meet our great maintainers and f
 
 ### FAQ 🎲
 
-Please refer our [FAQ](/FAQ.md) file.
+Please refer our [FAQ](/docs/faq.md) file.
 
 ### License 📝
 
