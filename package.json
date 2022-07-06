@@ -1,6 +1,6 @@
 {
   "name": "@turnly/turnly",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
   "description": "Open source queue management and customer experience system for walk-ins at physical locations.",
   "license": "MIT",
