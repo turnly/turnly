@@ -4,10 +4,8 @@
  * Licensed under MIT License. See LICENSE for terms.
  */
 import { Box, ioc } from '@turnly/shared'
-import {
-  OrganizationByIdQueryHandler,
-  OrganizationBySubdomainQueryHandler,
-} from 'Organizations/application/queries'
+import { OrganizationByIdQueryHandler } from 'Organizations/application/queries/OrganizationByIdQuery'
+import { OrganizationBySubdomainQueryHandler } from 'Organizations/application/queries/OrganizationBySubdomainQuery'
 import { OrganizationsMapper } from 'Organizations/infrastructure/persistence/mongo/entity-model-mappers/OrganizationsMapper'
 import { OrganizationsReadableRepo } from 'Organizations/infrastructure/persistence/mongo/repositories/OrganizationsReadableRepo'
 

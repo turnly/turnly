@@ -9,10 +9,8 @@ import {
   IQueryHandler,
 } from '@turnly/shared'
 import { Box } from '@turnly/shared'
-import {
-  OrganizationByIdQueryHandler,
-  OrganizationBySubdomainQueryHandler,
-} from 'Organizations/application/queries'
+import { OrganizationByIdQueryHandler } from 'Organizations/application/queries/OrganizationByIdQuery'
+import { OrganizationBySubdomainQueryHandler } from 'Organizations/application/queries/OrganizationBySubdomainQuery'
 
 import { OrganizationsController } from '../api/controllers/OrganizationsController'
 

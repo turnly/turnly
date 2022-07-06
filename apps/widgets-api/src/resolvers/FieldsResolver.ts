@@ -13,8 +13,8 @@ export class FieldsResolver {
   @Query(() => [FieldModel])
   public async getServiceFields(
     @Arg('serviceId', () => ID) serviceId: string,
-    @Ctx() { req: { organizationId }, dataSources: { fields } }: IContext
+    @Ctx() { dataSources }: IContext
   ): Promise<FieldModel[]> {
-    return await fields.findCustomerFieldsByService(serviceId, organizationId)
+    return await dataSources.fields.findCustomerFieldsByService(serviceId)
   }
 }

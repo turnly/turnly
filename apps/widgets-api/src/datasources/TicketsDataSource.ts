@@ -17,11 +17,10 @@ export class TicketsDataSource extends DataSource {
     super()
   }
 
-  public async getOne(id: Guid, customerId: Guid, organizationId: Guid) {
+  public async getOne(id: Guid, customerId: Guid) {
     const { data: ticket, meta } = await Tickets.getOne({
       id,
       customerId,
-      organizationId,
     })
 
     if (!ticket) throw new GraphException(meta)
@@ -29,14 +28,9 @@ export class TicketsDataSource extends DataSource {
     return TicketsMapper.toDTO(ticket)
   }
 
-  public async getTicketsBeforeYours(
-    id: Guid,
-    customerId: Guid,
-    organizationId: Guid
-  ) {
+  public async getTicketsBeforeYours(id: Guid, customerId: Guid) {
     const { dataList } = await Tickets.getTicketsBeforeYours({
       id,
-      organizationId,
       customerId,
     })
 

@@ -63,8 +63,7 @@ export const AuthGuard: AuthChecker<IContext> = async ({ context }) => {
   Logger.verbose('Checking if customer is authorized...', { customerId })
 
   const { data: customer } = await context.dataSources.customers.getOne(
-    String(customerId),
-    widget.organizationId
+    customerId
   )
 
   if (!customer) {

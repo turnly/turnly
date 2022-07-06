@@ -23,23 +23,19 @@ export class ServicesResolver {
   @Query(() => [ServiceModel])
   public async getLocationServices(
     @Arg('locationId', () => ID) locationId: string,
-    @Ctx() { req: { organizationId }, dataSources }: IContext
+    @Ctx() { dataSources }: IContext
   ) {
-    return await dataSources.services.getLocationServices(
-      locationId,
-      organizationId
-    )
+    return await dataSources.services.getLocationServices(locationId)
   }
 
   @FieldResolver(() => Int)
   public async ticketsWaiting(
     @Root() service: ServiceModel,
-    @Ctx() { req: { organizationId, customer }, dataSources }: IContext
+    @Ctx() { req: { customer }, dataSources }: IContext
   ): Promise<number> {
     return await dataSources.services.getTicketsWaitingForService(
       service.id,
-      customer.id,
-      organizationId
+      customer.id
     )
   }
 }

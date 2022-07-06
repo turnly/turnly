@@ -10,10 +10,8 @@ import {
   IQueryBus,
   TimeoutHandler,
 } from '@turnly/shared'
-import {
-  OrganizationByIdQuery,
-  OrganizationBySubdomainQuery,
-} from 'Organizations/application/queries'
+import { OrganizationByIdQuery } from 'Organizations/application/queries/OrganizationByIdQuery'
+import { OrganizationBySubdomainQuery } from 'Organizations/application/queries/OrganizationBySubdomainQuery'
 import { Organization } from 'Organizations/domain/entities/Organization'
 
 import { validator } from '../validators/OrganizationsValidator'
