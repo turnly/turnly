@@ -21,6 +21,10 @@ jobs:
         run: |
           yarn install --frozen-lockfile
 
+      - name: Copying environment variables
+        run: |
+          cp .env.example .env
+
       - name: Run linters on each app
         run: |
           yarn devo lint --all
