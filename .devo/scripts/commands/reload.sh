@@ -11,9 +11,7 @@ function reload() {
       s)
         [[ "${EXECUTE_SERVICES[*]}" != *"${OPTARG}"* ]] && EXECUTE_SERVICES+=("${OPTARG}")
         ;;
-      \?)
-        error "Invalid option: -$OPTARG"
-        ;;
+      \?) ;;
       esac
     done
   fi
