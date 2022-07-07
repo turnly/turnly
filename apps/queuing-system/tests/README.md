@@ -16,12 +16,13 @@ data created by object mothers to reduce replication and show only cohesive attr
 The list of commands will help you with the most common command variations,
 but if you're missing something, you can refer to the [Jest](https://jestjs.io/docs/cli) documentation.
 
-**All (Pending)**
+**All**
 
 Run all available tests, except `e2e`. This command can be quite slow, so use it with caution.
 
 ```sh
-yarn devo queuing-system test
+# Only inside docker
+docker exec queuing-system yarn test
 ```
 
 **Unit**
@@ -29,7 +30,11 @@ yarn devo queuing-system test
 Run only unit tests, they will usually be the fastest tests.
 
 ```sh
+# Local machine
 yarn devo queuing-system test unit
+
+# Inside docker
+docker exec queuing-system yarn test unit
 ```
 
 **Integration**
@@ -37,7 +42,8 @@ yarn devo queuing-system test unit
 Run only integration tests, time to open the windows :D
 
 ```sh
-yarn devo queuing-system test integration
+# Only inside docker
+docker exec queuing-system yarn test integration
 ```
 
 **Benchmark**
@@ -45,7 +51,11 @@ yarn devo queuing-system test integration
 Run only benchmark tests, let's see how this is.
 
 ```sh
+# Local machine
 yarn devo queuing-system test benchmark
+
+# Inside docker
+docker exec queuing-system yarn test benchmark
 ```
 
 **e2e (Pending)**
@@ -53,31 +63,26 @@ yarn devo queuing-system test benchmark
 Run e2e tests. This command can be quite slow, so use it with caution.
 
 ```sh
+# Local machine
 yarn devo queuing-system test:e2e
-```
 
-**Uncommitted files**
-
-Run tests related to changed files based on git (uncommitted files):
-
-```sh
-yarn devo queuing-system test -o
+# Inside docker
+docker exec queuing-system yarn test:e2e
 ```
 
 **Matches**
 
 Run tests that match this spec name (match against the name in `describe` or `test`, basically).
 
-```sh
-yarn devo queuing-system test -t name-of-test
-```
-
-**CI**
-
-Run all tests on the CI machine.
+When you are creating tests to some specific code, you may want only execute the tests that you're creating,
+so you waste less time to verify your code. To do this, you can:
 
 ```sh
-yarn devo queuing-system test:ci
+# Local machine
+yarn devo queuing-system test unit -t name-of-test
+
+# Inside docker
+docker exec queuing-system yarn test -t name-of-test
 ```
 
 **Watch mode**
@@ -85,7 +90,11 @@ yarn devo queuing-system test:ci
 Run tests related to git-based changed files with watch mode enabled.
 
 ```sh
+# Local machine
 yarn devo queuing-system test:watch
+
+# Inside docker
+docker exec queuing-system yarn test:watch
 ```
 
 **Coverage**
@@ -93,5 +102,6 @@ yarn devo queuing-system test:watch
 Run all the tests and get the coverage report.
 
 ```sh
-yarn devo queuing-system test:coverage
+# Only inside docker
+docker exec queuing-system yarn test:coverage
 ```

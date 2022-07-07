@@ -6,8 +6,8 @@
   "license": "MIT",
   "author": "Turnly Team <team@turnly.app> (https://turnly.app)",
   "scripts": {
-    "prebuild": "rimraf dist tsconfig.tsbuildinfo",
-    "build": "tsc",
+    "prebuild": "rm -rf dist tsconfig.tsbuildinfo",
+    "build": "tsc -p tsconfig.build.json",
     "lint:check": "eslint . --ext .js,.ts",
     "lint:format": "prettier \"./**/*.{ts,js}\" --check",
     "lint:ts:check": "tsc --noEmit",
@@ -49,7 +49,6 @@
     "nodemon": "^2.0.14",
     "prettier": "^2.3.0",
     "rimraf": "^3.0.2",
-    "supertest": "^6.1.3",
     "ts-jest": "^28.0.5",
     "ts-node": "^10.2.1",
     "typescript": "^4.4.2"

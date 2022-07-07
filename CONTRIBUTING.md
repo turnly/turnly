@@ -2,9 +2,26 @@
 
 First off, thanks for your interest in Turnly and for wanting to contribute!
 
-This document describes how to set up your development environment to build and test Turnly.
+### Got a Question, Problem or Feature?
 
-### DevO (Development with DevO Tool)
+There are several ways how you can ask your question:
+
+* You can ask on [Slack](https://github.com/turnly/turnly/issues)
+* You can create issue on [github](https://github.com/turnly/turnly/issues)
+
+### Machine dependencies
+
+To properly set up the Docker environment, ensure you meet the following requirements:
+
+- [Docker](https://www.docker.com)
+- [Node.js v16.x (LTS)](https://nodejs.org/en/)
+- [Yarn package manager](https://yarnpkg.com/getting-started/install)
+
+- ⚠️ If you are a **Windows** user, make sure to use a Unix/Linux
+based terminal like **Git bash**.
+- We highly recommend you review the [troubleshooting docs.](/docs/troubleshooting.md)
+
+### DevO Tool
 
 **As a concept:**
 
@@ -16,31 +33,16 @@ in the development environment.
 Application written in bash and docker files that are described as docker-backed
 infrastructure provisioning and systems management for the development environment.
 
-#### DevO Commands
+##### DevO Commands
 
 All available commands must be run using the `yarn devo` prefix.
 
-#### Verbose and debug
+##### Verbose and debug
 
 When you run the commands and verbose is not enabled, a `devo.log` file is
 generated with all the execution logs that can help you debug errors.
 
-### Machine dependencies
-
-To properly set up the Docker environment, ensure you meet the following requirements:
-
-- [Docker](https://www.docker.com)
-- [Node.js](https://nodejs.org/en/)
-- [Yarn package manager](https://yarnpkg.com/getting-started/install)
-
-- ⚠️ If you are a **Windows** user, make sure to use a Unix/Linux
-based terminal like **Git bash**.
-
-- We highly recommend you review the [troubleshooting docs.](/docs/troubleshooting.md)
-
-### Getting Started
-
-#### Local Domains
+### Local Domains
 
 Turnly is a SaaS application and all resources are under a custom URL for each organization.
 In development we add the necessary domains for you in your hosts' file and 4 additional
@@ -62,11 +64,10 @@ So when all of this is set up, you will be able to use the following URLs to int
 | **Real Time Messaging API**           | `http://{organization}.turnly.local/api/v1/rtm`           |
 | **Identity & Access Management API**  | `http://accounts.turnly.local/api/v1`                     |
 
-#### Start specific application
+### Start specific application
 
-If you don't want to run all of Turnly's apps and services,
-you can go to the directory of the app you want to contribute
-to and you'll find a README with details on how to run just that app.
+If you don't want to run all of Turnly's apps and services, you can go to the directory of the app
+you want to contribute to and you'll find a README with details on how to run just that app.
 
 | Application                                     | Description                                                       |
 | ----------------------------------------------- | ----------------------------------------------------------------- |
@@ -82,6 +83,19 @@ to and you'll find a README with details on how to run just that app.
 | [Queuing System](/apps/queuing-system)          | Tickets and Customers management.                                 |
 | [Tasks Scheduling](/apps/tasks-scheduling)      | Scheduling of internal tasks, cleaning, batch, etc.               |
 | [Teams Management](/apps/teams)                 | Management of the organization's employees (Agents and Managers). |
+
+### Software Architecture
+
+The Turnly are built using multiple architectural concepts,
+we highly recommend you review the [architecture docs.](/docs/architecture)
+
+![high-level-architecture](/docs/diagrams/high-level-architecture.png)
+
+### Conventions (Required)
+
+We highly recommend you review the [conventions docs.](/docs/conventions.md)
+
+### Development
 
 #### Step 1: Install application
 
@@ -176,10 +190,10 @@ You can take advantage of yarn workspaces to interact with apps, for example,
 you can run the commands for one of your services from DevO using:
 
 ```sh
-yarn devo realtime-api test
+yarn devo realtime-api command
 
 # Same as:
-cd ./apps/realtime-api && yarn run test
+cd ./apps/realtime-api && yarn run command
 
 # -------------------------------------
 
@@ -189,16 +203,23 @@ yarn devo addons build
 cd ./apps/addons && yarn run build
 ```
 
-### Software Architecture
+### Testing
 
-The Turnly are built using multiple architectural concepts,
-we highly recommend you review the [architecture docs.](/docs/architecture)
+Each application has its own set of tests, and they generally follow the same
+rules of writing and structure. All the tests are executed on our CI and a PR
+could only be merged once the tests pass.
 
-![high-level-architecture](/docs/diagrams/high-level-architecture.png)
+Most tests will benefit from using this template as a starting point:
 
-### Conventions
+```typescript
+describe('queuing-system > tickets > <task title>', async () => {
+  test('should <put a detailed description of what it should do here>', () => {
+    // test go here
+  })
 
-We highly recommend you review the [conventions doc.](/docs/conventions.md)
+  // additional tests if needed
+})
+```
 
 #### How to create a new application
 
