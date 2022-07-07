@@ -5,3 +5,4 @@ README.md
 dist
 ormconfig.js
 **/migrations
+coverage

@@ -75,6 +75,7 @@ lint)
   lint "$@"
   ;;
 *)
+  VERBOSE=true
   execute "yarn workspace @turnly/$COMMAND $*"
   ;;
 esac

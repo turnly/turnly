@@ -38,3 +38,6 @@ apps/**/yarn.lock
 
 # NVM
 **/.nvmrc
+
+# Tests
+**/coverage

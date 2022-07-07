@@ -83,6 +83,14 @@ The State pattern suggests that you create new classes for all possible states o
 
 Instead of implementing all behaviors on its own, the original object, called context, stores a reference to one of the state objects that represents its current state, and delegates all the state-related work to that object.
 
+#### Object Mother
+
+The [Object Mother pattern](https://martinfowler.com/bliki/ObjectMother.html) helps us to have consistent instances
+of entities and value objects throughout the suite of tests.
+
+An Object Mother looks like a factory and exposes methods that return fully assembled objects to us.
+These methods add meaning to our examples, so we can ask them for objects that meet certain characteristics.
+
 ## Architecture Resources
 
 - Appreciate this resource as much as you can, not just the direct link, please take the
