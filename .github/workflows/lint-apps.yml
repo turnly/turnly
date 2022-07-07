@@ -1,0 +1,50 @@
+name: Lint code source in each application
+
+on: [push, pull_request]
+
+jobs:
+  linters:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x]
+
+    steps:
+      - name: Check out Git repo
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+
+      - name: Setup Node ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Yarn cache
+        id: yarn-cache
+        uses: actions/cache@v3
+        with:
+          path: ~/.yarn/cache
+          key: ${{ runner.os }}-yarn-${{ matrix.node-version }}-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-${{ matrix.node-version }}-
+            ${{ runner.os }}-yarn-
+            ${{ runner.os }}-
+
+      - if: ${{ steps.yarn-cache.outputs.cache-hit == 'false' }}
+        name: List the state of node modules
+        continue-on-error: true
+        run: yarn list
+
+      - name: Install Dependencies
+        run: |
+          yarn install --frozen-lockfile
+
+      - name: Copying environment variables
+        run: |
+          cp .env.example .env
+
+      - name: Run linters on each app
+        run: |
+          yarn devo lint --all

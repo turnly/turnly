@@ -2372,9 +2372,9 @@ awilix@^7.0.3:
     fast-glob "^3.2.11"
 
 aws-sdk@^2.1029.0:
-  version "2.1169.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.1169.0.tgz#06c910092e0dd97ac884ce0939a69c062308184a"
-  integrity sha512-zBJXLih/iBueYt7hDednt7Jncb+6wzUjDh6JMdl2e0A61xb+Z5o0NNkjbJTUJELdx96u3R4+yil0DoRTOipksA==
+  version "2.1170.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.1170.0.tgz#8ca2450f590409fc13ffca1b90797c642cd92b2b"
+  integrity sha512-0hbXILJ6EvLJk9cBqkPwgXu+RLZ1B5lK3RyCh56oKbr+uIu4pXlqhj3CH9QVvWji8dmvn5/W5n+Sifnl8ISrOA==
   dependencies:
     buffer "4.9.2"
     events "1.1.1"
@@ -2618,9 +2618,9 @@ bser@2.1.1:
     node-int64 "^0.4.0"
 
 bson@^4.6.2, bson@^4.6.3:
-  version "4.6.4"
-  resolved "https://registry.yarnpkg.com/bson/-/bson-4.6.4.tgz#e66d4a334f1ab230dfcfb9ec4ea9091476dd372e"
-  integrity sha512-TdQ3FzguAu5HKPPlr0kYQCyrYUYh8tFM+CMTpxjNzVzxeiJY00Rtuj3LXLHSgiGvmaWlZ8PE+4KyM2thqE38pQ==
+  version "4.6.5"
+  resolved "https://registry.yarnpkg.com/bson/-/bson-4.6.5.tgz#1a410148c20eef4e40d484878a037a7036e840fb"
+  integrity sha512-uqrgcjyOaZsHfz7ea8zLRCLe1u+QGUSzMZmvXqO24CDW7DWoW1qiN9folSwa7hSneTSgM2ykDIzF5kcQQ8cwNw==
   dependencies:
     buffer "^5.6.0"
 
