@@ -37,13 +37,8 @@ jobs:
             ${{ runner.os }}-
 
       - if: ${{ steps.yarn-cache.outputs.cache-hit == 'false' }}
-        name: List the state of node modules
-        continue-on-error: true
-        run: yarn list
-
-      - name: Install Dependencies
-        run: |
-          yarn install --frozen-lockfile
+        name: Install Dependencies
+        run: yarn install --frozen-lockfile
 
       - name: Copying environment variables
         run: |
