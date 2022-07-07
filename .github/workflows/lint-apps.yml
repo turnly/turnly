@@ -38,8 +38,7 @@ jobs:
             ${{ runner.os }}-yarn-
             ${{ runner.os }}-
 
-      - if: ${{ steps.yarn-cache.outputs.cache-hit == 'false' }}
-        name: Install Dependencies
+      - name: Install Dependencies
         run: yarn install --frozen-lockfile
 
       - name: Copying environment variables
