@@ -19,7 +19,7 @@ WORKDIR /app
 COPY package.json yarn.lock ./
 
 RUN apk add --no-cache --update libc6-compat g++ git cmake make python3 \
-  && yarn install --immutable --immutable-cache --check-cache \
+  && yarn install --immutable --immutable-cache \
   && apk del --purge --no-cache --force-deps --quiet git cmake make python3 npm \
   && rm -rf /var/cache/apk/* /tmp/* /var/tmp/*
 
