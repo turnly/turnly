@@ -212,7 +212,7 @@ could only be merged once the tests pass.
 Most tests will benefit from using this template as a starting point:
 
 ```typescript
-describe('queuing-system > tickets > <task title>', async () => {
+describe('<scope name> > <task title>', async () => {
   test('should <put a detailed description of what it should do here>', () => {
     // test go here
   })

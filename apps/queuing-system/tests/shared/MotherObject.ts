@@ -75,4 +75,16 @@ export abstract class MotherObject {
   static position(): string {
     return MotherObject.creator().name.jobTitle()
   }
+
+  static url(): string {
+    return MotherObject.creator().internet.url()
+  }
+
+  static image(): string {
+    return MotherObject.creator().image.imageUrl()
+  }
+
+  static displayCode(prefix: string): string {
+    return `${prefix}-${this.integer(2)}`
+  }
 }

@@ -9,8 +9,6 @@ import {
   QueryBuilderObject,
 } from '@turnly/shared'
 
-import { MotherObject } from '../MotherObject'
-
 export abstract class TestReadableRepo<Entity extends AggregateRoot>
   implements IReadableRepository<Entity>
 {
@@ -18,33 +16,32 @@ export abstract class TestReadableRepo<Entity extends AggregateRoot>
   protected readonly countMock = jest.fn()
   protected readonly findMock = jest.fn()
 
-  protected entities: Entity[] = []
-
   public async getOne(query: QueryBuilderObject<Entity>) {
-    this.getOneMock(query)
-
-    return this.entities?.[0] || null
+    return this.getOneMock(query)
   }
 
   public async find(query: QueryBuilderObject<Entity>) {
-    this.findMock(query)
-
-    return this.entities
+    return this.findMock(query)
   }
 
   public async count(query: QueryBuilderObject<Entity>) {
-    this.countMock(query)
-
-    return MotherObject.integer(3)
+    return this.countMock(query)
   }
 
-  /**
-   * Attach entities
-   *
-   * @description This method is used to attach entities to the repository.
-   */
-  public attach(entities: Entity[]) {
-    this.entities = entities
+  public attachGetOneResponse(entity: Entity) {
+    this.getOneMock.mockReturnValue(entity)
+
+    return this
+  }
+
+  public attachFindResponse(entities: Entity | Entity[]) {
+    this.findMock.mockReturnValue(entities)
+
+    return this
+  }
+
+  public attachCountResponse(count: number) {
+    this.countMock.mockReturnValue(count)
 
     return this
   }
