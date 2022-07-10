@@ -12,6 +12,7 @@ services:
       dockerfile: ./docker/Dockerfile.dev
       args:
         PORT: ${HTTP_PORT}
+        NODE_ENV: ${NODE_ENV}
     volumes:
       - ${DOCKER_RELATIVE_APPS_DIR}/addons:/app
     depends_on:
