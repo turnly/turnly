@@ -78,4 +78,23 @@ export class TicketMother {
 
     return ticket
   }
+
+  static withExtra(
+    extra: Extra[] = [
+      MotherObject.extra(),
+      MotherObject.extra(),
+      MotherObject.extra(),
+    ]
+  ): Ticket {
+    return this.create(
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      extra
+    )
+  }
 }

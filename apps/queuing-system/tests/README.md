@@ -9,7 +9,7 @@ data created by object mothers to reduce replication and show only cohesive attr
 | ---------- | -------------------------------------------------------------------------- | ----------------------- |
 | Jest       | A delightful JavaScript Testing Framework with a focus on simplicity.      | Integration & Unit      |
 | TS Jest    | A Jest transformer that allows you to use Jest with TypeScript projects.   | Integration & Unit      |
-| faker      | Generate massive amounts of fake data for testing and development.         | Integration & Unit      |
+| Faker      | Generate massive amounts of fake data for testing and development.         | Integration & Unit      |
 | Postman    | An API platform for building and using APIs.                               | Acceptance (e2e)        |
 | Newman     | Newman is a command-line Collection Runner for Postman.                    | Acceptance (e2e)        |
 | k6         | Open source load testing tool.                                             | Benchmark (Performance) |

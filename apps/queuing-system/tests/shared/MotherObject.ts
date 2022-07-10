@@ -4,7 +4,7 @@
  * Licensed under MIT License. See LICENSE for terms.
  */
 import { Faker, faker } from '@faker-js/faker'
-import { Identifier } from '@turnly/common'
+import { Extra, Identifier } from '@turnly/common'
 
 /**
  * Mother Object
@@ -86,5 +86,12 @@ export abstract class MotherObject {
 
   static displayCode(prefix: string): string {
     return `${prefix}-${this.integer(2)}`
+  }
+
+  static extra(): Extra {
+    return {
+      key: MotherObject.creator().database.column(),
+      value: MotherObject.names(),
+    }
   }
 }

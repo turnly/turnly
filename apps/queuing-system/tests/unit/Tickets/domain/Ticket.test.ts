@@ -3,7 +3,7 @@
  *
  * Licensed under MIT License. See LICENSE for terms.
  */
-import { ConflictException, InvalidStateException } from '@turnly/common'
+import { ConflictException, Extra, InvalidStateException } from '@turnly/common'
 
 import { TicketStatus } from '../../../../src/Tickets/domain/enums/TicketStatus'
 import { TicketMother } from './TicketMother'
@@ -123,5 +123,19 @@ describe('tickets > domain > validates the min behavior in the life-cycle of a t
 
     const { status } = ticket.toObject()
     expect(status).not.toEqual(TicketStatus.COMPLETED_WITH_RATING)
+  })
+
+  it('should create a ticket with extra attributes', () => {
+    const ticket = TicketMother.withExtra()
+
+    const { extra } = ticket.toObject()
+
+    expect(extra).toBeDefined()
+    expect(extra?.length).toBeGreaterThan(0)
+
+    const customAttribute = extra?.[0] as Extra
+
+    expect(customAttribute).toHaveProperty('key')
+    expect(customAttribute).toHaveProperty('value')
   })
 })
