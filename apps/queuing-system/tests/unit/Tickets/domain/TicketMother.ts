@@ -11,17 +11,17 @@ import { Ticket } from '../../../../src/Tickets/domain/entities/Ticket'
 import { TicketPriority } from '../../../../src/Tickets/domain/enums/TicketPriority'
 import { TicketScore } from '../../../../src/Tickets/domain/enums/TicketScore'
 import { TicketStatus } from '../../../../src/Tickets/domain/enums/TicketStatus'
-import { MotherObject } from '../../../shared/MotherObject'
+import { ObjectMother } from '../../../shared/ObjectMother'
 
 export class TicketMother {
   static create(
     status: TicketStatus = TicketStatus.BOOKED,
     priority: TicketPriority = TicketPriority.NORMAL,
-    displayCode: string = MotherObject.displayCode('TEST'),
-    serviceId: Guid = MotherObject.uuid('srv'),
-    locationId: Guid = MotherObject.uuid('loc'),
-    customerId: Guid = MotherObject.uuid('cust'),
-    organizationId: Guid = MotherObject.uuid('org'),
+    displayCode: string = ObjectMother.displayCode('TEST'),
+    serviceId: Guid = ObjectMother.uuid('srv'),
+    locationId: Guid = ObjectMother.uuid('loc'),
+    customerId: Guid = ObjectMother.uuid('cust'),
+    organizationId: Guid = ObjectMother.uuid('org'),
     extra: Nullable<Extra[]> = []
   ): Ticket {
     return Ticket.create({
@@ -41,7 +41,7 @@ export class TicketMother {
   }
 
   static randomRating(): Rating {
-    return new Rating(TicketScore.GOOD, MotherObject.paragraph())
+    return new Rating(TicketScore.GOOD, ObjectMother.paragraph())
   }
 
   static fromCommand(command: CreateTicketCommand): Ticket {
@@ -81,9 +81,9 @@ export class TicketMother {
 
   static withExtra(
     extra: Extra[] = [
-      MotherObject.extra(),
-      MotherObject.extra(),
-      MotherObject.extra(),
+      ObjectMother.extra(),
+      ObjectMother.extra(),
+      ObjectMother.extra(),
     ]
   ): Ticket {
     return this.create(
