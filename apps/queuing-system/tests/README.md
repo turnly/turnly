@@ -28,7 +28,7 @@ Run only unit tests, they will usually be the fastest tests.
 yarn devo queuing-system test:unit
 
 # Inside docker
-docker exec queuing-system yarn test:unit
+docker exec queuing-system yarn test:unit --runInBand
 ```
 
 **Integration**
@@ -37,7 +37,7 @@ Run only integration tests, time to open the windows :D
 
 ```sh
 # Only inside docker
-docker exec queuing-system yarn test:integration
+docker exec queuing-system yarn test:integration --runInBand
 ```
 
 **Benchmark**
@@ -70,7 +70,7 @@ so you waste less time to verify your code. To do this, you can:
 yarn devo queuing-system test:unit -t name-of-test
 
 # Inside docker
-docker exec queuing-system yarn test:unit -t name-of-test
+docker exec queuing-system yarn test:unit -t name-of-test --runInBand
 ```
 
 **Watch mode**
@@ -79,7 +79,7 @@ Run tests related to git-based changed files with watch mode enabled.
 
 ```sh
 # Only inside docker
-docker exec queuing-system yarn test:watch
+docker exec queuing-system yarn test:watch --runInBand
 ```
 
 **Coverage**
@@ -88,5 +88,5 @@ Run all the tests and get the coverage report.
 
 ```sh
 # Only inside docker
-docker exec queuing-system yarn test:coverage
+docker exec queuing-system yarn test:coverage --runInBand
 ```

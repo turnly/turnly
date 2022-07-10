@@ -8,7 +8,7 @@ import 'reflect-metadata'
 import { Http, Startup } from '@turnly/shared'
 import { ApolloServerPluginDrainHttpServer } from 'apollo-server-core'
 import { ApolloServer } from 'apollo-server-express'
-import { createSources, DataSource } from 'datasources'
+import { createSources, DataSource, setOrganizationId } from 'datasources'
 import { AuthGuard as authChecker } from 'middlewares/AuthGuard'
 import { buildSchema } from 'type-graphql'
 
@@ -48,7 +48,11 @@ export class Application extends Startup {
           httpServer: this.server.httpServer,
         }),
       ],
-      context: ({ req, res }) => ({ req, res }),
+      context: ({ req, res }) => ({
+        req,
+        res,
+        setOrganizationId,
+      }),
       dataSources: () => createSources(),
     })
 

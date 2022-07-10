@@ -33,6 +33,7 @@ const getCredentials = ({ req: { headers } }: IContext) => {
 
 export const AuthGuard: AuthChecker<IContext> = async ({ context }) => {
   Observability.ExceptionHandler.setUser(null)
+  context.setOrganizationId('')
 
   const { widgetId, customerId } = getCredentials(context)
 
@@ -59,6 +60,8 @@ export const AuthGuard: AuthChecker<IContext> = async ({ context }) => {
       'Access denied! You need to provide an authorized widget before you can access this resource.'
     )
   }
+
+  context.setOrganizationId(widget.organizationId)
 
   Logger.verbose('Checking if customer is authorized...', { customerId })
 

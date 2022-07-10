@@ -32,3 +32,14 @@ export const Tickets = new Consumers.QueuingSystem.Tickets()
  * Add-ons Service
  */
 export const Integrations = new Consumers.Addons.Integrations()
+
+export const setOrganizationId = (organizationId: string) => {
+  Locations.destroyOrganizationId().setOrganizationId(organizationId)
+  Services.destroyOrganizationId().setOrganizationId(organizationId)
+  Answers.destroyOrganizationId().setOrganizationId(organizationId)
+  Fields.destroyOrganizationId().setOrganizationId(organizationId)
+  Agents.destroyOrganizationId().setOrganizationId(organizationId)
+  Customers.destroyOrganizationId().setOrganizationId(organizationId)
+  Tickets.destroyOrganizationId().setOrganizationId(organizationId)
+  Integrations.destroyOrganizationId().setOrganizationId(organizationId)
+}

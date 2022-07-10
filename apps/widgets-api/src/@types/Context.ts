@@ -19,4 +19,5 @@ export interface IContext {
   req: IRequest
   res: Response
   dataSources: Sources
+  setOrganizationId: (organizationId: Guid) => void
 }
