@@ -46,15 +46,15 @@ export abstract class TestReadableRepo<Entity extends AggregateRoot>
     return this
   }
 
-  public assertGetOneHasBeenCalledWith(query: QueryBuilderObject<Entity>) {
-    expect(this.getOneMock).toHaveBeenCalledWith(query)
+  public assertGetOneHasBeenCalled() {
+    expect(this.getOneMock).toHaveBeenCalled()
   }
 
-  public assertFindHasBeenCalledWith(query: QueryBuilderObject<Entity>) {
-    expect(this.findMock).toHaveBeenCalledWith(query)
+  public assertFindHasBeenCalled() {
+    expect(this.findMock).toHaveBeenCalled()
   }
 
-  public assertCountHasBeenCalledWith(query: QueryBuilderObject<Entity>) {
-    expect(this.countMock).toHaveBeenCalledWith(query)
+  public assertCountHasBeenCalled() {
+    expect(this.countMock).toHaveBeenCalled()
   }
 }

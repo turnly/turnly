@@ -17,7 +17,7 @@ let queryBus: TestQueryBus
 let eventBus: TestEventBus
 let handler: CreateTicketCommandHandler
 
-describe('tickets > application > validates the expected behavior on ticket creation', () => {
+describe('tickets > commands > validates the expected behavior on ticket creation', () => {
   beforeEach(() => {
     eventBus = new TestEventBus()
     queryBus = new TestQueryBus()

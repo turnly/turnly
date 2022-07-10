@@ -18,7 +18,7 @@ let queryBus: TestQueryBus
 let eventBus: TestEventBus
 let handler: LeaveTicketCommandHandler
 
-describe('tickets > application > validates the expected behavior when a ticket is cancelled', () => {
+describe('tickets > commands > validates the expected behavior when a ticket is cancelled', () => {
   beforeEach(() => {
     eventBus = new TestEventBus()
     queryBus = new TestQueryBus()

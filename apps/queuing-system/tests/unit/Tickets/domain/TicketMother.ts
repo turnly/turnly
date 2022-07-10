@@ -8,6 +8,7 @@ import { Extra, Guid, Nullable } from '@turnly/common'
 import { AnnounceTicketCommand } from '../../../../src/Tickets/application/commands/AnnounceTicketCommand'
 import { CreateTicketCommand } from '../../../../src/Tickets/application/commands/CreateTicketCommand'
 import { LeaveTicketCommand } from '../../../../src/Tickets/application/commands/LeaveTicketCommand'
+import { TicketByIdQuery } from '../../../../src/Tickets/application/queries/TicketByIdQuery'
 import { Rating } from '../../../../src/Tickets/domain/entities/Rating'
 import { Ticket } from '../../../../src/Tickets/domain/entities/Ticket'
 import { TicketPriority } from '../../../../src/Tickets/domain/enums/TicketPriority'
@@ -68,6 +69,15 @@ export class TicketMother {
       customerId: command.params.customerId,
       organizationId: command.params.organizationId,
       id: command.params.id,
+    })
+  }
+
+  static fromExistingTicketOnQuery(query: TicketByIdQuery): Ticket {
+    return Ticket.build({
+      ...this.random().toObject(),
+      customerId: query.customerId,
+      organizationId: query.organizationId,
+      id: query.id,
     })
   }
 
