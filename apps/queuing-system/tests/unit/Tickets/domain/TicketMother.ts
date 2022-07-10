@@ -4,9 +4,10 @@
  * Licensed under MIT License. See LICENSE for terms.
  */
 import { Extra, Guid, Nullable } from '@turnly/common'
-import { LeaveTicketCommand } from 'Tickets/application/commands/LeaveTicketCommand'
 
+import { AnnounceTicketCommand } from '../../../../src/Tickets/application/commands/AnnounceTicketCommand'
 import { CreateTicketCommand } from '../../../../src/Tickets/application/commands/CreateTicketCommand'
+import { LeaveTicketCommand } from '../../../../src/Tickets/application/commands/LeaveTicketCommand'
 import { Rating } from '../../../../src/Tickets/domain/entities/Rating'
 import { Ticket } from '../../../../src/Tickets/domain/entities/Ticket'
 import { TicketPriority } from '../../../../src/Tickets/domain/enums/TicketPriority'
@@ -58,9 +59,12 @@ export class TicketMother {
     )
   }
 
-  static fromLeaveTicketCommand(command: LeaveTicketCommand): Ticket {
+  static fromExistingTicketOnCommand(
+    command: LeaveTicketCommand | AnnounceTicketCommand
+  ): Ticket {
     return Ticket.build({
-      ...this.create().toObject(),
+      ...this.random().toObject(),
+      status: TicketStatus.AVAILABLE,
       customerId: command.params.customerId,
       organizationId: command.params.organizationId,
       id: command.params.id,
