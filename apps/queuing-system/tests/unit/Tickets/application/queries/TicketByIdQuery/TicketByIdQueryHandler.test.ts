@@ -8,17 +8,24 @@ import { TicketsReadableRepo } from '../../../__mocks__/TicketsReadableRepo'
 import { TicketMother } from '../../../domain/TicketMother'
 import { TicketByIdQueryMother } from './TicketByIdQueryMother'
 
-it('should get a existing ticket', async () => {
-  const repository = new TicketsReadableRepo()
-  const handler = new TicketByIdQueryHandler(repository)
+let repository: TicketsReadableRepo
+let handler: TicketByIdQueryHandler
 
-  const query = TicketByIdQueryMother.random()
-  const ticket = TicketMother.fromExistingTicketOnQuery(query)
+describe('tickets > queries > validates the expected behavior of TicketByIdQuery', () => {
+  beforeEach(() => {
+    repository = new TicketsReadableRepo()
+    handler = new TicketByIdQueryHandler(repository)
+  })
 
-  repository.attachGetOneResponse(ticket)
+  it('should get a existing ticket', async () => {
+    const query = TicketByIdQueryMother.random()
+    const ticket = TicketMother.fromExistingTicketOnQuery(query)
 
-  const response = await handler.execute(query)
+    repository.attachGetOneResponse(ticket)
 
-  repository.assertGetOneHasBeenCalled()
-  expect(response).toEqual(ticket)
+    const response = await handler.execute(query)
+
+    repository.assertGetOneHasBeenCalled()
+    expect(response).toEqual(ticket)
+  })
 })

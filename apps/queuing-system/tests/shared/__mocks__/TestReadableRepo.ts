@@ -3,6 +3,7 @@
  *
  * Licensed under MIT License. See LICENSE for terms.
  */
+import { Nullable } from '@turnly/common'
 import {
   AggregateRoot,
   IReadableRepository,
@@ -28,7 +29,7 @@ export abstract class TestReadableRepo<Entity extends AggregateRoot>
     return this.countMock(query)
   }
 
-  public attachGetOneResponse(entity: Entity) {
+  public attachGetOneResponse(entity: Nullable<Entity>) {
     this.getOneMock.mockReturnValue(entity)
 
     return this
