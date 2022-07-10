@@ -5,25 +5,19 @@ data created by object mothers to reduce replication and show only cohesive attr
 
 ### Technologies stack
 
-| Name       | Description                                                                |
-| ---------- | -------------------------------------------------------------------------- |
-| TS Jest    | A Jest transformer that allows you to use Jest with TypeScript projects.   |
-| Jest       | A delightful JavaScript Testing Framework with a focus on simplicity.      |
-| faker      | Generate massive amounts of fake data for testing and development.         |
+| Name       | Description                                                                | Used for                |
+| ---------- | -------------------------------------------------------------------------- | ----------------------- |
+| Jest       | A delightful JavaScript Testing Framework with a focus on simplicity.      | Integration & Unit      |
+| TS Jest    | A Jest transformer that allows you to use Jest with TypeScript projects.   | Integration & Unit      |
+| faker      | Generate massive amounts of fake data for testing and development.         | Integration & Unit      |
+| Postman    | An API platform for building and using APIs.                               | Acceptance (e2e)        |
+| Newman     | Newman is a command-line Collection Runner for Postman.                    | Acceptance (e2e)        |
+| k6         | Open source load testing tool.                                             | Benchmark (Performance) |
 
 ### Getting Started
 
 The list of commands will help you with the most common command variations,
 but if you're missing something, you can refer to the [Jest](https://jestjs.io/docs/cli) documentation.
-
-**All**
-
-Run all available tests, except `e2e`. This command can be quite slow, so use it with caution.
-
-```sh
-# Only inside docker
-docker exec queuing-system yarn test
-```
 
 **Unit**
 
@@ -31,10 +25,10 @@ Run only unit tests, they will usually be the fastest tests.
 
 ```sh
 # Local machine
-yarn devo queuing-system test unit
+yarn devo queuing-system test:unit
 
 # Inside docker
-docker exec queuing-system yarn test unit
+docker exec queuing-system yarn test:unit
 ```
 
 **Integration**
@@ -43,7 +37,7 @@ Run only integration tests, time to open the windows :D
 
 ```sh
 # Only inside docker
-docker exec queuing-system yarn test integration
+docker exec queuing-system yarn test:integration
 ```
 
 **Benchmark**
@@ -51,22 +45,16 @@ docker exec queuing-system yarn test integration
 Run only benchmark tests, let's see how this is.
 
 ```sh
-# Local machine
-yarn devo queuing-system test benchmark
-
-# Inside docker
-docker exec queuing-system yarn test benchmark
+# Only inside docker
+docker exec queuing-system yarn test:benchmark
 ```
 
-**e2e (Pending)**
+**e2e**
 
 Run e2e tests. This command can be quite slow, so use it with caution.
 
 ```sh
-# Local machine
-yarn devo queuing-system test:e2e
-
-# Inside docker
+# Only inside docker
 docker exec queuing-system yarn test:e2e
 ```
 
@@ -79,10 +67,10 @@ so you waste less time to verify your code. To do this, you can:
 
 ```sh
 # Local machine
-yarn devo queuing-system test unit -t name-of-test
+yarn devo queuing-system test:unit -t name-of-test
 
 # Inside docker
-docker exec queuing-system yarn test -t name-of-test
+docker exec queuing-system yarn test:unit -t name-of-test
 ```
 
 **Watch mode**
@@ -90,10 +78,7 @@ docker exec queuing-system yarn test -t name-of-test
 Run tests related to git-based changed files with watch mode enabled.
 
 ```sh
-# Local machine
-yarn devo queuing-system test:watch
-
-# Inside docker
+# Only inside docker
 docker exec queuing-system yarn test:watch
 ```
 
