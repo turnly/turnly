@@ -18,7 +18,7 @@ export abstract class TestWritableRepo<Entity extends AggregateRoot>
     expect(this.saveMock).toHaveBeenCalledWith(entities)
   }
 
-  public assertLastSavedEntityIs(expected: Entity) {
+  public assertLastSavedIs(expected: Entity) {
     const { calls } = this.saveMock.mock
     const lastSaved = calls[calls.length - 1]?.[0] as Entity
 
@@ -28,5 +28,9 @@ export abstract class TestWritableRepo<Entity extends AggregateRoot>
 
   public assertNothingSaved() {
     expect(this.saveMock).not.toHaveBeenCalled()
+  }
+
+  public assertSaveHasBeenCalled() {
+    expect(this.saveMock).toHaveBeenCalled()
   }
 }

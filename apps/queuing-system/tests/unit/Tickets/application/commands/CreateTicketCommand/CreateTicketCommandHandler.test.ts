@@ -32,7 +32,7 @@ describe('tickets > application > validates the expected behavior on ticket crea
     const command = CreateTicketCommandMother.random()
     const ticket = await handler.execute(command)
 
-    repository.assertLastSavedEntityIs(ticket)
+    repository.assertLastSavedIs(ticket)
     eventBus.assertPublishCalled()
   })
 

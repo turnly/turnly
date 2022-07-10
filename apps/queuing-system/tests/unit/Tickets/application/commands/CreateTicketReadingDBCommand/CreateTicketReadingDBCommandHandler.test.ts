@@ -17,5 +17,5 @@ it('should create the read version of a ticket when it is created from a command
 
   await handler.execute(command)
 
-  repository.assertLastSavedEntityIs(ticket)
+  repository.assertLastSavedIs(ticket)
 })

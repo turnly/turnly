@@ -39,7 +39,7 @@ describe('tickets > application > validates the expected behavior when a ticket 
     const { status } = ticket.toObject()
     expect(status).toEqual(TicketStatus.CANCELLED)
 
-    repository.assertLastSavedEntityIs(ticket)
+    repository.assertLastSavedIs(ticket)
     eventBus.assertPublishCalled()
   })
 
