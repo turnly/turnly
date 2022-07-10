@@ -23,6 +23,14 @@ export class TestEventBus implements IEventBus {
     return Promise.resolve()
   }
 
+  public assertNothingPublished() {
+    expect(this.publishMock).not.toHaveBeenCalled()
+  }
+
+  public assertPublishCalled() {
+    expect(this.publishMock).toHaveBeenCalled()
+  }
+
   public assertPublishCalledWith(events: Event[]) {
     expect(this.publishMock).toHaveBeenCalledWith(events)
   }
@@ -36,8 +44,8 @@ export class TestEventBus implements IEventBus {
 
     expect(calls.length).toBeGreaterThan(0)
 
-    const lastCall = calls[calls.length - 1]
-    const lastEvent = lastCall[0][0] as Event
+    const lastCall = calls[calls.length - 1]?.[0]
+    const lastEvent = lastCall[0] as Event
 
     expect(lastEvent.id).toEqual(expected.id)
   }

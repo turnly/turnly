@@ -20,7 +20,7 @@ export abstract class TestWritableRepo<Entity extends AggregateRoot>
 
   public assertLastSavedEntityIs(expected: Entity) {
     const { calls } = this.saveMock.mock
-    const lastSaved = calls[calls.length - 1] as Entity
+    const lastSaved = calls[calls.length - 1]?.[0] as Entity
 
     expect(lastSaved).toBeDefined()
     expect(lastSaved.toObject()).toEqual(expected.toObject())
