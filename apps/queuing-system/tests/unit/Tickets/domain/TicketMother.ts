@@ -4,6 +4,7 @@
  * Licensed under MIT License. See LICENSE for terms.
  */
 import { Extra, Guid, Nullable } from '@turnly/common'
+import { LeaveTicketCommand } from 'Tickets/application/commands/LeaveTicketCommand'
 
 import { CreateTicketCommand } from '../../../../src/Tickets/application/commands/CreateTicketCommand'
 import { Rating } from '../../../../src/Tickets/domain/entities/Rating'
@@ -55,6 +56,15 @@ export class TicketMother {
       command.params.organizationId,
       command.params.extra
     )
+  }
+
+  static fromLeaveTicketCommand(command: LeaveTicketCommand): Ticket {
+    return Ticket.build({
+      ...this.create().toObject(),
+      customerId: command.params.customerId,
+      organizationId: command.params.organizationId,
+      id: command.params.id,
+    })
   }
 
   static inAvailableStatus(): Ticket {
