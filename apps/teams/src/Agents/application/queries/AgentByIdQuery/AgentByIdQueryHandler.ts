@@ -24,7 +24,7 @@ export class AgentByIdQueryHandler
       .equal('organizationId', organizationId)
       .getOne()
 
-    const agent = await this.agentsReadableRepo.find(query)
+    const agent = await this.agentsReadableRepo.getOne(query)
 
     return !Array.isArray(agent) ? agent : null
   }
