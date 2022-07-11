@@ -26,7 +26,7 @@ describe('tickets > commands > validates the expected behavior when a ticket is 
     handler = new AnnounceTicketCommandHandler(eventBus, queryBus, repository)
   })
 
-  it('should announce a existing ticket', async () => {
+  it('should announce an existing ticket', async () => {
     const command = AnnounceTicketCommandMother.random()
 
     let ticket = TicketMother.fromExistingTicketOnCommand(command)

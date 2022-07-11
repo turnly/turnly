@@ -14,11 +14,8 @@ describe('customers > domain > validates the min behavior in the life-cycle of a
       'id',
       'name',
       'lastname',
-      'email',
       'phone',
       'country',
-      'hasWhatsapp',
-      'showNameSignage',
       'organizationId',
     ]
 

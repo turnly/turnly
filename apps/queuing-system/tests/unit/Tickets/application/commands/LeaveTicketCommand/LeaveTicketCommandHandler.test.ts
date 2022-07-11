@@ -26,7 +26,7 @@ describe('tickets > commands > validates the expected behavior when a ticket is 
     handler = new LeaveTicketCommandHandler(eventBus, queryBus, repository)
   })
 
-  it('should leave a existing ticket', async () => {
+  it('should leave an existing ticket', async () => {
     const command = LeaveTicketCommandMother.random()
 
     let ticket = TicketMother.fromExistingTicketOnCommand(command)

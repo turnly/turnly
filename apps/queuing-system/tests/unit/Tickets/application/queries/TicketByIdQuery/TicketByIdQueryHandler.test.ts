@@ -17,7 +17,7 @@ describe('tickets > queries > validates the expected behavior of TicketByIdQuery
     handler = new TicketByIdQueryHandler(repository)
   })
 
-  it('should get a existing ticket', async () => {
+  it('should get an existing ticket', async () => {
     const query = TicketByIdQueryMother.random()
     const ticket = TicketMother.fromExistingTicketOnQuery(query)
 
