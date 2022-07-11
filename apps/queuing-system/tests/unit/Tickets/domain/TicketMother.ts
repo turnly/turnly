@@ -4,6 +4,7 @@
  * Licensed under MIT License. See LICENSE for terms.
  */
 import { Extra, Guid, Nullable } from '@turnly/common'
+import { ObjectMother } from '@turnly/testing'
 
 import { AnnounceTicketCommand } from '../../../../src/Tickets/application/commands/AnnounceTicketCommand'
 import { CreateTicketCommand } from '../../../../src/Tickets/application/commands/CreateTicketCommand'
@@ -14,7 +15,6 @@ import { Ticket } from '../../../../src/Tickets/domain/entities/Ticket'
 import { TicketPriority } from '../../../../src/Tickets/domain/enums/TicketPriority'
 import { TicketScore } from '../../../../src/Tickets/domain/enums/TicketScore'
 import { TicketStatus } from '../../../../src/Tickets/domain/enums/TicketStatus'
-import { ObjectMother } from '../../../shared/ObjectMother'
 
 export class TicketMother {
   static create(

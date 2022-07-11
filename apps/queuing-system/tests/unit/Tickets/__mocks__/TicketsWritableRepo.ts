@@ -4,9 +4,8 @@
  * Licensed under MIT License. See LICENSE for terms.
  */
 import { IWritableRepository } from '@turnly/shared'
+import { TestWritableRepo } from '@turnly/testing'
 import { Ticket } from 'Tickets/domain/entities/Ticket'
-
-import { TestWritableRepo } from '../../../shared/__mocks__/TestWritableRepo'
 
 export class TicketsWritableRepo
   extends TestWritableRepo<Ticket>

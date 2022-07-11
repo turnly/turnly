@@ -4,9 +4,9 @@
  * Licensed under MIT License. See LICENSE for terms.
  */
 import { Guid } from '@turnly/common'
+import { ObjectMother } from '@turnly/testing'
 
 import { LeaveTicketCommand } from '../../../../../../src/Tickets/application/commands/LeaveTicketCommand'
-import { ObjectMother } from '../../../../../shared/ObjectMother'
 
 export class LeaveTicketCommandMother {
   static create(

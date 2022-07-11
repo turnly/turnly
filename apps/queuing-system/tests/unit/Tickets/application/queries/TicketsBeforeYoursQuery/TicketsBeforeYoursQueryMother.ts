@@ -4,9 +4,9 @@
  * Licensed under MIT License. See LICENSE for terms.
  */
 import { Guid } from '@turnly/common'
+import { ObjectMother } from '@turnly/testing'
 
 import { TicketsBeforeYoursQuery } from '../../../../../../src/Tickets/application/queries/TicketsBeforeYoursQuery'
-import { ObjectMother } from '../../../../../shared/ObjectMother'
 
 export class TicketsBeforeYoursQueryMother {
   static create(

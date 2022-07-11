@@ -4,11 +4,10 @@
  * Licensed under MIT License. See LICENSE for terms.
  */
 import { ResourceNotFoundException } from '@turnly/common'
+import { TestEventBus, TestQueryBus } from '@turnly/testing'
 
 import { AnnounceTicketCommandHandler } from '../../../../../../src/Tickets/application/commands/AnnounceTicketCommand'
 import { TicketStatus } from '../../../../../../src/Tickets/domain/enums/TicketStatus'
-import { TestEventBus } from '../../../../../shared/__mocks__/TestEventBus'
-import { TestQueryBus } from '../../../../../shared/__mocks__/TestQueryBus'
 import { TicketsWritableRepo } from '../../../__mocks__/TicketsWritableRepo'
 import { TicketMother } from '../../../domain/TicketMother'
 import { AnnounceTicketCommandMother } from './AnnounceTicketCommandMother'

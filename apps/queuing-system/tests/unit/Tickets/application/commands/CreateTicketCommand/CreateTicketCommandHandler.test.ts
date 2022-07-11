@@ -4,10 +4,9 @@
  * Licensed under MIT License. See LICENSE for terms.
  */
 import { ConflictException } from '@turnly/common'
+import { TestEventBus, TestQueryBus } from '@turnly/testing'
 
 import { CreateTicketCommandHandler } from '../../../../../../src/Tickets/application/commands/CreateTicketCommand'
-import { TestEventBus } from '../../../../../shared/__mocks__/TestEventBus'
-import { TestQueryBus } from '../../../../../shared/__mocks__/TestQueryBus'
 import { TicketsWritableRepo } from '../../../__mocks__/TicketsWritableRepo'
 import { TicketMother } from '../../../domain/TicketMother'
 import { CreateTicketCommandMother } from './CreateTicketCommandMother'

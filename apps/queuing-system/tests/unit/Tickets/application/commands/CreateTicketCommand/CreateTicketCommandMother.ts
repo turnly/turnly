@@ -4,9 +4,9 @@
  * Licensed under MIT License. See LICENSE for terms.
  */
 import { Extra, Guid } from '@turnly/common'
+import { ObjectMother } from '@turnly/testing'
 
 import { CreateTicketCommand } from '../../../../../../src/Tickets/application/commands/CreateTicketCommand'
-import { ObjectMother } from '../../../../../shared/ObjectMother'
 
 export class CreateTicketCommandMother {
   static create(
