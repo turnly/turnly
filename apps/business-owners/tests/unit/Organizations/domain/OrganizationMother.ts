@@ -1,0 +1,48 @@
+/**
+ * Copyright (c) Turnly Inc. (https://turnly.app)
+ *
+ * Licensed under MIT License. See LICENSE for terms.
+ */
+import { Guid } from '@turnly/common'
+import { ObjectMother } from '@turnly/testing'
+import { OrganizationStatus } from 'Organizations/domain/enums/OrganizationStatus'
+
+import { OrganizationByIdQuery } from '../../../../src/Organizations/application/queries/OrganizationByIdQuery'
+import { OrganizationBySubdomainQuery } from '../../../../src/Organizations/application/queries/OrganizationBySubdomainQuery'
+import { Organization } from '../../../../src/Organizations/domain/entities/Organization'
+
+export class OrganizationMother {
+  static create(
+    name: string = ObjectMother.names(),
+    status: OrganizationStatus = OrganizationStatus.ACTIVE,
+    subdomain: string = ObjectMother.word()
+  ): Organization {
+    return Organization.create({
+      name,
+      status,
+      subdomain,
+    })
+  }
+
+  static random(): Organization {
+    return OrganizationMother.create()
+  }
+
+  static fromExistingOrganizationOnQuery(
+    query: OrganizationByIdQuery | { id: Guid }
+  ): Organization {
+    return Organization.build({
+      ...this.random().toObject(),
+      id: query.id,
+    })
+  }
+
+  static fromExistingOrganizationOnQueryBySubdomain(
+    query: OrganizationBySubdomainQuery | { subdomain: Guid }
+  ): Organization {
+    return Organization.build({
+      ...this.random().toObject(),
+      subdomain: query.subdomain,
+    })
+  }
+}
