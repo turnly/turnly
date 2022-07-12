@@ -6,6 +6,8 @@
 import { Guid, Identifier } from '@turnly/common'
 import { AggregateRoot, EntityAttributes } from '@turnly/shared'
 
+import { ServiceCreatedEvent } from '../events/ServiceCreatedEvent'
+
 /**
  * Service
  *
@@ -61,13 +63,17 @@ export class Service extends AggregateRoot {
   public static create(
     attributes: Omit<EntityAttributes<Service>, 'id'>
   ): Service {
-    return new Service(
+    const service = new Service(
       Identifier.generate('srv'),
       attributes.name,
       attributes.description,
       attributes.organizationId,
       attributes.locationId
     )
+
+    service.register(new ServiceCreatedEvent(service.toObject()))
+
+    return service
   }
 
   /**
