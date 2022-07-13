@@ -71,7 +71,7 @@ export class Agent extends AggregateRoot {
      *
      * @description The Organization that the Agent belongs to.
      */
-    private readonly deskId: Nullable<string> = null,
+    private readonly deskId: Nullable<Guid> = null,
 
     /**
      * Service

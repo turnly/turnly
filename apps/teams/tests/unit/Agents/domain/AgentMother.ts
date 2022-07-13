@@ -16,7 +16,7 @@ export class AgentMother {
     locationId: Guid = ObjectMother.uuid('loc'),
     nick: string = ObjectMother.names(),
     position: string = ObjectMother.position(),
-    deskId: string = ObjectMother.word(),
+    deskId: Guid = ObjectMother.uuid('desk'),
     servingFromIds: Guid[] = [ObjectMother.uuid('loc')],
     organizationId: Guid = ObjectMother.uuid('org'),
     extra: Nullable<Extra[]> = []
