@@ -10,6 +10,16 @@ const get = Validator.object({
   organizationId: Validator.isId(),
 })
 
+const find = Validator.object({
+  searchQuery: Validator.string(true),
+  country: Validator.string(true),
+  ...Validator.coords(),
+  limit: Validator.int(true),
+  offset: Validator.int(true),
+  organizationId: Validator.isId(),
+})
+
 export const validator = {
   get,
+  find,
 }

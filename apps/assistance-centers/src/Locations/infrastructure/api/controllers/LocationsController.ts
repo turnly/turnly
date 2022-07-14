@@ -10,6 +10,7 @@ import {
   IQueryBus,
   TimeoutHandler,
 } from '@turnly/shared'
+import { FindLocationsQuery } from 'Locations/application/queries/FindLocationsQuery'
 import { LocationByIdQuery } from 'Locations/application/queries/LocationByIdQuery'
 import { Location } from 'Locations/domain/entities/Location'
 
@@ -30,5 +31,25 @@ export class LocationsController extends Controller {
     if (!location) throw new ResourceNotFoundException()
 
     return this.respond.ok(location.toObject())
+  }
+
+  @TimeoutHandler()
+  @InputValidator(validator.find)
+  public async find(params: FindLocationsQuery) {
+    const locations = await this.queryBus.ask<Nullable<Location[]>>(
+      new FindLocationsQuery(
+        params.searchQuery,
+        params.country,
+        params.latitude,
+        params.longitude,
+        params.limit,
+        params.offset,
+        params.organizationId
+      )
+    )
+
+    if (!locations?.length) throw new ResourceNotFoundException()
+
+    return this.respond.ok(locations.map(location => location.toObject()))
   }
 }

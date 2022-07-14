@@ -4,6 +4,7 @@
  * Licensed under MIT License. See LICENSE for terms.
  */
 import { Box, ioc } from '@turnly/shared'
+import { FindLocationsQueryHandler } from 'Locations/application/queries/FindLocationsQuery'
 import { LocationByIdQueryHandler } from 'Locations/application/queries/LocationByIdQuery'
 
 import { LocationsController } from '../api/controllers/LocationsController'
@@ -23,4 +24,5 @@ Box.register({
  */
 Box.register({
   locationByIdQueryHandler: ioc.asClass(LocationByIdQueryHandler).singleton(),
+  findLocationsQueryHandler: ioc.asClass(FindLocationsQueryHandler).singleton(),
 })

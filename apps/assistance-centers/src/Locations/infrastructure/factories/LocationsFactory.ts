@@ -9,6 +9,7 @@ import {
   IQueryHandler,
 } from '@turnly/shared'
 import { Box } from '@turnly/shared'
+import { FindLocationsQueryHandler } from 'Locations/application/queries/FindLocationsQuery'
 import { LocationByIdQueryHandler } from 'Locations/application/queries/LocationByIdQuery'
 
 import { LocationsController } from '../api/controllers/LocationsController'
@@ -19,7 +20,10 @@ export class LocationsFactory {
   }
 
   public static getQueryHandlers(): IQueryHandler[] {
-    return [Box.resolve<LocationByIdQueryHandler>('locationByIdQueryHandler')]
+    return [
+      Box.resolve<LocationByIdQueryHandler>('locationByIdQueryHandler'),
+      Box.resolve<FindLocationsQueryHandler>('findLocationsQueryHandler'),
+    ]
   }
 
   public static getCommandHandlers(): ICommandHandler[] {

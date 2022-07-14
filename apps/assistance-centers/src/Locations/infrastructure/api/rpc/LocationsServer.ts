@@ -3,7 +3,7 @@
  *
  * Licensed under MIT License. See LICENSE for terms.
  */
-import { NotImplementedError } from '@turnly/common'
+import { ResourceNotFoundException } from '@turnly/common'
 import { Producers } from '@turnly/rpc'
 import { Client } from '@turnly/rpc/dist/consumers'
 
@@ -39,12 +39,39 @@ export class LocationsServer extends Producers.ServerImplementation<Producers.As
     callback(null, response)
   }
 
+  @Producers.CallHandler(Producers.AssistanceCenters.FindLocationsResponse)
+  public async find(
+    call: Producers.ServerUnaryCall<
+      Producers.AssistanceCenters.FindLocationsRequest,
+      Producers.AssistanceCenters.FindLocationsResponse
+    >,
+    callback: Producers.ICallback<Producers.AssistanceCenters.FindLocationsResponse>
+  ) {
+    const { data, meta } = await this.locationsController.find({
+      searchQuery: call.request.getFindQuery(),
+      country: call.request.getCountry(),
+      latitude: call.request.getLatitude(),
+      longitude: call.request.getLongitude(),
+      limit: call.request.getLimit(),
+      offset: call.request.getOffset(),
+      organizationId: Client.getOrganizationId(call),
+    })
+
+    const response = new Producers.AssistanceCenters.FindLocationsResponse()
+    const locations = data?.map(location => LocationsMapper.toRPC(location))
+
+    if (!locations?.length) throw new ResourceNotFoundException()
+
+    response.setDataList(locations)
+    response.setMeta(Producers.MetaMapper.toRPC(meta))
+
+    callback(null, response)
+  }
+
   public get implementation() {
     return {
       getOne: this.getOne.bind(this),
-      find: () => {
-        throw new NotImplementedError()
-      },
+      find: this.find.bind(this),
     }
   }
 }
