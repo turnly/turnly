@@ -3,8 +3,26 @@
  *
  * Licensed under MIT License. See LICENSE for terms.
  */
-import { LocationModel } from 'models/LocationModel'
-import { Resolver } from 'type-graphql'
+import { IContext } from '@types'
+import { LocationModel, LocationsArgs } from 'models/LocationModel'
+import { Args, Authorized, Ctx, Query, Resolver } from 'type-graphql'
 
 @Resolver(LocationModel)
-export class LocationsResolver {}
+export class LocationsResolver {
+  @Authorized()
+  @Query(() => [LocationModel])
+  public async findLocations(
+    @Args()
+    { searchQuery, country, latitude, longitude, limit, offset }: LocationsArgs,
+    @Ctx() { dataSources }: IContext
+  ) {
+    return await dataSources.locations.find({
+      searchQuery,
+      country,
+      latitude,
+      longitude,
+      limit,
+      offset,
+    })
+  }
+}

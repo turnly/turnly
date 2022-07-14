@@ -3,7 +3,7 @@
  *
  * Licensed under MIT License. See LICENSE for terms.
  */
-import { Field, ID, ObjectType } from 'type-graphql'
+import { ArgsType, Field, Float, ID, Int, ObjectType } from 'type-graphql'
 
 @ObjectType()
 export class LocationModel {
@@ -17,8 +17,32 @@ export class LocationModel {
   address: string
 
   @Field()
+  country: string
+
+  @Field()
   longitude: number
 
   @Field()
   latitude: number
+}
+
+@ArgsType()
+export class LocationsArgs {
+  @Field(() => ID, { nullable: true })
+  searchQuery: string
+
+  @Field(() => String, { nullable: true })
+  country: string
+
+  @Field(() => Float, { nullable: true })
+  latitude: number
+
+  @Field(() => Float, { nullable: true })
+  longitude: number
+
+  @Field(() => Int, { nullable: true })
+  limit: number
+
+  @Field(() => Int, { nullable: true })
+  offset: number
 }
