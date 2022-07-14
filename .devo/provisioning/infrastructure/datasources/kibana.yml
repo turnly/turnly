@@ -1,0 +1,15 @@
+version: '3.9'
+
+services:
+  kibana:
+    extends:
+      file: common.yml
+      service: common
+    image: docker.elastic.co/kibana/kibana:7.17.4
+    container_name: kibana
+    depends_on:
+      - elasticsearch
+    ports:
+      - ${ELASTICSEARCH_UI_PORT}:5601
+    environment:
+      ELASTICSEARCH_HOSTS: http://elasticsearch:${ELASTICSEARCH_PORT}

@@ -1,0 +1,15 @@
+version: '3.9'
+
+services:
+  mongo_ui:
+    extends:
+      file: common.yml
+      service: common
+    container_name: mongo_ui
+    image: mongo-express
+    ports:
+      - ${MONGO_UI_PORT}:8081
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: ${MONGO_USERNAME}
+      ME_CONFIG_MONGODB_ADMINPASSWORD: ${MONGO_PASSWORD}
+      ME_CONFIG_MONGODB_URL: mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@mongo:${MONGO_PORT}/
