@@ -31,7 +31,7 @@ export class TicketsResolver {
   @Mutation(() => TicketModel)
   public async takeTicket(
     @Arg('input') input: TicketInput,
-    @Ctx() { req: { customer } }: IContext
+    @Ctx() { req: { customer }, dataSources }: IContext
   ) {
     /**
      * @todo Run processors
@@ -45,9 +45,12 @@ export class TicketsResolver {
      * const {} = await Locations.isReadyForServing({ servicedId, locationId, organizationId })
      */
 
+    const service = await dataSources.services.getOne(input.serviceId)
+
     const { data: ticket, meta } = await Tickets.create({
       ticket: {
         serviceId: input.serviceId,
+        serviceName: service.name,
         locationId: input.locationId,
         customerId: customer.id,
         extrasList: input.extra,
