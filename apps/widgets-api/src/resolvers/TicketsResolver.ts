@@ -5,6 +5,7 @@
  */
 import { IContext } from '@types'
 import { Tickets } from 'datasources'
+import { Answers } from 'datasources'
 import { TicketsMapper } from 'mappers/TicketsMapper'
 import { CustomerModel } from 'models/CustomerModel'
 import { LocationModel } from 'models/LocationModel'
@@ -56,10 +57,18 @@ export class TicketsResolver {
     if (!ticket) throw new GraphException(meta)
 
     /**
-     * @todo Create answers
-     *
-     * const {} = await Answers.create({ answers, ticketId, extra })
+     * Create Answers
      */
+    if (!input.answers) throw new GraphException(meta)
+
+    const answers = input.answers.map(answer => ({
+      ...answer,
+      entityType: 'customer',
+      entityId: ticket.customerId,
+      extrasList: [{ key: 'ticketId', value: ticket.id }],
+    }))
+
+    await Answers.create({ answersList: answers })
 
     return TicketsMapper.toDTO(ticket)
   }
