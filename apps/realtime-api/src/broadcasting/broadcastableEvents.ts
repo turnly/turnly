@@ -3,7 +3,7 @@
  *
  * Licensed under MIT License. See LICENSE for terms.
  */
-export enum Events {
+export enum BroadcastableEvents {
   /**
    * Ticket events
    */
@@ -30,8 +30,9 @@ export enum Events {
   CUSTOMER_DELETED = 'customer.deleted',
 
   /**
-   * Global events
+   * Service events
    */
-  CONNECTED = 'connected',
-  DISCONNECTED = 'disconnected',
+  SERVICE_CREATED = 'service.created',
+  SERVICE_UPDATED = 'service.updated',
+  SERVICE_DELETED = 'service.deleted',
 }

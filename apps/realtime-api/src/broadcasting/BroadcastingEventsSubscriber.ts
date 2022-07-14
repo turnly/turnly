@@ -7,7 +7,8 @@ import { Logger } from '@turnly/common'
 import { Channel, Realtime } from '@turnly/realtime'
 import { Event, EventsSubscriber, IEventSubscriber } from '@turnly/shared'
 
-import broadcastable from './broadcastable-events.json'
+import { broadcastable } from './broadcastable'
+import type { BroadcastableEvents } from './broadcastableEvents'
 
 /**
  * Broadcasting Events
@@ -35,9 +36,10 @@ export class BroadcastingEventsSubscriber implements IEventSubscriber {
     const channels = Array.from(this.realtime.getChannels())
 
     return channels.filter(channel => {
-      const events: string[] = broadcastable[this.getChannelName(channel)] || []
+      const events: BroadcastableEvents[] =
+        broadcastable[this.getChannelName(channel)] || []
 
-      return events.includes(event.getName())
+      return events.includes(event.getName() as BroadcastableEvents)
     })
   }
 

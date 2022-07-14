@@ -5,4 +5,10 @@
  */
 import { IRealtimeHandler } from '@turnly/realtime'
 
-export const queuingHandlers: IRealtimeHandler[] = []
+import { RealtimeForCustomersHandler } from './RealtimeForCustomersHandler'
+import { RealtimeForOneCustomerHandler } from './RealtimeForOneCustomerHandler'
+
+export const queuingHandlers: IRealtimeHandler[] = [
+  new RealtimeForCustomersHandler(),
+  new RealtimeForOneCustomerHandler(),
+]

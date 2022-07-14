@@ -1,0 +1,16 @@
+version: '3.9'
+
+services:
+  redis_ui:
+    extends:
+      file: common.yml
+      service: common
+    container_name: redis_ui
+    hostname: redis_ui
+    image: rediscommander/redis-commander:latest
+    depends_on:
+      - redis
+    environment:
+    - REDIS_HOSTS=${REDIS_UI_HOST}
+    ports:
+    - ${REDIS_UI_PORT}:8081
