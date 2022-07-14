@@ -6,6 +6,8 @@
 import { Guid, Identifier, Nullable } from '@turnly/common'
 import { AggregateRoot, EntityAttributes } from '@turnly/shared'
 
+import { ProcessorCreatedEvent } from '../events/ProcessorCreatedEvent'
+
 /**
  * Processor
  *
@@ -82,7 +84,7 @@ export class Processor extends AggregateRoot {
   public static create(
     attributes: Omit<EntityAttributes<Processor>, 'id'>
   ): Processor {
-    return new Processor(
+    const prossesor = new Processor(
       Identifier.generate('proc'),
       attributes.name,
       attributes.description,
@@ -92,6 +94,10 @@ export class Processor extends AggregateRoot {
       attributes.isActive,
       attributes.lastFiredAt
     )
+
+    prossesor.register(new ProcessorCreatedEvent(prossesor.toObject()))
+
+    return prossesor
   }
 
   /**

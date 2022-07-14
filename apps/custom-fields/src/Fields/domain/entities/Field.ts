@@ -7,6 +7,7 @@ import { Extra, Guid, Identifier, Nullable } from '@turnly/common'
 import { AggregateRoot, EntityAttributes } from '@turnly/shared'
 
 import { FieldTypes } from '../enums/FieldTypes'
+import { FieldCreatedEvent } from '../events/FieldCreatedEvent'
 import { Processor } from './Processor'
 
 /**
@@ -91,7 +92,7 @@ export class Field extends AggregateRoot {
    * @description Creates a new Field.
    */
   public static create(attributes: Omit<EntityAttributes<Field>, 'id'>): Field {
-    return new Field(
+    const field = new Field(
       Identifier.generate('field'),
       attributes.label,
       attributes.description,
@@ -102,6 +103,10 @@ export class Field extends AggregateRoot {
       attributes.processors,
       attributes.extra
     )
+
+    field.register(new FieldCreatedEvent(field.toObject()))
+
+    return field
   }
 
   /**
