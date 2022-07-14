@@ -7,7 +7,7 @@ import { ICommand } from '@turnly/shared'
 import { CreateTicketParams } from 'Tickets/domain/entities/Ticket'
 
 export type CreateTicketCommandParams = Omit<
-  CreateTicketParams,
+  CreateTicketParams & { serviceName: string },
   'displayCode' | 'status' | 'priority' | 'rating' | 'updatedAt' | 'createdAt'
 >
 

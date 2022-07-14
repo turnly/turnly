@@ -11,6 +11,7 @@ import { CreateTicketCommand } from '../../../../../../src/Tickets/application/c
 export class CreateTicketCommandMother {
   static create(
     serviceId: Guid = ObjectMother.uuid('srv'),
+    serviceName: string = ObjectMother.word(),
     locationId: Guid = ObjectMother.uuid('loc'),
     customerId: Guid = ObjectMother.uuid('cust'),
     organizationId: Guid = ObjectMother.uuid('org'),
@@ -18,6 +19,7 @@ export class CreateTicketCommandMother {
   ): CreateTicketCommand {
     return new CreateTicketCommand({
       serviceId,
+      serviceName,
       locationId,
       customerId,
       organizationId,

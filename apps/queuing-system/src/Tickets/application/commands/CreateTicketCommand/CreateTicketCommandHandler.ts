@@ -3,7 +3,7 @@
  *
  * Licensed under MIT License. See LICENSE for terms.
  */
-import { ConflictException } from '@turnly/common'
+import { ConflictException, generateCode } from '@turnly/common'
 import {
   CommandHandler,
   ICommandHandler,
@@ -42,7 +42,7 @@ export class CreateTicketCommandHandler
       ...params,
       status: TicketStatus.BOOKED,
       priority: TicketPriority.NORMAL,
-      displayCode: await this.generateDisplayCode(),
+      displayCode: await this.generateDisplayCode(params.serviceName),
     })
 
     await this.ticketsWritableRepo.save(ticket)
@@ -52,10 +52,10 @@ export class CreateTicketCommandHandler
     return ticket
   }
 
-  private async generateDisplayCode() {
-    /**
-     * @todo Create a unique display code generator. This is a temporary solution.
-     */
-    return new Date().toTimeString()
+  private async generateDisplayCode(serviceName: string) {
+    const prefix = serviceName.charAt(0).toUpperCase()
+    const code = generateCode()
+
+    return `${prefix}-${code}`
   }
 }

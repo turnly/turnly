@@ -31,6 +31,7 @@ export class TicketsServer extends Producers.ServerImplementation<Producers.Queu
       locationId: payload.getLocationId(),
       customerId: payload.getCustomerId(),
       serviceId: payload.getServiceId(),
+      serviceName: payload.getServiceName(),
       organizationId: Client.getOrganizationId(call),
       extra: payload.getExtrasList().map(e => e.toObject()),
     })
