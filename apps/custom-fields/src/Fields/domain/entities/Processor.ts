@@ -84,7 +84,7 @@ export class Processor extends AggregateRoot {
   public static create(
     attributes: Omit<EntityAttributes<Processor>, 'id'>
   ): Processor {
-    const prossesor = new Processor(
+    const processor = new Processor(
       Identifier.generate('proc'),
       attributes.name,
       attributes.description,
@@ -95,9 +95,9 @@ export class Processor extends AggregateRoot {
       attributes.lastFiredAt
     )
 
-    prossesor.register(new ProcessorCreatedEvent(prossesor.toObject()))
+    processor.register(new ProcessorCreatedEvent(processor.toObject()))
 
-    return prossesor
+    return processor
   }
 
   /**
