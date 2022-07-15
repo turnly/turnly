@@ -1,4 +1,4 @@
-name: Lint code source in each application
+name: Lint code
 
 on: [push, pull_request]
 
