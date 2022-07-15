@@ -4,6 +4,7 @@
  * Licensed under MIT License. See LICENSE for terms.
  */
 import { Producers } from '@turnly/rpc'
+import { config } from '@turnly/shared'
 import { AnswersServer } from 'Answers/infrastructure/api/rpc'
 import { AnswersFactory } from 'Answers/infrastructure/factories/AnswersFactory'
 import { FieldsServer } from 'Fields/infrastructure/api/rpc'
@@ -32,6 +33,6 @@ const services = [
 ]
 
 export const rpc = new Producers.Server({
-  address: process.env.RPC_BIND_ADDRESS as string,
+  address: config.get('rpc.bind_address'),
   services,
 })
