@@ -12,6 +12,7 @@ const extra = Validator.object({
 
 const create = Validator.object({
   serviceId: Validator.isId(),
+  serviceName: Validator.string(),
   locationId: Validator.isId(),
   customerId: Validator.isId(),
   organizationId: Validator.isId(),
