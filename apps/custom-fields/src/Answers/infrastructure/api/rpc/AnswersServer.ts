@@ -22,11 +22,15 @@ export class AnswersServer extends Producers.ServerImplementation<Producers.Cust
     >,
     callback: Producers.ICallback<Producers.CustomFields.CreateAnswersResponse>
   ) {
-    const answers = call.request.getAnswersList().map(answer => ({
-      ...answer.toObject(),
-      organizationId: Client.getOrganizationId(call),
-      extra: answer.getExtrasList().map(e => e.toObject()),
-    }))
+    const answers = call.request.getAnswersList().map(answer => {
+      const { extrasList: extra, ...data } = answer.toObject()
+
+      return {
+        ...data,
+        extra,
+        organizationId: Client.getOrganizationId(call),
+      }
+    })
 
     const { data, meta } = await this.answersController.create(answers)
 

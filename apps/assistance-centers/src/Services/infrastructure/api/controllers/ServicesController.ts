@@ -40,7 +40,7 @@ export class ServicesController extends Controller {
       new ServicesByLocationQuery(params.locationId, params.organizationId)
     )
 
-    if (!services) throw new ResourceNotFoundException()
+    if (!services?.length) throw new ResourceNotFoundException()
 
     return this.respond.ok(services.map(service => service.toObject()))
   }

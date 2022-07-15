@@ -10,13 +10,16 @@ const extra = Validator.object({
   value: Validator.string(),
 })
 
-const create = Validator.object({
-  serviceId: Validator.isId(),
-  locationId: Validator.isId(),
-  customerId: Validator.isId(),
+const answer = Validator.object({
+  value: Validator.string(),
+  fieldId: Validator.isId(),
+  entityId: Validator.isId(),
+  entityType: Validator.string(),
   organizationId: Validator.isId(),
   extra: Validator.getBuilder().array().items(extra).optional(),
 })
+
+const create = Validator.getBuilder().array().items(answer).min(1).required()
 
 export const validator = {
   create,
