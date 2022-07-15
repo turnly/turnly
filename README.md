@@ -21,7 +21,7 @@
 
   <p>
     <sub>
-      From LATAM, built with ❤︎ by
+      Built with ❤︎ by
       <a href="/OWNERS.md">
         maintainers
       </a>
