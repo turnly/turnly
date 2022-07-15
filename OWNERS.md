@@ -15,7 +15,6 @@ Catch-all, everything you want to consult, but like you, we may not know. :D
 Everything related to IaC, Kubbe, devO, etc.
 
 - [Efra](https://github.com/efraa)
-- [Pedro Sanders](https://github.com/psanders)
 
 **Maintainers:**
 
