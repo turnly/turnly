@@ -1,18 +1,24 @@
-# Turnly
+<p align="center">
+    <a href="https://turnly.app" target="_blank" rel="noopener">
+        <img src="https://user-images.githubusercontent.com/40646537/179129882-175b9157-beaf-4c17-9226-59b36bfe5206.png" />
+    </a>
+</p>
 
-Open source queue management and customer experience system
-for walk-ins at physical locations.
+<p align="center">
+  <a href="https://docs.turnly.app"><strong>Documentation</strong></a> ·
+  <a href="https://github.com/orgs/turnly/projects/2"><strong>Roadmap</strong></a> ·
+  <a href="https://github.com/turnly/asgard"><strong>Frontend Apps</strong></a> ·
+  <a href="/docs/deployment.md"><strong>Deployments</strong></a>
+</p>
 
-We replace take-a-number systems with a web widget-based system,
+### Overview 📖
+
+[Turnly](https://turnly.app) replace take-a-number systems with a web widget-based system,
 which your customers can access via any device from your website.
 
 #### Give a Star! ⭐
 
 If you like this project or plan to use it in the future, please give it a star. ❤️
-
-#### Frontend Apps 🎨
-
-Please refer our [frontend applications](https://github.com/turnly/asgard) repository.
 
 ### Features 📦
 
@@ -59,10 +65,6 @@ You will be able to use the following URLs to interact with the APIs:
 - [ ] Public Beta: Stable enough for most non-enterprise use-cases.
 - [ ] Live: Ahoy!, production-ready. (v1.0.0)
 
-#### Roadmap
-
-Check out our [roadmap](https://github.com/orgs/turnly/projects/2) to get informed of the latest features released and the upcoming ones.
-
 #### APIs (Backend for Frontend) 📦
 
 | Name                                                  | Description                                  |
@@ -86,15 +88,9 @@ Check out our [roadmap](https://github.com/orgs/turnly/projects/2) to get inform
 | [Tasks Scheduling](/apps/tasks-scheduling)      | Scheduling of internal tasks, cleaning, batch, etc.               | 🔴   |
 | [Teams Management](/apps/teams)                 | Management of the organization's employees (Agents and Managers). | 🟢   |
 
-![high-level-architecture](/docs/diagrams/high-level-architecture.png)
-
 ### Contributing (Developers) ❤️
 
 Ahoy!, go to [CONTRIBUTING](/CONTRIBUTING.md) for details.
-
-### Deployments 🚀
-
-Learn about [production & stage deployments.](/docs/deployment.md)
 
 ### Security 🔐
 
