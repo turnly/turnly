@@ -1,24 +1,40 @@
-<p align="center">
-    <a href="https://turnly.app" target="_blank" rel="noopener">
-        <img src="https://user-images.githubusercontent.com/40646537/179129882-175b9157-beaf-4c17-9226-59b36bfe5206.png" />
-    </a>
-</p>
+<div align="center">
+  <p align="center">
+      <a href="https://turnly.app" target="_blank" rel="noopener">
+          <img src="https://user-images.githubusercontent.com/40646537/179129882-175b9157-beaf-4c17-9226-59b36bfe5206.png" />
+      </a>
+  </p>
 
-<p align="center">
-  <a href="https://docs.turnly.app"><strong>Documentation</strong></a> ·
-  <a href="https://github.com/orgs/turnly/projects/2"><strong>Roadmap</strong></a> ·
-  <a href="https://github.com/turnly/asgard"><strong>Frontend Apps</strong></a> ·
-  <a href="/docs/deployment.md"><strong>Deployments</strong></a>
-</p>
+  <p align="center">
+    <a href="https://docs.turnly.app"><strong>Documentation</strong></a> ·
+    <a href="https://github.com/orgs/turnly/projects/2"><strong>Roadmap</strong></a> ·
+    <a href="https://github.com/turnly/asgard"><strong>Frontend</strong></a> ·
+    <a href="/docs/deployment.md"><strong>Deployments</strong></a>
+    <br />
+  </p>
+
+  ![tweet](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2Fturnlyapp)
+  ![stars](https://img.shields.io/github/stars/turnly/turnly)
+  ![issues](https://img.shields.io/github/issues/turnly/turnly)
+  ![mit](https://img.shields.io/github/license/turnly/turnly)
+  [![Tests](https://github.com/turnly/turnly/actions/workflows/lint-apps.yml/badge.svg)](https://github.com/turnly/turnly/actions)
+
+  <p>
+    <sub>
+      From LATAM, built with ❤︎ by
+      <a href="/OWNERS.md">
+        maintainers
+      </a>
+    </sub>
+  </p>
+</div>
 
 ### Overview 📖
 
 [Turnly](https://turnly.app) replace take-a-number systems with a web widget-based system,
 which your customers can access via any device from your website.
 
-#### Give a Star! ⭐
-
-If you like this project or plan to use it in the future, please give it a star. ❤️
+If you like this project or plan to use it in the future, please give it a star. ⭐
 
 ### Features 📦
 
