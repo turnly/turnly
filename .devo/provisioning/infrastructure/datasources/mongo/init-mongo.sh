@@ -6,6 +6,7 @@ mongo <<EOF
 print("Creating turnly databases...");
 
 const databases = [
+  "turnly_testing_db",
   "addons_db",
   "heimdall_db",
   "assistance_centers_db",

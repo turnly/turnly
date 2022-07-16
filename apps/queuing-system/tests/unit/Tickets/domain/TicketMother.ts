@@ -39,6 +39,10 @@ export class TicketMother {
     })
   }
 
+  static collection(max = 4): Ticket[] {
+    return ObjectMother.repeater(TicketMother.random, max)
+  }
+
   static random(): Ticket {
     return TicketMother.create()
   }

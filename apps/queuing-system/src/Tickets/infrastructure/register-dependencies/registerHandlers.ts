@@ -18,4 +18,4 @@ eventBus.subscribe(TicketsFactory.getEventSubscribers())
 /**
  * Create index if it doesn't exist
  */
-elasticClient.indexes([TicketsMappings])
+elasticClient.indices([TicketsMappings])

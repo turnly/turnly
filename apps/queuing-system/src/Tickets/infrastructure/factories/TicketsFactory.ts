@@ -4,11 +4,13 @@
  * Licensed under MIT License. See LICENSE for terms.
  */
 import {
+  Box,
   ICommandHandler,
   IEventSubscriber,
   IQueryHandler,
+  IReadableRepository,
+  IWritableRepository,
 } from '@turnly/shared'
-import { Box } from '@turnly/shared'
 import { AnnounceTicketCommandHandler } from 'Tickets/application/commands/AnnounceTicketCommand'
 import { CreateTicketCommandHandler } from 'Tickets/application/commands/CreateTicketCommand'
 import { CreateTicketReadingDBCommandHandler } from 'Tickets/application/commands/CreateTicketReadingDBCommand'
@@ -18,12 +20,23 @@ import { TicketByIdQueryHandler } from 'Tickets/application/queries/TicketByIdQu
 import { TicketsBeforeYoursQueryHandler } from 'Tickets/application/queries/TicketsBeforeYoursQuery'
 import { TicketsWaitingForServiceQueryHandler } from 'Tickets/application/queries/TicketsWaitingForServiceQuery'
 import { CreateTicketReadingDBSubscriber } from 'Tickets/application/subscribers/CreateTicketReadingDBSubscriber'
+import { Ticket } from 'Tickets/domain/entities/Ticket'
 
 import { TicketsController } from '../api/controllers/TicketsController'
+import { TicketsReadableRepo } from '../persistence/mongo/repositories/TicketsReadableRepo'
+import { TicketsWritableRepo } from '../persistence/mongo/repositories/TicketsWritableRepo'
 
 export class TicketsFactory {
   public static getController(): TicketsController {
     return Box.resolve<TicketsController>('ticketsController')
+  }
+
+  public static getWritableRepo(): IWritableRepository<Ticket> {
+    return Box.resolve<TicketsWritableRepo>('ticketsWritableRepo')
+  }
+
+  public static getReadableRepo(): IReadableRepository<Ticket> {
+    return Box.resolve<TicketsReadableRepo>('ticketsReadableRepo')
   }
 
   public static getQueryHandlers(): IQueryHandler[] {
