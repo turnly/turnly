@@ -45,7 +45,7 @@ export class TicketsWaitingForServiceQueryHandler
 
     return serviceIds.map(serviceId => ({
       waitingFor: serviceId,
-      tickets: tickets.filter(
+      tickets: tickets?.filter(
         ticket => ticket.toObject().serviceId === serviceId
       ),
     }))

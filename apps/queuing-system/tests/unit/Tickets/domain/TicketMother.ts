@@ -72,11 +72,7 @@ export class TicketMother {
     })
   }
 
-  static fromExistingTicketOnQuery(
-    query:
-      | TicketByIdQuery
-      | { customerId: Guid; organizationId: Guid; id: Guid }
-  ): Ticket {
+  static fromExistingTicketOnQuery(query: TicketByIdQuery): Ticket {
     return Ticket.build({
       ...this.random().toObject(),
       customerId: query.customerId,
