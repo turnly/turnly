@@ -19,7 +19,7 @@ describe('services > queries > validates the expected behavior of ServicesByLoca
     handler = new ServicesByLocationQueryHandler(repository)
   })
 
-  it('should get an array of existing services', async () => {
+  it('should get a collection of existing services', async () => {
     const query = ServicesByLocationQueryMother.random()
 
     const expected = ObjectMother.repeater(ServiceMother.random, 20)

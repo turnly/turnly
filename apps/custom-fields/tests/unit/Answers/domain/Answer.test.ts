@@ -37,7 +37,7 @@ describe('answers > domain > validates the min behavior in the life-cycle of a a
     expect(event.payload).toBeDefined()
   })
 
-  it('should create a answer with extra attributes', () => {
+  it('should create an answer with extra attributes', () => {
     const answer = AnswerMother.withExtra()
 
     const { extra } = answer.toObject()
