@@ -19,18 +19,16 @@ describe('fields > domain > validates the min behavior in the life-cycle of a fi
     }
   })
 
-  describe('when the field is created', () => {
-    it('should register a creation event', () => {
-      const field = FieldMother.random()
-      const events = field.pull()
+  it('should register a creation event when the field is created', () => {
+    const field = FieldMother.random()
+    const events = field.pull()
 
-      expect(events).toHaveLength(1)
+    expect(events).toHaveLength(1)
 
-      const event = events[0]
+    const event = events[0]
 
-      expect(event.getName()).toBe('field.created')
-      expect(event.payload).toBeDefined()
-    })
+    expect(event.getName()).toBe('field.created')
+    expect(event.payload).toBeDefined()
   })
 
   it('should create a field with extra attributes', () => {

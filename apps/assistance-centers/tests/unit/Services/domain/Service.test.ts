@@ -23,17 +23,15 @@ describe('services > domain > validates the min behavior in the life-cycle of a 
     }
   })
 
-  describe('when the service is created', () => {
-    it('should register a creation event', () => {
-      const service = ServiceMother.random()
-      const events = service.pull()
+  it('should register a creation event when the service is created', () => {
+    const service = ServiceMother.random()
+    const events = service.pull()
 
-      expect(events).toHaveLength(1)
+    expect(events).toHaveLength(1)
 
-      const event = events[0]
+    const event = events[0]
 
-      expect(event.getName()).toBe('service.created')
-      expect(event.payload).toBeDefined()
-    })
+    expect(event.getName()).toBe('service.created')
+    expect(event.payload).toBeDefined()
   })
 })

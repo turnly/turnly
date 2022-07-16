@@ -28,9 +28,7 @@ export class ServiceMother {
     return ServiceMother.create()
   }
 
-  static fromExistingServiceOnQuery(
-    query: ServiceByIdQuery | { organizationId: Guid; id: Guid }
-  ): Service {
+  static fromExistingServiceOnQuery(query: ServiceByIdQuery): Service {
     return Service.build({
       ...this.random().toObject(),
       organizationId: query.organizationId,

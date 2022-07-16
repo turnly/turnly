@@ -17,17 +17,15 @@ describe('organizations > domain > validates the min behavior in the life-cycle 
     }
   })
 
-  describe('when the organization is created', () => {
-    it('should register a creation event', () => {
-      const organization = OrganizationMother.random()
-      const events = organization.pull()
+  it('should register a creation event when the organization is created', () => {
+    const organization = OrganizationMother.random()
+    const events = organization.pull()
 
-      expect(events).toHaveLength(1)
+    expect(events).toHaveLength(1)
 
-      const event = events[0]
+    const event = events[0]
 
-      expect(event.getName()).toBe('organization.created')
-      expect(event.payload).toBeDefined()
-    })
+    expect(event.getName()).toBe('organization.created')
+    expect(event.payload).toBeDefined()
   })
 })

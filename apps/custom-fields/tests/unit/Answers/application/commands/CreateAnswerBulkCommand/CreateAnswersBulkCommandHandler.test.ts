@@ -20,7 +20,7 @@ describe('answers > commands > validates the expected behavior on answer creatio
     handler = new CreateAnswerBulkCommandHandler(eventBus, repository)
   })
 
-  it('should create a answer', async () => {
+  it('should create answers in bulk from array of raw answers', async () => {
     const command = CreateAnswersBulkCommandMother.random()
     const answers = await handler.execute(command)
 

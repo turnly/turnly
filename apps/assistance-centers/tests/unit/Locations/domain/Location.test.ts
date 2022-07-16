@@ -25,17 +25,15 @@ describe('locations > domain > validates the min behavior in the life-cycle of a
     }
   })
 
-  describe('when the location is created', () => {
-    it('should register a creation event', () => {
-      const location = LocationMother.random()
-      const events = location.pull()
+  it('should register a creation event when the location is created', () => {
+    const location = LocationMother.random()
+    const events = location.pull()
 
-      expect(events).toHaveLength(1)
+    expect(events).toHaveLength(1)
 
-      const event = events[0]
+    const event = events[0]
 
-      expect(event.getName()).toBe('location.created')
-      expect(event.payload).toBeDefined()
-    })
+    expect(event.getName()).toBe('location.created')
+    expect(event.payload).toBeDefined()
   })
 })

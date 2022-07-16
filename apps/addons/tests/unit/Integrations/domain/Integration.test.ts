@@ -17,17 +17,15 @@ describe('integrations > domain > validates the min behavior in the life-cycle o
     }
   })
 
-  describe('when the integration is created', () => {
-    it('should register a creation event', () => {
-      const integration = IntegrationMother.random()
-      const events = integration.pull()
+  it('should register a creation event when the integration is created', () => {
+    const integration = IntegrationMother.random()
+    const events = integration.pull()
 
-      expect(events).toHaveLength(1)
+    expect(events).toHaveLength(1)
 
-      const event = events[0]
+    const event = events[0]
 
-      expect(event.getName()).toBe('integration.created')
-      expect(event.payload).toBeDefined()
-    })
+    expect(event.getName()).toBe('integration.created')
+    expect(event.payload).toBeDefined()
   })
 })

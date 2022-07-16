@@ -24,11 +24,7 @@ but if you're missing something, you can refer to the [Jest](https://jestjs.io/d
 Run only unit tests, they will usually be the fastest tests.
 
 ```sh
-# Local machine
 yarn devo teams test:unit
-
-# Inside docker
-docker exec teams yarn test:unit --runInBand
 ```
 
 **Integration**
@@ -36,8 +32,7 @@ docker exec teams yarn test:unit --runInBand
 Run only integration tests, time to open the windows :D
 
 ```sh
-# Only inside docker
-docker exec teams yarn test:integration --runInBand
+yarn devo teams test:integration
 ```
 
 **Benchmark**
@@ -45,8 +40,7 @@ docker exec teams yarn test:integration --runInBand
 Run only benchmark tests, let's see how this is.
 
 ```sh
-# Only inside docker
-docker exec teams yarn test:benchmark
+yarn devo teams test:benchmark
 ```
 
 **e2e**
@@ -54,8 +48,7 @@ docker exec teams yarn test:benchmark
 Run e2e tests. This command can be quite slow, so use it with caution.
 
 ```sh
-# Only inside docker
-docker exec teams yarn test:e2e
+yarn devo teams test:e2e
 ```
 
 **Matches**
@@ -66,11 +59,7 @@ When you are creating tests to some specific code, you may want only execute the
 so you waste less time to verify your code. To do this, you can:
 
 ```sh
-# Local machine
 yarn devo teams test:unit -t name-of-test
-
-# Inside docker
-docker exec teams yarn test:unit -t name-of-test --runInBand
 ```
 
 **Watch mode**
@@ -78,8 +67,7 @@ docker exec teams yarn test:unit -t name-of-test --runInBand
 Run tests related to git-based changed files with watch mode enabled.
 
 ```sh
-# Only inside docker
-docker exec teams yarn test:watch --runInBand
+yarn devo teams test:watch
 ```
 
 **Coverage**
@@ -87,6 +75,5 @@ docker exec teams yarn test:watch --runInBand
 Run all the tests and get the coverage report.
 
 ```sh
-# Only inside docker
-docker exec teams yarn test:coverage --runInBand
+yarn devo teams test:coverage
 ```

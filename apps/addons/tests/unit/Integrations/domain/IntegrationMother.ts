@@ -30,7 +30,7 @@ export class IntegrationMother {
   }
 
   static fromExistingIntegrationOnQuery(
-    query: IntegrationByIdQuery | { id: Guid }
+    query: IntegrationByIdQuery
   ): Integration {
     return Integration.build({
       ...this.random().toObject(),

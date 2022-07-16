@@ -19,7 +19,7 @@ describe('fields > queries > validates the expected behavior of SearchCustomerFi
     handler = new SearchCustomerFieldsByServiceQueryHandler(repository)
   })
 
-  it('should get an array of existing fields', async () => {
+  it('should get an collection of existing fields', async () => {
     const query = SearchCustomerFieldsByServiceQueryMother.random()
 
     const expected = ObjectMother.repeater(FieldMother.random, 20)

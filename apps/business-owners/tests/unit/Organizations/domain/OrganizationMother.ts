@@ -3,7 +3,6 @@
  *
  * Licensed under MIT License. See LICENSE for terms.
  */
-import { Guid } from '@turnly/common'
 import { ObjectMother } from '@turnly/testing'
 import { OrganizationStatus } from 'Organizations/domain/enums/OrganizationStatus'
 
@@ -29,7 +28,7 @@ export class OrganizationMother {
   }
 
   static fromExistingOrganizationOnQuery(
-    query: OrganizationByIdQuery | { id: Guid }
+    query: OrganizationByIdQuery
   ): Organization {
     return Organization.build({
       ...this.random().toObject(),
@@ -38,7 +37,7 @@ export class OrganizationMother {
   }
 
   static fromExistingOrganizationOnQueryBySubdomain(
-    query: OrganizationBySubdomainQuery | { subdomain: Guid }
+    query: OrganizationBySubdomainQuery
   ): Organization {
     return Organization.build({
       ...this.random().toObject(),

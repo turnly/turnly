@@ -25,18 +25,16 @@ describe('answers > domain > validates the min behavior in the life-cycle of a a
     }
   })
 
-  describe('when the answer is created', () => {
-    it('should register a creation event', () => {
-      const answer = AnswerMother.random()
-      const events = answer.pull()
+  it('should register a creation event when the answer is created', () => {
+    const answer = AnswerMother.random()
+    const events = answer.pull()
 
-      expect(events).toHaveLength(1)
+    expect(events).toHaveLength(1)
 
-      const event = events[0]
+    const event = events[0]
 
-      expect(event.getName()).toBe('answer.created')
-      expect(event.payload).toBeDefined()
-    })
+    expect(event.getName()).toBe('answer.created')
+    expect(event.payload).toBeDefined()
   })
 
   it('should create a answer with extra attributes', () => {

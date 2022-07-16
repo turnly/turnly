@@ -32,9 +32,7 @@ export class LocationMother {
     return LocationMother.create()
   }
 
-  static fromExistingLocationOnQuery(
-    query: LocationByIdQuery | { organizationId: Guid; id: Guid }
-  ): Location {
+  static fromExistingLocationOnQuery(query: LocationByIdQuery): Location {
     return Location.build({
       ...this.random().toObject(),
       organizationId: query.organizationId,
