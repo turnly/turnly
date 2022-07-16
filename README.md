@@ -70,12 +70,11 @@ You will be able to use the following URLs to interact with the APIs:
 
 > You can check the complete list on the [features document](/docs/features.md).
 
-#### Status 🚧
+#### Project Status 🚧
 
-- [X] Starting: We are constantly developing to bring value to Turnly.
-- [ ] Demo: We are testing Turnly Widgets with a closed set of customers.
-- [ ] Demo: We are testing Turnly Help Desk with a closed set of customers.
-- [ ] Demo: We are testing Turnly Back Office with a closed set of customers.
+- [x] Demo: We are developing and testing Turnly Widgets.
+- [ ] Demo: We are developing and testing Turnly Help Desk with a closed set of customers.
+- [ ] Demo: We are developing and testing Turnly Back Office with a closed set of customers.
 - [ ] Alpha: We are testing Turnly with a closed set of customers.
 - [ ] Public Alpha: Anyone can sign up over at [turnly.app](https://turnly.app).
 - [ ] Public Beta: Stable enough for most non-enterprise use-cases.
