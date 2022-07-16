@@ -38,7 +38,7 @@ describe('agents > domain > validates the min behavior in the life-cycle of a ag
       expect(event.payload).toBeDefined()
     })
 
-    it('should create a agent with extra attributes', () => {
+    it('should create an agent with extra attributes', () => {
       const agent = AgentMother.withExtra()
 
       const { extra } = agent.toObject()
