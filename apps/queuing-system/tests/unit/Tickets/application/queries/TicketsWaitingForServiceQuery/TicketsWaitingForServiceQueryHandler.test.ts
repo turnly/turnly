@@ -11,13 +11,13 @@ import { TicketsWaitingForServiceQueryMother } from './TicketsWaitingForServiceQ
 let repository: TicketsReadableRepo
 let handler: TicketsWaitingForServiceQueryHandler
 
-describe('tickets > queries > validates the expected behavior of TicketsBeforeYoursQuery', () => {
+describe('tickets > queries > validates the expected behavior of TicketsWaitingForServiceQuery', () => {
   beforeEach(() => {
     repository = new TicketsReadableRepo()
     handler = new TicketsWaitingForServiceQueryHandler(repository)
   })
 
-  it('waiting for service', async () => {
+  it('should get a collection of existing tickets', async () => {
     const query = TicketsWaitingForServiceQueryMother.random()
 
     await handler.execute(query)

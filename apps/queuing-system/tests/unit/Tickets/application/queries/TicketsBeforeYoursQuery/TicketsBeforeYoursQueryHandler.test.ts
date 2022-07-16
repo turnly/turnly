@@ -19,7 +19,7 @@ describe('tickets > queries > validates the expected behavior of TicketsBeforeYo
     handler = new TicketsBeforeYoursQueryHandler(repository)
   })
 
-  it('should get a tickets before yours', async () => {
+  it('should get a collection of tickets before yours', async () => {
     const query = TicketsBeforeYoursQueryMother.random()
     const ticket = TicketMother.fromExistingTicketOnQuery({
       ...query,
