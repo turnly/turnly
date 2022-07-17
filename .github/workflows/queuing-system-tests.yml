@@ -12,6 +12,11 @@ on:
       - develop
       - main
 
+env:
+  MONGO_DB: turnly_testing_db
+  MONGO_USERNAME: root
+  MONGO_PASSWORD: turnly
+
 jobs:
   tests:
     runs-on: ubuntu-latest
@@ -27,11 +32,8 @@ jobs:
         ports:
           - 27017:27017
         env:
-          MONGO_INITDB_ROOT_USERNAME: root
-          MONGO_INITDB_ROOT_PASSWORD: turnly
-          MONGO_INITDB_DATABASE: turnly_testing_db
-        volumes:
-          - ./.devo/provisioning/infrastructure/datasources/mongo/:/docker-entrypoint-initdb.d/
+          MONGO_INITDB_ROOT_USERNAME: ${MONGO_USERNAME}
+          MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
         options: >-
           --health-cmd mongo
           --health-interval 10s
@@ -59,6 +61,13 @@ jobs:
 
       - name: 🔋 Run the unit tests
         run: yarn devo queuing-system test:unit
+
+      - name: 💊 Setting integration tests dependencies...
+        run: |
+          docker exec mongo mongo --username ${MONGO_USERNAME} \
+            --password ${MONGO_PASSWORD} --authenticationDatabase admin \
+            --eval "db = db.getSiblingDB('${MONGO_DB}'); \
+            db.createUser({ user: '${MONGO_USERNAME}', pwd: '${MONGO_PASSWORD}', roles: [{ role: 'readWrite', db: '${MONGO_DB}' }] });"
 
       - name: 🔋 Run the integration tests
         run: yarn devo queuing-system test:integration
