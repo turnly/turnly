@@ -1,0 +1,29 @@
+name: '🚀 Setup base images'
+description: 'Pull base images & setting up the domains'
+inputs:
+  node-version:
+    description: 'The node version'
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: 🚀 Setup Node
+      uses: ./.github/actions/setup-node
+      with:
+        node-version: ${{ inputs.node-version }}
+
+    - name: 📡 Setting up the domains in hosts file
+      shell: bash
+      run: |
+        bash ./.devo/scripts/configs/domains.sh
+
+        for host in "${TURNLY_DOMAINS[@]}"; do
+          echo "Adding the host $host to the hosts file... 📡 "
+
+          sudo echo "127.0.0.1 $host" | sudo tee -a /etc/hosts
+        done
+
+    - name: 📦 Pull base dependencies
+      shell: bash
+      run: docker pull node:${{ inputs.node-version }}-alpine3.15

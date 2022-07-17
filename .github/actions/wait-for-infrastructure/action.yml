@@ -1,0 +1,29 @@
+name: '🚀 Wait for the infrastructure'
+description: 'Wait for the infrastructure to get up'
+
+runs:
+  using: composite
+  steps:
+    - name: 🦭 Wait for the mongo
+      shell: bash
+      run: |
+        while ! curl --silent --show-error localhost:27017 &>/dev/null; do
+          echo "Waiting for mongodb service... 🕐 "
+          sleep 2
+        done
+
+    - name: 🧪 Wait for the elasticsearch
+      shell: bash
+      run: |
+        while ! curl -I -XHEAD localhost:9200 &>/dev/null; do
+          echo "Waiting for elasticsearch connection..."
+          sleep 2
+        done
+
+    - name: 🐰 Wait for the message broker
+      shell: bash
+      run: |
+        while ! docker exec rabbitmq rabbitmqctl ping --silent &>/dev/null; do
+          echo "Waiting for RabbitMQ connection..."
+          sleep 2
+        done

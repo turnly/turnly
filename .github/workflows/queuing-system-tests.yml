@@ -84,18 +84,19 @@ jobs:
           persist-credentials: false
           fetch-depth: 0
 
-      - name: 🚀 Setup Node
-        uses: ./.github/actions/setup-node
+      - name: 🕒 Please wait, the next step will take a few minutes...
+        run: sleep 1
+
+      - name: 🐳 Setup the environment
+        uses: ./.github/actions/setup-docker-node
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: 📦 Pull base dependencies
-        run: |
-          docker pull node:${{ matrix.node-version }}-alpine3.15
-
       - name: 🚀 Start application
-        run: |
-          yarn devo start -s queuing-system --verbose
+        run: yarn devo start -s queuing-system --verbose
+
+      - name: 🏁 Wait for the infrastructure to get up
+        uses: ./.github/actions/wait-for-infrastructure
 
       - name: 🧪 Run the e2e tests
         run: yarn devo queuing-system test:e2e
