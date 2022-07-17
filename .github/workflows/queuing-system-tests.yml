@@ -54,7 +54,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: 🔋 Run the unit tests
+      - name: 🧵 Run the unit tests
         run: yarn devo queuing-system test:unit
 
       - name: 💊 Setting integration tests dependencies...
@@ -64,5 +64,5 @@ jobs:
           mongo-password: ${{ env.MONGO_PASSWORD }}
           mongo-db: ${{ env.MONGO_DB }}
 
-      - name: 🔋 Run the integration tests
+      - name: 🪢 Run the integration tests
         run: yarn devo queuing-system test:integration
