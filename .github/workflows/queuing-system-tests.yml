@@ -1,0 +1,70 @@
+name: Queuing System Test Suite
+
+on:
+  pull_request:
+    paths:
+      - 'apps/queuing-system/**'
+  push:
+    paths:
+      - '.github/workflows/queuing-system-tests.yml'
+      - 'apps/queuing-system/**'
+    branches:
+      - develop
+      - main
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14, 16, 18]
+        mongodb-version: [4.2, latest]
+
+    services:
+      mongo:
+        image: mongo:${{ matrix.mongodb-version }}
+        ports:
+          - 27017:27017
+        env:
+          MONGO_INITDB_ROOT_USERNAME: root
+          MONGO_INITDB_ROOT_PASSWORD: turnly
+          MONGO_INITDB_DATABASE: turnly_testing_db
+
+    steps:
+      - name: 🏷️ Check out Git repo
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+
+      - name: 🚀 Setup Node ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: yarn
+
+      - name: 📦 Install Dependencies
+        run: yarn install --immutable --immutable-cache
+
+      - name: 🔗 Copying environment variables
+        run: cp .env.example .env
+
+      - name: 🔦 Lint code
+        run: |
+          yarn workspace @turnly/queuing-system lint:format
+          yarn workspace @turnly/queuing-system lint:check
+          yarn workspace @turnly/queuing-system lint:ts:check
+
+      - name: 🔋 Run the unit tests
+        run: yarn devo queuing-system test:unit
+
+      - name: 🐳 Setting up mongodb
+        run: |
+          while ! curl --silent --show-error localhost:27017 &>/dev/null; do
+            echo "Waiting for mongodb service... 🕐 "
+            sleep 2
+          done
+
+      - name: 🔋 Run the integration tests
+        run: yarn devo queuing-system test:integration
