@@ -19,7 +19,7 @@ jobs:
     strategy:
       matrix:
         node-version: [16, 18]
-        mongodb-version: [4.2, latest]
+        mongodb-version: [latest]
 
     services:
       mongo:
@@ -30,6 +30,11 @@ jobs:
           MONGO_INITDB_ROOT_USERNAME: root
           MONGO_INITDB_ROOT_PASSWORD: turnly
           MONGO_INITDB_DATABASE: turnly_testing_db
+        options: >-
+          --health-cmd mongo
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
 
     steps:
       - name: 🏷️ Check out Git repo
@@ -58,13 +63,6 @@ jobs:
 
       - name: 🔋 Run the unit tests
         run: yarn devo queuing-system test:unit
-
-      - name: 🐳 Setting up mongodb
-        run: |
-          while ! curl --silent --show-error localhost:27017 &>/dev/null; do
-            echo "Waiting for mongodb service... 🕐 "
-            sleep 2
-          done
 
       - name: 🔋 Run the integration tests
         run: yarn devo queuing-system test:integration
