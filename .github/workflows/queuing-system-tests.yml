@@ -55,12 +55,6 @@ jobs:
       - name: 🔗 Copying environment variables
         run: cp .env.example .env
 
-      - name: 🔦 Lint code
-        run: |
-          yarn workspace @turnly/queuing-system lint:format
-          yarn workspace @turnly/queuing-system lint:check
-          yarn workspace @turnly/queuing-system lint:ts:check
-
       - name: 🔋 Run the unit tests
         run: yarn devo queuing-system test:unit
 
