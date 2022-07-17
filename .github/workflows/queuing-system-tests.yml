@@ -1,4 +1,4 @@
-name: 🔋 Queuing System Test Suite
+name: 🔋 Queuing System Test Suites
 
 on:
   pull_request:
@@ -18,12 +18,13 @@ env:
   MONGO_PASSWORD: turnly
 
 jobs:
-  tests:
+  unit_and_integration:
+    name: 🧩 Unit & Integration
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        node-version: [16, 18]
+        node-version: [16.15]
         mongodb-version: [latest]
 
     services:
@@ -54,7 +55,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: 🧵 Run the unit tests
+      - name: 🧪 Run the unit tests
         run: yarn devo queuing-system test:unit
 
       - name: 💊 Setting integration tests dependencies...
@@ -64,5 +65,46 @@ jobs:
           mongo-password: ${{ env.MONGO_PASSWORD }}
           mongo-db: ${{ env.MONGO_DB }}
 
-      - name: 🪢 Run the integration tests
+      - name: 🧪 Run the integration tests
         run: yarn devo queuing-system test:integration
+
+  e2e_and_benchmark:
+    name: 🧩 E2E & Benchmark
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.15]
+        mongodb-version: [latest]
+
+    steps:
+      - name: 🏷️ Check out Git repo
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+
+      - name: 🚀 Setup Node
+        uses: ./.github/actions/setup-node
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: 📦 Pull base dependencies
+        run: |
+          docker pull node:${{ matrix.node-version }}-alpine3.15
+
+      - name: 🚀 Start application
+        run: |
+          yarn devo start -s queuing-system --verbose
+
+      - name: 🧪 Run the e2e tests
+        run: yarn devo queuing-system test:e2e
+
+      - name: 🧪 Run the benchmark tests
+        run: yarn devo queuing-system test:benchmark
+
+      - name: 🔥 Teardown
+        if: always()
+        run: |
+          yarn devo stop --verbose
+          docker system prune -fa

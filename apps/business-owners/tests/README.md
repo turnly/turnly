@@ -15,7 +15,7 @@
   </p>
 </div>
 
-# Business Owners Test Suite
+# Business Owners Test Suites
 
 The test suite will allow you to easily test parts of this application with dynamic
 data created by object mothers to reduce replication and show only cohesive attributes to the test.

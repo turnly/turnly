@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [16, 18]
+        node-version: [16.15]
 
     steps:
       - name: 🏷️ Check out Git repo
