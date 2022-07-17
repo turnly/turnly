@@ -85,7 +85,7 @@ jobs:
           fetch-depth: 0
 
       - name: 🕒 Please wait, the next step will take a few minutes...
-        run: sleep 1
+        run: echo "..."
 
       - name: 🐳 Setup the environment
         uses: ./.github/actions/setup-docker-node
