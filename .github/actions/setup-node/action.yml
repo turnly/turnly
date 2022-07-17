@@ -1,4 +1,4 @@
-name: '🚀 Setup Node ${{ inputs.node-version }}'
+name: '🚀 Setup Node'
 description: 'Setting up the environment and required dependencies'
 inputs:
   node-version:
