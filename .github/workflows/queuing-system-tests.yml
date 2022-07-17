@@ -43,6 +43,12 @@ jobs:
           --health-retries 5
 
     steps:
+      - name: 🏷️ Check out Git repo
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+
       - uses: ./.github/actions/setup-node
         with:
           node-version: ${{ matrix.node-version }}
