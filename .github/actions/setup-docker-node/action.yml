@@ -16,7 +16,9 @@ runs:
     - name: 📡 Setting up the domains in hosts file
       shell: bash
       run: |
-        bash ./.devo/scripts/configs/domains.sh
+        TURNLY_DOMAINS=()
+
+        while IFS='' read -r domain; do TURNLY_DOMAINS+=("$domain"); done < <(cat domains)
 
         for host in "${TURNLY_DOMAINS[@]}"; do
           echo "Adding the host $host to the hosts file... 📡 "
