@@ -30,6 +30,8 @@ jobs:
           MONGO_INITDB_ROOT_USERNAME: root
           MONGO_INITDB_ROOT_PASSWORD: turnly
           MONGO_INITDB_DATABASE: turnly_testing_db
+        volumes:
+          - ./.devo/provisioning/infrastructure/datasources/mongo/:/docker-entrypoint-initdb.d/
         options: >-
           --health-cmd mongo
           --health-interval 10s
