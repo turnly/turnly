@@ -1,0 +1,30 @@
+name: '🚀 Setup Node ${{ inputs.node-version }}'
+description: 'Setting up the environment and required dependencies'
+inputs:
+  node-version:
+    description: 'The node version'
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: 🏷️ Check out Git repo
+      uses: actions/checkout@v3
+      with:
+        persist-credentials: false
+        fetch-depth: 0
+
+    - name: 🚀 Use Node.js ${{ inputs.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ inputs.node-version }}
+        cache: yarn
+
+    - name: 📦 Install Dependencies
+      run: yarn install --immutable --immutable-cache
+      shell: bash
+
+    - name: 🔗 Copying environment variables
+      run: |
+        cp .env.example .env
+      shell: bash

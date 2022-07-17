@@ -43,33 +43,19 @@ jobs:
           --health-retries 5
 
     steps:
-      - name: 🏷️ Check out Git repo
-        uses: actions/checkout@v3
-        with:
-          persist-credentials: false
-          fetch-depth: 0
-
-      - name: 🚀 Setup Node ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+      - uses: ./.github/actions/setup-node
         with:
           node-version: ${{ matrix.node-version }}
-          cache: yarn
-
-      - name: 📦 Install Dependencies
-        run: yarn install --immutable --immutable-cache
-
-      - name: 🔗 Copying environment variables
-        run: cp .env.example .env
 
       - name: 🔋 Run the unit tests
         run: yarn devo queuing-system test:unit
 
       - name: 💊 Setting integration tests dependencies...
-        run: |
-          docker exec mongo mongo --username ${{ env.MONGO_USERNAME }} \
-            --password ${{ env.MONGO_PASSWORD }} --authenticationDatabase admin \
-            --eval "db = db.getSiblingDB('${{ env.MONGO_DB }}'); \
-            db.createUser({ user: '${{ env.MONGO_USERNAME }}', pwd: '${{ env.MONGO_PASSWORD }}', roles: [{ role: 'readWrite', db: '${{ env.MONGO_DB }}' }] });"
+        uses: ./.github/actions/setup-mongodb
+        with:
+          mongo-username: ${{ env.MONGO_USERNAME }}
+          mongo-password: ${{ env.MONGO_PASSWORD }}
+          mongo-db: ${{ env.MONGO_DB }}
 
       - name: 🔋 Run the integration tests
         run: yarn devo queuing-system test:integration

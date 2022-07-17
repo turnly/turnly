@@ -1,0 +1,23 @@
+name: '📡 Setup MongoDB'
+description: 'Sets the database to use in the current context.'
+inputs:
+  mongo-username:
+    description: 'The username to use for connection'
+    required: true
+  mongo-password:
+    description: 'The password for username'
+    required: true
+  mongo-db:
+    description: 'The database to use for connection'
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - run: $GITHUB_ACTION_PATH/script.sh
+      env:
+        MONGO_USERNAME: ${{ inputs.mongo-username }}
+        MONGO_PASSWORD: ${{ inputs.mongo-password }}
+        MONGO_DB: ${{ inputs.mongo-db }}
+      shell: bash
+

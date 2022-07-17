@@ -10,24 +10,9 @@ jobs:
         node-version: [16, 18]
 
     steps:
-      - name: 🏷️ Check out Git repo
-        uses: actions/checkout@v3
-        with:
-          persist-credentials: false
-          fetch-depth: 0
-
-      - name: 🚀 Setup Node ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+      - uses: ./.github/actions/setup-node
         with:
           node-version: ${{ matrix.node-version }}
-          cache: yarn
-
-      - name: 📦 Install Dependencies
-        run: yarn install --immutable --immutable-cache
-
-      - name: 🔗 Copying environment variables
-        run: |
-          cp .env.example .env
 
       - name: 🔦 Run linters on each app
         run: |
