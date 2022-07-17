@@ -32,8 +32,8 @@ jobs:
         ports:
           - 27017:27017
         env:
-          MONGO_INITDB_ROOT_USERNAME: ${MONGO_USERNAME}
-          MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
+          MONGO_INITDB_ROOT_USERNAME: $MONGO_USERNAME
+          MONGO_INITDB_ROOT_PASSWORD: $MONGO_PASSWORD
         options: >-
           --name mongo
           --hostname mongo
@@ -66,10 +66,10 @@ jobs:
 
       - name: 💊 Setting integration tests dependencies...
         run: |
-          docker exec mongo mongo --username ${MONGO_USERNAME} \
-            --password ${MONGO_PASSWORD} --authenticationDatabase admin \
-            --eval "db = db.getSiblingDB('${MONGO_DB}'); \
-            db.createUser({ user: '${MONGO_USERNAME}', pwd: '${MONGO_PASSWORD}', roles: [{ role: 'readWrite', db: '${MONGO_DB}' }] });"
+          docker exec mongo mongo --username $MONGO_USERNAME \
+            --password $MONGO_PASSWORD --authenticationDatabase admin \
+            --eval "db = db.getSiblingDB('$MONGO_DB'); \
+            db.createUser({ user: '$MONGO_USERNAME', pwd: '$MONGO_PASSWORD', roles: [{ role: 'readWrite', db: '$MONGO_DB' }] });"
 
       - name: 🔋 Run the integration tests
         run: yarn devo queuing-system test:integration
