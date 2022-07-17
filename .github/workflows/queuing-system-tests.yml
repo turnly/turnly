@@ -1,4 +1,4 @@
-name: Queuing System Test Suite
+name: 🔋 Queuing System Test Suite
 
 on:
   pull_request:
