@@ -16,7 +16,8 @@ jobs:
           persist-credentials: false
           fetch-depth: 0
 
-      - uses: ./.github/actions/setup-node
+      - name: 🚀 Setup Node
+        uses: ./.github/actions/setup-node
         with:
           node-version: ${{ matrix.node-version }}
 
