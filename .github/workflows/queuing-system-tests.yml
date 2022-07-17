@@ -32,8 +32,8 @@ jobs:
         ports:
           - 27017:27017
         env:
-          MONGO_INITDB_ROOT_USERNAME: root
-          MONGO_INITDB_ROOT_PASSWORD: turnly
+          MONGO_INITDB_ROOT_USERNAME: ${{ env.MONGO_USERNAME }}
+          MONGO_INITDB_ROOT_PASSWORD: ${{ env.MONGO_PASSWORD }}
         options: >-
           --name mongo
           --hostname mongo
@@ -66,10 +66,10 @@ jobs:
 
       - name: 💊 Setting integration tests dependencies...
         run: |
-          docker exec mongo mongo --username root \
-            --password turnly --authenticationDatabase admin \
-            --eval "db = db.getSiblingDB('turnly_testing_db'); \
-            db.createUser({ user: 'root', pwd: 'turnly', roles: [{ role: 'readWrite', db: 'turnly_testing_db' }] });"
+          docker exec mongo mongo --username ${{ env.MONGO_USERNAME }} \
+            --password ${{ env.MONGO_PASSWORD }} --authenticationDatabase admin \
+            --eval "db = db.getSiblingDB('${{ env.MONGO_DB }}'); \
+            db.createUser({ user: '${{ env.MONGO_USERNAME }}', pwd: '${{ env.MONGO_PASSWORD }}', roles: [{ role: 'readWrite', db: '${{ env.MONGO_DB }}' }] });"
 
       - name: 🔋 Run the integration tests
         run: yarn devo queuing-system test:integration
