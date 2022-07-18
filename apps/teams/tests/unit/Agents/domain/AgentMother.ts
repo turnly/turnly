@@ -38,6 +38,10 @@ export class AgentMother {
     return AgentMother.create()
   }
 
+  static collection(max = ObjectMother.integer(2)): Agent[] {
+    return ObjectMother.repeater(AgentMother.random, max)
+  }
+
   static fromExistingAgentOnQuery(
     query: AgentByIdQuery | { organizationId: Guid; id: Guid }
   ): Agent {
