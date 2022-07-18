@@ -1,12 +1,12 @@
-import { QueryBuilder } from '@turnly/shared'
-
-import { Field } from '../../../../../src/Fields/domain/entities/Field'
-
 /**
  * Copyright (c) Turnly Inc. (https://turnly.app)
  *
  * Licensed under MIT License. See LICENSE for terms.
  */
+import { QueryBuilder } from '@turnly/shared'
+
+import { Field } from '../../../../../src/Fields/domain/entities/Field'
+
 export class FieldsQueryMother {
   static getOneWith(field: Field) {
     const { id, organizationId } = field.toObject()

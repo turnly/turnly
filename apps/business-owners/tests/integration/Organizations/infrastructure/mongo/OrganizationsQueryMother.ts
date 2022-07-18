@@ -1,12 +1,12 @@
-import { QueryBuilder } from '@turnly/shared'
-
-import { Organization } from '../../../../../src/Organizations/domain/entities/Organization'
-
 /**
  * Copyright (c) Turnly Inc. (https://turnly.app)
  *
  * Licensed under MIT License. See LICENSE for terms.
  */
+import { QueryBuilder } from '@turnly/shared'
+
+import { Organization } from '../../../../../src/Organizations/domain/entities/Organization'
+
 export class OrganizationsQueryMother {
   static getOneWith(organization: Organization) {
     const { id } = organization.toObject()

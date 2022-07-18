@@ -1,12 +1,12 @@
-import { QueryBuilder } from '@turnly/shared'
-
-import { Customer } from '../../../../../src/Customers/domain/entities/Customer'
-
 /**
  * Copyright (c) Turnly Inc. (https://turnly.app)
  *
  * Licensed under MIT License. See LICENSE for terms.
  */
+import { QueryBuilder } from '@turnly/shared'
+
+import { Customer } from '../../../../../src/Customers/domain/entities/Customer'
+
 export class CustomersQueryMother {
   static getOneWith(customer: Customer) {
     const { id, organizationId } = customer.toObject()

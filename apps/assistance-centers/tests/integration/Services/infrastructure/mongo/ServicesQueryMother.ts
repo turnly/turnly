@@ -1,12 +1,12 @@
-import { QueryBuilder } from '@turnly/shared'
-
-import { Service } from '../../../../../src/Services/domain/entities/Service'
-
 /**
  * Copyright (c) Turnly Inc. (https://turnly.app)
  *
  * Licensed under MIT License. See LICENSE for terms.
  */
+import { QueryBuilder } from '@turnly/shared'
+
+import { Service } from '../../../../../src/Services/domain/entities/Service'
+
 export class ServicesQueryMother {
   static getOneWith(service: Service) {
     const { id, locationId, organizationId } = service.toObject()

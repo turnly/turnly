@@ -1,12 +1,12 @@
-import { QueryBuilder } from '@turnly/shared'
-
-import { Answer } from '../../../../../src/Answers/domain/entities/Answer'
-
 /**
  * Copyright (c) Turnly Inc. (https://turnly.app)
  *
  * Licensed under MIT License. See LICENSE for terms.
  */
+import { QueryBuilder } from '@turnly/shared'
+
+import { Answer } from '../../../../../src/Answers/domain/entities/Answer'
+
 export class AnswersQueryMother {
   static getOneWith(answer: Answer) {
     const { id, organizationId } = answer.toObject()

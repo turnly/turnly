@@ -1,12 +1,12 @@
-import { QueryBuilder } from '@turnly/shared'
-
-import { Ticket } from '../../../../../src/Tickets/domain/entities/Ticket'
-
 /**
  * Copyright (c) Turnly Inc. (https://turnly.app)
  *
  * Licensed under MIT License. See LICENSE for terms.
  */
+import { QueryBuilder } from '@turnly/shared'
+
+import { Ticket } from '../../../../../src/Tickets/domain/entities/Ticket'
+
 export class TicketsQueryMother {
   static getOneWith(ticket: Ticket) {
     const { id, customerId, locationId, serviceId } = ticket.toObject()

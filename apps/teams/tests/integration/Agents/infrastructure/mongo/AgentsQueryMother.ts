@@ -1,12 +1,12 @@
-import { QueryBuilder } from '@turnly/shared'
-
-import { Agent } from '../../../../../src/Agents/domain/entities/Agent'
-
 /**
  * Copyright (c) Turnly Inc. (https://turnly.app)
  *
  * Licensed under MIT License. See LICENSE for terms.
  */
+import { QueryBuilder } from '@turnly/shared'
+
+import { Agent } from '../../../../../src/Agents/domain/entities/Agent'
+
 export class AgentsQueryMother {
   static getOneWith(agent: Agent) {
     const { id, locationId, organizationId } = agent.toObject()
