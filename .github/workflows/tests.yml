@@ -51,7 +51,7 @@ jobs:
       - uses: dorny/paths-filter@v2
         id: filter
         with:
-          filters: .github/filters.yaml
+          filters: .github/filters.yml
 
       - name: 🚀 Setup Node
         uses: ./.github/actions/setup-node
