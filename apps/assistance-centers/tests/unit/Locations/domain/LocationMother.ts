@@ -32,6 +32,10 @@ export class LocationMother {
     return LocationMother.create()
   }
 
+  static collection(max = ObjectMother.integer(2)): Location[] {
+    return ObjectMother.repeater(LocationMother.random, max)
+  }
+
   static fromExistingLocationOnQuery(query: LocationByIdQuery): Location {
     return Location.build({
       ...this.random().toObject(),

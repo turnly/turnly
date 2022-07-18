@@ -28,6 +28,10 @@ export class ServiceMother {
     return ServiceMother.create()
   }
 
+  static collection(max = ObjectMother.integer(2)): Service[] {
+    return ObjectMother.repeater(ServiceMother.random, max)
+  }
+
   static fromExistingServiceOnQuery(query: ServiceByIdQuery): Service {
     return Service.build({
       ...this.random().toObject(),

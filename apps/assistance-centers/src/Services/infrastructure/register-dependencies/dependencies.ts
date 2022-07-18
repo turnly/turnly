@@ -10,10 +10,12 @@ import { ServicesByLocationQueryHandler } from 'Services/application/queries/Ser
 import { ServicesController } from '../api/controllers/ServicesController'
 import { ServicesMapper } from '../persistence/mongo/entity-model-mappers/ServicesMapper'
 import { ServicesReadableRepo } from '../persistence/mongo/repositories/ServicesReadableRepo'
+import { ServicesWritableRepo } from '../persistence/mongo/repositories/ServicesWritableRepo'
 
 Box.register({
   servicesMapper: ioc.asClass(ServicesMapper).singleton(),
   servicesReadableRepo: ioc.asClass(ServicesReadableRepo).singleton(),
+  servicesWritableRepo: ioc.asClass(ServicesWritableRepo).singleton(),
   servicesController: ioc.asClass(ServicesController).singleton(),
 })
 
