@@ -10,10 +10,12 @@ import { OrganizationsMapper } from 'Organizations/infrastructure/persistence/mo
 import { OrganizationsReadableRepo } from 'Organizations/infrastructure/persistence/mongo/repositories/OrganizationsReadableRepo'
 
 import { OrganizationsController } from '../api/controllers/OrganizationsController'
+import { OrganizationsWritableRepo } from '../persistence/mongo/repositories/OrganizationsWritableRepo'
 
 Box.register({
   organizationsMapper: ioc.asClass(OrganizationsMapper).singleton(),
   organizationsReadableRepo: ioc.asClass(OrganizationsReadableRepo).singleton(),
+  organizationsWritableRepo: ioc.asClass(OrganizationsWritableRepo).singleton(),
   organizationsController: ioc.asClass(OrganizationsController).singleton(),
 })
 

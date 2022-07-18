@@ -14,7 +14,7 @@ export class OrganizationMother {
   static create(
     name: string = ObjectMother.names(),
     status: OrganizationStatus = OrganizationStatus.ACTIVE,
-    subdomain: string = ObjectMother.word()
+    subdomain: string = ObjectMother.uuid('sub')
   ): Organization {
     return Organization.create({
       name,
@@ -25,6 +25,10 @@ export class OrganizationMother {
 
   static random(): Organization {
     return OrganizationMother.create()
+  }
+
+  static collection(max = ObjectMother.integer(2)): Organization[] {
+    return ObjectMother.repeater(OrganizationMother.random, max)
   }
 
   static fromExistingOrganizationOnQuery(
