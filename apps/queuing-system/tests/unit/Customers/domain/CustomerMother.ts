@@ -39,6 +39,10 @@ export class CustomerMother {
     return CustomerMother.create()
   }
 
+  static collection(max = ObjectMother.integer(2)): Customer[] {
+    return ObjectMother.repeater(CustomerMother.random, max)
+  }
+
   static fromCommand(command: CreateCustomersCommand): Customer {
     return CustomerMother.create(
       command.params.name,
