@@ -12,7 +12,7 @@ export class TicketsWaitingForServiceQueryMother {
   static create(
     serviceIds: Guid[] = ObjectMother.repeater(
       () => ObjectMother.uuid('srv'),
-      10
+      ObjectMother.integer(1)
     ),
     organizationId: Guid = ObjectMother.uuid('org')
   ): TicketsWaitingForServiceQuery {

@@ -39,7 +39,7 @@ export class TicketMother {
     })
   }
 
-  static collection(max = 4): Ticket[] {
+  static collection(max = ObjectMother.integer(2)): Ticket[] {
     return ObjectMother.repeater(TicketMother.random, max)
   }
 

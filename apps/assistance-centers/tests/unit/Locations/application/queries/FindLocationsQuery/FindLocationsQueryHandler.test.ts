@@ -22,7 +22,10 @@ describe('locations > queries > validates the expected behavior of FindLocations
   it('should get a collection of existing locations', async () => {
     const query = FindLocationsQueryMother.random()
 
-    const expected = ObjectMother.repeater(LocationMother.random, 20)
+    const expected = ObjectMother.repeater(
+      LocationMother.random,
+      ObjectMother.integer(1)
+    )
 
     repository.attachFindResponse(expected)
 

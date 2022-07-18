@@ -49,7 +49,7 @@ export class AnswerMother {
     }
   }
 
-  static randomArrayOfPayload(max = 20) {
+  static randomArrayOfPayload(max = ObjectMother.integer(1)) {
     return ObjectMother.repeater(() => AnswerMother.randomPayload(), max)
   }
 

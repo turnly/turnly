@@ -22,7 +22,10 @@ describe('fields > queries > validates the expected behavior of SearchCustomerFi
   it('should get a collection of existing fields', async () => {
     const query = SearchCustomerFieldsByServiceQueryMother.random()
 
-    const expected = ObjectMother.repeater(FieldMother.random, 20)
+    const expected = ObjectMother.repeater(
+      FieldMother.random,
+      ObjectMother.integer(1)
+    )
 
     repository.attachFindResponse(expected)
 

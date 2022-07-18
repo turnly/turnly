@@ -22,7 +22,10 @@ describe('tickets > queries > validates the expected behavior of TicketsBeforeYo
   it('should get a collection of active tickets by customer', async () => {
     const query = ActiveTicketsByCustomerQueryMother.random()
 
-    const expected = ObjectMother.repeater(TicketMother.random, 20)
+    const expected = ObjectMother.repeater(
+      TicketMother.random,
+      ObjectMother.integer(1)
+    )
 
     repository.attachFindResponse(expected)
 

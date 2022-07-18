@@ -22,7 +22,10 @@ describe('services > queries > validates the expected behavior of ServicesByLoca
   it('should get a collection of existing services', async () => {
     const query = ServicesByLocationQueryMother.random()
 
-    const expected = ObjectMother.repeater(ServiceMother.random, 20)
+    const expected = ObjectMother.repeater(
+      ServiceMother.random,
+      ObjectMother.integer(1)
+    )
 
     repository.attachFindResponse(expected)
 

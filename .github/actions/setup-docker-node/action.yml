@@ -16,11 +16,11 @@ runs:
     - name: 📡 Setting up the domains in hosts file
       shell: bash
       run: |
-        TURNLY_DOMAINS=()
+        DOMAINS=()
 
-        while IFS='' read -r domain; do TURNLY_DOMAINS+=("$domain"); done < <(cat domains)
+        while IFS='' read -r domain; do DOMAINS+=("$domain"); done < <(cat domains)
 
-        for host in "${TURNLY_DOMAINS[@]}"; do
+        for host in "${DOMAINS[@]}"; do
           echo "Adding the host $host to the hosts file... 📡 "
 
           sudo echo "127.0.0.1 $host" | sudo tee -a /etc/hosts

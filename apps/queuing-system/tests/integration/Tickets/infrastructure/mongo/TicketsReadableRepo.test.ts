@@ -14,14 +14,18 @@ import { TicketsQueryMother } from './TicketsQueryMother'
 
 const writableRepo = TicketsFactory.getWritableRepo()
 const readableRepo = TicketsFactory.getReadableRepo()
-const mongoArranger = new MongoEnvironmentArranger()
+const environmentArranger = new MongoEnvironmentArranger()
 
-describe('tickets > infrastructure > mongo > validates the expected behavior of mongo-repositories', () => {
-  beforeEach(async () => mongoArranger.arrange())
-  afterEach(async () => mongoArranger.arrange())
-  afterAll(async () => mongoArranger.close())
+describe('tickets > infrastructure > mongo > validates the expected behavior of TicketsReadableRepo', () => {
+  beforeEach(async () => {
+    await environmentArranger.arrange()
+  })
+  afterAll(async () => {
+    await environmentArranger.arrange()
+    await environmentArranger.close()
+  })
 
-  it('should persist a ticket and retrieve it from the database', async () => {
+  it('should retrieve a existing ticket using getOne()', async () => {
     const ticket = TicketMother.random()
 
     await writableRepo.save(ticket)
@@ -36,10 +40,9 @@ describe('tickets > infrastructure > mongo > validates the expected behavior of 
     const expected = ticket.toObject()
 
     expect(attributes.id).toEqual(expected.id)
-    expect(attributes.createdAt).toBeDefined()
   })
 
-  it('should persist multiple tickets using bulk insert and retrieve them from the database', async () => {
+  it('should retrieve multiple tickets using find()', async () => {
     const tickets = TicketMother.collection()
 
     await writableRepo.save(tickets)
@@ -51,5 +54,13 @@ describe('tickets > infrastructure > mongo > validates the expected behavior of 
     if (!persisted.length) throw new ResourceNotFoundException()
 
     expect(persisted.length).toEqual(tickets.length)
+  })
+
+  it('should not retrieve a non-existing ticket using getOne()', async () => {
+    const ticket = await readableRepo.getOne(
+      TicketsQueryMother.getOneWith(TicketMother.random())
+    )
+
+    expect(ticket).toBeNull()
   })
 })
