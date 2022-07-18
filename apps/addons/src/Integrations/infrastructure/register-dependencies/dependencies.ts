@@ -9,10 +9,12 @@ import { IntegrationsMapper } from 'Integrations/infrastructure/persistence/mong
 import { IntegrationsReadableRepo } from 'Integrations/infrastructure/persistence/mongo/repositories/IntegrationsReadableRepo'
 
 import { IntegrationsController } from '../api/controllers/IntegrationsController'
+import { IntegrationsWritableRepo } from '../persistence/mongo/repositories/IntegrationsWritableRepo'
 
 Box.register({
   integrationsMapper: ioc.asClass(IntegrationsMapper).singleton(),
   integrationsReadableRepo: ioc.asClass(IntegrationsReadableRepo).singleton(),
+  integrationsWritableRepo: ioc.asClass(IntegrationsWritableRepo).singleton(),
   integrationsController: ioc.asClass(IntegrationsController).singleton(),
 })
 

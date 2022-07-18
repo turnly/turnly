@@ -29,6 +29,10 @@ export class IntegrationMother {
     return IntegrationMother.create()
   }
 
+  static collection(max = ObjectMother.integer(2)): Integration[] {
+    return ObjectMother.repeater(IntegrationMother.random, max)
+  }
+
   static fromExistingIntegrationOnQuery(
     query: IntegrationByIdQuery
   ): Integration {
