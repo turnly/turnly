@@ -48,7 +48,8 @@ jobs:
           persist-credentials: false
           fetch-depth: 0
 
-      - uses: dorny/paths-filter@v2
+      - name: 🔍 Map the changes to the appropriate applications
+        uses: dorny/paths-filter@v2
         id: filter
         with:
           filters: .github/filters.yml
