@@ -130,6 +130,12 @@ jobs:
           persist-credentials: false
           fetch-depth: 0
 
+      - name: 🔍 Map the changes to the appropriate applications
+        uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          filters: .github/filters.yml
+
       - name: 🕒 Please wait, the next step will take a few minutes...
         run: echo "..."
 
