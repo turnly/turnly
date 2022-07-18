@@ -4,6 +4,5 @@ coverage
 tests
 yarn-error.log
 *.md
-.editorconfig
 .prettierrc*
 .env*
