@@ -1,0 +1,6 @@
+addons: 'apps/addons/**'
+assistance-centers: 'apps/assistance-centers/**'
+business-owners: 'apps/business-owners/**'
+custom-fields: 'apps/custom-fields/**'
+queuing-system: 'apps/queuing-system/**'
+teams: 'apps/teams/**'
