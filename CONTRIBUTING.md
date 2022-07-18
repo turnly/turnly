@@ -95,7 +95,6 @@ you want to contribute to and you'll find a README with details on how to run ju
 | [Business Owners](/apps/business-owners)        | Organizations management, promotions, etc.                        |
 | [Custom Fields](/apps/custom-fields)            | Business Data Fields, Customers and Agents answers.               |
 | [Heimdall IAM](/apps/heimdall)                  | Identity & Access Management (SSO).                               |
-| [Interactions](/apps/interactions)              | Activities History, and any data record.                          |
 | [Notifications](/apps/notifications)            | Customers reminders, SMS, Calls, WhatsApp messages.               |
 | [Queuing System](/apps/queuing-system)          | Tickets and Customers management.                                 |
 | [Tasks Scheduling](/apps/tasks-scheduling)      | Scheduling of internal tasks, cleaning, batch, etc.               |

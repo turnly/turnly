@@ -27,7 +27,6 @@
     "apps/tasks-scheduling",
     "apps/notifications",
     "apps/business-owners",
-    "apps/interactions",
     "apps/realtime-api",
     "apps/widgets-api"
   ]

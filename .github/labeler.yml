@@ -16,8 +16,6 @@ notifications:
   - apps/notifications/**/*
 business-owners:
   - apps/business-owners/**/*
-interactions:
-  - apps/interactions/**/*
 realtime-api:
   - apps/realtime-api/**/*
 docker:
