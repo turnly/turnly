@@ -8,13 +8,13 @@ import { config } from '@turnly/shared'
 import { AnswersServer } from 'Answers/infrastructure/api/rpc'
 import { AnswersFactory } from 'Answers/infrastructure/factories/AnswersFactory'
 import { FieldsServer } from 'Fields/infrastructure/api/rpc'
-import { FieldFactory } from 'Fields/infrastructure/factories/FieldFactory'
+import { FieldsFactory } from 'Fields/infrastructure/factories/FieldsFactory'
 
 /**
  * Servers
  */
 const answersServer = new AnswersServer(AnswersFactory.getController())
-const fieldsServer = new FieldsServer(FieldFactory.getController())
+const fieldsServer = new FieldsServer(FieldsFactory.getController())
 
 /**
  * Services (RPC)

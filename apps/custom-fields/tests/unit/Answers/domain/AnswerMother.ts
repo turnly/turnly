@@ -31,6 +31,10 @@ export class AnswerMother {
     return AnswerMother.create()
   }
 
+  static collection(max = ObjectMother.integer(2)): Answer[] {
+    return ObjectMother.repeater(AnswerMother.random, max)
+  }
+
   static randomPayload(
     value: string = ObjectMother.names(),
     fieldId: string = ObjectMother.word(),

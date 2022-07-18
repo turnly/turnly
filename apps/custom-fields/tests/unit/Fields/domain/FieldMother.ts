@@ -37,6 +37,10 @@ export class FieldMother {
     return FieldMother.create()
   }
 
+  static collection(max = ObjectMother.integer(2)): Field[] {
+    return ObjectMother.repeater(FieldMother.random, max)
+  }
+
   static withExtra(
     extra: Extra[] = [
       ObjectMother.extra(),

@@ -3,8 +3,9 @@
  *
  * Licensed under MIT License. See LICENSE for terms.
  */
-import { IWritableRepository } from '@turnly/shared'
+import { IReadableRepository, IWritableRepository } from '@turnly/shared'
 
 import { Answer } from '../entities/Answer'
 
+export type IAnswersReadableRepo = IReadableRepository<Answer>
 export type IAnswersWritableRepo = IWritableRepository<Answer>
