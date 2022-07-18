@@ -22,6 +22,6 @@ export class TicketsQueryMother {
   static getManyIn(tickets: Ticket[]) {
     const ids = tickets.map(ticket => ticket.toObject().id)
 
-    return new QueryBuilder<Ticket>().in('id', ids).getMany()
+    return new QueryBuilder<Ticket>().in('id', ids).getMany(0, ids.length)
   }
 }

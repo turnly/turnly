@@ -16,13 +16,25 @@ const writableRepo = TicketsFactory.getWritableRepo()
 const readableRepo = TicketsFactory.getReadableRepo()
 const environmentArranger = new MongoEnvironmentArranger()
 
-describe('tickets > infrastructure > mongo > validates the expected behavior of TicketsReadableRepo', () => {
+describe('tickets > infrastructure > mongo > validates the expected behavior of mongo-repositories', () => {
   beforeEach(async () => {
     await environmentArranger.arrange()
   })
   afterAll(async () => {
     await environmentArranger.arrange()
     await environmentArranger.close()
+  })
+
+  it('should persist a random ticket to mongo database', async () => {
+    const ticket = TicketMother.random()
+
+    await writableRepo.save(ticket)
+  })
+
+  it('should persist multiple tickets using bulk insert to mongo database', async () => {
+    const tickets = TicketMother.collection()
+
+    await writableRepo.save(tickets)
   })
 
   it('should retrieve a existing ticket using getOne()', async () => {
