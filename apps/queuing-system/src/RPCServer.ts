@@ -6,7 +6,7 @@
 import { Producers } from '@turnly/rpc'
 import { config } from '@turnly/shared'
 import { CustomersServer } from 'Customers/infrastructure/api/rpc'
-import { CustomerFactory } from 'Customers/infrastructure/factories/CustomerFactory'
+import { CustomersFactory } from 'Customers/infrastructure/factories/CustomersFactory'
 import { TicketsServer } from 'Tickets/infrastructure/api/rpc'
 import { TicketsFactory } from 'Tickets/infrastructure/factories/TicketsFactory'
 
@@ -14,7 +14,7 @@ import { TicketsFactory } from 'Tickets/infrastructure/factories/TicketsFactory'
  * Servers
  */
 const ticketsServer = new TicketsServer(TicketsFactory.getController())
-const customersServer = new CustomersServer(CustomerFactory.getController())
+const customersServer = new CustomersServer(CustomersFactory.getController())
 
 /**
  * Services (RPC)

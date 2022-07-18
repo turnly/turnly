@@ -8,12 +8,12 @@ import '../../../../../src/Customers/infrastructure/register-dependencies/depend
 import { ResourceNotFoundException } from '@turnly/common'
 import { MongoEnvironmentArranger } from '@turnly/shared'
 
-import { CustomerFactory } from '../../../../../src/Customers/infrastructure/factories/CustomerFactory'
+import { CustomersFactory } from '../../../../../src/Customers/infrastructure/factories/CustomersFactory'
 import { CustomerMother } from '../../../../unit/Customers/domain/CustomerMother'
 import { CustomersQueryMother } from './CustomersQueryMother'
 
-const writableRepo = CustomerFactory.getWritableRepo()
-const readableRepo = CustomerFactory.getReadableRepo()
+const writableRepo = CustomersFactory.getWritableRepo()
+const readableRepo = CustomersFactory.getReadableRepo()
 const environmentArranger = new MongoEnvironmentArranger()
 
 describe('customers > infrastructure > mongo > validates the expected behavior of mongo-repositories', () => {

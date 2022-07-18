@@ -19,7 +19,7 @@ import { CustomersController } from '../api/controllers/CustomersController'
 import { CustomerReadableRepo } from '../persistence/mongo/repositories/CustomerReadableRepo'
 import { CustomerWritableRepo } from '../persistence/mongo/repositories/CustomerWritableRepo'
 
-export class CustomerFactory {
+export class CustomersFactory {
   public static getController(): CustomersController {
     return Box.resolve<CustomersController>('customersController')
   }

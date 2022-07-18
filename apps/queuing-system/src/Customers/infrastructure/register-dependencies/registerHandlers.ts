@@ -5,11 +5,11 @@
  */
 import { commandBus, eventBus, queryBus } from '@turnly/shared'
 
-import { CustomerFactory } from '../factories/CustomerFactory'
+import { CustomersFactory } from '../factories/CustomersFactory'
 
 /**
  * Customer module
  */
-queryBus.register(CustomerFactory.getQueryHandlers())
-commandBus.register(CustomerFactory.getCommandHandlers())
-eventBus.subscribe(CustomerFactory.getEventSubscribers())
+queryBus.register(CustomersFactory.getQueryHandlers())
+commandBus.register(CustomersFactory.getCommandHandlers())
+eventBus.subscribe(CustomersFactory.getEventSubscribers())
