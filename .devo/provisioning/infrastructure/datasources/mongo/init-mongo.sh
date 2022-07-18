@@ -15,7 +15,6 @@ const databases = [
   "queuing_system_db",
   "notifications_db",
   "business_owners_db",
-  "interactions_db",
 ];
 
 for (const database of databases) {
