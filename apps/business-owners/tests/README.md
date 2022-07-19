@@ -49,7 +49,7 @@ yarn devo business-owners test:unit
 Run only integration tests, time to open the windows :D
 
 ```sh
-yarn devo business-owners test:integration
+yarn devo business-owners test:integration --runInBand
 ```
 
 **Benchmark**

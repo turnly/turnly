@@ -49,7 +49,7 @@ yarn devo custom-fields test:unit
 Run only integration tests, time to open the windows :D
 
 ```sh
-yarn devo custom-fields test:integration
+yarn devo custom-fields test:integration --runInBand
 ```
 
 **Benchmark**

@@ -49,7 +49,7 @@ yarn devo teams test:unit
 Run only integration tests, time to open the windows :D
 
 ```sh
-yarn devo teams test:integration
+yarn devo teams test:integration --runInBand
 ```
 
 **Benchmark**

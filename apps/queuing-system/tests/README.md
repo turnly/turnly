@@ -49,7 +49,7 @@ yarn devo queuing-system test:unit
 Run only integration tests, time to open the windows :D
 
 ```sh
-yarn devo queuing-system test:integration
+yarn devo queuing-system test:integration --runInBand
 ```
 
 **Benchmark**
