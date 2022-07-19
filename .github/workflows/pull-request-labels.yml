@@ -1,10 +1,6 @@
 name: 🏷️ Pull Request Labels
 
-on:
-  pull_request_target:
-    branches:
-      - main
-      - develop
+on: [pull_request]
 
 jobs:
   triage:

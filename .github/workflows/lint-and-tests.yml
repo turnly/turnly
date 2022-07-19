@@ -59,6 +59,10 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
+      - name: 🔦 Run linters
+        run: |
+          yarn devo lint --all
+
       - name: 💊 Setting integration tests dependencies...
         uses: ./.github/actions/setup-mongodb
         with:
