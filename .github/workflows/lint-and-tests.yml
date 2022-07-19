@@ -2,10 +2,15 @@ name: 🔋 Test Suites
 
 on:
   pull_request:
+    paths:
+      - apps/**
     branches:
       - develop
       - main
+
   push:
+    paths:
+      - apps/**
     branches:
       - develop
       - main
