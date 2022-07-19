@@ -200,6 +200,4 @@ jobs:
 
       - name: 🔥 Teardown
         if: always()
-        run: |
-          yarn devo stop --verbose
-          docker system prune -fa
+        run: yarn devo stop --verbose
