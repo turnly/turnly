@@ -82,12 +82,12 @@ export class Location extends AggregateRoot {
   ): Location {
     const location = new Location(
       Identifier.generate('loc'),
-      attributes.organizationId,
       attributes.name,
       attributes.address,
+      attributes.country,
       attributes.coordinates,
       attributes.stopServingBeforeInMinutes,
-      attributes.country
+      attributes.organizationId
     )
 
     location.register(new LocationCreatedEvent(location.toObject()))
@@ -103,12 +103,12 @@ export class Location extends AggregateRoot {
   public static build(attributes: EntityAttributes<Location>): Location {
     return new Location(
       attributes.id,
-      attributes.organizationId,
       attributes.name,
       attributes.address,
+      attributes.country,
       attributes.coordinates,
       attributes.stopServingBeforeInMinutes,
-      attributes.country
+      attributes.organizationId
     )
   }
 
