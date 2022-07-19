@@ -63,7 +63,6 @@ You will be able to use the following URLs to interact with the APIs:
 | ------------------------------------- | -------------------------------------------------------- |:----:|
 | **Help Desk API**                     | `https://{organization}.turnly.app/api/v1/help_desk`     | 🔴   |
 | **Back Office API**                   | `https://{organization}.turnly.app/api/v1/back_office`   | 🔴   |
-| **Partnership API**                   | `https://{organization}.turnly.app/api/v1/partners`      | 🔴   |
 | **Widgets API**                       | `https://{organization}.turnly.app/api/v1/widgets`       | 🟢   |
 | **Real Time Messaging API**           | `https://{organization}.turnly.app/api/v1/rtm`           | 🟢   |
 | **Identity & Access Management API**  | `https://accounts.turnly.app/api/v1`                     | 🔴   |

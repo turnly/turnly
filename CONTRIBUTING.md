@@ -76,7 +76,6 @@ So when all of this is set up, you will be able to use the following URLs to int
 | ------------------------------------- | --------------------------------------------------------- |
 | **Help Desk API**                     | `http://{organization}.turnly.local/api/v1/help_desk`     |
 | **Back Office API**                   | `http://{organization}.turnly.local/api/v1/back_office`   |
-| **Partnership API**                   | `http://{organization}.turnly.local/api/v1/partners`      |
 | **Widgets API**                       | `http://{organization}.turnly.local/api/v1/widgets`       |
 | **Real Time Messaging API**           | `http://{organization}.turnly.local/api/v1/rtm`           |
 | **Identity & Access Management API**  | `http://accounts.turnly.local/api/v1`                     |
@@ -245,4 +244,3 @@ describe('<scope name> > <task title>', async () => {
 ### Others resources 🔗
 
 - [Postman Collections](/docs/postman/)
-- [Disaster Recovery](/docs/disaster-recovery.md)

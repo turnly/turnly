@@ -20,8 +20,6 @@ function print_system_statuses() {
   info " 🟢 Real Time Messaging API                 : http://{organization}.$APP_DOMAIN/api/v1/rtm"
   info " 🔴 Help Desk API                           : http://{organization}.$APP_DOMAIN/api/v1/help_desk"
   info " 🔴 Bank Office API                         : http://{organization}.$APP_DOMAIN/api/v1/bank_office"
-  info " 🔴 Partnership API                         : http://{organization}.$APP_DOMAIN/api/v1/partners"
-
   info " 🔴 Identity & Access Management API        : http://accounts.$APP_DOMAIN/api/v1"
 
   line
