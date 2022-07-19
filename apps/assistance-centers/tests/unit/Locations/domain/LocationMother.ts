@@ -15,7 +15,7 @@ export class LocationMother {
     address: string = ObjectMother.word(),
     coordinates = ObjectMother.coords(),
     country: string = ObjectMother.names(),
-    stopServingBeforeInMinutes: number = ObjectMother.integer(60),
+    stopServingBeforeInMinutes: number = ObjectMother.integer(2),
     organizationId: Guid = ObjectMother.uuid('org')
   ): Location {
     return Location.create({
