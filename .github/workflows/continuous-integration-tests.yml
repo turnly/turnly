@@ -28,7 +28,3 @@ jobs:
   e2e_and_benchmark:
     name: 🧩 E2E & Benchmark
     uses: ./.github/workflows/e2e-and-benchmark-tests.yml
-    with:
-      mongo-username: root
-      mongo-password: turnly
-      mongo-db: turnly_testing_db
