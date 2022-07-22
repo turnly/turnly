@@ -19,19 +19,19 @@ export class FindLocationsQueryHandler
   ) {}
 
   public async execute({
-    searchQuery,
-    country,
+    // searchQuery,
+    // country,
     organizationId,
-    latitude: lat,
-    longitude: lng,
+    // latitude: lat,
+    // longitude: lng,
     limit,
     offset,
   }: FindLocationsQuery) {
     const query = new QueryBuilder<Location>()
-      .equal('country', country)
+      // .equal('country', country)
       .equal('organizationId', organizationId)
-      .matches(['name', 'address', 'country'], searchQuery)
-      .orderByGeo('coordinates', { lat, lng })
+      // .matches(['name', 'address', 'country'], searchQuery)
+      // .orderByGeo('coordinates', { lat, lng })
       .orderByAlphabetical(['name'])
       .getMany(offset, limit)
 
