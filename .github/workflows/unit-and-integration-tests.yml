@@ -1,0 +1,113 @@
+name: 🧩 Unit & Integration
+
+on:
+  workflow_call:
+    inputs:
+      mongo-username:
+        type: string
+        required: true
+      mongo-password:
+        type: string
+        required: true
+      mongo-db:
+        type: string
+        required: true
+
+jobs:
+  tests:
+    name: 🧩 Run tests
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.15]
+        mongodb-version: [latest]
+
+    services:
+      mongo:
+        image: mongo:${{ matrix.mongodb-version }}
+        ports:
+          - 27017:27017
+        env:
+          MONGO_INITDB_ROOT_USERNAME: ${{ inputs.mongo-username }}
+          MONGO_INITDB_ROOT_PASSWORD: ${{ inputs.mongo-password }}
+        options: >-
+          --name mongo
+          --hostname mongo
+          --health-cmd mongo
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - name: 🏷️ Check out Git repo
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+
+      - name: 🔍 Map the changes to the appropriate applications
+        uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          filters: .github/filters.yml
+
+      - name: 🚀 Setup Node
+        uses: ./.github/actions/setup-node
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: 💊 Setting integration tests dependencies...
+        uses: ./.github/actions/setup-mongodb
+        with:
+          mongo-username: ${{ inputs.mongo-username }}
+          mongo-password: ${{ inputs.mongo-password }}
+          mongo-db: ${{ inputs.mongo-db }}
+
+      - name: "🧪 [Add-ons]: run unit tests"
+        if: steps.filter.outputs.addons == 'true'
+        run: yarn devo addons test:unit
+
+      - name: "🧪 [Add-ons]: run integration tests"
+        if: steps.filter.outputs.addons == 'true'
+        run: yarn devo addons test:integration --runInBand
+
+      - name: "🧪 [Assistance Centers]: run unit tests"
+        if: steps.filter.outputs.assistance-centers == 'true'
+        run: yarn devo assistance-centers test:unit
+
+      - name: "🧪 [Assistance Centers]: run integration tests"
+        if: steps.filter.outputs.assistance-centers == 'true'
+        run: yarn devo assistance-centers test:integration --runInBand
+
+      - name: "🧪 [Business Owners]: run unit tests"
+        if: steps.filter.outputs.business-owners == 'true'
+        run: yarn devo business-owners test:unit
+
+      - name: "🧪 [Business Owners]: run integration tests"
+        if: steps.filter.outputs.business-owners == 'true'
+        run: yarn devo business-owners test:integration --runInBand
+
+      - name: "🧪 [Custom Fields]: run unit tests"
+        if: steps.filter.outputs.custom-fields == 'true'
+        run: yarn devo custom-fields test:unit
+
+      - name: "🧪 [Custom Fields]: run integration tests"
+        if: steps.filter.outputs.custom-fields == 'true'
+        run: yarn devo custom-fields test:integration --runInBand
+
+      - name: "🧪 [Queuing System]: run unit tests"
+        if: steps.filter.outputs.queuing-system == 'true'
+        run: yarn devo queuing-system test:unit
+
+      - name: "🧪 [Queuing System]: run integration tests"
+        if: steps.filter.outputs.queuing-system == 'true'
+        run: yarn devo queuing-system test:integration --runInBand
+
+      - name: "🧪 [Teams]: run unit tests"
+        if: steps.filter.outputs.teams == 'true'
+        run: yarn devo teams test:unit
+
+      - name: "🧪 [Teams]: run integration tests"
+        if: steps.filter.outputs.teams == 'true'
+        run: yarn devo teams test:integration --runInBand

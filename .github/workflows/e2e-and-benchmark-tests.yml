@@ -1,0 +1,92 @@
+name: 🧩 E2E & Benchmark
+
+on: [workflow_call]
+
+jobs:
+  tests:
+    name: 🧩 E2E & Benchmark
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.15]
+        mongodb-version: [latest]
+
+    steps:
+      - name: 🏷️ Check out Git repo
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+
+      - name: 🔍 Map the changes to the appropriate applications
+        uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          filters: .github/filters.yml
+
+      - name: 🕒 Please wait, the next step will take a few minutes...
+        run: echo "..."
+
+      - name: 🐳 Setup the environment
+        uses: ./.github/actions/setup-docker-node
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: 🚀 Start all applications
+        run: yarn devo start --verbose
+
+      - name: 🏁 Wait for the infrastructure to get up
+        uses: ./.github/actions/wait-for-infrastructure
+
+      - name: "🧪 [Add-ons]: run e2e tests"
+        if: steps.filter.outputs.addons == 'true'
+        run: yarn devo addons test:e2e
+
+      - name: "🧪 [Add-ons]: run benchmark tests"
+        if: steps.filter.outputs.addons == 'true'
+        run: yarn devo addons test:benchmark
+
+      - name: "🧪 [Assistance Centers]: run e2e tests"
+        if: steps.filter.outputs.assistance-centers == 'true'
+        run: yarn devo assistance-centers test:e2e
+
+      - name: "🧪 [Assistance Centers]: run benchmark tests"
+        if: steps.filter.outputs.assistance-centers == 'true'
+        run: yarn devo assistance-centers test:benchmark
+
+      - name: "🧪 [Business Owners]: run e2e tests"
+        if: steps.filter.outputs.business-owners == 'true'
+        run: yarn devo business-owners test:e2e
+
+      - name: "🧪 [Business Owners]: run benchmark tests"
+        if: steps.filter.outputs.business-owners == 'true'
+        run: yarn devo business-owners test:benchmark
+
+      - name: "🧪 [Custom Fields]: run e2e tests"
+        if: steps.filter.outputs.custom-fields == 'true'
+        run: yarn devo custom-fields test:e2e
+
+      - name: "🧪 [Custom Fields]: run benchmark tests"
+        if: steps.filter.outputs.custom-fields == 'true'
+        run: yarn devo custom-fields test:benchmark
+
+      - name: "🧪 [Queuing System]: run e2e tests"
+        if: steps.filter.outputs.queuing-system == 'true'
+        run: yarn devo queuing-system test:e2e
+
+      - name: "🧪 [Queuing System]: run benchmark tests"
+        if: steps.filter.outputs.queuing-system == 'true'
+        run: yarn devo queuing-system test:benchmark
+
+      - name: "🧪 [Teams]: run e2e tests"
+        if: steps.filter.outputs.teams == 'true'
+        run: yarn devo teams test:e2e
+
+      - name: "🧪 [Teams]: run benchmark tests"
+        if: steps.filter.outputs.teams == 'true'
+        run: yarn devo teams test:benchmark
+
+      - name: 🔥 Teardown
+        if: always()
+        run: yarn devo stop --verbose

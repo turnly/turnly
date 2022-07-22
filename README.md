@@ -17,7 +17,7 @@
   ![stars](https://img.shields.io/github/stars/turnly/turnly)
   ![issues](https://img.shields.io/github/issues/turnly/turnly)
   ![mit](https://img.shields.io/github/license/turnly/turnly)
-  [![Tests](https://github.com/turnly/turnly/actions/workflows/lint-and-tests.yml/badge.svg)](https://github.com/turnly/turnly/actions)
+  [![Tests](https://github.com/turnly/turnly/actions/workflows/continous-integration-tests.yml/badge.svg)](https://github.com/turnly/turnly/actions)
 
   <p>
     <sub>
