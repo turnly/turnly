@@ -32,17 +32,17 @@
     ]
   },
   "dependencies": {
-    "@turnly/common": "git+https://turnlyapps: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@github.com/turnly/common.git#latest",
+    "@turnly/common": "git+https://github.com/turnly/common.git#latest",
     "@turnly/eslint-config": "github:turnly/configs",
-    "@turnly/rpc": "git+https://turnlyapps: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@github.com/turnly/rpc.git#latest",
-    "@turnly/shared": "git+https://turnlyapps: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@github.com/turnly/shared.git#latest",
+    "@turnly/rpc": "git+https://github.com/turnly/rpc.git#latest",
+    "@turnly/shared": "git+https://github.com/turnly/shared.git#latest",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "moongose": "^1.0.0"
   },
   "devDependencies": {
+    "@turnly/testing": "git+https://github.com/turnly/testing.git#latest",
     "@types/express": "^4.17.13",
-    "@turnly/testing": "git+https://turnlyapps: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@github.com/turnly/testing.git#latest",
     "@types/jest": "^28.1.4",
     "@types/node": "^16.10.2",
     "cross-env": "^7.0.3",

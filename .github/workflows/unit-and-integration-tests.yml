@@ -15,7 +15,7 @@ on:
 
 jobs:
   tests:
-    name: 🧩 Run tests
+    name: 🎲 Run tests
     runs-on: ubuntu-latest
 
     strategy:
