@@ -11,28 +11,24 @@ on:
   push:
     paths:
       - apps/**
+      - .github/workflows/continuous-integration-tests.yml
     branches:
       - develop
       - main
-
-env:
-  MONGO_DB: turnly_testing_db
-  MONGO_USERNAME: root
-  MONGO_PASSWORD: turnly
 
 jobs:
   unit_and_integration:
     name: 🧩 Unit & Integration
     uses: ./.github/workflows/unit-and-integration-tests.yml
     with:
-      mongo-username: ${{ env.MONGO_USERNAME }}
-      mongo-password: ${{ env.MONGO_PASSWORD }}
-      mongo-db: ${{ env.MONGO_DB }}
+      mongo-username: root
+      mongo-password: turnly
+      mongo-db: turnly_testing_db
 
   e2e_and_benchmark:
     name: 🧩 E2E & Benchmark
     uses: ./.github/workflows/e2e-and-benchmark-tests.yml
     with:
-      mongo-username: ${{ env.MONGO_USERNAME }}
-      mongo-password: ${{ env.MONGO_PASSWORD }}
-      mongo-db: ${{ env.MONGO_DB }}
+      mongo-username: root
+      mongo-password: turnly
+      mongo-db: turnly_testing_db
