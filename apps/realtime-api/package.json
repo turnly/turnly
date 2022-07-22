@@ -27,11 +27,11 @@
     ]
   },
   "dependencies": {
-    "@turnly/common": "git+https://github.com/turnly/common.git#latest",
+    "@turnly/common": "github:turnly/common.git#latest",
     "@turnly/eslint-config": "github:turnly/configs",
-    "@turnly/realtime": "git+https://github.com/turnly/realtime.git#latest",
-    "@turnly/rpc": "git+https://github.com/turnly/rpc.git#latest",
-    "@turnly/shared": "git+https://github.com/turnly/shared.git#latest",
+    "@turnly/realtime": "github:turnly/realtime.git#latest",
+    "@turnly/rpc": "github:turnly/rpc.git#latest",
+    "@turnly/shared": "github:turnly/shared.git#latest",
     "dotenv": "^16.0.0"
   },
   "devDependencies": {

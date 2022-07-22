@@ -28,9 +28,9 @@
   },
   "dependencies": {
     "@apollo/utils.keyvaluecache": "^1.0.1",
-    "@turnly/common": "git+https://github.com/turnly/common.git#latest",
-    "@turnly/rpc": "git+https://github.com/turnly/rpc.git#latest",
-    "@turnly/shared": "git+https://github.com/turnly/shared.git#latest",
+    "@turnly/common": "github:turnly/common.git#latest",
+    "@turnly/rpc": "github:turnly/rpc.git#latest",
+    "@turnly/shared": "github:turnly/shared.git#latest",
     "apollo-datasource": "^3.3.2",
     "apollo-server-express": "^3.9.0",
     "class-validator": "^0.13.2",
