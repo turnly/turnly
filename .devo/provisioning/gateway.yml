@@ -9,7 +9,7 @@ services:
     container_name: gateway
     build:
       context: ${DOCKER_RELATIVE_APPS_DIR}/gateway
-      dockerfile: ./docker/Dockerfile
+      dockerfile: Dockerfile
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
     ports:

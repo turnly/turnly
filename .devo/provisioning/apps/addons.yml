@@ -9,7 +9,8 @@ services:
     image: turnly/addons:latest
     build:
       context: ${DOCKER_RELATIVE_APPS_DIR}/addons
-      dockerfile: ./docker/Dockerfile.dev
+      target: ${DOCKER_BUILD_STAGE}
+      dockerfile: Dockerfile
       args:
         PORT: ${HTTP_PORT}
         NODE_ENV: ${NODE_ENV}

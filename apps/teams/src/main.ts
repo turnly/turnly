@@ -3,6 +3,9 @@
  *
  * Licensed under MIT License. See LICENSE for terms.
  */
+import dotenv from 'dotenv'
+dotenv.config()
+
 import 'Agents/infrastructure/register-dependencies'
 
 import { eventBus } from '@turnly/shared'

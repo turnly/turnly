@@ -3,6 +3,9 @@
  *
  * Licensed under MIT License. See LICENSE for terms.
  */
+import dotenv from 'dotenv'
+dotenv.config()
+
 import { eventBus } from '@turnly/shared'
 import { Application } from 'Application'
 

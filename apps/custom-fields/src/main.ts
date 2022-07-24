@@ -3,6 +3,9 @@
  *
  * Licensed under MIT License. See LICENSE for terms.
  */
+import dotenv from 'dotenv'
+dotenv.config()
+
 import 'Fields/infrastructure/register-dependencies'
 import 'Answers/infrastructure/register-dependencies'
 

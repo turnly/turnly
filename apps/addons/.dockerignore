@@ -1,5 +1,4 @@
 node_modules
-docker
 coverage
 tests
 yarn-error.log
