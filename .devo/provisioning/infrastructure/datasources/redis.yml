@@ -5,7 +5,7 @@ services:
     extends:
       file: common.yml
       service: common
-    image: redis
+    image: redis:7.0.4-alpine
     hostname: redis
     container_name: redis
     volumes:

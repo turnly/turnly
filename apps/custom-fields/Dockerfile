@@ -1,93 +1,111 @@
 ##
 ## Docker image for Turnly applications
 ##
+## The following build stages are available:
+##
+## production:
+## - Required files are copied into the image.
+## - The image is tagged with the current version.
+##
+## development:
+## - Runs the application with watch mode for automatic code changes.
+## - Expects source files to be loaded as a run-time volume.
 
 ##
 ## Shared Configuration
 ##
-ARG NODE_VERSION=16.15-alpine3.15
-ARG DISTROLESS_VERSION=16
-ARG NODE_ENV=production
-ARG PORT=6000
+ARG NODE_VERSION=16.15-alpine3.15 \
+    DISTROLESS_VERSION=16 \
+    NODE_ENV=production \
+    PORT=6000
 
 ##
-## Dependencies
+## Deps
+##
+## Base stage for installing all dependencies.
 ##
 FROM node:${NODE_VERSION} AS deps
 
 WORKDIR /app
 
+# Copy the application dependency declaration file
 COPY package.json yarn.lock ./
 
-RUN apk add --no-cache --update libc6-compat g++ git cmake make python3 \
-  && yarn install --immutable --immutable-cache \
-  && yarn autoclean --init && yarn autoclean --force \
-  && apk del --purge --no-cache --force-deps --quiet git cmake make python3 npm \
-  && rm -rf /var/cache/apk/* /tmp/* /var/tmp/*
+# Install required system packages
+RUN apk add --virtual .stage-deps --no-cache --update libc6-compat g++ git cmake make python3 \
+    # Install application dependencies
+    && yarn install --immutable --immutable-cache \
+    # Delete unnecessary files from dependencies
+    && yarn autoclean --init && yarn autoclean --force \
+    # Delete system packages after installation (not needed)
+    && apk del .stage-deps && rm -rf /var/cache/apk/* /tmp/* /var/tmp/*
 
 ##
 ## Builder
 ##
+## Stage for building the production source code into a distributable image.
+##
 FROM node:${NODE_VERSION} AS builder
 
-ARG NODE_ENV
-ARG PORT
-
-ENV NODE_ENV=${NODE_ENV}
-ENV PORT=${PORT}
+ARG NODE_ENV PORT
+ENV NODE_ENV=${NODE_ENV} PORT=${PORT}
 
 WORKDIR /app
 
+# Copy the application source files
 COPY . .
+# Copy dependencies from previous stage
 COPY --from=deps /app/node_modules ./node_modules
 
+# Build source code
 RUN yarn build \
-  && apk add --no-cache --update libc6-compat git \
-  && yarn install --immutable --immutable-cache --prod --silent --ignore-optional --force \
-  && yarn autoclean --init && yarn autoclean --force \
-  && apk del --purge --no-cache --force-deps --quiet git \
-  && rm -rf /var/cache/apk/* /tmp/* /var/tmp/*
+    # Install git binary for run dependency installation
+    && apk add --virtual .stage-builder --no-cache --update git \
+    # Install production dependencies
+    && yarn install --immutable --immutable-cache --prod --silent --ignore-optional --force \
+    # Delete unnecessary files from dependencies
+    && yarn autoclean --init && yarn autoclean --force \
+    # Delete system packages after installation (not needed)
+    && apk del .stage-builder && rm -rf /var/cache/apk/* /tmp/* /var/tmp/*
 
 ##
 ## Production
 ##
+## Stage for running the distributable image in production mode.
+##
 FROM gcr.io/distroless/nodejs:${DISTROLESS_VERSION} AS production
 
-ARG NODE_ENV
-ARG PORT
-
-ENV NODE_ENV=${NODE_ENV}
-ENV PORT=${PORT}
-
-ENV ROOT_DIR=$(pwd)
-ENV NODE_PATH=dist/
+ARG NODE_ENV PORT
+ENV NODE_ENV=${NODE_ENV} PORT=${PORT}
+ENV ROOT_DIR=$(pwd) NODE_PATH=dist/
 
 WORKDIR /app
 
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/package.json ./package.json
 
 EXPOSE ${PORT}
 
+# Run the application with node runtime already installed from distroless image.
 CMD ["dist/main.js"]
 
 ##
 ## Development
 ##
+## Stage for running application in development mode from volumes.
+## This stage requires the source files to be mounted as a run-time volume.
+##
 FROM node:${NODE_VERSION} AS development
 
-ARG NODE_ENV
-ARG PORT
-
-ENV NODE_ENV=${NODE_ENV}
-ENV PORT=${PORT}
+ARG NODE_ENV PORT
+ENV NODE_ENV=${NODE_ENV} PORT=${PORT}
 
 WORKDIR /app
 
-COPY . .
+# Copy dependencies from deps stage
 COPY --from=deps /app/node_modules ./node_modules
 
 EXPOSE ${PORT}
 
+# Run the application with watch mode for automatic code changes.
 CMD ["yarn", "watch"]

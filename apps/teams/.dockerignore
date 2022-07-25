@@ -2,7 +2,8 @@ node_modules
 coverage
 tests
 yarn-error.log
-*.md
-.editorconfig
+**/*.md
 .prettierrc*
 .env*
+Dockerfile
+sonar-project.properties
