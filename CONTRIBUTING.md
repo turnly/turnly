@@ -23,7 +23,7 @@ First off, thanks for your interest in Turnly and for wanting to contribute!
 
 There are several ways how you can ask your question:
 
-* You can ask on [Slack](https://github.com/turnly/turnly/issues)
+* You can ask on [Slack](https://t.co/p6Pzk2q6Rn)
 * You can create issue on [github](https://github.com/turnly/turnly/issues)
 
 ### Machine dependencies
