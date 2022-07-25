@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "description": "Enables integrations between external systems to share data.",
-  "license": "MIT",
+  "license": "BSD-3-Clause",
   "author": "Turnly Team <team@turnly.app> (https://turnly.app)",
   "scripts": {
     "prebuild": "rimraf dist tsconfig.tsbuildinfo",

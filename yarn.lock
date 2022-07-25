@@ -1433,8 +1433,8 @@
 
 "@turnly/common@git+https://turnlyapps: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@github.com/turnly/common.git#latest":
   version "1.0.0"
-  uid "6731a274d19ecb659e4301c94f655e5d2e13104a"
-  resolved "git+https://turnlyapps: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@github.com/turnly/common.git#6731a274d19ecb659e4301c94f655e5d2e13104a"
+  uid "8b7550a635ca2d3eeee1383d30e1f3b1836601ce"
+  resolved "git+https://turnlyapps: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@github.com/turnly/common.git#8b7550a635ca2d3eeee1383d30e1f3b1836601ce"
   dependencies:
     "@opentelemetry/api" "^1.1.0"
     "@opentelemetry/instrumentation-grpc" "^0.28.0"
@@ -1450,7 +1450,7 @@
 
 "@turnly/common@github:turnly/common.git#latest":
   version "1.0.0"
-  resolved "https://codeload.github.com/turnly/common/tar.gz/6731a274d19ecb659e4301c94f655e5d2e13104a"
+  resolved "https://codeload.github.com/turnly/common/tar.gz/8b7550a635ca2d3eeee1383d30e1f3b1836601ce"
   dependencies:
     "@opentelemetry/api" "^1.1.0"
     "@opentelemetry/instrumentation-grpc" "^0.28.0"
