@@ -1,14 +1,15 @@
 /**
- * Copyright (c) Turnly Inc. (https://turnly.app)
+ * Copyright (c) 2022, Turnly (https://turnly.app)
+ * All rights reserved.
  *
- * Licensed under MIT License. See LICENSE for terms.
+ * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import { ObjectMother } from '@turnly/testing'
 
 import { ActiveTicketsByCustomerQueryHandler } from '../../../../../../src/Tickets/application/queries/ActiveTicketsByCustomerQuery'
 import { TicketsReadableRepo } from '../../../__mocks__/TicketsReadableRepo'
 import { TicketMother } from '../../../domain/TicketMother'
-import { ActiveTicketsByCustomerQueryMother } from './ActiveTickesByCustomerQueryMother'
+import { ActiveTicketsByCustomerQueryMother } from './ActiveTicketsByCustomerQueryMother'
 
 let repository: TicketsReadableRepo
 let handler: ActiveTicketsByCustomerQueryHandler

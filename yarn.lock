@@ -1466,8 +1466,8 @@
 
 "@turnly/eslint-config@github:turnly/configs":
   version "0.0.0"
-  uid ec06336934b50b79d2538955b1eb0c09c026aad4
-  resolved "https://codeload.github.com/turnly/configs/tar.gz/ec06336934b50b79d2538955b1eb0c09c026aad4"
+  uid "5af7676c3dc925287f1cfebfb916e5003b260625"
+  resolved "https://codeload.github.com/turnly/configs/tar.gz/5af7676c3dc925287f1cfebfb916e5003b260625"
   dependencies:
     "@commitlint/cli" "^16.2.4"
     "@commitlint/config-conventional" "^16.2.4"
@@ -1489,7 +1489,7 @@
 
 "@turnly/eslint-config@https://github.com/turnly/configs.git":
   version "0.0.0"
-  resolved "https://github.com/turnly/configs.git#ec06336934b50b79d2538955b1eb0c09c026aad4"
+  resolved "https://github.com/turnly/configs.git#5af7676c3dc925287f1cfebfb916e5003b260625"
   dependencies:
     "@commitlint/cli" "^16.2.4"
     "@commitlint/config-conventional" "^16.2.4"
@@ -1764,9 +1764,9 @@
   integrity sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==
 
 "@types/node@*", "@types/node@>=10.0.0", "@types/node@>=12", "@types/node@>=12.12.47", "@types/node@>=13.7.0":
-  version "18.0.6"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.0.6.tgz#0ba49ac517ad69abe7a1508bc9b3a5483df9d5d7"
-  integrity sha512-/xUq6H2aQm261exT6iZTMifUySEt4GR5KX8eYyY+C4MSNPqSh9oNIP7tz2GLKTlFaiBbgZNxffoR3CVRG+cljw==
+  version "18.6.0"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.6.0.tgz#3ad8c5a4e8e11abc51a11894355f2ba58de9f1a1"
+  integrity sha512-WZ/6I1GL0DNAo4bb01lGGKTHH8BHJyECepf11kWONg3OJoHq2WYOm16Es1V54Er7NTUXsbDCpKRKdmBc4X2xhA==
 
 "@types/node@^10.1.0":
   version "10.17.60"
@@ -2551,9 +2551,9 @@ camelcase@^6.2.0:
   integrity sha512-Gmy6FhYlCY7uOElZUSbxo2UCDH8owEk996gkbrpsgGtrJLM3J7jGxl9Ic7Qwwj4ivOE5AWZWRMecDdF7hqGjFA==
 
 caniuse-lite@^1.0.30001366:
-  version "1.0.30001368"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001368.tgz#c5c06381c6051cd863c45021475434e81936f713"
-  integrity sha512-wgfRYa9DenEomLG/SdWgQxpIyvdtH3NW8Vq+tB6AwR9e56iOIcu1im5F/wNdDf04XlKHXqIx4N8Jo0PemeBenQ==
+  version "1.0.30001370"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001370.tgz#0a30d4f20d38b9e108cc5ae7cc62df9fe66cd5ba"
+  integrity sha512-3PDmaP56wz/qz7G508xzjx8C+MC2qEm4SYhSEzC9IBROo+dGXFWRuaXkWti0A9tuI00g+toiriVqxtWMgl350g==
 
 chalk@^2.0.0:
   version "2.4.2"
@@ -3132,9 +3132,9 @@ ejs@^3.1.6:
     jake "^10.8.5"
 
 electron-to-chromium@^1.4.188:
-  version "1.4.198"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.198.tgz#36a8e7871046f7f94c01dc0133912fd5cf226c6a"
-  integrity sha512-jwqQPdKGeAslcq8L+1SZZgL6uDiIDmTe9Gq4brsdWAH27y7MJ2g9Ue6MyST3ogmSM49EAQP7bype1V5hsuNrmQ==
+  version "1.4.199"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.199.tgz#e0384fde79fdda89880e8be58196a9153e04db3b"
+  integrity sha512-WIGME0Cs7oob3mxsJwHbeWkH0tYkIE/sjkJ8ML2BYmuRcjhRl/q5kVDXG7W9LOOKwzPU5M0LBlXRq9rlSgnNlg==
 
 emittery@^0.10.2:
   version "0.10.2"
@@ -4077,9 +4077,9 @@ hash-stream-validation@^0.2.2:
   integrity sha512-Gjzu0Xn7IagXVkSu9cSFuK1fqzwtLwFhNhVL8IFJijRNMgUttFbBSIAzKuSIrsFMO1+g1RlsoN49zPIbwPDMGQ==
 
 helmet@^5.0.2:
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/helmet/-/helmet-5.1.0.tgz#e98a5d4bf89ab8119c856018a3bcc82addadcd47"
-  integrity sha512-klsunXs8rgNSZoaUrNeuCiWUxyc+wzucnEnFejUg3/A+CaF589k9qepLZZ1Jehnzig7YbD4hEuscGXuBY3fq+g==
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/helmet/-/helmet-5.1.1.tgz#609823c5c2e78aea62dd9afc8f544ca409da5e85"
+  integrity sha512-/yX0oVZBggA9cLJh8aw3PPCfedBnbd7J2aowjzsaWwZh7/UFY0nccn/aHAggIgWUFfnykX8GKd3a1pSbrmlcVQ==
 
 hexoid@1.0.0:
   version "1.0.0"
