@@ -124,4 +124,4 @@ Please refer our [FAQ](/docs/faq.md) file.
 
 ### License 📝
 
-Copyright © 2022 by Turnly Inc. Released under the [MIT License](/LICENSE).
+Copyright © 2022 by Turnly Inc. Released under the [BSD 3-Clause License](/LICENSE).
