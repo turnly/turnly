@@ -35,9 +35,9 @@
     "@turnly/common": "github:turnly/common.git#latest",
     "@turnly/rpc": "github:turnly/rpc.git#latest",
     "@turnly/shared": "github:turnly/shared.git#latest",
-    "dotenv": "^10.0.0",
+    "dotenv": "^16.0.1",
     "express": "^4.17.1",
-    "moongose": "^1.0.0"
+    "mongoose": "^6.4.6"
   },
   "devDependencies": {
     "@turnly/eslint-config": "github:turnly/configs",

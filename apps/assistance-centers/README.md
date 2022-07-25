@@ -29,7 +29,7 @@ except the agents and managers.
 | ----------------------------------- | ----------------------------------------------------------------------------- |
 | TypeScript                          | Types reduce bugs and increases reliability.                                  |
 | Express.js    (@turnly/shared)      | Fast, unopinionated, minimalist web framework for Node.js                     |
-| Moongose ORM  (@turnly/shared)      | Elegant mongoDB object modeling.                                              |
+| Mongoose ORM  (@turnly/shared)      | Elegant mongoDB object modeling.                                              |
 | ElasticSearch (@turnly/shared)      | Modern NoSQL database for search and store unstructured data.                 |
 | RabbitMQ      (@turnly/shared)      | A message broker for events.                                                  |
 | gRPC Server   (@turnly/rpc)         | Efficiently connecting polyglot services in microservices architecture.       |
