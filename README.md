@@ -31,7 +31,7 @@
 
 ### Overview 📖
 
-[Turnly](https://turnly.app) replace take-a-number systems with a web widget-based system,
+[Turnly](https://turnly.app) replaces take-a-number systems with a web widget-based system,
 which your customers can access via any device from your website.
 
 If you like this project or plan to use it in the future, please give it a star. ⭐
@@ -41,7 +41,7 @@ If you like this project or plan to use it in the future, please give it a star.
 #### Assistance Centers
 
 Capability to manage multiple locations (branches), services offered, working hours,
-desks for support, agents and managers per locations.
+desks for support, agents and managers per location.
 
 #### Custom Fields & Processors
 
