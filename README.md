@@ -29,7 +29,7 @@
   </p>
 </div>
 
-## What's Turnly? 📖
+## Overview 📖
 
 [Turnly](https://turnly.app) helps businesses save their customers time waiting
 in physical queues by eliminating legacy number-taking systems.
@@ -46,7 +46,8 @@ desks, agents and managers per location.
 a customer to match your internal workflow.
 - **Customer Reminders**: Your customers will receive automatic notifications to keep
 them aware of the life cycle of their tickets.
-- **Organization Subdomain**: Your organization gets a subdomain from Turnly. (e.g. https://{org-name}.turnly.app/)
+- **Organization Subdomain**: Your organization gets a subdomain from Turnly.
+<br /> (e.g. `https://{org-name}.turnly.app/`)
 
 > Check the complete list on the [features document](/docs/features.md).
 
@@ -92,7 +93,7 @@ them aware of the life cycle of their tickets.
 
 Ahoy!, please refer to our [Contributing Guide](/CONTRIBUTING.md) for details.
 
-## Community & Support? Got a Question, Problem or Feature? ❤️
+## Got a Question, Problem or Feature? ❤️
 
 If you need help or just want to hear from Turnly, there are several ways to connect with us:
 
