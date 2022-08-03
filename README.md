@@ -121,7 +121,7 @@ Please refer our [FAQ](/docs/faq.md) file.
 
 ## Sponsors ⛑️
 
-If you plan to use Turnly for your business and want to give back to the
+If you are planning on using Turnly for your business and want to give back to the
 team or if you are an organization looking to help emerging open-source
 software, please consider [becoming a Github Sponsor](https://github.com/sponsors/efraa).
 
