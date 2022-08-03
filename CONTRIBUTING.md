@@ -19,13 +19,6 @@
 
 First off, thanks for your interest in Turnly and for wanting to contribute!
 
-### Got a Question, Problem or Feature?
-
-There are several ways how you can ask your question:
-
-* You can ask on [Slack](https://join.slack.com/t/turnly/shared_invite/zt-1de1x0z68-w_tWv50tUaSnYJW8C1lWIw)
-* You can create issue on [github](https://github.com/turnly/turnly/issues)
-
 ### Machine dependencies
 
 To properly set up the Docker environment, ensure you meet the following requirements:
@@ -85,19 +78,27 @@ So when all of this is set up, you will be able to use the following URLs to int
 If you don't want to run all of Turnly's apps and services, you can go to the directory of the app
 you want to contribute to and you'll find a README with details on how to run just that app.
 
-| Application                                     | Description                                                       |
-| ----------------------------------------------- | ----------------------------------------------------------------- |
-| [Widgets API](/apps/widgets-api)                | GraphQL API for widgets clients                                   |
-| [RTM API](/apps/realtime-api)                   | Real Time & Streaming API                                         |
-| [Add-ons](/apps/addons)                         | Integrations, Webhooks & Beacons                                  |
-| [Assistance Centers](/apps/assistance-centers)  | Locations, services offered, working hours, desk, etc.            |
-| [Business Owners](/apps/business-owners)        | Organizations management, promotions, etc.                        |
-| [Custom Fields](/apps/custom-fields)            | Business Data Fields, Customers and Agents answers.               |
-| [Heimdall IAM](/apps/heimdall)                  | Identity & Access Management (SSO).                               |
-| [Notifications](/apps/notifications)            | Customers reminders, SMS, Calls, WhatsApp messages.               |
-| [Queuing System](/apps/queuing-system)          | Tickets and Customers management.                                 |
-| [Tasks Scheduling](/apps/tasks-scheduling)      | Scheduling of internal tasks, cleaning, batch, etc.               |
-| [Teams Management](/apps/teams)                 | Management of the organization's employees (Agents and Managers). |
+##### APIs (Backend for Frontend) 🔗
+
+| Name                                                  | Description                                  | Live |
+| ----------------------------------------------------- | -------------------------------------------- |:----:|
+| [Gateway (Application Proxy)](/apps/gateway)          | API entry point and access management        | 🟢   |
+| [Widgets API](/apps/widgets-api)                      | GraphQL API for widgets clients              | 🟢   |
+| [Real Time Messaging API (RTM)](/apps/realtime-api)   | A WebSocket-based API for realtime events    | 🟢   |
+
+##### Microservices 🔗
+
+| Name                                            | Description                                                       | Live |
+| ----------------------------------------------- | ----------------------------------------------------------------- |:----:|
+| [Add-ons](/apps/addons)                         | Integrations, Webhooks & Beacons                                  | 🟢   |
+| [Assistance Centers](/apps/assistance-centers)  | Locations, services offered, working hours, desk, etc.            | 🟢   |
+| [Business Owners](/apps/business-owners)        | Organizations management, promotions, etc.                        | 🟢   |
+| [Custom Fields](/apps/custom-fields)            | Business Data Fields, Customers and Agents answers.               | 🟢   |
+| [Heimdall IAM](/apps/heimdall)                  | Identity & Access Management (SSO).                               | 🔴   |
+| [Notifications](/apps/notifications)            | Customers reminders, SMS, Calls, WhatsApp messages.               | 🔴   |
+| [Queuing System](/apps/queuing-system)          | Tickets and Customers management.                                 | 🟢   |
+| [Tasks Scheduling](/apps/tasks-scheduling)      | Scheduling of internal tasks, cleaning, batch, etc.               | 🔴   |
+| [Teams Management](/apps/teams)                 | Management of the organization's employees (Agents and Managers). | 🟢   |
 
 ### Software Architecture
 

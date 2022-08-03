@@ -8,7 +8,6 @@
   <p align="center">
     <a href="https://docs.turnly.app"><strong>Documentation</strong></a> ·
     <a href="https://github.com/orgs/turnly/projects/2"><strong>Roadmap</strong></a> ·
-    <a href="https://github.com/turnly/asgard"><strong>Frontend</strong></a> ·
     <a href="https://github.com/turnly/kubbe"><strong>Deployments</strong></a>
     <br />
   </p>
@@ -51,28 +50,6 @@ them aware of the life cycle of their tickets.
 
 > Check the complete list on the [features document](/docs/features.md).
 
-### APIs (Backend for Frontend) 🔗
-
-| Name                                                  | Description                                  |
-| ----------------------------------------------------- | -------------------------------------------- |
-| [Gateway (Application Proxy)](/apps/gateway)          | API entry point and access management        |
-| [Widgets API](/apps/widgets-api)                      | GraphQL API for widgets clients              |
-| [Real Time Messaging API (RTM)](/apps/realtime-api)   | A WebSocket-based API for realtime events    |
-
-### Microservices 🔗
-
-| Name                                            | Description                                                       | Live |
-| ----------------------------------------------- | ----------------------------------------------------------------- |:----:|
-| [Add-ons](/apps/addons)                         | Integrations, Webhooks & Beacons                                  | 🟢   |
-| [Assistance Centers](/apps/assistance-centers)  | Locations, services offered, working hours, desk, etc.            | 🟢   |
-| [Business Owners](/apps/business-owners)        | Organizations management, promotions, etc.                        | 🟢   |
-| [Custom Fields](/apps/custom-fields)            | Business Data Fields, Customers and Agents answers.               | 🟢   |
-| [Heimdall IAM](/apps/heimdall)                  | Identity & Access Management (SSO).                               | 🔴   |
-| [Notifications](/apps/notifications)            | Customers reminders, SMS, Calls, WhatsApp messages.               | 🔴   |
-| [Queuing System](/apps/queuing-system)          | Tickets and Customers management.                                 | 🟢   |
-| [Tasks Scheduling](/apps/tasks-scheduling)      | Scheduling of internal tasks, cleaning, batch, etc.               | 🔴   |
-| [Teams Management](/apps/teams)                 | Management of the organization's employees (Agents and Managers). | 🟢   |
-
 ## Project Status 🚧
 
 - [x] **Demo**: We are developing and testing Turnly Widgets.
@@ -88,6 +65,17 @@ them aware of the life cycle of their tickets.
 - [Deploying Turnly with One-Click Setups, Kubernetes, or Docker Compose.](https://github.com/turnly/kubbe) - (Soon)
 - [Demo for banks, hospitals, labs, food pantries, travels, and shops.](/docs/demo.md) - (Soon)
 - [Getting Started with Turnly](https://turnly.app/) - (Soon)
+
+## Front-end Applications 🖼️
+
+Our ecosystem is completely divided into multiple applications with specific purposes that share our design system.
+
+| Name                                            | Description                                                          | Live |
+| ----------------------------------------------- | -------------------------------------------------------------------- |:----:|
+| [Iam](https://github.com/turnly/iam)            | Identity & Access Management                                         | 🔴   |
+| [Hannah](https://github.com/turnly/hannah)      | Web widget-based application for ticket-taking                       | 🟢   |
+| [Tessa](https://github.com/turnly/tessa)        | Backoffice, app to manage organization resources                     | 🔴   |
+| [Sansa](https://github.com/turnly/sansa)        | Helpdesk, app for your organization's agents to serve your customers | 🔴   |
 
 ## Contributing 🧑🏻‍🚒
 
