@@ -1,11 +1,12 @@
 <div align="center">
   <p align="center">
-      <a href="https://turnly.app" target="_blank" rel="noopener">
-          <img src="https://user-images.githubusercontent.com/40646537/182500338-95256227-1bda-48d5-9752-3878c2267f4d.png" />
-      </a>
+    <a href="https://turnly.app" target="_blank" rel="noopener">
+      <img src="https://raw.githubusercontent.com/turnly/turnly/develop/docs/assets/github-showcase.png" />
+    </a>
   </p>
 
   <p align="center">
+    <a href="https://turnly.app"><strong>Website</strong></a> ·
     <a href="https://docs.turnly.app"><strong>Documentation</strong></a> ·
     <a href="https://github.com/orgs/turnly/projects/2"><strong>Roadmap</strong></a> ·
     <a href="https://github.com/turnly/kubbe"><strong>Deployments</strong></a>
@@ -28,14 +29,18 @@
   </p>
 </div>
 
-## Overview 📖
+## 📖 Overview
 
 [Turnly](https://turnly.app) helps businesses save their customers time waiting
 in physical queues by eliminating legacy number-taking systems.
 Customers join from their smart device to a web widget-based system that
 can be accessed from your own website or application.
 
-## Features 📦
+## 🙏 Give a Star!
+
+This project needs a ⭐️ from you. Don't forget to leave a star ⭐️
+
+## 📦 Features
 
 The most notable features.
 
@@ -50,7 +55,7 @@ them aware of the life cycle of their tickets.
 
 > Check the complete list on the [features document](/docs/features.md).
 
-## Project Status 🚧
+## 🚧 Project Status
 
 - [x] **Demo**: We are developing and testing Turnly Widgets.
 - [ ] **Demo**: We are developing and testing Turnly Help Desk with a closed set of customers.
@@ -60,13 +65,13 @@ them aware of the life cycle of their tickets.
 - [ ] **Public Beta**: Stable enough for most non-enterprise use-cases.
 - [ ] **Live**: Ahoy!, production-ready. (v1.0.0)
 
-## Getting Started 🚀
+## 🚀 Getting Started
 
 - [Deploying Turnly with One-Click Setups, Kubernetes, or Docker Compose.](https://github.com/turnly/kubbe) - (Soon)
 - [Demo for banks, hospitals, labs, food pantries, travels, and shops.](/docs/demo.md) - (Soon)
 - [Getting Started with Turnly](https://turnly.app/) - (Soon)
 
-## Front-end Applications 🖼️
+## 🖼️ Front-end Applications
 
 Our ecosystem is completely divided into multiple applications with specific purposes that share our design system.
 
@@ -77,11 +82,11 @@ Our ecosystem is completely divided into multiple applications with specific pur
 | [Tessa](https://github.com/turnly/tessa)        | Backoffice, app to manage organization resources                     | 🔴   |
 | [Sansa](https://github.com/turnly/sansa)        | Helpdesk, app for your organization's agents to serve your customers | 🔴   |
 
-## Contributing 🧑🏻‍🚒
+## 🧑🏻‍🚒 Contributing
 
 Ahoy!, please refer to our [Contributing Guide](/CONTRIBUTING.md) for details.
 
-## Got a Question, Problem or Feature? ❤️
+## ❤️ Got a Question, Problem or Feature?
 
 If you need help or just want to hear from Turnly, there are several ways to connect with us:
 
@@ -90,29 +95,29 @@ If you need help or just want to hear from Turnly, there are several ways to con
 - Create issue on [Github](https://github.com/turnly/turnly/issues)
 - Follow us on [Twitter](https://twitter.com/turnlyapp)
 
-## Security 🔐
+## 🔐 Security
 
 Looking to report a vulnerability? Please refer our [SECURITY](/SECURITY.md) file.
 
-## Versioning 🏷️
+## 🏷️ Versioning
 
 We use [SemVer](https://semver.org/spec/v2.0.0.html) for versioning.
 For the versions available, see the tags on this repository.
 
-## Our Team 🦦
+## 🦦 Our Team
 
 Check out our [owners' document](/OWNERS.md) to meet our great maintainers and friends.
 
-## FAQ 🎲
+## ❓ FAQ
 
 Please refer our [FAQ](/docs/faq.md) file.
 
-## Sponsors ⛑️
+## ⛑️ Sponsors
 
 If you are planning on using Turnly for your business and want to give back to the
 team or if you are an organization looking to help emerging open-source
 software, please consider [becoming a Github Sponsor](https://github.com/sponsors/efraa).
 
-## License 📝
+## 📜 License
 
 Copyright © 2022 by Turnly Inc. Released under the [BSD 3-Clause License](/LICENSE).
