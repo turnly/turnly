@@ -12,7 +12,7 @@ import {
 } from '@turnly/common'
 import { Events, IRealtimeClient, RealtimeMiddle } from '@turnly/realtime'
 
-import { Integrations } from '../../../shared/api'
+import { Customers, Integrations } from '../../../shared/api'
 
 /**
  * Allow connection guard
@@ -30,7 +30,7 @@ export class AllowConnGuard {
    */
   public use = (): RealtimeMiddle => async (connection, next) => {
     try {
-      const { origin, widgetId } = this.toParams(connection)
+      const { origin, widgetId, customerId } = this.toParams(connection)
 
       if (!widgetId || !origin)
         throw new BadRequestException(
@@ -51,6 +51,15 @@ export class AllowConnGuard {
           'You are not allowed to connect, please try again later.'
         )
 
+      if (!customerId) {
+        throw new ResourceNotFoundException()
+      }
+      const customer = await Customers.getOne({ id: customerId })
+
+      if (!customer.data) {
+        throw new Error('Customer not found')
+      }
+
       /**
        * @todo Check if customer exists in the request connection
        *
@@ -68,7 +77,7 @@ export class AllowConnGuard {
        * }
        */
 
-      connection.join([widget.organizationId /* customer.id */])
+      connection.join([widget.organizationId, customer.data.id])
 
       connection.emit(Events.CONNECTED, {
         widget: {
@@ -76,7 +85,10 @@ export class AllowConnGuard {
           name: widget.name,
           canCustomize: widget.canCustomize,
         },
-        customer: {},
+        customer: {
+          id: customer.data.id,
+          name: customer.data.name,
+        },
       })
 
       next()
@@ -95,6 +107,7 @@ export class AllowConnGuard {
     return {
       origin,
       widgetId: query.widgetId as Guid,
+      customerId: query.customerId as Guid,
     }
   }
 }
