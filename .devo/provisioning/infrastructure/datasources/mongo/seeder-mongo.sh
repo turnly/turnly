@@ -6,13 +6,13 @@ mongo <<EOF
 print("Seeding turnly databases...");
 
 const orgs = [{
-    id: 'org_zyUlCzVfPD6pKQfI_OdkN',
+    _id: 'org_zyUlCzVfPD6pKQfI_OdkN',
     name: 'Alicia Weissnat',
     status: 'active',
     subdomain: 'org-test'
   },
   {
-    id: 'org_VTTHK6J7ZLgtWiL-FLLWb',
+    _id: 'org_VTTHK6J7ZLgtWiL-FLLWb',
     name: 'Antoinette Murazik',
     status: 'active',
     subdomain: 'org-dev'
@@ -25,31 +25,17 @@ for (const organization of orgs){
 }
 
 const ints = [{
-    id: 'int_UzUldqvxRo3LOQGn-Rzyq',
+    _id: 'int_UzUldqvxRo3LOQGn-Rzyq',
     name: 'Casey Bashirian',
     status: 'active',
     origins: [ 'Clyde Feeney', 'Eula Konopelski' ],
     organizationId: 'org_zyUlCzVfPD6pKQfI_OdkN'
   },
   {
-    id: 'int_Qs3LibQxTFCxHSbTSEuiO',
+    _id: 'int_Qs3LibQxTFCxHSbTSEuiO',
     name: 'Jonathon Brown',
     status: 'active',
     origins: [ 'Seth Bartell', 'Jeremiah Fahey' ],
-    organizationId: 'org_zyUlCzVfPD6pKQfI_OdkN'
-    },
-  {
-    id: 'int_DZJTTV-rXn2GGWaXmF2TI',
-    name: 'Mae Casper',
-    status: 'active',
-    origins: [ 'Cedric Harber PhD', 'Clifton Baumbach' ],
-    organizationId: 'org_VTTHK6J7ZLgtWiL-FLLWb'
-  },
-  {
-    id: 'int_y3iqogwpsHbSo4zRWZVGu',
-    name: 'Domingo Beahan',
-    status: 'active',
-    origins: [ 'Dianna Hessel', 'Lynne Treutel' ],
     organizationId: 'org_VTTHK6J7ZLgtWiL-FLLWb'
   }]
 
@@ -60,47 +46,77 @@ for(const integration of ints){
 }
 
 const locs = [{
-        id: 'loc_xdeJQM9lFV5GdofxAAMYI',
+        _id: 'loc_xdeJQM9lFV5GdofxAAMYI',
         name: 'Mrs. Manuel Bergnaum',
         address: 'Direct',
         country: 'Jeremy Rowe',
-        coordinates: { lat: 51.1742, lng: 135.5222 },
+        coordinates: {
+          type: 'Point',
+          coordinates: [
+            -18.7824,
+            48.1985
+          ]
+        },
         stopServingBeforeInMinutes: 59,
         organizationId: 'org_zyUlCzVfPD6pKQfI_OdkN'
       },
-       {
-        id: 'loc_BGbNQAAlThd0JgiuxxHcW',
+      {
+        _id: 'loc_BGbNQAAlThd0JgiuxxHcW',
         name: 'Jeanette Jerde',
         address: 'Keyboard',
         country: 'Ruth Nicolas',
-        coordinates: { lat: -75.2637, lng: 2.5855 },
+        coordinates: {
+          type: 'Point',
+          coordinates: [
+            2.154,
+            4.235
+          ]
+        },
         stopServingBeforeInMinutes: 37,
         organizationId: 'org_zyUlCzVfPD6pKQfI_OdkN'
       },
        {
-        id: 'loc_c59SCrDbdfWb1acH0WMS_',
+        _id: 'loc_c59SCrDbdfWb1acH0WMS_',
         name: 'Sergio Pagac',
         address: 'synthesizing',
         country: 'Tommy Kuvalis',
-        coordinates: { lat: -74.9936, lng: -12.0164 },
+        coordinates: {
+          type: 'Point',
+          coordinates: [
+            -6.784,
+            9.185
+          ]
+        },
         stopServingBeforeInMinutes: 81,
         organizationId: 'org_VTTHK6J7ZLgtWiL-FLLWb'
       },
        {
-        id: 'loc_7nVmGcFicLfetXcBVZj3v',
+        _id: 'loc_7nVmGcFicLfetXcBVZj3v',
         name: 'Esther Bashirian',
         address: 'Florida',
         country: 'Ricky Graham',
-        coordinates: { lat: -54.9725, lng: -146.5004 },
+        coordinates: {
+          type: 'Point',
+          coordinates: [
+            77.6385,
+            -33.8762
+          ]
+        },
         stopServingBeforeInMinutes: 14,
         organizationId: 'org_VTTHK6J7ZLgtWiL-FLLWb'
       },
        {
-        id: 'loc_1IKE-yUnN7B5aGqo3FOUE',
+        _id: 'loc_1IKE-yUnN7B5aGqo3FOUE',
         name: 'Elias Haag MD',
         address: 'Dollar',
         country: 'Rochelle Lockman',
-        coordinates: { lat: 77.6385, lng: -33.8762 },
+        coordinates: {
+          type: 'Point',
+          coordinates: [
+            37.638,
+            -51.872
+          ]
+        },
         stopServingBeforeInMinutes: 87,
         organizationId: 'org_VTTHK6J7ZLgtWiL-FLLWb'
       }
@@ -113,35 +129,35 @@ for(const location of locs){
 }
 
 const servs = [{
-        id: 'srv_YKLAAgZaysHLsKBmphIwO',
+        _id: 'srv_YKLAAgZaysHLsKBmphIwO',
         name: 'Jose Hilpert',
         description: 'Mrs. Jessie Ryan',
         organizationId: 'org_zyUlCzVfPD6pKQfI_OdkN',
         locationId: 'loc_xdeJQM9lFV5GdofxAAMYI'
       },
       {
-        id: 'srv_1-ZZpLH4UaGjB1viTehGE',
+        _id: 'srv_1-ZZpLH4UaGjB1viTehGE',
         name: 'Joyce Considine',
         description: 'Forrest Padberg',
         organizationId: 'org_zyUlCzVfPD6pKQfI_OdkN',
         locationId: 'loc_xdeJQM9lFV5GdofxAAMYI',
       },
       {
-        id: 'srv_ZlZZ9NhFGwL9Q-jSGrCaj',
+        _id: 'srv_ZlZZ9NhFGwL9Q-jSGrCaj',
         name: 'Perry Kub',
         description: 'Ramiro Kertzmann',
         organizationId: 'org_VTTHK6J7ZLgtWiL-FLLWb',
         locationId: 'loc_c59SCrDbdfWb1acH0WMS_'
       },
       {
-        id: 'srv_x6NM0wohyDLW5L53Wm7pr',
+        _id: 'srv_x6NM0wohyDLW5L53Wm7pr',
         name: 'Dora Walker',
         description: 'Edmund Fritsch',
         organizationId: 'org_VTTHK6J7ZLgtWiL-FLLWb',
         locationId: 'loc_7nVmGcFicLfetXcBVZj3v'
       },
       {
-        id: 'srv_OYcbQ4pVxG_yt-kZI-vR7',
+        _id: 'srv_OYcbQ4pVxG_yt-kZI-vR7',
         name: 'Gustavo Barton',
         description: 'Edmund Breitenberg',
         organizationId: 'org_VTTHK6J7ZLgtWiL-FLLWb',
@@ -154,7 +170,7 @@ for(const service of servs){
 }
 
 const flds = [{
-        id: 'field_v5lCM7bqxJ9plfArYSfsj',
+        _id: 'field_v5lCM7bqxJ9plfArYSfsj',
         label: 'Miss Alfredo Casper',
         description: 'Perferendis consectetur nihil sit id. Perspiciatis quaerat ipsam. Qui aut dignissimos.',
         type: 'email',
@@ -165,7 +181,7 @@ const flds = [{
         extra: []
       },
       {
-        id: 'field_DgWqWI-lmUea82zbNHQYr',
+        _id: 'field_DgWqWI-lmUea82zbNHQYr',
         label: 'Glenda Smith',
         description: 'Asperiores beatae quos. Accusantium magni eum ullam esse aut nisi rem eum est.',
         type: 'email',
@@ -176,7 +192,7 @@ const flds = [{
         extra: []
       },
       {
-        id: 'field_deDwyEMhyXThnwXfs227z',
+        _id: 'field_deDwyEMhyXThnwXfs227z',
         label: 'Ricardo Klein',
         description: 'Facilis omnis sed.',
         type: 'email',
@@ -187,7 +203,7 @@ const flds = [{
         extra: []
       },
       {
-        id: 'field_fvDGkehk-6yCUWjV5zQXS',
+        _id: 'field_fvDGkehk-6yCUWjV5zQXS',
         label: 'Ms. Leonard Rodriguez',
         description: 'Ut debitis dolorum architecto possimus aut delectus maiores delectus minus.',
         type: 'email',
@@ -206,7 +222,7 @@ for(const field of flds){
 }
 
 const ans = [{
-        id: 'answer_wWKBkLi7ATfEhZecCVXSs',
+        _id: 'answer_wWKBkLi7ATfEhZecCVXSs',
         value: 'Domingo Marvin',
         fieldId: 'field_v5lCM7bqxJ9plfArYSfsj',
         entityId: 'fuchsia',
@@ -215,7 +231,7 @@ const ans = [{
         extra: []
       },
       {
-        id: 'answer_yQYm_cfgFQG3YxGWJMtfm',
+        _id: 'answer_yQYm_cfgFQG3YxGWJMtfm',
         value: 'Miss Alfredo Casper',
         fieldId: 'field_DgWqWI-lmUea82zbNHQYr',
         entityId: 'Chicken',
@@ -224,7 +240,7 @@ const ans = [{
         extra: []
       },
       {
-        id: 'answer_2iuun2WrLSgxfnVh1lgVX',
+        _id: 'answer_2iuun2WrLSgxfnVh1lgVX',
         value: 'Priscilla Gerhold III',
         fieldId: 'field_deDwyEMhyXThnwXfs227z',
         entityId: 'azure',
@@ -233,7 +249,7 @@ const ans = [{
         extra: []
       },
       {
-        id: 'answer_wgCIoS-VCAXoy9pqt3l0v',
+        _id: 'answer_wgCIoS-VCAXoy9pqt3l0v',
         value: 'Jody Ritchie',
         fieldId: 'field_fvDGkehk-6yCUWjV5zQXS',
         entityId: 'Missouri',
@@ -248,7 +264,7 @@ for(const answer of ans){
 }
 
 const custs = [{
-        id: 'cust_TClBaYqWnrlPtNs3cOpxF',
+        _id: 'cust_TClBaYqWnrlPtNs3cOpxF',
         name: 'Jessica Trantow',
         lastname: 'Dale Brekke',
         email: 'Bertrand60@gmail.com',
@@ -260,7 +276,7 @@ const custs = [{
         extra: []
       },
       {
-        id: 'cust_LfcNUKK6X_zhIxqDO3Sxz',
+        _id: 'cust_LfcNUKK6X_zhIxqDO3Sxz',
         name: 'Greg Kunze',
         lastname: 'Henrietta Wintheiser',
         email: 'Rosalia41@hotmail.com',
@@ -272,7 +288,7 @@ const custs = [{
         extra: []
       },
       {
-        id: 'cust_NDp4yydxeXwRoWcDpgGiV',
+        _id: 'cust_NDp4yydxeXwRoWcDpgGiV',
         name: 'Ivan Heaney',
         lastname: 'Tanya Green',
         email: 'Shany.Luettgen58@gmail.com',
@@ -284,7 +300,7 @@ const custs = [{
         extra: []
       },
       {
-        id: 'cust_48nYKMXoGD_Z8waFZXEMv',
+        _id: 'cust_48nYKMXoGD_Z8waFZXEMv',
         name: 'Marcia Bosco',
         lastname: 'Rhonda Frami',
         email: 'Kurt21@yahoo.com',
@@ -296,7 +312,7 @@ const custs = [{
         extra: []
       },
       {
-        id: 'cust_W6eULbvcWFTsrEYDdRoMP',
+        _id: 'cust_W6eULbvcWFTsrEYDdRoMP',
         name: 'Elizabeth Huel',
         lastname: 'Dave Haley',
         email: 'Sarina_Lang13@gmail.com',
@@ -308,7 +324,7 @@ const custs = [{
         extra: []
       },
       {
-        id: 'cust_F5QbHv-41YunvlWkF5w70',
+        _id: 'cust_F5QbHv-41YunvlWkF5w70',
         name: 'Kari Kautzer III',
         lastname: 'Rita Turcotte',
         email: 'Casimer98@hotmail.com',
@@ -320,7 +336,7 @@ const custs = [{
         extra: []
       },
       {
-        id: 'cust_R2c-gQfOXP4LhPZ3kqy0x',
+        _id: 'cust_R2c-gQfOXP4LhPZ3kqy0x',
         name: 'Orlando Ruecker',
         lastname: 'Glen Dach',
         email: 'Mikel.Ferry34@yahoo.com',
@@ -332,7 +348,7 @@ const custs = [{
         extra: []
       },
       {
-        id: 'cust_Hj4yBjoJhrAmGsOb69krO',
+        _id: 'cust_Hj4yBjoJhrAmGsOb69krO',
         name: 'Shane Gibson II',
         lastname: 'Gayle Bernier',
         email: 'Zane_Swift@yahoo.com',
@@ -344,7 +360,7 @@ const custs = [{
         extra: []
       },
       {
-        id: 'cust_TTzKR2qAR_XNEC-29oBc-',
+        _id: 'cust_TTzKR2qAR_XNEC-29oBc-',
         name: 'Lucille Haag',
         lastname: 'George Ruecker',
         email: 'Berenice_Kertzmann88@yahoo.com',
@@ -356,7 +372,7 @@ const custs = [{
         extra: []
       },
       {
-        id: 'cust_AqWPfoERAt6j4G-P5nbaa',
+        _id: 'cust_AqWPfoERAt6j4G-P5nbaa',
         name: 'Vanessa Douglas',
         lastname: 'Jean Zboncak',
         email: 'Fern_Thiel41@hotmail.com',
@@ -376,7 +392,7 @@ for(const customer of custs){
 }
 
 const agts =[{
-        id: 'agent_VEy2GqCdrElQThL5qdDt_',
+        _id: 'agent_VEy2GqCdrElQThL5qdDt_',
         name: 'Timothy Jacobson',
         lastname: 'Emanuel Funk',
         organizationId: 'org_zyUlCzVfPD6pKQfI_OdkN',
@@ -388,7 +404,7 @@ const agts =[{
         extra: []
       },
       {
-        id: 'agent_vz7uE6Q3nwDB0C5gv1FEZ',
+        _id: 'agent_vz7uE6Q3nwDB0C5gv1FEZ',
         name: 'Randolph Kreiger',
         lastname: 'Colleen Carter',
         organizationId: 'org_zyUlCzVfPD6pKQfI_OdkN',
@@ -400,7 +416,7 @@ const agts =[{
         extra: []
       },
       {
-        id: 'agent_73Pn41bFFzRWLsPOK2Yx7',
+        _id: 'agent_73Pn41bFFzRWLsPOK2Yx7',
         name: 'Tracey Mueller',
         lastname: 'Toby Tremblay',
         organizationId: 'org_VTTHK6J7ZLgtWiL-FLLWb',
@@ -412,7 +428,7 @@ const agts =[{
         extra: []
       },
       {
-        id: 'agent_scVlVyxNgxxDFB5UUNL9t',
+        _id: 'agent_scVlVyxNgxxDFB5UUNL9t',
         name: 'Mr. Jessie Buckridge',
         lastname: 'Mr. Lee Kreiger',
         organizationId: 'org_VTTHK6J7ZLgtWiL-FLLWb',
