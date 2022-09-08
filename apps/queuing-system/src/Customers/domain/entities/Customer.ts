@@ -37,7 +37,7 @@ export class Customer extends AggregateRoot {
      *
      * @description A human-readable lastname of the Customer.
      */
-    private lastname: string,
+    private lastname: Nullable<string> = null,
 
     /**
      * Email
@@ -51,14 +51,14 @@ export class Customer extends AggregateRoot {
      *
      * @description The country of the customer.
      */
-    private country: string,
+    private country: Nullable<string> = null,
 
     /**
      * Entity Phone
      *
      * @description The phone number of the customer.
      */
-    private phone: string,
+    private phone: Nullable<string> = null,
 
     /**
      * Entity HasWhatsapp
@@ -97,12 +97,13 @@ export class Customer extends AggregateRoot {
    *
    * @description Creates a new Customer.
    */
-  public static create(
-    attributes: Omit<EntityAttributes<Customer>, 'id'>
-  ): Customer {
+  public static create({
+    name = this.getName(),
+    ...attributes
+  }: Omit<EntityAttributes<Customer>, 'id'>): Customer {
     const customer = new Customer(
       Identifier.generate('cust'),
-      attributes.name,
+      name,
       attributes.lastname,
       attributes.email,
       attributes.phone,
@@ -116,6 +117,10 @@ export class Customer extends AggregateRoot {
     customer.register(new CustomerCreatedEvent(customer.toObject()))
 
     return customer
+  }
+
+  private static getName() {
+    return Identifier.holder('Visitor')
   }
 
   /**

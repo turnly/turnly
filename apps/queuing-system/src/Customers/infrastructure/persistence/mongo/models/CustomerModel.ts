@@ -23,7 +23,6 @@ const schema = new Schema(
     },
     lastname: {
       type: String,
-      required: true,
     },
     email: {
       type: String,
@@ -33,7 +32,6 @@ const schema = new Schema(
     },
     phone: {
       type: String,
-      required: true,
     },
     hasWhatsapp: {
       type: Boolean,

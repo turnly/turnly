@@ -12,11 +12,11 @@ const extra = Validator.object({
 })
 
 const create = Validator.object({
-  name: Validator.string(),
-  lastname: Validator.string(),
+  name: Validator.string().optional(),
+  lastname: Validator.string().optional(),
   email: Validator.email().optional(),
   country: Validator.string().optional(),
-  phone: Validator.string(),
+  phone: Validator.string().optional(),
   hasWhatsapp: Validator.getBuilder().boolean().optional(),
   showNameSignage: Validator.getBuilder().boolean().optional(),
   organizationId: Validator.isId(),

@@ -47,10 +47,10 @@ export class CustomerMother {
   static fromCommand(command: CreateCustomersCommand): Customer {
     return CustomerMother.create(
       command.params.name,
-      command.params.lastname,
       undefined,
-      command.params.phone,
-      command.params.country,
+      undefined,
+      undefined,
+      undefined,
       command.params.hasWhatsapp,
       command.params.showNameSignage,
       command.params.organizationId,

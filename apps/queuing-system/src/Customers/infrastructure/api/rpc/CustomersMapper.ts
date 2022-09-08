@@ -18,12 +18,12 @@ export class CustomerMapper {
     if (entity) {
       customer.setId(entity.id)
       customer.setName(entity.name)
-      customer.setLastname(entity.lastname)
+      if (entity.lastname) customer.setLastname(entity.lastname)
 
       if (entity.email) customer.setEmail(entity.email)
 
-      customer.setPhone(entity.phone)
-      customer.setCountry(entity.country)
+      if (entity.phone) customer.setPhone(entity.phone)
+      if (entity.country) customer.setCountry(entity.country)
       customer.setHasWhatsapp(entity.hasWhatsapp)
       customer.setShowNameSignage(entity.showNameSignage)
 
