@@ -13,7 +13,7 @@
     "lint:ts:check": "tsc --noEmit",
     "start": "ROOT_DIR=$(pwd) NODE_PATH=dist/ node -r dotenv/config dist/main.js",
     "test": "jest --forceExit --detectOpenHandles",
-    "watch": "nodemon --config node_modules/@turnly/eslint-config/nodemon.json src/main.ts"
+    "watch": "nodemon -L --config node_modules/@turnly/eslint-config/nodemon.json src/main.ts"
   },
   "prettier": "@turnly/eslint-config/.prettierrc.js",
   "eslintConfig": {

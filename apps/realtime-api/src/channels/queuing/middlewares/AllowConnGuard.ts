@@ -12,7 +12,7 @@ import {
 } from '@turnly/common'
 import { Events, IRealtimeClient, RealtimeMiddle } from '@turnly/realtime'
 
-import { Customers, Integrations } from '../../../shared/api'
+import { Customers, Integrations, setOrganizationId } from '../../../shared/api'
 
 /**
  * Allow connection guard
@@ -43,6 +43,8 @@ export class AllowConnGuard {
 
       if (!widget) throw new ResourceNotFoundException(meta?.message)
 
+      setOrganizationId(widget.organizationId)
+
       const { origin: formatted } = new URL(origin)
       const isTrustworthy = !widget.originsList.includes(formatted)
 
@@ -57,7 +59,7 @@ export class AllowConnGuard {
       const customer = await Customers.getOne({ id: customerId })
 
       if (!customer.data) {
-        throw new Error('Customer not found')
+        throw new Error(`Customer not found ${customerId}`)
       }
 
       /**
