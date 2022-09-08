@@ -56,10 +56,11 @@ export class AllowConnGuard {
       if (!customerId) {
         throw new ResourceNotFoundException()
       }
+
       const customer = await Customers.getOne({ id: customerId })
 
       if (!customer.data) {
-        throw new Error(`Customer not found ${customerId}`)
+        throw new Error('Customer not found')
       }
 
       /**
