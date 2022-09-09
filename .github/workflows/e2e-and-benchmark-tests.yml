@@ -10,7 +10,7 @@ jobs:
     strategy:
       matrix:
         node-version: [16.15]
-        mongodb-version: [latest]
+        mongodb-version: [5.0.9]
 
     steps:
       - name: 🏷️ Check out Git repo
