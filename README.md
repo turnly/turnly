@@ -78,7 +78,7 @@ Our ecosystem is completely divided into multiple applications with specific pur
 | Name                                            | Description                                                          | Live |
 | ----------------------------------------------- | -------------------------------------------------------------------- |:----:|
 | [Iam](https://github.com/turnly/iam)            | Identity & Access Management                                         | 🔴   |
-| [Hannah](https://github.com/turnly/hannah)      | Web widget-based application for ticket-taking                       | 🟢   |
+| [Widgets](/widgets)                             | Web widget-based application for ticket-taking                       | 🟢   |
 | [Tessa](https://github.com/turnly/tessa)        | Backoffice, app to manage organization resources                     | 🔴   |
 | [Sansa](https://github.com/turnly/sansa)        | Helpdesk, app for your organization's agents to serve your customers | 🔴   |
 

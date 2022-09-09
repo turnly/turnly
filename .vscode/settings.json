@@ -28,6 +28,7 @@
     "apps/notifications",
     "apps/business-owners",
     "apps/realtime-api",
-    "apps/widgets-api"
+    "apps/widgets-api",
+    "widgets"
   ]
 }

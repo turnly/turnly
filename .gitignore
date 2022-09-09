@@ -41,3 +41,11 @@ apps/**/yarn.lock
 
 # Tests
 **/coverage
+
+# Widget config
+widgets/widget.config.json
+
+# Build
+widgets/public/*.mjs
+widgets/public/*.umd.js
+widgets/public/style.css

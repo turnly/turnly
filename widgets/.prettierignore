@@ -1,0 +1,6 @@
+jest.config.js
+node_modules
+tsconfig.json
+README.md
+/dist
+/static

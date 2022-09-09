@@ -1,0 +1,34 @@
+// Color palettes
+$green: #06615A;
+$green-light: #5ACE71;
+$white: #fff;
+$gray: #455964;
+$black: #1c2b33;
+$gray-light: #6b7c89;
+$gray-lighter: #f2f2f2;
+$danger: #9a1d1c;
+
+$primary-color: $green;
+$secondary-color: $green-light;
+
+$default-title-color: $gray;
+$default-text-color: $gray-light;
+
+// Fonts
+$default-font: 'Cabin', sans-serif;
+
+@mixin in-mobile {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+@keyframes loaded {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

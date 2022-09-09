@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import 'helpers/vars';
+
+* {
+  box-sizing: border-box;
+  font-family: $default-font;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+@import 'helpers/fonts';
+@import 'components/button';
+@import 'components/box';

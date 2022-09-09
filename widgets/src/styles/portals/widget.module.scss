@@ -1,0 +1,51 @@
+@import '../helpers/vars';
+
+$block: 'tly-widget';
+
+.#{$block} {
+  background: #fcfcfc 0% 0% no-repeat padding-box;
+  border-radius: 16px;
+  bottom: 94px;
+  box-shadow: 0 8px 16px #0000001f;
+  height: 600px;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  position: fixed;
+  right: 24px;
+  transform: translate3d(0, 0, 0);
+  transition: max-height 0s ease-in-out 0.25s, width 0s ease-in-out 0.25s,
+    opacity 0.25s ease-in-out 0s, z-index 0s ease-in-out 0.25s,
+    transform 0.25s ease-in-out 0s;
+  width: 360px;
+  z-index: -1;
+
+  iframe {
+    border: 0;
+    height: 100%;
+    width: 100%;
+  }
+
+  &--open {
+    max-height: calc(85% - 60px - 24px);
+    min-height: 242px;
+    opacity: 1;
+    transform: translate3d(0, -4%, 0);
+    transition: max-height 0s ease-in-out 0s, width 0s ease-in-out 0s,
+      opacity 0.25s ease-in-out 0.01s, z-index 0s ease-in-out,
+      transform 0.25s ease-in-out 0.01s;
+    z-index: 99999999;
+  }
+
+  &,
+  &--open {
+    @include in-mobile {
+      border-radius: 0;
+      bottom: 0;
+      height: 100vh;
+      max-height: 100vh;
+      right: 0;
+      width: 100%;
+    }
+  }
+}
