@@ -98,7 +98,7 @@ export class Customer extends AggregateRoot {
    * @description Creates a new Customer.
    */
   public static create({
-    name = this.getName(),
+    name = this.getVisitorName(),
     ...attributes
   }: Omit<EntityAttributes<Customer>, 'id'>): Customer {
     const customer = new Customer(
@@ -119,7 +119,7 @@ export class Customer extends AggregateRoot {
     return customer
   }
 
-  private static getName() {
+  private static getVisitorName() {
     return Identifier.holder('Visitor')
   }
 

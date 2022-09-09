@@ -53,34 +53,13 @@ export class AllowConnGuard {
           'You are not allowed to connect, please try again later.'
         )
 
-      if (!customerId) {
-        throw new ResourceNotFoundException()
-      }
+      const { data: customer } = customerId
+        ? await Customers.getOne({ id: customerId })
+        : await Customers.create({})
 
-      const customer = await Customers.getOne({ id: customerId })
+      if (!customer) throw new ResourceNotFoundException()
 
-      if (!customer.data) {
-        throw new Error('Customer not found')
-      }
-
-      /**
-       * @todo Check if customer exists in the request connection
-       *
-       * const customerPayload = JSON.parse(query.customer)
-       * const metadata = JSON.parse(query.user)
-       *
-       * @todo Check if query.user is the same as the customer
-       *
-       * const customer = customerPayload
-       *  ? await queuingService.getCustomer({ id: customerPayload.id })
-       *  : await queuingService.createCustomer(metadata)
-       *
-       * if (!customer) {
-       *    throw new Error('Customer not found')
-       * }
-       */
-
-      connection.join([widget.organizationId, customer.data.id])
+      connection.join([widget.organizationId, customer.id])
 
       connection.emit(Events.CONNECTED, {
         widget: {
@@ -89,8 +68,8 @@ export class AllowConnGuard {
           canCustomize: widget.canCustomize,
         },
         customer: {
-          id: customer.data.id,
-          name: customer.data.name,
+          id: customer.id,
+          name: customer.name,
         },
       })
 

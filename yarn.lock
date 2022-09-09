@@ -1304,7 +1304,7 @@
 
 "@turnly/common@github:turnly/common.git#latest":
   version "1.0.0"
-  resolved "https://codeload.github.com/turnly/common/tar.gz/29ea5b816d39f57ecf867a2de382615efe08b9a2"
+  resolved "https://codeload.github.com/turnly/common/tar.gz/9662f89b09ab79c7328c8f08c6483e9eb61f3e01"
   dependencies:
     "@opentelemetry/api" "^1.1.0"
     "@opentelemetry/instrumentation-grpc" "^0.28.0"
