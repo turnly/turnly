@@ -74,9 +74,7 @@ curl "https://{organization}.turnly.app/api/v1/widgets/graph" \
 
 | Name                     | Description                                  |
 | ------------------------ | -------------------------------------------- |
-| `SENTRY_ORG`             | Your organization's URL in Sentry.           |
 | `SENTRY_DSN`             | Your Sentry DSN.                             |
-| `SENTRY_SLACK_WEBHOOK`   | Slack webhook for observability.             |
 | `FLUENT_HOST`            | FluentD host for observability.              |
 | `FLUENT_PORT`            | FluentD port for observability.              |
 

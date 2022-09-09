@@ -20,9 +20,7 @@ services:
       - RPC_CONSUMER_ADDRESS
       - HTTP_PORT
       - LOGGING_LEVEL
-      - SENTRY_ORG
       - SENTRY_DSN
-      - SENTRY_SLACK_WEBHOOK
       - FLUENT_HOST
       - FLUENT_PORT
       - MONGO_PORT

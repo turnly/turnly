@@ -55,9 +55,7 @@ Management of the organization's employees (Agents and Managers).
 | `RABBITMQ_URI`           | URI connection to RabbitMQ.                  |
 | `RABBITMQ_EXCHANGE`      | Exchange name of RabbitMQ.                   |
 | `ELASTICSEARCH_URI`      | URI connection to Elastic.                   |
-| `SENTRY_ORG`             | Your organization's URL in Sentry.           |
 | `SENTRY_DSN`             | Your Sentry DSN.                             |
-| `SENTRY_SLACK_WEBHOOK`   | Slack webhook for observability.             |
 | `FLUENT_HOST`            | FluentD host for observability.              |
 | `FLUENT_PORT`            | FluentD port for observability.              |
 
