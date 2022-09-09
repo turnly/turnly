@@ -42,6 +42,7 @@ export const broadcastable = {
     /**
      * Ticket events
      */
+    BroadcastableEvents.TICKET_CREATED,
     BroadcastableEvents.TICKET_AVAILABLE,
     BroadcastableEvents.TICKET_ANNOUNCED,
     BroadcastableEvents.TICKET_COMPLETED,
