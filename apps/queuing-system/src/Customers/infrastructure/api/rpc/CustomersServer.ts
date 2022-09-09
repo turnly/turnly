@@ -4,7 +4,6 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { BadRequestException } from '@turnly/common'
 import { Producers } from '@turnly/rpc'
 import { Client } from '@turnly/rpc/dist/consumers'
 
@@ -28,18 +27,22 @@ export class CustomersServer extends Producers.ServerImplementation<Producers.Qu
   ) {
     const payload = call.request.getCustomer()
 
-    if (!payload) throw new BadRequestException('Missing customer payload.')
+    const input = payload
+      ? {
+          name: payload.getName(),
+          lastname: payload.getLastname(),
+          email: payload.getEmail(),
+          phone: payload.getPhone(),
+          country: payload.getCountry(),
+          hasWhatsapp: payload.getHasWhatsapp(),
+          showNameSignage: payload.getShowNameSignage(),
+          extra: payload.getExtrasList().map(e => e.toObject()),
+        }
+      : {}
 
     const { data, meta } = await this.customersController.create({
-      name: payload.getName(),
-      lastname: payload.getLastname(),
-      email: payload.getEmail(),
-      phone: payload.getPhone(),
-      country: payload.getCountry(),
-      hasWhatsapp: payload.getHasWhatsapp(),
-      showNameSignage: payload.getShowNameSignage(),
+      ...input,
       organizationId: Client.getOrganizationId(call),
-      extra: payload.getExtrasList().map(e => e.toObject()),
     })
 
     const response = new Producers.QueuingSystem.CreateCustomerResponse()

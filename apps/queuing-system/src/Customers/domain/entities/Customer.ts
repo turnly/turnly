@@ -9,6 +9,11 @@ import { AggregateRoot, EntityAttributes } from '@turnly/shared'
 
 import { CustomerCreatedEvent } from '../events/CustomerCreatedEvent'
 
+export interface CreateCustomerParams
+  extends Partial<Omit<EntityAttributes<Customer>, 'id'>> {
+  organizationId: Guid
+}
+
 /**
  * Customer
  *
@@ -100,7 +105,7 @@ export class Customer extends AggregateRoot {
   public static create({
     name = this.getVisitorName(),
     ...attributes
-  }: Omit<EntityAttributes<Customer>, 'id'>): Customer {
+  }: CreateCustomerParams): Customer {
     const customer = new Customer(
       Identifier.generate('cust'),
       name,
@@ -108,8 +113,8 @@ export class Customer extends AggregateRoot {
       attributes.email,
       attributes.phone,
       attributes.country,
-      attributes.hasWhatsapp,
-      attributes.showNameSignage,
+      Boolean(attributes.hasWhatsapp),
+      Boolean(attributes.showNameSignage),
       attributes.organizationId,
       attributes.extra
     )

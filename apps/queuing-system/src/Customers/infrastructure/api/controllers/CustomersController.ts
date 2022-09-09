@@ -12,12 +12,12 @@ import {
   IQueryBus,
   TimeoutHandler,
 } from '@turnly/shared'
+import { CreateCustomersCommand } from 'Customers/application/commands/CreateCustomerCommand'
+import { CustomerByIdQuery } from 'Customers/application/queries/CustomerByIdQuery'
 import {
   CreateCustomerParams,
-  CreateCustomersCommand,
-} from 'Customers/application/commands/CreateCustomerCommand'
-import { CustomerByIdQuery } from 'Customers/application/queries/CustomerByIdQuery'
-import { Customer } from 'Customers/domain/entities/Customer'
+  Customer,
+} from 'Customers/domain/entities/Customer'
 
 import { validator } from '../validators/CustomersValidator'
 
