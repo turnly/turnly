@@ -31,86 +31,6 @@ To properly set up the Docker environment, ensure you meet the following require
 based terminal like **Git bash**.
 - We highly recommend you review the [troubleshooting docs.](/docs/troubleshooting.md)
 
-### DevO Tool
-
-**As a concept:**
-
-DevO is a concept adopted in Turnly ecosystem to automate and facilitate all tasks
-in the development environment.
-
-**As a Tool:**
-
-Application written in bash and docker files that are described as docker-backed
-infrastructure provisioning and systems management for the development environment.
-
-##### DevO Commands
-
-All available commands must be run using the `yarn devo` prefix.
-
-##### Verbose and debug
-
-When you run the commands and verbose is not enabled, a `devo.log` file is
-generated with all the execution logs that can help you debug errors.
-
-### Local Domains
-
-Turnly is a SaaS application and all resources are under a custom URL for each organization.
-In development we add the necessary domains for you in your hosts' file and 4 additional
-ones so that you can do tests, we recommend you create your local organization with one of the following names:
-
-* **organization-test**
-* **organization-dev**
-* **org-test**
-* **org-dev**
-
-So when all of this is set up, you will be able to use the following URLs to interact with the APIs:
-
-| Name                                  | URL                                                       |
-| ------------------------------------- | --------------------------------------------------------- |
-| **Help Desk API**                     | `http://{organization}.turnly.local/api/v1/help_desk`     |
-| **Back Office API**                   | `http://{organization}.turnly.local/api/v1/back_office`   |
-| **Widgets API**                       | `http://{organization}.turnly.local/api/v1/widgets`       |
-| **Real Time Messaging API**           | `http://{organization}.turnly.local/api/v1/rtm`           |
-| **Identity & Access Management API**  | `http://accounts.turnly.local/api/v1`                     |
-
-### Start specific application
-
-If you don't want to run all of Turnly's apps and services, you can go to the directory of the app
-you want to contribute to and you'll find a README with details on how to run just that app.
-
-##### APIs (Backend for Frontend) 🔗
-
-| Name                                                  | Description                                  | Live |
-| ----------------------------------------------------- | -------------------------------------------- |:----:|
-| [Gateway (Application Proxy)](/apps/gateway)          | API entry point and access management        | 🟢   |
-| [Widgets API](/apps/widgets-api)                      | GraphQL API for widgets clients              | 🟢   |
-| [Real Time Messaging API (RTM)](/apps/realtime-api)   | A WebSocket-based API for realtime events    | 🟢   |
-
-##### Microservices 🔗
-
-| Name                                            | Description                                                       | Live |
-| ----------------------------------------------- | ----------------------------------------------------------------- |:----:|
-| [Add-ons](/apps/addons)                         | Integrations, Webhooks & Beacons                                  | 🟢   |
-| [Assistance Centers](/apps/assistance-centers)  | Locations, services offered, working hours, desk, etc.            | 🟢   |
-| [Business Owners](/apps/business-owners)        | Organizations management, promotions, etc.                        | 🟢   |
-| [Custom Fields](/apps/custom-fields)            | Business Data Fields, Customers and Agents answers.               | 🟢   |
-| [Heimdall IAM](/apps/heimdall)                  | Identity & Access Management (SSO).                               | 🔴   |
-| [Notifications](/apps/notifications)            | Customers reminders, SMS, Calls, WhatsApp messages.               | 🔴   |
-| [Queuing System](/apps/queuing-system)          | Tickets and Customers management.                                 | 🟢   |
-| [Tasks Scheduling](/apps/tasks-scheduling)      | Scheduling of internal tasks, cleaning, batch, etc.               | 🔴   |
-| [Teams Management](/apps/teams)                 | Management of the organization's employees (Agents and Managers). | 🟢   |
-
-### Software Architecture
-
-The Turnly are built using multiple architectural concepts,
-we highly recommend you review the [architecture docs.](/docs/architecture)
-
-![high-level-architecture](/docs/diagrams/high-level-architecture.png)
-
-### Conventions (Required)
-
-We highly recommend you review the [conventions docs.](/docs/conventions.md)
-
 ### Development
 
 #### Step 1: Install application
@@ -236,6 +156,86 @@ describe('<scope name> > <task title>', async () => {
   // additional tests if needed
 })
 ```
+
+### Conventions (Required)
+
+We highly recommend you review the [conventions docs.](/docs/conventions.md)
+
+### DevO Tool
+
+**As a concept:**
+
+DevO is a concept adopted in Turnly ecosystem to automate and facilitate all tasks
+in the development environment.
+
+**As a Tool:**
+
+Application written in bash and docker files that are described as docker-backed
+infrastructure provisioning and systems management for the development environment.
+
+##### DevO Commands
+
+All available commands must be run using the `yarn devo` prefix.
+
+##### Verbose and debug
+
+When you run the commands and verbose is not enabled, a `devo.log` file is
+generated with all the execution logs that can help you debug errors.
+
+### Local Domains
+
+Turnly is a SaaS application and all resources are under a custom URL for each organization.
+In development we add the necessary domains for you in your hosts' file and 4 additional
+ones so that you can do tests, we recommend you create your local organization with one of the following names:
+
+* **organization-test**
+* **organization-dev**
+* **org-test**
+* **org-dev**
+
+So when all of this is set up, you will be able to use the following URLs to interact with the APIs:
+
+| Name                                  | URL                                                       |
+| ------------------------------------- | --------------------------------------------------------- |
+| **Help Desk API**                     | `http://{organization}.turnly.local/api/v1/help_desk`     |
+| **Back Office API**                   | `http://{organization}.turnly.local/api/v1/back_office`   |
+| **Widgets API**                       | `http://{organization}.turnly.local/api/v1/widgets`       |
+| **Real Time Messaging API**           | `http://{organization}.turnly.local/api/v1/rtm`           |
+| **Identity & Access Management API**  | `http://accounts.turnly.local/api/v1`                     |
+
+### Start specific application (Development Mode)
+
+If you don't want to run all of Turnly's apps and services, you can go to the directory of the app
+you want to contribute to and you'll find a README with details on how to run just that app.
+
+##### APIs (Backend for Frontend) 🔗
+
+| Name                                                  | Description                                  | Live |
+| ----------------------------------------------------- | -------------------------------------------- |:----:|
+| [Gateway (Application Proxy)](/apps/gateway)          | API entry point and access management        | 🟢   |
+| [Widgets API](/apps/widgets-api)                      | GraphQL API for widgets clients              | 🟢   |
+| [Real Time Messaging API (RTM)](/apps/realtime-api)   | A WebSocket-based API for realtime events    | 🟢   |
+
+##### Microservices 🔗
+
+| Name                                            | Description                                                       | Live |
+| ----------------------------------------------- | ----------------------------------------------------------------- |:----:|
+| [Add-ons](/apps/addons)                         | Integrations, Webhooks & Beacons                                  | 🟢   |
+| [Assistance Centers](/apps/assistance-centers)  | Locations, services offered, working hours, desk, etc.            | 🟢   |
+| [Business Owners](/apps/business-owners)        | Organizations management, promotions, etc.                        | 🟢   |
+| [Custom Fields](/apps/custom-fields)            | Business Data Fields, Customers and Agents answers.               | 🟢   |
+| [Heimdall IAM](/apps/heimdall)                  | Identity & Access Management (SSO).                               | 🔴   |
+| [Notifications](/apps/notifications)            | Customers reminders, SMS, Calls, WhatsApp messages.               | 🔴   |
+| [Queuing System](/apps/queuing-system)          | Tickets and Customers management.                                 | 🟢   |
+| [Tasks Scheduling](/apps/tasks-scheduling)      | Scheduling of internal tasks, cleaning, batch, etc.               | 🔴   |
+| [Teams Management](/apps/teams)                 | Management of the organization's employees (Agents and Managers). | 🟢   |
+
+### Software Architecture
+
+The Turnly are built using multiple architectural concepts,
+we highly recommend you review the [architecture docs.](/docs/architecture)
+
+![high-level-architecture](/docs/diagrams/high-level-architecture.png)
 
 #### How to create a new application
 

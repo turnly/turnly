@@ -84,7 +84,7 @@ Our ecosystem is completely divided into multiple applications with specific pur
 
 ## 🧑🏻‍🚒 Contributing
 
-Ahoy!, please refer to our [Contributing Guide](/CONTRIBUTING.md) for details.
+Ahoy!, please if you want to correct some typo, update a readme, or contributing with code. Refer to our [Contributing Guide](/CONTRIBUTING.md) for details.
 
 ## ❤️ Got a Question, Problem or Feature?
 
