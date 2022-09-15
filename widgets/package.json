@@ -42,6 +42,7 @@
     "@sentry/react": "^7.8.1",
     "@sentry/tracing": "^7.8.1",
     "@tanstack/react-query": "^4.0.10",
+    "@turnly/rtm": "github:turnly/realtime-client#latest",
     "i18next": "^21.8.16",
     "i18next-browser-languagedetector": "^6.1.4",
     "js-cookie": "^3.0.1",

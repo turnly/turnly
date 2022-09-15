@@ -39,7 +39,7 @@ export const Navigator = ({
       Array.isArray(children)
         ? children.find(({ props }) => props?.name === currentScreen)
         : children,
-    [children]
+    [children, currentScreen]
   )
 
   if (!screen) throw new Error(ERROR_MESSAGES.NAVIGATOR_NO_CHILDREN)
