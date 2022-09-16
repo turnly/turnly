@@ -30,7 +30,8 @@
     "target": "ESNext",
     "skipLibCheck": true,
     "isolatedModules": true,
-    "outDir": "dist"
+    "outDir": "dist",
+    "types": ["vite/client"]
   },
   "exclude": [
     "node_modules",
