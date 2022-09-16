@@ -31,14 +31,16 @@
     "skipLibCheck": true,
     "isolatedModules": true,
     "outDir": "dist",
-    "types": ["vite/client"]
+    "types": ["node_modules/@types", "vite/client", "src/@types"]
   },
   "exclude": [
     "node_modules",
     "dist"
   ],
   "include": [
-    "src/**/*",
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
     "widget.config.json",
     "src/**/*.json",
   ],

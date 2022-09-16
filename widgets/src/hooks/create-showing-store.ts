@@ -1,14 +1,14 @@
 import create from 'zustand'
 
 type Store = {
-  isOpen: boolean
-  setOpen: () => void
-  setClose: () => void
+  isShowing: boolean
+  setShow: () => void
+  setHide: () => void
 }
 
 export const createShowingStore = () =>
   create<Store>(set => ({
-    isOpen: false,
-    setOpen: () => set(() => ({ isOpen: true })),
-    setClose: () => set(() => ({ isOpen: false })),
+    isShowing: false,
+    setShow: () => set(() => ({ isShowing: true })),
+    setHide: () => set(() => ({ isShowing: false })),
   }))

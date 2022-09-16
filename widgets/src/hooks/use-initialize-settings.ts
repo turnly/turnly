@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect } from 'preact/hooks'
+import { useEffect, useLayoutEffect, useMemo } from 'preact/hooks'
 
 import { useTranslation } from '../localization'
 import { Script } from '../services/script'
@@ -7,14 +7,24 @@ import { useSettings } from './use-settings'
 export const useInitializeSettings = () => {
   const { changeLanguage } = useTranslation()
   const { setSettings, locale } = useSettings()
+  const { url: organizationURL, widgetId } = useMemo(
+    () => Script.getDataFromScript(),
+    []
+  )
 
   useLayoutEffect(() => {
-    const { url: organizationURL, widgetId: id } = Script.getDataFromScript()
-
-    setSettings({ ...window?.$tlySettings, widget: { id, organizationURL } })
+    setSettings({
+      ...window?.$tlySettings,
+      widget: { id: widgetId, organizationURL },
+    })
   }, [])
 
   useEffect(() => {
     changeLanguage(locale)
   }, [locale])
+
+  return {
+    organizationURL,
+    widgetId,
+  }
 }

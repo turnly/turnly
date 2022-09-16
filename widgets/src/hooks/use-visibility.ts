@@ -8,29 +8,29 @@ const useShowing = createShowingStore()
 
 export const useVisibility = () => {
   const {
-    isOpen,
-    setClose: setCloseFn,
-    setOpen: setOpenFn,
+    isShowing,
+    setHide: setHideFn,
+    setShow: setShowFn,
   } = useShowing(
     useCallback(s => s, []),
     shallow
   )
 
-  const setOpen = useCallback(() => {
-    setOpenFn()
+  const setShow = useCallback(() => {
+    setShowFn()
 
     $bus.visibility.dispatch({ isVisible: false })
   }, [])
 
-  const setClose = useCallback(() => {
-    setCloseFn()
+  const setHide = useCallback(() => {
+    setHideFn()
 
     $bus.visibility.dispatch({ isVisible: true })
   }, [])
 
   return {
-    setClose,
-    setOpen,
-    isOpen,
+    setHide,
+    setShow,
+    isShowing,
   }
 }

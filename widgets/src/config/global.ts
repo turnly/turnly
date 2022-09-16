@@ -4,6 +4,8 @@ export const config = Object.freeze({
   APP_NAME: configuration.name,
   WIDGET_ID: '__turnly_widget__',
   SCRIPT_ID: 'tly-widget',
+  SCRIPT_TLY_URL: 'data-tly-url',
+  SCRIPT_TLY_WIDGET_ID: 'data-tly-widget-id',
   DSN: configuration.sentry_dsn,
   PUBLIC_URL: configuration.public_url,
   TURNLY_URL: configuration.turnly_url,

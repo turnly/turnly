@@ -6,19 +6,22 @@ import { Fragment, h } from 'preact'
 import AppContainer from './app-container'
 import { AppPortal } from './components/app-portal'
 import { LauncherPortal } from './components/launcher'
-import { useInitializeSettings } from './hooks/use-initialize-settings'
+import { useRealtimeConnection } from './hooks/use-realtime-connection'
+import { useVisibility } from './hooks/use-visibility'
 
 const App = () => {
-  useInitializeSettings()
+  useRealtimeConnection()
 
-  return (
+  const { isShowing } = useVisibility()
+
+  return isShowing ? (
     <Fragment>
       <AppPortal>
         <AppContainer />
       </AppPortal>
       <LauncherPortal />
     </Fragment>
-  )
+  ) : null
 }
 
 export default App

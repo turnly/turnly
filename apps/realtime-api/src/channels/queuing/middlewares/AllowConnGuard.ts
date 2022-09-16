@@ -11,6 +11,7 @@ import {
   UnauthorizedException,
 } from '@turnly/common'
 import { Events, IRealtimeClient, RealtimeMiddle } from '@turnly/realtime'
+import { Event, EventType } from '@turnly/shared'
 
 import { Customers, Integrations, setOrganizationId } from '../../../shared/api'
 
@@ -61,17 +62,25 @@ export class AllowConnGuard {
 
       connection.join([widget.organizationId, customer.id])
 
-      connection.emit(Events.CONNECTED, {
-        widget: {
-          id: widget.id,
-          name: widget.name,
-          canCustomize: widget.canCustomize,
-        },
-        customer: {
-          id: customer.id,
-          name: customer.name,
-        },
-      })
+      connection.emit(
+        Events.CONNECTED,
+        Event.fromObject({
+          type: EventType.INFO,
+          name: Events.CONNECTED,
+          payload: {
+            widget: {
+              id: widget.id,
+              name: widget.name,
+              canCustomize: widget.canCustomize,
+            },
+            customer: {
+              id: customer.id,
+              name: customer.name,
+            },
+            organizationId: widget.organizationId,
+          },
+        })
+      )
 
       next()
     } catch (error: any) {

@@ -5,6 +5,7 @@ import { immer } from 'zustand/middleware/immer'
 import shallow from 'zustand/shallow'
 
 import { Settings } from '../@types/settings'
+import { Cookies } from '../libs/cookies'
 
 interface SettingsStore extends Settings {
   setSettings: (value: Partial<Settings>) => void
@@ -48,6 +49,7 @@ const useStore = create<SettingsStore>()(
     {
       name: 'tly.widget.settings',
       version: 1,
+      getStorage: () => Cookies,
     }
   )
 )
