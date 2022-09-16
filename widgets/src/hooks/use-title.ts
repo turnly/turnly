@@ -9,7 +9,7 @@ type Store = {
 }
 
 const useStore = create<Store>(set => ({
-  title: 'Get a Ticket',
+  title: '',
   setTitle: title => set(() => ({ title })),
   reset: () => set(() => ({ title: '' })),
 }))
