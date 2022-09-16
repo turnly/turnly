@@ -3,12 +3,14 @@ import { QueryClientProvider } from '@tanstack/react-query'
 import { h } from 'preact'
 
 import { AppShell } from './components/layouts/app-shell'
+import { useApolloClient } from './hooks/use-apollo-client'
 import { useTelemetry } from './hooks/use-telemetry'
-import { apolloClient } from './libs/api-client'
 import { queryClient } from './libs/query-client'
 import { Router } from './routes'
 
 export const AppContainer = () => {
+  const apolloClient = useApolloClient()
+
   useTelemetry()
 
   return (
