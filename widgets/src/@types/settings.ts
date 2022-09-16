@@ -1,6 +1,6 @@
-export type Settings = {
+export interface Settings {
   locale: string
-  theme: {
+  appearance: {
     zIndex: number
     primary: string
     secondary: string
@@ -8,10 +8,7 @@ export type Settings = {
     position: 'left' | 'right'
     design: 'flat' | 'rounded'
     box: {
-      offset: {
-        horizontal: string
-        vertical: string
-      }
+      color: string
       background: string
     }
     launcher: {
@@ -19,10 +16,5 @@ export type Settings = {
       background: string
     }
   }
-  widget: {
-    connectOnLoad: boolean
-    hideWhenOffline: boolean
-    hideWhenUnavailableLocations: boolean
-    disableTelemetry: boolean
-  }
+  disableTelemetry: boolean
 }

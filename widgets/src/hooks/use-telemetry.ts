@@ -1,13 +1,12 @@
 import { useEffect } from 'preact/hooks'
 
 import { initTelemetry } from '../libs/telemetry'
+import { useSettings } from './use-settings'
 
-export const useTelemetry = (enabled = true) => {
+export const useTelemetry = () => {
+  const { disableTelemetry } = useSettings()
+
   useEffect(() => {
-    initTelemetry(enabled)
-
-    return () => {
-      initTelemetry(false)
-    }
-  }, [enabled])
+    initTelemetry(disableTelemetry)
+  }, [disableTelemetry])
 }

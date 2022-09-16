@@ -47,11 +47,12 @@
     "graphql": "^16.6.0",
     "i18next": "^21.8.16",
     "i18next-browser-languagedetector": "^6.1.4",
+    "immer": "^9.0.15",
     "js-cookie": "^3.0.1",
     "preact": "^10.10.0",
     "react-i18next": "^11.18.3",
     "react-toastify": "^9.0.8",
-    "zustand": "^4.0.0"
+    "zustand": "^4.1.1"
   },
   "devDependencies": {
     "@preact/preset-vite": "^2.3.0",

@@ -6,7 +6,7 @@ declare global {
   interface Window {
     __TURNLY_WIDGET_LOADED__?: boolean
     $tly: Widget
-    tlySettings: Settings
+    $tlySettings?: Partial<Settings>
   }
 
   interface WindowEventMap extends Record<EventName, CustomEvent> {}
