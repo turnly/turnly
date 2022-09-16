@@ -14,40 +14,6 @@ const App = lazy(() => import('./app'))
  */
 if (__DEV__) import('preact/debug') // @patch-line
 
-export type Settings = {
-  locale: string
-  theme: {
-    zIndex: number
-    primary: string
-    secondary: string
-    color: string
-    position: 'left' | 'right'
-    design: 'flat' | 'rounded'
-    box: {
-      offset: {
-        horizontal: string
-        vertical: string
-      }
-      background: string
-    }
-    launcher: {
-      color: string
-      background: string
-    }
-  }
-  widget: {
-    connectOnLoad: boolean
-    hideWhenOffline: boolean
-    hideWhenUnavailableLocations: boolean
-    disableTelemetry: boolean
-  }
-}
-
-type Dependencies = {
-  widgetId: string
-  url: string
-}
-
 /**
  * Widget
  *
@@ -58,8 +24,6 @@ type Dependencies = {
  * @author Turnly
  */
 export class Widget {
-  constructor(private readonly deps: Dependencies) {}
-
   /**
    * Initialize
    *
@@ -76,7 +40,7 @@ export class Widget {
   private get app() {
     return (
       <Suspense fallback={<div />}>
-        <App {...this.deps} />
+        <App />
       </Suspense>
     )
   }

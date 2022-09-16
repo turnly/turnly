@@ -1,5 +1,6 @@
 import type { EventName } from '../../services/event-bus'
-import type { Settings, Widget } from '../../Widget'
+import type { Widget } from '../../Widget'
+import { Settings } from '../settings'
 
 declare global {
   interface Window {
