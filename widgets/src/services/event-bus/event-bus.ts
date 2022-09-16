@@ -1,4 +1,4 @@
-import type { EventCallback } from '../../@types/bus'
+import type { EventCallback } from '../../@types/shared'
 import type { EventNames } from './event-names'
 
 export class EventBus {

@@ -2,11 +2,10 @@ import { h } from 'preact'
 
 import { useVisibility } from '../../hooks/use-visibility'
 import styles from '../../styles/portals/widget.module.scss'
+import { Footer, Header } from '../layouts'
 import { Notification } from '../notification'
 import { Portal } from '../portal'
 import { Spinner } from '../spinner'
-import { BoxFooter } from './box-footer'
-import { BoxHeader } from './box-header'
 
 export const BoxPortal = props => {
   const { isOpen } = useVisibility()
@@ -21,9 +20,9 @@ export const BoxPortal = props => {
         <div className="tly-widget">
           <Spinner />
           <Notification />
-          <BoxHeader />
+          <Header />
           <div className="tly-widget-content" {...props} />
-          <BoxFooter />
+          <Footer />
         </div>
       </Portal>
     </div>

@@ -4,7 +4,7 @@ import { useTitle } from '../../hooks/use-title'
 import { useVisibility } from '../../hooks/use-visibility'
 import { CloseIcon } from '../svg'
 
-export const BoxHeader = () => {
+export const Header = () => {
   const { setClose } = useVisibility()
   const { title } = useTitle()
 
