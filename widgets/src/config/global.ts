@@ -11,4 +11,3 @@ export const config = Object.freeze({
 
 export const __DEV__ = process.env.NODE_ENV === 'development'
 export const __ENV__ = process.env.NODE_ENV ?? 'production'
-export const WIDGET_ID = __DEV__ ? configuration.widget_id : undefined

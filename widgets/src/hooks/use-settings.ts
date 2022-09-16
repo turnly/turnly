@@ -31,6 +31,10 @@ const useStore = create<SettingsStore>()(
         },
       },
       disableTelemetry: false,
+      widget: {
+        id: '',
+        organizationURL: '',
+      },
       setSettings(values) {
         set((state: Settings) => {
           for (const key in values) {

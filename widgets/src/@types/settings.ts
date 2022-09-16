@@ -17,4 +17,8 @@ export interface Settings {
     }
   }
   disableTelemetry: boolean
+  widget: {
+    id: string
+    organizationURL: string
+  }
 }
