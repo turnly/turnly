@@ -48,6 +48,7 @@
     "js-cookie": "^3.0.1",
     "preact": "^10.10.0",
     "react-i18next": "^11.18.3",
+    "react-toastify": "^9.0.8",
     "zustand": "^4.0.0"
   },
   "devDependencies": {

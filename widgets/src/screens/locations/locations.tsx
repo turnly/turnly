@@ -1,5 +1,6 @@
 import { Fragment, h } from 'preact'
 
+import { Text, Title } from '../../components/text'
 import { useTranslation } from '../../localization'
 
 export const LocationsScreen = () => {
@@ -7,8 +8,8 @@ export const LocationsScreen = () => {
 
   return (
     <Fragment>
-      <h3>{translate('locations.title')}</h3>
-      <p>{translate('locations.description')}</p>
+      <Title>{translate('locations.title')}</Title>
+      <Text>{translate('locations.description')}</Text>
     </Fragment>
   )
 }

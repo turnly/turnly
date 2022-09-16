@@ -2,12 +2,11 @@ import './localization'
 import './styles/styles.scss'
 
 import { Fragment, FunctionalComponent, h } from 'preact'
-import { useState } from 'preact/hooks'
 
 import { BoxPortal } from './components/box'
 import { LauncherPortal } from './components/launcher'
+import { useVisibility } from './hooks/use-visibility'
 import { Router } from './routes'
-import { $bus } from './services/event-bus'
 
 type AppProps = {
   widgetId: string
@@ -15,25 +14,12 @@ type AppProps = {
 }
 
 const App: FunctionalComponent<AppProps> = () => {
-  const [isOpen, setOpen] = useState(false)
-
-  const setVisibility = () => {
-    setOpen(prevOpen => {
-      $bus.visibility.dispatch({ isVisible: !prevOpen })
-
-      return !prevOpen
-    })
-  }
-
-  const params = {
-    isOpen,
-    setVisibility,
-  }
+  const { isOpen } = useVisibility()
 
   return (
     <Fragment>
-      <BoxPortal {...params}>{isOpen && <Router />}</BoxPortal>
-      <LauncherPortal {...params} />
+      <BoxPortal>{isOpen && <Router />}</BoxPortal>
+      <LauncherPortal />
     </Fragment>
   )
 }

@@ -11,11 +11,11 @@ $danger: #9a1d1c;
 $primary-color: $green;
 $secondary-color: $green-light;
 
-$default-title-color: $gray;
+$default-title-color: $black;
 $default-text-color: $gray-light;
 
 // Fonts
-$default-font: 'Cabin', sans-serif;
+$default-font: 'DM Sans', sans-serif;
 
 @mixin in-mobile {
   @media (max-width: 768px) {

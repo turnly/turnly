@@ -9,6 +9,6 @@ export const config = Object.freeze({
   TURNLY_URL: configuration.turnly_url,
 })
 
-export const WIDGET_ID = configuration.widget_id
 export const __DEV__ = process.env.NODE_ENV === 'development'
 export const __ENV__ = process.env.NODE_ENV ?? 'production'
+export const WIDGET_ID = __DEV__ ? configuration.widget_id : undefined

@@ -1,5 +1,6 @@
 import { Fragment, h } from 'preact'
 
+import { Text, Title } from '../../components/text'
 import { useTranslation } from '../../localization'
 import { SCREEN_NAMES, useNavigator } from '../../navigation'
 
@@ -9,8 +10,8 @@ export const HomeScreen = () => {
 
   return (
     <Fragment>
-      <h3>{translate('home.title')}</h3>
-      <p>{translate('home.description')}</p>
+      <Title>{translate('home.title')}</Title>
+      <Text>{translate('home.description')}</Text>
 
       <button
         onClick={() => navigate(SCREEN_NAMES.LOCATIONS)}

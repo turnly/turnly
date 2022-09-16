@@ -2,26 +2,22 @@ import { h } from 'preact'
 
 import { TSvg } from './interfaces'
 
-export const CloseIcon = ({ color = '#565757' }: TSvg) => (
+export const CloseIcon = ({ color = '#455964' }: TSvg) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="11"
-    height="11"
-    viewBox="0 0 11 11"
-    transform="rotate(45)"
+    width="14.828"
+    height="14.828"
+    viewBox="0 0 14.828 14.828"
   >
-    <g transform="translate(4.5)" fill={color} stroke={color} strokeWidth="1">
-      <rect width="2" height="11" stroke="none" />
-      <rect x="0.5" y="0.5" width="1" height="10" fill="none" />
-    </g>
-    <g
-      transform="translate(11 4.5) rotate(90)"
-      fill={color}
+    <path
+      d="M6,18,18,6M6,6,18,18"
+      transform="translate(-4.586 -4.586)"
+      fill="none"
       stroke={color}
-      strokeWidth="1"
-    >
-      <rect width="2" height="11" stroke="none" />
-      <rect x="0.5" y="0.5" width="1" height="10" fill="none" />
-    </g>
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
+      opacity="0.951"
+    />
   </svg>
 )

@@ -36,17 +36,17 @@ $block: 'tly-widget';
     display: flex;
     justify-content: space-between;
     padding: 16px;
+    min-height: 65px;
 
-    h1 {
+    &-title {
       align-items: center;
-      color: $primary-color;
+      color: $default-title-color;
       display: flex;
       font-family: $default-font;
+      font-weight: bold;
       font-size: 16px;
-      letter-spacing: 0.26px;
-      line-height: 37px;
-      opacity: 0.85;
-      user-select: none;
+      margin: 0;
+      padding: 0;
 
       svg {
         max-width: 22px;
@@ -55,6 +55,13 @@ $block: 'tly-widget';
       span {
         margin-left: 12px;
       }
+    }
+
+    &-back {
+      $size: 32px;
+      display: flex;
+      height: $size;
+      width: $size;
     }
   }
 
@@ -96,7 +103,7 @@ $block: 'tly-widget';
         color: $gray;
         font-size: 12px;
         letter-spacing: 0.19px;
-        margin-left: 6px;
+        margin-right: 6px;
       }
 
       svg {
@@ -109,10 +116,9 @@ $block: 'tly-widget';
     }
   }
 
-  .close {
+  .tly-widget-btn-close {
     $size: 32px;
     align-items: center;
-    background: $gray-lighter;
     border: 0;
     border-radius: 100%;
     cursor: pointer;
@@ -124,24 +130,21 @@ $block: 'tly-widget';
   }
 
   &__title {
-    color: $gray;
+    color: $default-title-color;
     font-family: $default-font;
     font-size: 20px;
     font-weight: bold;
-    letter-spacing: 0.32px;
-    line-height: 28px;
     margin: 0;
-    text-align: center;
+    padding: 0;
+    margin-bottom: 16px;
   }
 
   &__text {
     color: $default-text-color;
     font-family: $default-font;
-    font-size: 16px;
-    letter-spacing: 0.26px;
-    line-height: 22px;
+    font-weight: 400;
+    font-size: 14px;
     margin: 0;
-    text-align: center;
   }
 
   &__subtitle {

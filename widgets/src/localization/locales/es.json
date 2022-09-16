@@ -1,19 +1,19 @@
 {
   "device": {
     "permissions": {
-      "title": "Enable device location",
-      "description": "We use your location to show you nearby locations and to help you find the best places.",
+      "title": "Habilitar ubicación de dispositivos",
+      "description": "Usamos su ubicación para mostrarle ubicaciones cercanas y ayudarlo a encontrar los mejores lugares.",
       "labels": {
-        "button_text": "Yes, enable location",
-        "button_loading": "Enabling location..."
+        "button_text": "Sí, habilitar la ubicación",
+        "button_loading": "Habilitando ubicación..."
       }
     }
   },
   "home": {
-    "title": "Enhance your experience",
-    "description": "Take advantage of your waiting time in lines for productive things.",
+    "title": "Mejora tu experiencia",
+    "description": "Aprovecha tu tiempo de espera en filas para cosas productivas.",
     "labels": {
-      "button_text": "Get a Ticket"
+      "button_text": "Tomar un Ticket"
     }
   },
   "locations": {
@@ -70,5 +70,5 @@
     }
   },
   "continue": "Continue",
-  "powered_by": "Powered by Turnly"
+  "powered_by": "Powered by"
 }
