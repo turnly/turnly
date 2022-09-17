@@ -15,11 +15,13 @@ export const useRealtimeConnection = () => {
   const { organizationURL, widgetId } = useInitializeSettings()
   const { setRealtime, realtime } = useRealtime()
 
-  const { setSession } = useSession()
+  const { setSession, customer } = useSession()
   const { isShowing, setHide, setShow } = useVisibility()
 
   useLayoutEffect(() => {
     const rtm = getRealtime(organizationURL, widgetId)
+
+    if (customer.id) rtm.setQuery('customerId', customer.id)
 
     const unsub = rtm.subscribe<Session>(RealtimeEvents.CONNECTED, data => {
       setRealtime(rtm)
