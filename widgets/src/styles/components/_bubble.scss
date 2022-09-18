@@ -37,4 +37,8 @@ $block: 'bubble';
     pointer-events: none;
     user-select: none;
   }
+
+  svg {
+    max-width: 32px;
+  }
 }
