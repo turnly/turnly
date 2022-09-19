@@ -22,6 +22,10 @@ $block: 'tly-bubble';
   transition: all 0.2s ease-in-out;
   width: $size;
 
+  &--is-flat {
+    border-radius: 2px;
+  }
+
   &-container {
     align-items: center;
     display: flex;

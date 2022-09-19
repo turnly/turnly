@@ -2,7 +2,9 @@ import { Fragment, FunctionalComponent, h } from 'preact'
 import { useLayoutEffect } from 'preact/hooks'
 
 import type { TScreenProps } from '../@types/navigation'
+import { useSession } from '../hooks/use-session'
 import { useTitle } from '../hooks/use-title'
+import { SCREEN_NAMES } from './screen-names'
 
 /**
  * Navigator Screen
@@ -17,10 +19,11 @@ export const Screen: FunctionalComponent<TScreenProps> = ({
   ...props
 }: TScreenProps) => {
   const { setTitle } = useTitle()
+  const { widget } = useSession()
 
   useLayoutEffect(() => {
-    setTitle(title)
-  }, [title])
+    setTitle(props.name === SCREEN_NAMES.HOME ? widget.name : title)
+  }, [title, widget.name])
 
   return (
     <Fragment {...props}>
