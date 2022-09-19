@@ -1,4 +1,4 @@
-import type { EventCallback } from '../../@types/bus'
+import type { EventCallback } from '../../@types/shared'
 import { EventBus } from './event-bus'
 import type { EventNames } from './event-names'
 
@@ -9,7 +9,7 @@ import type { EventNames } from './event-names'
  *
  * @author Turnly
  */
-export class Event<P> {
+export class Event<P extends Record<string, any>> {
   public constructor(private readonly name: EventNames) {}
 
   /**
@@ -18,7 +18,7 @@ export class Event<P> {
    * @description Trigger the event using the event bus from the current
    * context and accept a payload of the inherited type.
    */
-  dispatch(payload: P) {
+  dispatch(payload?: P) {
     EventBus.dispatch<P>(this.name, payload)
   }
 

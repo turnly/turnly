@@ -6,6 +6,7 @@ import shallow from 'zustand/shallow'
 import { Session } from '../@types/session'
 import { Nullable } from '../@types/shared'
 import { getRealtime } from '../libs/realtime'
+import { useBus } from '../services/event-bus'
 import { useSession } from './use-session'
 import { useVisibility } from './use-visibility'
 
@@ -30,6 +31,7 @@ const useRealtime = () =>
   )
 
 const useInitializeRealtime = (organizationURL: string, widgetId: string) => {
+  const $bus = useBus()
   const { setRealtime, realtime } = useRealtime()
 
   const { setSession, customer } = useSession()
@@ -44,6 +46,8 @@ const useInitializeRealtime = (organizationURL: string, widgetId: string) => {
       setRealtime(rtm)
       setSession(data.payload)
       setShow()
+
+      $bus.ready.dispatch()
     })
 
     return () => {
