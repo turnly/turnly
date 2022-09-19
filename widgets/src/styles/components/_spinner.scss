@@ -10,6 +10,15 @@ $block: 'tly-spinner';
     border-top-color: var(--tly-secondary-bg);
     border-radius: 50%;
     animation: spinner 1s ease-in-out infinite alternate;
+
+    &--is-small {
+      width: 30px;
+      height: 30px;
+      border-width: 1.5px;
+      border-color: rgba(0, 0, 0, 0.15);
+      border-top-color: var(--tly-primary-color);
+      animation: spinner 0.8s ease-in-out infinite;
+    }
   }
 
   &-wrapper {
@@ -27,6 +36,13 @@ $block: 'tly-spinner';
     animation: loading 4s linear forwards infinite;
     opacity: 1;
     flex-direction: column;
+
+    &--is-small {
+      background-color: transparent;
+      animation: none;
+      align-items: flex-end;
+      padding-right: 16px;
+    }
   }
 }
 

@@ -3,6 +3,7 @@ import { h, JSX } from 'preact'
 import { Children, forwardRef } from 'preact/compat'
 
 import { useAppearance } from '../hooks/use-appearance'
+import { LoadingIcon } from './spinner'
 
 export interface ButtonProps extends JSX.HTMLAttributes<HTMLButtonElement> {
   isSmall: boolean
@@ -59,6 +60,7 @@ export const Button = forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
         disabled={disabled || isLoading}
         ref={ref}
       >
+        {isLoading && <LoadingIcon />}
         {Children.map(children, (child, i) => (
           <span key={i} className="tly-button__span" {...{ children: child }} />
         ))}

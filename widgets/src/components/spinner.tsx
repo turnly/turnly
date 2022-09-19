@@ -11,3 +11,9 @@ export const Spinner = () => {
     </div>
   ) : null
 }
+
+export const LoadingIcon = () => (
+  <div className="tly-spinner-wrapper tly-spinner-wrapper--is-small">
+    <div className="tly-spinner-content tly-spinner-content--is-small" />
+  </div>
+)
