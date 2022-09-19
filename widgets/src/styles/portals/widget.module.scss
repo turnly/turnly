@@ -6,7 +6,7 @@ $block: 'tly-widget';
   background: #fcfcfc 0% 0% no-repeat padding-box;
   border-radius: 16px;
   bottom: 94px;
-  box-shadow: 0 8px 16px #0000001f;
+  box-shadow: 0 4px 14px rgb(36 36 36 / 10%), 0 1px 4px rgb(36 36 36 / 4%);
   height: 600px;
   max-height: 0;
   opacity: 0;
@@ -35,6 +35,10 @@ $block: 'tly-widget';
       opacity 0.25s ease-in-out 0.01s, z-index 0s ease-in-out,
       transform 0.25s ease-in-out 0.01s;
     z-index: 99999999;
+  }
+
+  &--is-flat {
+    border-radius: 2px;
   }
 
   &,
