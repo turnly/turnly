@@ -20,7 +20,7 @@ $block: 'tly-widget';
     }
 
     &::-webkit-scrollbar-track {
-      background: $white;
+      background: var(--tly-white);
       border-radius: 10px;
     }
 
@@ -40,9 +40,9 @@ $block: 'tly-widget';
 
     &-title {
       align-items: center;
-      color: $default-title-color;
+      color: var(--tly-default-title-color);
       display: flex;
-      font-family: $default-font;
+      font-family: var(--tly-default-font);
       font-weight: bold;
       font-size: 16px;
       margin: 0;
@@ -80,12 +80,12 @@ $block: 'tly-widget';
     width: calc(100% - 32px);
 
     p {
-      color: $default-text-color;
+      color: var(--tly-default-text-color);
       font-size: 12px;
       letter-spacing: 0.19px;
 
       strong {
-        color: $gray;
+        color: var(--tly-gray);
       }
     }
 
@@ -100,7 +100,7 @@ $block: 'tly-widget';
       width: 100%;
 
       &-text {
-        color: $gray;
+        color: var(--tly-gray);
         font-size: 12px;
         letter-spacing: 0.19px;
         margin-right: 6px;
@@ -130,8 +130,8 @@ $block: 'tly-widget';
   }
 
   &__title {
-    color: $default-title-color;
-    font-family: $default-font;
+    color: var(--tly-default-title-color);
+    font-family: var(--tly-default-font);
     font-size: 20px;
     font-weight: bold;
     margin: 0;
@@ -140,16 +140,16 @@ $block: 'tly-widget';
   }
 
   &__text {
-    color: $default-text-color;
-    font-family: $default-font;
+    color: var(--tly-default-text-color);
+    font-family: var(--tly-default-font);
     font-weight: 400;
     font-size: 14px;
     margin: 0;
   }
 
   &__subtitle {
-    color: $default-text-color;
-    font-family: $default-font;
+    color: var(--tly-default-text-color);
+    font-family: var(--tly-default-font);
     font-size: 16px;
     letter-spacing: 0.26px;
     line-height: 28px;

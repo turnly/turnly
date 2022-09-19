@@ -1,21 +1,24 @@
-// Color palettes
-$green: #06615A;
-$green-light: #5ACE71;
-$white: #fff;
-$gray: #455964;
-$black: #1c2b33;
-$gray-light: #6b7c89;
-$gray-lighter: #f2f2f2;
-$danger: #9a1d1c;
+:root {
+  --tly-green: #06615A;
+  --tly-green-light: #5ACE71;
+  --tly-white: #fff;
+  --tly-gray: #455964;
+  --tly-black: #1c2b33;
+  --tly-gray-light: #6b7c89;
+  --tly-gray-lighter: #f2f2f2;
+  --tly-danger: #9a1d1c;
 
-$primary-color: $green;
-$secondary-color: $green-light;
+  --tly-primary-bg: var(--tly-green);
+  --tly-primary-color: var(--tly-white);
 
-$default-title-color: $black;
-$default-text-color: $gray-light;
+  --tly-secondary-bg: var(--tly-green-light);
+  --tly-secondary-color: var(--tly-white);
 
-// Fonts
-$default-font: 'DM Sans', sans-serif;
+  --tly-default-title-color: var(--tly-black);
+  --tly-default-text-color: var(--tly-gray-light);
+
+  --tly-default-font: 'DM Sans', sans-serif;
+}
 
 @mixin in-mobile {
   @media (max-width: 768px) {

@@ -13,13 +13,14 @@ export class Script {
     const script = document.querySelector(scriptId)
     if (!script) throw new Error(ERROR_MESSAGES.ID_MISSING)
 
-    const url = script.getAttribute(config.SCRIPT_TLY_URL) as string
+    const organizationURL = script.getAttribute(config.SCRIPT_TLY_URL) as string
     const widgetId = script.getAttribute(config.SCRIPT_TLY_WIDGET_ID) as string
 
-    if (!url || !widgetId) throw new Error(ERROR_MESSAGES.KEY_MISSING)
+    if (!organizationURL || !widgetId)
+      throw new Error(ERROR_MESSAGES.KEY_MISSING)
 
     return {
-      url,
+      organizationURL,
       widgetId,
     }
   }

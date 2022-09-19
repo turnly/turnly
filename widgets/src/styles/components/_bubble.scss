@@ -3,14 +3,14 @@ $block: 'bubble';
 .#{$block} {
   $size: 64px;
   align-items: center;
-  background-color: $primary-color;
+  background-color: var(--tly-primary-bg);
+  color: var(--tly-primary-color);
   border: 0;
   border-radius: 100%;
   box-shadow: 0 6px 8px #00000029;
-  color: #fff;
   cursor: pointer;
   display: flex;
-  font-family: $default-font;
+  font-family: var(--tly-default-font);
   font-size: 16px;
   height: $size;
   justify-content: center;

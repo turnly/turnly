@@ -1,4 +1,4 @@
-import { useCallback } from 'preact/hooks'
+import { useCallback, useEffect, useLayoutEffect, useMemo } from 'preact/hooks'
 import create from 'zustand'
 import { persist } from 'zustand/middleware'
 import { immer } from 'zustand/middleware/immer'
@@ -6,6 +6,8 @@ import shallow from 'zustand/shallow'
 
 import { Settings } from '../@types/settings'
 import { Cookies } from '../libs/cookies'
+import { useTranslation } from '../localization'
+import { Script } from '../services/script'
 
 interface SettingsStore extends Settings {
   setSettings: (value: Partial<Settings>) => void
@@ -14,28 +16,23 @@ interface SettingsStore extends Settings {
 const useStore = create<SettingsStore>()(
   persist(
     immer(set => ({
-      locale: '',
       appearance: {
         zIndex: 1,
-        primary: '',
-        secondary: '',
-        color: '',
-        position: 'left',
+        position: 'right',
         design: 'flat',
-        box: {
+        primary: {
           color: '',
           background: '',
         },
-        launcher: {
+        secondary: {
           color: '',
           background: '',
         },
       },
+      locale: '',
       disableTelemetry: false,
-      widget: {
-        id: '',
-        organizationURL: '',
-      },
+      widgetId: '',
+      organizationURL: '',
       setSettings(values) {
         set((state: Settings) => {
           for (const key in values) {
@@ -54,8 +51,32 @@ const useStore = create<SettingsStore>()(
   )
 )
 
-export const useSettings = () =>
+const useSettings = () =>
   useStore(
     useCallback(s => s, []),
     shallow
   )
+
+const useInitializeSettings = () => {
+  const { changeLanguage } = useTranslation()
+  const { setSettings, locale } = useSettings()
+  const customSettings = useMemo(
+    () => ({
+      ...window?.$tlySettings,
+      ...Script.getDataFromScript(),
+    }),
+    []
+  )
+
+  useLayoutEffect(() => {
+    setSettings(customSettings)
+  }, [])
+
+  useEffect(() => {
+    changeLanguage(locale)
+  }, [locale])
+
+  return customSettings
+}
+
+export { useInitializeSettings, useSettings }

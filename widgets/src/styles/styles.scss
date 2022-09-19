@@ -1,86 +1,22 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 @import 'helpers/vars';
+@import 'helpers/fonts';
+
+@import 'components/bubble';
+@import 'components/box';
+@import 'components/spinner';
+@import 'components/button';
+@import 'components/notification';
 
 * {
   box-sizing: border-box;
-  font-family: $default-font;
+  font-family: var(--tly-default-font);
   font-size: 14px;
   margin: 0;
   padding: 0;
-  color: $default-text-color;
+  color: var(--tly-default-text-color);
 }
 
 html,
 body {
   height: 100%;
-}
-
-@import 'helpers/fonts';
-@import 'components/bubble';
-@import 'components/box';
-
-.Toastify__toast {
-  font-size: 14px;
-}
-
-.Toastify__toast-body > div:nth-child(2) {
-  word-break: break-word;
-}
-
-.Toastify__toast-body {
-  padding: 16px;
-}
-
-@keyframes spinner {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes fade {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-// Loading opacity animation infinite
-@keyframes loading {
-  0%,
-  100% { opacity: 0.2; }
-  50% { opacity: 1; }
-}
-
-.tly-spinner-content {
-  width: 60px;
-  height: 60px;
-  border: 2.5px solid $gray-lighter;
-  border-top-color: $green-light;
-  border-radius: 50%;
-  animation: spinner 1s ease-in-out infinite alternate;
-}
-
-.tly-spinner-wrapper {
-  background-color: rgba($white, 0.8);
-  align-items: center;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  animation: loading 4s linear forwards infinite;
-  opacity: 1;
-  flex-direction: column;
 }

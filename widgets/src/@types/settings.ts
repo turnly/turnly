@@ -1,24 +1,19 @@
 export interface Settings {
-  locale: string
   appearance: {
     zIndex: number
-    primary: string
-    secondary: string
-    color: string
     position: 'left' | 'right'
     design: 'flat' | 'rounded'
-    box: {
+    primary: {
       color: string
       background: string
     }
-    launcher: {
+    secondary: {
       color: string
       background: string
     }
   }
+  locale: string
   disableTelemetry: boolean
-  widget: {
-    id: string
-    organizationURL: string
-  }
+  widgetId: string
+  organizationURL: string
 }

@@ -1,0 +1,11 @@
+.Toastify__toast {
+  font-size: 14px;
+}
+
+.Toastify__toast-body > div:nth-child(2) {
+  word-break: break-word;
+}
+
+.Toastify__toast-body {
+  padding: 16px;
+}

@@ -1,6 +1,6 @@
 import { useMemo } from 'preact/hooks'
 
-import { getApolloClient } from '../libs/api-client'
+import { getApolloClient } from '../libs/apollo-client'
 import { useSession } from './use-session'
 import { useSettings } from './use-settings'
 
@@ -9,17 +9,17 @@ const getBasicAuthCredentials = (username: string, password: string) => {
 }
 
 export const useApolloClient = () => {
-  const { widget } = useSettings()
+  const { organizationURL, widgetId } = useSettings()
   const { customer } = useSession()
 
   return useMemo(() => {
-    const GRAPH_URL = `${widget.organizationURL}/api/v1/widgets/graph`
+    const GRAPH_URL = `${organizationURL}/api/v1/widgets/graph`
 
-    if (!customer.id || !widget.id) return null
+    if (!customer.id || !widgetId) return null
 
     return getApolloClient(
       GRAPH_URL,
-      getBasicAuthCredentials(widget.id, customer.id)
+      getBasicAuthCredentials(widgetId, customer.id)
     )
-  }, [widget.organizationURL])
+  }, [organizationURL])
 }

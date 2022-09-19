@@ -1,28 +1,72 @@
+import clsx from 'clsx'
 import { h, JSX } from 'preact'
-import { Children } from 'preact/compat'
+import { Children, forwardRef } from 'preact/compat'
 
-export type ButtonProps = {
-  variant?: 'primary' | 'secondary' | 'danger'
-  size?: 'small' | 'medium' | 'large'
-  isLoading?: boolean
-} & JSX.HTMLAttributes<HTMLButtonElement>
+import { useAppearance } from '../hooks/use-appearance'
 
-export const Button = ({
-  isLoading = false,
-  children,
-  ...attributes
-}: ButtonProps) => {
-  return (
-    <button
-      {...attributes}
-      disabled={attributes.disabled || isLoading}
-      className="inline-flex items-center rounded border border-transparent bg-indigo-600 px-4 py-2 text-xs font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-    >
-      {Children.map(children, (child, i) => (
-        <span key={i} className="mr-xsmall text-white last:mr-0">
-          {child}
-        </span>
-      ))}
-    </button>
-  )
+export interface ButtonProps extends JSX.HTMLAttributes<HTMLButtonElement> {
+  isSmall: boolean
+  isMedium: boolean
+  isLarge: boolean
+  isFull: boolean
+  isSecondary: boolean
+  isLoading: boolean
+  isPrimary: boolean
+  isDanger: boolean
+  isOutline: boolean
 }
+
+export const Button = forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
+  (
+    {
+      isPrimary,
+      isDanger,
+      isOutline,
+      isSecondary,
+      isLarge,
+      isMedium,
+      isSmall,
+      isFull,
+      isLoading,
+      children,
+      disabled,
+      ...attributes
+    },
+    ref
+  ) => {
+    const { isFlat, isRounded } = useAppearance()
+
+    const styles = clsx({
+      ['tly-button']: true,
+      ['tly-button--is-primary']: isPrimary,
+      ['tly-button--is-secondary']: isSecondary,
+      ['tly-button--is-outline']: isOutline,
+      ['tly-button--is-danger']: isDanger,
+      ['tly-button--is-full']: isFull,
+      ['tly-button--is-large']: isLarge,
+      ['tly-button--is-medium']: isMedium,
+      ['tly-button--is-small']: isSmall,
+      ['tly-button--is-flat']: isFlat,
+      ['tly-button--is-rounded']: isRounded,
+    })
+
+    const classes = clsx(styles, attributes.className)
+
+    return (
+      <button
+        {...attributes}
+        className={classes}
+        disabled={disabled || isLoading}
+        ref={ref}
+      >
+        {Children.map(children, (child, i) => (
+          <span
+            key={i}
+            className="mr-xsmall last:mr-0"
+            {...{ children: child }}
+          />
+        ))}
+      </button>
+    )
+  }
+)
