@@ -1,0 +1,43 @@
+$block: 'tly-header';
+
+.#{$block} {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+  min-height: 65px;
+
+  .tly-typography-title {
+    align-items: center;
+    display: flex;
+
+    svg {
+      max-width: 22px;
+    }
+
+    span {
+      margin-left: 12px;
+    }
+  }
+
+  &-back {
+    $size: 32px;
+    display: flex;
+    height: $size;
+    width: $size;
+  }
+
+  &-btn-close {
+    $size: 32px;
+    align-items: center;
+    background-color: transparent;
+    border: 0;
+    border-radius: 100%;
+    cursor: pointer;
+    display: flex;
+    height: $size;
+    justify-content: center;
+    text-align: center;
+    width: $size;
+  }
+}

@@ -1,0 +1,33 @@
+$block: 'tly-widget';
+
+.#{$block} {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+
+  &-content {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 0 16px;
+
+    &::-webkit-scrollbar {
+      border-radius: 12px;
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: var(--tly-white);
+      border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb,
+    &::-webkit-scrollbar-thumb:hover {
+      background: #d2d2d2;
+      border-radius: 10px;
+    }
+  }
+}

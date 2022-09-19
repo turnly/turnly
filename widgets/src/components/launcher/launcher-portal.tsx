@@ -13,7 +13,7 @@ export const LauncherPortal = () => {
   return (
     <div className={styles['tly-launcher']}>
       <Portal id={styles['tly-launcher']} title={MESSAGES.LAUNCHER_TITLE}>
-        <div className="bubble__container">
+        <div className="tly-bubble-container">
           <Bubble onClick={setShow} disabled={isShowing}>
             <Logo color="#ffffff" background="#ffffff" />
           </Bubble>

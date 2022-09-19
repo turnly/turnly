@@ -1,7 +1,7 @@
 import { Fragment, h } from 'preact'
 
 import { Button } from '../../components/button'
-import { Text, Title } from '../../components/text'
+import { Text, Title } from '../../components/typography'
 import { useTranslation } from '../../localization'
 import { SCREEN_NAMES, useNavigator } from '../../navigation'
 

@@ -1,4 +1,4 @@
-$block: 'bubble';
+$block: 'tly-bubble';
 
 .#{$block} {
   $size: 64px;
@@ -22,7 +22,7 @@ $block: 'bubble';
   transition: all 0.2s ease-in-out;
   width: $size;
 
-  &__container {
+  &-container {
     align-items: center;
     display: flex;
     height: 100%;

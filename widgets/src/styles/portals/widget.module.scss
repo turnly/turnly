@@ -26,7 +26,7 @@ $block: 'tly-widget';
     width: 100%;
   }
 
-  &--open {
+  &--is-open {
     max-height: calc(85% - 60px - 24px);
     min-height: 242px;
     opacity: 1;
@@ -38,7 +38,7 @@ $block: 'tly-widget';
   }
 
   &,
-  &--open {
+  &--is-open {
     @include in-mobile {
       border-radius: 0;
       bottom: 0;

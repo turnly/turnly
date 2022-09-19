@@ -1,0 +1,81 @@
+$block: 'tly-typography';
+
+.#{$block} {
+  &-text {
+    color: var(--tly-default-text-color);
+    font-family: var(--tly-default-font);
+    font-weight: normal;
+    font-size: 14px;
+    margin: 0;
+    letter-spacing: 0.14px;
+
+    &--has-gaps {
+      margin-bottom: 16px;
+    }
+
+    &--is-small {
+      font-size: 12px;
+    }
+
+    &--is-strong {
+      font-weight: bold;
+    }
+
+    &--is-upper {
+      text-transform: uppercase;
+    }
+
+    &--is-danger {
+      color: var(--tly-danger);
+    }
+
+    &--is-disabled {
+      cursor: not-allowed;
+      user-select: none;
+      opacity: 0.8;
+    }
+  }
+
+  &-title {
+    color: var(--tly-default-title-color);
+    font-family: var(--tly-default-font);
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    letter-spacing: 0.26px;
+
+    &--has-gaps {
+      margin-bottom: 16px;
+    }
+
+    &--is-h1 {
+      font-size: 22px;
+    }
+
+    &--is-h2 {
+      font-size: 20px;
+    }
+
+    &--is-h3 {
+      font-size: 18px;
+    }
+
+    &--is-h4 {
+      font-size: 16px;
+    }
+
+    &--is-h5 {
+      font-size: 14px;
+    }
+
+    &--is-upper {
+      text-transform: uppercase;
+    }
+
+    &--is-disabled {
+      cursor: not-allowed;
+      user-select: none;
+      opacity: 0.8;
+    }
+  }
+}

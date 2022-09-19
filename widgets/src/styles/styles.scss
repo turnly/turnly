@@ -2,18 +2,19 @@
 @import 'helpers/fonts';
 
 @import 'components/bubble';
-@import 'components/box';
-@import 'components/spinner';
 @import 'components/button';
+@import 'components/footer';
+@import 'components/header';
 @import 'components/notification';
+@import 'components/spinner';
+@import 'components/typography';
+@import 'components/widget';
 
 * {
   box-sizing: border-box;
   font-family: var(--tly-default-font);
-  font-size: 14px;
   margin: 0;
   padding: 0;
-  color: var(--tly-default-text-color);
 }
 
 html,

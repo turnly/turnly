@@ -1,6 +1,6 @@
 import { Fragment, h } from 'preact'
 
-import { Text, Title } from '../../components/text'
+import { Text, Title } from '../../components/typography'
 import { useTranslation } from '../../localization'
 
 export const LocationsScreen = () => {

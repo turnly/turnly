@@ -10,14 +10,12 @@ export const PoweredBy = memo(() => {
 
   return (
     <a
-      className="tly-widget-powered-by"
+      className="tly-powered-by"
       href={config.TURNLY_URL}
       target="_blank"
       rel="noopener noreferrer"
     >
-      <small className="tly-widget-powered-by-text">
-        {translate('powered_by')}
-      </small>
+      <small className="tly-powered-by-text">{translate('powered_by')}</small>
 
       <Logo />
     </a>

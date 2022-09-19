@@ -1,0 +1,52 @@
+$block: 'tly-footer';
+
+.#{$block} {
+  align-items: flex-end;
+  background: transparent linear-gradient(180deg, #fff0 0%, #fff 100%) 0% 0%
+    no-repeat padding-box;
+  bottom: 0;
+  display: flex;
+  justify-content: flex-end;
+  left: 50%;
+  min-height: 100px;
+  padding: 16px 0;
+  position: absolute;
+  transform: translate(-50%, 0);
+  width: calc(100% - 32px);
+
+  p {
+    color: var(--tly-default-text-color);
+    font-size: 12px;
+    letter-spacing: 0.19px;
+
+    strong {
+      color: var(--tly-gray);
+    }
+  }
+
+  .tly-powered-by {
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    opacity: 0.8;
+    outline: none;
+    text-decoration: none;
+    width: 100%;
+
+    &-text {
+      color: var(--tly-gray);
+      font-size: 12px;
+      letter-spacing: 0.19px;
+      margin-right: 6px;
+    }
+
+    svg {
+      max-width: 20px;
+    }
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
