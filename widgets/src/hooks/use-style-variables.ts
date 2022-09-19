@@ -1,13 +1,17 @@
 import { useCallback, useEffect } from 'preact/hooks'
 
+import { Nullable } from '../@types/shared'
 import { useAppearance } from './use-appearance'
 
-export const useStyleVariables = () => {
+export const useStyleVariables = (doc?: Nullable<Document>) => {
   const { appearance } = useAppearance()
 
-  const setVariable = useCallback((variable: string, value: string) => {
-    if (value) document.documentElement.style.setProperty(variable, value)
-  }, [])
+  const setVariable = useCallback(
+    (variable: string, value: string) => {
+      if (doc && value) doc.documentElement.style.setProperty(variable, value)
+    },
+    [doc]
+  )
 
   useEffect(() => {
     setVariable('--tly-primary-bg', appearance.primary.background)
@@ -15,5 +19,5 @@ export const useStyleVariables = () => {
 
     setVariable('--tly-secondary-bg', appearance.secondary.background)
     setVariable('--tly-secondary-color', appearance.secondary.color)
-  }, [appearance])
+  }, [doc, appearance])
 }
