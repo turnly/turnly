@@ -4,57 +4,64 @@ $block: 'tly-button';
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 16px 24px;
   border: none;
-  min-height: 46px;
   font-size: 16px;
   font-family: var(--tly-default-font);
   font-weight: normal;
   transition: all 0.3s ease-in-out;
   cursor: pointer;
 
+  &--is-full {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  &--is-medium {
+    padding: 16px 24px;
+    min-height: 46px;
+  }
+
+  &--is-small {
+    padding: 8px 16px;
+    min-height: 38px;
+  }
+
+  &--is-large {
+    padding: 24px 32px;
+    min-height: 54px;
+  }
+
+  &--is-flat {
+    border-radius: 0;
+  }
+
+  &--is-rounded {
+    border-radius: 100px;
+  }
+
   &--is-primary {
     background-color: var(--tly-primary-bg);
-    color: var(--tly-primary-color);
 
-    &:focus,
-    &:focus:active {
-      background-color: var(--tly-primary-bg);
+    &,
+    & .#{$block}__span {
       color: var(--tly-primary-color);
-      box-shadow: 0 0 0 4px rgba(var(--tly-primary-bg), 0.3);
     }
   }
 
-  // &--secondary {
-  //   background-color: rgba($secondary-color, 0.15);
-  //   color: $secondary-color;
+  &--is-secondary {
+    background-color: var(--tly-secondary-bg);
 
-  //   &:hover {
-  //     background-color: $secondary-color;
-  //     color: $white;
-  //   }
+    &,
+    & .#{$block}__span {
+      color: var(--tly-secondary-color);
+    }
+  }
 
-  //   &:focus,
-  //   &:focus:active {
-  //     background-color: $secondary-color;
-  //     color: $white;
-  //     box-shadow: 0 0 0 4px rgba($secondary-color, 0.3);
-  //   }
-  // }
+  &__span {
+    margin-right: 8px;
 
-  // &--outline {
-  //   background: $white;
-  //   color: $primary-color;
-
-  //   &:hover {
-  //     background: rgba($primary-color, 0.1);
-  //     color: $primary-color;
-  //   }
-
-  //   &:focus {
-  //     background: $white;
-  //     color: $primary-color;
-  //     box-shadow: 0 0 0 4px rgba($primary-color, 0.3);
-  //   }
-  // }
+    &:last-child {
+      margin-right: 0;
+    }
+  }
 }

@@ -119,6 +119,7 @@ $block: 'tly-widget';
   .tly-widget-btn-close {
     $size: 32px;
     align-items: center;
+    background-color: transparent;
     border: 0;
     border-radius: 100%;
     cursor: pointer;
@@ -145,6 +146,7 @@ $block: 'tly-widget';
     font-weight: 400;
     font-size: 14px;
     margin: 0;
+    margin-bottom: 16px;
   }
 
   &__subtitle {

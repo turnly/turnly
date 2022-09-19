@@ -19,14 +19,14 @@ export interface ButtonProps extends JSX.HTMLAttributes<HTMLButtonElement> {
 export const Button = forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
   (
     {
-      isPrimary,
+      isPrimary = true,
+      isMedium = true,
+      isFull = true,
       isDanger,
       isOutline,
       isSecondary,
       isLarge,
-      isMedium,
       isSmall,
-      isFull,
       isLoading,
       children,
       disabled,
@@ -60,11 +60,7 @@ export const Button = forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
         ref={ref}
       >
         {Children.map(children, (child, i) => (
-          <span
-            key={i}
-            className="mr-xsmall last:mr-0"
-            {...{ children: child }}
-          />
+          <span key={i} className="tly-button__span" {...{ children: child }} />
         ))}
       </button>
     )

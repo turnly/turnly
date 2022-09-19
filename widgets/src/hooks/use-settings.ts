@@ -37,7 +37,10 @@ const useStore = create<SettingsStore>()(
         set((state: Settings) => {
           for (const key in values) {
             if (Object.prototype.hasOwnProperty.call(state, key)) {
-              state[key] = values[key]
+              state[key] =
+                typeof values[key] === 'object'
+                  ? { ...state[key], ...values[key] }
+                  : values[key]
             }
           }
         })
