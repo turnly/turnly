@@ -5,7 +5,7 @@ $block: 'tly-button';
   align-items: center;
   justify-content: center;
   border: solid 1px transparent;
-  font-size: 16px;
+  font-size: 14px;
   font-family: var(--tly-default-font);
   font-weight: 500;
   transition: all 0.2s ease-in-out;
@@ -54,17 +54,17 @@ $block: 'tly-button';
   }
 
   &--is-medium {
-    padding: 16px 24px;
+    padding: 0 24px;
     min-height: 46px;
   }
 
   &--is-small {
-    padding: 8px 16px;
+    padding: 0 16px;
     min-height: 38px;
   }
 
   &--is-large {
-    padding: 24px 32px;
+    padding: 0 32px;
     min-height: 54px;
   }
 
