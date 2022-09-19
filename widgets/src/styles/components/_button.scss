@@ -4,7 +4,7 @@ $block: 'tly-button';
   display: flex;
   align-items: center;
   justify-content: center;
-  border: none;
+  border: solid 1px transparent;
   font-size: 16px;
   font-family: var(--tly-default-font);
   font-weight: 500;
@@ -23,13 +23,29 @@ $block: 'tly-button';
   }
 
   &:hover:before {
-    background: rgba(0, 0, 0, 0.08);
+    background: rgba(0, 0, 0, 0.05);
   }
 
   &:focus:before,
   &:focus:active:before {
-    background: rgba(0, 0, 0, 0.15);
+    background: rgba(0, 0, 0, 0.10);
     box-shadow: 0 0 0 4px rgba(#6b7c89, 0.15);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    user-select: none;
+    opacity: 0.75;
+
+    &:hover:before {
+      background: transparent;
+    }
+
+    &:focus:before,
+    &:focus:active:before {
+      background: transparent;
+      box-shadow: none;
+    }
   }
 
   &--is-full {
@@ -57,7 +73,10 @@ $block: 'tly-button';
   }
 
   &--is-rounded {
-    border-radius: 100px;
+    &,
+    &:before {
+      border-radius: 100px;
+    }
   }
 
   &--is-primary {
@@ -75,6 +94,30 @@ $block: 'tly-button';
     &,
     & .#{$block}__span {
       color: var(--tly-black);
+    }
+  }
+
+  &--is-outline {
+    background-color: transparent;
+    border-color: var(--tly-gray);
+
+    &,
+    & .#{$block}__span {
+      color: var(--tly-black);
+    }
+
+    &:hover,
+    &:focus {
+      border-color: var(--tly-black);
+    }
+  }
+
+  &--is-danger {
+    background-color: var(--tly-danger);
+
+    &,
+    & .#{$block}__span {
+      color: var(--tly-white);
     }
   }
 
