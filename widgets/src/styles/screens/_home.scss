@@ -1,0 +1,29 @@
+$block: 'tly-home';
+
+.#{$block} {
+  .tly-typography-title--is-h1 {
+    max-width: 80%;
+  }
+
+  &-articles {
+    margin-top: 24px;
+
+    &__article {
+      border: solid 1px #E4E7EB;
+      padding: 16px;
+      border-radius: 4px;
+      box-shadow: 0px 6px 6px #0000000F;
+      border-top-color: var(--tly-primary-bg);
+      border-top-width: 2px;
+      margin-bottom: 24px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      &-header {
+        margin-bottom: 24px;
+      }
+    }
+  }
+}

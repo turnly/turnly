@@ -8,6 +8,7 @@ $block: 'tly-typography';
     font-size: 14px;
     margin: 0;
     letter-spacing: 0.14px;
+    line-height: 24px;
 
     &--has-gaps {
       margin-bottom: 16px;
@@ -50,6 +51,7 @@ $block: 'tly-typography';
 
     &--is-h1 {
       font-size: 22px;
+      line-height: 32px;
     }
 
     &--is-h2 {

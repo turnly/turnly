@@ -20,6 +20,7 @@ export const Title = ({
     ['tly-typography-title--has-gaps']: hasGaps,
     ['tly-typography-title--is-upper']: isUpper,
     ['tly-typography-title--is-disabled']: isDisabled,
+    ['tly-typography-title--is-h1']: level === 1,
     ['tly-typography-title--is-h2']: level === 2,
     ['tly-typography-title--is-h3']: level === 3,
     ['tly-typography-title--is-h4']: level === 4,

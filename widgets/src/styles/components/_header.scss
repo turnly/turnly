@@ -39,5 +39,10 @@ $block: 'tly-header';
     justify-content: center;
     text-align: center;
     width: $size;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      background-color: var(--tly-gray-lighter);
+    }
   }
 }
