@@ -5,7 +5,7 @@ services:
     extends:
       file: common.yml
       service: common
-    image: mongo
+    image: mongo:5.0.12
     container_name: mongo
     environment:
       NODE_ENV: ${NODE_ENV}
