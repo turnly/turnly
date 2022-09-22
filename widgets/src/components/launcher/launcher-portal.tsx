@@ -1,3 +1,4 @@
+import clsx from 'clsx'
 import { h } from 'preact'
 import { useMemo } from 'preact/hooks'
 
@@ -11,15 +12,20 @@ import { Bubble } from './bubble'
 
 export const LauncherPortal = () => {
   const { isShowing, setShow } = useShowWidget()
-  const { appearance } = useAppearance()
+  const { appearance, isLeftPosition } = useAppearance()
 
   const color = useMemo(
     () => appearance.primary.color || '#ffffff',
     [appearance.primary.color]
   )
 
+  const classes = clsx({
+    [styles['tly-launcher']]: true,
+    [styles['tly-launcher--is-left-position']]: isLeftPosition,
+  })
+
   return (
-    <div className={styles['tly-launcher']}>
+    <div className={classes}>
       <Portal id={styles['tly-launcher']} title={MESSAGES.LAUNCHER_TITLE}>
         <div className="tly-bubble-container">
           <Bubble onClick={setShow} disabled={isShowing}>

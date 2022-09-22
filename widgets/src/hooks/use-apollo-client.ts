@@ -9,17 +9,17 @@ const getBasicAuthCredentials = (username: string, password: string) => {
 }
 
 export const useApolloClient = () => {
-  const { organizationURL, widgetId } = useSettings()
+  const { about } = useSettings()
   const { customer } = useSession()
 
   return useMemo(() => {
-    const GRAPH_URL = `${organizationURL}/api/v1/widgets/graph`
+    const GRAPH_URL = `${about.organizationURL}/api/v1/widgets/graph`
 
-    if (!customer.id || !widgetId) return null
+    if (!customer.id || !about.widgetId) return null
 
     return getApolloClient(
       GRAPH_URL,
-      getBasicAuthCredentials(widgetId, customer.id)
+      getBasicAuthCredentials(about.widgetId, customer.id)
     )
-  }, [organizationURL])
+  }, [about.organizationURL])
 }

@@ -19,5 +19,8 @@ export const useStyleVariables = (doc?: Nullable<Document>) => {
 
     setVariable('--tly-secondary-bg', appearance.secondary.background)
     setVariable('--tly-secondary-color', appearance.secondary.color)
+
+    setVariable('--tly-z-index', String(appearance.zIndex))
+    setVariable('--tly-widget-position', appearance.position)
   }, [doc, appearance])
 }

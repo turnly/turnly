@@ -8,12 +8,13 @@ import { Portal } from './portal'
 
 export const AppPortal = props => {
   const { isShowing } = useShowWidget()
-  const { isFlat } = useAppearance()
+  const { isFlat, isLeftPosition } = useAppearance()
 
   const classes = clsx({
     [styles['tly-widget']]: true,
     [styles['tly-widget--is-open']]: isShowing,
     [styles['tly-widget--is-flat']]: isFlat,
+    [styles['tly-widget--is-left-position']]: isLeftPosition,
   })
 
   return (

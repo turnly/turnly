@@ -16,7 +16,12 @@ $block: 'tly-launcher';
   position: fixed;
   right: $gap;
   width: $size;
-  z-index: 9999999;
+  z-index: var(--tly-z-index);
+
+  &--is-left-position {
+    right: 0;
+    left: $gap;
+  }
 
   iframe {
     border: 0;

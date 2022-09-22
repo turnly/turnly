@@ -11,10 +11,20 @@
   },
   "home": {
     "title": "The ticket-taking assistance 👋",
-    "description": "Take advantage of your waiting time in lines for productive things.",
-    "labels": {
-      "button_text": "Get a Ticket"
-    }
+    "description": "Increase customer throughput and satisfaction.",
+    "articles": {
+      "take_a_ticket": {
+        "title": "Get a Ticket",
+        "description": "Take advantage of your waiting time in lines for productive things.",
+        "button_text": "Take Ticket"
+      },
+      "get_turnly": {
+        "title": "You + Turnly = Top match!",
+        "description": "Provide the best customer experience for your visitors.",
+        "button_text": "Get Turnly"
+      }
+    },
+    "sponsored": "Sponsored"
   },
   "locations": {
     "title": "Get location offices",
