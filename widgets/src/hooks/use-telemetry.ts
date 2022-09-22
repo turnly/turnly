@@ -4,9 +4,9 @@ import { initTelemetry } from '../libs/telemetry'
 import { useSettings } from './use-settings'
 
 export const useTelemetry = () => {
-  const { disableTelemetry } = useSettings()
+  const { general } = useSettings()
 
   useEffect(() => {
-    initTelemetry(disableTelemetry)
-  }, [disableTelemetry])
+    initTelemetry(general.disableTelemetry)
+  }, [general.disableTelemetry])
 }

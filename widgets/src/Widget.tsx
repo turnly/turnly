@@ -51,11 +51,11 @@ export class Widget {
    * @description Create a new element in the DOM to load the instance.
    */
   private render(id = config.WIDGET_ID) {
+    if (this.widgetIsLoaded(id))
+      throw new Error(ERROR_MESSAGES.WIDGET_IS_LOADED)
+
     const widget = document.createElement('div')
     widget.id = id
-
-    if (this.widgetIsLoaded(widget.id))
-      throw new Error(ERROR_MESSAGES.WIDGET_IS_LOADED)
 
     document.body.appendChild(widget)
 

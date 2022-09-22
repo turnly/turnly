@@ -31,7 +31,7 @@
     "skipLibCheck": true,
     "isolatedModules": true,
     "outDir": "dist",
-    "types": ["node_modules/@types", "vite/client", "src/@types"]
+    "types": ["vite/client"]
   },
   "exclude": [
     "node_modules",

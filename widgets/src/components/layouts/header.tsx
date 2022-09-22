@@ -12,7 +12,7 @@ export const Header = () => {
   return (
     <div className="tly-header">
       <div className="tly-header-back" />
-      <Title level={4} hasGaps={false}>
+      <Title level={5} hasGaps={false}>
         {title}
       </Title>
       <div className="tly-header-actions">

@@ -1,5 +1,5 @@
 import { Widget } from './Widget'
 
-const widget = new Widget()
+window.$turnly = new Widget()
 
-document.addEventListener('DOMContentLoaded', () => widget.mount())
+document.addEventListener('DOMContentLoaded', () => window.$turnly.mount())
