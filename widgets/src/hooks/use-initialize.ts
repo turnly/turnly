@@ -2,7 +2,7 @@ import { useInitializeRealtime } from './use-realtime'
 import { useInitializeSettings } from './use-settings'
 
 export const useInitialize = () => {
-  const { organizationURL, widgetId } = useInitializeSettings()
+  const { about } = useInitializeSettings()
 
-  useInitializeRealtime(organizationURL, widgetId)
+  useInitializeRealtime(about.organizationURL, about.widgetId)
 }

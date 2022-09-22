@@ -4,13 +4,33 @@ import { persist } from 'zustand/middleware'
 import { immer } from 'zustand/middleware/immer'
 import shallow from 'zustand/shallow'
 
-import { Settings } from '../@types/settings'
+import { About, Appearance, General, Settings } from '../@types/settings'
 import { Cookies } from '../libs/cookies'
 import { useTranslation } from '../localization'
 import { Script } from '../services/script'
 
 interface SettingsStore extends Settings {
-  setSettings: (value: Partial<Settings>) => void
+  setGeneral: (values: Partial<General>) => void
+  setAppearance: (values: Partial<Appearance>) => void
+  setAbout: (values: Partial<About>) => void
+}
+
+export const mergeSettings = <T extends Record<string, any>>(
+  settings: Settings,
+  property: string,
+  toMerge: T
+) => {
+  for (const key in toMerge) {
+    const isKeyOf = Boolean(
+      Object.prototype.hasOwnProperty.call(settings[property], key)
+    )
+
+    if (isKeyOf)
+      settings[property][key] =
+        typeof toMerge[key] === 'object'
+          ? { ...settings[property][key], ...toMerge[key] }
+          : toMerge[key]
+  }
 }
 
 const useStore = create<SettingsStore>()(
@@ -29,21 +49,24 @@ const useStore = create<SettingsStore>()(
           background: '',
         },
       },
-      locale: '',
-      disableTelemetry: false,
-      widgetId: '',
-      organizationURL: '',
-      setSettings(values) {
-        set((state: Settings) => {
-          for (const key in values) {
-            if (Object.prototype.hasOwnProperty.call(state, key)) {
-              state[key] =
-                typeof values[key] === 'object'
-                  ? { ...state[key], ...values[key] }
-                  : values[key]
-            }
-          }
-        })
+      general: {
+        locale: '',
+        disableTelemetry: false,
+      },
+      about: {
+        widgetId: '',
+        organizationURL: '',
+      },
+      setGeneral(values) {
+        set((settings: Settings) => mergeSettings(settings, 'general', values))
+      },
+      setAppearance(values) {
+        set((settings: Settings) =>
+          mergeSettings(settings, 'appearance', values)
+        )
+      },
+      setAbout(values) {
+        set((settings: Settings) => mergeSettings(settings, 'about', values))
       },
     })),
     {
@@ -62,24 +85,30 @@ const useSettings = () =>
 
 const useInitializeSettings = () => {
   const { changeLanguage } = useTranslation()
-  const { setSettings, locale } = useSettings()
-  const customSettings = useMemo(
+  const { setAbout, setAppearance, setGeneral, general } = useSettings()
+  const settings = useMemo(
     () => ({
-      ...window?.$tlySettings,
-      ...Script.getDataFromScript(),
+      ...window?.turnlySettings,
+      about: {
+        ...window?.turnlySettings?.about,
+        ...Script.getDataFromScript(),
+      },
     }),
     []
   )
 
   useLayoutEffect(() => {
-    setSettings(customSettings)
+    setAbout(settings.about)
+
+    if (settings.appearance) setAppearance(settings.appearance)
+    if (settings.general) setGeneral(settings.general)
   }, [])
 
   useEffect(() => {
-    changeLanguage(locale)
-  }, [locale])
+    changeLanguage(general.locale)
+  }, [general.locale])
 
-  return customSettings
+  return settings
 }
 
 export { useInitializeSettings, useSettings }
