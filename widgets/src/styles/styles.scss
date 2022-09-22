@@ -10,10 +10,13 @@
 @import 'components/typography';
 @import 'components/widget';
 @import 'components/input';
+@import 'components/phone-input';
 @import 'components/form';
 @import 'components/form-field';
+@import 'components/location';
 
 @import 'screens/home';
+@import 'screens/take-ticket';
 
 * {
   box-sizing: border-box;

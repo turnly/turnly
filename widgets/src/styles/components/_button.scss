@@ -28,7 +28,7 @@ $block: 'tly-button';
 
   &:focus:before,
   &:focus:active:before {
-    background: rgba(0, 0, 0, 0.10);
+    background: rgba(0, 0, 0, 0.1);
     box-shadow: 0 0 0 4px rgba(#6b7c89, 0.15);
   }
 
@@ -128,5 +128,10 @@ $block: 'tly-button';
     &:last-child {
       margin-right: 0;
     }
+  }
+
+  &--is-float {
+    position: absolute;
+    bottom: 0;
   }
 }

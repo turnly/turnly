@@ -15,6 +15,7 @@ export interface ButtonProps extends JSX.HTMLAttributes<HTMLButtonElement> {
   isPrimary: boolean
   isDanger: boolean
   isOutline: boolean
+  isFloat: boolean
 }
 
 export const Button = forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
@@ -31,6 +32,7 @@ export const Button = forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
       isLoading,
       children,
       disabled,
+      isFloat,
       ...attributes
     },
     ref
@@ -47,6 +49,7 @@ export const Button = forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
       ['tly-button--is-large']: isLarge,
       ['tly-button--is-medium']: isMedium,
       ['tly-button--is-small']: isSmall,
+      ['tly-button--is-float']: isFloat,
       ['tly-button--is-flat']: isFlat,
       ['tly-button--is-rounded']: isRounded,
     })

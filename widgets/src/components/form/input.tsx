@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import { h, JSX } from 'preact'
+import { Fragment, h, JSX } from 'preact'
 import React from 'preact/compat'
 import { AiOutlineQuestionCircle } from 'react-icons/ai'
 
@@ -26,7 +26,7 @@ export const Input = React.forwardRef<HTMLInputElement, Partial<InputProps>>(
     const classes = clsx(styles, attributes.className)
 
     return (
-      <div>
+      <Fragment>
         <div className="tly-input-icon-container">
           <input
             {...attributes}
@@ -47,7 +47,7 @@ export const Input = React.forwardRef<HTMLInputElement, Partial<InputProps>>(
             {textError}
           </Text>
         )}
-      </div>
+      </Fragment>
     )
   }
 )

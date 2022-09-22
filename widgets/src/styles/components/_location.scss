@@ -1,0 +1,23 @@
+$block: 'tly-location';
+
+.#{$block} {
+  min-width: 280px;
+  border: 1px solid var(--tly-default-border-color);
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 10px 16px;
+  border-radius: 35px;
+  box-shadow: 0px 6px 6px #0000000f;
+  cursor: pointer;
+
+  &-button {
+    padding: 12px;
+    background-color: #2485ba10;
+    border-radius: 100%;
+  }
+
+  &--is-primary {
+    border-color: var(--tly-green);
+  }
+}

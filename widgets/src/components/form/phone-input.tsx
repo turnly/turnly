@@ -1,4 +1,4 @@
-import { h, JSX } from 'preact'
+import { Fragment, h, JSX } from 'preact'
 import React from 'preact/compat'
 import Base from 'react-phone-input-2'
 
@@ -14,19 +14,12 @@ export const PhoneInput = React.forwardRef<
   Partial<PhoneInputProps>
 >(({ isDanger, textError, ...attributes }, ref) => {
   return (
-    <div>
+    <Fragment>
       <Base
         {...attributes}
         ref={ref}
         onChange={() => {}}
-        inputStyle={{
-          border: 'solid 1px var(--tly-default-border-color)',
-          color: 'var(--tly-gray)',
-          fontSize: 14,
-          padding: 16,
-          paddingLeft: 55,
-          width: '100%',
-        }}
+        inputClass="tly-phone-input"
       />
 
       {isDanger && (
@@ -34,6 +27,6 @@ export const PhoneInput = React.forwardRef<
           {textError}
         </Text>
       )}
-    </div>
+    </Fragment>
   )
 })
