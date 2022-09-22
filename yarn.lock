@@ -1590,7 +1590,7 @@
 
 "@turnly/rtm@github:turnly/realtime-client#latest":
   version "1.0.0"
-  resolved "https://codeload.github.com/turnly/realtime-client/tar.gz/06ea28ca4a52c0cbbfe113fcb1cec3951b6d38fa"
+  resolved "https://codeload.github.com/turnly/realtime-client/tar.gz/08464f56b96b9c766a0dd257c5eb912ddc42af4d"
   dependencies:
     socket.io-client "^4.5.1"
 
