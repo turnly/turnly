@@ -19,6 +19,8 @@
   --tly-default-text-color: var(--tly-gray-light);
 
   --tly-default-font: 'DM Sans', sans-serif;
+  --tly-z-index: 999999;
+  --tly-widget-position: 'right';
 }
 
 @mixin in-mobile {

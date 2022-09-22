@@ -34,11 +34,16 @@ $block: 'tly-widget';
     transition: max-height 0s ease-in-out 0s, width 0s ease-in-out 0s,
       opacity 0.25s ease-in-out 0.01s, z-index 0s ease-in-out,
       transform 0.25s ease-in-out 0.01s;
-    z-index: 99999999;
+    z-index: var(--tly-z-index);
   }
 
   &--is-flat {
     border-radius: 2px;
+  }
+
+  &--is-left-position {
+    left: 24px;
+    right: 0;
   }
 
   &,

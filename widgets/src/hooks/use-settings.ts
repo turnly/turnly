@@ -17,9 +17,9 @@ const useStore = create<SettingsStore>()(
   persist(
     immer(set => ({
       appearance: {
-        zIndex: 1,
+        zIndex: 999999,
         position: 'right',
-        design: 'flat',
+        design: 'rounded',
         primary: {
           color: '',
           background: '',

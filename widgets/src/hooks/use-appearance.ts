@@ -8,11 +8,13 @@ export const useAppearance = () => {
   const isFlat = useMemo(() => appearance.design === 'flat', [])
   const isRounded = useMemo(() => appearance.design === 'rounded', [])
   const isLeftPosition = useMemo(() => appearance.position === 'left', [])
+  const isRightPosition = useMemo(() => appearance.position === 'right', [])
 
   return {
     isFlat,
     isRounded,
     isLeftPosition,
+    isRightPosition,
     appearance,
   }
 }
