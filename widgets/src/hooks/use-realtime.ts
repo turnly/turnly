@@ -12,6 +12,7 @@ import { useVisibility } from './use-visibility'
 
 export enum RealtimeEvents {
   CONNECTED = 'connected',
+  CONNECT_ERROR = 'connect_error',
 }
 
 type Store = {
@@ -35,23 +36,29 @@ const useInitializeRealtime = (organizationURL: string, widgetId: string) => {
   const { setRealtime, realtime } = useRealtime()
 
   const { setSession, customer } = useSession()
-  const { setShow } = useVisibility()
+  const { setShow, setHide } = useVisibility()
 
   useLayoutEffect(() => {
     const rtm = getRealtime(organizationURL, widgetId)
 
     if (customer.id) rtm.setQuery('customerId', customer.id)
 
-    const unsub = rtm.subscribe<Session>(RealtimeEvents.CONNECTED, data => {
-      setRealtime(rtm)
-      setSession(data.payload)
-      setShow()
+    const unconnected = rtm.subscribe<Session>(
+      RealtimeEvents.CONNECTED,
+      data => {
+        setRealtime(rtm)
+        setSession(data.payload)
+        setShow()
 
-      $bus.ready.dispatch()
-    })
+        $bus.ready.dispatch()
+      }
+    )
+
+    const unsubError = rtm.subscribe(RealtimeEvents.CONNECT_ERROR, setHide)
 
     return () => {
-      unsub()
+      unconnected()
+      unsubError()
     }
   }, [])
 
