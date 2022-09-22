@@ -1,5 +1,6 @@
 import './localization'
 import './styles/styles.scss'
+import 'react-phone-input-2/lib/bootstrap.css'
 
 import { Fragment, h } from 'preact'
 

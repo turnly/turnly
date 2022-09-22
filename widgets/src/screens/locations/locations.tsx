@@ -1,5 +1,7 @@
 import { Fragment, h } from 'preact'
+import { AiFillCheckCircle } from 'react-icons/ai'
 
+import { Input } from '../../components/form'
 import { Text, Title } from '../../components/typography'
 import { useTranslation } from '../../localization'
 
@@ -8,8 +10,12 @@ export const LocationsScreen = () => {
 
   return (
     <Fragment>
-      <Title>{translate('locations.title')}</Title>
-      <Text>{translate('locations.description')}</Text>
+      <div className="tly-home">
+        <Title>{translate('locations.title')}</Title>
+        <Text>{translate('locations.description')}</Text>
+
+        <Input isIcon={true} iconRight={<AiFillCheckCircle />} />
+      </div>
     </Fragment>
   )
 }

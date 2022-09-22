@@ -23,7 +23,7 @@ export const HomeScreen = () => {
               <Text>{translate('home.description')}</Text>
             </div>
 
-            <Button isSmall onClick={() => navigate(SCREEN_NAMES.LOCATIONS)}>
+            <Button isSmall onClick={() => navigate(SCREEN_NAMES.TAKE_TICKET)}>
               {translate('home.labels.button_text')}
             </Button>
           </div>

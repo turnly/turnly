@@ -1,12 +1,12 @@
 :root {
-  --tly-green: #06615A;
-  --tly-green-light: #5ACE71;
+  --tly-green: #06615a;
+  --tly-green-light: #5ace71;
   --tly-white: #fff;
   --tly-black: #1c2b33;
   --tly-gray: #455964;
   --tly-gray-light: #6b7c89;
   --tly-gray-lighter: #f2f2f2;
-  --tly-gray-lighter-v2: #EEEEEE;
+  --tly-gray-lighter-v2: #eeeeee;
   --tly-danger: #9a1d1c;
 
   --tly-primary-bg: var(--tly-green);
@@ -19,6 +19,9 @@
   --tly-default-text-color: var(--tly-gray-light);
 
   --tly-default-font: 'DM Sans', sans-serif;
+
+  // form variables
+  --tly-default-border-color: #e4e7eb;
 }
 
 @mixin in-mobile {
