@@ -1,0 +1,13 @@
+$block: 'tly-take-ticket';
+
+.#{$block} {
+  display: grid;
+
+  &-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.1rem;
+    margin-bottom: 2rem;
+  }
+}

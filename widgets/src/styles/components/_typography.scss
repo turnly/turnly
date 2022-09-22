@@ -9,6 +9,7 @@ $block: 'tly-typography';
     margin: 0;
     letter-spacing: 0.14px;
     line-height: 24px;
+    text-overflow: ellipsis;
 
     &--has-gaps {
       margin-bottom: 16px;

@@ -1,6 +1,9 @@
 $block: 'tly-home';
 
 .#{$block} {
+  position: relative;
+  height: 100%;
+
   .tly-typography-title--is-h1 {
     max-width: 80%;
   }
@@ -9,10 +12,10 @@ $block: 'tly-home';
     margin-top: 24px;
 
     &__article {
-      border: solid 1px #E4E7EB;
+      border: solid 1px #e4e7eb;
       padding: 16px;
       border-radius: 4px;
-      box-shadow: 0px 6px 6px #0000000F;
+      box-shadow: 0px 6px 6px #0000000f;
       border-top-color: var(--tly-primary-bg);
       border-top-width: 2px;
       margin-bottom: 24px;
