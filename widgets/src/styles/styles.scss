@@ -13,10 +13,10 @@
 @import 'components/phone-input';
 @import 'components/form';
 @import 'components/form-field';
-@import 'components/location';
-@import 'components/_layout-screen';
-@import 'components/_transaction.scss';
-@import 'components/order.scss';
+@import 'components/current-location';
+@import 'components/layout-screen';
+@import 'components/transaction';
+@import 'components/order';
 
 @import 'screens/home';
 @import 'screens/take-ticket';

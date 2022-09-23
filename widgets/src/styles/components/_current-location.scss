@@ -1,7 +1,7 @@
-$block: 'tly-location';
+$block: 'tly-current-location';
 
 .#{$block} {
-  min-width: 300px;
+  max-width: 270px;
   border: 1px solid var(--tly-default-border-color);
   display: flex;
   align-items: center;
@@ -15,9 +15,20 @@ $block: 'tly-location';
     padding: 12px;
     background-color: #2485ba10;
     border-radius: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
-  &--is-primary {
-    border-color: var(--tly-green);
+  &-details {
+    overflow: hidden;
+
+    > .tly-typography-title,
+    > .tly-typography-text {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
   }
 }

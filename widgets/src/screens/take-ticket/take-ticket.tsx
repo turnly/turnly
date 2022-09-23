@@ -1,10 +1,9 @@
 import { Fragment, h } from 'preact'
-import { FiSend } from 'react-icons/fi'
 
 import { Button } from '../../components/button'
+import { CurrentLocation } from '../../components/current-location'
 import { Form, FormField, Input, PhoneInput } from '../../components/form'
 import { FooterScreen, HeaderScreen } from '../../components/layouts/screen'
-import { Location } from '../../components/location'
 import { Text, Title } from '../../components/typography'
 import { useTranslation } from '../../localization'
 import { SCREEN_NAMES, useNavigator } from '../../navigation'
@@ -17,10 +16,9 @@ export const TakeTicketScreen = () => {
     <Fragment>
       <div className="tly-home">
         <HeaderScreen>
-          <Location
+          <CurrentLocation
             title="Office space rentals"
-            description="963 W. Belmont Ave. Chicago, IL 608…"
-            iconRight={<FiSend color="#2485BA" />}
+            description="963 W. Belmont Ave. Chicago IL 608"
           />
         </HeaderScreen>
 

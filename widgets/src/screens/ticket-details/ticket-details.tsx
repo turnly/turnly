@@ -1,9 +1,8 @@
 import { Fragment, h } from 'preact'
-import { AiOutlineCheck } from 'react-icons/ai'
 
 import { Button } from '../../components/button'
+import { CurrentLocation } from '../../components/current-location'
 import { FooterScreen, HeaderScreen } from '../../components/layouts/screen'
-import { Location } from '../../components/location'
 import { Order } from '../../components/order'
 import { Transaction } from '../../components/transaction'
 import { Text, Title } from '../../components/typography'
@@ -16,11 +15,9 @@ export const TicketDetailsScreen = () => {
     <Fragment>
       <div className="tly-home">
         <HeaderScreen>
-          <Location
+          <CurrentLocation
             title="Office space rentals"
-            description="963 W. Belmont Ave. Chicago, IL 608…"
-            iconRight={<AiOutlineCheck color="#02543F" size={22} />}
-            isPrimary
+            description="963 W. Belmont Ave. Chicago IL 608"
           />
 
           <Transaction
