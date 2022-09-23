@@ -76,5 +76,5 @@ export class TicketModel {
   beforeYours: number
 
   @Field(() => String, { nullable: true })
-  calledTo: string | null
+  calledToDesk: string | null
 }

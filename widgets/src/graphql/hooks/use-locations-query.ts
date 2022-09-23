@@ -1,15 +1,15 @@
 import * as Apollo from '@apollo/client'
 
 import {
-  LocationsQuery,
-  LocationsQueryVariables,
-  useLocationsQuery,
+  LocationsQuery as Query,
+  LocationsQueryVariables as Variables,
+  useLocationsQuery as useQuery,
 } from '../generated/graphql'
 
-export const useLocations = (
-  options?: Apollo.QueryHookOptions<LocationsQuery, LocationsQueryVariables>
+export const useLocationsQuery = (
+  options?: Apollo.QueryHookOptions<Query, Variables>
 ) => {
-  const { data, error, loading: isLoading } = useLocationsQuery(options)
+  const { data, error, loading: isLoading } = useQuery(options)
 
   return {
     data: data?.findLocations ?? [],
