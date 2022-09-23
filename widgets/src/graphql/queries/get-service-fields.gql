@@ -1,0 +1,10 @@
+query GetServiceFields($serviceId: ID!) {
+  getServiceFields(serviceId: $serviceId) {
+    id
+    label
+    description
+    type
+    isRequired
+    hasProcessors
+  }
+}

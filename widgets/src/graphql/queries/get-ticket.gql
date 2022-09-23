@@ -1,0 +1,31 @@
+query GetTicket($getTicketId: ID!) {
+  getTicket(id: $getTicketId) {
+    id
+    status
+    displayCode
+    service {
+      id
+      name
+      description
+      ticketsWaiting
+    }
+    location {
+      id
+      name
+      address
+      country
+      longitude
+      latitude
+    }
+    beforeYours
+    calledTo
+    calledToDesk
+    customer {
+      id
+      name
+      lastname
+      email
+      country
+    }
+  }
+}

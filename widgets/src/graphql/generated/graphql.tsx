@@ -141,6 +141,27 @@ export type TicketModel = {
   status: Scalars['String'];
 };
 
+export type GetLocationServicesQueryVariables = Exact<{
+  locationId: Scalars['ID'];
+}>;
+
+
+export type GetLocationServicesQuery = { __typename?: 'Query', getLocationServices: Array<{ __typename?: 'ServiceModel', id: string, name: string, description?: string | null, locationId: string, ticketsWaiting: number }> };
+
+export type GetServiceFieldsQueryVariables = Exact<{
+  serviceId: Scalars['ID'];
+}>;
+
+
+export type GetServiceFieldsQuery = { __typename?: 'Query', getServiceFields: Array<{ __typename?: 'FieldModel', id: string, label: string, description?: string | null, type: string, isRequired: boolean, hasProcessors: boolean }> };
+
+export type GetTicketQueryVariables = Exact<{
+  getTicketId: Scalars['ID'];
+}>;
+
+
+export type GetTicketQuery = { __typename?: 'Query', getTicket: { __typename?: 'TicketModel', id: string, status: string, displayCode: string, beforeYours: number, calledTo?: string | null, calledToDesk?: string | null, service: { __typename?: 'ServiceModel', id: string, name: string, description?: string | null, ticketsWaiting: number }, location: { __typename?: 'LocationModel', id: string, name: string, address: string, country: string, longitude: number, latitude: number }, customer: { __typename?: 'CustomerModel', id: string, name?: string | null, lastname?: string | null, email?: string | null, country?: string | null } } };
+
 export type LocationsQueryVariables = Exact<{
   searchQuery?: InputMaybe<Scalars['ID']>;
   country?: InputMaybe<Scalars['String']>;
@@ -154,6 +175,146 @@ export type LocationsQueryVariables = Exact<{
 export type LocationsQuery = { __typename?: 'Query', findLocations: Array<{ __typename?: 'LocationModel', id: string, name: string, address: string, country: string, longitude: number, latitude: number }> };
 
 
+export const GetLocationServicesDocument = gql`
+    query GetLocationServices($locationId: ID!) {
+  getLocationServices(locationId: $locationId) {
+    id
+    name
+    description
+    locationId
+    ticketsWaiting
+  }
+}
+    `;
+
+/**
+ * __useGetLocationServicesQuery__
+ *
+ * To run a query within a React component, call `useGetLocationServicesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetLocationServicesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetLocationServicesQuery({
+ *   variables: {
+ *      locationId: // value for 'locationId'
+ *   },
+ * });
+ */
+export function useGetLocationServicesQuery(baseOptions: Apollo.QueryHookOptions<GetLocationServicesQuery, GetLocationServicesQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetLocationServicesQuery, GetLocationServicesQueryVariables>(GetLocationServicesDocument, options);
+      }
+export function useGetLocationServicesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetLocationServicesQuery, GetLocationServicesQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetLocationServicesQuery, GetLocationServicesQueryVariables>(GetLocationServicesDocument, options);
+        }
+export type GetLocationServicesQueryHookResult = ReturnType<typeof useGetLocationServicesQuery>;
+export type GetLocationServicesLazyQueryHookResult = ReturnType<typeof useGetLocationServicesLazyQuery>;
+export type GetLocationServicesQueryResult = Apollo.QueryResult<GetLocationServicesQuery, GetLocationServicesQueryVariables>;
+export const GetServiceFieldsDocument = gql`
+    query GetServiceFields($serviceId: ID!) {
+  getServiceFields(serviceId: $serviceId) {
+    id
+    label
+    description
+    type
+    isRequired
+    hasProcessors
+  }
+}
+    `;
+
+/**
+ * __useGetServiceFieldsQuery__
+ *
+ * To run a query within a React component, call `useGetServiceFieldsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetServiceFieldsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetServiceFieldsQuery({
+ *   variables: {
+ *      serviceId: // value for 'serviceId'
+ *   },
+ * });
+ */
+export function useGetServiceFieldsQuery(baseOptions: Apollo.QueryHookOptions<GetServiceFieldsQuery, GetServiceFieldsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetServiceFieldsQuery, GetServiceFieldsQueryVariables>(GetServiceFieldsDocument, options);
+      }
+export function useGetServiceFieldsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetServiceFieldsQuery, GetServiceFieldsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetServiceFieldsQuery, GetServiceFieldsQueryVariables>(GetServiceFieldsDocument, options);
+        }
+export type GetServiceFieldsQueryHookResult = ReturnType<typeof useGetServiceFieldsQuery>;
+export type GetServiceFieldsLazyQueryHookResult = ReturnType<typeof useGetServiceFieldsLazyQuery>;
+export type GetServiceFieldsQueryResult = Apollo.QueryResult<GetServiceFieldsQuery, GetServiceFieldsQueryVariables>;
+export const GetTicketDocument = gql`
+    query GetTicket($getTicketId: ID!) {
+  getTicket(id: $getTicketId) {
+    id
+    status
+    displayCode
+    service {
+      id
+      name
+      description
+      ticketsWaiting
+    }
+    location {
+      id
+      name
+      address
+      country
+      longitude
+      latitude
+    }
+    beforeYours
+    calledTo
+    calledToDesk
+    customer {
+      id
+      name
+      lastname
+      email
+      country
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetTicketQuery__
+ *
+ * To run a query within a React component, call `useGetTicketQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetTicketQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetTicketQuery({
+ *   variables: {
+ *      getTicketId: // value for 'getTicketId'
+ *   },
+ * });
+ */
+export function useGetTicketQuery(baseOptions: Apollo.QueryHookOptions<GetTicketQuery, GetTicketQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetTicketQuery, GetTicketQueryVariables>(GetTicketDocument, options);
+      }
+export function useGetTicketLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetTicketQuery, GetTicketQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetTicketQuery, GetTicketQueryVariables>(GetTicketDocument, options);
+        }
+export type GetTicketQueryHookResult = ReturnType<typeof useGetTicketQuery>;
+export type GetTicketLazyQueryHookResult = ReturnType<typeof useGetTicketLazyQuery>;
+export type GetTicketQueryResult = Apollo.QueryResult<GetTicketQuery, GetTicketQueryVariables>;
 export const LocationsDocument = gql`
     query Locations($searchQuery: ID, $country: String, $latitude: Float, $longitude: Float, $limit: Int, $offset: Int) {
   findLocations(

@@ -14,7 +14,8 @@
     "**/jest*": true,
     "**/node_modules": true,
     "**/tsconfig.tsbuildinfo": true,
-    "**/yarn-error.log": true
+    "**/yarn-error.log": true,
+    "**/graphql.schema.json": true
   },
   "typescript.tsdk": "node_modules/typescript/lib",
   "eslint.workingDirectories": [
