@@ -1,0 +1,24 @@
+query Locations(
+  $searchQuery: ID
+  $country: String
+  $latitude: Float
+  $longitude: Float
+  $limit: Int
+  $offset: Int
+) {
+  findLocations(
+    searchQuery: $searchQuery
+    country: $country
+    latitude: $latitude
+    longitude: $longitude
+    limit: $limit
+    offset: $offset
+  ) {
+    id
+    name
+    address
+    country
+    longitude
+    latitude
+  }
+}

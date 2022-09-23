@@ -4,3 +4,4 @@ tsconfig.json
 README.md
 /dist
 /static
+graphql.tsx
