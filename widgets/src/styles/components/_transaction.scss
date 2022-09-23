@@ -1,0 +1,11 @@
+$block: 'tly-transaction';
+
+.#{$block} {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0px;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}

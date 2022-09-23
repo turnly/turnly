@@ -1,0 +1,8 @@
+$block: 'tly-ticket-details';
+
+.#{$block} {
+  &-buttons {
+    display: flex;
+    gap: 15px;
+  }
+}

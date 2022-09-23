@@ -14,9 +14,13 @@
 @import 'components/form';
 @import 'components/form-field';
 @import 'components/location';
+@import 'components/_layout-screen';
+@import 'components/_transaction.scss';
+@import 'components/order.scss';
 
 @import 'screens/home';
 @import 'screens/take-ticket';
+@import 'screens/ticket-details';
 
 * {
   box-sizing: border-box;

@@ -1,0 +1,20 @@
+$block: 'tly-layout-screen';
+
+.#{$block} {
+  &-header {
+    display: grid;
+    gap: 0.5rem;
+    justify-items: center;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  &-footer {
+    bottom: 0;
+    position: sticky;
+    display: grid;
+    gap: 20px;
+    width: 100%;
+    background-color: white;
+  }
+}

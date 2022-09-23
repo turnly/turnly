@@ -1,0 +1,27 @@
+$block: 'tly-order';
+
+.#{$block} {
+  background-color: var(--tly-gray);
+  padding: 32px 28px 0px 28px;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+
+  text-align: center;
+
+  &-title {
+    font-size: 65px;
+    max-width: 100% !important;
+  }
+
+  &--is-danger {
+    background-color: #fbd5d5;
+  }
+
+  &--is-warning {
+    background-color: #fcee93;
+  }
+
+  &--is-primary {
+    background-color: #ddf7ec;
+  }
+}
