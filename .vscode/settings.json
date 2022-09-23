@@ -4,17 +4,17 @@
     "source.fixAll.eslint": true
   },
   "files.exclude": {
-    // "**/.editorconfig": true,
-    // "**/.eslint*": true,
-    // "**/.git": true,
-    // "**/.husky": true,
-    // "**/.nvmrc": true,
-    // "**/.prettier*": true,
-    // "**/dist": true,
-    // "**/jest*": true,
-    // "**/node_modules": true,
-    // "**/tsconfig.tsbuildinfo": true,
-    // "**/yarn-error.log": true
+    "**/.editorconfig": true,
+    "**/.eslint*": true,
+    "**/.git": true,
+    "**/.husky": true,
+    "**/.nvmrc": true,
+    "**/.prettier*": true,
+    "**/dist": true,
+    "**/jest*": true,
+    "**/node_modules": true,
+    "**/tsconfig.tsbuildinfo": true,
+    "**/yarn-error.log": true
   },
   "typescript.tsdk": "node_modules/typescript/lib",
   "eslint.workingDirectories": [
