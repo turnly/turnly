@@ -5,6 +5,7 @@ import { Navigator, Screen, SCREEN_NAMES } from '../navigation'
 import { HomeScreen } from '../screens/home'
 import { LocationsScreen } from '../screens/locations'
 import { TakeTicketScreen } from '../screens/take-ticket'
+import { TicketDetailsScreen } from '../screens/ticket-details'
 
 export const Router = () => {
   const { translate } = useTranslation()
@@ -24,6 +25,11 @@ export const Router = () => {
         title={translate('fields.title')}
         name={SCREEN_NAMES.TAKE_TICKET}
         component={TakeTicketScreen}
+      />
+      <Screen
+        title={translate('tickets.title')}
+        name={SCREEN_NAMES.TICKET_DETAILS}
+        component={TicketDetailsScreen}
       />
     </Navigator>
   )

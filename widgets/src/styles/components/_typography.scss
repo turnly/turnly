@@ -31,6 +31,10 @@ $block: 'tly-typography';
       color: var(--tly-danger);
     }
 
+    &--is-warning {
+      color: var(--tly-warning);
+    }
+
     &--is-disabled {
       cursor: not-allowed;
       user-select: none;
@@ -44,7 +48,7 @@ $block: 'tly-typography';
     font-weight: bold;
     margin: 0;
     padding: 0;
-    letter-spacing: 0.26px;
+    // letter-spacing: 0.26px;
 
     &--has-gaps {
       margin-bottom: 16px;
@@ -73,6 +77,14 @@ $block: 'tly-typography';
 
     &--is-upper {
       text-transform: uppercase;
+    }
+
+    &--is-danger {
+      color: var(--tly-danger);
+    }
+
+    &--is-warning {
+      color: var(--tly-warning);
     }
 
     &--is-disabled {
