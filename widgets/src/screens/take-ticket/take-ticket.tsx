@@ -1,10 +1,9 @@
 import { Fragment, h } from 'preact'
-import React from 'preact/compat'
 import { FiSend } from 'react-icons/fi'
 
 import { Button } from '../../components/button'
 import { Form, FormField, Input, PhoneInput } from '../../components/form'
-import { FooterScreen, HeaderScreen } from '../../components/layout-screen'
+import { FooterScreen, HeaderScreen } from '../../components/layouts/screen'
 import { Location } from '../../components/location'
 import { Text, Title } from '../../components/typography'
 import { useTranslation } from '../../localization'

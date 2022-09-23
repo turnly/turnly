@@ -1,7 +1,7 @@
 import { ApolloProvider } from '@apollo/client'
 import { h } from 'preact'
 
-import { AppShell } from './components/layouts/app-shell'
+import { Shell } from './components/layouts/shell'
 import { useApolloClient } from './hooks/use-apollo-client'
 import { useTelemetry } from './hooks/use-telemetry'
 import { Router } from './routes'
@@ -13,9 +13,9 @@ export const AppContainer = () => {
 
   return (
     <ApolloProvider client={apolloClient}>
-      <AppShell>
+      <Shell>
         <Router />
-      </AppShell>
+      </Shell>
     </ApolloProvider>
   )
 }

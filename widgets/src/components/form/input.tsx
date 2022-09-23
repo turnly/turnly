@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import { Fragment, h, JSX } from 'preact'
-import React from 'preact/compat'
+import { forwardRef } from 'preact/compat'
 import { AiOutlineQuestionCircle } from 'react-icons/ai'
 
 import { Text } from '../typography'
@@ -12,7 +12,7 @@ export interface InputProps extends JSX.HTMLAttributes<HTMLInputElement> {
   iconRight: JSX.Element
 }
 
-export const Input = React.forwardRef<HTMLInputElement, Partial<InputProps>>(
+export const Input = forwardRef<HTMLInputElement, Partial<InputProps>>(
   (
     { isDanger = false, textError, isIcon, iconRight, disabled, ...attributes },
     ref
@@ -43,7 +43,7 @@ export const Input = React.forwardRef<HTMLInputElement, Partial<InputProps>>(
         </div>
 
         {isDanger && (
-          <Text isDanger={true} isSmall>
+          <Text isDanger isSmall>
             {textError}
           </Text>
         )}

@@ -14,7 +14,7 @@ export const LocationsScreen = () => {
         <Title>{translate('locations.title')}</Title>
         <Text>{translate('locations.description')}</Text>
 
-        <Input isIcon={true} iconRight={<AiFillCheckCircle />} />
+        <Input isIcon iconRight={<AiFillCheckCircle />} />
       </div>
     </Fragment>
   )

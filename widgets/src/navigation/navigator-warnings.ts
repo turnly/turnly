@@ -1,4 +1,4 @@
-import React from 'preact/compat'
+import { Children } from 'preact/compat'
 
 import type { TNavigatorChildren } from '../@types/navigation'
 import { __DEV__ } from '../config'
@@ -30,5 +30,5 @@ export const navigatorWarnings = (children: TNavigatorChildren) => {
     if (!child.props?.name) throw new Error(ERROR_MESSAGES.SCREEN_NAME_REQUIRE)
   }
 
-  React.Children.toArray(children).forEach(validateChildren)
+  Children.toArray(children).forEach(validateChildren)
 }

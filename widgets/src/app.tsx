@@ -3,12 +3,15 @@ import './styles/styles.scss'
 import 'react-phone-input-2/lib/bootstrap.css'
 
 import { Fragment, h } from 'preact'
+import { lazy, Suspense } from 'preact/compat'
 
-import AppContainer from './app-container'
 import { AppPortal } from './components/app-portal'
 import { LauncherPortal } from './components/launcher'
+import { Loading } from './components/spinner'
 import { useInitialize } from './hooks/use-initialize'
 import { useVisibility } from './hooks/use-visibility'
+
+const AppContainer = lazy(() => import('./container'))
 
 const App = () => {
   useInitialize()
@@ -18,7 +21,9 @@ const App = () => {
   return isShowing ? (
     <Fragment>
       <AppPortal>
-        <AppContainer />
+        <Suspense fallback={<Loading />}>
+          <AppContainer />
+        </Suspense>
       </AppPortal>
       <LauncherPortal />
     </Fragment>

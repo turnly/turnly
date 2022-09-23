@@ -1,6 +1,5 @@
 import clsx from 'clsx'
 import { h, JSX } from 'preact'
-import React from 'preact/compat'
 
 import { Title } from '../components/typography'
 

@@ -1,9 +1,8 @@
 import { Fragment, h } from 'preact'
-import React from 'preact/compat'
 import { AiOutlineCheck } from 'react-icons/ai'
 
 import { Button } from '../../components/button'
-import { FooterScreen, HeaderScreen } from '../../components/layout-screen'
+import { FooterScreen, HeaderScreen } from '../../components/layouts/screen'
 import { Location } from '../../components/location'
 import { Order } from '../../components/order'
 import { Transaction } from '../../components/transaction'
@@ -21,7 +20,7 @@ export const TicketDetailsScreen = () => {
             title="Office space rentals"
             description="963 W. Belmont Ave. Chicago, IL 608…"
             iconRight={<AiOutlineCheck color="#02543F" size={22} />}
-            isPrimary={true}
+            isPrimary
           />
 
           <Transaction
@@ -29,7 +28,7 @@ export const TicketDetailsScreen = () => {
             typeTransaction="cash transaction"
           />
 
-          <Order numberOrder="08" isPrimary={true} />
+          <Order numberOrder="08" isPrimary />
         </HeaderScreen>
 
         <FooterScreen>
@@ -41,7 +40,7 @@ export const TicketDetailsScreen = () => {
           </div>
 
           <div className="tly-ticket-details-buttons">
-            <Button isOutline={true} isSecondary={true}>
+            <Button isOutline isSecondary>
               {translate('tickets.leave.button_text')}
             </Button>
             <Button>{translate('tickets.announce.button_text')}</Button>
