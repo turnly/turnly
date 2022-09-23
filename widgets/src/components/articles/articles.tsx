@@ -23,7 +23,7 @@ export const Articles = () => {
         description={translate('home.articles.get_turnly.description')}
         buttonText={translate('home.articles.get_turnly.button_text')}
         buttonProps={{
-          isSecondary: true,
+          isDefault: true,
           onClick: () => window.location.replace(config.TURNLY_URL),
         }}
       />

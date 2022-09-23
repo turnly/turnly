@@ -88,12 +88,21 @@ $block: 'tly-button';
     }
   }
 
-  &--is-secondary {
+  &--is-default {
     background-color: var(--tly-gray-lighter-v2);
 
     &,
     & .#{$block}__span {
       color: var(--tly-black);
+    }
+  }
+
+  &--is-secondary {
+    background-color: var(--tly-secondary-bg);
+
+    &,
+    & .#{$block}__span {
+      color: var(--tly-secondary-color);
     }
   }
 
