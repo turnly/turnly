@@ -1,0 +1,52 @@
+$block: 'tly-search-input';
+
+.#{$block} {
+  border: none;
+  border-bottom: solid 1px var(--tly-default-border-color);
+  padding: 16px 24px 16px 46px;
+  width: 100%;
+  font-size: 16px;
+  color: var(--tly-gray);
+  min-height: 46px;
+  transition: all 0.2s ease-in-out;
+  outline: none;
+
+  &::-webkit-input-placeholder,
+  &:-ms-input-placeholder,
+  &::-ms-input-placeholder,
+  &::placeholder {
+    color: var(--tly-gray-light);
+    opacity: 1;
+  }
+
+  &:focus,
+  &:focus:active {
+    background: rgba(0, 0, 0, 0.01);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    user-select: none;
+    opacity: 0.75;
+    color: var(--tly-default-border-color);
+
+    &:focus,
+    &:focus:active {
+      background: transparent;
+      box-shadow: none;
+    }
+  }
+
+  &-container {
+    position: relative;
+    margin: 0 -24px;
+  }
+
+  &-icon {
+    position: absolute;
+    top: 50%;
+    left: 24px;
+    transform: translate(-24%, -50%);
+    color: var(--tly-gray-light);
+  }
+}

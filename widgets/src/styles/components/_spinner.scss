@@ -9,7 +9,7 @@ $block: 'tly-spinner';
     border: 2.5px solid var(--tly-gray-lighter);
     border-top-color: var(--tly-secondary-bg);
     border-radius: 50%;
-    animation: spinner 1s ease-in-out infinite alternate;
+    animation: spinner 0.8s ease-in-out infinite alternate;
 
     &--is-small {
       width: 30px;
@@ -22,7 +22,7 @@ $block: 'tly-spinner';
   }
 
   &-wrapper {
-    background-color: rgba(var(--tly-white), 0.8);
+    background-color: rgba(white, 0.9);
     align-items: center;
     position: absolute;
     top: 0;
@@ -36,6 +36,8 @@ $block: 'tly-spinner';
     animation: loading 4s linear forwards infinite;
     opacity: 1;
     flex-direction: column;
+    cursor: not-allowed;
+    user-select: none;
 
     &--is-small {
       background-color: transparent;

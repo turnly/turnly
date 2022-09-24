@@ -4,14 +4,12 @@ import shallow from 'zustand/shallow'
 
 type Store = {
   isLoading: boolean
-  startLoading: () => void
-  stopLoading: () => void
+  setLoading: (isLoading: boolean) => void
 }
 
 const useStore = create<Store>(set => ({
   isLoading: false,
-  startLoading: () => set(() => ({ isLoading: true })),
-  stopLoading: () => set(() => ({ isLoading: true })),
+  setLoading: isLoading => set(() => ({ isLoading })),
 }))
 
 export const useLoading = () =>
