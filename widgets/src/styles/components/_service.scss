@@ -1,0 +1,35 @@
+$block: 'tly-service';
+
+.#{$block} {
+  border: 1px solid #e4e7eb;
+  border-radius: 6px;
+  padding: 10px;
+
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  &-content {
+    width: 100%;
+  }
+
+  &-content-details {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex: 1;
+  }
+
+  &-content-icon {
+    justify-self: flex-end;
+  }
+
+  &--is-disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &--is-success {
+    border-color: var(--tly-green-light);
+  }
+}
