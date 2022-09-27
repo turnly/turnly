@@ -4,6 +4,7 @@ import { useTranslation } from '../localization'
 import { Navigator, Screen, SCREEN_NAMES } from '../navigation'
 import { HomeScreen } from '../screens/home'
 import { LocationsScreen } from '../screens/locations'
+import { ServicesScreen } from '../screens/services'
 import { TakeTicketScreen } from '../screens/take-ticket'
 import { TicketDetailsScreen } from '../screens/ticket-details'
 
@@ -30,6 +31,11 @@ export const Router = () => {
         title={translate('tickets.title')}
         name={SCREEN_NAMES.TICKET_DETAILS}
         component={TicketDetailsScreen}
+      />
+      <Screen
+        title={translate('services.title')}
+        name={SCREEN_NAMES.SERVICES}
+        component={ServicesScreen}
       />
     </Navigator>
   )

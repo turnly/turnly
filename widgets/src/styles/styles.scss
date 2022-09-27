@@ -18,10 +18,12 @@
 @import 'components/layout-screen';
 @import 'components/transaction';
 @import 'components/order';
+@import 'components/service';
 
 @import 'screens/home';
 @import 'screens/take-ticket';
 @import 'screens/ticket-details';
+@import 'screens/services';
 
 * {
   box-sizing: border-box;
