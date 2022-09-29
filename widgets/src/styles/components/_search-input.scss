@@ -5,11 +5,14 @@ $block: 'tly-search-input';
   border-bottom: solid 1px var(--tly-default-border-color);
   padding: 16px 24px 16px 46px;
   width: 100%;
-  font-size: 16px;
+  font-size: 14px;
   color: var(--tly-gray);
   min-height: 46px;
   transition: all 0.2s ease-in-out;
   outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 
   &::-webkit-input-placeholder,
   &:-ms-input-placeholder,
@@ -40,6 +43,10 @@ $block: 'tly-search-input';
   &-container {
     position: relative;
     margin: 0 -24px;
+
+    .tly-spinner-content {
+      border-top-color: var(--tly-secondary-bg);
+    }
   }
 
   &-icon {
