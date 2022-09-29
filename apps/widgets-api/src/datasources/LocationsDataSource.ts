@@ -37,6 +37,8 @@ export class LocationsDataSource extends DataSource {
   }) {
     const { dataList: locations, meta } = await Locations.find({
       ...params,
+      latitude: params.latitude.toString(),
+      longitude: params.longitude.toString(),
       findQuery: params.searchQuery,
     })
 
