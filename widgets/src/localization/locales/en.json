@@ -32,6 +32,7 @@
     "labels": {
       "nearby": "Nearby locations",
       "other_locations": "Other locations",
+      "recent": "Recent activity",
       "search": "Search...",
       "search_hint": "Search by name or address",
       "search_error": "Error searching for locations",

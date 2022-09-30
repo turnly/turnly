@@ -41,8 +41,11 @@ $block: 'tly-search-input';
   }
 
   &-container {
-    position: relative;
+    position: sticky;
+    top: 0;
     margin: 0 -24px;
+    z-index: 1;
+    background-color: var(--tly-white);
 
     .tly-spinner-content {
       border-top-color: var(--tly-secondary-bg);

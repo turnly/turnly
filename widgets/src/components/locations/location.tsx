@@ -19,9 +19,9 @@ export interface LocationProps
 
 export const Location = ({ data: { name, address }, icon }: LocationProps) => {
   return (
-    <div className="tly-location__item">
-      <div className="tly-location__item-icon" {...{ children: icon }} />
-      <div className="tly-location__item-content">
+    <div className="tly-locations__item" title={name}>
+      <div className="tly-locations__item-icon" {...{ children: icon }} />
+      <div className="tly-locations__item-content">
         <Title level={4} hasGaps={false} {...{ children: name }} />
         <Text hasGaps={false} {...{ children: address }} />
       </div>

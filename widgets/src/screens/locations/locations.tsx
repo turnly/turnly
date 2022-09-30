@@ -1,4 +1,5 @@
 import { Fragment, h } from 'preact'
+import { HiOutlineClock, HiOutlinePaperAirplane } from 'react-icons/hi'
 
 import { SearchInput } from '../../components/form/search-input'
 import { Locations } from '../../components/locations'
@@ -7,7 +8,7 @@ import { useTranslation } from '../../localization'
 
 export const LocationsScreen = () => {
   const { translate } = useTranslation()
-  const { data, isLoading, refetch } = useLocationsQuery()
+  const { locations, hasLocations, isLoading, refetch } = useLocationsQuery()
 
   // Get device location with useGeolocation()
   // Set the last selected location with zustand and show it
@@ -21,53 +22,32 @@ export const LocationsScreen = () => {
           onSearchChange={searchQuery => refetch({ searchQuery })}
         />
 
-        <div className="tly-locations__container">
-          <Locations
-            title="Recent activity"
-            icon={<div />}
-            locations={[
-              {
-                id: 'loc_BGbNQAAlThd0JgiuxxHcW',
-                name: 'Main Office',
-                address: '963 W. Belmont Ave. Chicago, IL 606',
-                country: 'USA',
-                longitude: 2.1540000438690186,
-                latitude: 4.235000133514,
-              },
-            ]}
-          />
+        {hasLocations && (
+          <div className="tly-locations__container">
+            <Locations
+              title={translate('locations.labels.recent')}
+              icon={<HiOutlineClock />}
+              locations={
+                [
+                  /**
+                   * @todo Add Current Location
+                   */
+                ]
+              }
+            />
 
-          <Locations
-            title="Nearby locations"
-            icon={<div />}
-            locations={[
-              {
-                id: 'loc_BGbNQAAlThd0JgiuxxHcW',
-                name: 'Main Office Office space rentals Office space rentals',
-                address: '963 W. Belmont Ave. Chicago, IL 606',
-                country: 'USA',
-                longitude: 2.1540000438690186,
-                latitude: 4.235000133514,
-              },
-              ...data.nearby,
-            ]}
-          />
+            <Locations
+              title={translate('locations.labels.nearby')}
+              icon={<HiOutlinePaperAirplane />}
+              locations={locations.nearby}
+            />
 
-          <Locations
-            title="Other locations"
-            locations={[
-              {
-                id: 'loc_BGbNQAAlThd0JgiuxxHcW',
-                name: 'Office space rentals',
-                address: '963 W. Belmont Ave. Chicago, IL 606',
-                country: 'USA',
-                longitude: 2.1540000438690186,
-                latitude: 4.235000133514,
-              },
-              ...data.locations,
-            ]}
-          />
-        </div>
+            <Locations
+              title={translate('locations.labels.other_locations')}
+              locations={locations.others}
+            />
+          </div>
+        )}
       </div>
     </Fragment>
   )
