@@ -27,10 +27,10 @@ export const Service = ({
     'tly-service--is-disabled': disabled,
   })
 
-  const classess = clsx(styles, attributes.className)
+  const classes = clsx(styles, attributes.className)
 
   return (
-    <div className={classess} onClick={disabled ? onClick : undefined}>
+    <div className={classes} onClick={disabled ? onClick : undefined}>
       <div className="tly-service-content">
         <Title hasGaps={false}>{title}</Title>
         <div className="tly-service-content-details">

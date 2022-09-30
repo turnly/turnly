@@ -17,14 +17,23 @@ export const useLocationsQuery = (
     refetch,
   } = useQuery({ ...options, notifyOnNetworkStatusChange: true })
 
-  const locations = useMemo(() => data?.findLocations ?? [], [data])
-  const nearby = useMemo(() => locations.slice(0, 3), [locations])
+  const nearby = useMemo(() => (data?.findLocations ?? []).slice(0, 3), [data])
+  const others = useMemo(
+    () => (data?.findLocations ?? []).filter(l => !nearby.includes(l)),
+    [data]
+  )
+
+  const hasLocations = useMemo(
+    () => Boolean(nearby.length || others.length),
+    [data]
+  )
 
   return {
-    data: {
+    locations: {
       nearby,
-      locations: locations.filter(l => !nearby.includes(l)),
+      others,
     },
+    hasLocations,
     error,
     isLoading,
     refetch,
