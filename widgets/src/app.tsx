@@ -4,6 +4,7 @@ import 'react-phone-input-2/lib/bootstrap.css'
 
 import { Fragment, h } from 'preact'
 import { lazy, Suspense } from 'preact/compat'
+import { IconContext } from 'react-icons'
 
 import { AppPortal } from './components/app-portal'
 import { LauncherPortal } from './components/launcher'
@@ -22,7 +23,9 @@ const App = () => {
     <Fragment>
       <AppPortal>
         <Suspense fallback={<Loading />}>
-          <AppContainer />
+          <IconContext.Provider value={{ sise: 24, cursor: 'pointer' }}>
+            <AppContainer />
+          </IconContext.Provider>
         </Suspense>
       </AppPortal>
       <LauncherPortal />

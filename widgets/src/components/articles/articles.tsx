@@ -15,7 +15,7 @@ export const Articles = () => {
         title={translate('home.articles.take_a_ticket.title')}
         description={translate('home.articles.take_a_ticket.description')}
         buttonText={translate('home.articles.take_a_ticket.button_text')}
-        buttonProps={{ onClick: () => navigate(SCREEN_NAMES.SERVICES) }}
+        buttonProps={{ onClick: () => navigate(SCREEN_NAMES.TICKET_DETAILS) }}
       />
       <Article
         title={translate('home.articles.get_turnly.title')}
