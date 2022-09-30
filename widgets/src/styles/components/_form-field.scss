@@ -3,4 +3,9 @@ $block: 'tly-form-field';
 .#{$block} {
   display: grid;
   gap: 0.5rem;
+  width: 100%;
+
+  &--is-column {
+    display: flex;
+  }
 }

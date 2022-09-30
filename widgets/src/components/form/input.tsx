@@ -10,11 +10,20 @@ export interface InputProps extends JSX.HTMLAttributes<HTMLInputElement> {
   textError: string
   isIcon: boolean
   iconRight: JSX.Element
+  onIconClick: () => void
 }
 
 export const Input = forwardRef<HTMLInputElement, Partial<InputProps>>(
   (
-    { isDanger = false, textError, isIcon, iconRight, disabled, ...attributes },
+    {
+      isDanger = false,
+      textError,
+      isIcon,
+      iconRight,
+      disabled,
+      onIconClick,
+      ...attributes
+    },
     ref
   ) => {
     const styles = clsx({
@@ -36,7 +45,7 @@ export const Input = forwardRef<HTMLInputElement, Partial<InputProps>>(
           />
 
           {isIcon && (
-            <div className="tly-input-icon">
+            <div className="tly-input-icon" onClick={onIconClick}>
               {!iconRight ? <AiOutlineQuestionCircle /> : iconRight}
             </div>
           )}

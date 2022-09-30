@@ -4,6 +4,7 @@ import { Button } from '../../components/button'
 import { CurrentLocation } from '../../components/current-location'
 import { FooterScreen, HeaderScreen } from '../../components/layouts/screen'
 import { Order } from '../../components/order'
+import { Rating } from '../../components/rating'
 import { Transaction } from '../../components/transaction'
 import { Text, Title } from '../../components/typography'
 import { useTranslation } from '../../localization'
@@ -13,6 +14,12 @@ export const TicketDetailsScreen = () => {
 
   return (
     <Fragment>
+      <Rating
+        onCallback={(rating, experience) =>
+          console.log(`${rating} - ${experience}`)
+        }
+      />
+
       <div className="tly-home">
         <HeaderScreen>
           <CurrentLocation

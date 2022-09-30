@@ -1,0 +1,39 @@
+$block: 'tly-rating';
+
+.#{$block} {
+  position: absolute;
+  bottom: 0;
+  background-color: #f7f7f7;
+  width: 100%;
+  padding: 20px;
+  box-shadow: 0px 12px 12px #00000014;
+  border-radius: 18px 18px 4px 4px;
+
+  display: flex;
+  flex-direction: column;
+
+  &-container {
+    position: relative;
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    background-color: #0000007b;
+  }
+
+  &-options {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  &-btn {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+  }
+}

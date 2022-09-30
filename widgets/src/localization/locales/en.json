@@ -78,6 +78,9 @@
     "arrived": {
       "title": "Ahoy {{name}}, welcome to {{location}}",
       "description": "Wait a moment while the agent prepares to call you at the desk."
+    },
+    "rating": {
+      "title": "How was your experience with the location?"
     }
   },
   "continue": "Continue",
