@@ -14,6 +14,7 @@ export interface Appearance {
 
 export interface General {
   locale: string
+  country: string
   disableTelemetry: boolean
 }
 

@@ -4,14 +4,16 @@ import { HiOutlineClock, HiOutlinePaperAirplane } from 'react-icons/hi'
 import { SearchInput } from '../../components/form/search-input'
 import { Locations } from '../../components/locations'
 import { useLocationsQuery } from '../../graphql/hooks/use-locations-query'
+import { useCurrentLocation } from '../../hooks/use-current-location'
 import { useTranslation } from '../../localization'
 
 export const LocationsScreen = () => {
   const { translate } = useTranslation()
+  const { ...currentLocation } = useCurrentLocation()
+
   const { locations, hasLocations, isLoading, refetch } = useLocationsQuery()
 
   // Get device location with useGeolocation()
-  // Set the last selected location with zustand and show it
 
   return (
     <Fragment>
@@ -27,13 +29,7 @@ export const LocationsScreen = () => {
             <Locations
               title={translate('locations.labels.recent')}
               icon={<HiOutlineClock />}
-              locations={
-                [
-                  /**
-                   * @todo Add Current Location
-                   */
-                ]
-              }
+              locations={currentLocation?.id ? [currentLocation] : []}
             />
 
             <Locations

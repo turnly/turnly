@@ -51,6 +51,7 @@ const useStore = create<SettingsStore>()(
       },
       general: {
         locale: '',
+        country: '',
         disableTelemetry: false,
       },
       about: {

@@ -1,6 +1,7 @@
 import * as Apollo from '@apollo/client'
 import { useMemo } from 'preact/hooks'
 
+import { Notifier } from '../../components/notification'
 import {
   LocationsQuery as Query,
   LocationsQueryVariables as Variables,
@@ -15,7 +16,11 @@ export const useLocationsQuery = (
     error,
     loading: isLoading,
     refetch,
-  } = useQuery({ ...options, notifyOnNetworkStatusChange: true })
+  } = useQuery({
+    ...options,
+    notifyOnNetworkStatusChange: true,
+    onError: error => Notifier.error(error.message),
+  })
 
   const nearby = useMemo(() => (data?.findLocations ?? []).slice(0, 3), [data])
   const others = useMemo(

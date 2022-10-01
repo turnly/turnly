@@ -49,8 +49,8 @@ export type LocationModel = {
   address: Scalars['String'];
   country: Scalars['String'];
   id: Scalars['ID'];
-  latitude: Scalars['Float'];
-  longitude: Scalars['Float'];
+  latitude: Scalars['String'];
+  longitude: Scalars['String'];
   name: Scalars['String'];
 };
 
@@ -87,9 +87,9 @@ export type Query = {
 
 export type QueryFindLocationsArgs = {
   country?: InputMaybe<Scalars['String']>;
-  latitude?: InputMaybe<Scalars['Float']>;
+  latitude: Scalars['String'];
   limit?: InputMaybe<Scalars['Int']>;
-  longitude?: InputMaybe<Scalars['Float']>;
+  longitude: Scalars['String'];
   offset?: InputMaybe<Scalars['Int']>;
   searchQuery?: InputMaybe<Scalars['ID']>;
 };
@@ -150,14 +150,14 @@ export type GetLocationServicesQuery = { __typename?: 'Query', getLocationServic
 export type LocationsQueryVariables = Exact<{
   searchQuery?: InputMaybe<Scalars['ID']>;
   country?: InputMaybe<Scalars['String']>;
-  latitude?: InputMaybe<Scalars['Float']>;
-  longitude?: InputMaybe<Scalars['Float']>;
+  latitude: Scalars['String'];
+  longitude: Scalars['String'];
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
 }>;
 
 
-export type LocationsQuery = { __typename?: 'Query', findLocations: Array<{ __typename?: 'LocationModel', id: string, name: string, address: string, country: string, longitude: number, latitude: number }> };
+export type LocationsQuery = { __typename?: 'Query', findLocations: Array<{ __typename?: 'LocationModel', id: string, name: string, address: string, country: string, longitude: string, latitude: string }> };
 
 export type GetServiceFieldsQueryVariables = Exact<{
   serviceId: Scalars['ID'];
@@ -171,7 +171,7 @@ export type GetTicketQueryVariables = Exact<{
 }>;
 
 
-export type GetTicketQuery = { __typename?: 'Query', getTicket: { __typename?: 'TicketModel', id: string, status: string, displayCode: string, beforeYours: number, calledToDesk?: string | null, customerId: string, service: { __typename?: 'ServiceModel', name: string, description?: string | null }, location: { __typename?: 'LocationModel', name: string, address: string, longitude: number, latitude: number } } };
+export type GetTicketQuery = { __typename?: 'Query', getTicket: { __typename?: 'TicketModel', id: string, status: string, displayCode: string, beforeYours: number, calledToDesk?: string | null, customerId: string, service: { __typename?: 'ServiceModel', name: string, description?: string | null }, location: { __typename?: 'LocationModel', name: string, address: string, longitude: string, latitude: string } } };
 
 
 export const GetLocationServicesDocument = gql`
@@ -214,7 +214,7 @@ export type GetLocationServicesQueryHookResult = ReturnType<typeof useGetLocatio
 export type GetLocationServicesLazyQueryHookResult = ReturnType<typeof useGetLocationServicesLazyQuery>;
 export type GetLocationServicesQueryResult = Apollo.QueryResult<GetLocationServicesQuery, GetLocationServicesQueryVariables>;
 export const LocationsDocument = gql`
-    query Locations($searchQuery: ID, $country: String, $latitude: Float, $longitude: Float, $limit: Int, $offset: Int) {
+    query Locations($searchQuery: ID, $country: String, $latitude: String!, $longitude: String!, $limit: Int, $offset: Int) {
   findLocations(
     searchQuery: $searchQuery
     country: $country
@@ -254,7 +254,7 @@ export const LocationsDocument = gql`
  *   },
  * });
  */
-export function useLocationsQuery(baseOptions?: Apollo.QueryHookOptions<LocationsQuery, LocationsQueryVariables>) {
+export function useLocationsQuery(baseOptions: Apollo.QueryHookOptions<LocationsQuery, LocationsQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
         return Apollo.useQuery<LocationsQuery, LocationsQueryVariables>(LocationsDocument, options);
       }

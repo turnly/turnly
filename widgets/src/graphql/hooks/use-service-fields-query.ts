@@ -1,5 +1,6 @@
 import * as Apollo from '@apollo/client'
 
+import { Notifier } from '../../components/notification'
 import {
   GetServiceFieldsQuery as Query,
   GetServiceFieldsQueryVariables as Variables,
@@ -9,7 +10,11 @@ import {
 export const useServiceFieldsQuery = (
   options: Apollo.QueryHookOptions<Query, Variables>
 ) => {
-  const { data, error, loading: isLoading } = useQuery(options)
+  const {
+    data,
+    error,
+    loading: isLoading,
+  } = useQuery({ ...options, onError: error => Notifier.error(error.message) })
 
   return {
     data: data?.getServiceFields ?? [],
