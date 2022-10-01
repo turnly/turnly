@@ -1,4 +1,5 @@
 import { Fragment, h } from 'preact'
+import { useState } from 'preact/hooks'
 
 import { Button } from '../../components/button'
 import { CurrentLocation } from '../../components/current-location'
@@ -11,6 +12,7 @@ import { useTranslation } from '../../localization'
 
 export const TicketDetailsScreen = () => {
   const { translate } = useTranslation()
+  const [isShowing, setIsShowing] = useState(false)
 
   return (
     <Fragment>
@@ -18,6 +20,7 @@ export const TicketDetailsScreen = () => {
         onCallback={(rating, experience) =>
           console.log(`${rating} - ${experience}`)
         }
+        isShowing={isShowing}
       />
 
       <div className="tly-home">
@@ -44,7 +47,7 @@ export const TicketDetailsScreen = () => {
           </div>
 
           <div className="tly-ticket-details-buttons">
-            <Button isOutline isSecondary>
+            <Button isOutline isSecondary onClick={() => setIsShowing(p => !p)}>
               {translate('tickets.leave.button_text')}
             </Button>
             <Button>{translate('tickets.announce.button_text')}</Button>

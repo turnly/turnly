@@ -1,3 +1,4 @@
+import clsx from 'clsx'
 import { h, JSX } from 'preact'
 import { useState } from 'preact/hooks'
 import { AiFillCheckCircle } from 'react-icons/ai'
@@ -11,16 +12,22 @@ export type RatingCallback = (rating: number, text: string) => void
 
 export interface RatingProps extends JSX.HTMLAttributes<HTMLDivElement> {
   onCallback: RatingCallback
+  isShowing: boolean
 }
 
-export const Rating = ({ onCallback }: RatingProps) => {
+export const Rating = ({ isShowing, onCallback }: RatingProps) => {
   const { translate } = useTranslation()
   const [rating, setRating] = useState(0)
   const [hover, setHover] = useState(0)
   const [isExperience, setIsExperience] = useState(false)
 
+  const classes = clsx({
+    ['tly-rating-container']: true,
+    ['tly-rating--is-open']: isShowing,
+  })
+
   return (
-    <div className="tly-rating-container">
+    <div className={classes}>
       <div className="tly-rating">
         <Title>{translate('tickets.rating.title')}</Title>
 
