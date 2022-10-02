@@ -1,4 +1,5 @@
 import { Fragment, h } from 'preact'
+import { useState } from 'preact/hooks'
 import { HiOutlineClock, HiOutlinePaperAirplane } from 'react-icons/hi'
 
 import { SearchInput } from '../../components/form/search-input'
@@ -11,6 +12,7 @@ export const LocationsScreen = () => {
   const { translate } = useTranslation()
   const { ...currentLocation } = useCurrentLocation()
 
+  const [search, setSearch] = useState('')
   const { locations, hasLocations, isLoading, refetch } = useLocationsQuery()
 
   // Get device location with useGeolocation()
@@ -21,16 +23,21 @@ export const LocationsScreen = () => {
         <SearchInput
           placeholder={translate('locations.labels.search')}
           isLoading={isLoading}
-          onSearchChange={searchQuery => refetch({ searchQuery })}
+          onSearchChange={searchQuery => {
+            setSearch(searchQuery)
+            refetch({ searchQuery })
+          }}
         />
 
         {hasLocations && (
           <div className="tly-locations__container">
-            <Locations
-              title={translate('locations.labels.recent')}
-              icon={<HiOutlineClock />}
-              locations={currentLocation?.id ? [currentLocation] : []}
-            />
+            {!search && (
+              <Locations
+                title={translate('locations.labels.recent')}
+                icon={<HiOutlineClock />}
+                locations={currentLocation?.id ? [currentLocation] : []}
+              />
+            )}
 
             <Locations
               title={translate('locations.labels.nearby')}
