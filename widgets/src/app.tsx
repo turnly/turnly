@@ -23,7 +23,7 @@ const App = () => {
     <Fragment>
       <AppPortal>
         <Suspense fallback={<Loading />}>
-          <IconContext.Provider value={{ sise: 24, cursor: 'pointer' }}>
+          <IconContext.Provider value={{ cursor: 'pointer' }}>
             <AppContainer />
           </IconContext.Provider>
         </Suspense>

@@ -5,17 +5,18 @@ import { AiFillCheckCircle } from 'react-icons/ai'
 import { Text, Title } from '../../components/typography'
 
 export interface ServiceProps extends JSX.HTMLAttributes<HTMLDivElement> {
-  title: string
-  status: string
-  tickets: number
-  onClick: () => void
+  id: string
+  name: string
+  description?: string | null
+  locationId: string
+  ticketsWaiting: number
+  onClick?: () => void
   isSuccess?: boolean
 }
 
 export const Service = ({
-  title,
-  status,
-  tickets,
+  name,
+  ticketsWaiting,
   onClick,
   isSuccess,
   disabled,
@@ -33,13 +34,13 @@ export const Service = ({
     <div className={classes} onClick={disabled ? onClick : undefined}>
       <div className="tly-service-content">
         <Title hasGaps={false} level={4} isFontMedium>
-          {title}
+          {name}
         </Title>
         <div className="tly-service-content-details">
           <Title level={5} hasGaps={false} isGray>
-            {tickets}
+            {ticketsWaiting}
           </Title>
-          <Text hasGaps={false}>{status}</Text>
+          <Text hasGaps={false}>Tickets ahead</Text>
         </div>
       </div>
 
