@@ -6,7 +6,7 @@
  */
 import { Guid } from '@turnly/common'
 import { AbstractRealtimeHandler, IRealtimeChannel } from '@turnly/realtime'
-import { Event, EventPayload } from '@turnly/shared'
+import { Event, EventPayload, EventType } from '@turnly/shared'
 import { BroadcastableEvents } from 'broadcasting/broadcastableEvents'
 import { RealtimeEvents } from 'broadcasting/realtimeEvents'
 
@@ -24,7 +24,7 @@ export class RealtimeForCustomersHandler extends AbstractRealtimeHandler<
   }
 
   public handle(event: Event<Payload>, channel: IRealtimeChannel): void {
-    const message =
+    const name =
       event.getName() === BroadcastableEvents.TICKET_CREATED
         ? RealtimeEvents.SERVICE_TICKETS_AHEAD
         : RealtimeEvents.SERVICE_TICKETS_BEHIND
@@ -32,9 +32,17 @@ export class RealtimeForCustomersHandler extends AbstractRealtimeHandler<
     const payload = {
       locationId: event.payload.locationId,
       serviceId: event.payload.serviceId,
+      organizationId: event.payload.organizationId,
     }
 
-    channel.to(payload.locationId).emit(message, payload)
+    channel.to(payload.locationId).emit(
+      name,
+      Event.fromObject({
+        type: EventType.INFO,
+        name,
+        payload,
+      })
+    )
   }
 
   private static getEvents(): BroadcastableEvents[] {

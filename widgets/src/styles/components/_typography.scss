@@ -74,6 +74,14 @@ $block: 'tly-typography';
       font-size: 14px;
     }
 
+    &--is-font-medium {
+      font-weight: 500;
+    }
+
+    &--is-gray {
+      color: var(--tly-gray);
+    }
+
     &--is-upper {
       text-transform: uppercase;
     }

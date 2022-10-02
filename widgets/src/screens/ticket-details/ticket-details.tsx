@@ -2,7 +2,6 @@ import { Fragment, h } from 'preact'
 import { useState } from 'preact/hooks'
 
 import { Button } from '../../components/button'
-import { CurrentLocation } from '../../components/current-location'
 import { FooterScreen, HeaderScreen } from '../../components/layouts/screen'
 import { Order } from '../../components/order'
 import { Rating } from '../../components/rating'
@@ -25,11 +24,6 @@ export const TicketDetailsScreen = () => {
 
       <div className="tly-home">
         <HeaderScreen>
-          <CurrentLocation
-            title="Office space rentals"
-            description="963 W. Belmont Ave. Chicago IL 608"
-          />
-
           <Transaction
             idTransaction="a074"
             typeTransaction="cash transaction"

@@ -13,6 +13,9 @@ import { useVisibility } from './use-visibility'
 export enum RealtimeEvents {
   CONNECTED = 'connected',
   CONNECT_ERROR = 'connect_error',
+  SUBSCRIBE = 'subscribe',
+  SERVICE_TICKETS_AHEAD = 'service.tickets.ahead',
+  SERVICE_TICKETS_BEHIND = 'service.tickets.behind',
 }
 
 type Store = {

@@ -8,6 +8,8 @@ export interface TitleProps extends JSX.HTMLAttributes<HTMLHeadingElement> {
   isDisabled: boolean
   isDanger: boolean
   isWarning: boolean
+  isFontMedium: boolean
+  isGray: boolean
 }
 
 export const Title = ({
@@ -17,6 +19,8 @@ export const Title = ({
   isDisabled,
   isDanger,
   isWarning,
+  isGray,
+  isFontMedium,
   ...attributes
 }: Partial<TitleProps>) => {
   const styles = clsx({
@@ -26,6 +30,8 @@ export const Title = ({
     ['tly-typography-title--is-disabled']: isDisabled,
     ['tly-typography-title--is-danger']: isDanger,
     ['tly-typography-title--is-warning']: isWarning,
+    ['tly-typography-title--is-gray']: isGray,
+    ['tly-typography-title--is-font-medium']: isFontMedium,
     ['tly-typography-title--is-h1']: level === 1,
     ['tly-typography-title--is-h2']: level === 2,
     ['tly-typography-title--is-h3']: level === 3,

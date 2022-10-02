@@ -32,9 +32,11 @@ export const Service = ({
   return (
     <div className={classes} onClick={disabled ? onClick : undefined}>
       <div className="tly-service-content">
-        <Title hasGaps={false}>{title}</Title>
+        <Title hasGaps={false} level={4} isFontMedium>
+          {title}
+        </Title>
         <div className="tly-service-content-details">
-          <Title level={4} hasGaps={false}>
+          <Title level={5} hasGaps={false} isGray>
             {tickets}
           </Title>
           <Text hasGaps={false}>{status}</Text>

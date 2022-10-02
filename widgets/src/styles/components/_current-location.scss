@@ -1,5 +1,10 @@
 $block: 'tly-current-location';
 
+@keyframes pulse{
+  25%  {transform: scale(0.8);}
+  75%  {transform: scale(1.1);}
+}
+
 .#{$block} {
   max-width: 270px;
   border: 1px solid var(--tly-default-border-color);
@@ -11,14 +16,26 @@ $block: 'tly-current-location';
   box-shadow: 0px 6px 6px #0000000f;
   cursor: pointer;
 
+  &,
+  &-button {
+    transition: all 0.2s ease-in-out;
+  }
+
+  &:hover {
+    .#{$block}-button {
+      background-color: lighten(#2485BA, 50);
+      animation: pulse 1s ease-in-out;
+    }
+  }
+
   &-button {
     padding: 12px;
     background-color: #2485ba10;
     border-radius: 100%;
-
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 18px;
   }
 
   &-details {

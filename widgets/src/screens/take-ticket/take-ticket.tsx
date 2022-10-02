@@ -1,7 +1,6 @@
 import { Fragment, h } from 'preact'
 
 import { Button } from '../../components/button'
-import { CurrentLocation } from '../../components/current-location'
 import { Form, FormField, Input, PhoneInput } from '../../components/form'
 import { FooterScreen, HeaderScreen } from '../../components/layouts/screen'
 import { Text, Title } from '../../components/typography'
@@ -15,12 +14,7 @@ export const TakeTicketScreen = () => {
   return (
     <Fragment>
       <div className="tly-home">
-        <HeaderScreen>
-          <CurrentLocation
-            title="Office space rentals"
-            description="963 W. Belmont Ave. Chicago IL 608"
-          />
-        </HeaderScreen>
+        <HeaderScreen />
 
         <div className="tly-take-ticket-body">
           <Title>{translate('fields.labels.hint')}</Title>
