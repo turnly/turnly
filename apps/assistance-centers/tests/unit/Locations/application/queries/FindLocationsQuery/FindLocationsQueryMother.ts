@@ -20,13 +20,13 @@ export class FindLocationsQueryMother {
     organizationId: Guid = ObjectMother.uuid('org')
   ): FindLocationsQuery {
     return new FindLocationsQuery(
+      organizationId,
       searchQuery,
       country,
-      latitude,
-      longitude,
       limit,
       offset,
-      organizationId
+      latitude,
+      longitude
     )
   }
 

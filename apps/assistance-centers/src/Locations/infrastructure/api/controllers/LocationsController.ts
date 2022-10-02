@@ -39,13 +39,13 @@ export class LocationsController extends Controller {
   public async find(params: FindLocationsQuery) {
     const locations = await this.queryBus.ask<Nullable<Location[]>>(
       new FindLocationsQuery(
+        params.organizationId,
         params.searchQuery,
         params.country,
-        params.latitude,
-        params.longitude,
         params.limit,
         params.offset,
-        params.organizationId
+        params.latitude,
+        params.longitude
       )
     )
 

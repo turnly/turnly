@@ -87,9 +87,9 @@ export type Query = {
 
 export type QueryFindLocationsArgs = {
   country?: InputMaybe<Scalars['String']>;
-  latitude: Scalars['String'];
+  latitude?: InputMaybe<Scalars['String']>;
   limit?: InputMaybe<Scalars['Int']>;
-  longitude: Scalars['String'];
+  longitude?: InputMaybe<Scalars['String']>;
   offset?: InputMaybe<Scalars['Int']>;
   searchQuery?: InputMaybe<Scalars['ID']>;
 };
@@ -150,8 +150,8 @@ export type GetLocationServicesQuery = { __typename?: 'Query', getLocationServic
 export type LocationsQueryVariables = Exact<{
   searchQuery?: InputMaybe<Scalars['ID']>;
   country?: InputMaybe<Scalars['String']>;
-  latitude: Scalars['String'];
-  longitude: Scalars['String'];
+  latitude?: InputMaybe<Scalars['String']>;
+  longitude?: InputMaybe<Scalars['String']>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
 }>;
@@ -214,7 +214,7 @@ export type GetLocationServicesQueryHookResult = ReturnType<typeof useGetLocatio
 export type GetLocationServicesLazyQueryHookResult = ReturnType<typeof useGetLocationServicesLazyQuery>;
 export type GetLocationServicesQueryResult = Apollo.QueryResult<GetLocationServicesQuery, GetLocationServicesQueryVariables>;
 export const LocationsDocument = gql`
-    query Locations($searchQuery: ID, $country: String, $latitude: String!, $longitude: String!, $limit: Int, $offset: Int) {
+    query Locations($searchQuery: ID, $country: String, $latitude: String, $longitude: String, $limit: Int, $offset: Int) {
   findLocations(
     searchQuery: $searchQuery
     country: $country
@@ -254,7 +254,7 @@ export const LocationsDocument = gql`
  *   },
  * });
  */
-export function useLocationsQuery(baseOptions: Apollo.QueryHookOptions<LocationsQuery, LocationsQueryVariables>) {
+export function useLocationsQuery(baseOptions?: Apollo.QueryHookOptions<LocationsQuery, LocationsQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
         return Apollo.useQuery<LocationsQuery, LocationsQueryVariables>(LocationsDocument, options);
       }

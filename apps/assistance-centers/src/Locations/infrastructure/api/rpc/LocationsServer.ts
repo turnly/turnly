@@ -51,8 +51,8 @@ export class LocationsServer extends Producers.ServerImplementation<Producers.As
     const { data, meta } = await this.locationsController.find({
       searchQuery: call.request.getFindQuery(),
       country: call.request.getCountry(),
-      latitude: parseFloat(call.request.getLatitude()),
-      longitude: parseFloat(call.request.getLongitude()),
+      latitude: parseFloat(call.request.getLatitude() || '0'),
+      longitude: parseFloat(call.request.getLongitude() || '0'),
       limit: call.request.getLimit(),
       offset: call.request.getOffset(),
       organizationId: Client.getOrganizationId(call),

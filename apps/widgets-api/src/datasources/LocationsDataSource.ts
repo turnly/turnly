@@ -27,22 +27,27 @@ export class LocationsDataSource extends DataSource {
     return location
   }
 
-  public async find(params: {
+  public async find({
+    searchQuery: findQuery,
+    latitude = '',
+    longitude = '',
+    ...params
+  }: {
     searchQuery: string
     country: string
-    latitude: number
-    longitude: number
+    latitude: string
+    longitude: string
     limit: number
     offset: number
   }) {
     const { dataList: locations, meta } = await Locations.find({
+      latitude,
+      longitude,
+      findQuery,
       ...params,
-      latitude: params.latitude.toString(),
-      longitude: params.longitude.toString(),
-      findQuery: params.searchQuery,
     })
 
-    if (!locations.length) throw new GraphException(meta)
+    if (!locations?.length) throw new GraphException(meta)
 
     return locations
   }

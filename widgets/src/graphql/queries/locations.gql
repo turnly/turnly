@@ -1,8 +1,8 @@
 query Locations(
   $searchQuery: ID
   $country: String
-  $latitude: String!
-  $longitude: String!
+  $latitude: String
+  $longitude: String
   $limit: Int
   $offset: Int
 ) {

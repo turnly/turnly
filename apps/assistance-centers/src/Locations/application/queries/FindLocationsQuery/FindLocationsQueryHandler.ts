@@ -29,18 +29,18 @@ export class FindLocationsQueryHandler
     offset,
   }: FindLocationsQuery) {
     const query = new QueryBuilder<Location>()
-      .equal('country', country)
       .equal('organizationId', organizationId)
-      .matches(['name', 'address', 'country'], searchQuery)
-      .orderByGeo('coordinates', { lat, lng })
       .orderByAlphabetical(['name'])
-      .getMany(offset, limit)
+
+    if (country) query.equal('country', country)
+    if (searchQuery) query.matches(['name', 'address', 'country'], searchQuery)
+    if (lat && lng) query.orderByGeo('coordinates', { lat, lng })
 
     /**
      * @todo Implement location status filter
      * @todo Add filters for open locations (Schedules and Holidays)
      */
 
-    return await this.locationsReadableRepo.find(query)
+    return await this.locationsReadableRepo.find(query.getMany(offset, limit))
   }
 }

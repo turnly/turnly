@@ -35,10 +35,10 @@ export class LocationsArgs {
   @Field(() => String, { nullable: true })
   country: string
 
-  @Field(() => String)
+  @Field(() => String, { nullable: true })
   latitude: string
 
-  @Field(() => String)
+  @Field(() => String, { nullable: true })
   longitude: string
 
   @Field(() => Int, { nullable: true })
