@@ -40,9 +40,12 @@ $block: 'tly-locations';
       justify-content: center;
       align-items: center;
       font-size: 24px;
-      padding: 0 16px 0 0;
+      padding: 16px;
       text-align: center;
-      color: var(--tly-secondary-bg);
+      color: var(--tly-gray);
+      background-color: var(--tly-gray-lighter);
+      border-radius: 8px;
+      margin-right: 16px;
     }
 
     &-content {
