@@ -29,7 +29,7 @@ $block: 'tly-service';
     cursor: not-allowed;
   }
 
-  &--is-success {
+  &--is-selected {
     border-color: var(--tly-green-light);
   }
 }
