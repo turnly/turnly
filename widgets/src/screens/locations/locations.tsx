@@ -15,7 +15,7 @@ export const LocationsScreen = () => {
   const [search, setSearch] = useState('')
   const { locations, hasLocations, isLoading, refetch } = useLocationsQuery()
 
-  // Get device location with useGeolocation()
+  // TODO: Get device location with useGeolocation()
 
   return (
     <Fragment>

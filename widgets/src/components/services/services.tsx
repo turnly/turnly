@@ -60,7 +60,7 @@ export const Services = ({ locationId }: ServicesProps) => {
   return (
     <div className="tly-services-list">
       {services.map(service => (
-        <Service key={service.id} {...service} />
+        <Service key={service.id} data={service} />
       ))}
     </div>
   )

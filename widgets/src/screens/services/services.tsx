@@ -5,6 +5,7 @@ import { FooterScreen, HeaderScreen } from '../../components/layouts/screen'
 import { Services } from '../../components/services'
 import { Title } from '../../components/typography'
 import { useCurrentLocation } from '../../hooks/use-current-location'
+import { useInternalState } from '../../hooks/use-internal-state'
 import { useTranslation } from '../../localization'
 import { SCREEN_NAMES, useNavigator } from '../../navigation'
 
@@ -12,6 +13,7 @@ export const ServicesScreen = () => {
   const { navigate } = useNavigator()
   const { translate } = useTranslation()
   const { id: locationId } = useCurrentLocation()
+  const { selectedService } = useInternalState()
 
   return (
     <Fragment>
@@ -28,7 +30,10 @@ export const ServicesScreen = () => {
 
         <FooterScreen>
           <div className="tly-ticket-details-buttons">
-            <Button onClick={() => navigate(SCREEN_NAMES.TAKE_TICKET)}>
+            <Button
+              onClick={() => navigate(SCREEN_NAMES.TAKE_TICKET)}
+              disabled={!selectedService}
+            >
               {translate('continue')}
             </Button>
           </div>
