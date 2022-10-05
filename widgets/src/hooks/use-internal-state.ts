@@ -5,7 +5,6 @@ import { immer } from 'zustand/middleware/immer'
 import shallow from 'zustand/shallow'
 
 import { ServiceParams } from '../components/services'
-import { Cookies } from '../libs/cookies'
 
 interface InternalStore {
   selectedService?: ServiceParams
@@ -21,12 +20,7 @@ const useStore = create<InternalStore>()(
           state['selectedService'] = service
         })
       },
-    })),
-    {
-      name: 'tly.services.current',
-      version: 1,
-      getStorage: () => Cookies,
-    }
+    }))
   )
 )
 
