@@ -13,6 +13,7 @@ describe('locations > domain > validates the min behavior in the life-cycle of a
       'id',
       'name',
       'address',
+      'status',
       'coordinates',
       'country',
       'stopServingBeforeInMinutes',

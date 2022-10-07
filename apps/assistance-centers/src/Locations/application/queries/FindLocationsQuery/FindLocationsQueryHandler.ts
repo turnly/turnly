@@ -8,6 +8,7 @@ import { Nullable } from '@turnly/common'
 import { IQueryHandler, QueryBuilder, QueryHandler } from '@turnly/shared'
 import { ILocationsReadableRepo } from 'Locations/domain/contracts/ILocationsRepo'
 import { Location } from 'Locations/domain/entities/Location'
+import { LocationStatus } from 'Locations/domain/enums/LocationStatus'
 
 import { FindLocationsQuery } from './FindLocationsQuery'
 
@@ -30,6 +31,7 @@ export class FindLocationsQueryHandler
   }: FindLocationsQuery) {
     const query = new QueryBuilder<Location>()
       .equal('organizationId', organizationId)
+      .equal('status', LocationStatus.COMPLETE)
       .orderByAlphabetical(['name'])
 
     if (country) query.equal('country', country)
@@ -37,7 +39,7 @@ export class FindLocationsQueryHandler
     if (lat && lng) query.orderByGeo('coordinates', { lat, lng })
 
     /**
-     * @todo Implement location status filter
+     * @todo Implement location status filter-- (Testing it)
      * @todo Add filters for open locations (Schedules and Holidays)
      */
 

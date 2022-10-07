@@ -7,6 +7,7 @@
 import { Guid, Identifier } from '@turnly/common'
 import { AggregateRoot, EntityAttributes } from '@turnly/shared'
 
+import { LocationStatus } from '../enums/LocationStatus'
 import { LocationCreatedEvent } from '../events/LocationCreatedEvent'
 
 /**
@@ -45,6 +46,13 @@ export class Location extends AggregateRoot {
      * @description The country of the Location.
      */
     private country: string,
+
+    /**
+     * Status
+     *
+     * @description The status of the Location.
+     */
+    private status: LocationStatus = LocationStatus.INCOMPLETE,
 
     /**
      * Coordinates
@@ -86,6 +94,7 @@ export class Location extends AggregateRoot {
       attributes.name,
       attributes.address,
       attributes.country,
+      attributes.status,
       attributes.coordinates,
       attributes.stopServingBeforeInMinutes,
       attributes.organizationId
@@ -107,6 +116,7 @@ export class Location extends AggregateRoot {
       attributes.name,
       attributes.address,
       attributes.country,
+      attributes.status,
       attributes.coordinates,
       attributes.stopServingBeforeInMinutes,
       attributes.organizationId
@@ -124,6 +134,7 @@ export class Location extends AggregateRoot {
       name: this.name,
       address: this.address,
       country: this.country,
+      status: this.status,
       coordinates: this.coordinates,
       organizationId: this.organizationId,
       stopServingBeforeInMinutes: this.stopServingBeforeInMinutes,

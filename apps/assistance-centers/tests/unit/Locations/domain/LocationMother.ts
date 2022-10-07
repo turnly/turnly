@@ -6,6 +6,7 @@
  */
 import { Guid } from '@turnly/common'
 import { ObjectMother } from '@turnly/testing'
+import { LocationStatus } from 'Locations/domain/enums/LocationStatus'
 
 import { LocationByIdQuery } from '../../../../src/Locations/application/queries/LocationByIdQuery'
 import { Location } from '../../../../src/Locations/domain/entities/Location'
@@ -14,6 +15,7 @@ export class LocationMother {
   static create(
     name: string = ObjectMother.names(),
     address: string = ObjectMother.word(),
+    status: LocationStatus = LocationStatus.COMPLETE,
     coordinates = ObjectMother.coords(),
     country: string = ObjectMother.names(),
     stopServingBeforeInMinutes: number = ObjectMother.integer(2),
@@ -23,6 +25,7 @@ export class LocationMother {
       organizationId,
       name,
       address,
+      status,
       coordinates,
       stopServingBeforeInMinutes,
       country,
