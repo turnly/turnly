@@ -25,6 +25,9 @@ const schema = new Schema(
     description: {
       type: String,
     },
+    placeholder: {
+      type: String,
+    },
     type: {
       type: String,
       enum: FieldTypes,
