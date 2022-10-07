@@ -13,11 +13,11 @@ export const ServicesScreen = () => {
   const { navigate } = useNavigator()
   const { translate } = useTranslation()
   const { id: locationId } = useCurrentLocation()
-  const { selectedService } = useInternalState()
+  const { service } = useInternalState()
 
   return (
     <Fragment>
-      <div className="tly-home">
+      <div className="tly-services-main">
         <HeaderScreen />
 
         <div className="tly-services-content">
@@ -27,18 +27,18 @@ export const ServicesScreen = () => {
 
           <Services locationId={locationId} />
         </div>
-
-        <FooterScreen>
-          <div className="tly-ticket-details-buttons">
-            <Button
-              onClick={() => navigate(SCREEN_NAMES.TAKE_TICKET)}
-              disabled={!selectedService}
-            >
-              {translate('continue')}
-            </Button>
-          </div>
-        </FooterScreen>
       </div>
+
+      <FooterScreen>
+        <div className="tly-ticket-details-buttons">
+          <Button
+            onClick={() => navigate(SCREEN_NAMES.TAKE_TICKET)}
+            disabled={!service}
+          >
+            {translate('continue')}
+          </Button>
+        </div>
+      </FooterScreen>
     </Fragment>
   )
 }

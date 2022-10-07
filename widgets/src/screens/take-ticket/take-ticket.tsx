@@ -13,7 +13,7 @@ export const TakeTicketScreen = () => {
 
   return (
     <Fragment>
-      <div className="tly-home">
+      <div className="tly-take-ticket__main">
         <HeaderScreen />
 
         <div className="tly-take-ticket-body">
@@ -37,13 +37,13 @@ export const TakeTicketScreen = () => {
             </FormField>
           </Form>
         </div>
-
-        <FooterScreen>
-          <Button onClick={() => navigate(SCREEN_NAMES.TICKET_DETAILS)}>
-            Ready, take now
-          </Button>
-        </FooterScreen>
       </div>
+
+      <FooterScreen>
+        <Button onClick={() => navigate(SCREEN_NAMES.TICKET_DETAILS)}>
+          Ready, take now
+        </Button>
+      </FooterScreen>
     </Fragment>
   )
 }

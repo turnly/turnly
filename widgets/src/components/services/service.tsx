@@ -21,11 +21,8 @@ export interface ServiceProps
 }
 
 export const Service = ({ disabled, data, ...attributes }: ServiceProps) => {
-  const { setService, selectedService } = useInternalState()
-  const isSelected = useMemo(
-    () => selectedService?.id === data.id,
-    [data, selectedService]
-  )
+  const { setService, service } = useInternalState()
+  const isSelected = useMemo(() => service?.id === data.id, [data, service])
 
   const styles = clsx({
     'tly-service': true,
@@ -34,28 +31,29 @@ export const Service = ({ disabled, data, ...attributes }: ServiceProps) => {
   })
 
   const classes = clsx(styles, attributes.className)
-
   const handleClick = useCallback(() => {
+    if (disabled) return
+
     setService(data)
   }, [data])
 
   return (
-    <div className={classes} onClick={!disabled ? handleClick : undefined}>
+    <div className={classes} onClick={handleClick}>
       <div className="tly-service-content">
         <Title hasGaps={false} level={4} isFontMedium>
           {data.name}
         </Title>
         <div className="tly-service-content-details">
           <Title level={5} hasGaps={false} isGray>
-            {data.ticketsWaiting}
+            {String(data.ticketsWaiting).padStart(2, '0')}
           </Title>
           <Text hasGaps={false}>Tickets ahead</Text>
         </div>
       </div>
 
       {isSelected && (
-        <div className="tly-content-icon-icon">
-          <AiFillCheckCircle size={24} color="#5ace71" />
+        <div className="tly-service-icon">
+          <AiFillCheckCircle size={24} />
         </div>
       )}
     </div>
