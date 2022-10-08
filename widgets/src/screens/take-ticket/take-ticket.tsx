@@ -1,15 +1,34 @@
 import { Fragment, h } from 'preact'
+import { useState } from 'preact/hooks'
 
 import { Button } from '../../components/button'
-import { Form, FormField, Input, PhoneInput } from '../../components/form'
 import { FooterScreen, HeaderScreen } from '../../components/layouts/screen'
-import { Text, Title } from '../../components/typography'
+import { Title } from '../../components/typography'
+import { DynamicForm, Field } from '../../dynamic-form'
+import {
+  ServiceFieldData,
+  useServiceFieldsQuery,
+} from '../../graphql/hooks/use-service-fields-query'
+import { useInternalState } from '../../hooks/use-internal-state'
 import { useTranslation } from '../../localization'
 import { SCREEN_NAMES, useNavigator } from '../../navigation'
 
 export const TakeTicketScreen = () => {
   const { translate } = useTranslation()
   const { navigate } = useNavigator()
+  const { service } = useInternalState()
+  const [fields, setFields] = useState<ServiceFieldData>([])
+
+  const { isLoading } = useServiceFieldsQuery({
+    variables: { serviceId: service?.id ?? '' },
+    onCompleted: data => {
+      setFields(data.getServiceFields)
+      // eslint-disable-next-line no-debugger
+      debugger
+    },
+  })
+
+  if (isLoading) return null
 
   return (
     <Fragment>
@@ -18,24 +37,7 @@ export const TakeTicketScreen = () => {
 
         <div className="tly-take-ticket-body">
           <Title>{translate('fields.labels.hint')}</Title>
-
-          <Form>
-            <FormField>
-              <Title level={4} hasGaps={false}>
-                National Identity or Passport
-              </Title>
-              <Input defaultValue="40289183912839" />
-            </FormField>
-
-            <FormField>
-              <Title level={4} hasGaps={false}>
-                Your phone
-              </Title>
-              <PhoneInput />
-
-              <Text>We&apos;ll text with your ticket</Text>
-            </FormField>
-          </Form>
+          <DynamicForm fields={fields as unknown as Field[]} />
         </div>
       </div>
 
