@@ -5,6 +5,7 @@ import { AiFillCheckCircle } from 'react-icons/ai'
 
 import { Text, Title } from '../../components/typography'
 import { useInternalState } from '../../hooks/use-internal-state'
+import { useTranslation } from '../../localization'
 
 export interface ServiceParams {
   id: string
@@ -21,6 +22,7 @@ export interface ServiceProps
 }
 
 export const Service = ({ disabled, data, ...attributes }: ServiceProps) => {
+  const { translate } = useTranslation()
   const { setService, service } = useInternalState()
   const isSelected = useMemo(() => service?.id === data.id, [data, service])
 
@@ -37,6 +39,16 @@ export const Service = ({ disabled, data, ...attributes }: ServiceProps) => {
     setService(data)
   }, [data])
 
+  const getLabel = useCallback(
+    () =>
+      disabled
+        ? translate('services.labels.unavailable')
+        : !data.ticketsWaiting
+        ? translate('services.labels.tickets_behind')
+        : translate('services.labels.tickets_ahead'),
+    [data]
+  )
+
   return (
     <div className={classes} onClick={handleClick}>
       <div className="tly-service-content">
@@ -44,10 +56,12 @@ export const Service = ({ disabled, data, ...attributes }: ServiceProps) => {
           {data.name}
         </Title>
         <div className="tly-service-content-details">
-          <Title level={5} hasGaps={false} isGray>
-            {String(data.ticketsWaiting).padStart(2, '0')}
-          </Title>
-          <Text hasGaps={false}>Tickets ahead</Text>
+          {Boolean(data.ticketsWaiting) && (
+            <Title level={5} hasGaps={false} isGray>
+              {String(data.ticketsWaiting).padStart(2, '0')}
+            </Title>
+          )}
+          <Text hasGaps={false}>{getLabel()}</Text>
         </div>
       </div>
 

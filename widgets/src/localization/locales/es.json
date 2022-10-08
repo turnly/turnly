@@ -46,7 +46,8 @@
       "hint": "What service do you want to receive?",
       "unavailable": "Unavailable, max capacity reached",
       "tickets_ahead": "Tickets ahead",
-      "tickets_behind": "Tickets behind"
+      "tickets_behind": "Ahoy, no people waiting!",
+      "services_not_found": "This location doesn’t have services available, so it is not possible to continue ticket-taking."
     }
   },
   "fields": {

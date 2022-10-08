@@ -1,0 +1,21 @@
+$block: 'tly-empty-states';
+
+.#{$block} {
+  $header-gap: 65px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: calc(100% - $header-gap);
+  opacity: 0.7;
+  color: var(--tly-gray-lighter);
+  position: fixed;
+  top: $header-gap;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  background-color: var(--tly-white);
+  user-select: none;
+}

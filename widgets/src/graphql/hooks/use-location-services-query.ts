@@ -1,5 +1,5 @@
 import * as Apollo from '@apollo/client'
-import { useEffect } from 'preact/hooks'
+import { useEffect, useMemo } from 'preact/hooks'
 
 import { Notifier } from '../../components/notification'
 import { useLoading } from '../../hooks/use-loading'
@@ -26,9 +26,15 @@ export const useLocationServicesQuery = (
     setLoading(isLoading)
   }, [isLoading])
 
+  const hasServices = useMemo(
+    () => (data?.getLocationServices ?? []).length !== 0,
+    [data]
+  )
+
   return {
     data: data?.getLocationServices ?? [],
     error,
     isLoading,
+    hasServices,
   }
 }

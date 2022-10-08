@@ -1,11 +1,11 @@
-import { h, JSX } from 'preact'
-import { useEffect, useState } from 'preact/hooks'
+import { Fragment, h, JSX } from 'preact'
+import { useEffect } from 'preact/hooks'
 
-import {
-  LocationServicesData,
-  useLocationServicesQuery,
-} from '../../graphql/hooks/use-location-services-query'
-import { RealtimeEvents, useRealtime } from '../../hooks/use-realtime'
+import { useLocationServicesInRealtime } from '../../hooks/use-location-services-in-realtime'
+import { useTranslation } from '../../localization'
+import { EmptyState } from '../empty-states'
+import { Notifier } from '../notification'
+import { Title } from '../typography'
 import { Service } from './service'
 
 export interface ServicesProps extends JSX.HTMLAttributes<HTMLDivElement> {
@@ -13,55 +13,36 @@ export interface ServicesProps extends JSX.HTMLAttributes<HTMLDivElement> {
 }
 
 export const Services = ({ locationId }: ServicesProps) => {
-  const { realtime } = useRealtime()
-  const [services, setServices] = useState<LocationServicesData>([])
+  const { translate } = useTranslation()
 
-  const { isLoading } = useLocationServicesQuery({
-    variables: { locationId },
-    onCompleted: data => setServices(data.getLocationServices),
-  })
+  const { isLoading, hasServices, services } =
+    useLocationServicesInRealtime(locationId)
 
   useEffect(() => {
-    if (!realtime) return
-
-    realtime.notify(RealtimeEvents.SUBSCRIBE, { roomChannel: locationId })
-
-    const unsub = realtime.subscribe<{
-      locationId: string
-      serviceId: string
-    }>(
-      [
-        RealtimeEvents.SERVICE_TICKETS_AHEAD,
-        RealtimeEvents.SERVICE_TICKETS_BEHIND,
-      ],
-      event => {
-        setServices(prevServices =>
-          prevServices.map(srv => {
-            if (srv.id === event.payload.serviceId) {
-              srv.ticketsWaiting =
-                event.name === RealtimeEvents.SERVICE_TICKETS_AHEAD
-                  ? (srv.ticketsWaiting += 1)
-                  : (srv.ticketsWaiting -= 1)
-            }
-
-            return srv
-          })
-        )
-      }
-    )
-
-    return () => {
-      unsub()
+    if (!isLoading && !hasServices) {
+      Notifier.warn(translate('services.labels.services_not_found'))
     }
-  }, [])
+  }, [isLoading, hasServices])
 
   if (isLoading) return null
 
   return (
-    <div className="tly-services-list">
-      {services.map(service => (
-        <Service key={service.id} data={service} />
-      ))}
+    <div className="tly-services-content">
+      {hasServices ? (
+        <Fragment>
+          <Title level={5} isGray isFontMedium>
+            {translate('services.labels.hint')}
+          </Title>
+
+          <div className="tly-services-list">
+            {services.map(service => (
+              <Service key={service.id} data={service} />
+            ))}
+          </div>
+        </Fragment>
+      ) : (
+        <EmptyState />
+      )}
     </div>
   )
 }

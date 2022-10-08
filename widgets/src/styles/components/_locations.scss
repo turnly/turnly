@@ -31,10 +31,6 @@ $block: 'tly-locations';
     cursor: pointer;
     transition: all 0.2s ease-in-out;
 
-    &:hover {
-      background-color: var(--tly-gray-lighter-v3);
-    }
-
     &-icon {
       display: flex;
       justify-content: center;
@@ -43,9 +39,10 @@ $block: 'tly-locations';
       padding: 16px;
       text-align: center;
       color: var(--tly-primary-bg);
-      background-color: var(--tly-gray-lighter);
-      border-radius: 8px;
+      background-color: var(--tly-gray-lighter-v4);
+      border-radius: 4px;
       margin-right: 16px;
+      border-left: solid 1.5px var(--tly-secondary-bg);
     }
 
     &-content {
@@ -61,6 +58,24 @@ $block: 'tly-locations';
 
       > .tly-typography-text {
         line-height: 18px;
+      }
+    }
+
+    &:hover {
+      background-color: var(--tly-gray-lighter-v3);
+
+      & .#{$block}__item-icon {
+        background-color: var(--tly-white);
+
+        svg {
+          animation: pulse 1s ease-in-out;
+        }
+      }
+    }
+
+    &--is-flat {
+      & .#{$block}__item-icon {
+        border-radius: 0;
       }
     }
   }

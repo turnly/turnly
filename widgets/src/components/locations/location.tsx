@@ -1,6 +1,8 @@
+import clsx from 'clsx'
 import { h, JSX } from 'preact'
 import { useCallback } from 'preact/hooks'
 
+import { useAppearance } from '../../hooks/use-appearance'
 import { useCurrentLocation } from '../../hooks/use-current-location'
 import { SCREEN_NAMES, useNavigator } from '../../navigation'
 import { Text, Title } from '../typography'
@@ -23,6 +25,7 @@ export interface LocationProps
 export const Location = ({ data, icon }: LocationProps) => {
   const { setCurrentLocation } = useCurrentLocation()
   const { navigate } = useNavigator()
+  const { isFlat } = useAppearance()
 
   const handleClick = useCallback(() => {
     setCurrentLocation(data)
@@ -30,12 +33,13 @@ export const Location = ({ data, icon }: LocationProps) => {
     navigate(SCREEN_NAMES.SERVICES)
   }, [data])
 
+  const styles = clsx({
+    ['tly-locations__item']: true,
+    ['tly-locations__item--is-flat']: isFlat,
+  })
+
   return (
-    <div
-      className="tly-locations__item"
-      title={data.name}
-      onClick={handleClick}
-    >
+    <div className={styles} title={data.name} onClick={handleClick}>
       <div className="tly-locations__item-icon" {...{ children: icon }} />
       <div className="tly-locations__item-content">
         <Title level={4} hasGaps={false} {...{ children: data.name }} />

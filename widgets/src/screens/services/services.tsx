@@ -3,7 +3,6 @@ import { Fragment, h } from 'preact'
 import { Button } from '../../components/button'
 import { FooterScreen, HeaderScreen } from '../../components/layouts/screen'
 import { Services } from '../../components/services'
-import { Title } from '../../components/typography'
 import { useCurrentLocation } from '../../hooks/use-current-location'
 import { useInternalState } from '../../hooks/use-internal-state'
 import { useTranslation } from '../../localization'
@@ -19,14 +18,7 @@ export const ServicesScreen = () => {
     <Fragment>
       <div className="tly-services-main">
         <HeaderScreen />
-
-        <div className="tly-services-content">
-          <Title level={5} isGray isFontMedium>
-            {translate('services.labels.hint')}
-          </Title>
-
-          <Services locationId={locationId} />
-        </div>
+        <Services locationId={locationId} />
       </div>
 
       <FooterScreen>

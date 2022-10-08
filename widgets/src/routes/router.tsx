@@ -10,6 +10,7 @@ import { TicketDetailsScreen } from '../screens/ticket-details'
 
 export const Router = () => {
   const { translate } = useTranslation()
+
   return (
     <Navigator initialScreen={SCREEN_NAMES.HOME}>
       <Screen
