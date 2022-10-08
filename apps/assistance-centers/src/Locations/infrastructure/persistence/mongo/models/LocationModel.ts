@@ -6,6 +6,7 @@
  */
 import { EntityAttributes, timestamps } from '@turnly/shared'
 import { Location } from 'Locations/domain/entities/Location'
+import { LocationStatus } from 'Locations/domain/enums/LocationStatus'
 import mongoose, { Document, Model, Schema } from 'mongoose'
 
 export interface ILocationDocument
@@ -37,6 +38,11 @@ const schema = new Schema<ILocationDocument>(
     },
     country: {
       type: String,
+      required: true,
+    },
+    status: {
+      type: String,
+      enum: LocationStatus,
       required: true,
     },
     coordinates: {

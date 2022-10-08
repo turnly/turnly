@@ -50,6 +50,7 @@ const locs = [{
         name: 'Mrs. Manuel Bergnaum',
         address: 'Direct',
         country: 'Jeremy Rowe',
+        status: 'complete',
         coordinates: {
           type: 'Point',
           coordinates: [
@@ -65,6 +66,7 @@ const locs = [{
         name: 'Jeanette Jerde',
         address: 'Keyboard',
         country: 'Ruth Nicolas',
+        status: 'incomplete',
         coordinates: {
           type: 'Point',
           coordinates: [
@@ -80,6 +82,7 @@ const locs = [{
         name: 'Sergio Pagac',
         address: 'synthesizing',
         country: 'Tommy Kuvalis',
+        status: 'complete',
         coordinates: {
           type: 'Point',
           coordinates: [
@@ -95,6 +98,7 @@ const locs = [{
         name: 'Esther Bashirian',
         address: 'Florida',
         country: 'Ricky Graham',
+        status: 'complete',
         coordinates: {
           type: 'Point',
           coordinates: [
@@ -110,6 +114,7 @@ const locs = [{
         name: 'Elias Haag MD',
         address: 'Dollar',
         country: 'Rochelle Lockman',
+        status: 'incomplete',
         coordinates: {
           type: 'Point',
           coordinates: [
