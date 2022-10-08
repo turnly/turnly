@@ -21,11 +21,7 @@ export const TakeTicketScreen = () => {
 
   const { isLoading } = useServiceFieldsQuery({
     variables: { serviceId: service?.id ?? '' },
-    onCompleted: data => {
-      setFields(data.getServiceFields)
-      // eslint-disable-next-line no-debugger
-      debugger
-    },
+    onCompleted: data => setFields(data.getServiceFields),
   })
 
   if (isLoading) return null

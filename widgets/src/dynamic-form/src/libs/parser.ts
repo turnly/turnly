@@ -11,9 +11,6 @@ export const OPTIONS_FIELDS = [FieldTypes.DROP_DOWN, FieldTypes.LIST]
 export const FORMAT_FIELDS = [FieldTypes.TEXT]
 
 export const parserFields = (fields: Field[]): ParsedField[] => {
-  console.log(fields)
-  // eslint-disable-next-line no-debugger
-  debugger
   return fields.map(parserDispatcher)
 }
 

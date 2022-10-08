@@ -6,11 +6,11 @@ import { AiOutlineQuestionCircle } from 'react-icons/ai'
 import { Text } from '../typography'
 
 export interface InputProps extends JSX.HTMLAttributes<HTMLInputElement> {
-  isDanger: boolean
-  textError: string
-  isIcon: boolean
-  iconRight: JSX.Element
-  onIconClick: () => void
+  isDanger?: boolean
+  textError?: string
+  isIcon?: boolean
+  iconRight?: JSX.Element
+  onIconClick?: () => void
 }
 
 export const Input = forwardRef<HTMLInputElement, Partial<InputProps>>(
