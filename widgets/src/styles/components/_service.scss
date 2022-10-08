@@ -30,6 +30,7 @@ $block: 'tly-service';
 
   &--is-selected {
     border-color: var(--tly-secondary-bg);
+    cursor: not-allowed;
 
     .#{$block}-icon {
       color: var(--tly-secondary-bg);

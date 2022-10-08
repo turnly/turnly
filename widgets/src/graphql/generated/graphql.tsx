@@ -34,9 +34,16 @@ export type Extra = {
   value: Scalars['String'];
 };
 
+export type ExtraModel = {
+  __typename?: 'ExtraModel';
+  key: Scalars['String'];
+  value: Scalars['String'];
+};
+
 export type FieldModel = {
   __typename?: 'FieldModel';
   description?: Maybe<Scalars['String']>;
+  extra: Array<ExtraModel>;
   hasProcessors: Scalars['Boolean'];
   id: Scalars['ID'];
   isRequired: Scalars['Boolean'];
@@ -164,7 +171,7 @@ export type GetServiceFieldsQueryVariables = Exact<{
 }>;
 
 
-export type GetServiceFieldsQuery = { __typename?: 'Query', getServiceFields: Array<{ __typename?: 'FieldModel', id: string, label: string, description?: string | null, type: string, isRequired: boolean, hasProcessors: boolean }> };
+export type GetServiceFieldsQuery = { __typename?: 'Query', getServiceFields: Array<{ __typename?: 'FieldModel', id: string, label: string, description?: string | null, type: string, isRequired: boolean, hasProcessors: boolean, extra: Array<{ __typename?: 'ExtraModel', key: string, value: string }> }> };
 
 export type GetTicketQueryVariables = Exact<{
   getTicketId: Scalars['ID'];
@@ -274,6 +281,10 @@ export const GetServiceFieldsDocument = gql`
     type
     isRequired
     hasProcessors
+    extra {
+      key
+      value
+    }
   }
 }
     `;

@@ -30,13 +30,22 @@ export class FieldsDataSource extends DataSource {
     if (!data) return []
 
     return data.map(
-      ({ id, label, description, type, isRequired, processorsList }) => ({
+      ({
+        id,
+        label,
+        description,
+        type,
+        isRequired,
+        processorsList,
+        extrasList: extra,
+      }) => ({
         id,
         label,
         description,
         type,
         isRequired,
         hasProcessors: Boolean(processorsList.length),
+        extra,
       })
     )
   }

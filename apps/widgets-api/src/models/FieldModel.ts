@@ -7,6 +7,15 @@
 import { Field, ID, ObjectType } from 'type-graphql'
 
 @ObjectType()
+export class ExtraModel {
+  @Field(() => String)
+  key: string
+
+  @Field(() => String)
+  value: string
+}
+
+@ObjectType()
 export class FieldModel {
   @Field(() => ID)
   id: string
@@ -25,4 +34,7 @@ export class FieldModel {
 
   @Field(() => Boolean)
   hasProcessors: boolean
+
+  @Field(() => [ExtraModel])
+  extra: ExtraModel[]
 }
