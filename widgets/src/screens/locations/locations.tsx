@@ -1,9 +1,10 @@
 import { Fragment, h } from 'preact'
-import { useState } from 'preact/hooks'
+import { useCallback, useState } from 'preact/hooks'
 import { HiOutlineClock, HiOutlinePaperAirplane } from 'react-icons/hi'
 
 import { SearchInput } from '../../components/form/search-input'
 import { Locations } from '../../components/locations'
+import { LocationsQuery } from '../../graphql/generated/graphql'
 import { useLocationsQuery } from '../../graphql/hooks/use-locations-query'
 import { useCurrentLocation } from '../../hooks/use-current-location'
 import { useTranslation } from '../../localization'
@@ -14,6 +15,15 @@ export const LocationsScreen = () => {
 
   const [search, setSearch] = useState('')
   const { locations, hasLocations, isLoading, refetch } = useLocationsQuery()
+
+  const getCleanLocations = useCallback(
+    (locations: LocationsQuery['findLocations']) => {
+      return !search
+        ? locations.filter(({ id }) => id !== currentLocation?.id)
+        : locations
+    },
+    [search, locations]
+  )
 
   // TODO: Get device location with useGeolocation()
 
@@ -42,12 +52,12 @@ export const LocationsScreen = () => {
             <Locations
               title={translate('locations.labels.nearby')}
               icon={<HiOutlinePaperAirplane />}
-              locations={locations.nearby}
+              locations={getCleanLocations(locations.nearby)}
             />
 
             <Locations
               title={translate('locations.labels.other_locations')}
-              locations={locations.others}
+              locations={getCleanLocations(locations.others)}
             />
           </div>
         )}
