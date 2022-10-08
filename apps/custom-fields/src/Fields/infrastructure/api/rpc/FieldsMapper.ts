@@ -20,6 +20,7 @@ export class FieldsMapper {
       field.setLabel(entity.label)
 
       if (entity.description) field.setDescription(entity.description)
+      if (entity.placeholder) field.setPlaceholder(entity.placeholder)
 
       field.setType(entity.type)
       field.setEntityType(entity.entityType)

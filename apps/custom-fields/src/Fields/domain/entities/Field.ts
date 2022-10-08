@@ -35,6 +35,13 @@ export class Field extends AggregateRoot {
     private label: string,
 
     /**
+     * Placeholder
+     *
+     * @description A placeholder for the filed.
+     */
+    private placeholder: Nullable<string>,
+
+    /**
      * Description
      *
      * @description A human-readable description of the Field.
@@ -97,6 +104,7 @@ export class Field extends AggregateRoot {
       Identifier.generate('field'),
       attributes.label,
       attributes.description,
+      attributes.placeholder,
       attributes.type,
       attributes.entityType,
       attributes.isRequired,
@@ -120,6 +128,7 @@ export class Field extends AggregateRoot {
       attributes.id,
       attributes.label,
       attributes.description,
+      attributes.placeholder,
       attributes.type,
       attributes.entityType,
       attributes.isRequired,
@@ -139,6 +148,7 @@ export class Field extends AggregateRoot {
       id: this.id,
       label: this.label,
       description: this.description,
+      placeholder: this.placeholder,
       type: this.type,
       entityType: this.entityType,
       isRequired: this.isRequired,

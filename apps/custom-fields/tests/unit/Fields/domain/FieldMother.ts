@@ -15,6 +15,7 @@ export class FieldMother {
   static create(
     label: string = ObjectMother.names(),
     description: Nullable<string> = ObjectMother.paragraph(),
+    placeholder: Nullable<string> = ObjectMother.word(),
     type: FieldTypes = FieldTypes.EMAIL,
     entityType: string = ObjectMother.word(),
     isRequired: boolean = ObjectMother.boolean(),
@@ -25,6 +26,7 @@ export class FieldMother {
     return Field.create({
       label,
       description,
+      placeholder,
       type,
       entityType,
       isRequired,
@@ -50,6 +52,7 @@ export class FieldMother {
     ]
   ): Field {
     return this.create(
+      undefined,
       undefined,
       undefined,
       undefined,
