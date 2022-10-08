@@ -5,455 +5,208 @@ set -e
 mongo <<EOF
 print("Seeding turnly databases...");
 
-const orgs = [{
-    _id: 'org_zyUlCzVfPD6pKQfI_OdkN',
-    name: 'Alicia Weissnat',
-    status: 'active',
-    subdomain: 'org-test'
-  },
+const organizations = [
   {
-    _id: 'org_VTTHK6J7ZLgtWiL-FLLWb',
-    name: 'Antoinette Murazik',
-    status: 'active',
-    subdomain: 'org-dev'
-  }]
+    _id: "org_zyUlCzVfPD6pKQfI_OdkN",
+    name: "Bank of America",
+    status: "active",
+    subdomain: "org-test",
+  },
+];
 
 use business_owners_db
 
-for (const organization of orgs){
-  db.organizations.insert(organization)
+for (const organization of organizations) {
+  db.organizations.insert(organization);
 }
 
-const ints = [{
-    _id: 'int_UzUldqvxRo3LOQGn-Rzyq',
-    name: 'Casey Bashirian',
-    status: 'active',
-    origins: [ 'Clyde Feeney', 'Eula Konopelski' ],
-    organizationId: 'org_zyUlCzVfPD6pKQfI_OdkN'
-  },
+const integrations = [
   {
-    _id: 'int_Qs3LibQxTFCxHSbTSEuiO',
-    name: 'Jonathon Brown',
-    status: 'active',
-    origins: [ 'Seth Bartell', 'Jeremiah Fahey' ],
-    organizationId: 'org_VTTHK6J7ZLgtWiL-FLLWb'
-  }]
+    _id: "int_UzUldqvxRo3LOQGn-Rzyq",
+    name: "Bank of America",
+    status: "active",
+    origins: ["https://www.bankofamerica.com"],
+    organizationId: "org_zyUlCzVfPD6pKQfI_OdkN",
+  },
+];
 
 use addons_db
 
-for(const integration of ints){
-  db.integrations.insert(integration)
+for (const integration of integrations) {
+  db.integrations.insert(integration);
 }
 
-const locs = [{
-        _id: 'loc_xdeJQM9lFV5GdofxAAMYI',
-        name: 'Mrs. Manuel Bergnaum',
-        address: 'Direct',
-        country: 'Jeremy Rowe',
-        status: 'complete',
-        coordinates: {
-          type: 'Point',
-          coordinates: [
-            -18.7824,
-            48.1985
-          ]
-        },
-        stopServingBeforeInMinutes: 59,
-        organizationId: 'org_zyUlCzVfPD6pKQfI_OdkN'
-      },
-      {
-        _id: 'loc_BGbNQAAlThd0JgiuxxHcW',
-        name: 'Jeanette Jerde',
-        address: 'Keyboard',
-        country: 'Ruth Nicolas',
-        status: 'incomplete',
-        coordinates: {
-          type: 'Point',
-          coordinates: [
-            2.154,
-            4.235
-          ]
-        },
-        stopServingBeforeInMinutes: 37,
-        organizationId: 'org_zyUlCzVfPD6pKQfI_OdkN'
-      },
-       {
-        _id: 'loc_c59SCrDbdfWb1acH0WMS_',
-        name: 'Sergio Pagac',
-        address: 'synthesizing',
-        country: 'Tommy Kuvalis',
-        status: 'complete',
-        coordinates: {
-          type: 'Point',
-          coordinates: [
-            -6.784,
-            9.185
-          ]
-        },
-        stopServingBeforeInMinutes: 81,
-        organizationId: 'org_VTTHK6J7ZLgtWiL-FLLWb'
-      },
-       {
-        _id: 'loc_7nVmGcFicLfetXcBVZj3v',
-        name: 'Esther Bashirian',
-        address: 'Florida',
-        country: 'Ricky Graham',
-        status: 'complete',
-        coordinates: {
-          type: 'Point',
-          coordinates: [
-            77.6385,
-            -33.8762
-          ]
-        },
-        stopServingBeforeInMinutes: 14,
-        organizationId: 'org_VTTHK6J7ZLgtWiL-FLLWb'
-      },
-       {
-        _id: 'loc_1IKE-yUnN7B5aGqo3FOUE',
-        name: 'Elias Haag MD',
-        address: 'Dollar',
-        country: 'Rochelle Lockman',
-        status: 'incomplete',
-        coordinates: {
-          type: 'Point',
-          coordinates: [
-            37.638,
-            -51.872
-          ]
-        },
-        stopServingBeforeInMinutes: 87,
-        organizationId: 'org_VTTHK6J7ZLgtWiL-FLLWb'
-      }
-]
+const locations = [
+  {
+    _id: "loc_xdeJQM9lFV5GdofxAAMYI",
+    name: "Financial Center & Walk-Up ATM",
+    address: "1293 Broadway, New York, NY 10001 US",
+    country: "USA",
+    status: "complete",
+    coordinates: {
+      type: "Point",
+      coordinates: [-73.9894816, 40.7479709],
+    },
+    stopServingBeforeInMinutes: 59,
+    organizationId: "org_zyUlCzVfPD6pKQfI_OdkN",
+  },
+  {
+    _id: "loc_BGbNQAAlThd0JgiuxxHcW",
+    name: "800 Sixth Avenue",
+    address: "800 Avenue of the Americas, New York, NY 10001",
+    country: "USA",
+    status: "incomplete",
+    coordinates: {
+      type: "Point",
+      coordinates: [-73.9894816, 40.7479709],
+    },
+    stopServingBeforeInMinutes: 37,
+    organizationId: "org_zyUlCzVfPD6pKQfI_OdkN",
+  },
+  {
+    _id: "loc_c59SCrDbdfWb1acH0WMS_",
+    name: "One Penn Plaza",
+    address: "1 Penn Plz FRNT 7, New York, NY 10119",
+    country: "USA",
+    status: "complete",
+    coordinates: {
+      type: "Point",
+      coordinates: [-73.9894816, 40.7479709],
+    },
+    stopServingBeforeInMinutes: 81,
+    organizationId: "org_zyUlCzVfPD6pKQfI_OdkN",
+  },
+];
 
 use assistance_centers_db
 
-for(const location of locs){
-  db.locations.insert(location)
+for (const location of locations) {
+  db.locations.insert(location);
 }
 
-const servs = [{
-        _id: 'srv_YKLAAgZaysHLsKBmphIwO',
-        name: 'Jose Hilpert',
-        description: 'Mrs. Jessie Ryan',
-        organizationId: 'org_zyUlCzVfPD6pKQfI_OdkN',
-        locationId: 'loc_xdeJQM9lFV5GdofxAAMYI'
-      },
-      {
-        _id: 'srv_1-ZZpLH4UaGjB1viTehGE',
-        name: 'Joyce Considine',
-        description: 'Forrest Padberg',
-        organizationId: 'org_zyUlCzVfPD6pKQfI_OdkN',
-        locationId: 'loc_xdeJQM9lFV5GdofxAAMYI',
-      },
-      {
-        _id: 'srv_ZlZZ9NhFGwL9Q-jSGrCaj',
-        name: 'Perry Kub',
-        description: 'Ramiro Kertzmann',
-        organizationId: 'org_VTTHK6J7ZLgtWiL-FLLWb',
-        locationId: 'loc_c59SCrDbdfWb1acH0WMS_'
-      },
-      {
-        _id: 'srv_x6NM0wohyDLW5L53Wm7pr',
-        name: 'Dora Walker',
-        description: 'Edmund Fritsch',
-        organizationId: 'org_VTTHK6J7ZLgtWiL-FLLWb',
-        locationId: 'loc_7nVmGcFicLfetXcBVZj3v'
-      },
-      {
-        _id: 'srv_OYcbQ4pVxG_yt-kZI-vR7',
-        name: 'Gustavo Barton',
-        description: 'Edmund Breitenberg',
-        organizationId: 'org_VTTHK6J7ZLgtWiL-FLLWb',
-        locationId: 'loc_1IKE-yUnN7B5aGqo3FOUE'
-      }
-]
+const services = [
+  {
+    _id: "srv_YKLAAgZaysHLsKBmphIwO",
+    name: "Customer Service",
+    description: "",
+    organizationId: "org_zyUlCzVfPD6pKQfI_OdkN",
+    locationId: "loc_xdeJQM9lFV5GdofxAAMYI",
+  },
+  {
+    _id: "srv_1-ZZpLH4UaGjB1viTehGE",
+    name: "Cash transactions",
+    description: "",
+    organizationId: "org_zyUlCzVfPD6pKQfI_OdkN",
+    locationId: "loc_xdeJQM9lFV5GdofxAAMYI",
+  },
+  {
+    _id: "srv_ZlZZ9NhFGwL9Q-jSGrCaj",
+    name: "Financial Center & ATM",
+    description: "Ramiro Kertzmann",
+    organizationId: "org_zyUlCzVfPD6pKQfI_OdkN",
+    locationId: "loc_c59SCrDbdfWb1acH0WMS_",
+  },
+  {
+    _id: "srv_x6NM0wohyDLW5L53Wm7pr",
+    name: "Claim",
+    description: "",
+    organizationId: "org_zyUlCzVfPD6pKQfI_OdkN",
+    locationId: "loc_7nVmGcFicLfetXcBVZj3v",
+  },
+];
 
-for(const service of servs){
-  db.services.insert(service)
+for (const service of services) {
+  db.services.insert(service);
 }
 
-const flds = [{
-        _id: 'field_v5lCM7bqxJ9plfArYSfsj',
-        label: 'Miss Alfredo Casper',
-        description: 'Perferendis consectetur nihil sit id. Perspiciatis quaerat ipsam. Qui aut dignissimos.',
-        placeholder: 'example@domain.com',
-        type: 'email',
-        entityType: 'azure',
-        isRequired: false,
-        organizationId: 'org_VTTHK6J7ZLgtWiL-FLLWb',
-        processors: [],
-        extra: []
+const fields = [
+  {
+    _id: "field_v5lCM7bqxJ9plfArYSfsj",
+    label: "Social Security",
+    description: "",
+    placeholder: "000 - 00 - 0000",
+    type: "text",
+    entityType: "customer",
+    isRequired: true,
+    organizationId: "org_zyUlCzVfPD6pKQfI_OdkN",
+    processors: [],
+    extra: [
+      {
+        key: "format",
+        value: "### - ## - ####",
       },
       {
-        _id: 'field_DgWqWI-lmUea82zbNHQYr',
-        label: 'Glenda Smith',
-        description: 'Asperiores beatae quos. Accusantium magni eum ullam esse aut nisi rem eum est.',
-        placeholder: 'example@email.com',
-        type: 'email',
-        entityType: 'Baby',
-        isRequired: false,
-        organizationId: 'org_VTTHK6J7ZLgtWiL-FLLWb',
-        processors: [],
-        extra: []
+        key: "serviceId",
+        value: "srv_1-ZZpLH4UaGjB1viTehGE",
+      },
+    ],
+  },
+  {
+    _id: "field_DgWqWI-lmUea82zbNHQYr",
+    label: "Identity Card",
+    description: "",
+    placeholder: "402-8589528-5",
+    type: "national_identity_card",
+    entityType: "customer",
+    isRequired: true,
+    organizationId: "org_zyUlCzVfPD6pKQfI_OdkN",
+    processors: [],
+    extra: [
+      {
+        key: "format",
+        value: "###-#######-#",
       },
       {
-        _id: 'field_deDwyEMhyXThnwXfs227z',
-        label: 'Ricardo Klein',
-        description: 'Facilis omnis sed.',
-        placeholder: 'example@gmail.com',
-        type: 'email',
-        entityType: 'Handcrafted',
-        isRequired: true,
-        organizationId: 'org_zyUlCzVfPD6pKQfI_OdkN',
-        processors: [],
-        extra: []
+        key: "serviceId",
+        value: "srv_1-ZZpLH4UaGjB1viTehGE",
+      },
+    ],
+  },
+  {
+    _id: "field_deDwyEMhyXThnwXfs227z",
+    label: "Claim Kind",
+    description: "",
+    placeholder: "Select a claim",
+    type: "drop_down",
+    entityType: "customer",
+    isRequired: false,
+    organizationId: "org_zyUlCzVfPD6pKQfI_OdkN",
+    processors: [],
+    extra: [
+      {
+        key: "serviceId",
+        value: "srv_YKLAAgZaysHLsKBmphIwO",
       },
       {
-        _id: 'field_fvDGkehk-6yCUWjV5zQXS',
-        label: 'Ms. Leonard Rodriguez',
-        description: 'Ut debitis dolorum architecto possimus aut delectus maiores delectus minus.',
-        placeholder: 'example@hotmail.com',
-        type: 'email',
-        entityType: 'generating',
-        isRequired: false,
-        organizationId: 'org_zyUlCzVfPD6pKQfI_OdkN',
-        processors: [],
-        extra: []
-      }
-]
+        key: "options",
+        value:
+          '["Claim:claim","P. Request:p_request","Custom Value:custom_value"]',
+      },
+    ],
+  },
+  {
+    _id: "field_fvDGkehk-6yCUWjV5zQXS",
+    label: "The last 4 digits of card",
+    description: "",
+    placeholder: "0000",
+    type: "text",
+    entityType: "customer",
+    isRequired: true,
+    organizationId: "org_zyUlCzVfPD6pKQfI_OdkN",
+    processors: [],
+    extra: [
+      {
+        key: "serviceId",
+        value: "srv_ZlZZ9NhFGwL9Q-jSGrCaj",
+      },
+    ],
+  },
+];
 
 use custom_fields_db
 
-for(const field of flds){
-  db.fields.insert(field)
-}
-
-const ans = [{
-        _id: 'answer_wWKBkLi7ATfEhZecCVXSs',
-        value: 'Domingo Marvin',
-        fieldId: 'field_v5lCM7bqxJ9plfArYSfsj',
-        entityId: 'fuchsia',
-        entityType: 'Gourde',
-        organizationId: 'org_VTTHK6J7ZLgtWiL-FLLWb',
-        extra: []
-      },
-      {
-        _id: 'answer_yQYm_cfgFQG3YxGWJMtfm',
-        value: 'Miss Alfredo Casper',
-        fieldId: 'field_DgWqWI-lmUea82zbNHQYr',
-        entityId: 'Chicken',
-        entityType: 'Shoes',
-        organizationId: 'org_VTTHK6J7ZLgtWiL-FLLWb',
-        extra: []
-      },
-      {
-        _id: 'answer_2iuun2WrLSgxfnVh1lgVX',
-        value: 'Priscilla Gerhold III',
-        fieldId: 'field_deDwyEMhyXThnwXfs227z',
-        entityId: 'azure',
-        entityType: 'Cotton',
-        organizationId: 'org_zyUlCzVfPD6pKQfI_OdkN',
-        extra: []
-      },
-      {
-        _id: 'answer_wgCIoS-VCAXoy9pqt3l0v',
-        value: 'Jody Ritchie',
-        fieldId: 'field_fvDGkehk-6yCUWjV5zQXS',
-        entityId: 'Missouri',
-        entityType: 'Berkshire',
-        organizationId: 'org_zyUlCzVfPD6pKQfI_OdkN',
-        extra: []
-      }
-]
-
-for(const answer of ans){
-  db.answers.insert(answer)
-}
-
-const custs = [{
-        _id: 'cust_TClBaYqWnrlPtNs3cOpxF',
-        name: 'Jessica Trantow',
-        lastname: 'Dale Brekke',
-        email: 'Bertrand60@gmail.com',
-        country: '1-638-264-2658 x467',
-        phone: 'Ms. Kristin Reichert',
-        hasWhatsapp: true,
-        showNameSignage: true,
-        organizationId: 'org_zyUlCzVfPD6pKQfI_OdkN',
-        extra: []
-      },
-      {
-        _id: 'cust_LfcNUKK6X_zhIxqDO3Sxz',
-        name: 'Greg Kunze',
-        lastname: 'Henrietta Wintheiser',
-        email: 'Rosalia41@hotmail.com',
-        country: '709.304.0257',
-        phone: 'Virgil Carter',
-        hasWhatsapp: true,
-        showNameSignage: true,
-        organizationId: 'org_zyUlCzVfPD6pKQfI_OdkN',
-        extra: []
-      },
-      {
-        _id: 'cust_NDp4yydxeXwRoWcDpgGiV',
-        name: 'Ivan Heaney',
-        lastname: 'Tanya Green',
-        email: 'Shany.Luettgen58@gmail.com',
-        country: '1-544-610-1484',
-        phone: 'Nathaniel Zieme',
-        hasWhatsapp: true,
-        showNameSignage: true,
-        organizationId: 'org_zyUlCzVfPD6pKQfI_OdkN',
-        extra: []
-      },
-      {
-        _id: 'cust_48nYKMXoGD_Z8waFZXEMv',
-        name: 'Marcia Bosco',
-        lastname: 'Rhonda Frami',
-        email: 'Kurt21@yahoo.com',
-        country: '1-783-260-4975 x5002',
-        phone: 'Randolph Considine',
-        hasWhatsapp: true,
-        showNameSignage: true,
-        organizationId: 'org_zyUlCzVfPD6pKQfI_OdkN',
-        extra: []
-      },
-      {
-        _id: 'cust_W6eULbvcWFTsrEYDdRoMP',
-        name: 'Elizabeth Huel',
-        lastname: 'Dave Haley',
-        email: 'Sarina_Lang13@gmail.com',
-        country: '276.394.1818 x46975',
-        phone: 'Rachael Blick',
-        hasWhatsapp: true,
-        showNameSignage: true,
-        organizationId: 'org_zyUlCzVfPD6pKQfI_OdkN',
-        extra: []
-      },
-      {
-        _id: 'cust_F5QbHv-41YunvlWkF5w70',
-        name: 'Kari Kautzer III',
-        lastname: 'Rita Turcotte',
-        email: 'Casimer98@hotmail.com',
-        country: '463-659-0724',
-        phone: 'Ricky Heidenreich',
-        hasWhatsapp: true,
-        showNameSignage: true,
-        organizationId: 'org_VTTHK6J7ZLgtWiL-FLLWb',
-        extra: []
-      },
-      {
-        _id: 'cust_R2c-gQfOXP4LhPZ3kqy0x',
-        name: 'Orlando Ruecker',
-        lastname: 'Glen Dach',
-        email: 'Mikel.Ferry34@yahoo.com',
-        country: '618.977.0703 x445',
-        phone: 'George Barrows',
-        hasWhatsapp: true,
-        showNameSignage: true,
-        organizationId: 'org_VTTHK6J7ZLgtWiL-FLLWb',
-        extra: []
-      },
-      {
-        _id: 'cust_Hj4yBjoJhrAmGsOb69krO',
-        name: 'Shane Gibson II',
-        lastname: 'Gayle Bernier',
-        email: 'Zane_Swift@yahoo.com',
-        country: '704-649-3557 x032',
-        phone: 'Caleb Brown',
-        hasWhatsapp: true,
-        showNameSignage: true,
-        organizationId: 'org_VTTHK6J7ZLgtWiL-FLLWb',
-        extra: []
-      },
-      {
-        _id: 'cust_TTzKR2qAR_XNEC-29oBc-',
-        name: 'Lucille Haag',
-        lastname: 'George Ruecker',
-        email: 'Berenice_Kertzmann88@yahoo.com',
-        country: '(946) 265-8620',
-        phone: 'Kurt Abshire',
-        hasWhatsapp: true,
-        showNameSignage: true,
-        organizationId: 'org_VTTHK6J7ZLgtWiL-FLLWb',
-        extra: []
-      },
-      {
-        _id: 'cust_AqWPfoERAt6j4G-P5nbaa',
-        name: 'Vanessa Douglas',
-        lastname: 'Jean Zboncak',
-        email: 'Fern_Thiel41@hotmail.com',
-        country: '464.620.7274 x049',
-        phone: 'Rose West',
-        hasWhatsapp: true,
-        showNameSignage: true,
-        organizationId: 'org_VTTHK6J7ZLgtWiL-FLLWb',
-        extra: []
-      }
-]
-
-use queuing_system_db
-
-for(const customer of custs){
-  db.customers.insert(customer)
-}
-
-const agts =[{
-        _id: 'agent_VEy2GqCdrElQThL5qdDt_',
-        name: 'Timothy Jacobson',
-        lastname: 'Emanuel Funk',
-        organizationId: 'org_zyUlCzVfPD6pKQfI_OdkN',
-        locationId: 'loc_xdeJQM9lFV5GdofxAAMYI',
-        nick: 'Mrs. Ted Lind',
-        position: 'National Directives Assistant',
-        deskId: 'test_desk_rcvEHNknVmXwVDge78-nZ',
-        servingFromIds: [ 'test_loc_Mvt40An8CB0_VHjZU58XJ' ],
-        extra: []
-      },
-      {
-        _id: 'agent_vz7uE6Q3nwDB0C5gv1FEZ',
-        name: 'Randolph Kreiger',
-        lastname: 'Colleen Carter',
-        organizationId: 'org_zyUlCzVfPD6pKQfI_OdkN',
-        locationId: 'loc_xdeJQM9lFV5GdofxAAMYI',
-        nick: 'Kristy Collier',
-        position: 'Dynamic Creative Assistant',
-        deskId: 'test_desk_mtsM356w6TW-qnynITR0Y',
-        servingFromIds: [ 'test_loc_xRmUfohNCk9nKY-SuHXys' ],
-        extra: []
-      },
-      {
-        _id: 'agent_73Pn41bFFzRWLsPOK2Yx7',
-        name: 'Tracey Mueller',
-        lastname: 'Toby Tremblay',
-        organizationId: 'org_VTTHK6J7ZLgtWiL-FLLWb',
-        locationId: 'test_loc_1didE2KK9aZuOVgQoMvZP',
-        nick: 'Debbie Medhurst',
-        position: 'Chief Identity Supervisor',
-        deskId: 'test_desk_xP8CfeydjgAEImjtu5L0E',
-        servingFromIds: [ 'test_loc_IIjnAkq9MzBhbfZ_qPZK9' ],
-        extra: []
-      },
-      {
-        _id: 'agent_scVlVyxNgxxDFB5UUNL9t',
-        name: 'Mr. Jessie Buckridge',
-        lastname: 'Mr. Lee Kreiger',
-        organizationId: 'org_VTTHK6J7ZLgtWiL-FLLWb',
-        locationId: 'test_loc_XlmvtJsMibXHdbaio8Au9',
-        nick: 'Miss Angelo Stracke',
-        position: 'Lead Mobility Planner',
-        deskId: 'test_desk_-8SHvofQqIH0zXrP-PhrW',
-        servingFromIds: [ 'test_loc_UB53q_1YVvXnQzsf2bS41' ],
-        extra: []
-      }
-]
-
-use teams_db
-
-for(const agent of agts){
-  db.agents.insert(agent)
+for (const field of fields) {
+  db.fields.insert(field);
 }
 
 print("Seeding turnly databases... DONE!");
