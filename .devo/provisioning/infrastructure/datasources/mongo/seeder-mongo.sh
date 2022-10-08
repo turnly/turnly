@@ -55,7 +55,7 @@ const locations = [
     name: "800 Sixth Avenue",
     address: "800 Avenue of the Americas, New York, NY 10001",
     country: "USA",
-    status: "incomplete",
+    status: "complete",
     coordinates: {
       type: "Point",
       coordinates: [-73.9894816, 40.7479709],
