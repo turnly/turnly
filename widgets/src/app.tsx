@@ -1,6 +1,7 @@
 import './localization'
 import './styles/styles.scss'
 import 'react-phone-input-2/lib/bootstrap.css'
+import 'react-select/dist/react-select.css'
 
 import { Fragment, h } from 'preact'
 import { lazy, Suspense } from 'preact/compat'

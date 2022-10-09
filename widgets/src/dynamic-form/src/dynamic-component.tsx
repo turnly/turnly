@@ -1,9 +1,10 @@
 import { FunctionalComponent, h } from 'preact'
+import Select from 'react-select'
 
-import { FormField, Input, InputProps } from '../../components/form'
+import { FormField, Input } from '../../components/form'
 import { Title } from '../../components/typography'
 import { ParsedField } from './@types'
-import { FORMAT_FIELDS } from './libs/parser'
+import { FORMAT_FIELDS, OPTIONS_FIELDS } from './libs/parser'
 
 export interface DynamicComponentProps {
   key: string
@@ -14,12 +15,16 @@ export const DynamicComponent = ({
   key,
   parsedField,
 }: DynamicComponentProps) => {
-  let _component: FunctionalComponent<InputProps> | null = null
+  let _component: FunctionalComponent<any> | null = null
   const field = parsedField.field
-  // const context = parsedField.parserContext
+  const context = parsedField.parserContext
 
   if (FORMAT_FIELDS.includes(field.type)) {
     _component = Input
+  }
+
+  if (OPTIONS_FIELDS.includes(field.type)) {
+    _component = Select
   }
 
   if (!_component) return null
@@ -30,7 +35,12 @@ export const DynamicComponent = ({
         {field.label}
       </Title>
 
-      <_component placeholder={field.placeholder} />
+      <_component
+        placeholder={field.description}
+        options={
+          Array.isArray(context.parsedValues) ? context.parsedValues : []
+        }
+      />
     </FormField>
   )
 }

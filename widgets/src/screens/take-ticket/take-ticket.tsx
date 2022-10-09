@@ -17,6 +17,7 @@ export const TakeTicketScreen = () => {
   const { translate } = useTranslation()
   const { navigate } = useNavigator()
   const { service } = useInternalState()
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [fields, setFields] = useState<ServiceFieldData>([])
 
   const { isLoading } = useServiceFieldsQuery({

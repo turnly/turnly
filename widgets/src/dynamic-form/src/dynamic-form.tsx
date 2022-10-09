@@ -12,6 +12,8 @@ export interface DynamicFormProps {
 export const DynamicForm = ({ fields }: DynamicFormProps) => {
   const { parsedFields } = useParser({ fields })
 
+  console.log(parsedFields)
+
   return (
     <Form>
       {parsedFields.map(parsed => (
