@@ -1,4 +1,5 @@
 import { FunctionalComponent, h } from 'preact'
+import { useFormContext } from 'react-hook-form'
 import Select from 'react-select'
 
 import { FormField, Input } from '../../components/form'
@@ -15,9 +16,31 @@ export const DynamicComponent = ({
   key,
   parsedField,
 }: DynamicComponentProps) => {
+  const {
+    register,
+    setValue,
+    formState: { errors },
+  } = useFormContext()
+
   let _component: FunctionalComponent<any> | null = null
   const field = parsedField.field
   const context = parsedField.parserContext
+
+  const handleChange = event => {
+    let value: unknown = event
+
+    if (typeof event === 'string') {
+      value = event
+    }
+
+    if (typeof event === 'object' && 'target' in event) {
+      event.persist()
+
+      value = event.target.value
+    }
+
+    setValue(field.id, value)
+  }
 
   if (FORMAT_FIELDS.includes(field.type)) {
     _component = Input
@@ -40,6 +63,12 @@ export const DynamicComponent = ({
         options={
           Array.isArray(context.parsedValues) ? context.parsedValues : []
         }
+        {...register(field.id, {
+          required: field.isRequired,
+        })}
+        onChange={handleChange}
+        isDanger={field.id in errors}
+        simpleValue={true}
       />
     </FormField>
   )

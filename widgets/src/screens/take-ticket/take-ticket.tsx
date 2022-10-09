@@ -1,5 +1,6 @@
 import { Fragment, h } from 'preact'
 import { useState } from 'preact/hooks'
+import { FormProvider, useForm } from 'react-hook-form'
 
 import { Button } from '../../components/button'
 import { FooterScreen, HeaderScreen } from '../../components/layouts/screen'
@@ -11,13 +12,14 @@ import {
 } from '../../graphql/hooks/use-service-fields-query'
 import { useInternalState } from '../../hooks/use-internal-state'
 import { useTranslation } from '../../localization'
-import { SCREEN_NAMES, useNavigator } from '../../navigation'
+// import { useNavigator } from '../../navigation'
 
 export const TakeTicketScreen = () => {
   const { translate } = useTranslation()
-  const { navigate } = useNavigator()
+  // const { navigate } = useNavigator()
   const { service } = useInternalState()
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const methods = useForm()
+
   const [fields, setFields] = useState<ServiceFieldData>([])
 
   const { isLoading } = useServiceFieldsQuery({
@@ -34,12 +36,15 @@ export const TakeTicketScreen = () => {
 
         <div className="tly-take-ticket-body">
           <Title>{translate('fields.labels.hint')}</Title>
-          <DynamicForm fields={fields as unknown as Field[]} />
+
+          <FormProvider {...methods}>
+            <DynamicForm fields={fields as unknown as Field[]} />
+          </FormProvider>
         </div>
       </div>
 
       <FooterScreen>
-        <Button onClick={() => navigate(SCREEN_NAMES.TICKET_DETAILS)}>
+        <Button onClick={methods.handleSubmit(d => console.log(d))}>
           Ready, take now
         </Button>
       </FooterScreen>

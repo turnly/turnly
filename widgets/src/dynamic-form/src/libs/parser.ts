@@ -8,7 +8,11 @@ import {
 
 export const OPTIONS_FIELDS = [FieldTypes.DROP_DOWN, FieldTypes.LIST]
 
-export const FORMAT_FIELDS = [FieldTypes.TEXT]
+export const FORMAT_FIELDS = [
+  FieldTypes.TEXT,
+  FieldTypes.NATIONAL_IDENTITY_CARD,
+  FieldTypes.PHONE,
+]
 
 export const parserFields = (fields: Field[]): ParsedField[] => {
   return fields.map(parserDispatcher)
@@ -16,10 +20,6 @@ export const parserFields = (fields: Field[]): ParsedField[] => {
 
 export const parserDispatcher = (field: Field) => {
   let context: ParserContext = {}
-
-  if (OPTIONS_FIELDS.includes(field.type)) {
-    context = parserOptions(field)
-  }
 
   if (!FORMAT_FIELDS.includes(field.type)) {
     context = parserOptions(field)
@@ -29,11 +29,6 @@ export const parserDispatcher = (field: Field) => {
     field,
     parserContext: context,
   } as ParsedField
-}
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const parserFormat = (_field: Field): ParserContext => {
-  return {} as ParserContext
 }
 
 export const parserOptions = ({ id, extra }: Field): ParserContext => {
@@ -50,5 +45,24 @@ export const parserOptions = ({ id, extra }: Field): ParserContext => {
     parsedKey: extraFound?.key,
     field_id: id,
     values: extraFound?.value,
+  } as ParserContext
+}
+
+export const parserFormat = (
+  { id, extra }: Field,
+  value: string
+): ParserContext => {
+  const template = extra.find(e => e.key === 'format')
+  let result = template?.value || ''
+
+  for (let char of value.split('')) {
+    result = result.replace('#', char)
+  }
+
+  return {
+    parsedValues: result,
+    parsedKey: template?.value,
+    field_id: id,
+    values: value,
   } as ParserContext
 }
