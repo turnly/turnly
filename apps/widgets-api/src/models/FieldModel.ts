@@ -29,6 +29,9 @@ export class FieldModel {
   @Field(() => String)
   type: string
 
+  @Field(() => String)
+  placeholder: string
+
   @Field(() => Boolean)
   isRequired: boolean
 
