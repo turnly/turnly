@@ -1,5 +1,5 @@
-import { FunctionalComponent, h } from 'preact'
-import { useFormContext } from 'react-hook-form'
+import { h } from 'preact'
+import { Controller, useFormContext } from 'react-hook-form'
 
 import { FormField, Input } from '../../components/form'
 import { Title } from '../../components/typography'
@@ -15,33 +15,36 @@ export const DynamicComponent = ({
   key,
   parsedField,
 }: DynamicComponentProps) => {
-  const {
-    register,
-    formState: { errors },
-  } = useFormContext()
+  const { control } = useFormContext()
 
-  let _component: FunctionalComponent<any> | null = null
-  const field = parsedField.field
-  // const context = parsedField.parserContext
+  const customField = parsedField.field
+  const context = parsedField.parserContext
 
-  if (FORMAT_FIELDS.includes(field.type)) {
-    _component = Input
-  }
-
-  if (!_component) return null
+  if (!FORMAT_FIELDS.includes(customField.type)) return null
 
   return (
     <FormField key={key}>
       <Title level={4} hasGaps={false}>
-        {field.label}
+        {customField.label}
       </Title>
 
-      <_component
-        placeholder={field.description}
-        isDanger={field.id in errors}
-        {...register(field.id, {
-          required: field.isRequired,
-        })}
+      <Controller
+        name={customField.id}
+        control={control}
+        render={({ field, fieldState: { error } }) => (
+          <Input
+            isFormat={!!context.parsedKey}
+            format={context.parsedKey}
+            isDanger={!!error}
+            textError={error?.message}
+            placeholder={customField.description}
+            {...field}
+          />
+        )}
+        rules={{
+          required: customField.isRequired && 'This field is required',
+          maxLength: context.parsedKey?.length,
+        }}
       />
     </FormField>
   )

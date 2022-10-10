@@ -12,22 +12,31 @@ import {
 } from '../../graphql/hooks/use-service-fields-query'
 import { useInternalState } from '../../hooks/use-internal-state'
 import { useTranslation } from '../../localization'
-// import { useNavigator } from '../../navigation'
+import { SCREEN_NAMES, useNavigator } from '../../navigation'
 
 export const TakeTicketScreen = () => {
   const { translate } = useTranslation()
-  // const { navigate } = useNavigator()
+  const { navigate } = useNavigator()
   const { service } = useInternalState()
   const methods = useForm()
 
-  const [fields, setFields] = useState<ServiceFieldData>([])
+  const [fields, setFields] = useState<ServiceFieldData | null>(null)
 
   const { isLoading } = useServiceFieldsQuery({
     variables: { serviceId: service?.id ?? '' },
-    onCompleted: data => setFields(data.getServiceFields),
+    onCompleted: async data => await setFields(data.getServiceFields),
   })
 
-  if (isLoading) return null
+  const submit = () => {
+    navigate(SCREEN_NAMES.TICKET_DETAILS)
+  }
+
+  if (isLoading || !fields) return null
+
+  if (fields.length === 0) {
+    submit()
+    return null
+  }
 
   return (
     <Fragment>
@@ -44,9 +53,7 @@ export const TakeTicketScreen = () => {
       </div>
 
       <FooterScreen>
-        <Button onClick={methods.handleSubmit(d => console.log(d))}>
-          Ready, take now
-        </Button>
+        <Button onClick={methods.handleSubmit(submit)}>Ready, take now</Button>
       </FooterScreen>
     </Fragment>
   )

@@ -21,8 +21,12 @@ export const parserFields = (fields: Field[]): ParsedField[] => {
 export const parserDispatcher = (field: Field) => {
   let context: ParserContext = {}
 
-  if (!FORMAT_FIELDS.includes(field.type)) {
+  if (OPTIONS_FIELDS.includes(field.type)) {
     context = parserOptions(field)
+  }
+
+  if (FORMAT_FIELDS.includes(field.type)) {
+    context = parserFormat(field)
   }
 
   return {
@@ -31,6 +35,12 @@ export const parserDispatcher = (field: Field) => {
   } as ParsedField
 }
 
+/**
+ * parserOptions - Get all options values from extra list
+ *
+ * @param field{Field}
+ * @returns ParserContext
+ */
 export const parserOptions = ({ id, extra }: Field): ParserContext => {
   const extraFound = extra.find(e => e.key === 'options')
   const list_options = JSON.parse(extraFound?.value || '[]') as string[]
@@ -48,21 +58,16 @@ export const parserOptions = ({ id, extra }: Field): ParserContext => {
   } as ParserContext
 }
 
-export const parserFormat = (
-  { id, extra }: Field,
-  value: string
-): ParserContext => {
+/**
+ * parserFormat - Get the pattern to format input value from extra list.
+ * @param field{Field}
+ * @returns {ParserContext}
+ */
+export const parserFormat = ({ id, extra }: Field): ParserContext => {
   const template = extra.find(e => e.key === 'format')
-  let result = template?.value || ''
-
-  for (let char of value.split('')) {
-    result = result.replace('#', char)
-  }
 
   return {
-    parsedValues: result,
     parsedKey: template?.value,
     field_id: id,
-    values: value,
   } as ParserContext
 }

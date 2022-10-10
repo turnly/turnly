@@ -48,7 +48,6 @@ export type FieldModel = {
   id: Scalars['ID'];
   isRequired: Scalars['Boolean'];
   label: Scalars['String'];
-  placeholder: Scalars['String'];
   type: Scalars['String'];
 };
 

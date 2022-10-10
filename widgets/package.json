@@ -55,6 +55,7 @@
     "react-hook-form": "^7.37.0",
     "react-i18next": "^11.18.3",
     "react-icons": "^4.4.0",
+    "react-number-format": "^5.0.1",
     "react-phone-input-2": "^2.15.1",
     "react-toastify": "^9.0.8",
     "zustand": "^4.1.1"
