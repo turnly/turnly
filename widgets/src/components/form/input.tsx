@@ -2,15 +2,21 @@ import clsx from 'clsx'
 import { Fragment, h, JSX } from 'preact'
 import { forwardRef } from 'preact/compat'
 import { AiOutlineQuestionCircle } from 'react-icons/ai'
+import { PatternFormat } from 'react-number-format'
 
 import { Text } from '../typography'
 
 export interface InputProps extends JSX.HTMLAttributes<HTMLInputElement> {
-  isDanger: boolean
-  textError: string
-  isIcon: boolean
-  iconRight: JSX.Element
-  onIconClick: () => void
+  isDanger?: boolean
+  textError?: string
+  isIcon?: boolean
+  iconRight?: JSX.Element
+  onIconClick?: () => void
+  isFormat: boolean
+  format: string
+  value: string
+  defaultValue: string
+  type: any
 }
 
 export const Input = forwardRef<HTMLInputElement, Partial<InputProps>>(
@@ -21,6 +27,8 @@ export const Input = forwardRef<HTMLInputElement, Partial<InputProps>>(
       isIcon,
       iconRight,
       disabled,
+      isFormat,
+      format = '',
       onIconClick,
       ...attributes
     },
@@ -37,12 +45,24 @@ export const Input = forwardRef<HTMLInputElement, Partial<InputProps>>(
     return (
       <Fragment>
         <div className="tly-input-icon-container">
-          <input
-            {...attributes}
-            disabled={disabled}
-            className={classes}
-            ref={ref}
-          />
+          {!isFormat && (
+            <input
+              {...attributes}
+              disabled={disabled}
+              className={classes}
+              ref={ref}
+            />
+          )}
+
+          {isFormat && (
+            <PatternFormat
+              {...attributes}
+              className={classes}
+              disabled={disabled}
+              format={format}
+              ref={ref}
+            />
+          )}
 
           {isIcon && (
             <div className="tly-input-icon" onClick={onIconClick}>
