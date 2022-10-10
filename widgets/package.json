@@ -56,7 +56,6 @@
     "react-i18next": "^11.18.3",
     "react-icons": "^4.4.0",
     "react-phone-input-2": "^2.15.1",
-    "react-select": "1.x",
     "react-toastify": "^9.0.8",
     "zustand": "^4.1.1"
   },

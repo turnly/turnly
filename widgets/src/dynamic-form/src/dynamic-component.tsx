@@ -1,11 +1,10 @@
 import { FunctionalComponent, h } from 'preact'
 import { useFormContext } from 'react-hook-form'
-import Select from 'react-select'
 
 import { FormField, Input } from '../../components/form'
 import { Title } from '../../components/typography'
 import { ParsedField } from './@types'
-import { FORMAT_FIELDS, OPTIONS_FIELDS } from './libs/parser'
+import { FORMAT_FIELDS } from './libs/parser'
 
 export interface DynamicComponentProps {
   key: string
@@ -18,36 +17,15 @@ export const DynamicComponent = ({
 }: DynamicComponentProps) => {
   const {
     register,
-    setValue,
     formState: { errors },
   } = useFormContext()
 
   let _component: FunctionalComponent<any> | null = null
   const field = parsedField.field
-  const context = parsedField.parserContext
-
-  const handleChange = event => {
-    let value: unknown = event
-
-    if (typeof event === 'string') {
-      value = event
-    }
-
-    if (typeof event === 'object' && 'target' in event) {
-      event.persist()
-
-      value = event.target.value
-    }
-
-    setValue(field.id, value)
-  }
+  // const context = parsedField.parserContext
 
   if (FORMAT_FIELDS.includes(field.type)) {
     _component = Input
-  }
-
-  if (OPTIONS_FIELDS.includes(field.type)) {
-    _component = Select
   }
 
   if (!_component) return null
@@ -60,15 +38,10 @@ export const DynamicComponent = ({
 
       <_component
         placeholder={field.description}
-        options={
-          Array.isArray(context.parsedValues) ? context.parsedValues : []
-        }
+        isDanger={field.id in errors}
         {...register(field.id, {
           required: field.isRequired,
         })}
-        onChange={handleChange}
-        isDanger={field.id in errors}
-        simpleValue={true}
       />
     </FormField>
   )
