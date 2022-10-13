@@ -35,10 +35,12 @@ export const useLocationServicesInRealtime = (locationId: string) => {
         setServices(prevServices =>
           prevServices.map(srv => {
             if (srv.id === event.payload.serviceId) {
-              srv.ticketsWaiting =
+              const ticketsWaiting =
                 event.name === RealtimeEvents.SERVICE_TICKETS_AHEAD
-                  ? (srv.ticketsWaiting += 1)
-                  : (srv.ticketsWaiting -= 1)
+                  ? srv.ticketsWaiting + 1
+                  : srv.ticketsWaiting - 1
+
+              return { ...srv, ticketsWaiting }
             }
 
             return srv
