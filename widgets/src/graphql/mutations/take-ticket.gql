@@ -1,0 +1,9 @@
+mutation TakeTicket($input: TicketInput!) {
+  takeTicket(input: $input) {
+    id
+    displayCode
+    customerId
+    beforeYours
+    calledToDesk
+  }
+}
