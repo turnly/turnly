@@ -147,6 +147,13 @@ export type TicketModel = {
   status: Scalars['String'];
 };
 
+export type TakeTicketMutationVariables = Exact<{
+  input: TicketInput;
+}>;
+
+
+export type TakeTicketMutation = { __typename?: 'Mutation', takeTicket: { __typename?: 'TicketModel', id: string, displayCode: string, customerId: string, beforeYours: number, calledToDesk?: string | null } };
+
 export type GetLocationServicesQueryVariables = Exact<{
   locationId: Scalars['ID'];
 }>;
@@ -181,6 +188,43 @@ export type GetTicketQueryVariables = Exact<{
 export type GetTicketQuery = { __typename?: 'Query', getTicket: { __typename?: 'TicketModel', id: string, status: string, displayCode: string, beforeYours: number, calledToDesk?: string | null, customerId: string, service: { __typename?: 'ServiceModel', name: string, description?: string | null }, location: { __typename?: 'LocationModel', name: string, address: string, longitude: string, latitude: string } } };
 
 
+export const TakeTicketDocument = gql`
+    mutation TakeTicket($input: TicketInput!) {
+  takeTicket(input: $input) {
+    id
+    displayCode
+    customerId
+    beforeYours
+    calledToDesk
+  }
+}
+    `;
+export type TakeTicketMutationFn = Apollo.MutationFunction<TakeTicketMutation, TakeTicketMutationVariables>;
+
+/**
+ * __useTakeTicketMutation__
+ *
+ * To run a mutation, you first call `useTakeTicketMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useTakeTicketMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [takeTicketMutation, { data, loading, error }] = useTakeTicketMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useTakeTicketMutation(baseOptions?: Apollo.MutationHookOptions<TakeTicketMutation, TakeTicketMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<TakeTicketMutation, TakeTicketMutationVariables>(TakeTicketDocument, options);
+      }
+export type TakeTicketMutationHookResult = ReturnType<typeof useTakeTicketMutation>;
+export type TakeTicketMutationResult = Apollo.MutationResult<TakeTicketMutation>;
+export type TakeTicketMutationOptions = Apollo.BaseMutationOptions<TakeTicketMutation, TakeTicketMutationVariables>;
 export const GetLocationServicesDocument = gql`
     query GetLocationServices($locationId: ID!) {
   getLocationServices(locationId: $locationId) {
