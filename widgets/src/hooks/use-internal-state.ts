@@ -12,7 +12,7 @@ type Answer = {
 }
 type Ticket = {
   beforeYours: number
-  calledToDesk?: string
+  calledToDesk?: string | null
   customerId: string
   displayCode: string
   id: string

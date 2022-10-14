@@ -34,7 +34,7 @@ export const Order = ({
         isDanger={isDanger}
         isWarning={isWarning}
       >
-        {numberOrder}
+        {numberOrder?.padStart(2, '0')}
       </Title>
       <Title level={5} isDanger={isDanger} isWarning={isWarning}>
         Tickets before yours
