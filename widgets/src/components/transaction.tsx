@@ -3,8 +3,8 @@ import { h, JSX } from 'preact'
 import { Text, Title } from '../components/typography'
 
 export interface TransactionProps extends JSX.HTMLAttributes<HTMLDivElement> {
-  idTransaction: string
-  typeTransaction: string
+  idTransaction?: string
+  typeTransaction?: string
 }
 
 export const Transaction = ({

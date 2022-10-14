@@ -11,5 +11,12 @@ export const useSearchParams = <P extends Params = Params>() => {
     return searchParams
   }, []) as P
 
-  return { params }
+  const setSearchParams = (params: Params) => {
+    const queryParams = new URLSearchParams(params).toString()
+    const path = `${window?.location.href}?${queryParams}`
+
+    window.history.pushState({ path }, '', path)
+  }
+
+  return { params, setSearchParams }
 }
