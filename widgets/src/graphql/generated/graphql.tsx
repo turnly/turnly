@@ -48,7 +48,6 @@ export type FieldModel = {
   id: Scalars['ID'];
   isRequired: Scalars['Boolean'];
   label: Scalars['String'];
-  placeholder: Scalars['String'];
   type: Scalars['String'];
 };
 
@@ -148,6 +147,13 @@ export type TicketModel = {
   status: Scalars['String'];
 };
 
+export type LeaveTicketMutationVariables = Exact<{
+  ticketId: Scalars['String'];
+}>;
+
+
+export type LeaveTicketMutation = { __typename?: 'Mutation', leaveTicket: { __typename?: 'TicketModel', id: string, displayCode: string, customerId: string, beforeYours: number, calledToDesk?: string | null } };
+
 export type TakeTicketMutationVariables = Exact<{
   input: TicketInput;
 }>;
@@ -189,6 +195,43 @@ export type GetTicketQueryVariables = Exact<{
 export type GetTicketQuery = { __typename?: 'Query', getTicket: { __typename?: 'TicketModel', id: string, status: string, displayCode: string, beforeYours: number, calledToDesk?: string | null, customerId: string, service: { __typename?: 'ServiceModel', name: string, description?: string | null }, location: { __typename?: 'LocationModel', name: string, address: string, longitude: string, latitude: string } } };
 
 
+export const LeaveTicketDocument = gql`
+    mutation LeaveTicket($ticketId: String!) {
+  leaveTicket(id: $ticketId) {
+    id
+    displayCode
+    customerId
+    beforeYours
+    calledToDesk
+  }
+}
+    `;
+export type LeaveTicketMutationFn = Apollo.MutationFunction<LeaveTicketMutation, LeaveTicketMutationVariables>;
+
+/**
+ * __useLeaveTicketMutation__
+ *
+ * To run a mutation, you first call `useLeaveTicketMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useLeaveTicketMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [leaveTicketMutation, { data, loading, error }] = useLeaveTicketMutation({
+ *   variables: {
+ *      ticketId: // value for 'ticketId'
+ *   },
+ * });
+ */
+export function useLeaveTicketMutation(baseOptions?: Apollo.MutationHookOptions<LeaveTicketMutation, LeaveTicketMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<LeaveTicketMutation, LeaveTicketMutationVariables>(LeaveTicketDocument, options);
+      }
+export type LeaveTicketMutationHookResult = ReturnType<typeof useLeaveTicketMutation>;
+export type LeaveTicketMutationResult = Apollo.MutationResult<LeaveTicketMutation>;
+export type LeaveTicketMutationOptions = Apollo.BaseMutationOptions<LeaveTicketMutation, LeaveTicketMutationVariables>;
 export const TakeTicketDocument = gql`
     mutation TakeTicket($input: TicketInput!) {
   takeTicket(input: $input) {

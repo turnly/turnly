@@ -25,7 +25,7 @@ interface State {
   ticket: Nullable<Ticket>
   setService: (service: Service) => void
   setAnswers: (answers: Answer[]) => void
-  setTicket: (tiket: Ticket) => void
+  setTicket: (tiket: Nullable<Ticket>) => void
   resetInternalState: () => void
 }
 
