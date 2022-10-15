@@ -1,0 +1,9 @@
+mutation LeaveTicket($ticketId: String!) {
+  leaveTicket(id: $ticketId) {
+    id
+    displayCode
+    customerId
+    beforeYours
+    calledToDesk
+  }
+}

@@ -3,24 +3,29 @@ import { useState } from 'preact/hooks'
 
 import { Button } from '../../components/button'
 import { FooterScreen, HeaderScreen } from '../../components/layouts/screen'
+import { Modal } from '../../components/modal'
 import { Order } from '../../components/order'
-import { Rating } from '../../components/rating'
 import { ServiceParams } from '../../components/services'
 import { Transaction } from '../../components/transaction'
 import { Text, Title } from '../../components/typography'
+import { useLeaveTicket } from '../../graphql/hooks/use-leave-ticket-mutation'
 import { useGetTicketQuery } from '../../graphql/hooks/use-ticket-query'
 import { useCurrentLocation } from '../../hooks/use-current-location'
 import { useInternalState } from '../../hooks/use-internal-state'
 import { useSearchParams } from '../../hooks/use-search-params'
 import { useTranslation } from '../../localization'
+import { SCREEN_NAMES, useNavigator } from '../../navigation'
 
 const MIN_TICKETS_IN_QUEUE = 8
 
 export const TicketDetailsScreen = () => {
   const { translate } = useTranslation()
+  const { navigate } = useNavigator()
   const { params } = useSearchParams()
   const { setCurrentLocation } = useCurrentLocation()
-  const { service, ticket, setService, setTicket } = useInternalState()
+  const { service, ticket, setService, setTicket, setAnswers } =
+    useInternalState()
+  const { leaveCurrentTicket, isLoading: isLeaving } = useLeaveTicket()
   const [isShowing, setIsShowing] = useState(false)
 
   const { isLoading } = useGetTicketQuery({
@@ -40,14 +45,39 @@ export const TicketDetailsScreen = () => {
       ]),
   })
 
+  const handleModalLeave = () => setIsShowing(p => !p)
+
+  const handleSubmit = async () => {
+    if (ticket) {
+      await leaveCurrentTicket(ticket.id)
+
+      await Promise.all([setAnswers([]), setTicket(null)])
+
+      navigate(SCREEN_NAMES.SERVICES)
+    }
+  }
+
   if (isLoading) return null
 
   return (
     <Fragment>
-      <Rating
-        onCallback={(rating, experience) =>
-          console.log(`${rating} - ${experience}`)
-        }
+      <Modal
+        title="You’re sure?"
+        description="If you get out of line you will lose your turn, you can always take a ticket again in the same location or in others."
+        buttons={[
+          {
+            children: 'I understand, leave',
+            isPrimary: true,
+            onClick: handleSubmit,
+            isLoading: isLeaving,
+          },
+          {
+            children: 'Cancel',
+            isDefault: true,
+            onClick: handleModalLeave,
+            disabled: isLeaving,
+          },
+        ]}
         isShowing={isShowing}
       />
 
@@ -58,7 +88,7 @@ export const TicketDetailsScreen = () => {
             typeTransaction={service?.name}
           />
 
-          <Order numberOrder={`${ticket?.beforeYours}`} />
+          <Order numberOrder={`${ticket?.beforeYours}`} isPrimary />
         </HeaderScreen>
 
         <FooterScreen>
@@ -70,11 +100,11 @@ export const TicketDetailsScreen = () => {
           </div>
 
           <div className="tly-ticket-details-buttons">
-            <Button isOutline isSecondary onClick={() => setIsShowing(p => !p)}>
+            <Button isOutline isSecondary onClick={handleModalLeave}>
               {translate('tickets.leave.button_text')}
             </Button>
 
-            {ticket?.beforeYours &&
+            {!!ticket?.beforeYours &&
               ticket.beforeYours <= MIN_TICKETS_IN_QUEUE && (
                 <Button>{translate('tickets.announce.button_text')}</Button>
               )}
