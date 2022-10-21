@@ -1,27 +1,27 @@
 import clsx from 'clsx'
 import { h, JSX } from 'preact'
+import { useMemo, useState } from 'preact/hooks'
 
 import { Title } from '../components/typography'
+import { useInternalState } from '../hooks/use-internal-state'
 
-export interface OrderProps extends JSX.HTMLAttributes<HTMLDivElement> {
-  numberOrder: string
-  isDanger: boolean
-  isWarning: boolean
-  isPrimary: boolean
-}
+export interface OrderProps extends JSX.HTMLAttributes<HTMLDivElement> {}
 
-export const Order = ({
-  numberOrder,
-  isDanger,
-  isWarning,
-  isPrimary,
-  ...attributes
-}: Partial<OrderProps>) => {
+export type OrderStatus = 'danger' | 'warning' | 'success'
+
+export const Order = (attributes: Partial<OrderProps>) => {
+  const { ticket } = useInternalState()
+  const [status, setStatus] = useState<OrderStatus>('danger')
+  const [isDanger, isWarning, isSuccess] = useMemo(
+    () => [status === 'danger', status === 'warning', status === 'success'],
+    [status]
+  )
+
   const styles = clsx({
     ['tly-order']: true,
     ['tly-order--is-danger']: isDanger,
     ['tly-order--is-warning']: isWarning,
-    ['tly-order--is-primary']: isPrimary,
+    ['tly-order--is-primary']: isSuccess,
   })
 
   const classes = clsx(styles, attributes.className)
@@ -34,10 +34,10 @@ export const Order = ({
         isDanger={isDanger}
         isWarning={isWarning}
       >
-        {numberOrder?.padStart(2, '0')}
+        {ticket?.beforeYours.toString().padStart(2, '0')}
       </Title>
       <Title level={5} isDanger={isDanger} isWarning={isWarning}>
-        Tickets before yours
+        {!isSuccess ? 'Tickets before yours' : 'Ahoy, your turn!'}
       </Title>
     </div>
   )

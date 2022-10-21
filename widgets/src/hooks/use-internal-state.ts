@@ -5,12 +5,12 @@ import shallow from 'zustand/shallow'
 import { Nullable } from '../@types/shared'
 import { ServiceParams } from '../components/services'
 
-type Service = Nullable<ServiceParams>
-type Answer = {
+export type Service = Nullable<ServiceParams>
+export type Answer = {
   fieldId: string
   value: string
 }
-type Ticket = {
+export type Ticket = {
   beforeYours: number
   calledToDesk?: string | null
   customerId: string

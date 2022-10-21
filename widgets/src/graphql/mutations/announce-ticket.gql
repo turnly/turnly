@@ -1,0 +1,9 @@
+mutation AnnounceTicket($ticketId: String!) {
+  announceTicket(id: $ticketId) {
+    id
+    displayCode
+    customerId
+    beforeYours
+    calledToDesk
+  }
+}
