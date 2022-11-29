@@ -37,11 +37,19 @@ const getTicketsWaitingForService = Validator.object({
   organizationId: Validator.isId(),
 })
 
+const getTicketsByLocation = Validator.object({
+  serviceIds: Validator.getBuilder().array().items(Validator.isId(true)),
+  locationId: Validator.isId(),
+  organizationId: Validator.isId(),
+  searchQuery: Validator.string(true),
+})
+
 export const validator = {
   create,
   get,
   leave: get,
   announce: get,
   getTicketsBeforeYours,
+  getTicketsByLocation,
   getTicketsWaitingForService,
 }

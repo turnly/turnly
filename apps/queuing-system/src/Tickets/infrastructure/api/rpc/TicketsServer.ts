@@ -138,6 +138,29 @@ export class TicketsServer extends Producers.ServerImplementation<Producers.Queu
     callback(null, response)
   }
 
+  @Producers.CallHandler(Producers.QueuingSystem.GetTicketsByLocationResponse)
+  public async getTicketsByLocation(
+    call: Producers.ServerUnaryCall<
+      Producers.QueuingSystem.GetTicketsByLocationRequest,
+      Producers.QueuingSystem.GetTicketsByLocationResponse
+    >,
+    callback: Producers.ICallback<Producers.QueuingSystem.GetTicketsByLocationResponse>
+  ) {
+    const { data, meta } = await this.ticketsController.getTicketsByLocation({
+      locationId: call.request.getLocationId(),
+      serviceIds: call.request.getServiceIdsList(),
+      organizationId: Client.getOrganizationId(call),
+    })
+
+    const response = new Producers.QueuingSystem.GetTicketsByLocationResponse()
+
+    if (data) response.setDataList(data.map(TicketsMapper.toRPC))
+
+    response.setMeta(Producers.MetaMapper.toRPC(meta))
+
+    callback(null, response)
+  }
+
   @Producers.CallHandler(
     Producers.QueuingSystem.GetTicketsWaitingForServiceResponse
   )
@@ -178,6 +201,7 @@ export class TicketsServer extends Producers.ServerImplementation<Producers.Queu
       leave: this.leave.bind(this),
       announce: this.announce.bind(this),
       getTicketsBeforeYours: this.getTicketsBeforeYours.bind(this),
+      getTicketsByLocation: this.getTicketsByLocation.bind(this),
       getTicketsWaitingForService: this.getTicketsWaitingForService.bind(this),
     }
   }
