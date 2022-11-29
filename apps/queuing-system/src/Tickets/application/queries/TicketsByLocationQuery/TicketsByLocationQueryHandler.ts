@@ -29,6 +29,7 @@ export class TicketsByLocationQueryHandler
     locationId,
     organizationId,
     serviceIds,
+    searchQuery,
   }: TicketsByLocationQuery) {
     const today = DateTime.today().toJSDate()
     const query = new QueryBuilder<Ticket>()
@@ -37,6 +38,7 @@ export class TicketsByLocationQueryHandler
       .equal('status', TicketStatus.ANNOUNCED)
       .gte('createdAt', today)
 
+    if (searchQuery) query.matches(['displayCode'], searchQuery)
     if (serviceIds?.length) query.in('serviceId', serviceIds)
 
     return await this.ticketsReadableRepo.find(query.getMany())

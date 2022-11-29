@@ -16,12 +16,13 @@ export class TicketsByLocationQueryMother {
       () => ObjectMother.uuid('srv'),
       ObjectMother.integer(1)
     ),
+    searchQuery: string = ObjectMother.word(),
     organizationId: Guid = ObjectMother.uuid('org')
   ): TicketsByLocationQuery {
     return new TicketsByLocationQuery(
       locationId,
       organizationId,
-      undefined,
+      searchQuery,
       serviceIds
     )
   }
