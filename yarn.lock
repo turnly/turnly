@@ -2956,8 +2956,8 @@
 
 "@turnly/eslint-config@github:turnly/configs":
   version "0.0.0"
-  uid ea22b37b6b50ffd0e4636fcae98f6b68e75a27d6
-  resolved "https://codeload.github.com/turnly/configs/tar.gz/ea22b37b6b50ffd0e4636fcae98f6b68e75a27d6"
+  uid "4ee0978298af7f1e75d005fa07b0a1e482193edb"
+  resolved "https://codeload.github.com/turnly/configs/tar.gz/4ee0978298af7f1e75d005fa07b0a1e482193edb"
   dependencies:
     "@commitlint/cli" "^16.2.4"
     "@commitlint/config-conventional" "^16.2.4"
@@ -2979,7 +2979,7 @@
 
 "@turnly/eslint-config@https://github.com/turnly/configs.git":
   version "0.0.0"
-  resolved "https://github.com/turnly/configs.git#ea22b37b6b50ffd0e4636fcae98f6b68e75a27d6"
+  resolved "https://github.com/turnly/configs.git#4ee0978298af7f1e75d005fa07b0a1e482193edb"
   dependencies:
     "@commitlint/cli" "^16.2.4"
     "@commitlint/config-conventional" "^16.2.4"
