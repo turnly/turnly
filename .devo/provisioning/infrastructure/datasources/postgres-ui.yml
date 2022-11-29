@@ -1,0 +1,16 @@
+version: '3.9'
+
+services:
+  postgres_ui:
+    extends:
+      file: common.yml
+      service: common
+    container_name: postgres_ui
+    image: adminer:4.8.1
+    ports:
+      - ${POSTGRES_ADMINER_PORT}:8080
+    environment:
+      ADMINER_DEFAULT_SERVER: postgres
+    depends_on:
+      postgres:
+        condition: service_healthy

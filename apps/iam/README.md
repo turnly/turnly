@@ -17,4 +17,10 @@
 
 # Heimdall IAM — Identity & Access Management (SSO).
 
-Keycloak is a high performance Java-based identity and access management solution. It lets developers add an authentication layer to their applications with minimum effort.
+**Solving AAA**
+
+We don't like to reinvent the wheel, we use Keycloak as an identity and access management solution.
+This open-source project is our core for authentication, authorization and accounting.
+
+Keycloak is a high performance Java-based identity and access management solution.
+It lets developers add an authentication layer to their applications with minimum effort.
