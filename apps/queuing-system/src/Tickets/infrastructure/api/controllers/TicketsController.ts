@@ -26,6 +26,7 @@ import {
 } from 'Tickets/application/commands/LeaveTicketCommand'
 import { TicketByIdQuery } from 'Tickets/application/queries/TicketByIdQuery'
 import { TicketsBeforeYoursQuery } from 'Tickets/application/queries/TicketsBeforeYoursQuery'
+import { TicketsByLocationQuery } from 'Tickets/application/queries/TicketsByLocationQuery'
 import {
   TicketsWaitingFor,
   TicketsWaitingForServiceQuery,
@@ -92,6 +93,23 @@ export class TicketsController extends Controller {
         params.ticketId,
         params.customerId,
         params.organizationId
+      )
+    )
+
+    if (!tickets) throw new ResourceNotFoundException()
+
+    return this.respond.ok(tickets.map(ticket => ticket.toObject()))
+  }
+
+  @TimeoutHandler()
+  @InputValidator(validator.getTicketsBeforeYours)
+  public async getTicketsByLocation(params: TicketsByLocationQuery) {
+    const tickets = await this.queryBus.ask<Nullable<Ticket[]>>(
+      new TicketsByLocationQuery(
+        params.locationId,
+        params.organizationId,
+        params.searchQuery,
+        params.serviceIds
       )
     )
 
