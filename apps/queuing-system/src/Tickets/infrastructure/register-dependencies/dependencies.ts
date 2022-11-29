@@ -12,6 +12,7 @@ import { LeaveTicketCommandHandler } from 'Tickets/application/commands/LeaveTic
 import { ActiveTicketsByCustomerQueryHandler } from 'Tickets/application/queries/ActiveTicketsByCustomerQuery'
 import { TicketByIdQueryHandler } from 'Tickets/application/queries/TicketByIdQuery'
 import { TicketsBeforeYoursQueryHandler } from 'Tickets/application/queries/TicketsBeforeYoursQuery'
+import { TicketsByLocationQueryHandler } from 'Tickets/application/queries/TicketsByLocationQuery'
 import { TicketsWaitingForServiceQueryHandler } from 'Tickets/application/queries/TicketsWaitingForServiceQuery'
 import { CreateTicketReadingDBSubscriber } from 'Tickets/application/subscribers/CreateTicketReadingDBSubscriber'
 
@@ -69,5 +70,8 @@ Box.register({
     .singleton(),
   ticketsWaitingForServiceQueryHandler: ioc
     .asClass(TicketsWaitingForServiceQueryHandler)
+    .singleton(),
+  ticketsByLocationQueryHandler: ioc
+    .asClass(TicketsByLocationQueryHandler)
     .singleton(),
 })
