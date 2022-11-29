@@ -57,5 +57,11 @@ export const broadcastable = {
     BroadcastableEvents.TICKET_UNASSIGNED,
     BroadcastableEvents.TICKET_REASSIGNED,
   ],
-  helpdesk: [BroadcastableEvents.TICKET_CREATED],
+  helpdesk: [
+    /**
+     * Ticket events
+     */
+    BroadcastableEvents.TICKET_CREATED,
+    BroadcastableEvents.TICKET_ANNOUNCED,
+  ],
 }
