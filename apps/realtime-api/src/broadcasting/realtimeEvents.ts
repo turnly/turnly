@@ -15,6 +15,7 @@ export enum RealtimeEvents {
    * Ticket events
    */
   TICKET_BEFORE_YOURS_UPDATED = 'ticket.before-yours.updated',
+  AGENTS_TICKETS_UPDATES = 'agents.tickets.updates',
 
   /**
    * Global events
