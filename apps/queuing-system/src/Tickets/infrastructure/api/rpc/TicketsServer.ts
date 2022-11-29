@@ -147,6 +147,7 @@ export class TicketsServer extends Producers.ServerImplementation<Producers.Queu
     callback: Producers.ICallback<Producers.QueuingSystem.GetTicketsByLocationResponse>
   ) {
     const { data, meta } = await this.ticketsController.getTicketsByLocation({
+      searchQuery: call.request.getFindQuery(),
       locationId: call.request.getLocationId(),
       serviceIds: call.request.getServiceIdsList(),
       organizationId: Client.getOrganizationId(call),

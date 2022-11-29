@@ -101,8 +101,8 @@ export class TicketsController extends Controller {
     return this.respond.ok(tickets.map(ticket => ticket.toObject()))
   }
 
-  // @InputValidator(validator.getTicketsBeforeYours)
   @TimeoutHandler()
+  @InputValidator(validator.getTicketsBeforeYours)
   public async getTicketsByLocation(params: TicketsByLocationQuery) {
     const tickets = await this.queryBus.ask<Nullable<Ticket[]>>(
       new TicketsByLocationQuery(
