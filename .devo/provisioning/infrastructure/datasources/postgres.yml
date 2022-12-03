@@ -8,9 +8,9 @@ services:
     image: postgres:15.1-alpine
     container_name: postgres
     ports:
-      - ${POSTGRES_PORT}:5432
+      - ${POSTGRES_PORT:-5432}:5432
     environment:
-      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-turnly}
     volumes:
       - pg_data:/var/lib/postgresql/data
 

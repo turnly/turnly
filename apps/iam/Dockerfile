@@ -11,12 +11,15 @@ ENV PROXY_ADDRESS_FORWARDING=true \
     KC_METRICS_ENABLED=true \
     KC_HEALTH_ENABLED=true \
     # Configure a database vendor
-    KC_DB=postgres
+    KC_DB=postgres \
+    KC_FEATURES=authorization,account2,account-api,client-policies,impersonation,token-exchange,upload-scripts
 
 WORKDIR /opt/keycloak
 RUN /opt/keycloak/bin/kc.sh build
 
-FROM quay.io/keycloak/keycloak:${IAM_VERSION} as runner
+FROM quay.io/keycloak/keycloak:${KC_VERSION} as runner
 COPY --from=builder /opt/keycloak/ /opt/keycloak/
 
-ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start"]
+EXPOSE 8080
+
+ENTRYPOINT ["/opt/keycloak/bin/kc.sh"]

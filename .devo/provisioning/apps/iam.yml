@@ -5,29 +5,28 @@ services:
     extends:
       file: common.yml
       service: common
-    container_name: heimdall-iam
+    container_name: iam
     image: turnly/iam:latest
+    command: start-dev
     build:
       context: ${DOCKER_RELATIVE_APPS_DIR}/iam
       dockerfile: Dockerfile
-    ports:
-      - ${IAM_PORT}:8080
     depends_on:
-      postgres:
-        condition: service_healthy
-      gateway:
-        condition: service_healthy
+      - postgres
+      - gateway
     environment:
-      KEYCLOAK_ADMIN: ${IAM_ADMIN_USERNAME}
-      KEYCLOAK_ADMIN_PASSWORD: ${IAM_ADMIN_PASSWORD}
-      KC_DB_URL: ${IAM_DB_URL}
-      KC_DB_USERNAME: ${IAM_DB_USERNAME}
-      KC_DB_PASSWORD: ${IAM_DB_PASSWORD}
+      KEYCLOAK_ADMIN: ${IAM_ADMIN_USERNAME:-admin}
+      KEYCLOAK_ADMIN_PASSWORD: ${IAM_ADMIN_PASSWORD:-admin}
+      # KC_DB_URL: "jdbc:postgresql://postgres:5432/iam"
+      # KC_DB_USERNAME: ${IAM_DB_USERNAME:-postgres}
+      # KC_DB_PASSWORD: ${POSTGRES_PASSWORD}
       KC_HOSTNAME: ${IAM_HOSTNAME}
-    # labels:
-    #   - traefik.enable=true
-    #   - traefik.http.routers.addons-rpc.entrypoints=web,websecure
-    #   - traefik.http.routers.addons-rpc.rule=PathPrefix(`/turnly.addons.v1`)
-    #   - traefik.http.routers.addons-rpc.service=addons-rpc
-    #   - traefik.http.services.addons-rpc.loadbalancer.server.scheme=h2c
-
+      KC_HOSTNAME_STRICT: "false"
+      KC_PROXY: edge
+      KC_HTTP_ENABLED: "true"
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.iam.entrypoints=web,websecure
+      - traefik.http.routers.iam.rule=Host(`${IAM_HOSTNAME}`)
+      - traefik.http.routers.iam.service=iam
+      - traefik.http.services.iam.loadbalancer.server.port=8080
