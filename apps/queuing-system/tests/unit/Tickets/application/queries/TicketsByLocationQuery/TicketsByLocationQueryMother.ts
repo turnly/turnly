@@ -6,6 +6,7 @@
  */
 import { Guid } from '@turnly/common'
 import { ObjectMother } from '@turnly/testing'
+import { TicketStatus } from 'Tickets/domain/enums/TicketStatus'
 
 import { TicketsByLocationQuery } from '../../../../../../src/Tickets/application/queries/TicketsByLocationQuery'
 
@@ -16,12 +17,14 @@ export class TicketsByLocationQueryMother {
       () => ObjectMother.uuid('srv'),
       ObjectMother.integer(1)
     ),
+    status = [TicketStatus.ANNOUNCED],
     searchQuery: string = ObjectMother.word(),
     organizationId: Guid = ObjectMother.uuid('org')
   ): TicketsByLocationQuery {
     return new TicketsByLocationQuery(
       locationId,
       organizationId,
+      status,
       searchQuery,
       serviceIds
     )

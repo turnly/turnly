@@ -62,6 +62,7 @@ export const validator = {
   call,
   leave: get,
   announce: get,
+  getTicketByLocation: getTicketsBeforeYours,
   getTicketsBeforeYours,
   getTicketsByLocation,
   getTicketsWaitingForService,
