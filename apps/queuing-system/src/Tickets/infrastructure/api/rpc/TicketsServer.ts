@@ -4,7 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { BadRequestException, NotImplementedError } from '@turnly/common'
+import { BadRequestException } from '@turnly/common'
 import { Producers } from '@turnly/rpc'
 import { Client } from '@turnly/rpc/dist/consumers'
 import { TicketStatus } from 'Tickets/domain/enums/TicketStatus'
@@ -219,6 +219,29 @@ export class TicketsServer extends Producers.ServerImplementation<Producers.Queu
     callback(null, response)
   }
 
+  @Producers.CallHandler(Producers.QueuingSystem.CallTicketResponse)
+  public async call(
+    call: Producers.ServerUnaryCall<
+      Producers.QueuingSystem.CallTicketRequest,
+      Producers.QueuingSystem.CallTicketResponse
+    >,
+    callback: Producers.ICallback<Producers.QueuingSystem.CallTicketResponse>
+  ) {
+    const { data, meta } = await this.ticketsController.call({
+      id: call.request.getId(),
+      organizationId: Client.getOrganizationId(call),
+      agentId: call.request.getAgentId(),
+    })
+
+    const response = new Producers.QueuingSystem.CallTicketResponse()
+    const ticket = TicketsMapper.toRPC(data)
+
+    response.setData(ticket)
+    response.setMeta(Producers.MetaMapper.toRPC(meta))
+
+    callback(null, response)
+  }
+
   public get implementation() {
     return {
       create: this.create.bind(this),
@@ -228,10 +251,8 @@ export class TicketsServer extends Producers.ServerImplementation<Producers.Queu
       getTicketsBeforeYours: this.getTicketsBeforeYours.bind(this),
       getTicketsByLocation: this.getTicketsByLocation.bind(this),
       getTicketsWaitingForService: this.getTicketsWaitingForService.bind(this),
-      call: () => {
-        throw new NotImplementedError()
-      },
       resolve: this.resolve.bind(this),
+      call: this.call.bind(this),
     }
   }
 }

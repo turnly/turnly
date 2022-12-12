@@ -181,4 +181,18 @@ export class TicketsResolver {
       organizationId
     )
   }
+
+  @Authorized()
+  @Mutation(() => TicketModel)
+  public async callTicket(
+    @Arg('ticketId', () => ID) id: string,
+    @Arg('agentId', () => ID) agentId: string,
+    @Ctx() _ctx: IContext
+  ) {
+    const { data: ticket, meta } = await Tickets.call({ id, agentId })
+
+    if (!ticket) throw new GraphException(meta)
+
+    return TicketsMapper.toDTO(ticket)
+  }
 }

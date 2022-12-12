@@ -5,6 +5,7 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import { ConflictException, Extra } from '@turnly/common'
+import { ObjectMother } from '@turnly/testing'
 
 import { TicketStatus } from '../../../../src/Tickets/domain/enums/TicketStatus'
 import { TicketMother } from './TicketMother'
@@ -143,5 +144,27 @@ describe('tickets > domain > validates the min behavior in the life-cycle of a t
     const value = ticket.getExtra('cellphone')
 
     expect(value).toBeNull()
+  })
+
+  describe('when the ticket is called', () => {
+    it('should be in the ANNOUNCE status', () => {
+      const ticket = TicketMother.inCalledStatus()
+
+      ticket.call(ObjectMother.uuid('agt'))
+
+      const { status } = ticket.toObject()
+      expect(status).toBe(TicketStatus.CALLED)
+    })
+  })
+
+  describe('when the ticket is re-called', () => {
+    it('should be in the CALLED status', () => {
+      const ticket = TicketMother.inRecalledStatus()
+
+      ticket.call(ObjectMother.uuid('agt'))
+
+      const { status } = ticket.toObject()
+      expect(status).toBe(TicketStatus.RECALLED)
+    })
   })
 })

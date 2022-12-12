@@ -17,6 +17,10 @@ import {
   AnnounceTicketParams,
 } from 'Tickets/application/commands/AnnounceTicketCommand'
 import {
+  CallTicketCommand,
+  CallTicketParams,
+} from 'Tickets/application/commands/CallTicketCommand'
+import {
   CreateTicketCommand,
   CreateTicketCommandParams,
 } from 'Tickets/application/commands/CreateTicketCommand'
@@ -68,6 +72,16 @@ export class TicketsController extends Controller {
       throw new ResourceNotFoundException()
 
     return this.respond.ok(ticket.toObject())
+  }
+
+  @TimeoutHandler()
+  @InputValidator(validator.call)
+  public async call(params: CallTicketParams) {
+    const ticket = await this.commandBus.execute<Ticket, CallTicketCommand>(
+      new CallTicketCommand(params)
+    )
+
+    return this.respond.created(ticket.toObject())
   }
 
   @TimeoutHandler()
