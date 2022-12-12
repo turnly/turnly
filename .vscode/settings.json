@@ -30,6 +30,7 @@
     "apps/business-owners",
     "apps/realtime-api",
     "apps/widgets-api",
+    "apps/helpdesk-api",
     "widgets"
   ]
 }
