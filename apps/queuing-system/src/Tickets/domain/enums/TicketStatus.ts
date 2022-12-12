@@ -71,11 +71,11 @@ export enum TicketStatus {
   INACTIVE = 'inactive',
 
   /**
-   * Near attention status
+   * Returned status
    *
-   * @description Use when the ticket has returned to the row again.
+   * @description Use it when the customer returns to the waiting row.
    */
-  NEAR_ATTENTION = 'near_attention',
+  RETURNED = 'returned',
 
   /**
    * Removed status
@@ -85,16 +85,16 @@ export enum TicketStatus {
   REMOVED = 'removed',
 
   /**
-   * Completed without feedback status
+   * Served status
    *
-   * @description Use it when the ticket has been attended and the customer has not yet rated the service provider.
+   * @description Use it when the ticket has been attended by an agent and the customer has not yet rated the service provider.
    */
-  COMPLETED_WITHOUT_RATING = 'completed_without_rating',
+  SERVED = 'served',
 
   /**
-   * Completed with feedback status
+   * Served with feedback status
    *
    * @description Use it when the ticket has been attended by an agent and the customer has rated the service provider.
    */
-  COMPLETED_WITH_RATING = 'completed_with_rating',
+  SERVED_WITH_RATING = 'served_with_rating',
 }

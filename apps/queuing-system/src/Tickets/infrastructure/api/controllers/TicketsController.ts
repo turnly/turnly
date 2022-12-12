@@ -55,12 +55,13 @@ export class TicketsController extends Controller {
 
   @TimeoutHandler()
   @InputValidator(validator.get)
-  public async getOne(params: TicketByIdQuery) {
+  public async getOne(params: TicketByIdQuery & { customerId: string }) {
     const ticket = await this.queryBus.ask<Nullable<Ticket>>(
-      new TicketByIdQuery(params.id, params.customerId, params.organizationId)
+      new TicketByIdQuery(params.id, params.organizationId)
     )
 
-    if (!ticket) throw new ResourceNotFoundException()
+    if (!ticket || !ticket.isOwnedBy(params.customerId))
+      throw new ResourceNotFoundException()
 
     return this.respond.ok(ticket.toObject())
   }

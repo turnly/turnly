@@ -29,10 +29,11 @@ export class LeaveTicketCommandHandler
 
   public async execute({ params }: LeaveTicketCommand) {
     const ticket = await this.queryBus.ask<Nullable<Ticket>>(
-      new TicketByIdQuery(params.id, params.customerId, params.organizationId)
+      new TicketByIdQuery(params.id, params.organizationId)
     )
 
-    if (!ticket) throw new ResourceNotFoundException()
+    if (!ticket || !ticket.isOwnedBy(params.customerId))
+      throw new ResourceNotFoundException()
 
     ticket.leave()
 

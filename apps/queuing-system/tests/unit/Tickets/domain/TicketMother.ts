@@ -80,7 +80,6 @@ export class TicketMother {
   static fromExistingTicketOnQuery(query: TicketByIdQuery): Ticket {
     return Ticket.build({
       ...this.random().toObject(),
-      customerId: query.customerId,
       organizationId: query.organizationId,
       id: query.id,
     })
@@ -98,7 +97,7 @@ export class TicketMother {
   }
 
   static inPendingForRatingStatus(): Ticket {
-    const ticket = TicketMother.create(TicketStatus.COMPLETED_WITHOUT_RATING)
+    const ticket = TicketMother.create(TicketStatus.SERVED)
 
     /**
      * Pull creation event first to clear the array of events

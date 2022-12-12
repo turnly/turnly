@@ -103,7 +103,7 @@ describe('tickets > domain > validates the min behavior in the life-cycle of a t
     expect(event.payload).toBeDefined()
 
     const { status } = ticket.toObject()
-    expect(status).toBe(TicketStatus.COMPLETED_WITH_RATING)
+    expect(status).toBe(TicketStatus.SERVED_WITH_RATING)
   })
 
   it('should not be able to rate my ticket if it is not in a valid state', () => {
@@ -114,7 +114,7 @@ describe('tickets > domain > validates the min behavior in the life-cycle of a t
     )
 
     const { status } = ticket.toObject()
-    expect(status).not.toEqual(TicketStatus.COMPLETED_WITH_RATING)
+    expect(status).not.toEqual(TicketStatus.SERVED_WITH_RATING)
   })
 
   it('should create a ticket with extra attributes', () => {

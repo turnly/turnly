@@ -4,7 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { BadRequestException } from '@turnly/common'
+import { BadRequestException, NotImplementedError } from '@turnly/common'
 import { Producers } from '@turnly/rpc'
 import { Client } from '@turnly/rpc/dist/consumers'
 
@@ -204,6 +204,12 @@ export class TicketsServer extends Producers.ServerImplementation<Producers.Queu
       getTicketsBeforeYours: this.getTicketsBeforeYours.bind(this),
       getTicketsByLocation: this.getTicketsByLocation.bind(this),
       getTicketsWaitingForService: this.getTicketsWaitingForService.bind(this),
+      call: () => {
+        throw new NotImplementedError()
+      },
+      resolve: () => {
+        throw new NotImplementedError()
+      },
     }
   }
 }
