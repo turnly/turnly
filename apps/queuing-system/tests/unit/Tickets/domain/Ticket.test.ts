@@ -4,7 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { ConflictException, Extra, InvalidStateException } from '@turnly/common'
+import { ConflictException, Extra } from '@turnly/common'
 
 import { TicketStatus } from '../../../../src/Tickets/domain/enums/TicketStatus'
 import { TicketMother } from './TicketMother'
@@ -35,11 +35,11 @@ describe('tickets > domain > validates the min behavior in the life-cycle of a t
   })
 
   describe('when the ticket is created', () => {
-    it('should be in the BOOKED status', () => {
+    it('should be in the available status', () => {
       const ticket = TicketMother.random()
       const { status } = ticket.toObject()
 
-      expect(status).toBe(TicketStatus.BOOKED)
+      expect(status).toBe(TicketStatus.AVAILABLE)
     })
 
     it('should register a creation event', () => {
@@ -89,15 +89,6 @@ describe('tickets > domain > validates the min behavior in the life-cycle of a t
     expect(status).toBe(TicketStatus.ANNOUNCED)
   })
 
-  it('should not be able to announce my arrival if I am not in the AVAILABLE status', () => {
-    const ticket = TicketMother.random()
-
-    expect(() => ticket.announce()).toThrowError(InvalidStateException)
-
-    const { status } = ticket.toObject()
-    expect(status).not.toEqual(TicketStatus.ANNOUNCED)
-  })
-
   it('should be able to rate my ticket', () => {
     const ticket = TicketMother.inPendingForRatingStatus()
     ticket.addRating(TicketMother.randomRating())
@@ -138,5 +129,19 @@ describe('tickets > domain > validates the min behavior in the life-cycle of a t
 
     expect(customAttribute).toHaveProperty('key')
     expect(customAttribute).toHaveProperty('value')
+  })
+
+  it('should get the value of the key in the extra', () => {
+    const ticket = TicketMother.withStaticExtra()
+    const value = ticket.getExtra('password')
+
+    expect(value).toBeDefined()
+  })
+
+  it('should get null if the key is not in the extra', () => {
+    const ticket = TicketMother.withStaticExtra()
+    const value = ticket.getExtra('cellphone')
+
+    expect(value).toBeNull()
   })
 })
