@@ -19,10 +19,9 @@ export class TicketByIdQueryHandler
     private readonly ticketsReadableRepo: ITicketsReadableRepo
   ) {}
 
-  public async execute({ id, customerId, organizationId }: TicketByIdQuery) {
+  public async execute({ id, organizationId }: TicketByIdQuery) {
     const query = new QueryBuilder<Ticket>()
       .equal('id', id)
-      .equal('customerId', customerId)
       .equal('organizationId', organizationId)
       .getOne()
 

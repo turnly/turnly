@@ -29,10 +29,11 @@ export class AnnounceTicketCommandHandler
 
   public async execute({ params }: AnnounceTicketCommand) {
     const ticket = await this.queryBus.ask<Nullable<Ticket>>(
-      new TicketByIdQuery(params.id, params.customerId, params.organizationId)
+      new TicketByIdQuery(params.id, params.organizationId)
     )
 
-    if (!ticket) throw new ResourceNotFoundException()
+    if (!ticket || !ticket.isOwnedBy(params.customerId))
+      throw new ResourceNotFoundException()
 
     /**
      * @todo Implement the logic to validate the device location of the customer

@@ -16,7 +16,7 @@ export enum BroadcastableEvents {
   TICKET_DISCARDED = 'ticket.discarded',
   TICKET_CALLED = 'ticket.called',
   TICKET_RECALLED = 'ticket.recalled',
-  TICKET_NEAR_ATTENTION = 'ticket.near_attention',
+  TICKET_RETURNED = 'ticket.returned',
   TICKET_REMOVED = 'ticket.removed',
   TICKET_INACTIVE = 'ticket.inactive',
   TICKET_ASSIGNED = 'ticket.assigned',
