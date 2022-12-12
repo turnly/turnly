@@ -13,7 +13,6 @@ import {
 } from '@turnly/shared'
 import { ITicketsReadableRepo } from 'Tickets/domain/contracts/ITicketsRepo'
 import { Ticket } from 'Tickets/domain/entities/Ticket'
-import { TicketStatus } from 'Tickets/domain/enums/TicketStatus'
 
 import { TicketsByLocationQuery } from './TicketsByLocationQuery'
 
@@ -28,6 +27,7 @@ export class TicketsByLocationQueryHandler
   public async execute({
     locationId,
     organizationId,
+    status,
     serviceIds,
     searchQuery,
   }: TicketsByLocationQuery) {
@@ -35,9 +35,9 @@ export class TicketsByLocationQueryHandler
     const query = new QueryBuilder<Ticket>()
       .equal('organizationId', organizationId)
       .equal('locationId', locationId)
-      .equal('status', TicketStatus.ANNOUNCED)
       .gte('createdAt', today)
 
+    if (status) query.in('status', status)
     if (searchQuery) query.matches(['displayCode'], searchQuery)
     if (serviceIds?.length) query.in('serviceId', serviceIds)
 
