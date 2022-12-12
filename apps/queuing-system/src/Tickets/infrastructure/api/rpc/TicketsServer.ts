@@ -7,6 +7,7 @@
 import { BadRequestException, NotImplementedError } from '@turnly/common'
 import { Producers } from '@turnly/rpc'
 import { Client } from '@turnly/rpc/dist/consumers'
+import { TicketStatus } from 'Tickets/domain/enums/TicketStatus'
 
 import { TicketsController } from '../controllers/TicketsController'
 import { TicketsMapper } from './TicketsMapper'
@@ -195,6 +196,29 @@ export class TicketsServer extends Producers.ServerImplementation<Producers.Queu
     callback(null, response)
   }
 
+  @Producers.CallHandler(Producers.QueuingSystem.ResolveTicketResponse)
+  public async resolve(
+    call: Producers.ServerUnaryCall<
+      Producers.QueuingSystem.ResolveTicketRequest,
+      Producers.QueuingSystem.ResolveTicketResponse
+    >,
+    callback: Producers.ICallback<Producers.QueuingSystem.ResolveTicketResponse>
+  ) {
+    const { data, meta } = await this.ticketsController.resolve({
+      id: call.request.getId(),
+      organizationId: Client.getOrganizationId(call),
+      status: call.request.getStatus() as TicketStatus,
+    })
+
+    const response = new Producers.QueuingSystem.ResolveTicketResponse()
+    const ticket = TicketsMapper.toRPC(data)
+
+    response.setData(ticket)
+    response.setMeta(Producers.MetaMapper.toRPC(meta))
+
+    callback(null, response)
+  }
+
   public get implementation() {
     return {
       create: this.create.bind(this),
@@ -207,9 +231,7 @@ export class TicketsServer extends Producers.ServerImplementation<Producers.Queu
       call: () => {
         throw new NotImplementedError()
       },
-      resolve: () => {
-        throw new NotImplementedError()
-      },
+      resolve: this.resolve.bind(this),
     }
   }
 }

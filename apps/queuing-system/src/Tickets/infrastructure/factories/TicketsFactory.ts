@@ -16,6 +16,7 @@ import { AnnounceTicketCommandHandler } from 'Tickets/application/commands/Annou
 import { CreateTicketCommandHandler } from 'Tickets/application/commands/CreateTicketCommand'
 import { CreateTicketReadingDBCommandHandler } from 'Tickets/application/commands/CreateTicketReadingDBCommand'
 import { LeaveTicketCommandHandler } from 'Tickets/application/commands/LeaveTicketCommand'
+import { ResolveTicketCommandHandler } from 'Tickets/application/commands/ResolveTicketCommand'
 import { ActiveTicketsByCustomerQueryHandler } from 'Tickets/application/queries/ActiveTicketsByCustomerQuery'
 import { TicketByIdQueryHandler } from 'Tickets/application/queries/TicketByIdQuery'
 import { TicketsBeforeYoursQueryHandler } from 'Tickets/application/queries/TicketsBeforeYoursQuery'
@@ -67,6 +68,7 @@ export class TicketsFactory {
       ),
       Box.resolve<LeaveTicketCommandHandler>('leaveTicketCommandHandler'),
       Box.resolve<AnnounceTicketCommandHandler>('announceTicketCommandHandler'),
+      Box.resolve<ResolveTicketCommandHandler>('resolveTicketCommandHandler'),
     ]
   }
 

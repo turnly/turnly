@@ -79,6 +79,23 @@ export class TicketsResolver {
 
   @Authorized()
   @Mutation(() => TicketModel)
+  public async resolveTicket(
+    @Arg('id', () => String) id: string,
+    @Arg('status', () => String) status: string,
+    @Ctx() _ctx: IContext
+  ) {
+    const { data: ticket, meta } = await Tickets.resolve({
+      id,
+      status,
+    })
+
+    if (!ticket) throw new GraphException(meta)
+
+    return TicketsMapper.toDTO(ticket)
+  }
+
+  @Authorized()
+  @Mutation(() => TicketModel)
   public async announceTicket(
     @Arg('id', () => String) id: string,
     @Ctx() { req: { customer } }: IContext

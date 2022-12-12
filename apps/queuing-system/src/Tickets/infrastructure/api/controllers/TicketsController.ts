@@ -24,6 +24,10 @@ import {
   LeaveTicketCommand,
   LeaveTicketParams,
 } from 'Tickets/application/commands/LeaveTicketCommand'
+import {
+  ResolveTicketCommand,
+  ResolveTicketParams,
+} from 'Tickets/application/commands/ResolveTicketCommand'
 import { TicketByIdQuery } from 'Tickets/application/queries/TicketByIdQuery'
 import { TicketsBeforeYoursQuery } from 'Tickets/application/queries/TicketsBeforeYoursQuery'
 import { TicketsByLocationQuery } from 'Tickets/application/queries/TicketsByLocationQuery'
@@ -81,6 +85,16 @@ export class TicketsController extends Controller {
   public async announce(params: AnnounceTicketParams) {
     const ticket = await this.commandBus.execute<Ticket, AnnounceTicketCommand>(
       new AnnounceTicketCommand(params)
+    )
+
+    return this.respond.ok(ticket.toObject())
+  }
+
+  @TimeoutHandler()
+  @InputValidator(validator.resolve)
+  public async resolve(params: ResolveTicketParams) {
+    const ticket = await this.commandBus.execute<Ticket, ResolveTicketCommand>(
+      new ResolveTicketCommand(params)
     )
 
     return this.respond.ok(ticket.toObject())
