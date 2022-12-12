@@ -9,6 +9,7 @@ import { AnnounceTicketCommandHandler } from 'Tickets/application/commands/Annou
 import { CreateTicketCommandHandler } from 'Tickets/application/commands/CreateTicketCommand'
 import { CreateTicketReadingDBCommandHandler } from 'Tickets/application/commands/CreateTicketReadingDBCommand'
 import { LeaveTicketCommandHandler } from 'Tickets/application/commands/LeaveTicketCommand'
+import { ResolveTicketCommandHandler } from 'Tickets/application/commands/ResolveTicketCommand'
 import { ActiveTicketsByCustomerQueryHandler } from 'Tickets/application/queries/ActiveTicketsByCustomerQuery'
 import { TicketByIdQueryHandler } from 'Tickets/application/queries/TicketByIdQuery'
 import { TicketsBeforeYoursQueryHandler } from 'Tickets/application/queries/TicketsBeforeYoursQuery'
@@ -45,6 +46,9 @@ Box.register({
   leaveTicketCommandHandler: ioc.asClass(LeaveTicketCommandHandler).singleton(),
   announceTicketCommandHandler: ioc
     .asClass(AnnounceTicketCommandHandler)
+    .singleton(),
+  resolveTicketCommandHandler: ioc
+    .asClass(ResolveTicketCommandHandler)
     .singleton(),
 })
 
