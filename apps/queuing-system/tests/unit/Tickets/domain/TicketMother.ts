@@ -96,6 +96,28 @@ export class TicketMother {
     return ticket
   }
 
+  static inCalledStatus(): Ticket {
+    const ticket = TicketMother.create(TicketStatus.ANNOUNCED)
+
+    /**
+     * Pull creation event first to clear the array of events
+     */
+    ticket.pull()
+
+    return ticket
+  }
+
+  static inRecalledStatus(): Ticket {
+    const ticket = TicketMother.create(TicketStatus.CALLED)
+
+    /**
+     * Pull creation event first to clear the array of events
+     */
+    ticket.pull()
+
+    return ticket
+  }
+
   static inPendingForRatingStatus(): Ticket {
     const ticket = TicketMother.create(TicketStatus.SERVED)
 

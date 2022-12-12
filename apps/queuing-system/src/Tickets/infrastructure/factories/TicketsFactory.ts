@@ -13,6 +13,7 @@ import {
   IWritableRepository,
 } from '@turnly/shared'
 import { AnnounceTicketCommandHandler } from 'Tickets/application/commands/AnnounceTicketCommand'
+import { CallTicketCommandHandler } from 'Tickets/application/commands/CallTicketCommand'
 import { CreateTicketCommandHandler } from 'Tickets/application/commands/CreateTicketCommand'
 import { CreateTicketReadingDBCommandHandler } from 'Tickets/application/commands/CreateTicketReadingDBCommand'
 import { LeaveTicketCommandHandler } from 'Tickets/application/commands/LeaveTicketCommand'
@@ -69,6 +70,7 @@ export class TicketsFactory {
       Box.resolve<LeaveTicketCommandHandler>('leaveTicketCommandHandler'),
       Box.resolve<AnnounceTicketCommandHandler>('announceTicketCommandHandler'),
       Box.resolve<ResolveTicketCommandHandler>('resolveTicketCommandHandler'),
+      Box.resolve<CallTicketCommandHandler>('callTicketCommandHandler'),
     ]
   }
 

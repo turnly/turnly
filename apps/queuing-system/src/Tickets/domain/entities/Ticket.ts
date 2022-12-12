@@ -19,6 +19,7 @@ import { TicketPriority } from '../enums/TicketPriority'
 import { TicketScore } from '../enums/TicketScore'
 import { TicketStatus } from '../enums/TicketStatus'
 import { TicketAnnouncedEvent } from '../events/TicketAnnouncedEvent'
+import { TicketCalledEvent } from '../events/TicketCalledEvent'
 import { TicketCancelledEvent } from '../events/TicketCancelledEvent'
 import { TicketCompletedEvent } from '../events/TicketCompletedEvent'
 import { TicketCreatedEvent } from '../events/TicketCreatedEvent'
@@ -176,6 +177,22 @@ export class Ticket extends AggregateRoot {
     handler()
   }
 
+  public call(assigneeId: Guid): void {
+    if (!this.isToCall())
+      throw new InvalidStateException(
+        'Oops!, you can not call this ticket, it is not available.'
+      )
+
+    this.assigneeId = assigneeId
+
+    this.status =
+      this.status === TicketStatus.CALLED
+        ? TicketStatus.RECALLED
+        : TicketStatus.CALLED
+
+    this.register(new TicketCalledEvent(this.toObject()))
+  }
+
   public addRating(rating: Rating): void {
     const isUnknownScore = !Object.values(TicketScore).includes(rating.score)
 
@@ -241,6 +258,10 @@ export class Ticket extends AggregateRoot {
     return [TicketStatus.CALLED, TicketStatus.RECALLED]
   }
 
+  public isToCall(): boolean {
+    return Ticket.getToCallStatus().includes(this.status)
+  }
+
   public static getActiveStatus(): TicketStatus[] {
     return [
       TicketStatus.BOOKED,
@@ -250,6 +271,10 @@ export class Ticket extends AggregateRoot {
       TicketStatus.RECALLED,
       TicketStatus.RETURNED,
     ]
+  }
+
+  public static getToCallStatus(): TicketStatus[] {
+    return [TicketStatus.ANNOUNCED, TicketStatus.CALLED, TicketStatus.RECALLED]
   }
 
   public static getCompletedStatus(): TicketStatus[] {

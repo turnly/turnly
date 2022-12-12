@@ -26,6 +26,12 @@ const get = Validator.object({
   customerId: Validator.isId(),
 })
 
+const call = Validator.object({
+  id: Validator.isId(),
+  organizationId: Validator.isId(),
+  agentId: Validator.isId(),
+})
+
 const getTicketsBeforeYours = Validator.object({
   ticketId: Validator.isId(),
   customerId: Validator.isId(),
@@ -53,6 +59,7 @@ const resolve = Validator.object({
 export const validator = {
   create,
   get,
+  call,
   leave: get,
   announce: get,
   getTicketsBeforeYours,
