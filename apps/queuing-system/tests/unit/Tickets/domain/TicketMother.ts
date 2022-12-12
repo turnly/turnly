@@ -19,7 +19,7 @@ import { TicketStatus } from '../../../../src/Tickets/domain/enums/TicketStatus'
 
 export class TicketMother {
   static create(
-    status: TicketStatus = TicketStatus.BOOKED,
+    status: TicketStatus = TicketStatus.AVAILABLE,
     priority: TicketPriority = TicketPriority.NORMAL,
     displayCode: string = ObjectMother.displayCode('TEST'),
     serviceId: Guid = ObjectMother.uuid('srv'),
@@ -125,5 +125,15 @@ export class TicketMother {
       undefined,
       extra
     )
+  }
+
+  static withStaticExtra(
+    extra: Extra[] = [
+      { key: 'comment', value: 'Ben Spinka' },
+      { key: 'password', value: 'Ivan Heaney' },
+      { key: 'createdAt', value: 'Dwayne Kassulke' },
+    ]
+  ): Ticket {
+    return this.withExtra(extra)
   }
 }

@@ -219,6 +219,10 @@ export class Ticket extends AggregateRoot {
     ]
   }
 
+  public getExtra(key: string): Nullable<String> {
+    return this.extra?.find(extra => extra.key === key)?.value ?? null
+  }
+
   /**
    * Create Ticket
    *

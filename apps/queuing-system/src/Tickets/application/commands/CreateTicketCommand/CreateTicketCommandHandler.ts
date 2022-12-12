@@ -41,7 +41,7 @@ export class CreateTicketCommandHandler
 
     const ticket = Ticket.create({
       ...params,
-      status: TicketStatus.BOOKED,
+      status: TicketStatus.AVAILABLE,
       priority: TicketPriority.NORMAL,
       displayCode: await this.generateDisplayCode(params.serviceName),
     })
