@@ -136,7 +136,7 @@ export class TicketsController extends Controller {
   }
 
   @TimeoutHandler()
-  @InputValidator(validator.getTicketByLocation)
+  @InputValidator(validator.getTicketsByLocation)
   public async getTicketsByLocation(params: TicketsByLocationParams) {
     const statuses = {
       [TicketsByLocationFilters.WAITING]: [
