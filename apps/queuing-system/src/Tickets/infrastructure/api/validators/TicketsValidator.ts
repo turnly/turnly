@@ -48,6 +48,7 @@ const getTicketsByLocation = Validator.object({
   locationId: Validator.isId(),
   organizationId: Validator.isId(),
   searchQuery: Validator.string(true),
+  status: Validator.string(true),
 })
 
 const resolve = Validator.object({
@@ -62,9 +63,8 @@ export const validator = {
   call,
   leave: get,
   announce: get,
-  getTicketByLocation: getTicketsBeforeYours,
-  getTicketsBeforeYours,
   getTicketsByLocation,
+  getTicketsBeforeYours,
   getTicketsWaitingForService,
   resolve,
 }

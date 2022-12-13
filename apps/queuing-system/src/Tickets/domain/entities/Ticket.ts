@@ -185,12 +185,18 @@ export class Ticket extends AggregateRoot {
 
     this.assigneeId = assigneeId
 
+    this.moveToCallStatus()
+
+    this.register(new TicketCalledEvent(this.toObject()))
+  }
+
+  private moveToCallStatus(): void {
+    if (this.status === TicketStatus.RECALLED) return
+
     this.status =
       this.status === TicketStatus.CALLED
         ? TicketStatus.RECALLED
         : TicketStatus.CALLED
-
-    this.register(new TicketCalledEvent(this.toObject()))
   }
 
   public addRating(rating: Rating): void {
@@ -274,7 +280,12 @@ export class Ticket extends AggregateRoot {
   }
 
   public static getToCallStatus(): TicketStatus[] {
-    return [TicketStatus.ANNOUNCED, TicketStatus.CALLED, TicketStatus.RECALLED]
+    return [
+      TicketStatus.ANNOUNCED,
+      TicketStatus.CALLED,
+      TicketStatus.RECALLED,
+      TicketStatus.RETURNED,
+    ]
   }
 
   public static getCompletedStatus(): TicketStatus[] {

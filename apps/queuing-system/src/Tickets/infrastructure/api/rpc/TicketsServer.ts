@@ -7,6 +7,7 @@
 import { BadRequestException } from '@turnly/common'
 import { Producers } from '@turnly/rpc'
 import { Client } from '@turnly/rpc/dist/consumers'
+import { TicketsByLocationFilters } from 'Tickets/application/queries/TicketsByLocationQuery'
 import { TicketStatus } from 'Tickets/domain/enums/TicketStatus'
 
 import { TicketsController } from '../controllers/TicketsController'
@@ -151,6 +152,7 @@ export class TicketsServer extends Producers.ServerImplementation<Producers.Queu
       searchQuery: call.request.getFindQuery(),
       locationId: call.request.getLocationId(),
       serviceIds: call.request.getServiceIdsList(),
+      status: call.request.getStatus() as TicketsByLocationFilters,
       organizationId: Client.getOrganizationId(call),
     })
 
