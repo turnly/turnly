@@ -1,0 +1,18 @@
+version: '3.9'
+
+services:
+  postgres:
+    extends:
+      file: common.yml
+      service: common
+    image: postgres:15.1-alpine
+    container_name: postgres
+    ports:
+      - ${POSTGRES_PORT:-5432}:5432
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-turnly}
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+
+volumes:
+  pg_data:
