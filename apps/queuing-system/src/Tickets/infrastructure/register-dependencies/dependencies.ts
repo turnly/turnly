@@ -17,6 +17,7 @@ import { TicketsBeforeYoursQueryHandler } from 'Tickets/application/queries/Tick
 import { TicketsByLocationQueryHandler } from 'Tickets/application/queries/TicketsByLocationQuery'
 import { TicketsWaitingForServiceQueryHandler } from 'Tickets/application/queries/TicketsWaitingForServiceQuery'
 import { CreateTicketReadingDBSubscriber } from 'Tickets/application/subscribers/CreateTicketReadingDBSubscriber'
+import { NotifyCustomerCalledSubscriber } from 'Tickets/application/subscribers/NotifyCustomerCalledSubscriber'
 
 import { TicketsController } from '../api/controllers/TicketsController'
 import { TicketsWritableForReadableRepo } from '../persistence/elasticsearch/repositories/TicketsWritableForReadableRepo'
@@ -60,6 +61,9 @@ Box.register({
 Box.register({
   createTicketReadingDatabaseSubscriber: ioc
     .asClass(CreateTicketReadingDBSubscriber)
+    .singleton(),
+  notifyCustomerCalledSubscriber: ioc
+    .asClass(NotifyCustomerCalledSubscriber)
     .singleton(),
 })
 
