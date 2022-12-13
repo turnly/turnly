@@ -80,6 +80,18 @@ export class TicketsController extends Controller {
   }
 
   @TimeoutHandler()
+  @InputValidator(validator.getDetails)
+  public async getDetails(params: TicketByIdQuery) {
+    const ticket = await this.queryBus.ask<Nullable<Ticket>>(
+      new TicketByIdQuery(params.id, params.organizationId)
+    )
+
+    if (!ticket) throw new ResourceNotFoundException()
+
+    return this.respond.ok(ticket.toObject())
+  }
+
+  @TimeoutHandler()
   @InputValidator(validator.call)
   public async call(params: CallTicketParams) {
     const ticket = await this.commandBus.execute<Ticket, CallTicketCommand>(
