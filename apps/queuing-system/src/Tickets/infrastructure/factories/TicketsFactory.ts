@@ -24,6 +24,7 @@ import { TicketsBeforeYoursQueryHandler } from 'Tickets/application/queries/Tick
 import { TicketsByLocationQueryHandler } from 'Tickets/application/queries/TicketsByLocationQuery'
 import { TicketsWaitingForServiceQueryHandler } from 'Tickets/application/queries/TicketsWaitingForServiceQuery'
 import { CreateTicketReadingDBSubscriber } from 'Tickets/application/subscribers/CreateTicketReadingDBSubscriber'
+import { NotifyCustomerCalledSubscriber } from 'Tickets/application/subscribers/NotifyCustomerCalledSubscriber'
 import { Ticket } from 'Tickets/domain/entities/Ticket'
 
 import { TicketsController } from '../api/controllers/TicketsController'
@@ -78,6 +79,9 @@ export class TicketsFactory {
     return [
       Box.resolve<CreateTicketReadingDBSubscriber>(
         'createTicketReadingDatabaseSubscriber'
+      ),
+      Box.resolve<NotifyCustomerCalledSubscriber>(
+        'notifyCustomerCalledSubscriber'
       ),
     ]
   }
