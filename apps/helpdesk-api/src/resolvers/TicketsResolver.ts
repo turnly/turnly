@@ -130,9 +130,9 @@ export class TicketsResolver {
   @Query(() => TicketModel)
   public async getTicket(
     @Arg('id', () => ID) id: string,
-    @Ctx() { req: { customer }, dataSources }: IContext
+    @Ctx() { dataSources }: IContext
   ) {
-    return await dataSources.tickets.getOne(id, customer.id)
+    return await dataSources.tickets.getDetails(id)
   }
 
   @FieldResolver(() => ServiceModel)

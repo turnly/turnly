@@ -18,10 +18,9 @@ export class TicketsDataSource extends DataSource {
     super()
   }
 
-  public async getOne(id: Guid, customerId: Guid) {
-    const { data: ticket, meta } = await Tickets.getOne({
+  public async getDetails(id: Guid) {
+    const { data: ticket, meta } = await Tickets.getDetails({
       id,
-      customerId,
     })
 
     if (!ticket) throw new GraphException(meta)
