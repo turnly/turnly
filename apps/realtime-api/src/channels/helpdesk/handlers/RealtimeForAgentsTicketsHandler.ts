@@ -46,6 +46,9 @@ export class RealtimeForAgentsTicketsHandler extends AbstractRealtimeHandler<
   }
 
   private static getEvents(): BroadcastableEvents[] {
-    return [BroadcastableEvents.TICKET_ANNOUNCED]
+    return [
+      BroadcastableEvents.TICKET_ANNOUNCED,
+      BroadcastableEvents.TICKET_RETURNED,
+    ]
   }
 }
