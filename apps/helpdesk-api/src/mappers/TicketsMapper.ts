@@ -12,7 +12,12 @@ export class TicketsMapper {
     ticket: T.AsObject
   ): Omit<
     TicketModel,
-    'customer' | 'location' | 'service' | 'calledToDesk' | 'beforeYours'
+    | 'customer'
+    | 'location'
+    | 'service'
+    | 'calledToDesk'
+    | 'beforeYours'
+    | 'answers'
   > {
     return {
       id: ticket.id,

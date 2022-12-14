@@ -8,6 +8,7 @@ import { IContext } from '@types'
 import { Tickets } from 'datasources'
 import { Answers } from 'datasources'
 import { TicketsMapper } from 'mappers/TicketsMapper'
+import { AnswerModel } from 'models/AnswerModel'
 import { CustomerModel } from 'models/CustomerModel'
 import { LocationModel } from 'models/LocationModel'
 import { ServiceModel } from 'models/ServiceModel'
@@ -133,6 +134,17 @@ export class TicketsResolver {
     @Ctx() { dataSources }: IContext
   ) {
     return await dataSources.tickets.getDetails(id)
+  }
+
+  @FieldResolver(() => AnswerModel)
+  public async answers(
+    @Root() ticket: TicketModel,
+    @Ctx() { dataSources }: IContext
+  ) {
+    return await dataSources.answers.findAnswers({
+      entityType: 'customer',
+      extra: [{ key: 'ticketId', value: ticket.id }],
+    })
   }
 
   @FieldResolver(() => ServiceModel)
