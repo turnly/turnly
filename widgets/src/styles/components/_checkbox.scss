@@ -1,0 +1,33 @@
+$block: 'tly-checkbox';
+
+.#{$block} {
+  display: flex;
+  gap: 8px;
+  min-width: 80px;
+  min-height: 44px;
+  border: 1px solid var(--tly-default-border-color);
+  padding: 13px;
+  text-align: left;
+  border-radius: 6px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+
+  &--is-selected {
+    border: 1px solid var(--tly-secondary-bg);
+  }
+
+  &-icon {
+    color: var(--tly-default-border-color);
+  }
+
+  &-icon--is-selected {
+    color: var(--tly-secondary-bg);
+  }
+
+  &-list {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+}
