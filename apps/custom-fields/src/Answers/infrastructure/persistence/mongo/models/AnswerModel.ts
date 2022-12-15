@@ -31,7 +31,8 @@ const schema = new Schema(
       required: true,
     },
     entityType: {
-      type: EntityTypes,
+      type: String,
+      enum: EntityTypes,
       required: true,
     },
     organizationId: {
