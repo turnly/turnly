@@ -4,7 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { ArgsType, Field, ID, Int, ObjectType } from 'type-graphql'
+import { Field, ID, ObjectType } from 'type-graphql'
 
 @ObjectType()
 export class LocationModel {
@@ -25,25 +25,4 @@ export class LocationModel {
 
   @Field()
   latitude: string
-}
-
-@ArgsType()
-export class LocationsArgs {
-  @Field(() => ID, { nullable: true })
-  searchQuery: string
-
-  @Field(() => String, { nullable: true })
-  country: string
-
-  @Field(() => String, { nullable: true })
-  latitude: string
-
-  @Field(() => String, { nullable: true })
-  longitude: string
-
-  @Field(() => Int, { nullable: true })
-  limit: number
-
-  @Field(() => Int, { nullable: true })
-  offset: number
 }

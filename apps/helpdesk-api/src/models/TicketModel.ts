@@ -30,21 +30,6 @@ export class Extra {
   value: string
 }
 
-@InputType()
-export class TicketInput {
-  @Field(() => ID)
-  serviceId: string
-
-  @Field(() => ID)
-  locationId: string
-
-  @Field(() => [Answers], { nullable: true })
-  answers: Answers[]
-
-  @Field(() => [Extra], { nullable: true })
-  extra: Extra[]
-}
-
 @ObjectType()
 export class TicketModel {
   @Field(() => ID)
