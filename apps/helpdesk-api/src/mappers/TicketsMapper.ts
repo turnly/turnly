@@ -18,6 +18,7 @@ export class TicketsMapper {
     | 'calledToDesk'
     | 'beforeYours'
     | 'answers'
+    | 'fields'
   > {
     return {
       id: ticket.id,

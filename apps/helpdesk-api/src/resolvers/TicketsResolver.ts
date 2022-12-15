@@ -10,6 +10,7 @@ import { Answers } from 'datasources'
 import { TicketsMapper } from 'mappers/TicketsMapper'
 import { AnswerModel } from 'models/AnswerModel'
 import { CustomerModel } from 'models/CustomerModel'
+import { FieldModel } from 'models/FieldModel'
 import { LocationModel } from 'models/LocationModel'
 import { ServiceModel } from 'models/ServiceModel'
 import {
@@ -173,6 +174,16 @@ export class TicketsResolver {
     @Ctx() { dataSources }: IContext
   ) {
     return await dataSources.services.getOne(ticket.serviceId)
+  }
+
+  @FieldResolver(() => FieldModel)
+  public async fields(
+    @Root() ticket: TicketModel,
+    @Ctx() { dataSources }: IContext
+  ) {
+    return await dataSources.fields.findCustomerFieldsByService(
+      ticket.serviceId
+    )
   }
 
   @FieldResolver(() => LocationModel)
