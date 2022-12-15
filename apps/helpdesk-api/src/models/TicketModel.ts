@@ -6,6 +6,7 @@
  */
 import { Field, ID, InputType, Int, ObjectType } from 'type-graphql'
 
+import { AnswerModel } from './AnswerModel'
 import { CustomerModel } from './CustomerModel'
 import { LocationModel } from './LocationModel'
 import { ServiceModel } from './ServiceModel'
@@ -59,6 +60,9 @@ export class TicketModel {
 
   @Field(() => ServiceModel)
   service: ServiceModel
+
+  @Field(() => [AnswerModel], { nullable: true })
+  answers: AnswerModel[]
 
   @Field(() => ID)
   locationId: string

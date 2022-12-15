@@ -7,6 +7,7 @@
 import { Extra, Guid, Identifier, Nullable } from '@turnly/common'
 import { AggregateRoot, EntityAttributes } from '@turnly/shared'
 
+import { EntityTypes } from '../enums/EntityType'
 import { AnswerCreatedEvent } from '../events/AnswerCreatedEvent'
 
 /**
@@ -51,7 +52,7 @@ export class Answer extends AggregateRoot {
      *
      * @description The entity type that the Answer is associated with.
      */
-    private readonly entityType: string,
+    private readonly entityType: EntityTypes,
 
     /**
      * Organization

@@ -5,6 +5,7 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import {
+  AnswersDataSource,
   CustomersDataSource,
   FieldsDataSource,
   IntegrationsDataSource,
@@ -22,4 +23,5 @@ export const createSources = () => ({
   integrations: new IntegrationsDataSource(),
   services: new ServicesDataSource(),
   tickets: new TicketsDataSource(),
+  answers: new AnswersDataSource(),
 })

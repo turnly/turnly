@@ -13,6 +13,7 @@ import {
   IWritableRepository,
 } from '@turnly/shared'
 import { CreateAnswerBulkCommandHandler } from 'Answers/application/commands/CreateAnswerBulkCommand'
+import { FindAnswersQueryHandler } from 'Answers/application/queries/FindAnswersQuery'
 import { Answer } from 'Answers/domain/entities/Answer'
 
 import { AnswersController } from '../api/controllers/AnswersController'
@@ -25,7 +26,7 @@ export class AnswersFactory {
   }
 
   public static getQueryHandlers(): IQueryHandler[] {
-    return []
+    return [Box.resolve<FindAnswersQueryHandler>('findAnswersQueryHandler')]
   }
 
   public static getWritableRepo(): IWritableRepository<Answer> {
