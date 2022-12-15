@@ -29,26 +29,10 @@ export class FieldsDataSource extends DataSource {
 
     if (!data) return []
 
-    return data.map(
-      ({
-        id,
-        label,
-        description,
-        type,
-        placeholder,
-        isRequired,
-        processorsList,
-        extrasList: extra,
-      }) => ({
-        id,
-        label,
-        description,
-        type,
-        placeholder,
-        isRequired,
-        hasProcessors: Boolean(processorsList.length),
-        extra,
-      })
-    )
+    return data.map(({ id, label, description }) => ({
+      id,
+      label,
+      description,
+    }))
   }
 }

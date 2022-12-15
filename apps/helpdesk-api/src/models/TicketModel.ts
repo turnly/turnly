@@ -8,6 +8,7 @@ import { ArgsType, Field, ID, InputType, Int, ObjectType } from 'type-graphql'
 
 import { AnswerModel } from './AnswerModel'
 import { CustomerModel } from './CustomerModel'
+import { FieldModel } from './FieldModel'
 import { LocationModel } from './LocationModel'
 import { ServiceModel } from './ServiceModel'
 
@@ -29,21 +30,6 @@ export class Extra {
   value: string
 }
 
-@InputType()
-export class TicketInput {
-  @Field(() => ID)
-  serviceId: string
-
-  @Field(() => ID)
-  locationId: string
-
-  @Field(() => [Answers], { nullable: true })
-  answers: Answers[]
-
-  @Field(() => [Extra], { nullable: true })
-  extra: Extra[]
-}
-
 @ObjectType()
 export class TicketModel {
   @Field(() => ID)
@@ -63,6 +49,9 @@ export class TicketModel {
 
   @Field(() => [AnswerModel], { nullable: true })
   answers: AnswerModel[]
+
+  @Field(() => [FieldModel], { nullable: true })
+  fields: FieldModel[]
 
   @Field(() => ID)
   locationId: string

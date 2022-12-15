@@ -50,26 +50,4 @@ export class TicketsDataSource extends DataSource {
 
     return TicketsMapper.toDTO(ticket)
   }
-
-  public async getTicketsBeforeYours(id: Guid, customerId: Guid) {
-    const { dataList } = await Tickets.getTicketsBeforeYours({
-      id,
-      customerId,
-    })
-
-    if (!dataList?.length) return 0
-
-    return dataList.length
-  }
-
-  public async getCalledTo(
-    _id: Guid,
-    _customerId: Guid,
-    _organizationId: Guid
-  ) {
-    /**
-     * @todo Implement method to get calledTo (AssignedTo -> Desk)
-     */
-    return null
-  }
 }
