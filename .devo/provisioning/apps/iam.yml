@@ -15,15 +15,18 @@ services:
       - postgres
       - gateway
     environment:
-      KEYCLOAK_ADMIN: ${IAM_ADMIN_USERNAME:-admin}
-      KEYCLOAK_ADMIN_PASSWORD: ${IAM_ADMIN_PASSWORD:-admin}
-      # KC_DB_URL: "jdbc:postgresql://postgres:5432/iam"
-      # KC_DB_USERNAME: ${IAM_DB_USERNAME:-postgres}
-      # KC_DB_PASSWORD: ${POSTGRES_PASSWORD}
+      KC_DB: postgres
+      KC_DB_URL_HOST: ${IAM_DB_HOST}
+      KC_DB_URL_PORT: ${IAM_DB_PORT}
+      KC_DB_URL_DATABASE: ${IAM_DB_DATABASE}
+      KC_DB_SCHEMA: ${IAM_DB_SCHEMA}
+      KC_DB_USERNAME: ${IAM_DB_USERNAME}
+      KC_DB_PASSWORD: ${IAM_DB_PASSWORD}
       KC_HOSTNAME: ${IAM_HOSTNAME}
       KC_HOSTNAME_STRICT: "false"
-      KC_PROXY: edge
       KC_HTTP_ENABLED: "true"
+      KEYCLOAK_ADMIN: ${IAM_ADMIN_USERNAME}
+      KEYCLOAK_ADMIN_PASSWORD: ${IAM_ADMIN_PASSWORD}
     labels:
       - traefik.enable=true
       - traefik.http.routers.iam.entrypoints=web,websecure

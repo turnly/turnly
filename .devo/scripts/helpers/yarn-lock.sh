@@ -4,6 +4,7 @@ function yarn_lock() {
   IGNORE_DIRS=(
     ".gitkeep"
     "gateway"
+    "iam"
   )
 
   [[ -z "$APPS_DIRECTORY" ]] && error "Oops! Environment variable APPS_DIRECTORY is not set."
