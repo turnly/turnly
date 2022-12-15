@@ -15,6 +15,7 @@ services:
       - postgres
       - gateway
     environment:
+      # Credentials for storing into an external database (postgres)
       KC_DB: postgres
       KC_DB_URL_HOST: ${IAM_DB_HOST}
       KC_DB_URL_PORT: ${IAM_DB_PORT}
@@ -22,9 +23,11 @@ services:
       KC_DB_SCHEMA: ${IAM_DB_SCHEMA}
       KC_DB_USERNAME: ${IAM_DB_USERNAME}
       KC_DB_PASSWORD: ${IAM_DB_PASSWORD}
+      # Proxy settings
       KC_HOSTNAME: ${IAM_HOSTNAME}
       KC_HOSTNAME_STRICT: "false"
       KC_HTTP_ENABLED: "true"
+      # Credentials for admin account
       KEYCLOAK_ADMIN: ${IAM_ADMIN_USERNAME}
       KEYCLOAK_ADMIN_PASSWORD: ${IAM_ADMIN_PASSWORD}
     labels:
