@@ -6,17 +6,18 @@
  */
 import { Extra, Guid } from '@turnly/common'
 import { ObjectMother } from '@turnly/testing'
+import { EntityTypes } from 'Answers/domain/enums/EntityType'
 
 import { FindAnswersQuery } from '../../../../../../src/Answers/application/queries/FindAnswersQuery'
 
 export class FindAnswersQueryMother {
   static create(
+    entityType: EntityTypes = EntityTypes.CUSTOMER,
     fieldId: Guid = ObjectMother.uuid('field'),
-    entityType: string = ObjectMother.word(),
     extra: Extra[] = ObjectMother.repeater(ObjectMother.extra, 1),
     organizationId: Guid = ObjectMother.uuid('org')
   ): FindAnswersQuery {
-    return new FindAnswersQuery(organizationId, fieldId, entityType, extra)
+    return new FindAnswersQuery(organizationId, entityType, fieldId, extra)
   }
 
   static random(): FindAnswersQuery {

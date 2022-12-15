@@ -30,11 +30,11 @@ export class FindAnswersQueryHandler
       .equal('entityType', entityType)
 
     if (fieldId) query.equal('fieldId', fieldId)
-    if (extra) {
-      extra.forEach(e => {
-        query.inExtra(e.key, e.value)
-      })
-    }
+
+    extra?.forEach(e => {
+      query.inExtra(e.key, e.value)
+    })
+
     return await this.answersReadableRepo.find(query.getMany())
   }
 }

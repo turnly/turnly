@@ -7,6 +7,7 @@
 import { ResourceNotFoundException } from '@turnly/common'
 import { Producers } from '@turnly/rpc'
 import { Client } from '@turnly/rpc/dist/consumers'
+import { EntityTypes } from 'Answers/domain/enums/EntityType'
 
 import { AnswersController } from '../controllers/AnswersController'
 import { AnswersMapper } from './AnswersMapper'
@@ -29,6 +30,7 @@ export class AnswersServer extends Producers.ServerImplementation<Producers.Cust
 
       return {
         ...data,
+        entityType: answer.getEntityType() as EntityTypes,
         extra,
         organizationId: Client.getOrganizationId(call),
       }
@@ -54,7 +56,7 @@ export class AnswersServer extends Producers.ServerImplementation<Producers.Cust
     callback: Producers.ICallback<Producers.CustomFields.FindAnswersResponse>
   ) {
     const { data, meta } = await this.answersController.find({
-      entityType: call.request.getEntityType(),
+      entityType: call.request.getEntityType() as EntityTypes,
       fieldId: call.request.getFieldId(),
       extra: call.request.getExtrasList().map(e => e.toObject()),
       organizationId: Client.getOrganizationId(call),
