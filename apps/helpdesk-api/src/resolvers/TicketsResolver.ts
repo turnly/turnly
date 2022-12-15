@@ -12,10 +12,15 @@ import { AnswerModel } from 'models/AnswerModel'
 import { CustomerModel } from 'models/CustomerModel'
 import { LocationModel } from 'models/LocationModel'
 import { ServiceModel } from 'models/ServiceModel'
-import { TicketInput, TicketModel } from 'models/TicketModel'
+import {
+  FindTicketsByLocationArgs,
+  TicketInput,
+  TicketModel,
+} from 'models/TicketModel'
 import { GraphException } from 'shared/GraphException'
 import {
   Arg,
+  Args,
   Authorized,
   Ctx,
   FieldResolver,
@@ -76,6 +81,21 @@ export class TicketsResolver {
     await Answers.create({ answersList: answers })
 
     return TicketsMapper.toDTO(ticket)
+  }
+
+  @Authorized()
+  @Query(() => [TicketModel])
+  public async find(
+    @Args()
+    { searchQuery, locationId, status, serviceIds }: FindTicketsByLocationArgs,
+    @Ctx() { dataSources }: IContext
+  ) {
+    return await dataSources.tickets.find({
+      searchQuery,
+      locationId,
+      status,
+      serviceIds,
+    })
   }
 
   @Authorized()

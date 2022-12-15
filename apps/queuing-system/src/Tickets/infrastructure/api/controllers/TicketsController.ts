@@ -4,7 +4,11 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { Nullable, ResourceNotFoundException } from '@turnly/common'
+import {
+  BadRequestException,
+  Nullable,
+  ResourceNotFoundException,
+} from '@turnly/common'
 import {
   Controller,
   ICommandBus,
@@ -158,11 +162,17 @@ export class TicketsController extends Controller {
       [TicketsByLocationFilters.DISCARDED]: [TicketStatus.DISCARDED],
     }
 
+    const status = statuses[params.status ?? TicketsByLocationFilters.WAITING]
+    if (!status)
+      throw new BadRequestException(
+        'Oops! seems that this status is not valid.'
+      )
+
     const tickets = await this.queryBus.ask<Nullable<Ticket[]>>(
       new TicketsByLocationQuery(
         params.locationId,
         params.organizationId,
-        statuses[params.status ?? TicketsByLocationFilters.WAITING],
+        status,
         params.searchQuery,
         params.serviceIds
       )
