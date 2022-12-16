@@ -8,6 +8,7 @@ services:
     container_name: iam
     image: turnly/iam:latest
     command: start-dev
+    restart: unless-stopped
     build:
       context: ${DOCKER_RELATIVE_APPS_DIR}/iam
       dockerfile: Dockerfile

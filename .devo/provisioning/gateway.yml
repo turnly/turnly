@@ -19,17 +19,28 @@ services:
     networks:
       turnly:
 
-  # gateway-forward-auth:
-  #   image: thomseddon/traefik-forward-auth:2
-  #   environment:
-  #     - PROVIDERS_GOOGLE_CLIENT_ID=your-client-id
-  #     - PROVIDERS_GOOGLE_CLIENT_SECRET=your-client-secret
-  #     - SECRET=something-random
-  #     - INSECURE_COOKIE=true # Example assumes no https, do not use in production
-  #   labels:
-  #     - "traefik.http.middlewares.traefik-forward-auth.forwardauth.address=http://gateway-forward-auth:4181"
-  #     - "traefik.http.middlewares.traefik-forward-auth.forwardauth.authResponseHeaders=X-Forwarded-User"
-  #     - "traefik.http.services.traefik-forward-auth.loadbalancer.server.port=4181"
+  gateway-forward-auth:
+    image: mesosphere/traefik-forward-auth:3.1.0
+    container_name: gateway-forward-auth
+    depends_on:
+      - iam
+    environment:
+      ENCRYPTION_KEY: ${IAM_ENCRYPTION_KEY}
+      SECRET: ${IAM_SIGNING_KEY}
+      PROVIDER_URI: ${IAM_OIDC_PROVIDER_URI}
+      CLIENT_ID: ${IAM_OIDC_CLIENT_ID}
+      CLIENT_SECRET: ${IAM_OIDC_CLIENT_SECRET}
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.gateway-forward-auth.entrypoints=web,websecure
+      - traefik.http.services.gateway-forward-auth.loadbalancer.server.port=4181
+      - traefik.http.routers.gateway-forward-auth.rule=Path(`/_oauth`)
+      - traefik.http.routers.gateway-forward-auth.middlewares=traefik-forward-auth
+      - traefik.http.middlewares.traefik-forward-auth.gateway-forward-auth.address=http://gateway-forward-auth:4181
+      - traefik.http.middlewares.traefik-forward-auth.gateway-forward-auth.authResponseHeaders=X-Forwarded-User
+      - traefik.http.middlewares.traefik-forward-auth.gateway-forward-auth.trustForwardHeader=true
+    networks:
+      turnly:
 
 networks:
   turnly:

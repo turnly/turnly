@@ -18,6 +18,6 @@ function docker_command() {
   fi
 
   if [[ $DOCKER_COMMAND == "down" ]]; then
-    execute "${COMPOSE_COMMAND} down --volumes --remove-orphans"
+    execute "${COMPOSE_COMMAND} down"
   fi
 }
