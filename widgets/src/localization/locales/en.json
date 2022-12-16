@@ -62,6 +62,7 @@
   "tickets": {
     "title": "Ticket details",
     "before_yours": "Tickets before yours",
+    "your_turn": "Ahoy, you turn!",
     "leave": {
       "title": "Leave ticket",
       "description": "Leave your ticket.",

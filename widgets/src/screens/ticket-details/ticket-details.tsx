@@ -92,7 +92,12 @@ export const TicketDetailsScreen = () => {
             typeTransaction={service?.name}
           />
 
-          <Order numberOrder={`${ticket?.beforeYours}`} isPrimary />
+          <Order
+            displayCode={ticket?.displayCode}
+            numberOrder={`${ticket?.beforeYours}`}
+            isPrimary
+            isYourTurn={ticket?.beforeYours === 0}
+          />
         </HeaderScreen>
 
         <FooterScreen>
