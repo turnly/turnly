@@ -95,8 +95,14 @@ export const TicketDetailsScreen = () => {
           <Order
             displayCode={ticket?.displayCode}
             numberOrder={`${ticket?.beforeYours}`}
-            isPrimary
+            isPrimary={ticket?.beforeYours === 0}
             isYourTurn={ticket?.beforeYours === 0}
+            isDanger={ticket?.beforeYours ? ticket.beforeYours >= 8 : false}
+            isWarning={
+              ticket?.beforeYours
+                ? ticket.beforeYours <= 8 && ticket.beforeYours >= 1
+                : false
+            }
           />
         </HeaderScreen>
 
