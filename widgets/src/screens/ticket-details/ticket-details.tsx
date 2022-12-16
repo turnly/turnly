@@ -21,7 +21,7 @@ const MIN_TICKETS_IN_QUEUE = 8
 export const TicketDetailsScreen = () => {
   const { translate } = useTranslation()
   const { navigate } = useNavigator()
-  const { params } = useSearchParams()
+  const { ticketId, deleteSearchParams } = useSearchParams()
   const { setCurrentLocation } = useCurrentLocation()
   const { service, ticket, setService, setTicket, setAnswers } =
     useInternalState()
@@ -29,7 +29,7 @@ export const TicketDetailsScreen = () => {
   const [isShowing, setIsShowing] = useState(false)
 
   const { isLoading } = useGetTicketQuery({
-    variables: { getTicketId: params['tly-ticket-id'] },
+    variables: { getTicketId: ticketId },
     onCompleted: async ({ getTicket }) =>
       await Promise.all([
         setTicket({
@@ -47,11 +47,15 @@ export const TicketDetailsScreen = () => {
 
   const handleModalLeave = () => setIsShowing(p => !p)
 
-  const handleSubmit = async () => {
+  const handleLeaveTicket = async () => {
     if (ticket) {
       await leaveCurrentTicket(ticket.id)
 
-      await Promise.all([setAnswers([]), setTicket(null)])
+      await Promise.all([
+        setAnswers([]),
+        setTicket(null),
+        deleteSearchParams('tly-ticket-id'),
+      ])
 
       navigate(SCREEN_NAMES.SERVICES)
     }
@@ -68,7 +72,7 @@ export const TicketDetailsScreen = () => {
           {
             children: 'I understand, leave',
             isPrimary: true,
-            onClick: handleSubmit,
+            onClick: handleLeaveTicket,
             isLoading: isLeaving,
           },
           {

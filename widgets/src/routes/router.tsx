@@ -1,5 +1,8 @@
 import { h } from 'preact'
+import { useEffect } from 'preact/hooks'
 
+import { useSearchParams } from '../hooks/use-search-params'
+import { useShowWidget } from '../hooks/use-show-widget'
 import { useTranslation } from '../localization'
 import { Navigator, Screen, SCREEN_NAMES } from '../navigation'
 import { HomeScreen } from '../screens/home'
@@ -10,6 +13,12 @@ import { TicketDetailsScreen } from '../screens/ticket-details'
 
 export const Router = () => {
   const { translate } = useTranslation()
+  const { ticketId } = useSearchParams()
+  const { setShow } = useShowWidget()
+
+  useEffect(() => {
+    ticketId && setShow()
+  }, [])
 
   return (
     <Navigator initialScreen={SCREEN_NAMES.HOME}>
@@ -34,7 +43,6 @@ export const Router = () => {
         title={translate('tickets.title')}
         name={SCREEN_NAMES.TICKET_DETAILS}
         component={TicketDetailsScreen}
-        backScreen={SCREEN_NAMES.TAKE_TICKET}
       />
       <Screen
         title={translate('services.title')}
