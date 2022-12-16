@@ -6,6 +6,7 @@ import type { SCREEN_NAMES } from '../navigation/screen-names'
 export type TScreenProps = {
   title: string
   name: SCREEN_NAMES
+  backScreen?: SCREEN_NAMES
   component: FunctionalComponent | ComponentClass
 }
 

@@ -1,0 +1,32 @@
+$block: 'tly-screen-side-back';
+
+.#{$block} {
+  width: 20px;
+  height: 100%;
+  position: fixed;
+  z-index: 999999;
+  left: 0;
+  top: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    button {
+      display: block;
+    }
+  }
+
+  button {
+    background-color: var(--tly-gray-lighter);
+    border: 0;
+    border-radius: 100%;
+    cursor: pointer;
+    display: none;
+    text-align: center;
+    transition: all 0.2s ease-in-out;
+    margin-left: 50px;
+    padding: 10px;
+  }
+}

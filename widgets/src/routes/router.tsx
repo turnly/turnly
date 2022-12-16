@@ -22,21 +22,25 @@ export const Router = () => {
         title={translate('locations.title')}
         name={SCREEN_NAMES.LOCATIONS}
         component={LocationsScreen}
+        backScreen={SCREEN_NAMES.HOME}
       />
       <Screen
         title={translate('fields.title')}
         name={SCREEN_NAMES.TAKE_TICKET}
         component={TakeTicketScreen}
+        backScreen={SCREEN_NAMES.SERVICES}
       />
       <Screen
         title={translate('tickets.title')}
         name={SCREEN_NAMES.TICKET_DETAILS}
         component={TicketDetailsScreen}
+        backScreen={SCREEN_NAMES.TAKE_TICKET}
       />
       <Screen
         title={translate('services.title')}
         name={SCREEN_NAMES.SERVICES}
         component={ServicesScreen}
+        backScreen={SCREEN_NAMES.LOCATIONS}
       />
     </Navigator>
   )
