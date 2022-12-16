@@ -113,10 +113,7 @@ export const TicketDetailsScreen = () => {
               {translate('tickets.leave.button_text')}
             </Button>
 
-            {!!ticket?.beforeYours &&
-              ticket.beforeYours <= MIN_TICKETS_IN_QUEUE && (
-                <Button>{translate('tickets.announce.button_text')}</Button>
-              )}
+            <Button>{translate('tickets.announce.button_text')}</Button>
           </div>
         </FooterScreen>
       </div>
