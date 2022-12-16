@@ -33,6 +33,10 @@ services:
     labels:
       - traefik.enable=true
       - traefik.http.routers.iam.entrypoints=web,websecure
-      - traefik.http.routers.iam.rule=Host(`${IAM_HOSTNAME}`)
       - traefik.http.routers.iam.service=iam
       - traefik.http.services.iam.loadbalancer.server.port=8080
+      # For production: Use the following label to expose only the necessary endpoints to the internet.
+      # - traefik.http.routers.iam.rule=Host(`${IAM_HOSTNAME}`) && PathPrefix(`/js`, `/realms`, `/resources`, `/robots.txt`)
+
+      # For development: Use the following label to expose all endpoints to the internet. (admin, metrics, etc)
+      - traefik.http.routers.iam.rule=Host(`${IAM_HOSTNAME}`)
