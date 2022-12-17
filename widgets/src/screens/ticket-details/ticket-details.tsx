@@ -1,5 +1,5 @@
 import { Fragment, h } from 'preact'
-import { useState } from 'preact/hooks'
+import { useMemo, useState } from 'preact/hooks'
 
 import { Button } from '../../components/button'
 import { FooterScreen, HeaderScreen } from '../../components/layouts/screen'
@@ -12,8 +12,13 @@ import { useAnnounceTicket } from '../../graphql/hooks/use-announce-ticket-mutat
 import { useLeaveTicket } from '../../graphql/hooks/use-leave-ticket-mutation'
 import { useGetTicketQuery } from '../../graphql/hooks/use-ticket-query'
 import { useCurrentLocation } from '../../hooks/use-current-location'
-import { Ticket, useInternalState } from '../../hooks/use-internal-state'
+import {
+  Ticket,
+  TicketStatus,
+  useInternalState,
+} from '../../hooks/use-internal-state'
 import { useSearchParams } from '../../hooks/use-search-params'
+import { useSession } from '../../hooks/use-session'
 import { useTranslation } from '../../localization'
 import { SCREEN_NAMES, useNavigator } from '../../navigation'
 
@@ -21,13 +26,18 @@ const MIN_TICKETS_IN_QUEUE = 8
 
 export const TicketDetailsScreen = () => {
   const { translate } = useTranslation()
+
   const { navigate } = useNavigator()
   const { ticketId, deleteSearchParams } = useSearchParams()
-  const { setCurrentLocation } = useCurrentLocation()
+
+  const { customer } = useSession()
+  const { setCurrentLocation, name } = useCurrentLocation()
   const { service, ticket, setService, setTicket, setAnswers } =
     useInternalState()
+
   const { leaveCurrentTicket, isLoading: isLeaving } = useLeaveTicket()
   const { announceCurrentTicket, isLoading: isAnnouncing } = useAnnounceTicket()
+
   const [isShowing, setIsShowing] = useState(false)
 
   const { isLoading } = useGetTicketQuery({
@@ -36,7 +46,7 @@ export const TicketDetailsScreen = () => {
       await Promise.all([
         setTicket({
           id: getTicket.id,
-          status: getTicket.status,
+          status: getTicket.status as TicketStatus,
           displayCode: getTicket.displayCode,
           beforeYours: getTicket.beforeYours,
           calledToDesk: getTicket.calledToDesk,
@@ -76,6 +86,24 @@ export const TicketDetailsScreen = () => {
       setTicket(ticketUpdated as Ticket)
     }
   }
+
+  // titles
+  const { title, description } = useMemo(() => {
+    let title = 'tickets.announce.title'
+    let description = 'tickets.announce.description'
+    let options = {}
+
+    if (ticket?.status === TicketStatus.ANNOUNCED) {
+      title = 'tickets.arrived.title'
+      description = 'tickets.arrived.description'
+      options = { name: customer.name, location: name }
+    }
+
+    return {
+      title: translate(title as any, options),
+      description: translate(description as any),
+    }
+  }, [ticket?.status])
 
   if (isLoading) return null
 
@@ -131,10 +159,8 @@ export const TicketDetailsScreen = () => {
 
         <FooterScreen>
           <div>
-            <Title>{translate(`tickets.${ticket.status}.title` as any)}</Title>
-            <Text hasGaps={false}>
-              {translate(`tickets.${ticket.status}.description` as any)}
-            </Text>
+            <Title>{title}</Title>
+            <Text hasGaps={false}>{description}</Text>
           </div>
 
           <div className="tly-ticket-details-buttons">
@@ -147,9 +173,11 @@ export const TicketDetailsScreen = () => {
               {translate('tickets.leave.button_text')}
             </Button>
 
-            <Button onClick={announceTicket}>
-              {translate('tickets.announce.button_text')}
-            </Button>
+            {ticket.status !== TicketStatus.ANNOUNCED && (
+              <Button onClick={announceTicket}>
+                {translate('tickets.announce.button_text')}
+              </Button>
+            )}
           </div>
         </FooterScreen>
       </div>

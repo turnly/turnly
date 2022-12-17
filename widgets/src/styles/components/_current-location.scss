@@ -1,8 +1,12 @@
 $block: 'tly-current-location';
 
-@keyframes pulse{
-  25%  {transform: scale(0.8);}
-  75%  {transform: scale(1.1);}
+@keyframes pulse {
+  25% {
+    transform: scale(0.8);
+  }
+  75% {
+    transform: scale(1.1);
+  }
 }
 
 .#{$block} {
@@ -17,6 +21,11 @@ $block: 'tly-current-location';
   margin-top: 16px;
   cursor: pointer;
 
+  &--is-success {
+    border: 1px solid var(--tly-green-dark);
+    background-color: var(--tly-green-lighter);
+  }
+
   &,
   &-button {
     transition: all 0.2s ease-in-out;
@@ -24,7 +33,7 @@ $block: 'tly-current-location';
 
   &:hover {
     .#{$block}-button {
-      background-color: lighten(#2485BA, 50);
+      background-color: lighten(#2485ba, 50);
       animation: pulse 1s ease-in-out;
     }
   }
