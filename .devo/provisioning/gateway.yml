@@ -19,9 +19,9 @@ services:
     networks:
       turnly:
 
-  gateway-forward-auth:
+  oauth:
     image: mesosphere/traefik-forward-auth:3.1.0
-    container_name: gateway-forward-auth
+    container_name: oauth
     depends_on:
       - iam
     environment:
@@ -32,13 +32,13 @@ services:
       CLIENT_SECRET: ${IAM_OIDC_CLIENT_SECRET}
     labels:
       - traefik.enable=true
-      - traefik.http.routers.gateway-forward-auth.entrypoints=web,websecure
-      - traefik.http.services.gateway-forward-auth.loadbalancer.server.port=4181
-      - traefik.http.routers.gateway-forward-auth.rule=Path(`/_oauth`)
-      - traefik.http.routers.gateway-forward-auth.middlewares=traefik-forward-auth
-      - traefik.http.middlewares.traefik-forward-auth.gateway-forward-auth.address=http://gateway-forward-auth:4181
-      - traefik.http.middlewares.traefik-forward-auth.gateway-forward-auth.authResponseHeaders=X-Forwarded-User
-      - traefik.http.middlewares.traefik-forward-auth.gateway-forward-auth.trustForwardHeader=true
+      - traefik.http.routers.oauth.entrypoints=web,websecure
+      - traefik.http.services.oauth.loadbalancer.server.port=4181
+      - traefik.http.routers.oauth.rule=Path(`/_oauth`)
+      - traefik.http.routers.oauth.middlewares=traefik-forward-auth
+      - traefik.http.middlewares.traefik-forward-auth.oauth.address=http://oauth:4181
+      - traefik.http.middlewares.traefik-forward-auth.oauth.authResponseHeaders=X-Forwarded-User
+      - traefik.http.middlewares.traefik-forward-auth.oauth.trustForwardHeader=true
     networks:
       turnly:
 
