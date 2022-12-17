@@ -7,4 +7,9 @@ $block: 'tly-phone-input';
   padding: 16px !important;
   padding-left: 55px !important;
   width: 100% !important;
+
+  &--is-danger {
+    color: var(--tly-danger) !important;
+    border-color: var(--tly-danger) !important;
+  }
 }

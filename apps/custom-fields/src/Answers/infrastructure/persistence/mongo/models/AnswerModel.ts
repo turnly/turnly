@@ -6,6 +6,7 @@
  */
 import { EntityAttributes, timestamps } from '@turnly/shared'
 import { Answer } from 'Answers/domain/entities/Answer'
+import { EntityTypes } from 'Answers/domain/enums/EntityType'
 import mongoose, { Document, Model, Schema } from 'mongoose'
 
 export interface AnswerDocument
@@ -31,6 +32,7 @@ const schema = new Schema(
     },
     entityType: {
       type: String,
+      enum: EntityTypes,
       required: true,
     },
     organizationId: {

@@ -26,6 +26,17 @@ const get = Validator.object({
   customerId: Validator.isId(),
 })
 
+const getDetails = Validator.object({
+  id: Validator.isId(),
+  organizationId: Validator.isId(),
+})
+
+const call = Validator.object({
+  id: Validator.isId(),
+  organizationId: Validator.isId(),
+  agentId: Validator.isId(),
+})
+
 const getTicketsBeforeYours = Validator.object({
   ticketId: Validator.isId(),
   customerId: Validator.isId(),
@@ -37,11 +48,29 @@ const getTicketsWaitingForService = Validator.object({
   organizationId: Validator.isId(),
 })
 
+const getTicketsByLocation = Validator.object({
+  serviceIds: Validator.getBuilder().array().items(Validator.isId(true)),
+  locationId: Validator.isId(),
+  organizationId: Validator.isId(),
+  searchQuery: Validator.string(true),
+  status: Validator.string(true),
+})
+
+const resolve = Validator.object({
+  id: Validator.isId(),
+  status: Validator.string(),
+  organizationId: Validator.isId(),
+})
+
 export const validator = {
   create,
   get,
+  call,
   leave: get,
   announce: get,
+  getTicketsByLocation,
   getTicketsBeforeYours,
   getTicketsWaitingForService,
+  resolve,
+  getDetails,
 }

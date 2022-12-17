@@ -22,5 +22,18 @@ export const useSearchParams = <P extends Params = Params>() => {
     window.history.pushState({}, '', path)
   }
 
-  return { params, setSearchParams }
+  const deleteSearchParams = (key: string) => {
+    const path = new URL(window?.location as unknown as URL)
+
+    path.searchParams.delete(key)
+
+    window.history.pushState({}, '', path)
+  }
+
+  return {
+    params,
+    setSearchParams,
+    ticketId: params['tly-ticket-id'],
+    deleteSearchParams,
+  }
 }

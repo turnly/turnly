@@ -24,7 +24,7 @@ export const broadcastable = {
     BroadcastableEvents.TICKET_DISCARDED,
     BroadcastableEvents.TICKET_CALLED,
     BroadcastableEvents.TICKET_RECALLED,
-    BroadcastableEvents.TICKET_NEAR_ATTENTION,
+    BroadcastableEvents.TICKET_RETURNED,
     BroadcastableEvents.TICKET_REMOVED,
     BroadcastableEvents.TICKET_INACTIVE,
     BroadcastableEvents.TICKET_ASSIGNED,
@@ -50,12 +50,18 @@ export const broadcastable = {
     BroadcastableEvents.TICKET_DISCARDED,
     BroadcastableEvents.TICKET_CALLED,
     BroadcastableEvents.TICKET_RECALLED,
-    BroadcastableEvents.TICKET_NEAR_ATTENTION,
+    BroadcastableEvents.TICKET_RETURNED,
     BroadcastableEvents.TICKET_REMOVED,
     BroadcastableEvents.TICKET_INACTIVE,
     BroadcastableEvents.TICKET_ASSIGNED,
     BroadcastableEvents.TICKET_UNASSIGNED,
     BroadcastableEvents.TICKET_REASSIGNED,
   ],
-  helpdesk: [BroadcastableEvents.TICKET_CREATED],
+  helpdesk: [
+    /**
+     * Ticket events
+     */
+    BroadcastableEvents.TICKET_CREATED,
+    BroadcastableEvents.TICKET_ANNOUNCED,
+  ],
 }

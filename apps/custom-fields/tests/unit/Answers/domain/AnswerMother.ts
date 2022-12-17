@@ -6,6 +6,7 @@
  */
 import { Extra, Guid, Nullable } from '@turnly/common'
 import { ObjectMother } from '@turnly/testing'
+import { EntityTypes } from 'Answers/domain/enums/EntityType'
 
 import { Answer } from '../../../../src/Answers/domain/entities/Answer'
 
@@ -14,7 +15,7 @@ export class AnswerMother {
     value: string = ObjectMother.names(),
     fieldId: string = ObjectMother.word(),
     entityId: string = ObjectMother.word(),
-    entityType: string = ObjectMother.word(),
+    entityType: EntityTypes = EntityTypes.CUSTOMER,
     organizationId: Guid = ObjectMother.uuid('org'),
     extra: Nullable<Extra[]> = []
   ): Answer {
@@ -40,7 +41,7 @@ export class AnswerMother {
     value: string = ObjectMother.names(),
     fieldId: string = ObjectMother.word(),
     entityId: string = ObjectMother.word(),
-    entityType: string = ObjectMother.word(),
+    entityType: EntityTypes = EntityTypes.CUSTOMER,
     organizationId: Guid = ObjectMother.uuid('org'),
     extra: Nullable<Extra[]> = [ObjectMother.extra(), ObjectMother.extra()]
   ) {

@@ -14,7 +14,14 @@ export const useGetTicketQuery = (
     data,
     error,
     loading: isLoading,
-  } = useQuery({ ...options, onError: error => Notifier.error(error.message) })
+  } = useQuery({
+    ...options,
+    onError: error => {
+      Notifier.error(error.message)
+
+      if (options.onError) options.onError(error)
+    },
+  })
 
   return {
     data: data?.getTicket,

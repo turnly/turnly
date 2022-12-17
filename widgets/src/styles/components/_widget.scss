@@ -17,6 +17,7 @@ $block: 'tly-widget';
     overflow-y: auto;
     padding: 0 24px;
     padding-bottom: 58px;
+    position: relative;
 
     &::-webkit-scrollbar {
       border-radius: 12px;

@@ -6,6 +6,7 @@
  */
 import { Box, ioc } from '@turnly/shared'
 import { CreateAnswerBulkCommandHandler } from 'Answers/application/commands/CreateAnswerBulkCommand'
+import { FindAnswersQueryHandler } from 'Answers/application/queries/FindAnswersQuery'
 
 import { AnswersController } from '../api/controllers/AnswersController'
 import { AnswersMapper } from '../persistence/mongo/entity-model-mappers/AnswersMapper'
@@ -26,4 +27,11 @@ Box.register({
   createAnswerBulkCommandHandler: ioc
     .asClass(CreateAnswerBulkCommandHandler)
     .singleton(),
+})
+
+/**
+ * Query handlers
+ */
+Box.register({
+  findAnswersQueryHandler: ioc.asClass(FindAnswersQueryHandler).singleton(),
 })

@@ -1,8 +1,14 @@
 import { Fragment, h } from 'preact'
 import { useState } from 'preact/hooks'
-import { FormProvider, useForm } from 'react-hook-form'
+import { Controller, FormProvider, useForm } from 'react-hook-form'
 
 import { Button } from '../../components/button'
+import {
+  CheckboxList,
+  Form,
+  FormField,
+  PhoneInput,
+} from '../../components/form'
 import { FooterScreen, HeaderScreen } from '../../components/layouts/screen'
 import { Title } from '../../components/typography'
 import { DynamicForm, Field } from '../../dynamic-form'
@@ -34,16 +40,26 @@ export const TakeTicketScreen = () => {
   })
 
   const submit = async (data?: any) => {
-    const answers = Object.entries(data).map(([fieldId, value]) => ({
-      fieldId,
-      value: value as string,
-    }))
+    const answers = Object.entries(data)
+      .filter(
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        ([fieldId, _value]) =>
+          !['notifications', 'notification_phone'].includes(fieldId)
+      )
+      .map(([fieldId, value]) => ({
+        fieldId,
+        value: value as string,
+      }))
 
     const ticket = await takeNewTicket({
       serviceId: service?.id || '',
       locationId,
       answers: answers,
-      extra: [],
+      extra:
+        data?.notifications?.map(value => ({
+          key: value,
+          value: data['notification_phone'],
+        })) || [],
     })
 
     if (ticket) {
@@ -73,7 +89,52 @@ export const TakeTicketScreen = () => {
           <Title>{translate('fields.labels.hint')}</Title>
 
           <FormProvider {...methods}>
-            <DynamicForm fields={fields as unknown as Field[]} />
+            <Form>
+              <DynamicForm fields={fields as unknown as Field[]} />
+
+              <FormField>
+                <Title level={4} hasGaps={false}>
+                  How do you prefer to receive notifications?
+                </Title>
+
+                <CheckboxList
+                  items={[
+                    {
+                      value: 'notification.sms',
+                      label: 'SMS',
+                    },
+                    {
+                      value: 'notification.whatsapp',
+                      label: 'Whatsapp',
+                    },
+                  ]}
+                />
+              </FormField>
+
+              {Array.isArray(methods.watch('notifications')) &&
+                methods.watch('notifications').length > 0 && (
+                  <FormField>
+                    <Title level={4} hasGaps={false}>
+                      Your Phone
+                    </Title>
+
+                    <Controller
+                      name="notification_phone"
+                      control={methods.control}
+                      render={({ field, fieldState: { error } }) => (
+                        <PhoneInput
+                          isDanger={!!error}
+                          {...field}
+                          textError={error?.message}
+                        />
+                      )}
+                      rules={{
+                        required: 'This field is required',
+                      }}
+                    />
+                  </FormField>
+                )}
+            </Form>
           </FormProvider>
         </div>
       </div>

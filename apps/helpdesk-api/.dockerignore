@@ -1,0 +1,9 @@
+node_modules
+coverage
+tests
+yarn-error.log
+**/*.md
+.prettierrc*
+.env*
+Dockerfile
+sonar-project.properties

@@ -19,9 +19,12 @@ import { TicketPriority } from '../enums/TicketPriority'
 import { TicketScore } from '../enums/TicketScore'
 import { TicketStatus } from '../enums/TicketStatus'
 import { TicketAnnouncedEvent } from '../events/TicketAnnouncedEvent'
+import { TicketCalledEvent } from '../events/TicketCalledEvent'
 import { TicketCancelledEvent } from '../events/TicketCancelledEvent'
 import { TicketCompletedEvent } from '../events/TicketCompletedEvent'
 import { TicketCreatedEvent } from '../events/TicketCreatedEvent'
+import { TicketDiscardedEvent } from '../events/TicketDiscardedEvent'
+import { TicketReturnedEvent } from '../events/TicketReturnedEvent'
 import { Rating } from './Rating'
 
 type IgnoreAttrs = 'id' | 'assigneeId' | 'createdAt' | 'rating' | 'updatedAt'
@@ -152,6 +155,50 @@ export class Ticket extends AggregateRoot {
     this.register(new TicketAnnouncedEvent(this.toObject()))
   }
 
+  public resolve(status: TicketStatus): void {
+    if (!this.isCalled())
+      throw new BadRequestException(
+        "Oops!, you're trying to resolve a ticket that has not been called."
+      )
+
+    const handlers = {
+      [TicketStatus.SERVED]: () => this.serve(),
+      [TicketStatus.DISCARDED]: () => this.discard(),
+      [TicketStatus.RETURNED]: () => this.return(),
+    }
+
+    const handler = handlers[status]
+
+    if (!handler)
+      throw new BadRequestException(
+        "Oops!, you're trying to resolve a ticket with an invalid status."
+      )
+
+    handler()
+  }
+
+  public call(assigneeId: Guid): void {
+    if (!this.isToCall())
+      throw new InvalidStateException(
+        'Oops!, you can not call this ticket, it is not available.'
+      )
+
+    this.assigneeId = assigneeId
+
+    this.moveToCallStatus()
+
+    this.register(new TicketCalledEvent(this.toObject()))
+  }
+
+  private moveToCallStatus(): void {
+    if (this.status === TicketStatus.RECALLED) return
+
+    this.status =
+      this.status === TicketStatus.CALLED
+        ? TicketStatus.RECALLED
+        : TicketStatus.CALLED
+  }
+
   public addRating(rating: Rating): void {
     const isUnknownScore = !Object.values(TicketScore).includes(rating.score)
 
@@ -166,9 +213,31 @@ export class Ticket extends AggregateRoot {
       )
 
     this.rating = rating
-    this.status = TicketStatus.COMPLETED_WITH_RATING
+    this.status = TicketStatus.SERVED_WITH_RATING
 
     this.register(new TicketCompletedEvent(this.toObject()))
+  }
+
+  private serve(): void {
+    this.status = TicketStatus.SERVED
+
+    this.register(new TicketCompletedEvent(this.toObject()))
+  }
+
+  private discard(): void {
+    this.status = TicketStatus.DISCARDED
+
+    this.register(new TicketDiscardedEvent(this.toObject()))
+  }
+
+  private return(): void {
+    this.status = TicketStatus.RETURNED
+
+    this.register(new TicketReturnedEvent(this.toObject()))
+  }
+
+  public isOwnedBy(customerId: Guid): boolean {
+    return this.customerId === customerId
   }
 
   public isActive(): boolean {
@@ -176,7 +245,7 @@ export class Ticket extends AggregateRoot {
   }
 
   public isPendingForRating(): boolean {
-    return this.status === TicketStatus.COMPLETED_WITHOUT_RATING
+    return this.status === TicketStatus.SERVED
   }
 
   public isCompleted(): boolean {
@@ -187,6 +256,18 @@ export class Ticket extends AggregateRoot {
     return Ticket.getToAttendStatus().includes(this.status)
   }
 
+  public isCalled(): boolean {
+    return Ticket.getCalledStatus().includes(this.status)
+  }
+
+  public static getCalledStatus(): TicketStatus[] {
+    return [TicketStatus.CALLED, TicketStatus.RECALLED]
+  }
+
+  public isToCall(): boolean {
+    return Ticket.getToCallStatus().includes(this.status)
+  }
+
   public static getActiveStatus(): TicketStatus[] {
     return [
       TicketStatus.BOOKED,
@@ -194,7 +275,16 @@ export class Ticket extends AggregateRoot {
       TicketStatus.ANNOUNCED,
       TicketStatus.CALLED,
       TicketStatus.RECALLED,
-      TicketStatus.NEAR_ATTENTION,
+      TicketStatus.RETURNED,
+    ]
+  }
+
+  public static getToCallStatus(): TicketStatus[] {
+    return [
+      TicketStatus.ANNOUNCED,
+      TicketStatus.CALLED,
+      TicketStatus.RECALLED,
+      TicketStatus.RETURNED,
     ]
   }
 
@@ -204,8 +294,8 @@ export class Ticket extends AggregateRoot {
       TicketStatus.REMOVED,
       TicketStatus.INACTIVE,
       TicketStatus.CANCELLED,
-      TicketStatus.COMPLETED_WITH_RATING,
-      TicketStatus.COMPLETED_WITHOUT_RATING,
+      TicketStatus.SERVED_WITH_RATING,
+      TicketStatus.SERVED,
     ]
   }
 
@@ -217,6 +307,10 @@ export class Ticket extends AggregateRoot {
       TicketStatus.CALLED,
       TicketStatus.RECALLED,
     ]
+  }
+
+  public getExtra(key: string): Nullable<string> {
+    return this.extra?.find(extra => extra.key === key)?.value ?? null
   }
 
   /**

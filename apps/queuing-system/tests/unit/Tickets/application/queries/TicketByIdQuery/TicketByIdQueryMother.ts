@@ -12,10 +12,9 @@ import { TicketByIdQuery } from '../../../../../../src/Tickets/application/queri
 export class TicketByIdQueryMother {
   static create(
     id: Guid = ObjectMother.uuid('ticket'),
-    customerId: Guid = ObjectMother.uuid('cust'),
     organizationId: Guid = ObjectMother.uuid('org')
   ): TicketByIdQuery {
-    return new TicketByIdQuery(id, customerId, organizationId)
+    return new TicketByIdQuery(id, organizationId)
   }
 
   static random(): TicketByIdQuery {

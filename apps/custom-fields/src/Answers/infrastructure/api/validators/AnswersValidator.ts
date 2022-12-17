@@ -22,6 +22,13 @@ const answer = Validator.object({
 
 const create = Validator.getBuilder().array().items(answer).min(1).required()
 
+const find = Validator.object({
+  entityType: Validator.string(),
+  organizationId: Validator.isId(),
+  fieldId: Validator.isId(true),
+  extra: Validator.getBuilder().array().items(extra).optional(),
+})
 export const validator = {
   create,
+  find,
 }

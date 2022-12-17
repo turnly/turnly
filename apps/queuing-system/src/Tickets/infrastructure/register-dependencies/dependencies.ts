@@ -6,14 +6,18 @@
  */
 import { Box, ioc } from '@turnly/shared'
 import { AnnounceTicketCommandHandler } from 'Tickets/application/commands/AnnounceTicketCommand'
+import { CallTicketCommandHandler } from 'Tickets/application/commands/CallTicketCommand'
 import { CreateTicketCommandHandler } from 'Tickets/application/commands/CreateTicketCommand'
 import { CreateTicketReadingDBCommandHandler } from 'Tickets/application/commands/CreateTicketReadingDBCommand'
 import { LeaveTicketCommandHandler } from 'Tickets/application/commands/LeaveTicketCommand'
+import { ResolveTicketCommandHandler } from 'Tickets/application/commands/ResolveTicketCommand'
 import { ActiveTicketsByCustomerQueryHandler } from 'Tickets/application/queries/ActiveTicketsByCustomerQuery'
 import { TicketByIdQueryHandler } from 'Tickets/application/queries/TicketByIdQuery'
 import { TicketsBeforeYoursQueryHandler } from 'Tickets/application/queries/TicketsBeforeYoursQuery'
+import { TicketsByLocationQueryHandler } from 'Tickets/application/queries/TicketsByLocationQuery'
 import { TicketsWaitingForServiceQueryHandler } from 'Tickets/application/queries/TicketsWaitingForServiceQuery'
 import { CreateTicketReadingDBSubscriber } from 'Tickets/application/subscribers/CreateTicketReadingDBSubscriber'
+import { NotifyCustomerCalledSubscriber } from 'Tickets/application/subscribers/NotifyCustomerCalledSubscriber'
 
 import { TicketsController } from '../api/controllers/TicketsController'
 import { TicketsWritableForReadableRepo } from '../persistence/elasticsearch/repositories/TicketsWritableForReadableRepo'
@@ -45,6 +49,10 @@ Box.register({
   announceTicketCommandHandler: ioc
     .asClass(AnnounceTicketCommandHandler)
     .singleton(),
+  resolveTicketCommandHandler: ioc
+    .asClass(ResolveTicketCommandHandler)
+    .singleton(),
+  callTicketCommandHandler: ioc.asClass(CallTicketCommandHandler).singleton(),
 })
 
 /**
@@ -53,6 +61,9 @@ Box.register({
 Box.register({
   createTicketReadingDatabaseSubscriber: ioc
     .asClass(CreateTicketReadingDBSubscriber)
+    .singleton(),
+  notifyCustomerCalledSubscriber: ioc
+    .asClass(NotifyCustomerCalledSubscriber)
     .singleton(),
 })
 
@@ -69,5 +80,8 @@ Box.register({
     .singleton(),
   ticketsWaitingForServiceQueryHandler: ioc
     .asClass(TicketsWaitingForServiceQueryHandler)
+    .singleton(),
+  ticketsByLocationQueryHandler: ioc
+    .asClass(TicketsByLocationQueryHandler)
     .singleton(),
 })

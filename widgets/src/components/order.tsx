@@ -1,27 +1,34 @@
 import clsx from 'clsx'
 import { h, JSX } from 'preact'
-import { useMemo, useState } from 'preact/hooks'
 
 import { Title } from '../components/typography'
-import { useInternalState } from '../hooks/use-internal-state'
+import { useTranslation } from '../localization'
 
-export interface OrderProps extends JSX.HTMLAttributes<HTMLDivElement> {}
+export interface OrderProps extends JSX.HTMLAttributes<HTMLDivElement> {
+  numberOrder: string
+  isDanger: boolean
+  isWarning: boolean
+  isPrimary: boolean
+  displayCode: string
+  isYourTurn: boolean
+}
 
-export type OrderStatus = 'danger' | 'warning' | 'success'
-
-export const Order = (attributes: Partial<OrderProps>) => {
-  const { ticket } = useInternalState()
-  const [status, setStatus] = useState<OrderStatus>('danger')
-  const [isDanger, isWarning, isSuccess] = useMemo(
-    () => [status === 'danger', status === 'warning', status === 'success'],
-    [status]
-  )
+export const Order = ({
+  numberOrder,
+  isDanger,
+  isWarning,
+  isPrimary,
+  displayCode,
+  isYourTurn,
+  ...attributes
+}: Partial<OrderProps>) => {
+  const { translate } = useTranslation()
 
   const styles = clsx({
     ['tly-order']: true,
     ['tly-order--is-danger']: isDanger,
     ['tly-order--is-warning']: isWarning,
-    ['tly-order--is-primary']: isSuccess,
+    ['tly-order--is-primary']: isPrimary,
   })
 
   const classes = clsx(styles, attributes.className)
@@ -30,14 +37,20 @@ export const Order = (attributes: Partial<OrderProps>) => {
     <div className={classes}>
       <Title
         className="tly-order-title"
-        level={1}
+        level={isYourTurn ? 2 : 1}
         isDanger={isDanger}
+        isGreen={isPrimary}
         isWarning={isWarning}
       >
-        {ticket?.beforeYours.toString().padStart(2, '0')}
+        {isYourTurn ? displayCode : numberOrder?.padStart(2, '0')}
       </Title>
-      <Title level={5} isDanger={isDanger} isWarning={isWarning}>
-        {!isSuccess ? 'Tickets before yours' : 'Ahoy, your turn!'}
+      <Title
+        level={5}
+        isDanger={isDanger}
+        isGreen={isPrimary}
+        isWarning={isWarning}
+      >
+        {translate(`tickets.${isYourTurn ? 'your_turn' : 'before_yours'}`)}
       </Title>
     </div>
   )

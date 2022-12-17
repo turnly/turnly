@@ -94,6 +94,10 @@ $block: 'tly-typography';
       color: var(--tly-warning);
     }
 
+    &--is-green {
+      color: var(--tly-green-dark);
+    }
+
     &--is-disabled {
       cursor: not-allowed;
       user-select: none;

@@ -19,7 +19,7 @@ import { TicketStatus } from '../../../../src/Tickets/domain/enums/TicketStatus'
 
 export class TicketMother {
   static create(
-    status: TicketStatus = TicketStatus.BOOKED,
+    status: TicketStatus = TicketStatus.AVAILABLE,
     priority: TicketPriority = TicketPriority.NORMAL,
     displayCode: string = ObjectMother.displayCode('TEST'),
     serviceId: Guid = ObjectMother.uuid('srv'),
@@ -80,7 +80,6 @@ export class TicketMother {
   static fromExistingTicketOnQuery(query: TicketByIdQuery): Ticket {
     return Ticket.build({
       ...this.random().toObject(),
-      customerId: query.customerId,
       organizationId: query.organizationId,
       id: query.id,
     })
@@ -97,8 +96,30 @@ export class TicketMother {
     return ticket
   }
 
+  static inCalledStatus(): Ticket {
+    const ticket = TicketMother.create(TicketStatus.ANNOUNCED)
+
+    /**
+     * Pull creation event first to clear the array of events
+     */
+    ticket.pull()
+
+    return ticket
+  }
+
+  static inRecalledStatus(): Ticket {
+    const ticket = TicketMother.create(TicketStatus.CALLED)
+
+    /**
+     * Pull creation event first to clear the array of events
+     */
+    ticket.pull()
+
+    return ticket
+  }
+
   static inPendingForRatingStatus(): Ticket {
-    const ticket = TicketMother.create(TicketStatus.COMPLETED_WITHOUT_RATING)
+    const ticket = TicketMother.create(TicketStatus.SERVED)
 
     /**
      * Pull creation event first to clear the array of events
@@ -125,5 +146,15 @@ export class TicketMother {
       undefined,
       extra
     )
+  }
+
+  static withStaticExtra(
+    extra: Extra[] = [
+      { key: 'comment', value: 'Ben Spinka' },
+      { key: 'password', value: 'Ivan Heaney' },
+      { key: 'createdAt', value: 'Dwayne Kassulke' },
+    ]
+  ): Ticket {
+    return this.withExtra(extra)
   }
 }

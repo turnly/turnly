@@ -22,7 +22,7 @@ const MIN_TICKETS_IN_QUEUE = 8
 export const TicketDetailsScreen = () => {
   const { translate } = useTranslation()
   const { navigate } = useNavigator()
-  const { params } = useSearchParams()
+  const { ticketId, deleteSearchParams } = useSearchParams()
   const { setCurrentLocation } = useCurrentLocation()
   const { service, ticket, setService, setTicket, setAnswers } =
     useInternalState()
@@ -31,7 +31,7 @@ export const TicketDetailsScreen = () => {
   const [isShowing, setIsShowing] = useState(false)
 
   const { isLoading } = useGetTicketQuery({
-    variables: { getTicketId: params['tly-ticket-id'] },
+    variables: { getTicketId: ticketId },
     onCompleted: async ({ getTicket }) =>
       await Promise.all([
         setTicket({
@@ -45,15 +45,23 @@ export const TicketDetailsScreen = () => {
         setService({ ...getTicket.service } as ServiceParams),
         setCurrentLocation({ ...getTicket.location }),
       ]),
+    onError: () => {
+      deleteSearchParams('tly-ticket-id')
+      navigate(SCREEN_NAMES.HOME)
+    },
   })
 
   const handleModalLeave = () => setIsShowing(p => !p)
 
-  const leaveTicket = async () => {
+  const handleLeaveTicket = async () => {
     if (ticket) {
       await leaveCurrentTicket(ticket.id)
 
-      await Promise.all([setAnswers([]), setTicket(null)])
+      await Promise.all([
+        setAnswers([]),
+        setTicket(null),
+        deleteSearchParams('tly-ticket-id'),
+      ])
 
       navigate(SCREEN_NAMES.SERVICES)
     }
@@ -82,7 +90,7 @@ export const TicketDetailsScreen = () => {
           {
             children: 'I understand, leave',
             isPrimary: true,
-            onClick: leaveTicket,
+            onClick: handleLeaveTicket,
             isLoading: isLeaving,
           },
           {
@@ -102,7 +110,23 @@ export const TicketDetailsScreen = () => {
             typeTransaction={service?.name}
           />
 
-          <Order />
+          <Order
+            displayCode={ticket?.displayCode}
+            numberOrder={`${ticket?.beforeYours}`}
+            isPrimary={ticket?.beforeYours === 0}
+            isYourTurn={ticket?.beforeYours === 0}
+            isDanger={
+              ticket?.beforeYours
+                ? ticket.beforeYours >= MIN_TICKETS_IN_QUEUE
+                : false
+            }
+            isWarning={
+              ticket?.beforeYours
+                ? ticket.beforeYours <= MIN_TICKETS_IN_QUEUE &&
+                  ticket.beforeYours >= 1
+                : false
+            }
+          />
         </HeaderScreen>
 
         <FooterScreen>
@@ -123,11 +147,9 @@ export const TicketDetailsScreen = () => {
               {translate('tickets.leave.button_text')}
             </Button>
 
-            {ticket.beforeYours <= MIN_TICKETS_IN_QUEUE && (
-              <Button isLoading={isAnnouncing} onClick={announceTicket}>
-                {translate('tickets.announce.button_text')}
-              </Button>
-            )}
+            <Button onClick={announceTicket}>
+              {translate('tickets.announce.button_text')}
+            </Button>
           </div>
         </FooterScreen>
       </div>

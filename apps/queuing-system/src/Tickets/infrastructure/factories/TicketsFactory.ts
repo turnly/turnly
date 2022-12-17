@@ -13,14 +13,18 @@ import {
   IWritableRepository,
 } from '@turnly/shared'
 import { AnnounceTicketCommandHandler } from 'Tickets/application/commands/AnnounceTicketCommand'
+import { CallTicketCommandHandler } from 'Tickets/application/commands/CallTicketCommand'
 import { CreateTicketCommandHandler } from 'Tickets/application/commands/CreateTicketCommand'
 import { CreateTicketReadingDBCommandHandler } from 'Tickets/application/commands/CreateTicketReadingDBCommand'
 import { LeaveTicketCommandHandler } from 'Tickets/application/commands/LeaveTicketCommand'
+import { ResolveTicketCommandHandler } from 'Tickets/application/commands/ResolveTicketCommand'
 import { ActiveTicketsByCustomerQueryHandler } from 'Tickets/application/queries/ActiveTicketsByCustomerQuery'
 import { TicketByIdQueryHandler } from 'Tickets/application/queries/TicketByIdQuery'
 import { TicketsBeforeYoursQueryHandler } from 'Tickets/application/queries/TicketsBeforeYoursQuery'
+import { TicketsByLocationQueryHandler } from 'Tickets/application/queries/TicketsByLocationQuery'
 import { TicketsWaitingForServiceQueryHandler } from 'Tickets/application/queries/TicketsWaitingForServiceQuery'
 import { CreateTicketReadingDBSubscriber } from 'Tickets/application/subscribers/CreateTicketReadingDBSubscriber'
+import { NotifyCustomerCalledSubscriber } from 'Tickets/application/subscribers/NotifyCustomerCalledSubscriber'
 import { Ticket } from 'Tickets/domain/entities/Ticket'
 
 import { TicketsController } from '../api/controllers/TicketsController'
@@ -52,6 +56,9 @@ export class TicketsFactory {
       Box.resolve<TicketsWaitingForServiceQueryHandler>(
         'ticketsWaitingForServiceQueryHandler'
       ),
+      Box.resolve<TicketsByLocationQueryHandler>(
+        'ticketsByLocationQueryHandler'
+      ),
     ]
   }
 
@@ -63,6 +70,8 @@ export class TicketsFactory {
       ),
       Box.resolve<LeaveTicketCommandHandler>('leaveTicketCommandHandler'),
       Box.resolve<AnnounceTicketCommandHandler>('announceTicketCommandHandler'),
+      Box.resolve<ResolveTicketCommandHandler>('resolveTicketCommandHandler'),
+      Box.resolve<CallTicketCommandHandler>('callTicketCommandHandler'),
     ]
   }
 
@@ -70,6 +79,9 @@ export class TicketsFactory {
     return [
       Box.resolve<CreateTicketReadingDBSubscriber>(
         'createTicketReadingDatabaseSubscriber'
+      ),
+      Box.resolve<NotifyCustomerCalledSubscriber>(
+        'notifyCustomerCalledSubscriber'
       ),
     ]
   }
