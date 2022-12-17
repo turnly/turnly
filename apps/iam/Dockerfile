@@ -34,6 +34,4 @@ RUN /opt/keycloak/bin/kc.sh build
 FROM quay.io/keycloak/keycloak:${KC_VERSION} as runner
 COPY --from=builder /opt/keycloak/ /opt/keycloak/
 
-EXPOSE 8080
-
 ENTRYPOINT ["/opt/keycloak/bin/kc.sh"]
