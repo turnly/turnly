@@ -26,6 +26,10 @@ runs:
           sudo echo "127.0.0.1 $host" | sudo tee -a /etc/hosts
         done
 
+    - name: 🐳 Create the docker network
+      shell: bash
+      run: docker network inspect turnly >/dev/null 2>&1 || docker network create turnly
+
     - name: 📦 Pull base dependencies
       shell: bash
       run: docker pull node:${{ inputs.node-version }}-alpine3.15

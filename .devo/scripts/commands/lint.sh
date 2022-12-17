@@ -3,6 +3,7 @@
 function lint() {
   IGNORE_DIRS=(
     "gateway"
+    "iam"
   )
 
   APPS_DIRECTORY=$(get_env_variable "APPS_DIRECTORY")
