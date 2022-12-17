@@ -18,7 +18,12 @@ export const useLocationServicesInRealtime = (locationId: string) => {
 
   const { isLoading, hasServices } = useLocationServicesQuery({
     variables: { locationId },
-    onCompleted: data => setServices(data.getLocationServices),
+    onCompleted: data => {
+      console.log(data)
+      // eslint-disable-next-line no-debugger
+      debugger
+      setServices(data.getLocationServices)
+    },
   })
 
   useEffect(() => {

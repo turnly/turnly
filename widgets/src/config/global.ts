@@ -9,6 +9,7 @@ export const config = Object.freeze({
   DSN: configuration.sentry_dsn,
   PUBLIC_URL: configuration.public_url,
   TURNLY_URL: configuration.turnly_url,
+  GOOGLE_MAP_URL: configuration.google_map_api,
 })
 
 export const __DEV__ = process.env.NODE_ENV === 'development'
