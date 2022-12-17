@@ -5,12 +5,12 @@ import { AiOutlineCheck } from 'react-icons/ai'
 import { FiSend } from 'react-icons/fi'
 
 import { useCurrentLocation } from '../hooks/use-current-location'
-import { useGoogleMap } from '../hooks/use-google-map'
+import { useGoogleMaps } from '../hooks/use-google-maps'
 import { TicketStatus, useInternalState } from '../hooks/use-internal-state'
 import { Text, Title } from './typography'
 
 export const CurrentLocation = () => {
-  const { openGoogleMap } = useGoogleMap()
+  const { openGoogleMaps } = useGoogleMaps()
   const { name, address, latitude, longitude } = useCurrentLocation()
   const { ticket } = useInternalState()
 
@@ -26,7 +26,7 @@ export const CurrentLocation = () => {
   const classes = clsx(styles)
 
   const openCoords = useCallback(
-    () => openGoogleMap(latitude, longitude),
+    () => openGoogleMaps(latitude, longitude),
     [latitude, longitude]
   )
 
