@@ -45,3 +45,5 @@ services:
 
 networks:
   turnly:
+    external:
+      name: turnly
