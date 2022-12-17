@@ -43,6 +43,10 @@ export const TicketDetailsScreen = () => {
         setService({ ...getTicket.service } as ServiceParams),
         setCurrentLocation({ ...getTicket.location }),
       ]),
+    onError: () => {
+      deleteSearchParams('tly-ticket-id')
+      navigate(SCREEN_NAMES.HOME)
+    },
   })
 
   const handleModalLeave = () => setIsShowing(p => !p)
@@ -97,10 +101,15 @@ export const TicketDetailsScreen = () => {
             numberOrder={`${ticket?.beforeYours}`}
             isPrimary={ticket?.beforeYours === 0}
             isYourTurn={ticket?.beforeYours === 0}
-            isDanger={ticket?.beforeYours ? ticket.beforeYours >= 8 : false}
+            isDanger={
+              ticket?.beforeYours
+                ? ticket.beforeYours >= MIN_TICKETS_IN_QUEUE
+                : false
+            }
             isWarning={
               ticket?.beforeYours
-                ? ticket.beforeYours <= 8 && ticket.beforeYours >= 1
+                ? ticket.beforeYours <= MIN_TICKETS_IN_QUEUE &&
+                  ticket.beforeYours >= 1
                 : false
             }
           />
