@@ -33,6 +33,7 @@ services:
       KEYCLOAK_ADMIN_PASSWORD: ${IAM_ADMIN_PASSWORD}
     labels:
       - traefik.enable=true
+      - traefik.docker.network=turnly
       - traefik.http.routers.iam.entrypoints=web,websecure
       - traefik.http.routers.iam.service=iam
       - traefik.http.services.iam.loadbalancer.server.port=8080

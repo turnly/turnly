@@ -1,5 +1,3 @@
-accesslog: true
-
 log:
   level: DEBUG
 
@@ -23,5 +21,6 @@ entryPoints:
 
 providers:
   docker:
-    exposedbydefault: false
+    exposedByDefault: false
     watch: true
+    network: turnly

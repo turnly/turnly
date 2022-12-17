@@ -22,6 +22,7 @@ services:
       - elasticsearch
     labels:
       - traefik.enable=true
+      - traefik.docker.network=turnly
       - traefik.http.routers.queuing-system-rpc.entrypoints=web,websecure
       - traefik.http.routers.queuing-system-rpc.rule=PathPrefix(`/turnly.queuing_system.v1`)
       - traefik.http.routers.queuing-system-rpc.service=queuing-system-rpc

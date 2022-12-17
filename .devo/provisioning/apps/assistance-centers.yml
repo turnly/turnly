@@ -21,6 +21,7 @@ services:
       - mongo
     labels:
       - traefik.enable=true
+      - traefik.docker.network=turnly
       - traefik.http.routers.assistance-centers-rpc.entrypoints=web,websecure
       - traefik.http.routers.assistance-centers-rpc.rule=PathPrefix(`/turnly.assistance_centers.v1`)
       - traefik.http.routers.assistance-centers-rpc.service=assistance-centers-rpc

@@ -21,6 +21,7 @@ services:
       - mongo
     labels:
       - traefik.enable=true
+      - traefik.docker.network=turnly
       - traefik.http.routers.business-owners-rpc.entrypoints=web,websecure
       - traefik.http.routers.business-owners-rpc.rule=PathPrefix(`/turnly.business_owners.v1`)
       - traefik.http.routers.business-owners-rpc.service=business-owners-rpc

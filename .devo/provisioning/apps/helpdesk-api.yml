@@ -20,6 +20,7 @@ services:
       - gateway
     labels:
       - traefik.enable=true
+      - traefik.docker.network=turnly
       - traefik.http.routers.helpdesk-api-http.entrypoints=web,websecure
       - traefik.http.routers.helpdesk-api-http.rule=PathPrefix(`/api/v1/helpdesk`)
       - traefik.http.routers.helpdesk-api-http.service=helpdesk-api-http

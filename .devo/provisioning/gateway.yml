@@ -32,6 +32,7 @@ services:
       CLIENT_SECRET: ${IAM_OIDC_CLIENT_SECRET}
     labels:
       - traefik.enable=true
+      - traefik.docker.network=turnly
       - traefik.http.routers.oauth.entrypoints=web,websecure
       - traefik.http.services.oauth.loadbalancer.server.port=4181
       - traefik.http.routers.oauth.rule=Path(`/_oauth`)

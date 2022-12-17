@@ -21,6 +21,7 @@ services:
       - mongo
     labels:
       - traefik.enable=true
+      - traefik.docker.network=turnly
       - traefik.http.routers.teams-rpc.entrypoints=web,websecure
       - traefik.http.routers.teams-rpc.rule=PathPrefix(`/turnly.teams.v1`)
       - traefik.http.routers.teams-rpc.service=teams-rpc

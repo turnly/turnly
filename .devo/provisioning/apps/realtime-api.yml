@@ -20,6 +20,7 @@ services:
       - gateway
     labels:
       - traefik.enable=true
+      - traefik.docker.network=turnly
       - traefik.http.routers.realtime-api-http.entrypoints=web,websecure
       - traefik.http.routers.realtime-api-http.rule=PathPrefix(`/api/v1/rtm`)
       - traefik.http.routers.realtime-api-http.service=realtime-api-http

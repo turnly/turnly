@@ -20,6 +20,7 @@ services:
       - gateway
     labels:
       - traefik.enable=true
+      - traefik.docker.network=turnly
       - traefik.http.routers.widgets-api-http.entrypoints=web,websecure
       - traefik.http.routers.widgets-api-http.rule=PathPrefix(`/api/v1/widgets`)
       - traefik.http.routers.widgets-api-http.service=widgets-api-http
