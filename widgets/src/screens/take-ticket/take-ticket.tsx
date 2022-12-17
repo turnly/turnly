@@ -18,7 +18,7 @@ import {
 } from '../../graphql/hooks/use-service-fields-query'
 import { useTakeTicketMutation } from '../../graphql/hooks/use-take-ticket-mutation'
 import { useCurrentLocation } from '../../hooks/use-current-location'
-import { useInternalState } from '../../hooks/use-internal-state'
+import { Ticket, useInternalState } from '../../hooks/use-internal-state'
 import { useSearchParams } from '../../hooks/use-search-params'
 import { useTranslation } from '../../localization'
 import { SCREEN_NAMES, useNavigator } from '../../navigation'
@@ -65,7 +65,7 @@ export const TakeTicketScreen = () => {
     if (ticket) {
       await Promise.all([
         setAnswers(answers),
-        setTicket(ticket as any),
+        setTicket(ticket as Ticket),
         setSearchParams({ 'tly-ticket-id': ticket.id }),
       ])
 

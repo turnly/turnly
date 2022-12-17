@@ -148,6 +148,13 @@ export type TicketModel = {
   status: Scalars['String'];
 };
 
+export type AnnounceTicketMutationVariables = Exact<{
+  ticketId: Scalars['String'];
+}>;
+
+
+export type AnnounceTicketMutation = { __typename?: 'Mutation', announceTicket: { __typename?: 'TicketModel', id: string, displayCode: string, customerId: string, beforeYours: number, calledToDesk?: string | null } };
+
 export type LeaveTicketMutationVariables = Exact<{
   ticketId: Scalars['String'];
 }>;
@@ -196,6 +203,43 @@ export type GetTicketQueryVariables = Exact<{
 export type GetTicketQuery = { __typename?: 'Query', getTicket: { __typename?: 'TicketModel', id: string, status: string, displayCode: string, beforeYours: number, calledToDesk?: string | null, customerId: string, service: { __typename?: 'ServiceModel', name: string, description?: string | null }, location: { __typename?: 'LocationModel', name: string, address: string, longitude: string, latitude: string } } };
 
 
+export const AnnounceTicketDocument = gql`
+    mutation AnnounceTicket($ticketId: String!) {
+  announceTicket(id: $ticketId) {
+    id
+    displayCode
+    customerId
+    beforeYours
+    calledToDesk
+  }
+}
+    `;
+export type AnnounceTicketMutationFn = Apollo.MutationFunction<AnnounceTicketMutation, AnnounceTicketMutationVariables>;
+
+/**
+ * __useAnnounceTicketMutation__
+ *
+ * To run a mutation, you first call `useAnnounceTicketMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useAnnounceTicketMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [announceTicketMutation, { data, loading, error }] = useAnnounceTicketMutation({
+ *   variables: {
+ *      ticketId: // value for 'ticketId'
+ *   },
+ * });
+ */
+export function useAnnounceTicketMutation(baseOptions?: Apollo.MutationHookOptions<AnnounceTicketMutation, AnnounceTicketMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<AnnounceTicketMutation, AnnounceTicketMutationVariables>(AnnounceTicketDocument, options);
+      }
+export type AnnounceTicketMutationHookResult = ReturnType<typeof useAnnounceTicketMutation>;
+export type AnnounceTicketMutationResult = Apollo.MutationResult<AnnounceTicketMutation>;
+export type AnnounceTicketMutationOptions = Apollo.BaseMutationOptions<AnnounceTicketMutation, AnnounceTicketMutationVariables>;
 export const LeaveTicketDocument = gql`
     mutation LeaveTicket($ticketId: String!) {
   leaveTicket(id: $ticketId) {

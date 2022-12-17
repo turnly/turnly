@@ -1,14 +1,37 @@
+import clsx from 'clsx'
 import { h } from 'preact'
+import { useCallback, useMemo } from 'preact/compat'
+import { AiOutlineCheck } from 'react-icons/ai'
 import { FiSend } from 'react-icons/fi'
 
 import { useCurrentLocation } from '../hooks/use-current-location'
+import { useGoogleMap } from '../hooks/use-google-map'
+import { TicketStatus, useInternalState } from '../hooks/use-internal-state'
 import { Text, Title } from './typography'
 
 export const CurrentLocation = () => {
-  const { name, address } = useCurrentLocation()
+  const { openGoogleMap } = useGoogleMap()
+  const { name, address, latitude, longitude } = useCurrentLocation()
+  const { ticket } = useInternalState()
+
+  const isSuccess = useMemo(
+    () => ticket?.status === TicketStatus.ANNOUNCED,
+    [ticket?.status]
+  )
+
+  const styles = clsx({
+    ['tly-current-location']: true,
+    ['tly-current-location--is-success']: isSuccess,
+  })
+  const classes = clsx(styles)
+
+  const openCoords = useCallback(
+    () => openGoogleMap(latitude, longitude),
+    [latitude, longitude]
+  )
 
   return (
-    <div className="tly-current-location">
+    <div className={classes} onClick={openCoords}>
       <div className="tly-current-location-details">
         <Title hasGaps={false} level={5}>
           {name}
@@ -19,7 +42,11 @@ export const CurrentLocation = () => {
       </div>
 
       <div className="tly-current-location-button">
-        <FiSend color="#2485BA" />
+        {isSuccess ? (
+          <AiOutlineCheck color="var(--tly-green-dark)" />
+        ) : (
+          <FiSend color="#2485BA" />
+        )}
       </div>
     </div>
   )
