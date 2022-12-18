@@ -45,23 +45,28 @@
     "labels": {
       "hint": "What service do you want to receive?",
       "unavailable": "Unavailable, max capacity reached",
-      "tickets_ahead": "Tickets ahead",
+      "tickets_ahead": "People ahead of you",
       "tickets_behind": "No people waiting!",
       "services_not_found": "This location doesn’t have services available, so it is not possible to continue ticket-taking."
     }
   },
   "fields": {
-    "title": "Take Ticket",
+    "title": "Info",
     "description": "Take a ticket to the selected location.",
     "labels": {
       "hint": "General information",
       "validate": "Validating info...",
       "button_text": "Ready, take ticket"
+    },
+    "notifications": {
+      "preference": "How do you prefer to receive notifications?",
+      "preference_phone": "Phone number where we will send?",
+      "no_preference": "If you don’t choose an option to send notifications, it will be hard to keep track of changes to your ticket."
     }
   },
   "tickets": {
     "title": "Ticket details",
-    "before_yours": "Tickets before yours",
+    "before_yours": "People before yours",
     "your_turn": "Ahoy, you turn!",
     "leave": {
       "title": "Leave ticket",

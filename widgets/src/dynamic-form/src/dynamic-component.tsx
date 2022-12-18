@@ -24,7 +24,7 @@ export const DynamicComponent = ({
 
   return (
     <FormField key={key}>
-      <Title level={4} hasGaps={false}>
+      <Title level={5} hasGaps={false}>
         {customField.label}
       </Title>
 

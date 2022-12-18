@@ -73,7 +73,7 @@ export const TicketDetailsScreen = () => {
         deleteSearchParams('tly-ticket-id'),
       ])
 
-      navigate(SCREEN_NAMES.SERVICES)
+      navigate(SCREEN_NAMES.HOME)
     }
   }
 

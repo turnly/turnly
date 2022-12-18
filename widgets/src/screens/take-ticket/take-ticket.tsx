@@ -75,26 +75,23 @@ export const TakeTicketScreen = () => {
 
   if (isLoading || !fields) return null
 
-  if (fields.length === 0) {
-    submit()
-    return null
-  }
-
   return (
     <Fragment>
       <div className="tly-take-ticket__main">
         <HeaderScreen />
 
         <div className="tly-take-ticket-body">
-          <Title>{translate('fields.labels.hint')}</Title>
+          <Title level={5} isGray isFontMedium>
+            {translate('fields.labels.hint')}
+          </Title>
 
           <FormProvider {...methods}>
             <Form>
               <DynamicForm fields={fields as unknown as Field[]} />
 
               <FormField>
-                <Title level={4} hasGaps={false}>
-                  How do you prefer to receive notifications?
+                <Title level={5} hasGaps={false}>
+                  {translate('fields.notifications.preference')}
                 </Title>
 
                 <CheckboxList
@@ -108,32 +105,33 @@ export const TakeTicketScreen = () => {
                       label: 'Whatsapp',
                     },
                   ]}
+                  hintForClear={translate('fields.notifications.no_preference')}
                 />
               </FormField>
 
               {Array.isArray(methods.watch('notifications')) &&
                 methods.watch('notifications').length > 0 && (
-                  <FormField>
-                    <Title level={4} hasGaps={false}>
-                      Your Phone
-                    </Title>
+                <FormField>
+                  <Title level={5} hasGaps={false}>
+                    {translate('fields.notifications.preference_phone')}
+                  </Title>
 
-                    <Controller
-                      name="notification_phone"
-                      control={methods.control}
-                      render={({ field, fieldState: { error } }) => (
-                        <PhoneInput
-                          isDanger={!!error}
-                          {...field}
-                          textError={error?.message}
-                        />
-                      )}
-                      rules={{
-                        required: 'This field is required',
-                      }}
-                    />
-                  </FormField>
-                )}
+                  <Controller
+                    name="notification_phone"
+                    control={methods.control}
+                    render={({ field, fieldState: { error } }) => (
+                      <PhoneInput
+                        isDanger={!!error}
+                        {...field}
+                        textError={error?.message}
+                      />
+                    )}
+                    rules={{
+                      required: 'This field is required',
+                    }}
+                  />
+                </FormField>
+              )}
             </Form>
           </FormProvider>
         </div>

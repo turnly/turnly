@@ -21,7 +21,7 @@ export const PhoneInput = forwardRef<HTMLInputElement, Partial<PhoneProps>>(
 
     return (
       <Fragment>
-        <Base ref={ref} inputClass={classes} {...attributes} />
+        <Base ref={ref} inputClass={classes} country={'do'} {...attributes} />
 
         {isDanger && (
           <Text isDanger isSmall>

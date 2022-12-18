@@ -2,6 +2,7 @@ import { h, JSX } from 'preact'
 import { useState } from 'preact/compat'
 import { useFormContext } from 'react-hook-form'
 
+import { Text } from '../../typography'
 import { Checkbox } from './checkbox'
 
 export type CheckboxItem = {
@@ -13,11 +14,13 @@ export interface CheckboxListProps
   extends JSX.HTMLAttributes<HTMLInputElement> {
   items: CheckboxItem[]
   clearLabel: string
+  hintForClear?: string
 }
 
 export const CheckboxList = ({
   items,
   clearLabel = 'N/A',
+  hintForClear,
 }: Partial<CheckboxListProps>) => {
   const clearItem = { value: 'clear_all', label: clearLabel }
   const [itemsSelected, setSelected] = useState<CheckboxItem['value'][]>([])
@@ -73,6 +76,14 @@ export const CheckboxList = ({
           onClick={handleItems(clearItem)}
           label={clearLabel}
         />
+      )}
+
+      {hintForClear && itemsSelected.includes(clearItem.value) && (
+        <div className="tly-checkbox-list__hint">
+          <Text isDanger isSmall>
+            {hintForClear}
+          </Text>
+        </div>
       )}
     </div>
   )
