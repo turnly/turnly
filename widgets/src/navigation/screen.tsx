@@ -39,7 +39,7 @@ export const Screen: FunctionalComponent<TScreenProps> = ({
       {backScreen && (
         <div className="tly-screen-side-back">
           <button className="tly-screen-side-back-btn" onClick={onBack}>
-            <IoArrowBack color="var(--tly-default-text-color)" size={25} />
+            <IoArrowBack color="var(--tly-default-text-color)" size={24} />
           </button>
         </div>
       )}

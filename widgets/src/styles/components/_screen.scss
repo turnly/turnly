@@ -1,32 +1,39 @@
 $block: 'tly-screen-side-back';
 
 .#{$block} {
-  width: 20px;
-  height: 100%;
+  min-height: 65px;
   position: fixed;
   z-index: 999999;
   left: 0;
   top: 0;
-
+  margin-left: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
 
   &:hover {
     button {
-      display: block;
+      opacity: 1;
     }
   }
 
   button {
-    background-color: var(--tly-gray-lighter);
+    $size: 32px;
+    align-items: center;
+    background-color: transparent;
     border: 0;
     border-radius: 100%;
     cursor: pointer;
-    display: none;
+    display: flex;
+    height: $size;
+    justify-content: center;
     text-align: center;
+    width: $size;
     transition: all 0.2s ease-in-out;
-    margin-left: 50px;
-    padding: 10px;
+    opacity: 0.8;
+
+    &:hover {
+      background-color: var(--tly-gray-lighter);
+    }
   }
 }

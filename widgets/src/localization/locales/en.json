@@ -40,13 +40,13 @@
     }
   },
   "services": {
-    "title": "Location overview",
+    "title": "Info",
     "description": "Find the best services in your location.",
     "labels": {
       "hint": "What service do you want to receive?",
       "unavailable": "Unavailable, max capacity reached",
       "tickets_ahead": "Tickets ahead",
-      "tickets_behind": "Ahoy, no people waiting!",
+      "tickets_behind": "No people waiting!",
       "services_not_found": "This location doesn’t have services available, so it is not possible to continue ticket-taking."
     }
   },
