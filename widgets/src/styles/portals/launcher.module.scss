@@ -17,10 +17,18 @@ $block: 'tly-launcher';
   right: $gap;
   width: $size;
   z-index: var(--tly-z-index);
+  transition: z-index 0s ease-in-out 0.25s;
 
   &--is-left-position {
     right: 0;
     left: $gap;
+  }
+
+  &--is-showing {
+    @include in-mobile {
+      z-index: 0;
+      transition: z-index 0s ease-in-out;
+    }
   }
 
   iframe {

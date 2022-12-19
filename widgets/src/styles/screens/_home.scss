@@ -11,6 +11,10 @@ $block: 'tly-home';
     max-width: 80%;
   }
 
+  &__main {
+    position: relative;
+  }
+
   &-articles {
     margin-top: 24px;
 

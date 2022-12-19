@@ -8,6 +8,7 @@ $block: 'tly-order';
   text-align: center;
   max-width: 232px;
   margin-bottom: 24px;
+  transition: all 0.2s ease-in-out;
 
   &-title {
     font-size: 60px;

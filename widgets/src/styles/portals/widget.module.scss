@@ -18,7 +18,7 @@ $block: 'tly-widget';
     opacity 0.25s ease-in-out 0s, z-index 0s ease-in-out 0.25s,
     transform 0.25s ease-in-out 0s;
   width: 360px;
-  z-index: -1;
+  z-index: var(--tly-z-index);
 
   iframe {
     border: 0;
@@ -55,6 +55,7 @@ $block: 'tly-widget';
       max-height: 100vh;
       right: 0;
       width: 100%;
+      transform: translate3d(0, 0, 0);
     }
   }
 }

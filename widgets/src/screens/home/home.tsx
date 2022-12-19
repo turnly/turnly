@@ -18,9 +18,11 @@ export const HomeScreen = () => {
 
   return (
     <Fragment>
-      <div className="tly-home">
-        <Title level={1}>{translate('home.title')}</Title>
-        <Text>{translate('home.description')}</Text>
+      <div className="tly-home__main">
+        <div>
+          <Title level={1}>{translate('home.title')}</Title>
+          <Text>{translate('home.description')}</Text>
+        </div>
 
         <Articles />
       </div>

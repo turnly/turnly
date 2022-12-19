@@ -264,16 +264,18 @@ export const TicketDetailsScreen = () => {
 
       <div className="tly-home">
         <HeaderScreen>
-          <Transaction
-            idTransaction={ticket?.displayCode}
-            typeTransaction={service?.name}
-          />
+          <div className="tly-ticket-details__trackers">
+            <Transaction
+              idTransaction={ticket?.displayCode}
+              typeTransaction={service?.name}
+            />
 
-          <Order
-            displayCode={ticket?.displayCode}
-            beforeYours={ticket?.beforeYours}
-            status={ticket?.status}
-          />
+            <Order
+              displayCode={ticket?.displayCode}
+              beforeYours={ticket?.beforeYours}
+              status={ticket?.status}
+            />
+          </div>
         </HeaderScreen>
 
         <FooterScreen>

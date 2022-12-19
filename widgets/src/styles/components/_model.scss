@@ -2,10 +2,12 @@ $block: 'tly-modal';
 
 .#{$block} {
   position: absolute;
-  top: 5rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   background-color: #f7f7f7;
   width: 80%;
-  padding: 20px;
+  padding: 24px;
   box-shadow: 0px 12px 12px #00000014;
   border-radius: 12px;
 

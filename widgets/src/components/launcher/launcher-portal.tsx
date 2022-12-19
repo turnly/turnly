@@ -22,6 +22,7 @@ export const LauncherPortal = () => {
   const classes = clsx({
     [styles['tly-launcher']]: true,
     [styles['tly-launcher--is-left-position']]: isLeftPosition,
+    [styles['tly-launcher--is-showing']]: isShowing,
   })
 
   return (
