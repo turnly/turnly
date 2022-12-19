@@ -15,6 +15,11 @@ export enum RealtimeEvents {
    * Ticket events
    */
   TICKET_BEFORE_YOURS_UPDATED = 'ticket.before-yours.updated',
+  TICKET_CALLED = 'ticket.called-to-desk',
+
+  /**
+   * Agent events
+   */
   AGENTS_TICKETS_UPDATES = 'agents.tickets.updates',
 
   /**

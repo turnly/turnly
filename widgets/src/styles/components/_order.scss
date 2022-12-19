@@ -4,13 +4,12 @@ $block: 'tly-order';
   background-color: var(--tly-gray);
   padding: 16px 24px;
   border-radius: 8px;
-  margin-bottom: 1rem;
   overflow: hidden;
   text-align: center;
   max-width: 232px;
 
   &-title {
-    font-size: 65px;
+    font-size: 60px;
     line-height: 65px;
     white-space: nowrap;
     overflow: hidden;

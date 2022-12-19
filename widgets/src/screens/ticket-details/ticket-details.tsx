@@ -4,7 +4,11 @@ import { useEffect, useMemo, useState } from 'preact/hooks'
 import { Button } from '../../components/button'
 import { FooterScreen, HeaderScreen } from '../../components/layouts/screen'
 import { Modal } from '../../components/modal'
-import { Order } from '../../components/order'
+import {
+  getStatusColorAndLabelBasedOnNumber,
+  Order,
+  TicketsBeforeYoursLabels,
+} from '../../components/order'
 import { ServiceParams } from '../../components/services'
 import { Transaction } from '../../components/transaction'
 import { Text, Title } from '../../components/typography'
@@ -20,7 +24,6 @@ import {
 import { useLoading } from '../../hooks/use-loading'
 import { RealtimeEvents, useRealtime } from '../../hooks/use-realtime'
 import { useSearchParams } from '../../hooks/use-search-params'
-import { useSession } from '../../hooks/use-session'
 import { useTranslation } from '../../localization'
 import { SCREEN_NAMES, useNavigator } from '../../navigation'
 
@@ -30,7 +33,6 @@ export const TicketDetailsScreen = () => {
   const { navigate } = useNavigator()
   const { ticketId, deleteSearchParams } = useSearchParams()
 
-  const { customer } = useSession()
   const { setCurrentLocation, name, id: locationId } = useCurrentLocation()
   const { service, ticket, setService, setTicket, setAnswers } =
     useInternalState()
@@ -87,23 +89,60 @@ export const TicketDetailsScreen = () => {
     }
   }
 
-  // titles
+  const statusLabel = useMemo(
+    () => getStatusColorAndLabelBasedOnNumber(ticket?.beforeYours || 0),
+    [ticket?.beforeYours]
+  )
+
   const { title, description } = useMemo(() => {
+    if (!ticket)
+      return {
+        title: '',
+        description: '',
+      }
+
     let title = 'tickets.announce.title'
     let description = 'tickets.announce.description'
     let options = {}
 
-    if (ticket?.status === TicketStatus.ANNOUNCED) {
+    if (
+      statusLabel === TicketsBeforeYoursLabels.MORE_THAN ||
+      statusLabel === TicketsBeforeYoursLabels.MORE_THAN_4
+    ) {
+      title = 'tickets.created.title'
+      description = 'tickets.created.description'
+    }
+
+    if (statusLabel === TicketsBeforeYoursLabels.LESS_THAN) {
+      title = 'tickets.announce.title'
+      description = 'tickets.announce.description'
+    }
+
+    if (ticket.status === TicketStatus.ANNOUNCED) {
       title = 'tickets.arrived.title'
       description = 'tickets.arrived.description'
-      options = { name: customer.name, location: name }
+      options = { organization: name }
+    }
+
+    if (
+      ticket.status === TicketStatus.ANNOUNCED &&
+      statusLabel === TicketsBeforeYoursLabels.YOU_ARE_NEXT
+    ) {
+      title = 'tickets.you_are_next.title'
+      description = 'tickets.you_are_next.description'
+    }
+
+    if ([TicketStatus.CALLED, TicketStatus.RECALLED].includes(ticket.status)) {
+      title = 'tickets.called.title'
+      description = 'tickets.called.description'
+      options = { desk: ticket.calledToDesk }
     }
 
     return {
       title: translate(title as any, options),
       description: translate(description as any),
     }
-  }, [ticket?.status])
+  }, [ticket?.status, ticket?.beforeYours])
 
   const { setLoading } = useLoading()
 
@@ -130,8 +169,18 @@ export const TicketDetailsScreen = () => {
       }
     )
 
+    const calledSubscriber = realtime.subscribe<{
+      ticketId: string
+      status: TicketStatus
+    }>(RealtimeEvents.TICKET_CALLED, event => {
+      if (event.payload.ticketId === ticket.id) {
+        setTicket({ ...ticket, status: event.payload.status })
+      }
+    })
+
     return () => {
       unsub()
+      calledSubscriber()
     }
   }, [ticket, service, locationId])
 
@@ -175,7 +224,7 @@ export const TicketDetailsScreen = () => {
         <FooterScreen>
           <div>
             <Title>{title}</Title>
-            <Text hasGaps={false}>{description}</Text>
+            <Text>{description}</Text>
           </div>
 
           <div className="tly-ticket-details-buttons">

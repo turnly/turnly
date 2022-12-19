@@ -2,16 +2,18 @@ $block: 'tly-layout-screen';
 
 .#{$block} {
   &-header {
-    display: grid;
-    gap: 0.5rem;
-    justify-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     margin-bottom: 1rem;
   }
 
   &-footer {
-    display: grid;
-    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
     width: 100%;
     background-color: white;
     margin-top: 20px;

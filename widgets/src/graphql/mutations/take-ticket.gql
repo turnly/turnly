@@ -1,6 +1,7 @@
 mutation TakeTicket($input: TicketInput!) {
   takeTicket(input: $input) {
     id
+    status
     displayCode
     customerId
     beforeYours

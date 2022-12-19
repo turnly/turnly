@@ -1,6 +1,7 @@
 mutation AnnounceTicket($ticketId: String!) {
   announceTicket(id: $ticketId) {
     id
+    status
     displayCode
     customerId
     beforeYours

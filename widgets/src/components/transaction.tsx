@@ -12,7 +12,7 @@ export const Transaction = ({
   typeTransaction,
 }: TransactionProps) => (
   <div className="tly-transaction">
-    <Title hasGaps={false} isUpper>
+    <Title hasGaps={false} isUpper isFontMedium level={3}>
       {idTransaction}
     </Title>
     <Text hasGaps={false} isUpper>

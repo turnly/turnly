@@ -1,6 +1,7 @@
 mutation LeaveTicket($ticketId: String!) {
   leaveTicket(id: $ticketId) {
     id
+    status
     displayCode
     customerId
     beforeYours

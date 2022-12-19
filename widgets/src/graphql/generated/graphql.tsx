@@ -153,21 +153,21 @@ export type AnnounceTicketMutationVariables = Exact<{
 }>;
 
 
-export type AnnounceTicketMutation = { __typename?: 'Mutation', announceTicket: { __typename?: 'TicketModel', id: string, displayCode: string, customerId: string, beforeYours: number, calledToDesk?: string | null } };
+export type AnnounceTicketMutation = { __typename?: 'Mutation', announceTicket: { __typename?: 'TicketModel', id: string, status: string, displayCode: string, customerId: string, beforeYours: number, calledToDesk?: string | null } };
 
 export type LeaveTicketMutationVariables = Exact<{
   ticketId: Scalars['String'];
 }>;
 
 
-export type LeaveTicketMutation = { __typename?: 'Mutation', leaveTicket: { __typename?: 'TicketModel', id: string, displayCode: string, customerId: string, beforeYours: number, calledToDesk?: string | null } };
+export type LeaveTicketMutation = { __typename?: 'Mutation', leaveTicket: { __typename?: 'TicketModel', id: string, status: string, displayCode: string, customerId: string, beforeYours: number, calledToDesk?: string | null } };
 
 export type TakeTicketMutationVariables = Exact<{
   input: TicketInput;
 }>;
 
 
-export type TakeTicketMutation = { __typename?: 'Mutation', takeTicket: { __typename?: 'TicketModel', id: string, displayCode: string, customerId: string, beforeYours: number, calledToDesk?: string | null } };
+export type TakeTicketMutation = { __typename?: 'Mutation', takeTicket: { __typename?: 'TicketModel', id: string, status: string, displayCode: string, customerId: string, beforeYours: number, calledToDesk?: string | null } };
 
 export type GetLocationServicesQueryVariables = Exact<{
   locationId: Scalars['ID'];
@@ -207,6 +207,7 @@ export const AnnounceTicketDocument = gql`
     mutation AnnounceTicket($ticketId: String!) {
   announceTicket(id: $ticketId) {
     id
+    status
     displayCode
     customerId
     beforeYours
@@ -244,6 +245,7 @@ export const LeaveTicketDocument = gql`
     mutation LeaveTicket($ticketId: String!) {
   leaveTicket(id: $ticketId) {
     id
+    status
     displayCode
     customerId
     beforeYours
@@ -281,6 +283,7 @@ export const TakeTicketDocument = gql`
     mutation TakeTicket($input: TicketInput!) {
   takeTicket(input: $input) {
     id
+    status
     displayCode
     customerId
     beforeYours

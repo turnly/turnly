@@ -72,18 +72,26 @@
       "description": "Leave your ticket.",
       "button_text": "Leave"
     },
-    "booked": {
-      "title": "Ticket booked, wait...",
-      "description": "We have booked your ticket while we prepare everything, we are validating your info..."
+    "created": {
+      "title": "Ahoy, you’re in line...",
+      "description": "Take advantage of your waiting time for productive things. You’re already in line!"
     },
     "announce": {
-      "title": "Announce arrival",
-      "description": "You must announce your arrival at our location to service your ticket.",
+      "title": "Almost here, announce your arrival!",
+      "description": "You must announce your arrival at our location so that an agent can serve you.",
       "button_text": "Announce"
     },
     "arrived": {
-      "title": "Ahoy {{name}}, welcome to {{location}}",
-      "description": "Wait a moment while the agent prepares to call you at the desk."
+      "title": "Welcome to {{organization}}",
+      "description": "Wait while the people ahead of you advance, it will take a moment..."
+    },
+    "you_are_next": {
+      "title": "Connecting to agent...",
+      "description": "Ready for a perfect experience? Pending we will almost call you..."
+    },
+    "called": {
+      "title": "They’re calling you right now!",
+      "description": "It’s time to meet our agent at the {{desk}}"
     },
     "rating": {
       "title": "How was your experience with the location?"
