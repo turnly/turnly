@@ -123,27 +123,27 @@ export const TakeTicketScreen = () => {
 
               {Array.isArray(methods.watch('notifications')) &&
                 methods.watch('notifications').length > 0 && (
-                <FormField>
-                  <Title level={5} hasGaps={false}>
-                    {translate('fields.notifications.preference_phone')}
-                  </Title>
+                  <FormField addGaps>
+                    <Title level={5} hasGaps={false}>
+                      {translate('fields.notifications.preference_phone')}
+                    </Title>
 
-                  <Controller
-                    name="notification_phone"
-                    control={methods.control}
-                    render={({ field, fieldState: { error } }) => (
-                      <PhoneInput
-                        isDanger={!!error}
-                        {...field}
-                        textError={error?.message}
-                      />
-                    )}
-                    rules={{
-                      required: 'This field is required',
-                    }}
-                  />
-                </FormField>
-              )}
+                    <Controller
+                      name="notification_phone"
+                      control={methods.control}
+                      render={({ field, fieldState: { error } }) => (
+                        <PhoneInput
+                          isDanger={!!error}
+                          {...field}
+                          textError={error?.message}
+                        />
+                      )}
+                      rules={{
+                        required: 'This field is required',
+                      }}
+                    />
+                  </FormField>
+                )}
             </Form>
           </FormProvider>
         </div>

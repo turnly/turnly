@@ -8,4 +8,8 @@ $block: 'tly-form-field';
   &--is-column {
     display: flex;
   }
+
+  &--add-gaps {
+   margin-bottom: 24px;
+  }
 }
