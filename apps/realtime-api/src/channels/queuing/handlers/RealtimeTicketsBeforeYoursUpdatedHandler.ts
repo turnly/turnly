@@ -16,11 +16,11 @@ interface Payload extends EventPayload {
   locationId: Guid
 }
 
-export class RealtimeForOneCustomerHandler extends AbstractRealtimeHandler<
+export class RealtimeTicketsBeforeYoursUpdatedHandler extends AbstractRealtimeHandler<
   Event<Payload>
 > {
   public constructor() {
-    super(RealtimeForOneCustomerHandler.getEvents())
+    super(RealtimeTicketsBeforeYoursUpdatedHandler.getEvents())
   }
 
   public handle(
