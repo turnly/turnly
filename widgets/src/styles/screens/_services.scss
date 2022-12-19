@@ -1,11 +1,6 @@
 $block: 'tly-services';
 
 .#{$block} {
-  &-content {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-  }
-
   &-list {
     display: flex;
     flex-direction: column;

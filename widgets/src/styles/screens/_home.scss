@@ -2,6 +2,10 @@ $block: 'tly-home';
 
 .#{$block} {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
 
   .tly-typography-title--is-h1 {
     max-width: 80%;

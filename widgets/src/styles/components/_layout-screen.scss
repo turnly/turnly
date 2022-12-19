@@ -7,7 +7,6 @@ $block: 'tly-layout-screen';
     align-items: center;
     justify-content: center;
     width: 100%;
-    margin-bottom: 1rem;
   }
 
   &-footer {
@@ -15,7 +14,5 @@ $block: 'tly-layout-screen';
     flex-direction: column;
     align-items: stretch;
     width: 100%;
-    background-color: white;
-    margin-top: 20px;
   }
 }

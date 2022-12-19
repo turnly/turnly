@@ -7,7 +7,7 @@ $block: 'tly-widget';
   border-radius: 12px;
   bottom: 94px;
   box-shadow: 0 4px 14px rgb(36 36 36 / 10%), 0 1px 4px rgb(36 36 36 / 4%);
-  height: 600px;
+  height: 616px;
   max-height: 0;
   opacity: 0;
   overflow: hidden;
@@ -27,7 +27,7 @@ $block: 'tly-widget';
   }
 
   &--is-open {
-    max-height: calc(89% - 60px - 24px);
+    max-height: calc(90% - 60px - 24px);
     min-height: 242px;
     opacity: 1;
     transform: translate3d(0, -4%, 0);
