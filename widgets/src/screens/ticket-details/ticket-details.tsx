@@ -1,9 +1,10 @@
 import { Fragment, h } from 'preact'
-import { useEffect, useMemo, useState } from 'preact/hooks'
+import { useCallback, useEffect, useMemo, useState } from 'preact/hooks'
 
 import { Button } from '../../components/button'
 import { FooterScreen, HeaderScreen } from '../../components/layouts/screen'
 import { Modal } from '../../components/modal'
+import { Notifier } from '../../components/notification'
 import {
   getStatusColorAndLabelBasedOnNumber,
   Order,
@@ -41,6 +42,7 @@ export const TicketDetailsScreen = () => {
   const { announceCurrentTicket, isLoading: isAnnouncing } = useAnnounceTicket()
 
   const [isShowing, setIsShowing] = useState(false)
+  const [isCompleted, setIsCompleted] = useState(false)
 
   const { isLoading } = useGetTicketQuery({
     variables: { getTicketId: ticketId },
@@ -65,9 +67,9 @@ export const TicketDetailsScreen = () => {
     },
   })
 
-  const handleModalLeave = () => setIsShowing(p => !p)
+  const handleModalLeave = useCallback(() => setIsShowing(p => !p), [])
 
-  const handleLeaveTicket = async () => {
+  const handleLeaveTicket = useCallback(async () => {
     if (ticket) {
       await leaveCurrentTicket(ticket.id)
 
@@ -79,19 +81,31 @@ export const TicketDetailsScreen = () => {
 
       navigate(SCREEN_NAMES.HOME)
     }
-  }
+  }, [ticket])
 
-  const announceTicket = async () => {
+  const handleCompletedTicket = useCallback(async () => {
+    if (ticket) {
+      await Promise.all([
+        setAnswers([]),
+        setTicket(null),
+        deleteSearchParams('tly-ticket-id'),
+      ])
+
+      navigate(SCREEN_NAMES.HOME)
+    }
+  }, [ticket])
+
+  const announceTicket = useCallback(async () => {
     if (ticket) {
       const ticketUpdated = await announceCurrentTicket(ticket.id)
 
       setTicket(ticketUpdated as Ticket)
     }
-  }
+  }, [ticket])
 
   const statusLabel = useMemo(
     () => getStatusColorAndLabelBasedOnNumber(ticket?.beforeYours || 0),
-    [ticket?.beforeYours]
+    [ticket]
   )
 
   const { title, description } = useMemo(() => {
@@ -132,7 +146,10 @@ export const TicketDetailsScreen = () => {
       description = 'tickets.you_are_next.description'
     }
 
-    if ([TicketStatus.CALLED, TicketStatus.RECALLED].includes(ticket.status)) {
+    if (
+      ticket.status === TicketStatus.CALLED ||
+      ticket.status === TicketStatus.RECALLED
+    ) {
       title = 'tickets.called.title'
       description = 'tickets.called.description'
       options = { desk: ticket.calledToDesk }
@@ -178,9 +195,29 @@ export const TicketDetailsScreen = () => {
       }
     })
 
+    const cancelledSubscriber = realtime.subscribe<{
+      ticketId: string
+      status: TicketStatus
+    }>(RealtimeEvents.TICKET_CANCELLED, async event => {
+      if (event.payload.ticketId === ticket.id) {
+        if (
+          event.payload.status === TicketStatus.SERVED ||
+          event.payload.status === TicketStatus.SERVED_WITH_RATING
+        ) {
+          setIsCompleted(true)
+
+          return
+        }
+
+        await handleCompletedTicket()
+        Notifier.info(translate('tickets.cancelled.description'))
+      }
+    })
+
     return () => {
       unsub()
       calledSubscriber()
+      cancelledSubscriber()
     }
   }, [ticket, service, locationId])
 
@@ -208,6 +245,23 @@ export const TicketDetailsScreen = () => {
         isShowing={isShowing}
       />
 
+      <Modal
+        title="Ahoy, you’re served!"
+        description="Thanks for using our service, we hope to see you again soon. Remember that you can always leave us a comment about your experience."
+        buttons={[
+          {
+            children: 'Ok, sure!',
+            isPrimary: true,
+            onClick: () => {
+              setIsCompleted(false)
+
+              handleCompletedTicket()
+            },
+          },
+        ]}
+        isShowing={isCompleted}
+      />
+
       <div className="tly-home">
         <HeaderScreen>
           <Transaction
@@ -218,6 +272,7 @@ export const TicketDetailsScreen = () => {
           <Order
             displayCode={ticket?.displayCode}
             beforeYours={ticket?.beforeYours}
+            status={ticket?.status}
           />
         </HeaderScreen>
 
@@ -238,7 +293,7 @@ export const TicketDetailsScreen = () => {
               {translate('tickets.leave.button_text')}
             </Button>
 
-            {ticket.status !== TicketStatus.ANNOUNCED && (
+            {ticket.status === TicketStatus.AVAILABLE && (
               <Button onClick={announceTicket} isLoading={isAnnouncing}>
                 {translate('tickets.announce.button_text')}
               </Button>

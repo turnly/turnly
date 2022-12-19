@@ -16,6 +16,7 @@ export enum RealtimeEvents {
    */
   TICKET_BEFORE_YOURS_UPDATED = 'ticket.before-yours.updated',
   TICKET_CALLED = 'ticket.called-to-desk',
+  TICKET_CANCELLED = 'ticket.cancelled',
 
   /**
    * Agent events

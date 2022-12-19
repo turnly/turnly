@@ -18,6 +18,7 @@ export enum RealtimeEvents {
   SERVICE_TICKETS_BEHIND = 'service.tickets.behind',
   TICKET_BEFORE_YOURS_UPDATED = 'ticket.before-yours.updated',
   TICKET_CALLED = 'ticket.called-to-desk',
+  TICKET_CANCELLED = 'ticket.cancelled',
 }
 
 type Store = {

@@ -96,6 +96,9 @@
     },
     "rating": {
       "title": "Como fue tu experiencia en el lugar?"
+    },
+    "cancelled": {
+      "description": "Oops, we're sorry to notice you that this ticket is no longer active, you may not have shown up when called. For more info, contact us."
     }
   },
   "continue": "Continue",

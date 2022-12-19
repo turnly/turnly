@@ -3,6 +3,7 @@ import { h, JSX } from 'preact'
 import { useCallback, useMemo } from 'preact/hooks'
 
 import { Text, Title } from '../components/typography'
+import { TicketStatus } from '../hooks/use-internal-state'
 import { useTranslation } from '../localization'
 
 export enum TicketsBeforeYours {
@@ -40,11 +41,13 @@ export const getStatusColorAndLabelBasedOnNumber = (beforeYours: number) => {
 export interface OrderProps extends JSX.HTMLAttributes<HTMLDivElement> {
   displayCode: string
   beforeYours: number
+  status: TicketStatus
 }
 
 export const Order = ({
   displayCode,
   beforeYours,
+  status: ticketStatus,
   ...attributes
 }: Partial<OrderProps>) => {
   const { translate } = useTranslation()
@@ -55,7 +58,10 @@ export const Order = ({
   )
 
   const isYourTurn = useMemo(
-    () => status === TicketsBeforeYoursLabels.YOU_ARE_NEXT,
+    () =>
+      status === TicketsBeforeYoursLabels.YOU_ARE_NEXT ||
+      ticketStatus === TicketStatus.CALLED ||
+      ticketStatus === TicketStatus.RECALLED,
     [status]
   )
 

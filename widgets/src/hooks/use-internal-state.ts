@@ -17,7 +17,7 @@ export enum TicketStatus {
   AVAILABLE = 'available',
   ANNOUNCED = 'announced',
   CALLED = 'called',
-  RECALLED = 'recalled',
+  RECALLED = 're_called',
   CANCELLED = 'canceled',
   DISCARDED = 'discarded',
   INACTIVE = 'inactive',
@@ -42,7 +42,7 @@ interface State {
   ticket: Nullable<Ticket>
   setService: (service: Service) => void
   setAnswers: (answers: Answer[]) => void
-  setTicket: (tiket: Nullable<Ticket>) => void
+  setTicket: (ticket: Nullable<Ticket>) => void
   resetInternalState: () => void
 }
 
