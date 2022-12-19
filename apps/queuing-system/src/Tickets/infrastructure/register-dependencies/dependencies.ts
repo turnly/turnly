@@ -14,7 +14,7 @@ import { ResolveTicketCommandHandler } from 'Tickets/application/commands/Resolv
 import { ActiveTicketsByCustomerQueryHandler } from 'Tickets/application/queries/ActiveTicketsByCustomerQuery'
 import { TicketByIdQueryHandler } from 'Tickets/application/queries/TicketByIdQuery'
 import { TicketsBeforeYoursQueryHandler } from 'Tickets/application/queries/TicketsBeforeYoursQuery'
-import { TicketsByLocationQueryHandler } from 'Tickets/application/queries/TicketsByLocationQuery'
+import { TicketsForServingFromLocationQueryHandler } from 'Tickets/application/queries/TicketsForServingFromLocationQuery'
 import { TicketsWaitingForServiceQueryHandler } from 'Tickets/application/queries/TicketsWaitingForServiceQuery'
 import { CreateTicketReadingDBSubscriber } from 'Tickets/application/subscribers/CreateTicketReadingDBSubscriber'
 import { NotifyCustomerCalledSubscriber } from 'Tickets/application/subscribers/NotifyCustomerCalledSubscriber'
@@ -82,6 +82,6 @@ Box.register({
     .asClass(TicketsWaitingForServiceQueryHandler)
     .singleton(),
   ticketsByLocationQueryHandler: ioc
-    .asClass(TicketsByLocationQueryHandler)
+    .asClass(TicketsForServingFromLocationQueryHandler)
     .singleton(),
 })

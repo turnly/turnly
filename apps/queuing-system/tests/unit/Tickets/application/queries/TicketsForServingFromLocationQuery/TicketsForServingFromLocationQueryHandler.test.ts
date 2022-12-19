@@ -5,21 +5,21 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 
-import { TicketsByLocationQueryHandler } from '../../../../../../src/Tickets/application/queries/TicketsByLocationQuery'
+import { TicketsForServingFromLocationQueryHandler } from '../../../../../../src/Tickets/application/queries/TicketsForServingFromLocationQuery'
 import { TicketsReadableRepo } from '../../../__mocks__/TicketsReadableRepo'
-import { TicketsByLocationQueryMother } from './TicketsByLocationQueryMother'
+import { TicketsForServingFromLocationQueryMother } from './TicketsForServingFromLocationQueryMother'
 
 let repository: TicketsReadableRepo
-let handler: TicketsByLocationQueryHandler
+let handler: TicketsForServingFromLocationQueryHandler
 
 describe('tickets > queries > validates the expected behavior of TicketsWaitingForServiceQuery', () => {
   beforeEach(() => {
     repository = new TicketsReadableRepo()
-    handler = new TicketsByLocationQueryHandler(repository)
+    handler = new TicketsForServingFromLocationQueryHandler(repository)
   })
 
   it('should get a collection of existing tickets', async () => {
-    const query = TicketsByLocationQueryMother.random()
+    const query = TicketsForServingFromLocationQueryMother.random()
 
     await handler.execute(query)
 

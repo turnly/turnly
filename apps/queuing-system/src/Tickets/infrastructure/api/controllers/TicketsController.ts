@@ -41,8 +41,8 @@ import { TicketsBeforeYoursQuery } from 'Tickets/application/queries/TicketsBefo
 import {
   TicketsByLocationFilters,
   TicketsByLocationParams,
-  TicketsByLocationQuery,
-} from 'Tickets/application/queries/TicketsByLocationQuery'
+  TicketsForServingFromLocationQuery,
+} from 'Tickets/application/queries/TicketsForServingFromLocationQuery'
 import {
   TicketsWaitingFor,
   TicketsWaitingForServiceQuery,
@@ -152,12 +152,16 @@ export class TicketsController extends Controller {
   }
 
   @TimeoutHandler()
-  @InputValidator(validator.getTicketsByLocation)
-  public async getTicketsByLocation(params: TicketsByLocationParams) {
+  @InputValidator(validator.getTicketsForServingFromLocation)
+  public async getTicketsForServingFromLocation(
+    params: TicketsByLocationParams
+  ) {
     const statuses = {
       [TicketsByLocationFilters.WAITING]: [
         TicketStatus.ANNOUNCED,
         TicketStatus.RETURNED,
+        TicketStatus.CALLED,
+        TicketStatus.RECALLED,
       ],
       [TicketsByLocationFilters.DISCARDED]: [TicketStatus.DISCARDED],
     }
@@ -169,7 +173,7 @@ export class TicketsController extends Controller {
       )
 
     const tickets = await this.queryBus.ask<Nullable<Ticket[]>>(
-      new TicketsByLocationQuery(
+      new TicketsForServingFromLocationQuery(
         params.locationId,
         params.organizationId,
         status,

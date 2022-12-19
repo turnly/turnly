@@ -7,7 +7,7 @@
 import { BadRequestException } from '@turnly/common'
 import { Producers } from '@turnly/rpc'
 import { Client } from '@turnly/rpc/dist/consumers'
-import { TicketsByLocationFilters } from 'Tickets/application/queries/TicketsByLocationQuery'
+import { TicketsByLocationFilters } from 'Tickets/application/queries/TicketsForServingFromLocationQuery'
 import { TicketStatus } from 'Tickets/domain/enums/TicketStatus'
 
 import { TicketsController } from '../controllers/TicketsController'
@@ -162,23 +162,27 @@ export class TicketsServer extends Producers.ServerImplementation<Producers.Queu
     callback(null, response)
   }
 
-  @Producers.CallHandler(Producers.QueuingSystem.GetTicketsByLocationResponse)
-  public async getTicketsByLocation(
+  @Producers.CallHandler(
+    Producers.QueuingSystem.GetTicketsForServingFromLocationResponse
+  )
+  public async getTicketsForServingFromLocation(
     call: Producers.ServerUnaryCall<
-      Producers.QueuingSystem.GetTicketsByLocationRequest,
-      Producers.QueuingSystem.GetTicketsByLocationResponse
+      Producers.QueuingSystem.GetTicketsForServingFromLocationRequest,
+      Producers.QueuingSystem.GetTicketsForServingFromLocationResponse
     >,
-    callback: Producers.ICallback<Producers.QueuingSystem.GetTicketsByLocationResponse>
+    callback: Producers.ICallback<Producers.QueuingSystem.GetTicketsForServingFromLocationResponse>
   ) {
-    const { data, meta } = await this.ticketsController.getTicketsByLocation({
-      searchQuery: call.request.getFindQuery(),
-      locationId: call.request.getLocationId(),
-      serviceIds: call.request.getServiceIdsList(),
-      status: call.request.getStatus() as TicketsByLocationFilters,
-      organizationId: Client.getOrganizationId(call),
-    })
+    const { data, meta } =
+      await this.ticketsController.getTicketsForServingFromLocation({
+        searchQuery: call.request.getFindQuery(),
+        locationId: call.request.getLocationId(),
+        serviceIds: call.request.getServiceIdsList(),
+        status: call.request.getStatus() as TicketsByLocationFilters,
+        organizationId: Client.getOrganizationId(call),
+      })
 
-    const response = new Producers.QueuingSystem.GetTicketsByLocationResponse()
+    const response =
+      new Producers.QueuingSystem.GetTicketsForServingFromLocationResponse()
 
     if (data) response.setDataList(data.map(TicketsMapper.toRPC))
 
@@ -273,7 +277,8 @@ export class TicketsServer extends Producers.ServerImplementation<Producers.Queu
       leave: this.leave.bind(this),
       announce: this.announce.bind(this),
       getTicketsBeforeYours: this.getTicketsBeforeYours.bind(this),
-      getTicketsByLocation: this.getTicketsByLocation.bind(this),
+      getTicketsForServingFromLocation:
+        this.getTicketsForServingFromLocation.bind(this),
       getTicketsWaitingForService: this.getTicketsWaitingForService.bind(this),
       resolve: this.resolve.bind(this),
       call: this.call.bind(this),

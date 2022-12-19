@@ -21,7 +21,7 @@ export type TicketsByLocationParams = {
   readonly serviceIds?: Guid[]
 }
 
-export class TicketsByLocationQuery implements IQuery {
+export class TicketsForServingFromLocationQuery implements IQuery {
   public constructor(
     public readonly locationId: Guid,
     public readonly organizationId: Guid,

@@ -14,11 +14,11 @@ import {
 import { ITicketsReadableRepo } from 'Tickets/domain/contracts/ITicketsRepo'
 import { Ticket } from 'Tickets/domain/entities/Ticket'
 
-import { TicketsByLocationQuery } from './TicketsByLocationQuery'
+import { TicketsForServingFromLocationQuery } from './TicketsForServingFromLocationQuery'
 
-@QueryHandler(TicketsByLocationQuery)
-export class TicketsByLocationQueryHandler
-  implements IQueryHandler<TicketsByLocationQuery>
+@QueryHandler(TicketsForServingFromLocationQuery)
+export class TicketsForServingFromLocationQueryHandler
+  implements IQueryHandler<TicketsForServingFromLocationQuery>
 {
   public constructor(
     private readonly ticketsReadableRepo: ITicketsReadableRepo
@@ -30,7 +30,7 @@ export class TicketsByLocationQueryHandler
     status,
     serviceIds,
     searchQuery,
-  }: TicketsByLocationQuery) {
+  }: TicketsForServingFromLocationQuery) {
     const today = DateTime.today().toJSDate()
     const query = new QueryBuilder<Ticket>()
       .equal('organizationId', organizationId)

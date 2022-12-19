@@ -12,7 +12,7 @@ import { Tickets } from '../shared/api'
 import { CacheSource } from './common/CacheSource'
 import { DataSource } from './common/DataSource'
 
-export type GetTicketsByLocationParams = {
+export type GetTicketsForServingFromLocationParams = {
   locationId: Guid
   status?: string
   searchQuery?: string
@@ -30,13 +30,14 @@ export class TicketsDataSource extends DataSource {
     status = '',
     searchQuery: findQuery = '',
     serviceIds: serviceIdsList = [],
-  }: GetTicketsByLocationParams) {
-    const { dataList: tickets } = await Tickets.getTicketsByLocation({
-      locationId,
-      status,
-      findQuery,
-      serviceIdsList,
-    })
+  }: GetTicketsForServingFromLocationParams) {
+    const { dataList: tickets } =
+      await Tickets.getTicketsForServingFromLocation({
+        locationId,
+        status,
+        findQuery,
+        serviceIdsList,
+      })
 
     return tickets || []
   }
