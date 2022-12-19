@@ -22,8 +22,6 @@ import { useSession } from '../../hooks/use-session'
 import { useTranslation } from '../../localization'
 import { SCREEN_NAMES, useNavigator } from '../../navigation'
 
-const MIN_TICKETS_IN_QUEUE = 8
-
 export const TicketDetailsScreen = () => {
   const { translate } = useTranslation()
 
@@ -80,8 +78,6 @@ export const TicketDetailsScreen = () => {
   const announceTicket = async () => {
     if (ticket) {
       const ticketUpdated = await announceCurrentTicket(ticket.id)
-
-      console.log(ticketUpdated)
 
       setTicket(ticketUpdated as Ticket)
     }
@@ -140,20 +136,7 @@ export const TicketDetailsScreen = () => {
 
           <Order
             displayCode={ticket?.displayCode}
-            numberOrder={`${ticket?.beforeYours}`}
-            isPrimary={ticket?.beforeYours === 0}
-            isYourTurn={ticket?.beforeYours === 0}
-            isDanger={
-              ticket?.beforeYours
-                ? ticket.beforeYours >= MIN_TICKETS_IN_QUEUE
-                : false
-            }
-            isWarning={
-              ticket?.beforeYours
-                ? ticket.beforeYours <= MIN_TICKETS_IN_QUEUE &&
-                  ticket.beforeYours >= 1
-                : false
-            }
+            beforeYours={ticket?.beforeYours}
           />
         </HeaderScreen>
 
@@ -167,14 +150,15 @@ export const TicketDetailsScreen = () => {
             <Button
               isOutline
               isSecondary
+              disabled={isAnnouncing || isLeaving}
               onClick={handleModalLeave}
-              disabled={isAnnouncing}
+              isLoading={isLeaving}
             >
               {translate('tickets.leave.button_text')}
             </Button>
 
             {ticket.status !== TicketStatus.ANNOUNCED && (
-              <Button onClick={announceTicket}>
+              <Button onClick={announceTicket} isLoading={isAnnouncing}>
                 {translate('tickets.announce.button_text')}
               </Button>
             )}

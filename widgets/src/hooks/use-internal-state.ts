@@ -14,7 +14,7 @@ export type Answer = {
 
 export enum TicketStatus {
   BOOKED = 'booked',
-  AVIABLE = 'aviable',
+  AVAILABLE = 'available',
   ANNOUNCED = 'announced',
   CALLED = 'called',
   RECALLED = 'recalled',

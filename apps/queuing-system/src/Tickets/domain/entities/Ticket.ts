@@ -157,7 +157,7 @@ export class Ticket extends AggregateRoot {
 
   public resolve(status: TicketStatus): void {
     if (!this.isCalled())
-      throw new BadRequestException(
+      throw new InvalidStateException(
         "Oops!, you're trying to resolve a ticket that has not been called."
       )
 
@@ -170,7 +170,7 @@ export class Ticket extends AggregateRoot {
     const handler = handlers[status]
 
     if (!handler)
-      throw new BadRequestException(
+      throw new InvalidStateException(
         "Oops!, you're trying to resolve a ticket with an invalid status."
       )
 
