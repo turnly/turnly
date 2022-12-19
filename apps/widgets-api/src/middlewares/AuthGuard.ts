@@ -50,7 +50,7 @@ export const AuthGuard: AuthChecker<IContext> = async ({ context }) => {
     )
   }
 
-  Logger.verbose('Checking if widget is authorized...', { widgetId })
+  Logger.debug('Checking if widget is authorized...', { widgetId })
 
   const { data: widget } = await context.dataSources.integrations.getOne(
     String(widgetId)
@@ -64,7 +64,7 @@ export const AuthGuard: AuthChecker<IContext> = async ({ context }) => {
 
   context.setOrganizationId(widget.organizationId)
 
-  Logger.verbose('Checking if customer is authorized...', { customerId })
+  Logger.debug('Checking if customer is authorized...', { customerId })
 
   const { data: customer } = await context.dataSources.customers.getOne(
     customerId
@@ -82,7 +82,7 @@ export const AuthGuard: AuthChecker<IContext> = async ({ context }) => {
 
   Observability.ExceptionHandler.setUser(customer)
 
-  Logger.verbose('AuthGuard executed successfully!', { widget })
+  Logger.debug('AuthGuard executed successfully!', { widget })
 
   return true
 }

@@ -6,8 +6,11 @@
  */
 import crypto from 'crypto'
 
-export const paramsToKey = (name: string, ...params: unknown[]): string =>
-  crypto
+export const paramsToKey = (name: string, ...params: unknown[]): string => {
+  const hash = crypto
     .createHash('sha1')
     .update(`${name}-${JSON.stringify(params)}`)
     .digest('base64')
+
+  return `query.${name}.${hash}`
+}

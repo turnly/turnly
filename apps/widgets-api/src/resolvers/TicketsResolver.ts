@@ -5,7 +5,7 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import { IContext } from '@types'
-import { Tickets } from 'datasources'
+import { DataSource, Tickets } from 'datasources'
 import { Answers } from 'datasources'
 import { TicketsMapper } from 'mappers/TicketsMapper'
 import { CustomerModel } from 'models/CustomerModel'
@@ -74,6 +74,9 @@ export class TicketsResolver {
 
     await Answers.create({ answersList: answers })
 
+    await DataSource.invalidateQueries('Tickets')
+    await DataSource.invalidateQueries('LocationServices')
+
     return TicketsMapper.toDTO(ticket)
   }
 
@@ -90,6 +93,8 @@ export class TicketsResolver {
 
     if (!ticket) throw new GraphException(meta)
 
+    await DataSource.invalidateQueries('Tickets')
+
     return TicketsMapper.toDTO(ticket)
   }
 
@@ -105,6 +110,9 @@ export class TicketsResolver {
     })
 
     if (!ticket) throw new GraphException(meta)
+
+    await DataSource.invalidateQueries('Tickets')
+    await DataSource.invalidateQueries('LocationServices')
 
     return TicketsMapper.toDTO(ticket)
   }
