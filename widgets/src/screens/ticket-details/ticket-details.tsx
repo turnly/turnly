@@ -226,17 +226,21 @@ export const TicketDetailsScreen = () => {
   return (
     <Fragment>
       <Modal
-        title="You’re sure?"
-        description="If you get out of line you will lose your turn, you can always take a ticket again in the same location or in others."
+        title={translate('tickets.leave_confirmation.title')}
+        description={translate('tickets.leave_confirmation.description')}
         buttons={[
           {
-            children: 'I understand, leave',
+            children: translate(
+              'tickets.leave_confirmation.affirmative_button_text'
+            ),
             isPrimary: true,
             onClick: handleLeaveTicket,
             isLoading: isLeaving,
           },
           {
-            children: 'Cancel',
+            children: translate(
+              'tickets.leave_confirmation.negative_button_text'
+            ),
             isDefault: true,
             onClick: handleModalLeave,
             disabled: isLeaving,
@@ -246,11 +250,11 @@ export const TicketDetailsScreen = () => {
       />
 
       <Modal
-        title="Ahoy, you’re served!"
-        description="Thanks for using our service, we hope to see you again soon. Remember that you can always leave us a comment about your experience."
+        title={translate('tickets.served.title')}
+        description={translate('tickets.served.description')}
         buttons={[
           {
-            children: 'Ok, sure!',
+            children: translate('tickets.served.button_text'),
             isPrimary: true,
             onClick: () => {
               setIsCompleted(false)

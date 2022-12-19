@@ -63,7 +63,7 @@ export const Rating = ({ isShowing, onCallback }: RatingProps) => {
             <Input
               isIcon
               iconRight={<AiFillCheckCircle size={24} color="#00BFA5" />}
-              placeholder="Describe your experience"
+              placeholder={translate('tickets.rating.placeholder')}
               onIconClick={() => {
                 onCallback && onCallback(rating, 'test')
 

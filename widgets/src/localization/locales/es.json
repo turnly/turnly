@@ -53,10 +53,11 @@
   "fields": {
     "title": "Info",
     "description": "Take a ticket to the selected location.",
+    "required": "This field is required",
     "labels": {
       "hint": "General information",
       "validate": "Validating info...",
-      "button_text": "Ready, take ticket"
+      "button_text": "Ready, take now"
     },
     "notifications": {
       "preference": "How do you prefer to receive notifications?",
@@ -73,9 +74,20 @@
       "description": "Leave your ticket.",
       "button_text": "Leave"
     },
+    "leave_confirmation": {
+      "title": "You’re sure?",
+      "description": "If you get out of line you will lose your turn, you can always take a ticket again in the same location or in others.",
+      "affirmative_button_text": "I understand, leave",
+      "negative_button_text": "No, I want to stay"
+    },
     "created": {
       "title": "Ahoy, you’re in line...",
       "description": "Take advantage of your waiting time for productive things. You’re already in line!"
+    },
+    "served": {
+      "title": "Ahoy, you’re served!",
+      "description": "Thanks for using our service, we hope to see you again soon. Remember that you can always leave us a comment about your experience.",
+      "button_text": "Ok, sure!"
     },
     "announce": {
       "title": "Announce your arrival",
@@ -95,7 +107,8 @@
       "description": "It’s time to meet our agent at the {{desk}}"
     },
     "rating": {
-      "title": "Como fue tu experiencia en el lugar?"
+      "title": "Como fue tu experiencia en el lugar?",
+      "placeholder": "Describe tu experiencia"
     },
     "cancelled": {
       "description": "Oops, we're sorry to notice you that this ticket is no longer active, you may not have shown up when called. For more info, contact us."

@@ -139,7 +139,7 @@ export const TakeTicketScreen = () => {
                         />
                       )}
                       rules={{
-                        required: 'This field is required',
+                        required: translate('fields.required'),
                       }}
                     />
                   </FormField>
@@ -151,7 +151,7 @@ export const TakeTicketScreen = () => {
 
       <FooterScreen>
         <Button isLoading={isCreating} onClick={methods.handleSubmit(submit)}>
-          Ready, take now
+          {translate('fields.labels.button_text')}
         </Button>
       </FooterScreen>
     </Fragment>
