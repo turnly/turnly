@@ -78,13 +78,13 @@
       "description": "Take advantage of your waiting time for productive things. You’re already in line!"
     },
     "announce": {
-      "title": "Almost here, announce your arrival!",
-      "description": "You must announce your arrival at our location so that an agent can serve you.",
+      "title": "Announce your arrival",
+      "description": "Let the people behind of you know that you are here. You will be called shortly.",
       "button_text": "Announce"
     },
     "arrived": {
       "title": "Welcome to {{organization}}",
-      "description": "Wait while the people ahead of you advance, it will take a moment..."
+      "description": "Wait while the people ahead of you advance. You will be called shortly."
     },
     "you_are_next": {
       "title": "Connecting to agent...",
