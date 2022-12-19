@@ -1,5 +1,5 @@
 import { Fragment, h } from 'preact'
-import { useMemo, useState } from 'preact/hooks'
+import { useEffect, useMemo, useState } from 'preact/hooks'
 
 import { Button } from '../../components/button'
 import { FooterScreen, HeaderScreen } from '../../components/layouts/screen'
@@ -17,6 +17,8 @@ import {
   TicketStatus,
   useInternalState,
 } from '../../hooks/use-internal-state'
+import { useLoading } from '../../hooks/use-loading'
+import { RealtimeEvents, useRealtime } from '../../hooks/use-realtime'
 import { useSearchParams } from '../../hooks/use-search-params'
 import { useSession } from '../../hooks/use-session'
 import { useTranslation } from '../../localization'
@@ -29,7 +31,7 @@ export const TicketDetailsScreen = () => {
   const { ticketId, deleteSearchParams } = useSearchParams()
 
   const { customer } = useSession()
-  const { setCurrentLocation, name } = useCurrentLocation()
+  const { setCurrentLocation, name, id: locationId } = useCurrentLocation()
   const { service, ticket, setService, setTicket, setAnswers } =
     useInternalState()
 
@@ -54,6 +56,8 @@ export const TicketDetailsScreen = () => {
         setCurrentLocation({ ...getTicket.location }),
       ]),
     onError: () => {
+      setLoading(false)
+
       deleteSearchParams('tly-ticket-id')
       navigate(SCREEN_NAMES.HOME)
     },
@@ -101,9 +105,37 @@ export const TicketDetailsScreen = () => {
     }
   }, [ticket?.status])
 
-  if (isLoading) return null
+  const { setLoading } = useLoading()
 
-  if (ticket === null) return null
+  useEffect(() => {
+    setLoading(isLoading)
+  }, [isLoading])
+
+  const { realtime } = useRealtime()
+
+  useEffect(() => {
+    if (!realtime || !ticket || !service) return
+
+    realtime.notify(RealtimeEvents.SUBSCRIBE, {
+      roomChannel: `${locationId}.${service.id}`,
+    })
+
+    const unsub = realtime.subscribe(
+      RealtimeEvents.TICKET_BEFORE_YOURS_UPDATED,
+      () => {
+        const beforeYours =
+          ticket.beforeYours === 0 ? 0 : ticket.beforeYours - 1
+
+        setTicket({ ...ticket, beforeYours })
+      }
+    )
+
+    return () => {
+      unsub()
+    }
+  }, [ticket, service, locationId])
+
+  if (isLoading || ticket === null) return null
 
   return (
     <Fragment>

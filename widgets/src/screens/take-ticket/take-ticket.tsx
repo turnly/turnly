@@ -1,5 +1,5 @@
 import { Fragment, h } from 'preact'
-import { useState } from 'preact/hooks'
+import { useEffect, useState } from 'preact/hooks'
 import { Controller, FormProvider, useForm } from 'react-hook-form'
 
 import { Button } from '../../components/button'
@@ -19,6 +19,7 @@ import {
 import { useTakeTicketMutation } from '../../graphql/hooks/use-take-ticket-mutation'
 import { useCurrentLocation } from '../../hooks/use-current-location'
 import { Ticket, useInternalState } from '../../hooks/use-internal-state'
+import { useLoading } from '../../hooks/use-loading'
 import { useSearchParams } from '../../hooks/use-search-params'
 import { useTranslation } from '../../localization'
 import { SCREEN_NAMES, useNavigator } from '../../navigation'
@@ -37,7 +38,18 @@ export const TakeTicketScreen = () => {
   const { isLoading } = useServiceFieldsQuery({
     variables: { serviceId: service?.id ?? '' },
     onCompleted: async data => await setFields(data.getServiceFields),
+    onError: () => {
+      setLoading(false)
+
+      setFields(null)
+    },
   })
+
+  const { setLoading } = useLoading()
+
+  useEffect(() => {
+    setLoading(isLoading)
+  }, [isLoading])
 
   const submit = async (data?: any) => {
     const answers = Object.entries(data)

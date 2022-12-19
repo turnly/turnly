@@ -16,6 +16,7 @@ export enum RealtimeEvents {
   SUBSCRIBE = 'subscribe',
   SERVICE_TICKETS_AHEAD = 'service.tickets.ahead',
   SERVICE_TICKETS_BEHIND = 'service.tickets.behind',
+  TICKET_BEFORE_YOURS_UPDATED = 'ticket.before-yours.updated',
 }
 
 type Store = {
