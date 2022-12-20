@@ -1,4 +1,5 @@
 import clsx from 'clsx'
+import { motion as Animated } from 'framer-motion'
 import { h, JSX } from 'preact'
 import { useCallback, useMemo } from 'preact/hooks'
 import { AiFillCheckCircle } from 'react-icons/ai'
@@ -50,7 +51,14 @@ export const Service = ({ disabled, data, ...attributes }: ServiceProps) => {
   )
 
   return (
-    <div className={classes} onClick={handleClick}>
+    <Animated.div
+      className={classes}
+      onClick={handleClick}
+      initial={{ opacity: 0, y: -5 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ type: 'spring', stiffness: 300, damping: 24 }}
+      key={data.id}
+    >
       <div className="tly-service-content">
         <Title hasGaps={false} level={4} isFontMedium>
           {data.name}
@@ -70,6 +78,6 @@ export const Service = ({ disabled, data, ...attributes }: ServiceProps) => {
           <AiFillCheckCircle size={24} />
         </div>
       )}
-    </div>
+    </Animated.div>
   )
 }

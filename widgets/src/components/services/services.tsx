@@ -1,3 +1,4 @@
+import { AnimatePresence, motion as Animated } from 'framer-motion'
 import { Fragment, h, JSX } from 'preact'
 import { useEffect } from 'preact/hooks'
 
@@ -34,11 +35,23 @@ export const Services = ({ locationId }: ServicesProps) => {
             {translate('services.labels.hint')}
           </Title>
 
-          <div className="tly-services-list">
+          <Animated.div
+            className="tly-services-list"
+            animate={{
+              transition: {
+                type: 'spring',
+                bounce: 0,
+                delay: 0.2,
+                duration: 0.4,
+                delayChildren: 0.2,
+                staggerChildren: 0.1,
+              },
+            }}
+          >
             {services.map(service => (
               <Service key={service.id} data={service} />
             ))}
-          </div>
+          </Animated.div>
         </Fragment>
       ) : (
         <EmptyState />
