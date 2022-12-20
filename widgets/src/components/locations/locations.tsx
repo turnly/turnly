@@ -1,3 +1,4 @@
+import { AnimatePresence, motion as Animated } from 'framer-motion'
 import { h, JSX } from 'preact'
 import { HiOutlineLocationMarker } from 'react-icons/hi'
 
@@ -22,10 +23,17 @@ export const Locations = ({
         {title}
       </Title>
 
-      <div className="tly-locations__content">
-        {locations.map(location => (
-          <Location key={location.id} data={location} icon={icon} />
-        ))}
-      </div>
+      <Animated.div
+        layout
+        transition={{ duration: 0.2 }}
+        className="tly-locations__content"
+        key="tly-locations__content"
+      >
+        <AnimatePresence mode="wait">
+          {locations.map(location => (
+            <Location key={location.id} data={location} icon={icon} />
+          ))}
+        </AnimatePresence>
+      </Animated.div>
     </div>
   ) : null

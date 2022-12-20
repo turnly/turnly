@@ -1,4 +1,5 @@
 import clsx from 'clsx'
+import { motion as Animated } from 'framer-motion'
 import { h, JSX } from 'preact'
 import { useCallback } from 'preact/hooks'
 
@@ -39,12 +40,20 @@ export const Location = ({ data, icon }: LocationProps) => {
   })
 
   return (
-    <div className={styles} title={data.name} onClick={handleClick}>
+    <Animated.div
+      layout
+      transition={{ duration: 0.4 }}
+      key={data.id}
+      layoutId={data.id}
+      className={styles}
+      title={data.name}
+      onClick={handleClick}
+    >
       <div className="tly-locations__item-icon" {...{ children: icon }} />
       <div className="tly-locations__item-content">
         <Title level={4} hasGaps={false} {...{ children: data.name }} />
         <Text hasGaps={false} {...{ children: data.address }} />
       </div>
-    </div>
+    </Animated.div>
   )
 }

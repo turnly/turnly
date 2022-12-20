@@ -1,4 +1,5 @@
 import clsx from 'clsx'
+import { motion as Animated } from 'framer-motion'
 import { h } from 'preact'
 import { useCallback, useMemo } from 'preact/compat'
 import { AiOutlineCheck } from 'react-icons/ai'
@@ -11,7 +12,7 @@ import { Text, Title } from './typography'
 
 export const CurrentLocation = () => {
   const { openGoogleMaps } = useGoogleMaps()
-  const { name, address, latitude, longitude } = useCurrentLocation()
+  const { name, address, latitude, longitude, id } = useCurrentLocation()
   const { ticket } = useInternalState()
 
   const isSuccess = useMemo(
@@ -31,7 +32,7 @@ export const CurrentLocation = () => {
   )
 
   return (
-    <div className={classes} onClick={openCoords}>
+    <Animated.div layout layoutId={id} className={classes} onClick={openCoords}>
       <div className="tly-current-location-details">
         <Title hasGaps={false} level={5}>
           {name}
@@ -48,6 +49,6 @@ export const CurrentLocation = () => {
           <FiSend color="#2485BA" />
         )}
       </div>
-    </div>
+    </Animated.div>
   )
 }

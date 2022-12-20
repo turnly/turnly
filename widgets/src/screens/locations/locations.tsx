@@ -1,3 +1,4 @@
+import { AnimatePresence, LayoutGroup, motion as Animated } from 'framer-motion'
 import { Fragment, h } from 'preact'
 import { useCallback, useState } from 'preact/hooks'
 import { HiOutlineClock, HiOutlinePaperAirplane } from 'react-icons/hi'
@@ -39,28 +40,39 @@ export const LocationsScreen = () => {
           }}
         />
 
-        {hasLocations && (
-          <div className="tly-locations__container">
-            {!search && (
-              <Locations
-                title={translate('locations.labels.recent')}
-                icon={<HiOutlineClock />}
-                locations={currentLocation?.id ? [currentLocation] : []}
-              />
-            )}
+        <AnimatePresence mode="wait">
+          {hasLocations && (
+            <Animated.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.1 }}
+              className="tly-locations__container"
+              key="tly-locations__container"
+            >
+              <LayoutGroup>
+                {!search && (
+                  <Locations
+                    title={translate('locations.labels.recent')}
+                    icon={<HiOutlineClock />}
+                    locations={currentLocation?.id ? [currentLocation] : []}
+                  />
+                )}
 
-            <Locations
-              title={translate('locations.labels.nearby')}
-              icon={<HiOutlinePaperAirplane />}
-              locations={getCleanLocations(locations.nearby)}
-            />
+                <Locations
+                  title={translate('locations.labels.nearby')}
+                  icon={<HiOutlinePaperAirplane />}
+                  locations={getCleanLocations(locations.nearby)}
+                />
 
-            <Locations
-              title={translate('locations.labels.other_locations')}
-              locations={getCleanLocations(locations.others)}
-            />
-          </div>
-        )}
+                <Locations
+                  title={translate('locations.labels.other_locations')}
+                  locations={getCleanLocations(locations.others)}
+                />
+              </LayoutGroup>
+            </Animated.div>
+          )}
+        </AnimatePresence>
       </div>
     </Fragment>
   )

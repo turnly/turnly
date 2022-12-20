@@ -36,7 +36,7 @@
       "search": "Search...",
       "search_hint": "Search by name or address",
       "search_error": "Error searching for locations",
-      "search_no_results": "No results found"
+      "search_no_results": "Oops, we couldn't find any locations!"
     }
   },
   "services": {
