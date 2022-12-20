@@ -3121,7 +3121,7 @@
 
 "@turnly/shared@github:turnly/shared.git#latest":
   version "0.0.0"
-  resolved "https://codeload.github.com/turnly/shared/tar.gz/6d3ee5d4a1ce619d754aa014325858a643b6469d"
+  resolved "https://codeload.github.com/turnly/shared/tar.gz/87eb8ec7c3bbdc462dbda95149029d616d27bc0e"
   dependencies:
     "@elastic/elasticsearch" "7.17.0"
     amqp-ts "^1.8.0"
