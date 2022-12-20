@@ -29,7 +29,6 @@ function start() {
   info "Setting up docker containers... 🐳 "
 
   if [[ $* == *"--build"* ]]; then
-    setup
     docker_command up --build "${EXECUTE_SERVICES[@]}"
   else
     docker_command up "${EXECUTE_SERVICES[@]}"

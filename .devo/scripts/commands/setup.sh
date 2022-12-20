@@ -9,7 +9,7 @@ function setup() {
 
   line
 
-  info "Installing local dependencies... 📦 "
+  info "Installing local dependencies for typing... 📦 "
   execute "yarn install"
 
   line
@@ -21,4 +21,6 @@ function setup() {
 
   info "Create the docker network if it doesn't exist... 🐳"
   execute "docker network inspect turnly >/dev/null 2>&1 || docker network create turnly"
+
+  line
 }

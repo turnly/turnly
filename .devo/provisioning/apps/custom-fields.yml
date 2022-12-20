@@ -16,6 +16,7 @@ services:
         NODE_ENV: ${NODE_ENV}
     volumes:
       - ${DOCKER_RELATIVE_APPS_DIR}/custom-fields:/app
+      - /app/node_modules
     depends_on:
       - gateway
       - mongo

@@ -51,6 +51,8 @@ if [[ $* == *"-s"* ]]; then
     "redis"
     "mongo"
     "mongo_ui"
+    "postgres"
+    "postgres_ui"
   )
 fi
 
