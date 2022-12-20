@@ -1,4 +1,5 @@
 import clsx from 'clsx'
+import { motion as Animated } from 'framer-motion'
 import { h, JSX } from 'preact'
 import { forwardRef } from 'preact/compat'
 
@@ -17,6 +18,16 @@ export const FormField = forwardRef<HTMLDivElement, Partial<FormFieldProps>>(
 
     const classes = clsx(styles, attributes.className)
 
-    return <div {...attributes} className={classes} ref={ref} />
+    return (
+      <Animated.div
+        initial={{ opacity: 0, y: -5 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -5 }}
+        transition={{ type: 'spring', stiffness: 300, damping: 24 }}
+        {...attributes}
+        className={classes}
+        ref={ref}
+      />
+    )
   }
 )

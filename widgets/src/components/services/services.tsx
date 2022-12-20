@@ -1,4 +1,4 @@
-import { AnimatePresence, motion as Animated } from 'framer-motion'
+import { motion as Animated } from 'framer-motion'
 import { Fragment, h, JSX } from 'preact'
 import { useEffect } from 'preact/hooks'
 

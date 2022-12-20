@@ -28,7 +28,7 @@ $block: 'tly-order';
   }
 
   &--is-warning {
-    background-color: #fcee93;
+    background-color: rgba(252, 238, 147, 0.5);
 
     .#{$block}-title,
     .tly-typography-text {
@@ -41,7 +41,7 @@ $block: 'tly-order';
 
     .#{$block}-title,
     .tly-typography-text {
-      color: var(--tly-primary);
+      color: var(--tly-green-dark);
     }
   }
 }

@@ -12,7 +12,7 @@ import { Text, Title } from './typography'
 
 export const CurrentLocation = () => {
   const { openGoogleMaps } = useGoogleMaps()
-  const { name, address, latitude, longitude, id } = useCurrentLocation()
+  const { name, address, latitude, longitude } = useCurrentLocation()
   const { ticket } = useInternalState()
 
   const isSuccess = useMemo(
@@ -32,7 +32,7 @@ export const CurrentLocation = () => {
   )
 
   return (
-    <Animated.div layout layoutId={id} className={classes} onClick={openCoords}>
+    <Animated.div layout className={classes} onClick={openCoords}>
       <div className="tly-current-location-details">
         <Title hasGaps={false} level={5}>
           {name}
