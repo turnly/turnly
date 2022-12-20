@@ -6,6 +6,7 @@ services:
       file: common.yml
       service: common
     container_name: minio
+    platform: linux/amd64
     image: bitnami/minio:latest
     volumes:
       - minio_data:/data

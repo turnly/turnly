@@ -21,7 +21,7 @@
     "build:watch": "vite build --watch",
     "codegen": "graphql-codegen --config codegen.yml",
     "serve": "vite preview",
-    "start": "concurrently -n \"GraphQL,Styles,Vite\" \"yarn codegen --watch\" \"yarn build:watch\" \"vite --open\""
+    "start": "cp develop.config.json widget.config.json && concurrently -n \"GraphQL,Styles,Vite\" \"yarn codegen --watch\" \"yarn build:watch\" \"vite --open\""
   },
   "browserslist": {
     "production": [

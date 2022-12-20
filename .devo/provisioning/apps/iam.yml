@@ -6,6 +6,7 @@ services:
       file: common.yml
       service: common
     container_name: iam
+    platform: linux/amd64
     image: turnly/iam:latest
     command: start-dev
     restart: unless-stopped

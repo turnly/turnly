@@ -22,6 +22,7 @@ services:
   oauth:
     image: mesosphere/traefik-forward-auth:3.1.0
     container_name: oauth
+    platform: linux/amd64
     depends_on:
       - iam
     environment:

@@ -6,6 +6,7 @@ services:
       file: common.yml
       service: common
     container_name: redis_ui
+    platform: linux/amd64
     hostname: redis_ui
     image: rediscommander/redis-commander:latest
     depends_on:

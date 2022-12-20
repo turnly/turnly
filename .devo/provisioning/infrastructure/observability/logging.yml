@@ -6,6 +6,7 @@ services:
       file: common.yml
       service: common
     container_name: fluentd
+    platform: linux/amd64
     image: turnly/fluentd:latest
     build: ./infrastructure/observability/fluentd
     volumes:
