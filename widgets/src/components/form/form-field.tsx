@@ -22,11 +22,11 @@ export const FormField = forwardRef<HTMLDivElement, Partial<FormFieldProps>>(
       <Animated.div
         initial={{ opacity: 0, y: -5 }}
         animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -5 }}
         transition={{ type: 'spring', stiffness: 300, damping: 24 }}
         {...attributes}
         className={classes}
         ref={ref}
+        key={`form-field-${attributes?.key}`}
       />
     )
   }

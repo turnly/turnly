@@ -28,8 +28,9 @@ export const Form = forwardRef<HTMLFormElement, Partial<FormProps>>(
         {...attributes}
         className={classes}
         ref={ref}
+        key="form"
       >
-        <AnimatePresence>{attributes.children}</AnimatePresence>
+        <AnimatePresence mode="wait">{attributes.children}</AnimatePresence>
       </Animated.form>
     )
   }

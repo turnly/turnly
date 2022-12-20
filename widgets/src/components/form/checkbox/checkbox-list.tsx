@@ -70,15 +70,7 @@ export const CheckboxList = ({
           />
         ))}
 
-      {items && items.length > 0 && (
-        <Checkbox
-          isSelected={verifySelected(clearItem.value)}
-          onClick={handleItems(clearItem)}
-          label={clearLabel}
-        />
-      )}
-
-      {hintForClear && itemsSelected.includes(clearItem.value) && (
+      {hintForClear && !itemsSelected?.length && (
         <div className="tly-checkbox-list__hint">
           <Text isDanger isSmall>
             {hintForClear}

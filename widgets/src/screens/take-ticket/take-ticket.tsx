@@ -101,7 +101,7 @@ export const TakeTicketScreen = () => {
             <Form>
               <DynamicForm fields={fields as unknown as Field[]} />
 
-              <FormField>
+              <FormField key="fields.notifications.preference">
                 <Title level={5} hasGaps={false}>
                   {translate('fields.notifications.preference')}
                 </Title>
@@ -123,7 +123,7 @@ export const TakeTicketScreen = () => {
 
               {Array.isArray(methods.watch('notifications')) &&
                 methods.watch('notifications').length > 0 && (
-                  <FormField addGaps>
+                  <FormField addGaps key="notifications.preference_phone">
                     <Title level={5} hasGaps={false}>
                       {translate('fields.notifications.preference_phone')}
                     </Title>
