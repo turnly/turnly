@@ -1,8 +1,8 @@
 import clsx from 'clsx'
+import { motion as Animated } from 'framer-motion'
 import { h, JSX } from 'preact'
 import { useCallback, useMemo } from 'preact/hooks'
 
-import { Text, Title } from '../components/typography'
 import { TicketStatus } from '../hooks/use-internal-state'
 import { useTranslation } from '../localization'
 
@@ -84,18 +84,52 @@ export const Order = ({
     return beforeYours?.toString()?.padStart(2, '0')
   }, [beforeYours, displayCode, status])
 
+  const backgroundAndColor = useMemo(() => {
+    if (isYourTurn)
+      return {
+        backgroundColor: '#ddf7ec',
+        color: 'var(--tly-green-dark)',
+      }
+
+    if (
+      status === TicketsBeforeYoursLabels.MORE_THAN ||
+      status === TicketsBeforeYoursLabels.MORE_THAN_4
+    )
+      return {
+        backgroundColor: '#fbd5d5',
+        color: 'var(--tly-danger)',
+      }
+
+    return {
+      backgroundColor: '#fcee9380',
+      color: 'var(--tly-warning)',
+    }
+  }, [status, isYourTurn])
+
   return (
-    <div className={classes}>
-      <Title
+    <Animated.div
+      className={classes}
+      initial={false}
+      animate={{ ...backgroundAndColor }}
+      transition={{ duration: 0.2 }}
+    >
+      <Animated.h2
         className="tly-order-title"
-        hasGaps={false}
-        title={getNumberOrder()}
+        initial={{ opacity: 0, y: '-0.10em' }}
+        animate={{ color: backgroundAndColor.color, opacity: 1, y: '0em' }}
+        transition={{ duration: 0.2, ease: [0.2, 0.65, 0.3, 0.9] }}
+        key={getNumberOrder()}
       >
         {getNumberOrder()}
-      </Title>
-      <Text hasGaps={false} isStrong>
+      </Animated.h2>
+      <Animated.p
+        initial={{ opacity: 0 }}
+        animate={{ color: backgroundAndColor.color, opacity: 1 }}
+        transition={{ duration: 0.2 }}
+        className="tly-order-text"
+      >
         {translate(`tickets.${isYourTurn ? 'your_turn' : 'before_yours'}`)}
-      </Text>
-    </div>
+      </Animated.p>
+    </Animated.div>
   )
 }

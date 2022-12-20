@@ -1,12 +1,11 @@
 $block: 'tly-order';
 
 .#{$block} {
-  background-color: var(--tly-gray);
   padding: 16px 24px;
   border-radius: 8px;
   overflow: hidden;
   text-align: center;
-  max-width: 240px;
+  max-width: 246px;
   margin-bottom: 24px;
   transition: all 0.2s ease-in-out;
 
@@ -16,32 +15,20 @@ $block: 'tly-order';
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    font-family: var(--tly-default-font);
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
   }
 
-  &--is-danger {
-    background-color: #fbd5d5;
-
-    .#{$block}-title,
-    .tly-typography-text {
-      color: var(--tly-danger);
-    }
-  }
-
-  &--is-warning {
-    background-color: rgba(252, 238, 147, 0.5);
-
-    .#{$block}-title,
-    .tly-typography-text {
-      color: var(--tly-warning);
-    }
-  }
-
-  &--is-primary {
-    background-color: #ddf7ec;
-
-    .#{$block}-title,
-    .tly-typography-text {
-      color: var(--tly-green-dark);
-    }
+  &-text {
+    color: var(--tly-default-text-color);
+    font-family: var(--tly-default-font);
+    font-size: 12px;
+    margin: 0;
+    letter-spacing: 0.14px;
+    line-height: 22px;
+    text-overflow: ellipsis;
+    font-weight: bold;
   }
 }

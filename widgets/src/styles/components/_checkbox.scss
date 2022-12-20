@@ -6,12 +6,13 @@ $block: 'tly-checkbox';
   min-width: 80px;
   min-height: 44px;
   border: 1px solid var(--tly-default-border-color);
-  padding: 13px;
+  padding: 12px;
   text-align: left;
   border-radius: 6px;
   cursor: pointer;
   align-items: center;
   justify-content: center;
+  flex-grow: 1;
 
   &--is-selected {
     border: 1px solid var(--tly-secondary-bg);
@@ -19,10 +20,20 @@ $block: 'tly-checkbox';
 
   &-icon {
     color: var(--tly-default-border-color);
+
+    svg {
+      width: 18px;
+      height: 18px;
+    }
   }
 
   &-icon--is-selected {
     color: var(--tly-secondary-bg);
+
+    svg {
+      width: 18px;
+      height: 18px;
+    }
   }
 
   &-list {
