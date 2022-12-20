@@ -1,3 +1,4 @@
+import { motion as Animated } from 'framer-motion'
 import { Fragment, FunctionalComponent, h } from 'preact'
 import { useCallback, useLayoutEffect } from 'preact/hooks'
 import { IoArrowBack } from 'react-icons/io5'
@@ -35,7 +36,7 @@ export const Screen: FunctionalComponent<TScreenProps> = ({
   }, [title, widget.name])
 
   return (
-    <Fragment {...props}>
+    <Fragment>
       {backScreen && (
         <div className="tly-screen-side-back">
           <button className="tly-screen-side-back-btn" onClick={onBack}>
@@ -44,7 +45,22 @@ export const Screen: FunctionalComponent<TScreenProps> = ({
         </div>
       )}
 
-      <Component />
+      <Animated.div
+        {...props}
+        key={props.name}
+        initial={{
+          opacity: 0,
+          display: 'flex',
+          justifyContent: 'space-between',
+          flexDirection: 'column',
+          flexGrow: 1,
+        }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.3 }}
+      >
+        <Component />
+      </Animated.div>
     </Fragment>
   )
 }

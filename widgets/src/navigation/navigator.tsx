@@ -1,3 +1,4 @@
+import { AnimatePresence } from 'framer-motion'
 import { h } from 'preact'
 import { useMemo, useRef, useState } from 'preact/hooks'
 
@@ -45,9 +46,8 @@ export const Navigator = ({
   if (!screen) throw new Error(ERROR_MESSAGES.NAVIGATOR_NO_CHILDREN)
 
   return (
-    <NavigatorContext.Provider
-      {...{ ...props, children: screen }}
-      value={context}
-    />
+    <NavigatorContext.Provider {...{ ...props }} value={context}>
+      <AnimatePresence mode="wait">{screen}</AnimatePresence>
+    </NavigatorContext.Provider>
   )
 }
