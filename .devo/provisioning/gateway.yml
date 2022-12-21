@@ -18,31 +18,9 @@ services:
       - 443:443
     networks:
       turnly:
-
-  oauth:
-    image: mesosphere/traefik-forward-auth:3.1.0
-    container_name: oauth
-    platform: linux/amd64
-    depends_on:
-      - iam
-    environment:
-      ENCRYPTION_KEY: ${IAM_ENCRYPTION_KEY}
-      SECRET: ${IAM_SIGNING_KEY}
-      PROVIDER_URI: ${IAM_OIDC_PROVIDER_URI}
-      CLIENT_ID: ${IAM_OIDC_CLIENT_ID}
-      CLIENT_SECRET: ${IAM_OIDC_CLIENT_SECRET}
-    labels:
-      - traefik.enable=true
-      - traefik.docker.network=turnly
-      - traefik.http.routers.oauth.entrypoints=web,websecure
-      - traefik.http.services.oauth.loadbalancer.server.port=4181
-      - traefik.http.routers.oauth.rule=Path(`/_oauth`)
-      - traefik.http.routers.oauth.middlewares=traefik-forward-auth
-      - traefik.http.middlewares.traefik-forward-auth.oauth.address=http://oauth:4181
-      - traefik.http.middlewares.traefik-forward-auth.oauth.authResponseHeaders=X-Forwarded-User
-      - traefik.http.middlewares.traefik-forward-auth.oauth.trustForwardHeader=true
-    networks:
-      turnly:
+        aliases:
+          - ${IAM_HOSTNAME}
+          - ${APP_DOMAIN}
 
 networks:
   turnly:

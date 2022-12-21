@@ -18,3 +18,7 @@ services:
     ports:
       - ${FLUENT_PORT}:24224
       - ${FLUENT_PORT}:24224/udp
+    networks:
+      turnly:
+        aliases:
+          - logging.local

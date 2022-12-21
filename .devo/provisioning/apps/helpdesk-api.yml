@@ -18,7 +18,8 @@ services:
       - ${DOCKER_RELATIVE_APPS_DIR}/helpdesk-api:/app
       - /app/node_modules
     depends_on:
-      - gateway
+      iam:
+        condition: service_healthy
     labels:
       - traefik.enable=true
       - traefik.docker.network=turnly
@@ -26,6 +27,9 @@ services:
       - traefik.http.routers.helpdesk-api-http.rule=PathPrefix(`/api/v1/helpdesk`)
       - traefik.http.routers.helpdesk-api-http.service=helpdesk-api-http
       - traefik.http.services.helpdesk-api-http.loadbalancer.server.port=${HTTP_PORT}
+
+      # Attach the oauth middleware to this service
+      - traefik.http.routers.helpdesk-api-http.middlewares=oauth-middleware
     environment:
       # This service shared env variables that extend from common.yml
       APP_NAME: helpdesk-api

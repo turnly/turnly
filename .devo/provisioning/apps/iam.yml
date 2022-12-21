@@ -6,16 +6,12 @@ services:
       file: common.yml
       service: common
     container_name: iam
-    platform: linux/amd64
     image: turnly/iam:latest
     command: start-dev
     restart: unless-stopped
     build:
       context: ${DOCKER_RELATIVE_APPS_DIR}/iam
       dockerfile: Dockerfile
-    depends_on:
-      - postgres
-      - gateway
     environment:
       # Credentials for storing into an external database (postgres)
       KC_DB: postgres
@@ -28,6 +24,7 @@ services:
       # Proxy settings
       KC_HOSTNAME: ${IAM_HOSTNAME}
       KC_HOSTNAME_STRICT: "false"
+      KC_HOSTNAME_STRICT_HTTPS: "false"
       KC_HTTP_ENABLED: "true"
       # Credentials for admin account
       KEYCLOAK_ADMIN: ${IAM_ADMIN_USERNAME}
@@ -43,3 +40,46 @@ services:
 
       # For development: Use the following label to expose all endpoints to the internet. (admin, metrics, etc)
       - traefik.http.routers.iam.rule=Host(`${IAM_HOSTNAME}`)
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://iam:8080/realms/master"]
+      interval: 20s
+      timeout: 60s
+      retries: 15
+
+  oauth:
+    image: mesosphere/traefik-forward-auth:3.1.0
+    container_name: oauth
+    platform: linux/amd64
+    environment:
+      LOG_LEVEL: debug
+      INSECURE_COOKIE: 'true'
+      SCOPE: profile email openid
+      COOKIE_DOMAIN: ${APP_DOMAIN}
+      ENCRYPTION_KEY: ${IAM_ENCRYPTION_KEY}
+      AUTH_HOST: ${IAM_HOSTNAME}
+      SECRET: ${IAM_SIGNING_KEY}
+      PROVIDER_URI: ${IAM_OIDC_PROVIDER_URI}
+      CLIENT_ID: ${IAM_OIDC_CLIENT_ID}
+      CLIENT_SECRET: ${IAM_OIDC_CLIENT_SECRET}
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=turnly
+      - traefik.http.routers.oauth.entrypoints=web,websecure
+      - traefik.http.routers.oauth.service=oauth
+      - traefik.http.routers.oauth.rule=Path(`/_oauth`)
+      - traefik.http.services.oauth.loadbalancer.server.port=4181
+
+      - traefik.http.middlewares.oauth-middleware.forwardauth.address=http://oauth:4181
+      - traefik.http.middlewares.oauth-middleware.forwardauth.authResponseHeaders=X-Forwarded-User
+      - traefik.http.middlewares.oauth-middleware.forwardauth.trustForwardHeader=true
+
+      # Attach the oauth middleware to this service
+      - traefik.http.routers.oauth.middlewares=oauth-middleware
+    depends_on:
+      iam:
+        condition: service_healthy
+    networks:
+      turnly:
