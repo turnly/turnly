@@ -58,6 +58,10 @@ services:
       INSECURE_COOKIE: 'true'
       SCOPE: profile email openid
       COOKIE_DOMAIN: ${APP_DOMAIN}
+      COOKIE_NAME: __tly_x_forwarded_auth_data__
+      USER_COOKIE_NAME: __tly_x_forwarded_auth_name__
+      CSRF_COOKIE_NAME: __tly_x_forwarded_auth_csrf__
+      CLAIMS_SESSION_NAME: __tly_x_forwarded_auth_claims__
       ENCRYPTION_KEY: ${IAM_ENCRYPTION_KEY}
       AUTH_HOST: ${IAM_HOSTNAME}
       SECRET: ${IAM_SIGNING_KEY}
