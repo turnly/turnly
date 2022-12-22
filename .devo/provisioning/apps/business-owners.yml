@@ -18,18 +18,28 @@ services:
       - ${DOCKER_RELATIVE_APPS_DIR}/business-owners:/app
       - /app/node_modules
     depends_on:
-      - gateway
-      - mongo
-    labels:
-      - traefik.enable=true
-      - traefik.docker.network=turnly
-      - traefik.http.routers.business-owners-rpc.entrypoints=web,websecure
-      - traefik.http.routers.business-owners-rpc.rule=PathPrefix(`/turnly.business_owners.v1`)
-      - traefik.http.routers.business-owners-rpc.service=business-owners-rpc
-      - traefik.http.services.business-owners-rpc.loadbalancer.server.scheme=h2c
+      elasticsearch:
+        condition: service_healthy
+      mongo:
+        condition: service_healthy
+    networks:
+      turnly.network.internal:
+        aliases:
+          - business-owners.turnly.local
     environment:
       # This service shared env variables that extend from common.yml
       APP_NAME: business-owners
       ENCRYPTION_SECRET:
       RABBITMQ_QUEUE: ${BUSINESS_OWNERS_RABBITMQ_QUEUE:-turnly.ms.business_owners.queue}
       MONGO_DB: ${BUSINESS_OWNERS_MONGO_DB:-business_owners_db}
+    # ----------------------> WARNING: FOR DEVELOPMENT ONLY <----------------------
+    labels:
+      # External access is used to test new gRPC endpoints with Bloom or Postman,
+      # but in production, microservices communicate on the internal network, so gRPC APIs should not be exposed.
+      - traefik.enable=true
+      - traefik.docker.network=turnly.network.internal
+      - traefik.http.routers.business-owners-public.entrypoints=web
+      - traefik.http.routers.business-owners-public.service=business-owners-public
+      - traefik.http.services.business-owners-public.loadbalancer.server.scheme=h2c
+      - traefik.http.routers.business-owners-public.rule=PathPrefix(`/turnly.business_owners.v1`)
+    # ----------------------> WARNING: FOR DEVELOPMENT ONLY <----------------------

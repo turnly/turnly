@@ -14,13 +14,8 @@ function setup() {
 
   line
 
-  info "Setting up the domains in hosts file... 📡 "
+  info "Adding the domains to the trusted hosts... 🔐 "
   set_hosts "${TURNLY_DOMAINS[@]}"
-
-  line
-
-  info "Create the docker network if it doesn't exist... 🐳"
-  execute "docker network inspect turnly >/dev/null 2>&1 || docker network create turnly"
 
   line
 }

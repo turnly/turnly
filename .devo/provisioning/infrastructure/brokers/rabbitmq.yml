@@ -9,13 +9,18 @@ services:
     container_name: rabbitmq
     tty: true
     stdin_open: true
+    # ----------------------> WARNING: FOR DEVELOPMENT ONLY <----------------------
     ports:
-      # HTTP DASHBOARD FOR MANAGEMENT
       - ${RABBITMQ_UI_PORT}:15672
-      # AMQP PROTOCOL
-      - 5672:5672
+    # ----------------------> WARNING: FOR DEVELOPMENT ONLY <----------------------
+    expose:
+      - 5672
     volumes:
       - rabbitmq_data:/var/lib/rabbitmq/mnesia/
+    networks:
+      turnly.network.internal:
+        aliases:
+          - rabbitmq.turnly.local
 
 volumes:
   rabbitmq_data:

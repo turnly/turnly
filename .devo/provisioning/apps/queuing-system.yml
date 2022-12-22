@@ -18,19 +18,28 @@ services:
       - ${DOCKER_RELATIVE_APPS_DIR}/queuing-system:/app
       - /app/node_modules
     depends_on:
-      - gateway
-      - mongo
-      - elasticsearch
-    labels:
-      - traefik.enable=true
-      - traefik.docker.network=turnly
-      - traefik.http.routers.queuing-system-rpc.entrypoints=web,websecure
-      - traefik.http.routers.queuing-system-rpc.rule=PathPrefix(`/turnly.queuing_system.v1`)
-      - traefik.http.routers.queuing-system-rpc.service=queuing-system-rpc
-      - traefik.http.services.queuing-system-rpc.loadbalancer.server.scheme=h2c
+      elasticsearch:
+        condition: service_healthy
+      mongo:
+        condition: service_healthy
+    networks:
+      turnly.network.internal:
+        aliases:
+          - queuing-system.turnly.local
     environment:
       # This service shared env variables that extend from common.yml
       APP_NAME: queuing-system
       ENCRYPTION_SECRET:
       RABBITMQ_QUEUE: ${QUEUING_SYSTEM_RABBITMQ_QUEUE:-turnly.ms.queuing_system.queue}
       MONGO_DB: ${QUEUING_SYSTEM_MONGO_DB:-queuing_system_db}
+    # ----------------------> WARNING: FOR DEVELOPMENT ONLY <----------------------
+    labels:
+      # External access is used to test new gRPC endpoints with Bloom or Postman,
+      # but in production, microservices communicate on the internal network, so gRPC APIs should not be exposed.
+      - traefik.enable=true
+      - traefik.docker.network=turnly.network.internal
+      - traefik.http.routers.queuing-system-public.entrypoints=web
+      - traefik.http.routers.queuing-system-public.service=queuing-system-public
+      - traefik.http.services.queuing-system-public.loadbalancer.server.scheme=h2c
+      - traefik.http.routers.queuing-system-public.rule=PathPrefix(`/turnly.queuing_system.v1`)
+    # ----------------------> WARNING: FOR DEVELOPMENT ONLY <----------------------

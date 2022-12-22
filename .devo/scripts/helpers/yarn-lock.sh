@@ -5,6 +5,7 @@ function yarn_lock() {
     ".gitkeep"
     "gateway"
     "iam"
+    "oauth"
   )
 
   [[ -z "$APPS_DIRECTORY" ]] && error "Oops! Environment variable APPS_DIRECTORY is not set."

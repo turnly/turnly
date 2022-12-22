@@ -19,13 +19,19 @@ services:
       - /app/node_modules
     depends_on:
       - gateway
-    labels:
-      - traefik.enable=true
-      - traefik.docker.network=turnly
-      - traefik.http.routers.widgets-api-http.entrypoints=web,websecure
-      - traefik.http.routers.widgets-api-http.rule=PathPrefix(`/api/v1/widgets`)
-      - traefik.http.routers.widgets-api-http.service=widgets-api-http
-      - traefik.http.services.widgets-api-http.loadbalancer.server.port=${HTTP_PORT}
+    networks:
+      turnly.network.public:
+      turnly.network.internal:
+        aliases:
+          - widgets-api.turnly.local
     environment:
       # This service shared env variables that extend from common.yml
       APP_NAME: widgets-api
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=turnly.network.internal
+
+      - traefik.http.routers.widgets-api-public.entrypoints=web,websecure
+      - traefik.http.routers.widgets-api-public.rule=PathPrefix(`/api/v1/widgets`)
+      - traefik.http.routers.widgets-api-public.service=widgets-api-public
+      - traefik.http.services.widgets-api-public.loadbalancer.server.port=${HTTP_PORT}

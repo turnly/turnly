@@ -9,9 +9,12 @@ services:
     platform: linux/amd64
     hostname: redis_ui
     image: rediscommander/redis-commander:latest
-    depends_on:
-      - redis
-    environment:
-    - REDIS_HOSTS=${REDIS_UI_HOST}
+    # ----------------------> WARNING: FOR DEVELOPMENT ONLY <----------------------
     ports:
-    - ${REDIS_UI_PORT}:8081
+      - ${REDIS_UI_PORT}:8081
+    # ----------------------> WARNING: FOR DEVELOPMENT ONLY <----------------------
+    depends_on:
+      redis:
+        condition: service_healthy
+    environment:
+      - REDIS_HOSTS=${REDIS_UI_HOST}

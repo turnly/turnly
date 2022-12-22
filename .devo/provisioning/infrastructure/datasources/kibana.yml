@@ -8,8 +8,16 @@ services:
     image: docker.elastic.co/kibana/kibana:7.17.4
     container_name: kibana
     depends_on:
-      - elasticsearch
+      elasticsearch:
+        condition: service_healthy
+    # ----------------------> WARNING: FOR DEVELOPMENT ONLY <----------------------
     ports:
-      - ${ELASTICSEARCH_UI_PORT}:5601
+      - ${ELASTICSEARCH_UI_PORT:-5601}:5601
+    # ----------------------> WARNING: FOR DEVELOPMENT ONLY <----------------------
+    networks:
+      turnly.network.public:
+      turnly.network.internal:
+        aliases:
+          - kibana.turnly.local
     environment:
-      ELASTICSEARCH_HOSTS: http://elasticsearch:${ELASTICSEARCH_PORT}
+      ELASTICSEARCH_HOSTS: ${ELASTICSEARCH_URI}

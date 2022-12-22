@@ -10,15 +10,14 @@ services:
     image: turnly/fluentd:latest
     build: ./infrastructure/observability/fluentd
     volumes:
-      - ./infrastructure/observability/fluentd/conf:/fluentd/etc
+      - ./infrastructure/observability/fluentd/conf:/fluentd/etc:ro
     depends_on:
-      - elasticsearch
+      elasticsearch:
+        condition: service_healthy
     expose:
-      - ${FLUENT_PORT}
-    ports:
-      - ${FLUENT_PORT}:24224
-      - ${FLUENT_PORT}:24224/udp
+      - 24224
+      - 24224/udp
     networks:
-      turnly:
+      turnly.network.internal:
         aliases:
-          - logging.local
+          - logging.turnly.local

@@ -10,9 +10,9 @@ x-logging: &logging
 services:
   common:
     <<: *logging
-    restart: always
+    restart: unless-stopped
     networks:
-      turnly:
+      turnly.network.internal:
     environment:
       - NODE_ENV
       - APP_DOMAIN
@@ -23,20 +23,11 @@ services:
       - SENTRY_DSN
       - FLUENT_HOST
       - FLUENT_PORT
-      - MONGO_PORT
-      - MONGO_USERNAME
-      - MONGO_PASSWORD
       - MONGO_URI
       - REDIS_HOST
-      - REDIS_PORT
       - REDIS_PASSWORD
-      - MINIO_PORT
-      - MINIO_ROOT_USER
-      - MINIO_ROOT_PASSWORD
       - STORAGE_HOST
       - ELASTICSEARCH_URI
-      - ELASTICSEARCH_PORT
-      - ELASTICSEARCH_UI_PORT
       - RABBITMQ_URI
       - RABBITMQ_EXCHANGE
       - TWILIO_ACCOUNT_SID

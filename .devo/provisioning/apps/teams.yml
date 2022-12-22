@@ -18,18 +18,28 @@ services:
       - ${DOCKER_RELATIVE_APPS_DIR}/teams:/app
       - /app/node_modules
     depends_on:
-      - gateway
-      - mongo
-    labels:
-      - traefik.enable=true
-      - traefik.docker.network=turnly
-      - traefik.http.routers.teams-rpc.entrypoints=web,websecure
-      - traefik.http.routers.teams-rpc.rule=PathPrefix(`/turnly.teams.v1`)
-      - traefik.http.routers.teams-rpc.service=teams-rpc
-      - traefik.http.services.teams-rpc.loadbalancer.server.scheme=h2c
+      elasticsearch:
+        condition: service_healthy
+      mongo:
+        condition: service_healthy
+    networks:
+      turnly.network.internal:
+        aliases:
+          - teams.turnly.local
     environment:
       # This service shared env variables that extend from common.yml
       APP_NAME: teams
       ENCRYPTION_SECRET:
       RABBITMQ_QUEUE: ${TEAMS_RABBITMQ_QUEUE:-turnly.ms.teams.queue}
       MONGO_DB: ${TEAMS_MONGO_DB:-teams_db}
+    # ----------------------> WARNING: FOR DEVELOPMENT ONLY <----------------------
+    labels:
+      # External access is used to test new gRPC endpoints with Bloom or Postman,
+      # but in production, microservices communicate on the internal network, so gRPC APIs should not be exposed.
+      - traefik.enable=true
+      - traefik.docker.network=turnly.network.internal
+      - traefik.http.routers.teams-public.entrypoints=web,websecure
+      - traefik.http.routers.teams-public.service=teams-public
+      - traefik.http.services.teams-public.loadbalancer.server.scheme=h2c
+      - traefik.http.routers.teams-public.rule=PathPrefix(`/turnly.teams.v1`)
+    # ----------------------> WARNING: FOR DEVELOPMENT ONLY <----------------------

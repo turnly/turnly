@@ -13,16 +13,22 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
     ports:
+    # ----------------------> WARNING: FOR DEVELOPMENT ONLY <----------------------
       - ${TRAEFIK_UI_PORT}:8080
+    # ----------------------> WARNING: FOR DEVELOPMENT ONLY <----------------------
       - 80:80
       - 443:443
     networks:
-      turnly:
+      turnly.network.public:
+      turnly.network.internal:
         aliases:
           - ${IAM_HOSTNAME}
           - ${APP_DOMAIN}
 
 networks:
-  turnly:
-    name: turnly
+  turnly.network.internal:
+    name: turnly.network.internal
+    external: true
+  turnly.network.public:
+    name: turnly.network.public
     external: true

@@ -10,7 +10,7 @@ services:
     volumes:
       - elasticsearch_data:/usr/share/elasticsearch/data:rw
     expose:
-      - ${ELASTICSEARCH_PORT}
+      - 9200
     environment:
       discovery.type: "single-node"
       node.name: "turnly"
@@ -20,8 +20,15 @@ services:
       memlock:
         soft: -1
         hard: -1
-    ports:
-       - ${ELASTICSEARCH_PORT}:9200
+    networks:
+      turnly.network.internal:
+        aliases:
+          - elasticsearch.turnly.local
+    healthcheck:
+      test: curl -s -f ${ELASTICSEARCH_URI}/_cat/health >/dev/null || exit 1
+      interval: 20s
+      timeout: 15s
+      retries: 10
 
 volumes:
   elasticsearch_data:
