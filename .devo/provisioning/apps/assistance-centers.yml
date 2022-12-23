@@ -16,7 +16,6 @@ services:
         NODE_ENV: ${NODE_ENV}
     volumes:
       - ${DOCKER_RELATIVE_APPS_DIR}/assistance-centers:/app
-      - /app/node_modules
     depends_on:
       elasticsearch:
         condition: service_healthy
