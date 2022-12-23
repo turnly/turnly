@@ -200,7 +200,7 @@ export type GetTicketQueryVariables = Exact<{
 }>;
 
 
-export type GetTicketQuery = { __typename?: 'Query', getTicket: { __typename?: 'TicketModel', id: string, status: string, displayCode: string, beforeYours: number, calledToDesk?: string | null, customerId: string, service: { __typename?: 'ServiceModel', name: string, description?: string | null }, location: { __typename?: 'LocationModel', name: string, address: string, longitude: string, latitude: string } } };
+export type GetTicketQuery = { __typename?: 'Query', getTicket: { __typename?: 'TicketModel', id: string, status: string, displayCode: string, serviceId: string, beforeYours: number, calledToDesk?: string | null, customerId: string, service: { __typename?: 'ServiceModel', id: string, name: string, description?: string | null }, location: { __typename?: 'LocationModel', name: string, address: string, longitude: string, latitude: string } } };
 
 
 export const AnnounceTicketDocument = gql`
@@ -458,7 +458,9 @@ export const GetTicketDocument = gql`
     id
     status
     displayCode
+    serviceId
     service {
+      id
       name
       description
     }

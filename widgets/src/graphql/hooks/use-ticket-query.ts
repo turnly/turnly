@@ -4,18 +4,15 @@ import { Notifier } from '../../components/notification'
 import {
   GetTicketQuery as Query,
   GetTicketQueryVariables as Variables,
-  useGetTicketQuery as useQuery,
+  useGetTicketLazyQuery as useQuery,
 } from '../generated/graphql'
 
 export const useGetTicketQuery = (
   options: Apollo.QueryHookOptions<Query, Variables>
 ) => {
-  const {
-    data,
-    error,
-    loading: isLoading,
-  } = useQuery({
+  const [getTicketDetails, { data, error, loading: isLoading }] = useQuery({
     ...options,
+    fetchPolicy: 'cache-and-network',
     onError: error => {
       Notifier.error(error.message)
 
@@ -24,6 +21,7 @@ export const useGetTicketQuery = (
   })
 
   return {
+    getTicketDetails,
     data: data?.getTicket,
     error,
     isLoading,

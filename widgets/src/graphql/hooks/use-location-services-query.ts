@@ -18,7 +18,11 @@ export const useLocationServicesQuery = (
     data,
     error,
     loading: isLoading,
-  } = useQuery({ ...options, onError: error => Notifier.error(error.message) })
+  } = useQuery({
+    ...options,
+    fetchPolicy: 'cache-and-network',
+    onError: error => Notifier.error(error.message),
+  })
 
   const { setLoading } = useLoading()
 

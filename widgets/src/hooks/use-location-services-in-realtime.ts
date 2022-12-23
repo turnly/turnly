@@ -18,7 +18,6 @@ export const useLocationServicesInRealtime = (locationId: string) => {
 
   const { isLoading, hasServices } = useLocationServicesQuery({
     variables: { locationId },
-    fetchPolicy: 'cache-and-network',
     onCompleted: data => setServices(data.getLocationServices),
   })
 

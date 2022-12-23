@@ -3,7 +3,9 @@ query GetTicket($getTicketId: ID!) {
     id
     status
     displayCode
+    serviceId
     service {
+      id
       name
       description
     }

@@ -22,7 +22,6 @@ import {
   TicketStatus,
   useInternalState,
 } from '../../hooks/use-internal-state'
-import { useLoading } from '../../hooks/use-loading'
 import { RealtimeEvents, useRealtime } from '../../hooks/use-realtime'
 import { useSearchParams } from '../../hooks/use-search-params'
 import { useTranslation } from '../../localization'
@@ -44,8 +43,7 @@ export const TicketDetailsScreen = () => {
   const [isShowing, setIsShowing] = useState(false)
   const [isCompleted, setIsCompleted] = useState(false)
 
-  const { isLoading } = useGetTicketQuery({
-    variables: { getTicketId: ticketId },
+  const { isLoading, getTicketDetails } = useGetTicketQuery({
     onCompleted: async ({ getTicket }) =>
       await Promise.all([
         setTicket({
@@ -60,12 +58,16 @@ export const TicketDetailsScreen = () => {
         setCurrentLocation({ ...getTicket.location }),
       ]),
     onError: () => {
-      setLoading(false)
-
       deleteSearchParams('tly-ticket-id')
       navigate(SCREEN_NAMES.HOME)
     },
   })
+
+  useEffect(() => {
+    if (ticketId && !ticket) {
+      getTicketDetails({ variables: { getTicketId: ticketId } })
+    }
+  }, [ticketId, ticket])
 
   const handleModalLeave = useCallback(() => setIsShowing(p => !p), [])
 
@@ -109,15 +111,14 @@ export const TicketDetailsScreen = () => {
   )
 
   const { title, description } = useMemo(() => {
-    if (!ticket)
-      return {
-        title: '',
-        description: '',
-      }
-
     let title = 'tickets.announce.title'
     let description = 'tickets.announce.description'
     let options = {}
+
+    if (!ticket) {
+      title = 'tickets.created.title'
+      description = 'tickets.created.description'
+    }
 
     if (
       statusLabel === TicketsBeforeYoursLabels.MORE_THAN ||
@@ -132,14 +133,14 @@ export const TicketDetailsScreen = () => {
       description = 'tickets.announce.description'
     }
 
-    if (ticket.status === TicketStatus.ANNOUNCED) {
+    if (ticket?.status === TicketStatus.ANNOUNCED) {
       title = 'tickets.arrived.title'
       description = 'tickets.arrived.description'
       options = { organization: name }
     }
 
     if (
-      ticket.status === TicketStatus.ANNOUNCED &&
+      ticket?.status === TicketStatus.ANNOUNCED &&
       statusLabel === TicketsBeforeYoursLabels.YOU_ARE_NEXT
     ) {
       title = 'tickets.you_are_next.title'
@@ -147,8 +148,8 @@ export const TicketDetailsScreen = () => {
     }
 
     if (
-      ticket.status === TicketStatus.CALLED ||
-      ticket.status === TicketStatus.RECALLED
+      ticket?.status === TicketStatus.CALLED ||
+      ticket?.status === TicketStatus.RECALLED
     ) {
       title = 'tickets.called.title'
       description = 'tickets.called.description'
@@ -160,12 +161,6 @@ export const TicketDetailsScreen = () => {
       description: translate(description as any),
     }
   }, [ticket?.status, ticket?.beforeYours])
-
-  const { setLoading } = useLoading()
-
-  useEffect(() => {
-    setLoading(isLoading)
-  }, [isLoading])
 
   const { realtime } = useRealtime()
 
@@ -220,8 +215,6 @@ export const TicketDetailsScreen = () => {
       cancelledSubscriber()
     }
   }, [ticket, service, locationId])
-
-  if (isLoading || ticket === null) return null
 
   return (
     <Fragment>
@@ -292,15 +285,19 @@ export const TicketDetailsScreen = () => {
             <Button
               isOutline
               isSecondary
-              disabled={isAnnouncing || isLeaving}
+              disabled={isAnnouncing || isLeaving || isLoading}
               onClick={handleModalLeave}
               isLoading={isLeaving}
             >
               {translate('tickets.leave.button_text')}
             </Button>
 
-            {ticket.status === TicketStatus.AVAILABLE && (
-              <Button onClick={announceTicket} isLoading={isAnnouncing}>
+            {ticket?.status === TicketStatus.AVAILABLE && (
+              <Button
+                onClick={announceTicket}
+                isLoading={isAnnouncing}
+                disabled={isLoading}
+              >
                 {translate('tickets.announce.button_text')}
               </Button>
             )}

@@ -53,7 +53,10 @@ export const Order = ({
   const { translate } = useTranslation()
 
   const status = useMemo(
-    () => getStatusColorAndLabelBasedOnNumber(beforeYours || 0),
+    () =>
+      typeof beforeYours !== 'undefined'
+        ? getStatusColorAndLabelBasedOnNumber(beforeYours || 0)
+        : '',
     [beforeYours]
   )
 
@@ -81,14 +84,20 @@ export const Order = ({
 
     if (status === TicketsBeforeYoursLabels.MORE_THAN) return '10+'
 
-    return beforeYours?.toString()?.padStart(2, '0')
+    return beforeYours?.toString()?.padStart(2, '0') || '00'
   }, [beforeYours, displayCode, status])
 
   const backgroundAndColor = useMemo(() => {
     if (isYourTurn)
       return {
         backgroundColor: '#ddf7ec',
-        color: 'var(--tly-green-dark)',
+        color: '#02543f',
+      }
+
+    if (status === TicketsBeforeYoursLabels.LESS_THAN)
+      return {
+        backgroundColor: '#fcee9380',
+        color: '#723b13',
       }
 
     if (
@@ -97,12 +106,12 @@ export const Order = ({
     )
       return {
         backgroundColor: '#fbd5d5',
-        color: 'var(--tly-danger)',
+        color: '#9a1d1c',
       }
 
     return {
-      backgroundColor: '#fcee9380',
-      color: 'var(--tly-warning)',
+      backgroundColor: '#fefbfb',
+      color: '#6b7c89',
     }
   }, [status, isYourTurn])
 

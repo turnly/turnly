@@ -69,6 +69,7 @@
     "title": "Ticket details",
     "before_yours": "People before yours",
     "your_turn": "No people ahead of you!",
+    "loading": "Getting service...",
     "leave": {
       "title": "Leave ticket",
       "description": "Leave your ticket.",
