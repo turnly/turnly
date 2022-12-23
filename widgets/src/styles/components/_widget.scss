@@ -18,6 +18,11 @@ $block: 'tly-widget';
     padding: 0 24px;
     padding-bottom: 48px;
     position: relative;
+    transition: all 0.2s ease-in-out;
+
+    &:has(.tly-modal-container) {
+      z-index: var(--tly-z-index);
+    }
 
     &::-webkit-scrollbar {
       border-radius: 12px;
