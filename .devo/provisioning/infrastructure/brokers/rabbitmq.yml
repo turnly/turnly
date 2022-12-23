@@ -18,9 +18,15 @@ services:
     volumes:
       - rabbitmq_data:/var/lib/rabbitmq/mnesia/
     networks:
+      turnly.network.public:
       turnly.network.internal:
         aliases:
           - rabbitmq.turnly.local
+    healthcheck:
+      test: ['CMD', 'rabbitmqctl', 'ping', '--silent']
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
 volumes:
   rabbitmq_data:

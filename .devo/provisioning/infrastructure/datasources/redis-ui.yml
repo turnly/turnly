@@ -13,6 +13,11 @@ services:
     ports:
       - ${REDIS_UI_PORT}:8081
     # ----------------------> WARNING: FOR DEVELOPMENT ONLY <----------------------
+    networks:
+      turnly.network.public:
+      turnly.network.internal:
+        aliases:
+          - redis_ui.turnly.local
     depends_on:
       redis:
         condition: service_healthy

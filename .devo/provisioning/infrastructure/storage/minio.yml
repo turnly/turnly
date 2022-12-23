@@ -20,6 +20,7 @@ services:
       MINIO_ROOT_USER: ${MINIO_ROOT_USER}
       MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
     networks:
+      turnly.network.public:
       turnly.network.internal:
         aliases:
           - storage.turnly.local

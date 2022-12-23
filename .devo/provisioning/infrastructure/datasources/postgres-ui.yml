@@ -11,6 +11,11 @@ services:
     ports:
       - ${POSTGRES_ADMINER_PORT:-8180}:8080
     # ----------------------> WARNING: FOR DEVELOPMENT ONLY <----------------------
+    networks:
+      turnly.network.public:
+      turnly.network.internal:
+        aliases:
+          - postgres_ui.turnly.local
     environment:
       ADMINER_DEFAULT_SERVER: postgres.turnly.local
     depends_on:
