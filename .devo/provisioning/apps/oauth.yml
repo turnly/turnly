@@ -40,7 +40,7 @@ services:
 
       - traefik.http.routers.oauth-public.entrypoints=web,websecure
       - traefik.http.routers.oauth-public.service=oauth-public
-      - traefik.http.routers.oauth-public.rule=Path(`/_oauth`)
+      - traefik.http.routers.oauth-public.rule=Host(`${IAM_HOSTNAME}`) && Path(`/_oauth`)
       - traefik.http.services.oauth-public.loadbalancer.server.port=4181
 
       # Adding OAuth-middleware to traefik
