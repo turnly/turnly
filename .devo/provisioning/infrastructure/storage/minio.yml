@@ -10,12 +10,20 @@ services:
     image: bitnami/minio:latest
     volumes:
       - minio_data:/data
+    # ----------------------> WARNING: FOR DEVELOPMENT ONLY <----------------------
     ports:
-      - ${MINIO_PORT}:9000
       - ${MINIO_UI_PORT}:9001
+    # ----------------------> WARNING: FOR DEVELOPMENT ONLY <----------------------
+    expose:
+      - 9000
     environment:
       MINIO_ROOT_USER: ${MINIO_ROOT_USER}
       MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
+    networks:
+      turnly.network.public:
+      turnly.network.internal:
+        aliases:
+          - storage.turnly.local
 
 volumes:
   minio_data:

@@ -7,9 +7,17 @@ services:
       service: common
     container_name: postgres_ui
     image: adminer:4.8.1
+    # ----------------------> WARNING: FOR DEVELOPMENT ONLY <----------------------
     ports:
       - ${POSTGRES_ADMINER_PORT:-8180}:8080
+    # ----------------------> WARNING: FOR DEVELOPMENT ONLY <----------------------
+    networks:
+      turnly.network.public:
+      turnly.network.internal:
+        aliases:
+          - postgres_ui.turnly.local
     environment:
-      ADMINER_DEFAULT_SERVER: postgres
+      ADMINER_DEFAULT_SERVER: postgres.turnly.local
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy

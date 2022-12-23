@@ -36,9 +36,6 @@ jobs:
       - name: 🚀 Start all applications
         run: yarn devo start --verbose
 
-      - name: 🏁 Wait for the infrastructure to get up
-        uses: ./.github/actions/wait-for-infrastructure
-
       - name: "🧪 [Add-ons]: run e2e tests"
         if: steps.filter.outputs.addons == 'true'
         run: yarn devo addons test:e2e
