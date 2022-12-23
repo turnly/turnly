@@ -224,7 +224,7 @@ you want to contribute to and you'll find a README with details on how to run ju
 | [Assistance Centers](/apps/assistance-centers)  | Locations, services offered, working hours, desk, etc.            | 🟢   |
 | [Business Owners](/apps/business-owners)        | Organizations management, promotions, etc.                        | 🟢   |
 | [Custom Fields](/apps/custom-fields)            | Business Data Fields, Customers and Agents answers.               | 🟢   |
-| [Heimdall IAM](/apps/iam)                       | Identity & Access Management (SSO).                               | 🟢   |
+| [IAM](/apps/iam)                                | Identity & Access Management (SSO).                               | 🟢   |
 | [Notifications](/apps/notifications)            | Customers reminders, SMS, Calls, WhatsApp messages.               | 🔴   |
 | [Queuing System](/apps/queuing-system)          | Tickets and Customers management.                                 | 🟢   |
 | [Tasks Scheduling](/apps/tasks-scheduling)      | Scheduling of internal tasks, cleaning, batch, etc.               | 🔴   |
