@@ -19,7 +19,7 @@ export const Portal = ({ children, ...props }: IPortalProps) => {
   const renderPortal = () => {
     if (!doc || !isMounted) return null
 
-    const head = createPortal(<PortalHead title={props.title} />, doc?.head)
+    const head = createPortal(<PortalHead />, doc?.head)
     const body = createPortal(children, doc?.body)
 
     return [head, body]

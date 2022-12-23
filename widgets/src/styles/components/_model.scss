@@ -10,7 +10,6 @@ $block: 'tly-modal';
   padding: 24px;
   box-shadow: 0px 12px 12px #00000014;
   border-radius: 12px;
-
   display: flex;
   flex-direction: column;
 
@@ -22,12 +21,7 @@ $block: 'tly-modal';
     height: 100%;
     background-color: #0000007b;
     opacity: 0;
-    z-index: -1;
-    transform: translate3d(0, 0, 0);
-    transition: max-height 0s ease-in-out 0.25s, width 0s ease-in-out 0.25s,
-      opacity 0.25s ease-in-out 0s, z-index 0s ease-in-out 0.25s,
-      transform 0.25s ease-in-out 0s;
-
+    z-index: var(--tly-z-index);
     display: flex;
     justify-content: center;
   }
@@ -42,14 +36,5 @@ $block: 'tly-modal';
     border: none;
     background-color: transparent;
     cursor: pointer;
-  }
-
-  &--is-open {
-    opacity: 1;
-    transform: translate3d(0, -0.1%, 0);
-    transition: max-height 0s ease-in-out 0s, width 0s ease-in-out 0s,
-      opacity 0.25s ease-in-out 0.01s, z-index 0s ease-in-out,
-      transform 0.25s ease-in-out 0.01s;
-    z-index: var(--tly-z-index);
   }
 }

@@ -124,7 +124,7 @@ export const Order = ({
     >
       <Animated.h2
         className="tly-order-title"
-        initial={{ opacity: 0, y: '-0.10em' }}
+        initial={{ opacity: 0, y: '-0.7em' }}
         animate={{ color: backgroundAndColor.color, opacity: 1, y: '0em' }}
         transition={{ duration: 0.2, ease: [0.2, 0.65, 0.3, 0.9] }}
         key={getNumberOrder()}
