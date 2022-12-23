@@ -24,7 +24,8 @@ export const Articles = () => {
         buttonText={translate('home.articles.get_turnly.button_text')}
         buttonProps={{
           isDefault: true,
-          onClick: () => window.location.replace(config.TURNLY_URL),
+          onClick: () =>
+            window.open(config.TURNLY_URL, '_blank', 'noopener,noreferrer'),
         }}
       />
     </div>
