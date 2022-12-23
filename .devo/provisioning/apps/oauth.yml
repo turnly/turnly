@@ -45,7 +45,7 @@ services:
 
       # Adding OAuth-middleware to traefik
       - traefik.http.middlewares.oauth-middleware.forwardauth.address=http://oauth.turnly.local:4181
-      - traefik.http.middlewares.oauth-middleware.forwardauth.authResponseHeaders=X-Forwarded-User, X-Forwarded-Host, X-Forwarded-For, X-Forwarded-Uri, X-Secret
+      - traefik.http.middlewares.oauth-middleware.forwardauth.authResponseHeaders=X-Forwarded-User, X-Forwarded-Host, X-Forwarded-For, X-Forwarded-Uri
       - traefik.http.middlewares.oauth-middleware.forwardauth.trustForwardHeader=true
 
       # Attach the OAuth-middleware to this service

@@ -201,7 +201,7 @@ So when all of this is set up, you will be able to use the following URLs to int
 | **Back Office API**                   | `http://{organization}.turnly.local/api/v1/back_office`   |
 | **Widgets API**                       | `http://{organization}.turnly.local/api/v1/widgets`       |
 | **Real Time Messaging API**           | `http://{organization}.turnly.local/api/v1/rtm`           |
-| **Identity & Access Management API**  | `http://accounts.turnly.local/api/v1`                     |
+| **Identity & Access Management API**  | `http://accounts.turnly.local`                           |
 
 ### Start specific application (Development Mode)
 
@@ -224,7 +224,7 @@ you want to contribute to and you'll find a README with details on how to run ju
 | [Assistance Centers](/apps/assistance-centers)  | Locations, services offered, working hours, desk, etc.            | 🟢   |
 | [Business Owners](/apps/business-owners)        | Organizations management, promotions, etc.                        | 🟢   |
 | [Custom Fields](/apps/custom-fields)            | Business Data Fields, Customers and Agents answers.               | 🟢   |
-| [Heimdall IAM](/apps/heimdall)                  | Identity & Access Management (SSO).                               | 🔴   |
+| [Heimdall IAM](/apps/iam)                       | Identity & Access Management (SSO).                               | 🟢   |
 | [Notifications](/apps/notifications)            | Customers reminders, SMS, Calls, WhatsApp messages.               | 🔴   |
 | [Queuing System](/apps/queuing-system)          | Tickets and Customers management.                                 | 🟢   |
 | [Tasks Scheduling](/apps/tasks-scheduling)      | Scheduling of internal tasks, cleaning, batch, etc.               | 🔴   |

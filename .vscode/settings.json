@@ -20,7 +20,6 @@
   "typescript.tsdk": "node_modules/typescript/lib",
   "eslint.workingDirectories": [
     "apps/addons",
-    "apps/heimdall",
     "apps/assistance-centers",
     "apps/teams",
     "apps/custom-fields",

@@ -58,7 +58,7 @@ them aware of the life cycle of their tickets.
 ## 🚧 Project Status
 
 - [x] **Demo**: We are developing and testing Turnly Widgets.
-- [ ] **Demo**: We are developing and testing Turnly Help Desk with a closed set of customers.
+- [x] **Demo**: We are developing and testing Turnly Help Desk with a closed set of customers.
 - [ ] **Demo**: We are developing and testing Turnly Back Office with a closed set of customers.
 - [ ] **Alpha**: We are testing Turnly with a closed set of customers.
 - [ ] **Public Alpha**: Anyone can sign up over at [turnly.app](https://turnly.app).
@@ -77,10 +77,9 @@ Our ecosystem is completely divided into multiple applications with specific pur
 
 | Name                                            | Description                                                          | Live |
 | ----------------------------------------------- | -------------------------------------------------------------------- |:----:|
-| [Iam](https://github.com/turnly/iam)            | Identity & Access Management                                         | 🔴   |
 | [Widgets](/widgets)                             | Web widget-based application for ticket-taking                       | 🟢   |
 | [Tessa](https://github.com/turnly/tessa)        | Backoffice, app to manage organization resources                     | 🔴   |
-| [Sansa](https://github.com/turnly/sansa)        | Helpdesk, app for your organization's agents to serve your customers | 🔴   |
+| [Sansa](https://github.com/turnly/helpdesk)     | Helpdesk, app for your organization's agents to serve your customers | 🟢   |
 
 ## 🧑🏻‍🚒 Contributing
 

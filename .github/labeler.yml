@@ -1,7 +1,5 @@
 addons:
   - apps/addons/**/*
-heimdall:
-  - apps/heimdall/**/*
 assistance-centers:
   - apps/assistance-centers/**/*
 teams:
