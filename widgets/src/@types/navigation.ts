@@ -18,6 +18,5 @@ export type TNavigatorContext = {
 export type TNavigatorChildren = VNode<TScreenProps> | VNode<TScreenProps>[]
 
 export interface INavigatorProps {
-  initialScreen: SCREEN_NAMES
   children: TNavigatorChildren
 }

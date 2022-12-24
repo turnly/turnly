@@ -20,6 +20,10 @@ $block: 'tly-header';
     }
   }
 
+  &-actions {
+    display: flex;
+  }
+
   &-back {
     $size: 32px;
     display: flex;

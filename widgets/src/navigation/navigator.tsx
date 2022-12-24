@@ -1,12 +1,11 @@
 import { AnimatePresence } from 'framer-motion'
-import { h } from 'preact'
-import { useMemo, useRef, useState } from 'preact/hooks'
+import { Fragment, h } from 'preact'
+import { useMemo } from 'preact/hooks'
 
 import type { INavigatorProps } from '../@types/navigation'
 import { ERROR_MESSAGES } from '../data'
-import { NavigatorContext } from './navigator-context'
 import { navigatorWarnings } from './navigator-warnings'
-import type { SCREEN_NAMES } from './screen-names'
+import { useNavigator } from './use-navigator'
 
 /**
  * Navigator Provider
@@ -17,23 +16,9 @@ import type { SCREEN_NAMES } from './screen-names'
  *
  * @author Turnly
  */
-export const Navigator = ({
-  initialScreen,
-  children,
-  ...props
-}: INavigatorProps) => {
+export const Navigator = ({ children }: INavigatorProps) => {
   navigatorWarnings(children) // @patch-line
-
-  const initialScreenRef = useRef(initialScreen).current
-  const [currentScreen, navigate] = useState<SCREEN_NAMES>(initialScreenRef)
-
-  const context = useMemo(
-    () => ({
-      currentScreen,
-      navigate,
-    }),
-    [currentScreen]
-  )
+  const { currentScreen } = useNavigator()
 
   const screen = useMemo(
     () =>
@@ -46,8 +31,8 @@ export const Navigator = ({
   if (!screen) throw new Error(ERROR_MESSAGES.NAVIGATOR_NO_CHILDREN)
 
   return (
-    <NavigatorContext.Provider {...{ ...props }} value={context}>
+    <Fragment>
       <AnimatePresence mode="wait">{screen}</AnimatePresence>
-    </NavigatorContext.Provider>
+    </Fragment>
   )
 }

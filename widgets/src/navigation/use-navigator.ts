@@ -1,12 +1,21 @@
-import { useContext } from 'preact/hooks'
+import { useCallback } from 'preact/hooks'
+import create from 'zustand'
+import shallow from 'zustand/shallow'
 
-import { ERROR_MESSAGES } from '../data'
-import { NavigatorContext } from './navigator-context'
+import { SCREEN_NAMES } from './screen-names'
 
-export const useNavigator = () => {
-  const navigation = useContext(NavigatorContext)
-
-  if (!navigation) throw new Error(ERROR_MESSAGES.OUTSIDE_OF_PROVIDER)
-
-  return navigation
+interface NavigatorState {
+  currentScreen: SCREEN_NAMES
+  navigate: (screen: SCREEN_NAMES) => void
 }
+
+const useStore = create<NavigatorState>(set => ({
+  currentScreen: SCREEN_NAMES.HOME,
+  navigate: screen => set(() => ({ currentScreen: screen })),
+}))
+
+export const useNavigator = () =>
+  useStore(
+    useCallback(s => s, []),
+    shallow
+  )

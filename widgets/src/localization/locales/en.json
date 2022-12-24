@@ -121,5 +121,11 @@
     "network": "Oops, we couldn't connect to the server, please check your internet connection and try again.",
     "not_found": "Oops, we couldn't find any results for your search.",
     "client": "Oops, we couldn't connect to the server, please try again later."
+  },
+  "close_widget": {
+    "title": "Are you sure?",
+    "description": "If you close the widget, you'll lose the information you entered and have to start over.",
+    "affirmative_button_text": "I understand, close",
+    "negative_button_text": "No, I want to stay"
   }
 }
