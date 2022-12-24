@@ -1,11 +1,11 @@
 import * as Apollo from '@apollo/client'
 
-import { Notifier } from '../../components/notification'
 import {
   GetTicketQuery as Query,
   GetTicketQueryVariables as Variables,
   useGetTicketLazyQuery as useQuery,
 } from '../generated/graphql'
+import { onErrorHandler } from './on-error-handler'
 
 export const useGetTicketQuery = (
   options: Apollo.QueryHookOptions<Query, Variables>
@@ -14,7 +14,7 @@ export const useGetTicketQuery = (
     ...options,
     fetchPolicy: 'cache-and-network',
     onError: error => {
-      Notifier.error(error.message)
+      onErrorHandler(error)
 
       if (options.onError) options.onError(error)
     },

@@ -1,12 +1,12 @@
-import { Notifier } from '../../components/notification'
 import {
   TicketModel as Input,
   useLeaveTicketMutation as useMutation,
 } from '../generated/graphql'
+import { onErrorHandler } from './on-error-handler'
 
 export const useLeaveTicket = () => {
   const [leaveTicket, { error, loading: isLoading, data }] = useMutation({
-    onError: error => Notifier.error(error.message),
+    onError: onErrorHandler,
   })
 
   return {

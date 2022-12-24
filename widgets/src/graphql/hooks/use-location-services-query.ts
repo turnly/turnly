@@ -1,13 +1,13 @@
 import * as Apollo from '@apollo/client'
 import { useEffect, useMemo } from 'preact/hooks'
 
-import { Notifier } from '../../components/notification'
 import { useLoading } from '../../hooks/use-loading'
 import {
   GetLocationServicesQuery as Query,
   GetLocationServicesQueryVariables as Variables,
   useGetLocationServicesQuery as useQuery,
 } from '../generated/graphql'
+import { onErrorHandler } from './on-error-handler'
 
 export type LocationServicesData = Query['getLocationServices']
 
@@ -21,7 +21,11 @@ export const useLocationServicesQuery = (
   } = useQuery({
     ...options,
     fetchPolicy: 'cache-and-network',
-    onError: error => Notifier.error(error.message),
+    onError: error => {
+      onErrorHandler(error)
+
+      if (options.onError) options.onError(error)
+    },
   })
 
   const { setLoading } = useLoading()

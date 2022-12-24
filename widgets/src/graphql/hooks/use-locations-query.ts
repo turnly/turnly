@@ -1,18 +1,16 @@
 import * as Apollo from '@apollo/client'
 import { useMemo } from 'preact/hooks'
 
-import { Notifier } from '../../components/notification'
-import { useTranslation } from '../../localization'
 import {
   LocationsQuery as Query,
   LocationsQueryVariables as Variables,
   useLocationsQuery as useQuery,
 } from '../generated/graphql'
+import { onErrorHandler } from './on-error-handler'
 
 export const useLocationsQuery = (
   options?: Apollo.QueryHookOptions<Query, Variables>
 ) => {
-  const { translate } = useTranslation()
   const {
     data,
     error,
@@ -22,14 +20,9 @@ export const useLocationsQuery = (
     ...options,
     notifyOnNetworkStatusChange: true,
     onError: error => {
-      const isNotFound = error.graphQLErrors.some(
-        ({ extensions }) => extensions['code'] === 'NOT_FOUND'
-      )
+      onErrorHandler(error)
 
-      if (isNotFound)
-        return Notifier.warning(translate('locations.labels.search_no_results'))
-
-      Notifier.error(error.message)
+      if (options?.onError) options.onError(error)
     },
   })
 

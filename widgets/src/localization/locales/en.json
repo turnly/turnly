@@ -116,5 +116,10 @@
     }
   },
   "continue": "Continue",
-  "powered_by": "Powered by"
+  "powered_by": "Powered by",
+  "errors": {
+    "network": "Oops, we couldn't connect to the server, please check your internet connection and try again.",
+    "not_found": "Oops, we couldn't find any results for your search.",
+    "client": "Oops, we couldn't connect to the server, please try again later."
+  }
 }
