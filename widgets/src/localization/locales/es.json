@@ -124,7 +124,7 @@
   },
   "close_widget": {
     "title": "Are you sure?",
-    "description": "If you close the widget, you'll lose the information you entered and have to start over.",
+    "description": "If you close the widget, you'll lose the information you entered and if you have a ticket, you'll be left from the line and have to start over.",
     "affirmative_button_text": "I understand, close",
     "negative_button_text": "No, I want to stay"
   }
