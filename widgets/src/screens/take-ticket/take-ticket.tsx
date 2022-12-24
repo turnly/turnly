@@ -87,11 +87,7 @@ export const TakeTicketScreen = () => {
     }
   }
 
-  if (isLoading || !fields) {
-    console.log('erroro')
-
-    return null
-  }
+  if (isLoading || !fields) return null
 
   return (
     <Fragment>
