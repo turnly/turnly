@@ -18,9 +18,9 @@ function print_system_statuses() {
 
   info " 🟢 Widgets API                             : http://{organization}.$APP_DOMAIN/api/v1/widgets"
   info " 🟢 Real Time Messaging API                 : http://{organization}.$APP_DOMAIN/api/v1/rtm"
-  info " 🔴 Help Desk API                           : http://{organization}.$APP_DOMAIN/api/v1/help_desk"
+  info " 🟢 Help Desk API                           : http://{organization}.$APP_DOMAIN/api/v1/help_desk"
   info " 🔴 Bank Office API                         : http://{organization}.$APP_DOMAIN/api/v1/bank_office"
-  info " 🔴 Identity & Access Management API        : http://accounts.$APP_DOMAIN/api/v1"
+  info " 🟢 Identity & Access Management API        : http://accounts.$APP_DOMAIN"
 
   line
 

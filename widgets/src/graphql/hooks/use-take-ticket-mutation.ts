@@ -1,12 +1,12 @@
-import { Notifier } from '../../components/notification'
 import {
   TicketInput as Input,
   useTakeTicketMutation as useMutation,
 } from '../generated/graphql'
+import { onErrorHandler } from './on-error-handler'
 
 export const useTakeTicketMutation = () => {
   const [takeTicket, { error, loading: isLoading, data }] = useMutation({
-    onError: error => Notifier.error(error.message),
+    onError: onErrorHandler,
   })
 
   return {
