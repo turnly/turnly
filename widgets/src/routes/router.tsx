@@ -21,7 +21,7 @@ export const Router = () => {
   }, [])
 
   return (
-    <Navigator initialScreen={SCREEN_NAMES.HOME}>
+    <Navigator>
       <Screen
         title={translate('home.title')}
         name={SCREEN_NAMES.HOME}

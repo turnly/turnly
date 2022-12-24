@@ -1,25 +1,82 @@
-import { h } from 'preact'
+import { Fragment, h } from 'preact'
+import { useState } from 'preact/compat'
+import { AiOutlineLine } from 'react-icons/ai'
 
+import { useCurrentLocation } from '../../../hooks/use-current-location'
+import { useInternalState } from '../../../hooks/use-internal-state'
 import { useShowWidget } from '../../../hooks/use-show-widget'
 import { useTitle } from '../../../hooks/use-title'
+import { useTranslation } from '../../../localization/hooks'
+import { SCREEN_NAMES, useNavigator } from '../../../navigation'
+import { LocationParams } from '../../locations'
+import { Modal } from '../../modal'
 import { CloseIcon } from '../../svg'
 import { Title } from '../../typography'
 
 export const Header = () => {
+  const { translate } = useTranslation()
   const { setHide } = useShowWidget()
   const { title } = useTitle()
+  const { navigate } = useNavigator()
+  const { ticket, service, setAnswers, setTicket, setService } =
+    useInternalState()
+  const { id: idLocation, setCurrentLocation } = useCurrentLocation()
+  const [isShowingConfirm, setConfirm] = useState<boolean>(false)
+
+  const closeWidget = async () => {
+    await Promise.all([
+      setCurrentLocation({} as LocationParams),
+      setAnswers([]),
+      setTicket(null),
+      setService(null),
+      setHide(),
+      navigate(SCREEN_NAMES.HOME),
+    ])
+  }
+
+  const handleToClose = () => {
+    if (service || ticket || idLocation) {
+      setConfirm(true)
+      return
+    }
+
+    closeWidget()
+  }
 
   return (
-    <div className="tly-header">
-      <div className="tly-header-back" />
-      <Title level={5} hasGaps={false}>
-        {title}
-      </Title>
-      <div className="tly-header-actions">
-        <button className="tly-header-btn-close" onClick={setHide}>
-          <CloseIcon />
-        </button>
+    <Fragment>
+      <Modal
+        title={translate('close_widget.title')}
+        description={translate('close_widget.description')}
+        buttons={[
+          {
+            children: translate('close_widget.affirmative_button_text'),
+            isPrimary: true,
+            onClick: () => closeWidget(),
+          },
+          {
+            children: translate('close_widget.negative_button_text'),
+            isDefault: true,
+            onClick: () => setConfirm(false),
+          },
+        ]}
+        isShowing={isShowingConfirm}
+      />
+
+      <div className="tly-header">
+        <div className="tly-header-back" />
+        <Title level={5} hasGaps={false}>
+          {title}
+        </Title>
+        <div className="tly-header-actions">
+          <button className="tly-header-btn-close" onClick={setHide}>
+            <AiOutlineLine color="var(--tly-gray)" />
+          </button>
+          <button className="tly-header-btn-close" onClick={handleToClose}>
+            <CloseIcon />
+          </button>
+        </div>
       </div>
-    </div>
+    </Fragment>
   )
 }
