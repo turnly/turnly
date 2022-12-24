@@ -31,7 +31,9 @@ export const TakeTicketScreen = () => {
   const { takeNewTicket, isLoading: isCreating } = useTakeTicketMutation()
   const { service, setAnswers, setTicket } = useInternalState()
   const { id: locationId } = useCurrentLocation()
-  const methods = useForm()
+  const methods = useForm({
+    defaultValues: { notifications: [], notification_phone: undefined },
+  })
 
   const [fields, setFields] = useState<ServiceFieldData | null>(null)
 
@@ -85,7 +87,11 @@ export const TakeTicketScreen = () => {
     }
   }
 
-  if (isLoading || !fields) return null
+  if (isLoading || !fields) {
+    console.log('erroro')
+
+    return null
+  }
 
   return (
     <Fragment>
@@ -121,29 +127,28 @@ export const TakeTicketScreen = () => {
                 />
               </FormField>
 
-              {Array.isArray(methods.watch('notifications')) &&
-                methods.watch('notifications').length > 0 && (
-                  <FormField addGaps key="notifications.preference_phone">
-                    <Title level={5} hasGaps={false}>
-                      {translate('fields.notifications.preference_phone')}
-                    </Title>
+              {methods.watch('notifications').length > 0 && (
+                <FormField addGaps key="notifications.preference_phone">
+                  <Title level={5} hasGaps={false}>
+                    {translate('fields.notifications.preference_phone')}
+                  </Title>
 
-                    <Controller
-                      name="notification_phone"
-                      control={methods.control}
-                      render={({ field, fieldState: { error } }) => (
-                        <PhoneInput
-                          isDanger={!!error}
-                          {...field}
-                          textError={error?.message}
-                        />
-                      )}
-                      rules={{
-                        required: translate('fields.required'),
-                      }}
-                    />
-                  </FormField>
-                )}
+                  <Controller
+                    name="notification_phone"
+                    control={methods.control}
+                    render={({ field, fieldState: { error } }) => (
+                      <PhoneInput
+                        isDanger={!!error}
+                        {...field}
+                        textError={error?.message}
+                      />
+                    )}
+                    rules={{
+                      required: translate('fields.required'),
+                    }}
+                  />
+                </FormField>
+              )}
             </Form>
           </FormProvider>
         </div>

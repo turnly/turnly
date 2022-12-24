@@ -2,8 +2,10 @@ import { Fragment, h } from 'preact'
 import { useState } from 'preact/compat'
 import { AiOutlineLine } from 'react-icons/ai'
 
+import { useLeaveTicket } from '../../../graphql/hooks/use-leave-ticket-mutation'
 import { useCurrentLocation } from '../../../hooks/use-current-location'
 import { useInternalState } from '../../../hooks/use-internal-state'
+import { useSearchParams } from '../../../hooks/use-search-params'
 import { useShowWidget } from '../../../hooks/use-show-widget'
 import { useTitle } from '../../../hooks/use-title'
 import { useTranslation } from '../../../localization/hooks'
@@ -18,19 +20,29 @@ export const Header = () => {
   const { setHide } = useShowWidget()
   const { title } = useTitle()
   const { navigate } = useNavigator()
+  const { leaveCurrentTicket, isLoading: isLeaving } = useLeaveTicket()
   const { ticket, service, setAnswers, setTicket, setService } =
     useInternalState()
   const { id: idLocation, setCurrentLocation } = useCurrentLocation()
+  const { deleteSearchParams } = useSearchParams()
   const [isShowingConfirm, setConfirm] = useState<boolean>(false)
 
   const closeWidget = async () => {
+    if (ticket) {
+      await Promise.all([
+        leaveCurrentTicket(ticket.id),
+        deleteSearchParams('tly-ticket-id'),
+      ])
+    }
+
     await Promise.all([
       setCurrentLocation({} as LocationParams),
       setAnswers([]),
       setTicket(null),
       setService(null),
-      setHide(),
       navigate(SCREEN_NAMES.HOME),
+      setConfirm(false),
+      setHide(),
     ])
   }
 
@@ -53,11 +65,13 @@ export const Header = () => {
             children: translate('close_widget.affirmative_button_text'),
             isPrimary: true,
             onClick: () => closeWidget(),
+            isLoading: isLeaving,
           },
           {
             children: translate('close_widget.negative_button_text'),
             isDefault: true,
             onClick: () => setConfirm(false),
+            disabled: isLeaving,
           },
         ]}
         isShowing={isShowingConfirm}

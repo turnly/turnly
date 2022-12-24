@@ -30,7 +30,7 @@ export const Form = forwardRef<HTMLFormElement, Partial<FormProps>>(
         ref={ref}
         key="form"
       >
-        <AnimatePresence mode="wait">{attributes.children}</AnimatePresence>
+        <AnimatePresence>{attributes.children}</AnimatePresence>
       </Animated.form>
     )
   }
