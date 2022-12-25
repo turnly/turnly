@@ -50,3 +50,4 @@ services:
 
       # Attach the OAuth-middleware to this service
       - traefik.http.routers.oauth-public.middlewares=oauth-middleware
+    command: "./oauth --rule.public.action=allow --rule.public.rule=PathPrefix(`${PREFIX_UNAUTHENTICATED_ROUTES}`)"

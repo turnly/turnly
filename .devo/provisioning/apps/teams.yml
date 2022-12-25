@@ -37,8 +37,8 @@ services:
       # but in production, microservices communicate on the internal network, so gRPC APIs should not be exposed.
       - traefik.enable=true
       - traefik.docker.network=turnly.network.internal
-      - traefik.http.routers.teams-public.entrypoints=web,websecure
-      - traefik.http.routers.teams-public.service=teams-public
-      - traefik.http.services.teams-public.loadbalancer.server.scheme=h2c
-      - traefik.http.routers.teams-public.rule=PathPrefix(`/turnly.teams.v1`)
+      - traefik.http.routers.teams-internal.entrypoints=web,websecure
+      - traefik.http.routers.teams-internal.service=teams-internal
+      - traefik.http.services.teams-internal.loadbalancer.server.scheme=h2c
+      - traefik.http.routers.teams-internal.rule=PathPrefix(`/turnly.teams.v1`)
     # ----------------------> WARNING: FOR DEVELOPMENT ONLY <----------------------
