@@ -22,7 +22,7 @@ export const ServicesScreen = () => {
       </div>
 
       <FooterScreen>
-        <div className="tly-ticket-details-buttons">
+        <div className="tly-services-buttons">
           <Button
             onClick={() => navigate(SCREEN_NAMES.TAKE_TICKET)}
             disabled={!service}

@@ -3,14 +3,12 @@ import { useState } from 'preact/compat'
 import { AiOutlineLine } from 'react-icons/ai'
 
 import { useLeaveTicket } from '../../../graphql/hooks/use-leave-ticket-mutation'
-import { useCurrentLocation } from '../../../hooks/use-current-location'
 import { useInternalState } from '../../../hooks/use-internal-state'
 import { useSearchParams } from '../../../hooks/use-search-params'
 import { useShowWidget } from '../../../hooks/use-show-widget'
 import { useTitle } from '../../../hooks/use-title'
 import { useTranslation } from '../../../localization/hooks'
 import { SCREEN_NAMES, useNavigator } from '../../../navigation'
-import { LocationParams } from '../../locations'
 import { Modal } from '../../modal'
 import { CloseIcon } from '../../svg'
 import { Title } from '../../typography'
@@ -23,7 +21,6 @@ export const Header = () => {
   const { leaveCurrentTicket, isLoading: isLeaving } = useLeaveTicket()
   const { ticket, service, setAnswers, setTicket, setService } =
     useInternalState()
-  const { id: idLocation, setCurrentLocation } = useCurrentLocation()
   const { deleteSearchParams } = useSearchParams()
   const [isShowingConfirm, setConfirm] = useState<boolean>(false)
 
@@ -36,7 +33,6 @@ export const Header = () => {
     }
 
     await Promise.all([
-      setCurrentLocation({} as LocationParams),
       setAnswers([]),
       setTicket(null),
       setService(null),
@@ -47,7 +43,7 @@ export const Header = () => {
   }
 
   const handleToClose = () => {
-    if (service || ticket || idLocation) {
+    if (service || ticket) {
       setConfirm(true)
       return
     }
