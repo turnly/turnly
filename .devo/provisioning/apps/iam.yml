@@ -50,8 +50,4 @@ services:
       - traefik.http.routers.iam-public.entrypoints=web,websecure
       - traefik.http.routers.iam-public.service=iam-public
       - traefik.http.services.iam-public.loadbalancer.server.port=8080
-
-      # ----------------------> WARNING: FOR DEVELOPMENT ONLY <----------------------
-      - traefik.http.routers.iam-public.rule=Host(`${IAM_HOSTNAME}`)
-      # - traefik.http.routers.iam-public.rule=Host(`${IAM_HOSTNAME}`) && PathPrefix(`/js`, `/realms`, `/resources`, `/robots.txt`)
-      # ----------------------> WARNING: FOR DEVELOPMENT ONLY <----------------------
+      - traefik.http.routers.iam-public.rule=Host(`${IAM_HOSTNAME}`) && PathPrefix(`/admin`, `/js`, `/realms`, `/resources`, `/robots.txt`)

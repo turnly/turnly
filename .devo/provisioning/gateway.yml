@@ -6,6 +6,21 @@ services:
       file: common.yml
       service: common
     image: turnly/gateway:latest
+    command:
+      - --log.level=DEBUG
+      - --api.insecure=true
+      - --api.dashboard=true
+      - --providers.docker
+      - --providers.docker.exposedbydefault=false
+      - --providers.docker.network=turnly.network.internal
+      - --entrypoints.web.address=:80
+      - --entrypoints.websecure.address=:443
+      - --entrypoints.rabbitmq.address=:${RABBITMQ_UI_PORT}
+      - --entrypoints.kibana.address=:${ELASTICSEARCH_UI_PORT}
+      - --entrypoints.postgres.address=:${POSTGRES_ADMINER_PORT}
+      - --entrypoints.mongo.address=:${MONGO_UI_PORT}
+      - --entrypoints.redis.address=:${REDIS_UI_PORT}
+      - --entrypoints.storage.address=:${MINIO_UI_PORT}
     container_name: gateway
     build:
       context: ${DOCKER_RELATIVE_APPS_DIR}/gateway
@@ -13,11 +28,17 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
     ports:
-    # ----------------------> WARNING: FOR DEVELOPMENT ONLY <----------------------
-      - ${TRAEFIK_UI_PORT}:8080
-    # ----------------------> WARNING: FOR DEVELOPMENT ONLY <----------------------
       - 80:80
       - 443:443
+      # ----------------------> WARNING: FOR DEVELOPMENT ONLY <----------------------
+      - ${TRAEFIK_UI_PORT}:8080
+      # ----------------------> WARNING: FOR DEVELOPMENT ONLY <----------------------
+      - ${RABBITMQ_UI_PORT}:${RABBITMQ_UI_PORT}
+      - ${ELASTICSEARCH_UI_PORT}:${ELASTICSEARCH_UI_PORT}
+      - ${POSTGRES_ADMINER_PORT}:${POSTGRES_ADMINER_PORT}
+      - ${MONGO_UI_PORT}:${MONGO_UI_PORT}
+      - ${REDIS_UI_PORT}:${REDIS_UI_PORT}
+      - ${MINIO_UI_PORT}:${MINIO_UI_PORT}
     networks:
       turnly.network.public:
       turnly.network.internal:

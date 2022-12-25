@@ -7,10 +7,6 @@ services:
       service: common
     container_name: postgres_ui
     image: adminer:4.8.1
-    # ----------------------> WARNING: FOR DEVELOPMENT ONLY <----------------------
-    ports:
-      - ${POSTGRES_ADMINER_PORT:-8180}:8080
-    # ----------------------> WARNING: FOR DEVELOPMENT ONLY <----------------------
     networks:
       turnly.network.public:
       turnly.network.internal:
@@ -21,3 +17,15 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=turnly.network.internal
+
+      - traefik.http.routers.postgres-public.entrypoints=postgres
+      - traefik.http.routers.postgres-public.service=postgres-public
+      - traefik.http.routers.postgres-public.rule=Host(`${APP_INFRA_DOMAIN}`)
+      - traefik.http.services.postgres-public.loadbalancer.server.port=8080
+
+      # Attach the OAuth-middleware to this service
+      - traefik.http.routers.postgres-public.middlewares=oauth-infra-middleware
+

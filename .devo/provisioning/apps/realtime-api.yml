@@ -33,10 +33,10 @@ services:
       - traefik.docker.network=turnly.network.internal
 
       # These tags are used to enable authenticated access to the service via OAuth-middleware.
-      - traefik.http.routers.realtime-api-private.entrypoints=web,websecure
-      - traefik.http.routers.realtime-api-private.rule=PathPrefix(`/api/v1/rtm`)
-      - traefik.http.routers.realtime-api-private.service=realtime-api-private
-      - traefik.http.services.realtime-api-private.loadbalancer.server.port=${HTTP_PORT}
+      - traefik.http.routers.realtime-api-public.entrypoints=web,websecure
+      - traefik.http.routers.realtime-api-public.rule=PathPrefix(`/api/v1/rtm`)
+      - traefik.http.routers.realtime-api-public.service=realtime-api-public
+      - traefik.http.services.realtime-api-public.loadbalancer.server.port=${HTTP_PORT}
 
       # Attach the OAuth-middleware to this service.
-      - traefik.http.routers.realtime-api-private.middlewares=oauth-middleware
+      - traefik.http.routers.realtime-api-public.middlewares=oauth-middleware
