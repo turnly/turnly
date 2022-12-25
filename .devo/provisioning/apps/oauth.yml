@@ -1,39 +1,45 @@
 version: '3.9'
 
+x-oauth: &oauth
+  extends:
+    file: common.yml
+    service: common
+  image: turnly/oauth:latest
+  build:
+    context: ${DOCKER_RELATIVE_APPS_DIR}/oauth
+    dockerfile: Dockerfile
+  depends_on:
+    iam:
+      condition: service_healthy
+
+x-common-variables: &common-vars
+  # This service shared env variables that extend from common.yml
+  APP_NAME: oauth
+  COOKIE_DOMAIN: ${APP_DOMAIN}
+  ENCRYPTION_KEY: ${IAM_ENCRYPTION_KEY}
+  AUTH_HOST: ${IAM_HOSTNAME}
+  SECRET: ${IAM_SIGNING_KEY}
+  URL_PATH: /_oauth
+  # ----------------------> WARNING: FOR DEVELOPMENT ONLY <----------------------
+  LOG_LEVEL: debug
+  INSECURE_COOKIE: 'true'
+  # ----------------------> WARNING: FOR DEVELOPMENT ONLY <----------------------
+
 services:
   oauth:
-    extends:
-      file: common.yml
-      service: common
+    <<: *oauth
     container_name: oauth
-    image: turnly/oauth:latest
-    build:
-      context: ${DOCKER_RELATIVE_APPS_DIR}/oauth
-      dockerfile: Dockerfile
-    depends_on:
-      iam:
-        condition: service_healthy
+    command: "./oauth --rule.public.action=allow --rule.public.rule=\"PathPrefix(`${PREFIX_UNAUTHENTICATED_ROUTES}`)\""
     networks:
       turnly.network.public:
       turnly.network.internal:
         aliases:
           - oauth.turnly.local
     environment:
-      # This service shared env variables that extend from common.yml
-      APP_NAME: oauth
-
-      COOKIE_DOMAIN: ${APP_DOMAIN}
-      ENCRYPTION_KEY: ${IAM_ENCRYPTION_KEY}
-      AUTH_HOST: ${IAM_HOSTNAME}
-      SECRET: ${IAM_SIGNING_KEY}
+      <<: *common-vars
       PROVIDER_URI: ${IAM_OIDC_PROVIDER_URI}
       CLIENT_ID: ${IAM_OIDC_CLIENT_ID}
       CLIENT_SECRET: ${IAM_OIDC_CLIENT_SECRET}
-
-      # ----------------------> WARNING: FOR DEVELOPMENT ONLY <----------------------
-      LOG_LEVEL: debug
-      INSECURE_COOKIE: 'true'
-      # ----------------------> WARNING: FOR DEVELOPMENT ONLY <----------------------
     labels:
       - traefik.enable=true
       - traefik.docker.network=turnly.network.internal
@@ -50,4 +56,34 @@ services:
 
       # Attach the OAuth-middleware to this service
       - traefik.http.routers.oauth-public.middlewares=oauth-middleware
-    command: "./oauth --rule.public.action=allow --rule.public.rule=\"PathPrefix(`${PREFIX_UNAUTHENTICATED_ROUTES}`)\""
+
+  oauth-infra:
+    <<: *oauth
+    container_name: oauth-infra
+    networks:
+      turnly.network.public:
+      turnly.network.internal:
+        aliases:
+          - oauth-infra.turnly.local
+    environment:
+      <<: *common-vars
+      PROVIDER_URI: ${IAM_INFRA_OIDC_PROVIDER_URI}
+      CLIENT_ID: ${IAM_INFRA_OIDC_CLIENT_ID}
+      CLIENT_SECRET: ${IAM_INFRA_OIDC_CLIENT_SECRET}
+      URL_PATH: /_oauth-infra
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=turnly.network.internal
+
+      - traefik.http.routers.oauth-infra-public.entrypoints=web,websecure
+      - traefik.http.routers.oauth-infra-public.service=oauth-infra-public
+      - traefik.http.routers.oauth-infra-public.rule=Host(`${IAM_HOSTNAME}`) && Path(`/_oauth-infra`)
+      - traefik.http.services.oauth-infra-public.loadbalancer.server.port=4181
+
+      # Adding OAuth-middleware to traefik
+      - traefik.http.middlewares.oauth-infra-middleware.forwardauth.address=http://oauth-infra.turnly.local:4181
+      - traefik.http.middlewares.oauth-infra-middleware.forwardauth.authResponseHeaders=X-Forwarded-User, X-Forwarded-Host, X-Forwarded-For, X-Forwarded-Uri
+      - traefik.http.middlewares.oauth-infra-middleware.forwardauth.trustForwardHeader=true
+
+      # Attach the OAuth-middleware to this service
+      - traefik.http.routers.oauth-infra-public.middlewares=oauth-infra-middleware

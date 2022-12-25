@@ -9,10 +9,6 @@ services:
     container_name: rabbitmq
     tty: true
     stdin_open: true
-    # ----------------------> WARNING: FOR DEVELOPMENT ONLY <----------------------
-    ports:
-      - ${RABBITMQ_UI_PORT}:15672
-    # ----------------------> WARNING: FOR DEVELOPMENT ONLY <----------------------
     expose:
       - 5672
     volumes:
@@ -27,6 +23,17 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=turnly.network.internal
+
+      - traefik.http.routers.rabbitmq-public.entrypoints=rabbitmq
+      - traefik.http.routers.rabbitmq-public.service=rabbitmq-public
+      - traefik.http.routers.rabbitmq-public.rule=Host(`${APP_INFRA_DOMAIN}`)
+      - traefik.http.services.rabbitmq-public.loadbalancer.server.port=15672
+
+      # Attach the OAuth-middleware to this service
+      - traefik.http.routers.rabbitmq-public.middlewares=oauth-infra-middleware
 
 volumes:
   rabbitmq_data:

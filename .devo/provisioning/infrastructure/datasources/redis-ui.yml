@@ -9,10 +9,6 @@ services:
     platform: linux/amd64
     hostname: redis_ui
     image: rediscommander/redis-commander:latest
-    # ----------------------> WARNING: FOR DEVELOPMENT ONLY <----------------------
-    ports:
-      - ${REDIS_UI_PORT}:8081
-    # ----------------------> WARNING: FOR DEVELOPMENT ONLY <----------------------
     networks:
       turnly.network.public:
       turnly.network.internal:
@@ -23,3 +19,14 @@ services:
         condition: service_healthy
     environment:
       - REDIS_HOSTS=${REDIS_UI_HOST}
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=turnly.network.internal
+
+      - traefik.http.routers.redis-public.entrypoints=redis
+      - traefik.http.routers.redis-public.service=redis-public
+      - traefik.http.routers.redis-public.rule=Host(`${APP_INFRA_DOMAIN}`)
+      - traefik.http.services.redis-public.loadbalancer.server.port=8081
+
+      # Attach the OAuth-middleware to this service
+      - traefik.http.routers.redis-public.middlewares=oauth-infra-middleware

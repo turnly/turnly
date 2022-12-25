@@ -11,5 +11,3 @@ ARG TRAEFIK_VERSION=v2.7
 ## Build
 ##
 FROM traefik:${TRAEFIK_VERSION} as builder
-
-COPY config /etc/traefik

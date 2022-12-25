@@ -10,10 +10,6 @@ services:
     image: bitnami/minio:latest
     volumes:
       - minio_data:/data
-    # ----------------------> WARNING: FOR DEVELOPMENT ONLY <----------------------
-    ports:
-      - ${MINIO_UI_PORT}:9001
-    # ----------------------> WARNING: FOR DEVELOPMENT ONLY <----------------------
     expose:
       - 9000
     environment:
@@ -24,6 +20,17 @@ services:
       turnly.network.internal:
         aliases:
           - storage.turnly.local
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=turnly.network.internal
+
+      - traefik.http.routers.storage-public.entrypoints=storage
+      - traefik.http.routers.storage-public.service=storage-public
+      - traefik.http.routers.storage-public.rule=Host(`${APP_INFRA_DOMAIN}`)
+      - traefik.http.services.storage-public.loadbalancer.server.port=9001
+
+      # Attach the OAuth-middleware to this service
+      - traefik.http.routers.storage-public.middlewares=oauth-infra-middleware
 
 volumes:
   minio_data:

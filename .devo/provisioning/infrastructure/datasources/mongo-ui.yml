@@ -7,10 +7,6 @@ services:
       service: common
     container_name: mongo_ui
     image: mongo-express
-    # ----------------------> WARNING: FOR DEVELOPMENT ONLY <----------------------
-    ports:
-      - ${MONGO_UI_PORT}:8081
-    # ----------------------> WARNING: FOR DEVELOPMENT ONLY <----------------------
     networks:
       turnly.network.public:
       turnly.network.internal:
@@ -20,3 +16,14 @@ services:
       ME_CONFIG_MONGODB_ADMINUSERNAME: ${MONGO_USERNAME}
       ME_CONFIG_MONGODB_ADMINPASSWORD: ${MONGO_PASSWORD}
       ME_CONFIG_MONGODB_URL: ${MONGO_URI}
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=turnly.network.internal
+
+      - traefik.http.routers.mongo-public.entrypoints=mongo
+      - traefik.http.routers.mongo-public.service=mongo-public
+      - traefik.http.routers.mongo-public.rule=Host(`${APP_INFRA_DOMAIN}`)
+      - traefik.http.services.mongo-public.loadbalancer.server.port=8081
+
+      # Attach the OAuth-middleware to this service
+      - traefik.http.routers.mongo-public.middlewares=oauth-infra-middleware
