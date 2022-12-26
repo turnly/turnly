@@ -18,7 +18,7 @@ services:
       - APP_DOMAIN
       - RPC_BIND_ADDRESS
       - RPC_CONSUMER_ADDRESS
-      - HTTP_PORT
+      - APP_PORT
       - LOGGING_LEVEL
       - SENTRY_DSN
       - FLUENT_HOST

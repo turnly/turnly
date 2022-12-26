@@ -16,9 +16,9 @@ x-common-variables: &common-vars
   # This service shared env variables that extend from common.yml
   APP_NAME: oauth
   COOKIE_DOMAIN: ${APP_DOMAIN}
-  ENCRYPTION_KEY: ${IAM_ENCRYPTION_KEY}
+  ENCRYPTION_KEY: ${OAUTH_ENCRYPTION_KEY}
   AUTH_HOST: ${IAM_HOSTNAME}
-  SECRET: ${IAM_SIGNING_KEY}
+  SECRET: ${OAUTH_SIGNING_KEY}
   URL_PATH: /_oauth
   # ----------------------> WARNING: FOR DEVELOPMENT ONLY <----------------------
   LOG_LEVEL: debug
@@ -37,9 +37,9 @@ services:
           - oauth.turnly.local
     environment:
       <<: *common-vars
-      PROVIDER_URI: ${IAM_OIDC_PROVIDER_URI}
-      CLIENT_ID: ${IAM_OIDC_CLIENT_ID}
-      CLIENT_SECRET: ${IAM_OIDC_CLIENT_SECRET}
+      PROVIDER_URI: ${OAUTH_OIDC_PROVIDER_URI}
+      CLIENT_ID: ${OAUTH_OIDC_CLIENT_ID}
+      CLIENT_SECRET: ${OAUTH_OIDC_CLIENT_SECRET}
     labels:
       - traefik.enable=true
       - traefik.docker.network=turnly.network.internal
@@ -67,17 +67,17 @@ services:
           - oauth-infra.turnly.local
     environment:
       <<: *common-vars
-      PROVIDER_URI: ${IAM_INFRA_OIDC_PROVIDER_URI}
-      CLIENT_ID: ${IAM_INFRA_OIDC_CLIENT_ID}
-      CLIENT_SECRET: ${IAM_INFRA_OIDC_CLIENT_SECRET}
-      URL_PATH: /_oauth-infra
+      PROVIDER_URI: ${OAUTH_ADMIN_OIDC_PROVIDER_URI}
+      CLIENT_ID: ${OAUTH_ADMIN_OIDC_CLIENT_ID}
+      CLIENT_SECRET: ${OAUTH_ADMIN_OIDC_CLIENT_SECRET}
+      URL_PATH: /_oauth-admin
     labels:
       - traefik.enable=true
       - traefik.docker.network=turnly.network.internal
 
       - traefik.http.routers.oauth-infra-public.entrypoints=web,websecure
       - traefik.http.routers.oauth-infra-public.service=oauth-infra-public
-      - traefik.http.routers.oauth-infra-public.rule=Host(`${IAM_HOSTNAME}`) && Path(`/_oauth-infra`)
+      - traefik.http.routers.oauth-infra-public.rule=Host(`${IAM_HOSTNAME}`) && Path(`/_oauth-admin`)
       - traefik.http.services.oauth-infra-public.loadbalancer.server.port=4181
 
       # Adding OAuth-middleware to traefik

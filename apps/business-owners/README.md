@@ -43,7 +43,7 @@ promotions, exchanges, early adopters, etc.
 | ------------------------ | -------------------------------------------- |
 | `APP_NAME`               | Used for observability of this application.  |
 | `MONGO_DB`               | Database name.                               |
-| `HTTP_PORT`              | Port to expose by the application.           |
+| `APP_PORT`              | Port to expose by the application.           |
 | `RPC_BIND_ADDRESS`       | The RPC bind address. (e.g. 0.0.0.0:50501)   |
 | `RABBITMQ_QUEUE`         | Events queue name in RabbitMQ.               |
 

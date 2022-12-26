@@ -45,7 +45,7 @@ the API in the simplest and most user-friendly way.
 | Name                     | Description                                    |
 | ------------------------ | ---------------------------------------------- |
 | `APP_NAME`               | Used for observability of this application.    |
-| `HTTP_PORT`              | Port to expose by the application.             |
+| `APP_PORT`              | Port to expose by the application.             |
 | `RPC_CONSUMER_ADDRESS`   | The addresses of the rpc servers for clients.  |
 | `RABBITMQ_QUEUE`         | Events queue name in RabbitMQ.                 |
 

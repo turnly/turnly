@@ -12,7 +12,7 @@ services:
       target: ${DOCKER_BUILD_STAGE}
       dockerfile: Dockerfile
       args:
-        PORT: ${HTTP_PORT}
+        PORT: ${APP_PORT}
         NODE_ENV: ${NODE_ENV}
     volumes:
       - ${DOCKER_RELATIVE_APPS_DIR}/helpdesk-api:/app
@@ -35,7 +35,7 @@ services:
       - traefik.http.routers.helpdesk-api-public.entrypoints=web,websecure
       - traefik.http.routers.helpdesk-api-public.rule=PathPrefix(`/api/v1/helpdesk`)
       - traefik.http.routers.helpdesk-api-public.service=helpdesk-api-public
-      - traefik.http.services.helpdesk-api-public.loadbalancer.server.port=${HTTP_PORT}
+      - traefik.http.services.helpdesk-api-public.loadbalancer.server.port=${APP_PORT}
 
       # Attach the OAuth-middleware to this service.
       - traefik.http.routers.helpdesk-api-public.middlewares=oauth-middleware

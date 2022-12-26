@@ -12,7 +12,7 @@ services:
       target: ${DOCKER_BUILD_STAGE}
       dockerfile: Dockerfile
       args:
-        PORT: ${HTTP_PORT}
+        PORT: ${APP_PORT}
         NODE_ENV: ${NODE_ENV}
     volumes:
       - ${DOCKER_RELATIVE_APPS_DIR}/queuing-system:/app
