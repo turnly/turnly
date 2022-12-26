@@ -3113,7 +3113,7 @@
 
 "@turnly/rpc@github:turnly/rpc.git#latest":
   version "1.0.0"
-  resolved "https://codeload.github.com/turnly/rpc/tar.gz/ca89384a004d4ae1fd23856214ed2964ce145e95"
+  resolved "https://codeload.github.com/turnly/rpc/tar.gz/a2c2537bddda032e3546d48d596706fab36833fc"
   dependencies:
     "@grpc/grpc-js" "^1.6.7"
     google-protobuf "^3.20.1"

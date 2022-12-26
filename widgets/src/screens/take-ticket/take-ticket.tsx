@@ -111,11 +111,11 @@ export const TakeTicketScreen = () => {
                 <CheckboxList
                   items={[
                     {
-                      value: 'notification.sms',
+                      value: 'notifications.sms',
                       label: 'SMS',
                     },
                     {
-                      value: 'notification.whatsapp',
+                      value: 'notifications.whatsapp',
                       label: 'Whatsapp',
                     },
                   ]}

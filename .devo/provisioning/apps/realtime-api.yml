@@ -39,4 +39,4 @@ services:
       - traefik.http.services.realtime-api-public.loadbalancer.server.port=${APP_PORT}
 
       # Attach the OAuth-middleware to this service.
-      - traefik.http.routers.realtime-api-public.middlewares=oauth-middleware
+      # - traefik.http.routers.realtime-api-public.middlewares=oauth-middleware

@@ -301,7 +301,6 @@ export class Ticket extends AggregateRoot {
 
   public static getToAttendStatus(): TicketStatus[] {
     return [
-      TicketStatus.BOOKED,
       TicketStatus.AVAILABLE,
       TicketStatus.ANNOUNCED,
       TicketStatus.CALLED,

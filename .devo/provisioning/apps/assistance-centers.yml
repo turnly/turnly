@@ -17,9 +17,9 @@ services:
     volumes:
       - ${DOCKER_RELATIVE_APPS_DIR}/assistance-centers:/app
     depends_on:
-      elasticsearch:
+      elasticsearch: # Disable this if you are using an external ElasticSearch database
         condition: service_healthy
-      mongo:
+      mongo: # Disable this if you are using an external Mongo database
         condition: service_healthy
     networks:
       turnly.network.internal:

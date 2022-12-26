@@ -12,7 +12,7 @@ services:
     volumes:
       - ./infrastructure/observability/fluentd/conf:/fluentd/etc:ro
     depends_on:
-      elasticsearch:
+      elasticsearch: # Disable this if you are using an external ElasticSearch database
         condition: service_healthy
     expose:
       - 24224

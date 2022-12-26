@@ -11,7 +11,7 @@ services:
       context: ${DOCKER_RELATIVE_APPS_DIR}/iam
       dockerfile: Dockerfile
     depends_on:
-      postgres:
+      postgres: # Disable this if you are using an external Postgres database
         condition: service_healthy
     networks:
       turnly.network.public:

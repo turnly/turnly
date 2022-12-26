@@ -1,5 +1,6 @@
 version: '3.9'
 
+# Delete mongo.yml (this) file if you are using an external Mongo database
 services:
   mongo:
     extends:

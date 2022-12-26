@@ -1,5 +1,6 @@
 version: '3.9'
 
+# Delete postgres-ui.yml (this) file if you are using an external Postgres database
 services:
   postgres_ui:
     extends:
