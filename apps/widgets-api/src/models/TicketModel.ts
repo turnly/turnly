@@ -4,7 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { Field, ID, InputType, Int, ObjectType } from 'type-graphql'
+import { Field, ID, InputType, ObjectType } from 'type-graphql'
 
 import { CustomerModel } from './CustomerModel'
 import { LocationModel } from './LocationModel'
@@ -72,8 +72,8 @@ export class TicketModel {
   @Field(() => CustomerModel)
   customer: CustomerModel
 
-  @Field(() => Int)
-  beforeYours: number
+  @Field(() => [String])
+  beforeYours: string[]
 
   @Field(() => String, { nullable: true })
   calledToDesk: string | null

@@ -19,7 +19,6 @@ import {
   Ctx,
   FieldResolver,
   ID,
-  Int,
   Mutation,
   Query,
   Resolver,
@@ -150,7 +149,7 @@ export class TicketsResolver {
     return customer
   }
 
-  @FieldResolver(() => Int)
+  @FieldResolver(() => [String])
   public async beforeYours(
     @Root() ticket: TicketModel,
     @Ctx() { dataSources }: IContext

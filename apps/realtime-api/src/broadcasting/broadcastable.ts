@@ -63,5 +63,6 @@ export const broadcastable = {
      */
     BroadcastableEvents.TICKET_CREATED,
     BroadcastableEvents.TICKET_ANNOUNCED,
+    BroadcastableEvents.TICKET_CANCELLED,
   ],
 }

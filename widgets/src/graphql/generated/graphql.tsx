@@ -135,7 +135,7 @@ export type TicketInput = {
 
 export type TicketModel = {
   __typename?: 'TicketModel';
-  beforeYours: Scalars['Int'];
+  beforeYours: Array<Scalars['String']>;
   calledToDesk?: Maybe<Scalars['String']>;
   customer: CustomerModel;
   customerId: Scalars['ID'];
@@ -153,21 +153,21 @@ export type AnnounceTicketMutationVariables = Exact<{
 }>;
 
 
-export type AnnounceTicketMutation = { __typename?: 'Mutation', announceTicket: { __typename?: 'TicketModel', id: string, status: string, displayCode: string, customerId: string, beforeYours: number, calledToDesk?: string | null } };
+export type AnnounceTicketMutation = { __typename?: 'Mutation', announceTicket: { __typename?: 'TicketModel', id: string, status: string, displayCode: string, customerId: string, beforeYours: Array<string>, calledToDesk?: string | null } };
 
 export type LeaveTicketMutationVariables = Exact<{
   ticketId: Scalars['String'];
 }>;
 
 
-export type LeaveTicketMutation = { __typename?: 'Mutation', leaveTicket: { __typename?: 'TicketModel', id: string, status: string, displayCode: string, customerId: string, beforeYours: number, calledToDesk?: string | null } };
+export type LeaveTicketMutation = { __typename?: 'Mutation', leaveTicket: { __typename?: 'TicketModel', id: string, status: string, displayCode: string, customerId: string, beforeYours: Array<string>, calledToDesk?: string | null } };
 
 export type TakeTicketMutationVariables = Exact<{
   input: TicketInput;
 }>;
 
 
-export type TakeTicketMutation = { __typename?: 'Mutation', takeTicket: { __typename?: 'TicketModel', id: string, status: string, displayCode: string, customerId: string, beforeYours: number, calledToDesk?: string | null } };
+export type TakeTicketMutation = { __typename?: 'Mutation', takeTicket: { __typename?: 'TicketModel', id: string, status: string, displayCode: string, customerId: string, beforeYours: Array<string>, calledToDesk?: string | null } };
 
 export type GetLocationServicesQueryVariables = Exact<{
   locationId: Scalars['ID'];
@@ -200,7 +200,7 @@ export type GetTicketQueryVariables = Exact<{
 }>;
 
 
-export type GetTicketQuery = { __typename?: 'Query', getTicket: { __typename?: 'TicketModel', id: string, status: string, displayCode: string, serviceId: string, beforeYours: number, calledToDesk?: string | null, customerId: string, service: { __typename?: 'ServiceModel', id: string, name: string, description?: string | null }, location: { __typename?: 'LocationModel', name: string, address: string, longitude: string, latitude: string } } };
+export type GetTicketQuery = { __typename?: 'Query', getTicket: { __typename?: 'TicketModel', id: string, status: string, displayCode: string, serviceId: string, beforeYours: Array<string>, calledToDesk?: string | null, customerId: string, service: { __typename?: 'ServiceModel', id: string, name: string, description?: string | null }, location: { __typename?: 'LocationModel', name: string, address: string, longitude: string, latitude: string } } };
 
 
 export const AnnounceTicketDocument = gql`

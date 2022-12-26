@@ -16,6 +16,7 @@ interface Payload extends EventPayload {
   locationId: Guid
   ticketId: Guid
   serviceName: string
+  status: string
 }
 
 export class RealtimeForAgentsTicketsHandler extends AbstractRealtimeHandler<
@@ -33,6 +34,7 @@ export class RealtimeForAgentsTicketsHandler extends AbstractRealtimeHandler<
       customerId: event.payload.customerId,
       serviceName: event.payload.serviceName,
       organizationId: event.payload.organizationId,
+      status: event.payload.status,
     }
 
     channel.to(payload.locationId).emit(
@@ -49,6 +51,7 @@ export class RealtimeForAgentsTicketsHandler extends AbstractRealtimeHandler<
     return [
       BroadcastableEvents.TICKET_ANNOUNCED,
       BroadcastableEvents.TICKET_RETURNED,
+      BroadcastableEvents.TICKET_CANCELLED,
     ]
   }
 }
