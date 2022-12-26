@@ -30,7 +30,7 @@ services:
       - traefik.http.services.storage-public.loadbalancer.server.port=9001
 
       # Attach the OAuth-middleware to this service
-      - traefik.http.routers.storage-public.middlewares=oauth-infra-middleware
+      - traefik.http.routers.storage-public.middlewares=oauth-admin-middleware
 
 volumes:
   minio_data:

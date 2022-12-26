@@ -26,4 +26,4 @@ services:
       - traefik.http.services.mongo-public.loadbalancer.server.port=8081
 
       # Attach the OAuth-middleware to this service
-      - traefik.http.routers.mongo-public.middlewares=oauth-infra-middleware
+      - traefik.http.routers.mongo-public.middlewares=oauth-admin-middleware

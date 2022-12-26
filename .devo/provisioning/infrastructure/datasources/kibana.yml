@@ -27,4 +27,4 @@ services:
       - traefik.http.services.kibana-public.loadbalancer.server.port=5601
 
       # Attach the OAuth-middleware to this service
-      - traefik.http.routers.kibana-public.middlewares=oauth-infra-middleware
+      - traefik.http.routers.kibana-public.middlewares=oauth-admin-middleware

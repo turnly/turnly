@@ -29,4 +29,4 @@ services:
       - traefik.http.services.redis-public.loadbalancer.server.port=8081
 
       # Attach the OAuth-middleware to this service
-      - traefik.http.routers.redis-public.middlewares=oauth-infra-middleware
+      - traefik.http.routers.redis-public.middlewares=oauth-admin-middleware

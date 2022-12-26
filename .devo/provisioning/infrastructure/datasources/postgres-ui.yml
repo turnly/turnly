@@ -27,5 +27,5 @@ services:
       - traefik.http.services.postgres-public.loadbalancer.server.port=8080
 
       # Attach the OAuth-middleware to this service
-      - traefik.http.routers.postgres-public.middlewares=oauth-infra-middleware
+      - traefik.http.routers.postgres-public.middlewares=oauth-admin-middleware
 

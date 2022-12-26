@@ -33,7 +33,7 @@ services:
       - traefik.http.services.rabbitmq-public.loadbalancer.server.port=15672
 
       # Attach the OAuth-middleware to this service
-      - traefik.http.routers.rabbitmq-public.middlewares=oauth-infra-middleware
+      - traefik.http.routers.rabbitmq-public.middlewares=oauth-admin-middleware
 
 volumes:
   rabbitmq_data:
