@@ -28,7 +28,7 @@ export enum TicketStatus {
 }
 
 export type Ticket = {
-  beforeYours: number
+  beforeYours: string[]
   calledToDesk?: string | null
   customerId: string
   displayCode: string

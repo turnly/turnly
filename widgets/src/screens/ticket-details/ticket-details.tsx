@@ -106,7 +106,7 @@ export const TicketDetailsScreen = () => {
   }, [ticket])
 
   const statusLabel = useMemo(
-    () => getStatusColorAndLabelBasedOnNumber(ticket?.beforeYours || 0),
+    () => getStatusColorAndLabelBasedOnNumber(ticket?.beforeYours.length || 0),
     [ticket]
   )
 
@@ -173,11 +173,13 @@ export const TicketDetailsScreen = () => {
 
     const unsub = realtime.subscribe(
       RealtimeEvents.TICKET_BEFORE_YOURS_UPDATED,
-      () => {
-        const beforeYours =
-          ticket.beforeYours === 0 ? 0 : ticket.beforeYours - 1
-
-        setTicket({ ...ticket, beforeYours })
+      event => {
+        setTicket({
+          ...ticket,
+          beforeYours: ticket.beforeYours.filter(
+            id => event.payload.ticketId !== id
+          ),
+        })
       }
     )
 
@@ -269,7 +271,7 @@ export const TicketDetailsScreen = () => {
 
             <Order
               displayCode={ticket?.displayCode}
-              beforeYours={ticket?.beforeYours}
+              beforeYours={ticket?.beforeYours.length}
               status={ticket?.status}
             />
           </div>

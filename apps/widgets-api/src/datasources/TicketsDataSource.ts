@@ -35,9 +35,7 @@ export class TicketsDataSource extends DataSource {
       customerId,
     })
 
-    if (!dataList?.length) return 0
-
-    return dataList.length
+    return dataList.map(ticket => ticket.id)
   }
 
   public async getCalledTo(

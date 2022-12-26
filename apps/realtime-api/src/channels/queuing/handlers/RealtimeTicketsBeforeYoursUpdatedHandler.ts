@@ -24,11 +24,11 @@ export class RealtimeTicketsBeforeYoursUpdatedHandler extends AbstractRealtimeHa
   }
 
   public handle(
-    { payload: { locationId, serviceId, organizationId } }: Event<Payload>,
+    { payload: { locationId, serviceId, organizationId, id } }: Event<Payload>,
     channel: IRealtimeChannel
   ): void {
     const roomId = `${locationId}.${serviceId}`
-    const payload = { locationId, serviceId, organizationId }
+    const payload = { locationId, serviceId, organizationId, ticketId: id }
 
     channel.to(roomId).emit(
       RealtimeEvents.TICKET_BEFORE_YOURS_UPDATED,
