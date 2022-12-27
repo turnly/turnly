@@ -12,7 +12,6 @@ services:
       target: ${DOCKER_BUILD_STAGE}
       dockerfile: Dockerfile
       args:
-        PORT: ${APP_PORT}
         NODE_ENV: ${NODE_ENV}
     volumes:
       - ${DOCKER_RELATIVE_APPS_DIR}/business-owners:/app

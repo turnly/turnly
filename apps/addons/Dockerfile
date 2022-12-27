@@ -16,8 +16,7 @@
 ##
 ARG NODE_VERSION=16.15-alpine3.15 \
     DISTROLESS_VERSION=16 \
-    NODE_ENV=production \
-    PORT=6000
+    NODE_ENV=production
 
 ##
 ## Deps
@@ -47,8 +46,8 @@ RUN apk add --virtual .stage-deps --no-cache --update libc6-compat g++ git cmake
 ##
 FROM node:${NODE_VERSION} AS builder
 
-ARG NODE_ENV PORT
-ENV NODE_ENV=${NODE_ENV} PORT=${PORT}
+ARG NODE_ENV
+ENV NODE_ENV=${NODE_ENV}
 
 WORKDIR /app
 
@@ -75,16 +74,14 @@ RUN yarn build \
 ##
 FROM gcr.io/distroless/nodejs:${DISTROLESS_VERSION} AS production
 
-ARG NODE_ENV PORT
-ENV NODE_ENV=${NODE_ENV} PORT=${PORT}
+ARG NODE_ENV
+ENV NODE_ENV=${NODE_ENV}
 ENV ROOT_DIR=$(pwd) NODE_PATH=dist/
 
 WORKDIR /app
 
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/node_modules ./node_modules
-
-EXPOSE ${PORT}
 
 # Run the application with node runtime already installed from distroless image.
 CMD ["dist/main.js"]
@@ -97,15 +94,13 @@ CMD ["dist/main.js"]
 ##
 FROM node:${NODE_VERSION} AS development
 
-ARG NODE_ENV PORT
-ENV NODE_ENV=${NODE_ENV} PORT=${PORT}
+ARG NODE_ENV
+ENV NODE_ENV=${NODE_ENV}
 
 WORKDIR /app
 
 # Copy dependencies from deps stage
 COPY --from=deps /app/node_modules ./node_modules
-
-EXPOSE ${PORT}
 
 # Run the application with watch mode for automatic code changes.
 CMD ["yarn", "watch"]
