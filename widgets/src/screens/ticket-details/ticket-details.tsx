@@ -22,6 +22,7 @@ import {
   TicketStatus,
   useInternalState,
 } from '../../hooks/use-internal-state'
+import { useNotification } from '../../hooks/use-notification'
 import { RealtimeEvents, useRealtime } from '../../hooks/use-realtime'
 import { useSearchParams } from '../../hooks/use-search-params'
 import { useTranslation } from '../../localization'
@@ -29,6 +30,8 @@ import { SCREEN_NAMES, useNavigator } from '../../navigation'
 
 export const TicketDetailsScreen = () => {
   const { translate } = useTranslation()
+  const { realtime } = useRealtime()
+  const { initNotification, showNotification } = useNotification()
 
   const { navigate } = useNavigator()
   const { ticketId, deleteSearchParams } = useSearchParams()
@@ -62,12 +65,6 @@ export const TicketDetailsScreen = () => {
       navigate(SCREEN_NAMES.HOME)
     },
   })
-
-  useEffect(() => {
-    if (ticketId && !ticket) {
-      getTicketDetails({ variables: { getTicketId: ticketId } })
-    }
-  }, [ticketId, ticket])
 
   const handleModalLeave = useCallback(() => setIsShowing(p => !p), [])
 
@@ -162,7 +159,13 @@ export const TicketDetailsScreen = () => {
     }
   }, [ticket?.status, ticket?.beforeYours])
 
-  const { realtime } = useRealtime()
+  useEffect(() => {
+    if (ticketId && !ticket) {
+      getTicketDetails({ variables: { getTicketId: ticketId } })
+    }
+
+    initNotification()
+  }, [ticketId, ticket])
 
   useEffect(() => {
     if (!realtime || !ticket || !service) return
@@ -174,12 +177,14 @@ export const TicketDetailsScreen = () => {
     const unsub = realtime.subscribe(
       RealtimeEvents.TICKET_BEFORE_YOURS_UPDATED,
       event => {
-        setTicket({
-          ...ticket,
-          beforeYours: ticket.beforeYours.filter(
-            id => event.payload.ticketId !== id
-          ),
-        })
+        const beforeYours = ticket.beforeYours.filter(
+          id => event.payload.ticketId !== id
+        )
+
+        setTicket({ ...ticket, beforeYours })
+        showNotification(
+          `Queue tickets updated, before yours: (${beforeYours.length})`
+        )
       }
     )
 
@@ -189,6 +194,8 @@ export const TicketDetailsScreen = () => {
     }>(RealtimeEvents.TICKET_CALLED, event => {
       if (event.payload.ticketId === ticket.id) {
         setTicket({ ...ticket, status: event.payload.status })
+
+        showNotification('Ticket called to desk!')
       }
     })
 
@@ -202,6 +209,7 @@ export const TicketDetailsScreen = () => {
           event.payload.status === TicketStatus.SERVED_WITH_RATING
         ) {
           setIsCompleted(true)
+          showNotification('Ticket served to desk!')
 
           return
         }
