@@ -10,7 +10,11 @@ dotenv.config()
 import 'Fields/infrastructure/register-dependencies'
 import 'Answers/infrastructure/register-dependencies'
 
-import { eventBus } from '@turnly/shared'
+import { Observability } from '@turnly/common'
+import { config, eventBus } from '@turnly/shared'
+
+Observability.Tracing.Trace.initialize({ name: config.get('app.name') })
+
 import { Application } from 'Application'
 
 async function bootstrap() {

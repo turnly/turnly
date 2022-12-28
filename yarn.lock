@@ -3061,7 +3061,7 @@
 
 "@turnly/common@github:turnly/common.git#latest":
   version "1.0.0"
-  resolved "https://codeload.github.com/turnly/common/tar.gz/67288567e06b640c808034713b875216a2635830"
+  resolved "https://codeload.github.com/turnly/common/tar.gz/47d270b988329817bb6a3de65dbbd9f50ff037cd"
   dependencies:
     "@opentelemetry/api" "^1.1.0"
     "@opentelemetry/exporter-jaeger" "^1.8.0"
@@ -3123,7 +3123,7 @@
 
 "@turnly/realtime@github:turnly/realtime.git#latest":
   version "1.0.0"
-  resolved "https://codeload.github.com/turnly/realtime/tar.gz/b93dce6f99ccb4bf77e4c8c1e7371642e5c4e23f"
+  resolved "https://codeload.github.com/turnly/realtime/tar.gz/ef74dd102eb625be33f7a0ad8b0354ab066c14c8"
   dependencies:
     socket.io "^4.5.1"
 
@@ -3142,7 +3142,7 @@
 
 "@turnly/shared@github:turnly/shared.git#latest":
   version "0.0.0"
-  resolved "https://codeload.github.com/turnly/shared/tar.gz/20c35312ab47e73f23051c9f12723064eae28ce2"
+  resolved "https://codeload.github.com/turnly/shared/tar.gz/8728d43ce5c1695bdcf95bf23ae6b64293b8cf82"
   dependencies:
     "@elastic/elasticsearch" "7.17.0"
     amqp-ts "^1.8.0"
@@ -7790,9 +7790,9 @@ mongodb@4.12.1:
     saslprep "^1.0.3"
 
 mongoose@^6.4.6:
-  version "6.8.1"
-  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-6.8.1.tgz#7a5bf02241b88317ceca459beac9db5ff1ce8225"
-  integrity sha512-utr2hclZ+/QlO+JuVd33dxzvLKtByEhaLj8mEO+tqCm6pgOboKv+DWcvJDEcCMl4Rgd1ubgfYz4cZ9BWyHmC3Q==
+  version "6.8.2"
+  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-6.8.2.tgz#5b11a3ca0f6955e65f8f1e2255dad213e122b4ea"
+  integrity sha512-cIato5N2w/QuJkkh0w4nyf7ty7DqmmP/W8/6PFSM0DrzbxIMlr6VN15LBIceTSJIxbznNl2Mlbh9Rm4sokMw+A==
   dependencies:
     bson "^4.7.0"
     kareem "2.5.0"

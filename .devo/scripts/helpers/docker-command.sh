@@ -10,7 +10,7 @@ function docker_command() {
   line
 
   info "Checking if the networks exists and creating it if it doesn't... 🐳 "
-  execute "docker network inspect turnly.network.internal >/dev/null 2>&1 || docker network create --internal --driver bridge turnly.network.internal"
+  execute "docker network inspect turnly.network.internal >/dev/null 2>&1 || docker network create --driver bridge turnly.network.internal"
   execute "docker network inspect turnly.network.public >/dev/null 2>&1 || docker network create --driver bridge turnly.network.public"
 
   line

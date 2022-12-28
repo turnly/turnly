@@ -7,6 +7,14 @@
 import dotenv from 'dotenv'
 dotenv.config()
 
+import { Observability } from '@turnly/common'
+import { config } from '@turnly/shared'
+
+Observability.Tracing.Trace.initialize({
+  name: config.get('app.name'),
+  instrumentations: [Observability.Tracing.InstrumentationType.HTTP],
+})
+
 import { Application } from 'Application'
 
 async function bootstrap() {
