@@ -10,6 +10,7 @@ export const config = Object.freeze({
   PUBLIC_URL: configuration.public_url,
   TURNLY_URL: configuration.turnly_url,
   GOOGLE_MAPS_URL: configuration.google_maps_url,
+  MIXPANEL_TOKEN: configuration.mixpanel_token,
 })
 
 export const __DEV__ = process.env.NODE_ENV === 'development'

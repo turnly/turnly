@@ -51,6 +51,7 @@
     "i18next-browser-languagedetector": "^6.1.4",
     "immer": "^9.0.15",
     "js-cookie": "^3.0.1",
+    "mixpanel-browser": "^2.45.0",
     "preact": "^10.10.0",
     "react-geolocated": "^4.0.3",
     "react-hook-form": "^7.37.0",
