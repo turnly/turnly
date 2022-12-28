@@ -1,9 +1,10 @@
 import { AnimatePresence } from 'framer-motion'
 import { Fragment, h } from 'preact'
-import { useMemo } from 'preact/hooks'
+import { useEffect, useMemo } from 'preact/hooks'
 
 import type { INavigatorProps } from '../@types/navigation'
 import { ERROR_MESSAGES } from '../data'
+import { useTelemetry } from '../hooks/use-telemetry'
 import { navigatorWarnings } from './navigator-warnings'
 import { useNavigator } from './use-navigator'
 
@@ -19,6 +20,7 @@ import { useNavigator } from './use-navigator'
 export const Navigator = ({ children }: INavigatorProps) => {
   navigatorWarnings(children) // @patch-line
   const { currentScreen } = useNavigator()
+  const { tracker } = useTelemetry()
 
   const screen = useMemo(
     () =>
@@ -27,6 +29,8 @@ export const Navigator = ({ children }: INavigatorProps) => {
         : children,
     [children, currentScreen]
   )
+
+  useEffect(() => tracker(currentScreen), [currentScreen])
 
   if (!screen) throw new Error(ERROR_MESSAGES.NAVIGATOR_NO_CHILDREN)
 

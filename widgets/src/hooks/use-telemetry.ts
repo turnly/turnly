@@ -1,12 +1,18 @@
-import { useEffect } from 'preact/hooks'
+import { useContext } from 'preact/compat'
 
-import { initTelemetry } from '../libs/telemetry'
-import { useSettings } from './use-settings'
+import { useSession } from '../hooks/use-session'
+import { TelemetryContext } from '../libs/telemetry/telemetry-context'
 
 export const useTelemetry = () => {
-  const { general } = useSettings()
+  const { mixPanel } = useContext(TelemetryContext)
+  const { customer } = useSession()
 
-  useEffect(() => {
-    initTelemetry(general.disableTelemetry)
-  }, [general.disableTelemetry])
+  return {
+    tracker: (eventTitle: string) => {
+      mixPanel &&
+        mixPanel.track(
+          `Customer [ID: ${customer.id}] entried to: (${eventTitle})`
+        )
+    },
+  }
 }
