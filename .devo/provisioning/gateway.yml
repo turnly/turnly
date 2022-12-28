@@ -22,6 +22,7 @@ services:
       - --entrypoints.mongo.address=:${MONGO_UI_PORT}
       - --entrypoints.redis.address=:${REDIS_UI_PORT}
       - --entrypoints.storage.address=:${MINIO_UI_PORT}
+      - --entrypoints.tracing.address=:${TRACING_UI_PORT}
     container_name: gateway
     build:
       context: ${DOCKER_RELATIVE_APPS_DIR}/gateway
@@ -40,6 +41,7 @@ services:
       - ${MONGO_UI_PORT}:${MONGO_UI_PORT}
       - ${REDIS_UI_PORT}:${REDIS_UI_PORT}
       - ${MINIO_UI_PORT}:${MINIO_UI_PORT}
+      - ${TRACING_UI_PORT}:${TRACING_UI_PORT}
     networks:
       turnly.network.public:
       turnly.network.internal:

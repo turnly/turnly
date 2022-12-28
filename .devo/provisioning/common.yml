@@ -23,6 +23,7 @@ services:
       - SENTRY_DSN
       - FLUENT_HOST
       - FLUENT_PORT
+      - TRACING_ENDPOINT
       - MONGO_URI
       - REDIS_HOST
       - REDIS_PASSWORD

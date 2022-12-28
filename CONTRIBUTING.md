@@ -197,7 +197,7 @@ So when all of this is set up, you will be able to use the following URLs to int
 
 | Name                                  | URL                                                       |
 | ------------------------------------- | --------------------------------------------------------- |
-| **Help Desk API**                     | `http://{organization}.turnly.local/api/v1/help_desk`     |
+| **Help Desk API**                     | `http://{organization}.turnly.local/api/v1/helpdesk`     |
 | **Back Office API**                   | `http://{organization}.turnly.local/api/v1/back_office`   |
 | **Widgets API**                       | `http://{organization}.turnly.local/api/v1/widgets`       |
 | **Real Time Messaging API**           | `http://{organization}.turnly.local/api/v1/rtm`           |

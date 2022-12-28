@@ -6,6 +6,7 @@
  */
 import 'reflect-metadata'
 
+import { Observability } from '@turnly/common'
 import { Http, Startup } from '@turnly/shared'
 import { ApolloServerPluginDrainHttpServer } from 'apollo-server-core'
 import { ApolloServer } from 'apollo-server-express'
@@ -30,7 +31,7 @@ export class Application extends Startup {
    * @memberof Startup
    */
   public async setup(): Promise<void> {
-    this.setupMonitoring()
+    this.setupMonitoring(undefined, [Observability.InstrumentationType.HTTP])
     this.server.setup()
 
     await this.setupPresentations()
