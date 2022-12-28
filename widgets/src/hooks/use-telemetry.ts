@@ -1,17 +1,16 @@
 import { useContext } from 'preact/compat'
 
-import { useSession } from '../hooks/use-session'
 import { TelemetryContext } from '../libs/telemetry/telemetry-context'
+import { i18n } from '../localization'
 
 export const useTelemetry = () => {
   const { mixPanel } = useContext(TelemetryContext)
-  const { customer } = useSession()
 
   return {
     tracker: (eventTitle: string) => {
       mixPanel &&
         mixPanel.track(
-          `Customer [ID: ${customer.id}] entried to: (${eventTitle})`
+          i18n.t('telemetry.customer_action', { action: eventTitle })
         )
     },
   }

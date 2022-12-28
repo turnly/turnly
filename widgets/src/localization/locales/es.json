@@ -127,5 +127,14 @@
     "description": "If you close the widget, you'll lose the information you entered and if you have a ticket, you'll be left from the line and have to start over.",
     "affirmative_button_text": "I understand, close",
     "negative_button_text": "No, I want to stay"
+  },
+  "telemetry": {
+    "customer_action": "Customer action: {{action}}",
+    "navigation": "Go to {{screen}} screen"
+  },
+  "notifications": {
+    "ticket_before_yours_updated": "The number of people ahead of you has changed, you are now waiting for {{beforeYours}} people.",
+    "ticket_called_to_desk": "You are now being called to the desk!",
+    "ticket_served": "Ahoy, you’re served. We hope to see you again soon. Remember that you can always leave us a comment about your experience."
   }
 }

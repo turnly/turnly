@@ -5,6 +5,7 @@ import { useEffect, useMemo } from 'preact/hooks'
 import type { INavigatorProps } from '../@types/navigation'
 import { ERROR_MESSAGES } from '../data'
 import { useTelemetry } from '../hooks/use-telemetry'
+import { i18n } from '../localization'
 import { navigatorWarnings } from './navigator-warnings'
 import { useNavigator } from './use-navigator'
 
@@ -30,7 +31,10 @@ export const Navigator = ({ children }: INavigatorProps) => {
     [children, currentScreen]
   )
 
-  useEffect(() => tracker(currentScreen), [currentScreen])
+  useEffect(
+    () => tracker(i18n.t('telemetry.navigation', { screen: currentScreen })),
+    [currentScreen]
+  )
 
   if (!screen) throw new Error(ERROR_MESSAGES.NAVIGATOR_NO_CHILDREN)
 

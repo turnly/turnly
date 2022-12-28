@@ -183,7 +183,9 @@ export const TicketDetailsScreen = () => {
 
         setTicket({ ...ticket, beforeYours })
         showNotification(
-          `Queue tickets updated, before yours: (${beforeYours.length})`
+          translate('notifications.ticket_before_yours_updated', {
+            beforeYours: beforeYours.length,
+          })
         )
       }
     )
@@ -195,7 +197,7 @@ export const TicketDetailsScreen = () => {
       if (event.payload.ticketId === ticket.id) {
         setTicket({ ...ticket, status: event.payload.status })
 
-        showNotification('Ticket called to desk!')
+        showNotification(translate('notifications.ticket_called_to_desk'))
       }
     })
 
@@ -209,7 +211,7 @@ export const TicketDetailsScreen = () => {
           event.payload.status === TicketStatus.SERVED_WITH_RATING
         ) {
           setIsCompleted(true)
-          showNotification('Ticket served to desk!')
+          showNotification(translate('notifications.ticket_served'))
 
           return
         }
