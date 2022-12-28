@@ -3123,7 +3123,7 @@
 
 "@turnly/realtime@github:turnly/realtime.git#latest":
   version "1.0.0"
-  resolved "https://codeload.github.com/turnly/realtime/tar.gz/a0832463841fbe9c24566cd7c9f4bd5fef39d536"
+  resolved "https://codeload.github.com/turnly/realtime/tar.gz/b93dce6f99ccb4bf77e4c8c1e7371642e5c4e23f"
   dependencies:
     socket.io "^4.5.1"
 
