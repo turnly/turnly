@@ -162,12 +162,11 @@ export const TicketDetailsScreen = () => {
 
   useEffect(() => {
     if (!isNotificationAllowed()) {
-      Notifier.info(
-        'Do you know that you can receive notifications of your turn? Click on this to grant us permissions and catch up!',
-        {
-          onClose: () => initNotification(),
-        }
-      )
+      Notifier.info(translate('notifications.permission'), {
+        delay: 2_000,
+        position: Notifier.POSITION.TOP_CENTER,
+        onClose: () => initNotification(),
+      })
     }
   }, [])
 
@@ -227,7 +226,7 @@ export const TicketDetailsScreen = () => {
         }
 
         await handleCompletedTicket()
-        Notifier.info(translate('tickets.cancelled.description'))
+        Notifier.warn(translate('tickets.cancelled.description'))
       }
     })
 
