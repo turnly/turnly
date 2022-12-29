@@ -18,5 +18,7 @@ export const useNotification = () => {
         new Notification(widget.name, { body: description })
       }
     },
+    isNotificationAllowed: () =>
+      isCompatible && ['granted', 'denied'].includes(Notification.permission),
   }
 }

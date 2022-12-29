@@ -31,7 +31,8 @@ import { SCREEN_NAMES, useNavigator } from '../../navigation'
 export const TicketDetailsScreen = () => {
   const { translate } = useTranslation()
   const { realtime } = useRealtime()
-  const { initNotification, showNotification } = useNotification()
+  const { initNotification, showNotification, isNotificationAllowed } =
+    useNotification()
 
   const { navigate } = useNavigator()
   const { ticketId, deleteSearchParams } = useSearchParams()
@@ -160,11 +161,20 @@ export const TicketDetailsScreen = () => {
   }, [ticket?.status, ticket?.beforeYours])
 
   useEffect(() => {
+    if (!isNotificationAllowed()) {
+      Notifier.info(
+        'Do you know that you can receive notifications of your turn? Click on this to grant us permissions and catch up!',
+        {
+          onClose: () => initNotification(),
+        }
+      )
+    }
+  }, [])
+
+  useEffect(() => {
     if (ticketId && !ticket) {
       getTicketDetails({ variables: { getTicketId: ticketId } })
     }
-
-    initNotification()
   }, [ticketId, ticket])
 
   useEffect(() => {
