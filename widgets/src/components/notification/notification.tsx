@@ -9,7 +9,7 @@ export const Notification = (props: ToastContainerProps) => (
     autoClose={5000}
     hideProgressBar
     newestOnTop={false}
-    closeOnClick
+    closeOnClick={true}
     rtl={false}
     pauseOnFocusLoss
     draggable

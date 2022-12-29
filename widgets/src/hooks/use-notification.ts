@@ -10,5 +10,7 @@ export const useNotification = () => {
         document.visibilityState === 'hidden' &&
         new Notification('Turnly', { body: description })
     },
+    isNotificationAllowed: () =>
+      isCompatible && ['granted', 'denied'].includes(Notification.permission),
   }
 }
