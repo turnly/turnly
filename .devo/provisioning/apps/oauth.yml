@@ -16,10 +16,7 @@ x-common-variables: &common-vars
   # This service shared env variables that extend from common.yml
   APP_NAME: oauth
   COOKIE_DOMAIN: ${APP_DOMAIN}
-  ENCRYPTION_KEY: ${OAUTH_ENCRYPTION_KEY}
   AUTH_HOST: ${IAM_HOSTNAME}
-  SECRET: ${OAUTH_SIGNING_KEY}
-  URL_PATH: /_oauth
   # ----------------------> WARNING: FOR DEVELOPMENT ONLY <----------------------
   LOG_LEVEL: debug
   INSECURE_COOKIE: 'true'
@@ -40,6 +37,10 @@ services:
       PROVIDER_URI: ${OAUTH_OIDC_PROVIDER_URI}
       CLIENT_ID: ${OAUTH_OIDC_CLIENT_ID}
       CLIENT_SECRET: ${OAUTH_OIDC_CLIENT_SECRET}
+      ENCRYPTION_KEY: ${OAUTH_ENCRYPTION_KEY}
+      SECRET: ${OAUTH_SIGNING_KEY}
+      URL_PATH: /_oauth
+      LIFETIME: ${OAUTH_COOKIES_EXPIRES:-300} # The time in seconds
     labels:
       - traefik.enable=true
       - traefik.docker.network=turnly.network.internal
@@ -70,7 +71,10 @@ services:
       PROVIDER_URI: ${OAUTH_ADMIN_OIDC_PROVIDER_URI}
       CLIENT_ID: ${OAUTH_ADMIN_OIDC_CLIENT_ID}
       CLIENT_SECRET: ${OAUTH_ADMIN_OIDC_CLIENT_SECRET}
+      ENCRYPTION_KEY: ${OAUTH_ADMIN_ENCRYPTION_KEY}
+      SECRET: ${OAUTH_ADMIN_SIGNING_KEY}
       URL_PATH: /_oauth-admin
+      LIFETIME: ${OAUTH_ADMIN_COOKIES_EXPIRES:-60} # The time in seconds
     labels:
       - traefik.enable=true
       - traefik.docker.network=turnly.network.internal
