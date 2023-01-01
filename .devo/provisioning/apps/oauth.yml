@@ -17,6 +17,10 @@ x-common-variables: &common-vars
   APP_NAME: oauth
   COOKIE_DOMAIN: ${APP_DOMAIN}
   AUTH_HOST: ${IAM_HOSTNAME}
+  FORWARD_TOKEN_HEADER_NAME: X-Forwarded-Auth-Token
+  REDIS_URL: ${REDIS_HOST}
+  REDIS_PASSWORD: ""
+  REDIS_DB: 0
   # ----------------------> WARNING: FOR DEVELOPMENT ONLY <----------------------
   LOG_LEVEL: debug
   INSECURE_COOKIE: 'true'
