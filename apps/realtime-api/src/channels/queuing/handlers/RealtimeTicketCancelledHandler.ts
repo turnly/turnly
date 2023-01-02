@@ -47,6 +47,7 @@ export class RealtimeTicketCancelledHandler extends AbstractRealtimeHandler<
     return [
       BroadcastableEvents.TICKET_COMPLETED,
       BroadcastableEvents.TICKET_CANCELLED,
+      BroadcastableEvents.TICKET_RETURNED,
       BroadcastableEvents.TICKET_DISCARDED,
     ]
   }
