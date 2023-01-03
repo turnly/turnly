@@ -33,7 +33,7 @@ services:
 
       # These tags are used to enable authenticated access to the service via OAuth-middleware.
       - traefik.http.routers.realtime-api-public.entrypoints=web,websecure
-      - traefik.http.routers.realtime-api-public.rule=PathPrefix(`/api/v1/rtm`)
+      - traefik.http.routers.realtime-api-public.rule=PathPrefix(`/api/rtm`)
       - traefik.http.routers.realtime-api-public.service=realtime-api-public
       - traefik.http.services.realtime-api-public.loadbalancer.server.port=${APP_PORT}
 

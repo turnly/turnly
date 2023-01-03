@@ -1,5 +1,5 @@
 overwrite: true
-schema: "http://localhost/api/v1/widgets/graph"
+schema: "http://localhost/api/widgets/graph"
 documents: "src/**/*.{gql,graphql}"
 generates:
   src/graphql/generated/graphql.tsx:

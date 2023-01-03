@@ -32,7 +32,7 @@ services:
 
       # These tags are used to enable authenticated access to the service via OAuth-middleware.
       - traefik.http.routers.helpdesk-api-public.entrypoints=web,websecure
-      - traefik.http.routers.helpdesk-api-public.rule=PathPrefix(`/api/v1/helpdesk`)
+      - traefik.http.routers.helpdesk-api-public.rule=PathPrefix(`/api/helpdesk`)
       - traefik.http.routers.helpdesk-api-public.service=helpdesk-api-public
       - traefik.http.services.helpdesk-api-public.loadbalancer.server.port=${APP_PORT}
 

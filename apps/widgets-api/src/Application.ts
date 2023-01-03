@@ -21,7 +21,7 @@ export class Application extends Startup {
    *
    * @description The base path for the graphql endpoint.
    */
-  private readonly path = '/api/v1/widgets/graph'
+  private readonly path = '/api/widgets/graph'
 
   private readonly server = new Http()
   /**

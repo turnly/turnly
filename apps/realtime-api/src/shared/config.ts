@@ -9,7 +9,7 @@ import { config } from '@turnly/shared'
 export const serverOptions = Object.freeze({
   name: config.get('app.name'),
   port: config.get('server.port'),
-  path: '/api/v1/rtm',
+  path: '/api/rtm',
 })
 
 export enum Channels {

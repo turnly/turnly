@@ -16,10 +16,10 @@ function print_system_statuses() {
 
   line
 
-  info " 🟢 Widgets API                             : http://{organization}.$APP_DOMAIN/api/v1/widgets"
-  info " 🟢 Real Time Messaging API                 : http://{organization}.$APP_DOMAIN/api/v1/rtm"
-  info " 🟢 Help Desk API                           : http://{organization}.$APP_DOMAIN/api/v1/helpdesk"
-  info " 🔴 Bank Office API                         : http://{organization}.$APP_DOMAIN/api/v1/bankoffice"
+  info " 🟢 Widgets API                             : http://{organization}.$APP_DOMAIN/api/widgets"
+  info " 🟢 Real Time Messaging API                 : http://{organization}.$APP_DOMAIN/api/rtm"
+  info " 🟢 Help Desk API                           : http://{organization}.$APP_DOMAIN/api/helpdesk"
+  info " 🔴 Bank Office API                         : http://{organization}.$APP_DOMAIN/api/bankoffice"
   info " 🟢 Identity & Access Management API        : http://accounts.$APP_DOMAIN"
 
   line
