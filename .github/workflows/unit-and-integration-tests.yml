@@ -20,7 +20,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [16.15]
+        node-version: [18.12]
         mongodb-version: [5.0.9]
 
     services:
