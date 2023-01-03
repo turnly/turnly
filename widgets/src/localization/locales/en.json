@@ -69,6 +69,7 @@
     "title": "Ticket details",
     "before_yours": "People before yours",
     "your_turn": "No people ahead of you!",
+    "returned": "You've returned, we'll call you later.",
     "loading": "Getting service...",
     "leave": {
       "title": "Leave ticket",
@@ -136,6 +137,7 @@
     "permission": "We'd like to send you notifications to keep you updated, we will ask you for permission in 3 seconds if you don't mind. Catch you later!",
     "ticket_before_yours_updated": "The number of people ahead of you has changed, you are now waiting for {{beforeYours}} people.",
     "ticket_called_to_desk": "You are now being called to the desk!",
-    "ticket_served": "Ahoy, you’re served. We hope to see you again soon. Remember that you can always leave us a comment about your experience."
+    "ticket_served": "Ahoy, you’re served. We hope to see you again soon. Remember that you can always leave us a comment about your experience.",
+    "ticket_returned": "Sorry, we returned your ticket, but we're going to call you later."
   }
 }

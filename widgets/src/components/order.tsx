@@ -137,7 +137,15 @@ export const Order = ({
         transition={{ duration: 0.2 }}
         className="tly-order-text"
       >
-        {translate(`tickets.${isYourTurn ? 'your_turn' : 'before_yours'}`)}
+        {translate(
+          `tickets.${
+            ticketStatus === TicketStatus.RETURNED
+              ? 'returned'
+              : isYourTurn
+              ? 'your_turn'
+              : 'before_yours'
+          }`
+        )}
       </Animated.p>
     </Animated.div>
   )
