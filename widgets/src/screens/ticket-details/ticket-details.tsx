@@ -131,14 +131,18 @@ export const TicketDetailsScreen = () => {
       description = 'tickets.announce.description'
     }
 
-    if (ticket?.status === TicketStatus.ANNOUNCED) {
+    if (
+      ticket?.status === TicketStatus.ANNOUNCED ||
+      ticket?.status === TicketStatus.RETURNED
+    ) {
       title = 'tickets.arrived.title'
       description = 'tickets.arrived.description'
       options = { organization: name }
     }
 
     if (
-      ticket?.status === TicketStatus.ANNOUNCED &&
+      (ticket?.status === TicketStatus.ANNOUNCED ||
+        ticket?.status === TicketStatus.RETURNED) &&
       statusLabel === TicketsBeforeYoursLabels.YOU_ARE_NEXT
     ) {
       title = 'tickets.you_are_next.title'
@@ -221,6 +225,13 @@ export const TicketDetailsScreen = () => {
         ) {
           setIsCompleted(true)
           showNotification(translate('notifications.ticket_served'))
+
+          return
+        }
+
+        if (event.payload.status === TicketStatus.RETURNED) {
+          setTicket({ ...ticket, status: TicketStatus.RETURNED })
+          showNotification(translate('notifications.ticket_returned'))
 
           return
         }
