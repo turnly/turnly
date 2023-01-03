@@ -9,7 +9,7 @@ services:
     container_name: redis_ui
     platform: linux/amd64
     hostname: redis_ui
-    image: rediscommander/redis-commander:latest
+    image: ghcr.io/joeferner/redis-commander:latest
     networks:
       turnly.network.public:
       turnly.network.internal:
@@ -19,7 +19,8 @@ services:
       redis:
         condition: service_healthy
     environment:
-      - REDIS_HOSTS=${REDIS_UI_HOST}
+      - REDIS_HOST=${REDIS_HOST}
+      - REDIS_PORT=${REDIS_PORT}
     labels:
       - traefik.enable=true
       - traefik.docker.network=turnly.network.internal

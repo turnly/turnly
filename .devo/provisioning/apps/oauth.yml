@@ -18,7 +18,7 @@ x-common-variables: &common-vars
   COOKIE_DOMAIN: ${APP_DOMAIN}
   AUTH_HOST: ${IAM_HOSTNAME}
   FORWARD_TOKEN_HEADER_NAME: X-Forwarded-Auth-Token
-  REDIS_URL: ${REDIS_HOST}
+  REDIS_URL: "${REDIS_HOST}:${REDIS_PORT}"
   REDIS_PASSWORD: ""
   REDIS_DB: 0
   # ----------------------> WARNING: FOR DEVELOPMENT ONLY <----------------------

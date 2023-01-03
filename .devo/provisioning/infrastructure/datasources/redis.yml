@@ -7,7 +7,6 @@ services:
       file: common.yml
       service: common
     image: redis:7.0.4-alpine
-    hostname: redis
     container_name: redis
     volumes:
       - redis_data:/data
