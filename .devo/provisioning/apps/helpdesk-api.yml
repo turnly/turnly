@@ -37,4 +37,4 @@ services:
       - traefik.http.services.helpdesk-api-public.loadbalancer.server.port=${APP_PORT}
 
       # Attach the OAuth-middleware to this service.
-      # - traefik.http.routers.helpdesk-api-public.middlewares=oauth-middleware
+      - traefik.http.routers.helpdesk-api-public.middlewares=oauth-middleware
