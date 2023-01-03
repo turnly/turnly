@@ -28,4 +28,4 @@ runs:
 
     - name: 📦 Pull base dependencies
       shell: bash
-      run: docker pull node:${{ inputs.node-version }}-alpine3.15
+      run: docker pull node:${{ inputs.node-version }}-alpine3.17
