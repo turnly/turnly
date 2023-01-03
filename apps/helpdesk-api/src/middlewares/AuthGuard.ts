@@ -31,7 +31,7 @@ export enum UserRoles {
 }
 
 const getCredentials = ({ req: { headers } }: IContext) => {
-  const forwarded = headers['X-Forwarded-User'] as string
+  const forwarded = headers['x-forwarded-user'] as string
 
   if (!forwarded) throw new UnauthenticatedException()
 
