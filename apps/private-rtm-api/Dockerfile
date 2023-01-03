@@ -14,9 +14,7 @@
 ##
 ## Shared Configuration
 ##
-ARG NODE_VERSION=16.15-alpine3.15 \
-    DISTROLESS_VERSION=16 \
-    NODE_ENV=production
+ARG NODE_VERSION=18.12-alpine3.17 NODE_ENV=production
 
 ##
 ## Deps
@@ -72,7 +70,7 @@ RUN yarn build \
 ##
 ## Stage for running the distributable image in production mode.
 ##
-FROM gcr.io/distroless/nodejs:${DISTROLESS_VERSION} AS production
+FROM gcr.io/distroless/nodejs18-debian11 AS production
 
 ARG NODE_ENV
 ENV NODE_ENV=${NODE_ENV}

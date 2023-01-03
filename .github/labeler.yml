@@ -14,8 +14,6 @@ notifications:
   - apps/notifications/**/*
 business-owners:
   - apps/business-owners/**/*
-realtime-api:
-  - apps/realtime-api/**/*
 docker:
   - .devo/**/*
 devo:

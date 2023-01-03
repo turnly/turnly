@@ -3702,9 +3702,9 @@ ajv@^6.10.0, ajv@^6.12.4, ajv@^6.12.6:
     uri-js "^4.2.2"
 
 ajv@^8.0.1:
-  version "8.11.2"
-  resolved "https://registry.yarnpkg.com/ajv/-/ajv-8.11.2.tgz#aecb20b50607acf2569b6382167b65a96008bb78"
-  integrity sha512-E4bfmKAhGiSTvMfL1Myyycaub+cUEU2/IvpylXkUu7CHBkBj1f/ikdzbD7YQ6FKUbixDxeYvB/xY4fvyroDlQg==
+  version "8.12.0"
+  resolved "https://registry.yarnpkg.com/ajv/-/ajv-8.12.0.tgz#d1a0527323e22f53562c567c00991577dfbe19d1"
+  integrity sha512-sRu1kpcO9yLtYxBKvqfTeh9KzZEwO3STyX1HT+4CaDzC6HpTGYhIhPIzj9XuKU7KYDwnaeh5hcOwjy1QuJzBPA==
   dependencies:
     fast-deep-equal "^3.1.1"
     json-schema-traverse "^1.0.0"
@@ -8592,9 +8592,9 @@ react-geolocated@^4.0.3:
   integrity sha512-p+BObdbWT4kINILkUZtqkWHippBsCLnQ+dyx9Bnd+m3086Xkw7VKWxcFavCd2pG6AM50jsiMJiDu0+DjelnT9g==
 
 react-hook-form@^7.37.0:
-  version "7.41.3"
-  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.41.3.tgz#1b85e95e70cb743d41cd9230ea2df71359d00151"
-  integrity sha512-5QNTmqJtDb88WV5n41b6+AmcDMVyaJ3tccPgHAgS215w3jZ3bmJhDO27kNTr8u4YHNYXmS7p1/4/KachBAlUtw==
+  version "7.41.4"
+  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.41.4.tgz#2cb949bd27e7ee5127b119f85d2d8956449d37d8"
+  integrity sha512-75TOP2OJNj+wmeDvzD4FxDNBitJzqqwobf5q0FegvkNpXDnoAsjFD9O1c7PQOvmIVenUDGcAat5QQARWboDnnQ==
 
 react-i18next@^11.18.3:
   version "11.18.6"
