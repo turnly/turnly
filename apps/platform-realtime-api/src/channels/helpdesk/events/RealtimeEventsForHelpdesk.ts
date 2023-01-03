@@ -4,11 +4,11 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-export enum RealtimeEvents {
+export enum RealtimeEventsForHelpdesk {
   /**
-   * Agent events
+   * Ticket events
    */
-  AGENTS_TICKETS_UPDATES = 'agents.tickets.updates',
+  TICKETS_CHANGES = 'helpdesk.tickets.changes',
 
   /**
    * Global events

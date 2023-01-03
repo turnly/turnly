@@ -32,6 +32,6 @@ services:
       - traefik.docker.network=turnly.network.internal
 
       - traefik.http.routers.public-rtm-api.entrypoints=web,websecure
-      - traefik.http.routers.public-rtm-api.rule=PathPrefix(`/api/rtm/public`)
+      - traefik.http.routers.public-rtm-api.rule=PathPrefix(`/api/rtm/widgets`)
       - traefik.http.routers.public-rtm-api.service=public-rtm-api
       - traefik.http.services.public-rtm-api.loadbalancer.server.port=${APP_PORT}

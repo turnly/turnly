@@ -15,7 +15,7 @@
   </p>
 </div>
 
-# Private Real Time Messaging API (PRIVATE RTM API)
+# Platform Real Time Messaging API (RTM)
 
 The RTM API is a WebSocket-based API that allows you to receive
 read-only access to a selected set of data from Turnly in realtime.
@@ -45,7 +45,7 @@ the API in the simplest and most user-friendly way.
 | Name                     | Description                                    |
 | ------------------------ | ---------------------------------------------- |
 | `APP_NAME`               | Used for observability of this application.    |
-| `APP_PORT`              | Port to expose by the application.             |
+| `APP_PORT`               | Port to expose by the application.             |
 | `RPC_CONSUMER_ADDRESS`   | The addresses of the rpc servers for clients.  |
 | `RABBITMQ_QUEUE`         | Events queue name in RabbitMQ.                 |
 
@@ -68,10 +68,10 @@ Before you begin, you must have completed steps 1 and 2 of the guide to [contrib
 
 **Start**
 
-This command will run the necessary infrastructure services for the realtime-api:
+This command will run the necessary infrastructure services for the platform-realtime-api:
 
 ```sh
-yarn devo start -s realtime-api -s addons -s queuing-system --verbose
+yarn devo start -s platform-realtime-api -s addons -s queuing-system --verbose
 ```
 
 You can see more helpful commands for development in the [contribution guide](/CONTRIBUTING.md).

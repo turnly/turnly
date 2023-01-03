@@ -4,9 +4,9 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { Realtime } from '@turnly/realtime'
+import { BroadcastingEventsSubscriber, Realtime } from '@turnly/realtime'
 import { eventBus } from '@turnly/shared'
-import { BroadcastingEventsSubscriber } from 'broadcasting/BroadcastingEventsSubscriber'
+import { BROADCASTABLE_TO_CHANNELS, BroadcastableEvents } from 'broadcasting'
 import { helpdeskHandlers } from 'channels/helpdesk/handlers'
 import { streamHandlers } from 'channels/stream/handlers'
 import { AuthorizedConnGuard } from 'channels/stream/middlewares/AuthorizedConnGuard'
@@ -49,7 +49,10 @@ export class Application {
    * @description Register broadcasting subscriber to event bus.
    */
   private setupBroadcastingEvents() {
-    const subscriber = new BroadcastingEventsSubscriber(this.realtime)
+    const subscriber = new BroadcastingEventsSubscriber<BroadcastableEvents>(
+      BROADCASTABLE_TO_CHANNELS,
+      this.realtime
+    )
 
     eventBus.subscribe([subscriber])
   }

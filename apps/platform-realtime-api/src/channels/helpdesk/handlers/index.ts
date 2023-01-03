@@ -6,8 +6,8 @@
  */
 import { IRealtimeHandler } from '@turnly/realtime'
 
-import { RealtimeForAgentsTicketsHandler } from './RealtimeForAgentsTicketsHandler'
+import { RealtimeForTicketsChangesHandler } from './RealtimeForTicketsChangesHandler'
 
 export const helpdeskHandlers: IRealtimeHandler[] = [
-  new RealtimeForAgentsTicketsHandler(),
+  new RealtimeForTicketsChangesHandler(),
 ]

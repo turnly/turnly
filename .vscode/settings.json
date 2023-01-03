@@ -28,7 +28,7 @@
     "apps/notifications",
     "apps/business-owners",
     "apps/public-rtm-api",
-    "apps/private-rtm-api",
+    "apps/platform-realtime-api",
     "apps/widgets-api",
     "apps/helpdesk-api",
     "widgets"
