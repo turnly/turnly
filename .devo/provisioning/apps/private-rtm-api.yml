@@ -1,0 +1,41 @@
+version: "3.9"
+
+services:
+  private-rtm-api:
+    extends:
+      file: common.yml
+      service: common
+    container_name: private-rtm-api
+    image: turnly/private-rtm-api:latest
+    build:
+      context: ${DOCKER_RELATIVE_APPS_DIR}/private-rtm-api
+      target: ${DOCKER_BUILD_STAGE}
+      dockerfile: Dockerfile
+      args:
+        NODE_ENV: ${NODE_ENV}
+    volumes:
+      - ${DOCKER_RELATIVE_APPS_DIR}/private-rtm-api:/app
+    depends_on:
+      iam:
+        condition: service_healthy
+    networks:
+      turnly.network.public:
+      turnly.network.internal:
+        aliases:
+          - private-rtm-api.turnly.local
+    environment:
+      # This service shared env variables that extend from common.yml
+      APP_NAME: private-rtm-api
+      RABBITMQ_QUEUE: ${PRIVATE_RTM_API_RABBITMQ_QUEUE:-turnly.ms.private_rtm_api.queue}
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=turnly.network.internal
+
+      # These tags are used to enable authenticated access to the service via OAuth-middleware.
+      - traefik.http.routers.private-rtm-api.entrypoints=web,websecure
+      - traefik.http.routers.private-rtm-api.rule=PathPrefix(`/api/rtm/private`)
+      - traefik.http.routers.private-rtm-api.service=private-rtm-api
+      - traefik.http.services.private-rtm-api.loadbalancer.server.port=${APP_PORT}
+
+      # Attach the OAuth-middleware to this service.
+      # - traefik.http.routers.rtm-api-public.middlewares=oauth-middleware
