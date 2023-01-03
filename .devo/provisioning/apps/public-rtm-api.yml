@@ -1,0 +1,37 @@
+version: "3.9"
+
+services:
+  public-rtm-api:
+    extends:
+      file: common.yml
+      service: common
+    container_name: public-rtm-api
+    image: turnly/public-rtm-api:latest
+    build:
+      context: ${DOCKER_RELATIVE_APPS_DIR}/public-rtm-api
+      target: ${DOCKER_BUILD_STAGE}
+      dockerfile: Dockerfile
+      args:
+        NODE_ENV: ${NODE_ENV}
+    volumes:
+      - ${DOCKER_RELATIVE_APPS_DIR}/public-rtm-api:/app
+    depends_on:
+      iam:
+        condition: service_healthy
+    networks:
+      turnly.network.public:
+      turnly.network.internal:
+        aliases:
+          - public-rtm-api.turnly.local
+    environment:
+      # This service shared env variables that extend from common.yml
+      APP_NAME: public-rtm-api
+      RABBITMQ_QUEUE: ${PUBLIC_RTM_API_RABBITMQ_QUEUE:-turnly.ms.public_rtm_api.queue}
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=turnly.network.internal
+
+      - traefik.http.routers.public-rtm-api.entrypoints=web,websecure
+      - traefik.http.routers.public-rtm-api.rule=PathPrefix(`/api/rtm/public`)
+      - traefik.http.routers.public-rtm-api.service=public-rtm-api
+      - traefik.http.services.public-rtm-api.loadbalancer.server.port=${APP_PORT}

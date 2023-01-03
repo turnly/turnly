@@ -22,18 +22,4 @@ export enum BroadcastableEvents {
   TICKET_ASSIGNED = 'ticket.assigned',
   TICKET_UNASSIGNED = 'ticket.unassigned',
   TICKET_REASSIGNED = 'ticket.reassigned',
-
-  /**
-   * Customer events
-   */
-  CUSTOMER_CREATED = 'customer.created',
-  CUSTOMER_UPDATED = 'customer.updated',
-  CUSTOMER_DELETED = 'customer.deleted',
-
-  /**
-   * Service events
-   */
-  SERVICE_CREATED = 'service.created',
-  SERVICE_UPDATED = 'service.updated',
-  SERVICE_DELETED = 'service.deleted',
 }

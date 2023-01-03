@@ -19,11 +19,6 @@ export enum RealtimeEvents {
   TICKET_CANCELLED = 'ticket.cancelled',
 
   /**
-   * Agent events
-   */
-  AGENTS_TICKETS_UPDATES = 'agents.tickets.updates',
-
-  /**
    * Global events
    */
   CONNECTED = 'connected',
