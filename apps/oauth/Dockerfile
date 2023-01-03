@@ -9,7 +9,7 @@ WORKDIR /go/src/github.com/turnly/oauth-middleware
 # Install required system packages
 RUN apk add --virtual .stage-builder --no-cache --update git \
     # Get the source code
-    && git clone https://github.com/turnly/oauth-middleware.git . \
+    && git clone https://github.com/turnly/oauth-middleware.git -b main . \
     && chmod -R 777 /go/src/github.com/turnly/oauth-middleware \
     && CGO_ENABLED=0 GOOS=linux GO111MODULE=on go build -a -installsuffix nocgo -o /oauth github.com/turnly/oauth-middleware/cmd \
     # Delete system packages after installation (not needed)

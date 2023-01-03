@@ -13,17 +13,33 @@ import {
 import { IContext } from '@types'
 import { AuthChecker } from 'type-graphql'
 
+/**
+ * @todo Move this to a shared package
+ */
+export type IUserLogged = {
+  sub: string
+  groups: string[]
+}
+
+/**
+ * @todo Move this to a shared package
+ */
+export enum UserRoles {
+  AGENT = 'agent',
+  MANAGER = 'manager',
+  ORGANIZATION = 'organization',
+}
+
 const getCredentials = ({ req: { headers } }: IContext) => {
-  const userLogged: {
-    sub: string
-    groups: string[]
-  } = JSON.parse(headers['X-Forwarded-User'] as string)
+  const forwarded = headers['X-Forwarded-User'] as string
 
-  if (!userLogged) {
-    throw new UnauthenticatedException()
-  }
+  if (!forwarded) throw new UnauthenticatedException()
 
-  if (!userLogged.groups.includes('agent')) {
+  const userLogged: IUserLogged = JSON.parse(forwarded)
+
+  if (!userLogged) throw new UnauthenticatedException()
+
+  if (!userLogged.groups.includes(UserRoles.AGENT)) {
     throw new UnauthorizedException(
       'Access denied! You need to be an agent to access this resource.'
     )
