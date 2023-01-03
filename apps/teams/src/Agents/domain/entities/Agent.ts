@@ -56,7 +56,7 @@ export class Agent extends AggregateRoot {
     /**
      * User Id
      *
-     * @description An id given by keycloak to the agent.
+     * @description An id given by IAM to the agent.
      */
     private userId: Nullable<string> = null,
 
