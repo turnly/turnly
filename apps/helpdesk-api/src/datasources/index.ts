@@ -5,6 +5,7 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 export * from '../shared/api'
+export * from './AgentsDataSource'
 export * from './AnswersDataSource'
 export * from './common/CacheSource'
 export * from './common/DataSource'

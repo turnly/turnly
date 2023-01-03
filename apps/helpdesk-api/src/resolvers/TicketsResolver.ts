@@ -108,11 +108,8 @@ export class TicketsResolver {
   }
 
   @FieldResolver(() => CustomerModel)
-  public async customer(
-    @Root() _: TicketModel,
-    @Ctx() { req: { customer } }: IContext
-  ) {
-    return customer
+  public async customer(@Root() _: TicketModel) {
+    return null
   }
 
   @Authorized()

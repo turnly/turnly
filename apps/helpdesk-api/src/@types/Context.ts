@@ -5,14 +5,12 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import { Guid } from '@turnly/common'
-import type { Integration } from '@turnly/rpc/dist/producers/addons'
-import type { Customer } from '@turnly/rpc/dist/producers/queuing-system'
+import type { Agent } from '@turnly/rpc/dist/producers/teams'
 import { Sources } from 'datasources'
 import type { Request, Response } from 'express'
 
 interface IRequest extends Request {
-  customer: Customer.AsObject
-  helpdesk: Integration.AsObject
+  agent: Agent.AsObject
   organizationId: Guid
 }
 
