@@ -4,48 +4,15 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import {
-  Logger,
-  Observability,
-  UnauthenticatedException,
-  UnauthorizedException,
-} from '@turnly/common'
+import { Logger, Observability, UnauthenticatedException } from '@turnly/common'
+import { getForwardedUserLogged, UserRoles } from '@turnly/shared'
 import { IContext } from '@types'
 import { AuthChecker } from 'type-graphql'
 
-/**
- * @todo Move this to a shared package
- */
-export type IUserLogged = {
-  sub: string
-  groups: string[]
-}
-
-/**
- * @todo Move this to a shared package
- */
-export enum UserRoles {
-  AGENT = 'agent',
-  MANAGER = 'manager',
-  ORGANIZATION = 'organization',
-}
-
 const getCredentials = ({ req: { headers } }: IContext) => {
-  const forwarded = headers['x-forwarded-user'] as string
+  const roles = [UserRoles.AGENT]
 
-  if (!forwarded) throw new UnauthenticatedException()
-
-  const userLogged: IUserLogged = JSON.parse(forwarded)
-
-  if (!userLogged) throw new UnauthenticatedException()
-
-  if (!userLogged.groups.includes(UserRoles.AGENT)) {
-    throw new UnauthorizedException(
-      'Access denied! You need to be an agent to access this resource.'
-    )
-  }
-
-  return userLogged
+  return getForwardedUserLogged(headers, roles)
 }
 
 export const AuthGuard: AuthChecker<IContext> = async ({ context }) => {
@@ -54,21 +21,13 @@ export const AuthGuard: AuthChecker<IContext> = async ({ context }) => {
 
   const { sub: userId } = getCredentials(context)
 
-  if (!userId) {
-    throw new UnauthorizedException(
-      'Access denied! You need to be authenticated before you can access this resource.'
-    )
-  }
-
   Logger.debug('Checking if agent is authorized...')
 
-  const { data: agent } = await context.dataSources.agents.getByUserId(
-    String(userId)
-  )
+  const { data: agent } = await context.dataSources.agents.getByUserId(userId)
 
   if (!agent) {
     throw new UnauthenticatedException(
-      'Access denied! You need to provide an authorized agent before you can access this resource.'
+      'Access denied! We could not find an agent with the provided credentials.'
     )
   }
 
