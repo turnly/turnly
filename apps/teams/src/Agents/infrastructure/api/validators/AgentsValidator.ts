@@ -11,6 +11,11 @@ const get = Validator.object({
   organizationId: Validator.isId(),
 })
 
+const getByUserId = Validator.object({
+  userId: Validator.isId(),
+})
+
 export const validator = {
   get,
+  getByUserId,
 }

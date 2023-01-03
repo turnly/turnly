@@ -6,6 +6,7 @@
  */
 import { Box, ioc } from '@turnly/shared'
 import { AgentByIdQueryHandler } from 'Agents/application/queries/AgentByIdQuery'
+import { AgentByUserIdQueryHandler } from 'Agents/application/queries/AgentByUserIdQuery'
 
 import { AgentsController } from '../api/controllers/AgentsController'
 import { AgentsMapper } from '../persistence/mongo/entity-model-mappers/AgentsMapper'
@@ -24,4 +25,5 @@ Box.register({
  */
 Box.register({
   agentByIdQueryHandler: ioc.asClass(AgentByIdQueryHandler).singleton(),
+  agentByUserIdQueryHandler: ioc.asClass(AgentByUserIdQueryHandler).singleton(),
 })

@@ -21,6 +21,8 @@ export class AgentsMapper {
       agent.setLastname(entity.lastname)
       agent.setLocationId(entity.locationId)
 
+      if (entity.userId) agent.setUserId(entity.userId)
+
       if (entity.nick) agent.setNick(entity.nick)
 
       if (entity.position) agent.setPosition(entity.position)

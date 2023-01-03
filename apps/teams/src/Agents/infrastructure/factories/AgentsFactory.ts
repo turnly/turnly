@@ -13,6 +13,7 @@ import {
   IWritableRepository,
 } from '@turnly/shared'
 import { AgentByIdQueryHandler } from 'Agents/application/queries/AgentByIdQuery'
+import { AgentByUserIdQueryHandler } from 'Agents/application/queries/AgentByUserIdQuery'
 import { Agent } from 'Agents/domain/entities/Agent'
 
 import { AgentsController } from '../api/controllers/AgentsController'
@@ -33,7 +34,10 @@ export class AgentsFactory {
   }
 
   public static getQueryHandlers(): IQueryHandler[] {
-    return [Box.resolve<AgentByIdQueryHandler>('agentByIdQueryHandler')]
+    return [
+      Box.resolve<AgentByIdQueryHandler>('agentByIdQueryHandler'),
+      Box.resolve<AgentByUserIdQueryHandler>('agentByUserIdQueryHandler'),
+    ]
   }
 
   public static getCommandHandlers(): ICommandHandler[] {

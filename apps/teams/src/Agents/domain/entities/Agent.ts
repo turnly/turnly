@@ -54,6 +54,13 @@ export class Agent extends AggregateRoot {
     private readonly locationId: Guid,
 
     /**
+     * User Id
+     *
+     * @description An id given by keycloak to the agent.
+     */
+    private userId: Nullable<string> = null,
+
+    /**
      * Type
      *
      * @description The frontend type of the Agent.
@@ -104,6 +111,7 @@ export class Agent extends AggregateRoot {
       attributes.lastname,
       attributes.organizationId,
       attributes.locationId,
+      attributes.userId,
       attributes.nick,
       attributes.position,
       attributes.deskId,
@@ -128,6 +136,7 @@ export class Agent extends AggregateRoot {
       attributes.lastname,
       attributes.organizationId,
       attributes.locationId,
+      attributes.userId,
       attributes.nick,
       attributes.position,
       attributes.deskId,
@@ -148,6 +157,7 @@ export class Agent extends AggregateRoot {
       lastname: this.lastname,
       organizationId: this.organizationId,
       locationId: this.locationId,
+      userId: this.userId,
       nick: this.nick,
       position: this.position,
       deskId: this.deskId,

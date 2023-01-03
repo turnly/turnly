@@ -15,6 +15,7 @@ export class AgentMother {
     name: string = ObjectMother.names(),
     lastname: string = ObjectMother.names(),
     locationId: Guid = ObjectMother.uuid('loc'),
+    userId: Guid = ObjectMother.uuid('agt'),
     nick: string = ObjectMother.names(),
     position: string = ObjectMother.position(),
     deskId: Guid = ObjectMother.uuid('desk'),
@@ -26,6 +27,7 @@ export class AgentMother {
       name,
       lastname,
       locationId,
+      userId,
       nick,
       position,
       deskId,
@@ -61,6 +63,7 @@ export class AgentMother {
     ]
   ): Agent {
     return this.create(
+      undefined,
       undefined,
       undefined,
       undefined,

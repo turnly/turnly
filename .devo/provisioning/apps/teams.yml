@@ -1,4 +1,4 @@
-version: '3.9'
+version: "3.9"
 
 services:
   teams:
@@ -21,6 +21,7 @@ services:
       mongo: # Disable this if you are using an external Mongo database
         condition: service_healthy
     networks:
+      turnly.network.public:
       turnly.network.internal:
         aliases:
           - teams.turnly.local

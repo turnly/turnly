@@ -37,9 +37,31 @@ export class AgentsServer extends Producers.ServerImplementation<Producers.Teams
     callback(null, response)
   }
 
+  @Producers.CallHandler(Producers.Teams.GetAgentByUserIdResponse)
+  public async getByUserId(
+    call: Producers.ServerUnaryCall<
+      Producers.Teams.GetAgentByUserIdRequest,
+      Producers.Teams.GetAgentByUserIdResponse
+    >,
+    callback: Producers.ICallback<Producers.Teams.GetAgentByUserIdResponse>
+  ) {
+    const { data, meta } = await this.agentsController.getByUserId({
+      userId: call.request.getUserId(),
+    })
+
+    const response = new Producers.Teams.GetAgentByUserIdResponse()
+    const agent = AgentsMapper.toRPC(data)
+
+    response.setData(agent)
+    response.setMeta(Producers.MetaMapper.toRPC(meta))
+
+    callback(null, response)
+  }
+
   public get implementation() {
     return {
       getOne: this.getOne.bind(this),
+      getByUserId: this.getByUserId.bind(this),
     }
   }
 }
