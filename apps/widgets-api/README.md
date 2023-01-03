@@ -37,7 +37,7 @@ Authorization: Basic dHdpbGlvOmFob3kh # Base64 hash
 Request example:
 
 ```sh
-curl "https://{organization}.turnly.app/api/v1/widgets/graph" \
+curl "https://{organization}.turnly.app/api/widgets/graph" \
   --header "Authorization: Basic dHdpbGlvOmFob3kh" \
   --header "Content-Type: application/json" --request POST \
   --data "{\"query\": \"query {hello {greeting}}\"}"

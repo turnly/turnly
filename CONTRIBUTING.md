@@ -197,11 +197,11 @@ So when all of this is set up, you will be able to use the following URLs to int
 
 | Name                                  | URL                                                       |
 | ------------------------------------- | --------------------------------------------------------- |
-| **Help Desk API**                     | `http://{organization}.turnly.local/api/v1/helpdesk`     |
-| **Back Office API**                   | `http://{organization}.turnly.local/api/v1/back_office`   |
-| **Widgets API**                       | `http://{organization}.turnly.local/api/v1/widgets`       |
-| **Real Time Messaging API**           | `http://{organization}.turnly.local/api/v1/rtm`           |
-| **Identity & Access Management API**  | `http://accounts.turnly.local`                           |
+| **Help Desk API**                     | `http://{organization}.turnly.local/api/helpdesk`         |
+| **Back Office API**                   | `http://{organization}.turnly.local/api/back_office`      |
+| **Widgets API**                       | `http://{organization}.turnly.local/api/widgets`          |
+| **Real Time Messaging API**           | `http://{organization}.turnly.local/api/rtm`              |
+| **Identity & Access Management API**  | `http://accounts.turnly.local`                            |
 
 ### Start specific application (Development Mode)
 

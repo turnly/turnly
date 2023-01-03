@@ -30,6 +30,6 @@ services:
       - traefik.docker.network=turnly.network.internal
 
       - traefik.http.routers.widgets-api-public.entrypoints=web,websecure
-      - traefik.http.routers.widgets-api-public.rule=PathPrefix(`/api/v1/widgets`)
+      - traefik.http.routers.widgets-api-public.rule=PathPrefix(`/api/widgets`)
       - traefik.http.routers.widgets-api-public.service=widgets-api-public
       - traefik.http.services.widgets-api-public.loadbalancer.server.port=${APP_PORT}

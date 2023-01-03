@@ -13,7 +13,7 @@ export const useApolloClient = () => {
   const { customer } = useSession()
 
   return useMemo(() => {
-    const GRAPH_URL = `${about.organizationURL}/api/v1/widgets/graph`
+    const GRAPH_URL = `${about.organizationURL}/api/widgets/graph`
 
     if (!customer.id || !about.widgetId) return null
 
