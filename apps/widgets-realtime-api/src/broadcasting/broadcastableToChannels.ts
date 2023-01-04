@@ -11,7 +11,7 @@ import { BroadcastableEvents } from './broadcastableEvents'
  *
  * @description Events that can be broadcasted to channels.
  */
-export const broadcastable = {
+export const BROADCASTABLE_TO_CHANNELS = {
   queuing: [
     /**
      * Ticket events

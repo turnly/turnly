@@ -1,5 +1,5 @@
 {
-  "name": "@turnly/public-rtm-api",
+  "name": "@turnly/widgets-realtime-api",
   "version": "0.0.0",
   "private": true,
   "description": "It's the real-time event bridge that sends data between internal services and applications.",

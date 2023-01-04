@@ -27,7 +27,7 @@
     "apps/tasks-scheduling",
     "apps/notifications",
     "apps/business-owners",
-    "apps/public-rtm-api",
+    "apps/widgets-realtime-api",
     "apps/platform-realtime-api",
     "apps/widgets-api",
     "apps/helpdesk-api",
