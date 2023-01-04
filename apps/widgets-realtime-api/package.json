@@ -1,0 +1,52 @@
+{
+  "name": "@turnly/widgets-realtime-api",
+  "version": "0.0.0",
+  "private": true,
+  "description": "It's the real-time event bridge that sends data between internal services and applications.",
+  "license": "BSD-3-Clause",
+  "author": "Turnly Team <team@turnly.app> (https://turnly.app)",
+  "scripts": {
+    "prebuild": "rm -rf dist tsconfig.tsbuildinfo",
+    "build": "tsc",
+    "lint:check": "eslint . --ext .js,.ts",
+    "lint:format": "prettier \"./**/*.{ts,js}\" --check",
+    "lint:ts:check": "tsc --noEmit",
+    "start": "ROOT_DIR=$(pwd) NODE_PATH=dist/ node -r dotenv/config dist/main.js",
+    "test": "jest --forceExit --detectOpenHandles",
+    "watch": "nodemon --config node_modules/@turnly/eslint-config/nodemon.json src/main.ts"
+  },
+  "prettier": "@turnly/eslint-config/.prettierrc.js",
+  "eslintConfig": {
+    "extends": "@turnly/eslint-config",
+    "ignorePatterns": [
+      "node_modules",
+      "**/*.md",
+      "dist",
+      "jest*",
+      "coverage"
+    ]
+  },
+  "dependencies": {
+    "@turnly/common": "github:turnly/common.git#latest",
+    "@turnly/realtime": "github:turnly/realtime.git#latest",
+    "@turnly/rpc": "github:turnly/rpc.git#latest",
+    "@turnly/shared": "github:turnly/shared.git#latest",
+    "dotenv": "^16.0.1",
+    "mongoose": "^6.4.6"
+  },
+  "devDependencies": {
+    "@turnly/eslint-config": "github:turnly/configs",
+    "@types/jest": "^27.0.1",
+    "@types/node": "^17.0.30",
+    "eslint": "^8.14.0",
+    "jest": "^28.1.1",
+    "nodemon": "^2.0.14",
+    "prettier": "^2.3.0",
+    "ts-jest": "^28.0.5",
+    "ts-node": "^10.2.1",
+    "typescript": "^4.4.2"
+  },
+  "engines": {
+    "node": ">=18.12"
+  }
+}

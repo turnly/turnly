@@ -71,7 +71,7 @@ yarn devo setup --verbose
 yarn devo start
 
 # Start specific services:
-yarn devo start -s addons -s realtime-api
+yarn devo start -s addons -s platform-realtime-api
 
 # OR
 
@@ -102,7 +102,7 @@ yarn devo stop --verbose
 yarn devo reload
 
 # Stop specific services:
-yarn devo reload -s realtime-api
+yarn devo reload -s platform-realtime-api
 ```
 
 #### Linting command
@@ -126,10 +126,10 @@ You can take advantage of yarn workspaces to interact with apps, for example,
 you can run the commands for one of your services from DevO using:
 
 ```sh
-yarn devo realtime-api command
+yarn devo platform-realtime-api command
 
 # Same as:
-cd ./apps/realtime-api && yarn run command
+cd ./apps/platform-realtime-api && yarn run command
 
 # -------------------------------------
 
@@ -195,13 +195,14 @@ ones so that you can do tests, we recommend you create your local organization w
 
 So when all of this is set up, you will be able to use the following URLs to interact with the APIs:
 
-| Name                                  | URL                                                       |
-| ------------------------------------- | --------------------------------------------------------- |
-| **Help Desk API**                     | `http://{organization}.turnly.local/api/helpdesk`         |
-| **Back Office API**                   | `http://{organization}.turnly.local/api/back_office`      |
-| **Widgets API**                       | `http://{organization}.turnly.local/api/widgets`          |
-| **Real Time Messaging API**           | `http://{organization}.turnly.local/api/rtm`              |
-| **Identity & Access Management API**  | `http://accounts.turnly.local`                            |
+| Name                                         | URL                                                       |
+| -------------------------------------------- | --------------------------------------------------------- |
+| **Help Desk API**                            | `http://{organization}.turnly.local/api/helpdesk`         |
+| **Back Office API**                          | `http://{organization}.turnly.local/api/backoffice`       |
+| **Widgets API**                              | `http://{organization}.turnly.local/api/widgets`          |
+| **Platform Real Time Messaging API (RTM)**   | `http://{organization}.turnly.local/api/rtm/platform`     |
+| **Widgets Real Time Messaging API (RTM)**    | `http://{organization}.turnly.local/api/rtm/widgets`      |
+| **Identity & Access Management API**         | `http://accounts.turnly.local`                            |
 
 ### Start specific application (Development Mode)
 
@@ -210,11 +211,12 @@ you want to contribute to and you'll find a README with details on how to run ju
 
 ##### APIs (Backend for Frontend) 🔗
 
-| Name                                                  | Description                                  | Live |
-| ----------------------------------------------------- | -------------------------------------------- |:----:|
-| [Gateway (Application Proxy)](/apps/gateway)          | API entry point and access management        | 🟢   |
-| [Widgets API](/apps/widgets-api)                      | GraphQL API for widgets clients              | 🟢   |
-| [Real Time Messaging API (RTM)](/apps/realtime-api)   | A WebSocket-based API for realtime events    | 🟢   |
+| Name                                                                    | Description                                  | Live |
+| ----------------------------------------------------------------------- | -------------------------------------------- |:----:|
+| [Gateway (Application Proxy)](/apps/gateway)                            | API entry point and access management        | 🟢   |
+| [Widgets API](/apps/widgets-api)                                        | GraphQL API for widgets clients              | 🟢   |
+| [Platform Real Time Messaging API (RTM)](/apps/platform-realtime-api)   | A WebSocket-based API for platform events    | 🟢   |
+| [Widgets Real Time Messaging API (RTM)](/apps/widgets-realtime-api)     | A WebSocket-based API for widgets events     | 🟢   |
 
 ##### Microservices 🔗
 
