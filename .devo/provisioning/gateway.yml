@@ -49,6 +49,32 @@ services:
           - ${IAM_HOSTNAME}
           - ${APP_DOMAIN}
 
+  error-pages:
+    image: tarampampam/error-pages:2.19.0
+    container_name: gateway-error-pages
+    environment:
+      TEMPLATE_NAME: app-down
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=turnly.network.internal
+
+      # use as "fallback" for any NON-registered services (with priority below normal)
+      - traefik.http.routers.error-pages-router.rule=HostRegexp(`{host:.+}`)
+      - traefik.http.routers.error-pages-router.priority=10
+
+      - traefik.http.routers.error-pages-router.entrypoints=web,websecure
+      - traefik.http.routers.error-pages-router.middlewares=error-pages-middleware
+
+      - traefik.http.middlewares.error-pages-middleware.errors.status=400-599
+      - traefik.http.middlewares.error-pages-middleware.errors.service=error-pages-service
+      - traefik.http.middlewares.error-pages-middleware.errors.query=/{status}.html
+      - traefik.http.services.error-pages-service.loadbalancer.server.port=8080
+    depends_on:
+      - gateway
+    networks:
+      - turnly.network.public
+      - turnly.network.internal
+
 networks:
   turnly.network.internal:
     name: turnly.network.internal

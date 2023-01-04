@@ -51,3 +51,4 @@ services:
       - traefik.http.routers.iam-public.service=iam-public
       - traefik.http.services.iam-public.loadbalancer.server.port=8080
       - traefik.http.routers.iam-public.rule=Host(`${IAM_HOSTNAME}`) && PathPrefix(`/admin`, `/js`, `/realms`, `/resources`, `/robots.txt`)
+      - traefik.http.routers.iam-public.middlewares=error-pages-middleware
