@@ -1,29 +1,40 @@
-import { Realtime } from '@turnly/rtm'
 import { useCallback, useLayoutEffect } from 'preact/hooks'
 import create from 'zustand'
 import shallow from 'zustand/shallow'
 
 import { Session } from '../@types/session'
 import { Nullable } from '../@types/shared'
-import { getRealtime } from '../libs/realtime'
+import { getRealtime, RealtimeClient } from '../libs/realtime'
 import { useBus } from '../services/event-bus'
 import { useSession } from './use-session'
 import { useVisibility } from './use-visibility'
 
 export enum RealtimeEvents {
+  /**
+   * Service events
+   */
+  SERVICE_TICKETS_AHEAD = 'queuing.service.tickets.ahead',
+  SERVICE_TICKETS_BEHIND = 'queuing.service.tickets.behind',
+
+  /**
+   * Ticket events
+   */
+  TICKETS_BEFORE_YOURS = 'queuing.tickets.before-yours',
+  TICKET_CALLED = 'queuing.tickets.called-to-desk',
+  TICKET_CANCELLED = 'queuing.tickets.cancelled',
+
+  /**
+   * Global events
+   */
   CONNECTED = 'connected',
+  DISCONNECTED = 'disconnected',
   CONNECT_ERROR = 'connect_error',
   SUBSCRIBE = 'subscribe',
-  SERVICE_TICKETS_AHEAD = 'service.tickets.ahead',
-  SERVICE_TICKETS_BEHIND = 'service.tickets.behind',
-  TICKET_BEFORE_YOURS_UPDATED = 'ticket.before-yours.updated',
-  TICKET_CALLED = 'ticket.called-to-desk',
-  TICKET_CANCELLED = 'ticket.cancelled',
 }
 
 type Store = {
-  realtime: Nullable<Realtime>
-  setRealtime: (realtime: Realtime) => void
+  realtime: Nullable<RealtimeClient>
+  setRealtime: (realtime: RealtimeClient) => void
 }
 
 const useStore = create<Store>(set => ({

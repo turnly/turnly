@@ -188,7 +188,7 @@ export const TicketDetailsScreen = () => {
     })
 
     const unsub = realtime.subscribe(
-      RealtimeEvents.TICKET_BEFORE_YOURS_UPDATED,
+      RealtimeEvents.TICKETS_BEFORE_YOURS,
       event => {
         const beforeYours = ticket.beforeYours.filter(
           id => event.payload.ticketId !== id
