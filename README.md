@@ -77,9 +77,9 @@ Our ecosystem is completely divided into multiple applications with specific pur
 
 | Name                                            | Description                                                          | Live |
 | ----------------------------------------------- | -------------------------------------------------------------------- |:----:|
-| [Widgets](/widgets)                             | Web widget-based application for ticket-taking                       | 🟢   |
-| [Tessa](https://github.com/turnly/tessa)        | Backoffice, app to manage organization resources                     | 🔴   |
+| [Widgets](https://github.com/turnly/widgets)    | Web widget-based application for ticket-taking                       | 🟢   |
 | [Sansa](https://github.com/turnly/helpdesk)     | Helpdesk, app for your organization's agents to serve your customers | 🟢   |
+| [Tessa](https://github.com/turnly/tessa)        | Backoffice, app to manage organization resources                     | 🔴   |
 
 ## 🧑🏻‍🚒 Contributing
 

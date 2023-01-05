@@ -30,7 +30,6 @@
     "apps/widgets-realtime-api",
     "apps/platform-realtime-api",
     "apps/widgets-api",
-    "apps/helpdesk-api",
-    "widgets"
+    "apps/helpdesk-api"
   ]
 }
