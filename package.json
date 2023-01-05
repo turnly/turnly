@@ -7,8 +7,7 @@
   "author": "Turnly Team <team@turnly.app> (https://turnly.app)",
   "workspaces": {
     "packages": [
-      "apps/*",
-      "widgets"
+      "apps/*"
     ],
     "nohoist": [
       "**"

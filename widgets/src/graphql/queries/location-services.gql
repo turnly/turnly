@@ -1,9 +1,0 @@
-query GetLocationServices($locationId: ID!) {
-  getLocationServices(locationId: $locationId) {
-    id
-    name
-    description
-    locationId
-    ticketsWaiting
-  }
-}
