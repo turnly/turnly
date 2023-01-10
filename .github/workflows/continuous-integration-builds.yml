@@ -39,6 +39,7 @@ jobs:
         uses: slackapi/slack-github-action@v1.23.0
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          VERSION: v${{ steps.get_version.outputs.VERSION }}
         with:
           channel-id: ${{ secrets.SLACK_CHANNEL_ID }}
           payload-file-path: "./.github/resources/slack-builds-start.json"
@@ -184,6 +185,7 @@ jobs:
         uses: slackapi/slack-github-action@v1.23.0
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          VERSION: v${{ steps.get_version.outputs.VERSION }}
         with:
           channel-id: ${{ secrets.SLACK_CHANNEL_ID }}
           update-ts: ${{ steps.slack.outputs.ts }}
@@ -194,6 +196,7 @@ jobs:
         uses: slackapi/slack-github-action@v1.23.0
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          VERSION: v${{ steps.get_version.outputs.VERSION }}
         with:
           channel-id: ${{ secrets.SLACK_CHANNEL_ID }}
           update-ts: ${{ steps.slack.outputs.ts }}

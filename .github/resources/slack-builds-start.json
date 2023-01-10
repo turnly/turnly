@@ -1,5 +1,5 @@
 {
-  "text": "📦 Starting a new build, package, and ship to GitHub Registry with ${{ steps.get_version.outputs.VERSION }} version",
+  "text": "📦 Starting a new build, package, and ship to GitHub Registry with ${{ env.VERSION }} version",
   "attachments": [
     {
       "color": "#dbab09",
@@ -12,7 +12,7 @@
         {
           "title": "Version",
           "short": true,
-          "value": "${{ steps.get_version.outputs.VERSION }}"
+          "value": "${{ env.VERSION }}"
         }
       ]
     }

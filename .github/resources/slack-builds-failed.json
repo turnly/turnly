@@ -1,5 +1,5 @@
 {
-  "text": "🚨 Oops, The pushing to GitHub Packages failed with ${{ steps.get_version.outputs.VERSION }} version",
+  "text": "🚨 Oops, The pushing to GitHub Packages failed with ${{ env.VERSION }} version",
   "attachments": [
     {
       "color": "#d90000",
@@ -12,7 +12,7 @@
         {
           "title": "Version",
           "short": true,
-          "value": "${{ steps.get_version.outputs.VERSION }}"
+          "value": "${{ env.VERSION }}"
         }
       ]
     }
