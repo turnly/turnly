@@ -19,7 +19,6 @@ services:
         aliases:
           - iam.turnly.local
     environment:
-      # This service shared env variables that extend from common.yml
       APP_NAME: iam
 
       # Credentials for storing into an external database (postgres)
@@ -30,17 +29,23 @@ services:
       KC_DB_SCHEMA: ${IAM_DB_SCHEMA}
       KC_DB_USERNAME: ${IAM_DB_USERNAME}
       KC_DB_PASSWORD: ${IAM_DB_PASSWORD}
+
       # Proxy settings
       KC_HOSTNAME: ${IAM_HOSTNAME}
-      KC_HOSTNAME_STRICT: "false"
-      KC_HOSTNAME_STRICT_HTTPS: "false"
-      KC_HTTP_ENABLED: "true"
+      KC_HOSTNAME_STRICT: false
+
       # Credentials for admin account
       KEYCLOAK_ADMIN: ${IAM_ADMIN_USERNAME}
       KEYCLOAK_ADMIN_PASSWORD: ${IAM_ADMIN_PASSWORD}
 
-      JAVA_TOOL_OPTIONS: -Dsun.security.krb5.debug=true -Dsun.security.spenego.degug=true -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=8790 -Dcom.sun.management.jmxremote.local.only=false -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dquarkus-log-max-startup-records=10000
-      JAVA_OPTS: -server -Xms512m -Xmx2048m -XX:MetaspaceSize=96M -XX:MaxMetaspaceSize=256m -Djava.awt.headless=true -Djava.net.preferIPv4Stack=true
+      # General settings
+      PROXY_ADDRESS_FORWARDING: true
+      KC_HOSTNAME_STRICT_HTTPS: false
+      KC_TRANSACTION_XA_ENABLED: true
+      KC_HTTP_ENABLED: true
+      KC_HEALTH_ENABLED: true
+      KC_METRICS_ENABLED: true
+      KC_PROXY: edge
     command: start-dev --import-realm
     healthcheck:
       test: curl --fail http://iam.turnly.local:8080/realms/master
@@ -55,7 +60,6 @@ services:
       - traefik.http.routers.iam-public.service=iam-public
       - traefik.http.services.iam-public.loadbalancer.server.port=8080
       - traefik.http.routers.iam-public.rule=Host(`${IAM_HOSTNAME}`) && PathPrefix(`/admin`, `/js`, `/realms`, `/resources`, `/robots.txt`)
-      - traefik.http.routers.iam-public.middlewares=error-pages-middleware
     volumes:
       - ${DOCKER_RELATIVE_APPS_DIR}/iam/bootstrapping/turnly-startup.json:/opt/keycloak/data/import/turnly-startup.json:ro
       - ${DOCKER_RELATIVE_APPS_DIR}/iam/bootstrapping/engineering-startup.json:/opt/keycloak/data/import/engineering-startup.json:ro

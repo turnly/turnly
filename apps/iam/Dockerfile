@@ -33,4 +33,7 @@ RUN /opt/keycloak/bin/kc.sh build
 FROM quay.io/keycloak/keycloak:${KC_VERSION} as runner
 COPY --from=builder /opt/keycloak/ /opt/keycloak/
 
+COPY ./bootstrapping/turnly-startup.json /opt/keycloak/data/import/turnly-startup.json
+COPY ./bootstrapping/engineering-startup.json /opt/keycloak/data/import/engineering-startup.json
+
 ENTRYPOINT ["/opt/keycloak/bin/kc.sh"]
