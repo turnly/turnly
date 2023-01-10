@@ -1,12 +1,250 @@
 name: 📦 CI - Builds
 
 on:
-  workflow_call:
+  release:
+    types: [published]
+  workflow_dispatch:
 
 jobs:
-  hello:
+  registry:
+    name: 📦 Build, Package, and ship to GitHub Registry
+    permissions:
+      contents: read
+      packages: write
     runs-on: ubuntu-latest
 
     steps:
-      - name: 🔦 Hello
-        run: echo "Hello!"
+      - name: 🎬 Check out Git repo
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+
+      - name: 🏷️ Get the version
+        id: get_version
+        run: echo ::set-output name=VERSION::$(node -e "console.log(require('./package.json').version)")
+
+      - name: 🚜 Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: 🔐 Login to GitHub Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.CR_PAT }}
+
+      - name: 🔔 Notifying the Engineering team about status... 🎬
+        id: slack
+        uses: slackapi/slack-github-action@v1.23.0
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+        with:
+          channel-id: ${{ secrets.SLACK_CHANNEL_ID }}
+          payload: |
+            {
+              "text": "📦 Build, Package, and ship to GitHub Registry",
+              "attachments": [
+                {
+                  "pretext": "Pushing started",
+                  "color": "dbab09",
+                  "fields": [
+                    {
+                      "title": "Status",
+                      "short": true,
+                      "value": "In Progress"
+                    }
+                  ]
+                }
+              ]
+            }
+
+      - name: 🐳 Push Gateway to GitHub Registry
+        uses: docker/build-push-action@v3
+        with:
+          context: "./apps/gateway"
+          push: true
+          tags: |
+            ghcr.io/turnly/gateway:v${{ steps.get_version.outputs.VERSION }}
+            ghcr.io/turnly/gateway:latest
+
+      - name: 🐳 Push Addons to GitHub Registry
+        uses: docker/build-push-action@v3
+        with:
+          context: "./apps/addons"
+          target: production
+          push: true
+          tags: |
+            ghcr.io/turnly/addons:v${{ steps.get_version.outputs.VERSION }}
+            ghcr.io/turnly/addons:latest
+
+      - name: 🐳 Push Assistance Centers to GitHub Registry
+        uses: docker/build-push-action@v3
+        with:
+          context: "./apps/assistance-centers"
+          target: production
+          push: true
+          tags: |
+            ghcr.io/turnly/assistance-centers:v${{ steps.get_version.outputs.VERSION }}
+            ghcr.io/turnly/assistance-centers:latest
+
+      - name: 🐳 Push Business Owners to GitHub Registry
+        uses: docker/build-push-action@v3
+        with:
+          context: "./apps/business-owners"
+          target: production
+          push: true
+          tags: |
+            ghcr.io/turnly/business-owners:v${{ steps.get_version.outputs.VERSION }}
+            ghcr.io/turnly/business-owners:latest
+
+      - name: 🐳 Push Custom Fields to GitHub Registry
+        uses: docker/build-push-action@v3
+        with:
+          context: "./apps/custom-fields"
+          target: production
+          push: true
+          tags: |
+            ghcr.io/turnly/custom-fields:v${{ steps.get_version.outputs.VERSION }}
+            ghcr.io/turnly/custom-fields:latest
+
+      - name: 🐳 Push Helpdesk API to GitHub Registry
+        uses: docker/build-push-action@v3
+        with:
+          context: "./apps/helpdesk-api"
+          target: production
+          push: true
+          tags: |
+            ghcr.io/turnly/helpdesk-api:v${{ steps.get_version.outputs.VERSION }}
+            ghcr.io/turnly/helpdesk-api:latest
+
+      - name: 🐳 Push IAM to GitHub Registry
+        uses: docker/build-push-action@v3
+        with:
+          context: "./apps/iam"
+          target: production
+          push: true
+          tags: |
+            ghcr.io/turnly/iam:v${{ steps.get_version.outputs.VERSION }}
+            ghcr.io/turnly/iam:latest
+
+      - name: 🐳 Push OAuth Middleware to GitHub Registry
+        uses: docker/build-push-action@v3
+        with:
+          context: "./apps/oauth"
+          target: production
+          push: true
+          tags: |
+            ghcr.io/turnly/oauth:v${{ steps.get_version.outputs.VERSION }}
+            ghcr.io/turnly/oauth:latest
+
+      - name: 🐳 Push Platform Realtime API to GitHub Registry
+        uses: docker/build-push-action@v3
+        with:
+          context: "./apps/platform-realtime-api"
+          target: production
+          push: true
+          tags: |
+            ghcr.io/turnly/platform-realtime-api:v${{ steps.get_version.outputs.VERSION }}
+            ghcr.io/turnly/platform-realtime-api:latest
+
+      - name: 🐳 Push Queuing System to GitHub Registry
+        uses: docker/build-push-action@v3
+        with:
+          context: "./apps/queuing-system"
+          target: production
+          push: true
+          tags: |
+            ghcr.io/turnly/queuing-system:v${{ steps.get_version.outputs.VERSION }}
+            ghcr.io/turnly/queuing-system:latest
+
+      - name: 🐳 Push Teams to GitHub Registry
+        uses: docker/build-push-action@v3
+        with:
+          context: "./apps/teams"
+          target: production
+          push: true
+          tags: |
+            ghcr.io/turnly/teams:v${{ steps.get_version.outputs.VERSION }}
+            ghcr.io/turnly/teams:latest
+
+      - name: 🐳 Push Widgets API to GitHub Registry
+        uses: docker/build-push-action@v3
+        with:
+          context: "./apps/widgets-api"
+          target: production
+          push: true
+          tags: |
+            ghcr.io/turnly/widgets-api:v${{ steps.get_version.outputs.VERSION }}
+            ghcr.io/turnly/widgets-api:latest
+
+      - name: 🐳 Push Widgets Realtime API to GitHub Registry
+        uses: docker/build-push-action@v3
+        with:
+          context: "./apps/widgets-realtime-api"
+          target: production
+          push: true
+          tags: |
+            ghcr.io/turnly/widgets-realtime-api:v${{ steps.get_version.outputs.VERSION }}
+            ghcr.io/turnly/widgets-realtime-api:latest
+
+      - name: 🐳 Push Fluentd to GitHub Registry
+        uses: docker/build-push-action@v3
+        with:
+          context: "./.devo/provisioning/infrastructure/observability/fluentd"
+          push: true
+          tags: |
+            ghcr.io/turnly/fluentd:v${{ steps.get_version.outputs.VERSION }}
+            ghcr.io/turnly/fluentd:latest
+
+      - name: 🔔 Notifying the Engineering team about status... 🚨
+        if: failure()
+        uses: slackapi/slack-github-action@v1.23.0
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+        with:
+          channel-id: ${{ secrets.SLACK_CHANNEL_ID }}
+          update-ts: ${{ steps.slack.outputs.ts }}
+          payload: |
+            {
+              "text": "🚨 Oops, The pushing to GitHub Packages failed",
+              "attachments": [
+                {
+                  "pretext": "Pushing finished",
+                  "color": "28a745",
+                  "fields": [
+                    {
+                      "title": "Status",
+                      "short": true,
+                      "value": "Failed"
+                    }
+                  ]
+                }
+              ]
+            }
+
+      - name: 🔔 Notifying the Engineering team about status... ✅
+        if: success()
+        uses: slackapi/slack-github-action@v1.23.0
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+        with:
+          channel-id: ${{ secrets.SLACK_CHANNEL_ID }}
+          update-ts: ${{ steps.slack.outputs.ts }}
+          payload: |
+            {
+              "text": "✅ Ahoy!, Everything is created, packed and pushed to the GitHub Registry",
+              "attachments": [
+                {
+                  "pretext": "Pushing finished",
+                  "color": "28a745",
+                  "fields": [
+                    {
+                      "title": "Status",
+                      "short": true,
+                      "value": "Completed"
+                    }
+                  ]
+                }
+              ]
+            }

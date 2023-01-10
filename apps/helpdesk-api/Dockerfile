@@ -26,7 +26,7 @@ FROM node:${NODE_VERSION} AS deps
 WORKDIR /app
 
 # Copy the application dependency declaration file
-COPY package.json yarn.lock ./
+COPY package.json ./
 
 # Install required system packages
 RUN apk add --virtual .stage-deps --no-cache --update libc6-compat g++ git cmake make python3 \
