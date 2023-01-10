@@ -22,7 +22,7 @@ jobs:
 
       - name: 🏷️ Get the version
         id: get_version
-        run: echo ::set-output name=VERSION::$(node -e "console.log(require('./package.json').version)")
+        run: echo "VERSION=$(node -e "console.log(require('./package.json').version)")" >> $GITHUB_OUTPUT
 
       - name: 🚜 Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
@@ -188,7 +188,6 @@ jobs:
           VERSION: v${{ steps.get_version.outputs.VERSION }}
         with:
           channel-id: ${{ secrets.SLACK_CHANNEL_ID }}
-          update-ts: ${{ steps.slack.outputs.ts }}
           payload-file-path: "./.github/resources/slack-builds-failed.json"
 
       - name: 🔔 Notifying the Engineering team about status... ✅
