@@ -20,10 +20,9 @@ RUN apk add --virtual .stage-customizer --no-cache --update git npm curl \
 
 FROM quay.io/keycloak/keycloak:${KC_VERSION} as builder
 
-ENV PROXY_ADDRESS_FORWARDING=true \
+ENV KC_DB=postgres \
     KC_METRICS_ENABLED=true \
     KC_HEALTH_ENABLED=true \
-    KC_PROXY=edge \
     KC_FEATURES=authorization,account2,account-api,client-policies,impersonation,token-exchange,upload-scripts
 
 WORKDIR /opt/keycloak
