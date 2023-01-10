@@ -6,7 +6,7 @@ services:
       file: common.yml
       service: common
     container_name: custom-fields
-    image: turnly/custom-fields:latest
+    image: ghcr.io/turnly/custom-fields:latest
     build:
       context: ${DOCKER_RELATIVE_APPS_DIR}/custom-fields
       target: ${DOCKER_BUILD_STAGE}

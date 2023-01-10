@@ -6,7 +6,7 @@ services:
       file: common.yml
       service: common
     container_name: iam
-    image: turnly/iam:latest
+    image: ghcr.io/turnly/iam:latest
     build:
       context: ${DOCKER_RELATIVE_APPS_DIR}/iam
       dockerfile: Dockerfile

@@ -6,7 +6,7 @@ services:
       file: common.yml
       service: common
     container_name: business-owners
-    image: turnly/business-owners:latest
+    image: ghcr.io/turnly/business-owners:latest
     build:
       context: ${DOCKER_RELATIVE_APPS_DIR}/business-owners
       target: ${DOCKER_BUILD_STAGE}

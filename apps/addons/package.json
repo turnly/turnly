@@ -1,6 +1,6 @@
 {
   "name": "@turnly/addons",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
   "description": "Enables integrations between external systems to share data.",
   "license": "BSD-3-Clause",

@@ -6,7 +6,7 @@ services:
       file: common.yml
       service: common
     container_name: addons
-    image: turnly/addons:latest
+    image: ghcr.io/turnly/addons:latest
     build:
       context: ${DOCKER_RELATIVE_APPS_DIR}/addons
       target: ${DOCKER_BUILD_STAGE}

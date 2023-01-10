@@ -1,6 +1,6 @@
 {
   "name": "@turnly/business-owners",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
   "description": "A service to manage business owners (organizations)",
   "license": "BSD-3-Clause",

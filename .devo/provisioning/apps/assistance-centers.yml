@@ -6,7 +6,7 @@ services:
       file: common.yml
       service: common
     container_name: assistance-centers
-    image: turnly/assistance-centers:latest
+    image: ghcr.io/turnly/assistance-centers:latest
     build:
       context: ${DOCKER_RELATIVE_APPS_DIR}/assistance-centers
       target: ${DOCKER_BUILD_STAGE}

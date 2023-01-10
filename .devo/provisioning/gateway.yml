@@ -5,7 +5,7 @@ services:
     extends:
       file: common.yml
       service: common
-    image: turnly/gateway:latest
+    image: ghcr.io/turnly/gateway:latest
     command:
       - --accesslog=true
       - --log.level=DEBUG

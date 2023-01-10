@@ -6,7 +6,7 @@ services:
       file: common.yml
       service: common
     container_name: helpdesk-api
-    image: turnly/helpdesk-api:latest
+    image: ghcr.io/turnly/helpdesk-api:latest
     build:
       context: ${DOCKER_RELATIVE_APPS_DIR}/helpdesk-api
       target: ${DOCKER_BUILD_STAGE}

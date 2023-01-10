@@ -4,7 +4,7 @@ x-oauth: &oauth
   extends:
     file: common.yml
     service: common
-  image: turnly/oauth:latest
+  image: ghcr.io/turnly/oauth:latest
   build:
     context: ${DOCKER_RELATIVE_APPS_DIR}/oauth
     dockerfile: Dockerfile

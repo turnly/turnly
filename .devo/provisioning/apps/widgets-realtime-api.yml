@@ -6,7 +6,7 @@ services:
       file: common.yml
       service: common
     container_name: widgets-realtime-api
-    image: turnly/widgets-realtime-api:latest
+    image: ghcr.io/turnly/widgets-realtime-api:latest
     build:
       context: ${DOCKER_RELATIVE_APPS_DIR}/widgets-realtime-api
       target: ${DOCKER_BUILD_STAGE}

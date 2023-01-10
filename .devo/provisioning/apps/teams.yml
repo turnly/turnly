@@ -6,7 +6,7 @@ services:
       file: common.yml
       service: common
     container_name: teams
-    image: turnly/teams:latest
+    image: ghcr.io/turnly/teams:latest
     build:
       context: ${DOCKER_RELATIVE_APPS_DIR}/teams
       target: ${DOCKER_BUILD_STAGE}

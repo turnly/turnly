@@ -6,7 +6,7 @@ services:
       file: common.yml
       service: common
     container_name: queuing-system
-    image: turnly/queuing-system:latest
+    image: ghcr.io/turnly/queuing-system:latest
     build:
       context: ${DOCKER_RELATIVE_APPS_DIR}/queuing-system
       target: ${DOCKER_BUILD_STAGE}
