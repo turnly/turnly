@@ -41,23 +41,7 @@ jobs:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
         with:
           channel-id: ${{ secrets.SLACK_CHANNEL_ID }}
-          payload: |
-            {
-              "text": "📦 Build, Package, and ship to GitHub Registry",
-              "attachments": [
-                {
-                  "pretext": "Pushing started",
-                  "color": "dbab09",
-                  "fields": [
-                    {
-                      "title": "Status",
-                      "short": true,
-                      "value": "In Progress"
-                    }
-                  ]
-                }
-              ]
-            }
+          payload-file-path: "./.github/resources/slack-builds-start.json"
 
       - name: 🐳 Push Gateway to GitHub Registry
         uses: docker/build-push-action@v3
@@ -122,7 +106,6 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: "./apps/iam"
-          target: production
           push: true
           tags: |
             ghcr.io/turnly/iam:v${{ steps.get_version.outputs.VERSION }}
@@ -132,7 +115,6 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: "./apps/oauth"
-          target: production
           push: true
           tags: |
             ghcr.io/turnly/oauth:v${{ steps.get_version.outputs.VERSION }}
@@ -205,23 +187,7 @@ jobs:
         with:
           channel-id: ${{ secrets.SLACK_CHANNEL_ID }}
           update-ts: ${{ steps.slack.outputs.ts }}
-          payload: |
-            {
-              "text": "🚨 Oops, The pushing to GitHub Packages failed",
-              "attachments": [
-                {
-                  "pretext": "Pushing finished",
-                  "color": "28a745",
-                  "fields": [
-                    {
-                      "title": "Status",
-                      "short": true,
-                      "value": "Failed"
-                    }
-                  ]
-                }
-              ]
-            }
+          payload-file-path: "./.github/resources/slack-builds-failed.json"
 
       - name: 🔔 Notifying the Engineering team about status... ✅
         if: success()
@@ -231,20 +197,4 @@ jobs:
         with:
           channel-id: ${{ secrets.SLACK_CHANNEL_ID }}
           update-ts: ${{ steps.slack.outputs.ts }}
-          payload: |
-            {
-              "text": "✅ Ahoy!, Everything is created, packed and pushed to the GitHub Registry",
-              "attachments": [
-                {
-                  "pretext": "Pushing finished",
-                  "color": "28a745",
-                  "fields": [
-                    {
-                      "title": "Status",
-                      "short": true,
-                      "value": "Completed"
-                    }
-                  ]
-                }
-              ]
-            }
+          payload-file-path: "./.github/resources/slack-builds-success.json"
