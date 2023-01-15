@@ -34,7 +34,7 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.CR_PAT }}
 
-      - name: 🔔 Notifying the Engineering team about status... 🎬
+      - name: 🔔 Notify about the start of the building process...
         id: slack
         uses: slackapi/slack-github-action@v1.23.0
         env:
@@ -180,23 +180,20 @@ jobs:
             ghcr.io/turnly/fluentd:v${{ steps.get_version.outputs.VERSION }}
             ghcr.io/turnly/fluentd:latest
 
-      - name: 🔔 Notifying the Engineering team about status... 🚨
+      - name: 🚨 Set the slack template to notify the failed process
         if: failure()
-        uses: slackapi/slack-github-action@v1.23.0
-        env:
-          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
-          VERSION: v${{ steps.get_version.outputs.VERSION }}
-        with:
-          channel-id: ${{ secrets.SLACK_CHANNEL_ID }}
-          payload-file-path: "./.github/resources/slack-builds-failed.json"
+        run: echo "SLACK_TEMPLATE=./.github/resources/slack-builds-failed.json" >> $GITHUB_ENV
 
-      - name: 🔔 Notifying the Engineering team about status... ✅
+      - name: ✅ Set the slack template to notify successful completion
         if: success()
+        run: echo "SLACK_TEMPLATE=./.github/resources/slack-builds-success.json" >> $GITHUB_ENV
+
+      - name: 🔔 Notifying the Engineering team...
+        if: always()
         uses: slackapi/slack-github-action@v1.23.0
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
           VERSION: v${{ steps.get_version.outputs.VERSION }}
         with:
           channel-id: ${{ secrets.SLACK_CHANNEL_ID }}
-          update-ts: ${{ steps.slack.outputs.ts }}
-          payload-file-path: "./.github/resources/slack-builds-success.json"
+          payload-file-path: ${{ env.SLACK_TEMPLATE }}
