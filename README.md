@@ -36,10 +36,6 @@ in physical queues by eliminating legacy number-taking systems.
 Customers join from their smart device to a web widget-based system that
 can be accessed from your own website or application.
 
-## 🙏 Give a Star!
-
-This project needs a ⭐️ from you. Don't forget to leave a star ⭐️
-
 ## 📦 Features
 
 Turnly's main features are:
@@ -73,6 +69,10 @@ Our ecosystem is completely divided into multiple applications with specific pur
 | [Widgets](https://github.com/turnly/widgets)       | Web widget-based application for ticket-taking                       | 🟢   |
 | [Helpdesk](https://github.com/turnly/helpdesk)     | App for your organization's agents to serve your customers           | 🟢   |
 | [Backoffice](https://github.com/turnly/backoffice) | App to manage organization resources                                 | 🔴   |
+
+## 🙏 Give a Star!
+
+This project needs a ⭐️ from you. Don't forget to leave a star ⭐️
 
 ## 🧑🏻‍🚒 Contributing (Development)
 
