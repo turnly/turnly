@@ -29,14 +29,16 @@
   </p>
 </div>
 
-## 📖 Overview
+### 📖 Overview
 
 [Turnly](https://turnly.app) helps businesses save their customers time waiting
 in physical queues by eliminating legacy number-taking systems.
 Customers join from their smart device to a web widget-based system that
 can be accessed from your own website or application.
 
-## 📦 Features
+___
+
+### 📦 Features
 
 Turnly's main features are:
 
@@ -48,19 +50,25 @@ a customer to match your internal workflow.
 them aware of the life cycle of their tickets.
 * [ ] Your organization gets a subdomain from Turnly (e.g. `https://{org-name}.turnly.app`)
 
-## 🚀 Getting Started
+___
+
+### 🚀 Getting Started
 
 - [About Us](https://turnly.app)
 - [Demo of use cases such as banks, healthcare, food pantries, travels, and shops.](https://github.com/turnly/demos)
 - [Interested in our product? Get Turnly!](https://omuxushx5fa.typeform.com/to/iTaTfvCg)
 
-## 🎯 Deployment
+___
+
+### 🎯 Deployment
 
 - [Deploying Turnly with Docker Compose.](https://github.com/turnly/ops-compose)
 - [Deploying Turnly with Kubernetes.](https://github.com/turnly/ops-kubernetes) - (Coming soon)
 - [Deploying Turnly with One-Click Setups.](https://github.com/turnly/ops-one-click) - (Coming soon)
 
-## 🖼️ Front-end Applications
+___
+
+### 🖼️ Front-end Applications
 
 Our ecosystem is completely divided into multiple applications with specific purposes that share our design system.
 
@@ -70,22 +78,30 @@ Our ecosystem is completely divided into multiple applications with specific pur
 | [Helpdesk](https://github.com/turnly/helpdesk)     | App for your organization's agents to serve your customers           | 🟢   |
 | [Backoffice](https://github.com/turnly/backoffice) | App to manage organization resources                                 | 🔴   |
 
-## 🙏 Give a Star!
+___
+
+### 🙏 Give a Star!
 
 This project needs a ⭐️ from you. Don't forget to leave a star ⭐️
 
-## 🧑🏻‍🚒 Contributing (Development)
+___
+
+### 🧑🏻‍🚒 Contributing (Development)
 
 Ahoy!, please if you want to correct some typo, update a readme, or contributing with code. Refer to our [Contributing Guide](/CONTRIBUTING.md) for details.
 
-## Software Architecture
+___
+
+### Software Architecture
 
 The microservice architecture enables the rapid, frequent and reliable delivery of large,
 complex applications, and is designed for easy scaling and delegation of responsibilities.
 
 ![high-level-architecture](/docs/diagrams/high-level-architecture.png)
 
-## ❤️ Got a Question, Problem or Feature?
+___
+
+### ❤️ Got a Question, Problem or Feature?
 
 If you need help or just want to hear from Turnly, there are several ways to connect with us:
 
@@ -94,20 +110,28 @@ If you need help or just want to hear from Turnly, there are several ways to con
 - Create issue on [Github](https://github.com/turnly/turnly/issues)
 - Follow us on [Twitter](https://twitter.com/turnlyapp)
 
-## 🔐 Security
+___
+
+### 🔐 Security
 
 Looking to report a vulnerability? Please refer our [SECURITY](/SECURITY.md) file.
 
-## 🦦 Our Team
+___
+
+### 🦦 Our Team
 
 Check out our [owners' document](/OWNERS.md) to meet our great maintainers and friends.
 
-## ⛑️ Sponsors
+___
+
+### ⛑️ Sponsors
 
 If you are planning on using Turnly for your business and want to give back to the
 team or if you are an organization looking to help emerging open-source
 software, please consider [becoming a Github Sponsor](https://github.com/sponsors/efraa).
 
-## 📜 License
+___
+
+### 📜 License
 
 Copyright © 2022 by Turnly Inc. Released under the [BSD 3-Clause License](/LICENSE).
