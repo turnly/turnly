@@ -42,13 +42,20 @@ ___
 
 Turnly's main features are:
 
-* [ ] Capability to manage multiple locations, services offered,
-desks, agents and managers per location.
-* [ ] Define custom fields to obtain the necessary information about
-a customer to match your internal workflow.
-* [ ] Your customers will receive automatic notifications to keep
-them aware of the life cycle of their tickets.
-* [ ] Your organization gets a subdomain from Turnly (e.g. `https://{org-name}.turnly.app`)
+* [x] Define Business Data Fields to obtain the necessary information about a Customer to match your internal workflow.
+* [x] Your Organization gets a subdomain from Turnly (e.g. **https://org-name.turnly.app**)
+* [x] Your Customers will receive automatic notifications to keep them aware of the life-cycle of their Tickets.
+* [x] Authentication with IAM System (SSO & SLO)
+* [x] Capability to manage multiple Locations (branches), Services offered, Working hours, and Desks per Location.
+* [ ] Capability to manage employees as Agents and Managers per Location.
+* [ ] Your Customers can send you feedback on how to improve the experience in your Locations (branches)
+or even give you the best rating, you can use this data for service intelligence.
+* [ ] Receive read-only access to a selected set of data from Turnly in realtime with RTM API.
+* [ ] Allows integrations with external systems to share data through webhooks, beacons, and others.
+* [ ] Integrate data processors or even transformers that allow you to validate the information in the flow of ticket-taking.
+* [ ] Reminders and notifications scheduled for the future.
+* [ ] Support for SMS, Push, Emails, Calls or WhatsApp messages.
+* [ ] Organization management, reports, metrics, etc.
 
 ___
 
