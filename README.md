@@ -48,6 +48,9 @@ Turnly's main features are:
 * [x] Authentication with IAM System (SSO & SLO)
 * [x] Capability to manage multiple Locations (branches), Services offered, Working hours, and Desks per Location.
 * [x] Web widget-based application for ticket-taking.
+* [ ] Web Client for ticket-taking.
+* [ ] Modal Client for ticket-taking.
+* [ ] WebView Client for ticket-taking.
 * [ ] WhatsApp conversation integration for ticket-taking.
 * [ ] Alexa Skill for ticket-taking.
 * [ ] Dialogflow and Voice integration for ticket-taking.
@@ -65,11 +68,13 @@ or even give you the best rating, you can use this data for service intelligence
 
 ___
 
-### 🚀 Getting Started
+### 🚀 Solutions Demo
 
-- [About Us](https://turnly.app)
-- [Demo of use cases such as banks, healthcare, food pantries, travels, and shops.](https://github.com/turnly/demos)
-- [Interested in our product? Get Turnly!](https://omuxushx5fa.typeform.com/to/iTaTfvCg)
+- [Finance](https://turnly.github.io/demo-bank)
+- [Healthcare](https://turnly.github.io/demo-healthcare)
+- [Coffee Shop](https://turnly.github.io/demo-coffee)
+- [Education](https://turnly.github.io/demo-education) - (Coming soon)
+- [Food pantries](https://turnly.github.io/demo-food-pantries) - (Coming soon)
 
 ___
 
