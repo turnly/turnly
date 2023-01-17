@@ -33,7 +33,7 @@
     "@turnly/shared": "github:turnly/shared.git#latest",
     "apollo-datasource": "^3.3.2",
     "apollo-server-express": "^3.9.0",
-    "class-validator": "^0.14.0",
+    "class-validator": "0.13.2",
     "dotenv": "^16.0.1",
     "graphql": "15.3.0",
     "mongoose": "^6.4.6",
