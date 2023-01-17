@@ -61,7 +61,7 @@ or even give you the best rating, you can use this data for service intelligence
 * [ ] Integrate data processors or even transformers that allow you to validate the information in the flow of ticket-taking.
 * [ ] Reminders and notifications scheduled for the future.
 * [ ] Support for SMS, Push, Emails, Calls or WhatsApp messages.
-* [ ] Organization management, reports, metrics, etc.
+* [ ] Business intelligence, insights and reporting.
 
 ___
 
