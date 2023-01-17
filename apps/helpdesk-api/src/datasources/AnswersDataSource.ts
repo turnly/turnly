@@ -6,10 +6,10 @@
  */
 import { Extra, Guid } from '@turnly/common'
 import { AnswerModel } from 'models/AnswerModel'
-import { CacheTTL } from 'shared/CacheTTL'
 
+// import { CacheTTL } from 'shared/CacheTTL'
 import { Answers } from '../shared/api'
-import { CacheSource } from './common/CacheSource'
+// import { CacheSource } from './common/CacheSource'
 import { DataSource } from './common/DataSource'
 
 type FindAnswerParams = {
@@ -18,7 +18,7 @@ type FindAnswerParams = {
   extra?: Extra[]
 }
 
-@CacheSource({ ttl: CacheTTL.THREE_MINUTES })
+// @CacheSource({ ttl: CacheTTL.THREE_MINUTES })
 export class AnswersDataSource extends DataSource {
   public constructor() {
     super()

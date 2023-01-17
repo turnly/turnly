@@ -8,10 +8,10 @@ import { Guid } from '@turnly/common'
 import { GraphException } from 'shared/GraphException'
 
 import { Locations } from '../shared/api'
-import { CacheSource } from './common/CacheSource'
+// import { CacheSource } from './common/CacheSource'
 import { DataSource } from './common/DataSource'
 
-@CacheSource()
+// @CacheSource()
 export class LocationsDataSource extends DataSource {
   public constructor() {
     super()

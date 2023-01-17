@@ -9,10 +9,10 @@ import { TicketsMapper } from 'mappers/TicketsMapper'
 import { GraphException } from 'shared/GraphException'
 
 import { Tickets } from '../shared/api'
-import { CacheSource } from './common/CacheSource'
+// import { CacheSource } from './common/CacheSource'
 import { DataSource } from './common/DataSource'
 
-@CacheSource()
+// @CacheSource()
 export class TicketsDataSource extends DataSource {
   public constructor() {
     super()
