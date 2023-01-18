@@ -23,6 +23,8 @@ jobs:
       - name: 🚀 Setup Registry
         uses: ./.github/actions/setup-registry
         id: registry
+        with:
+          password: ${{ secrets.CR_PAT }}
 
       - name: 🐳 Push Gateway to GitHub Registry
         uses: docker/build-push-action@v3

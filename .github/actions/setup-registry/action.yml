@@ -1,5 +1,9 @@
 name: '🏷️ Setup Registry'
 description: ''
+inputs:
+  password:
+    description: ''
+    required: true
 outputs:
   VERSION:
     description: ''
@@ -21,4 +25,4 @@ runs:
       with:
         registry: ghcr.io
         username: ${{ github.repository_owner }}
-        password: ${{ secrets.CR_PAT }}
+        password: ${{ inputs.password }}
