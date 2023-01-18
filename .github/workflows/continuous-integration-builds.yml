@@ -44,15 +44,6 @@ jobs:
           channel-id: ${{ secrets.SLACK_CHANNEL_ID }}
           payload-file-path: "./.github/resources/slack-builds-start.json"
 
-      - name: 🐳 Push Gateway to GitHub Registry
-        uses: docker/build-push-action@v3
-        with:
-          context: "./apps/gateway"
-          push: true
-          tags: |
-            ghcr.io/turnly/gateway:v${{ steps.get_version.outputs.VERSION }}
-            ghcr.io/turnly/gateway:latest
-
       - name: 🐳 Push Addons to GitHub Registry
         uses: docker/build-push-action@v3
         with:
