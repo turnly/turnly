@@ -17,7 +17,7 @@
   ![stars](https://img.shields.io/github/stars/turnly/turnly)
   ![issues](https://img.shields.io/github/issues/turnly/turnly)
   ![license](https://img.shields.io/github/license/turnly/turnly)
-  [![Tests](https://github.com/turnly/turnly/actions/workflows/continuous-integration-tests.yml/badge.svg)](https://github.com/turnly/turnly/actions)
+  [![Tests](https://github.com/turnly/turnly/actions/workflows/global-continuous-integration-tests.yml/badge.svg)](https://github.com/turnly/turnly/actions)
 
   <p>
     <sub>
