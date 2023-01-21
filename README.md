@@ -72,7 +72,7 @@ ___
 
 - [Finance](https://turnly.github.io/demo-bank)
 - [Healthcare](https://turnly.github.io/demo-healthcare)
-- [Coffee Shop](https://turnly.github.io/demo-coffee)
+- [Small Business](https://turnly.github.io/demo-coffee)
 - [Education](https://turnly.github.io/demo-education) - (Coming soon)
 - [Food pantries](https://turnly.github.io/demo-food-pantries) - (Coming soon)
 
