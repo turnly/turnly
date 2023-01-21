@@ -70,9 +70,9 @@ ___
 
 ### 🚀 Solutions Demo
 
-- [Finance](https://turnly.github.io/demo-bank)
-- [Healthcare](https://turnly.github.io/demo-healthcare)
-- [Small Business](https://turnly.github.io/demo-coffee)
+- [Finance](https://finance.turnly.app)
+- [Healthcare](https://healthcare.turnly.app)
+- [Small Business](https://small-business.turnly.app)
 - [Education](https://turnly.github.io/demo-education) - (Coming soon)
 - [Food pantries](https://turnly.github.io/demo-food-pantries) - (Coming soon)
 
