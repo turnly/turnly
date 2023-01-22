@@ -42,8 +42,6 @@ We'd love you to try Turnly and share your valuable feedback, and together, we c
 * [x] Try a minimal solution for [Healhcare](https://healthcare.turnly.app)
 * [x] Try a minimal solution for [Finance](https://finance.turnly.app)
 * [x] Try a minimal solution for [Small Business](https://small-business.turnly.app)
-* [x] Try a minimal solution for [Education](https://education.turnly.app) - (Coming soon)
-* [x] Try a minimal solution for [Food Pantries](https://food-pantries.turnly.app) - (Coming soon)
 
 ___
 
