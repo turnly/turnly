@@ -29,12 +29,21 @@
   </p>
 </div>
 
-### 📖 Overview
+### 📖 What's Turnly?
 
-[Turnly](https://turnly.app) helps businesses save their customers time waiting
-in physical queues by eliminating legacy number-taking systems.
-Customers join from their smart device to a web widget-based system that
-can be accessed from your own website or application.
+Turnly helps businesses save their customers time waiting in physical queues by eliminating
+legacy number-taking systems. Customers join from their smart device to a web widget-based system
+that can be accessed from your own website or application.
+
+### 🧑🏻‍🚒 Try Turnly now!
+ 
+We'd love you to try Turnly and share your valuable feedback, and together, we can make it better ❤️
+
+* [x] Try a minimal solution for [Healhcare](https://healthcare.turnly.app)
+* [x] Try a minimal solution for [Finance](https://finance.turnly.app)
+* [x] Try a minimal solution for [Small Business](https://small-business.turnly.app)
+* [x] Try a minimal solution for [Education](https://education.turnly.app) - (Coming soon)
+* [x] Try a minimal solution for [Food Pantries](https://food-pantries.turnly.app) - (Coming soon)
 
 ___
 
@@ -65,16 +74,6 @@ or even give you the best rating, you can use this data for service intelligence
 * [ ] Reminders and notifications scheduled for the future.
 * [ ] Support for SMS, Push, Emails, Calls or WhatsApp messages.
 * [ ] Business intelligence, insights and reporting.
-
-___
-
-### 🚀 Solutions Demo
-
-- [Finance](https://finance.turnly.app)
-- [Healthcare](https://healthcare.turnly.app)
-- [Small Business](https://small-business.turnly.app)
-- [Education](https://turnly.github.io/demo-education) - (Coming soon)
-- [Food pantries](https://turnly.github.io/demo-food-pantries) - (Coming soon)
 
 ___
 
