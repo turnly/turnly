@@ -59,7 +59,7 @@ Turnly's main features are:
 * [ ] WebView Client for ticket-taking.
 * [ ] WhatsApp conversation integration for ticket-taking.
 * [ ] Alexa Skill for ticket-taking.
-* [ ] Dialogflow and Voice integration for ticket-taking.
+* [ ] Bot-assisted phone calls to self-ticketing.
 * [ ] Digital Signage (Waiting TV).
 * [ ] Web Widget customization tools from dashbord.
 * [ ] Capability to manage employees as Agents and Managers per Location.
