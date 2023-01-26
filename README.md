@@ -61,7 +61,7 @@ Turnly's main features are:
 * [ ] Alexa Skill for ticket-taking.
 * [ ] Bot-assisted phone calls to self-ticketing.
 * [ ] Digital Signage (Waiting TV).
-* [ ] Web Widget customization tools from dashbord.
+* [ ] No-code live widget builder.
 * [ ] Capability to manage employees as Agents and Managers per Location.
 * [ ] Your Customers can send you feedback on how to improve the experience in your Locations (branches)
 or even give you the best rating, you can use this data for service intelligence.
