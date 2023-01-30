@@ -46,6 +46,18 @@ services:
       KC_HEALTH_ENABLED: true
       KC_METRICS_ENABLED: true
       KC_PROXY: edge
+
+      # Engineering Realm
+      OAUTH_ADMIN_OIDC_CLIENT_ID: ${OAUTH_ADMIN_OIDC_CLIENT_ID}
+      OAUTH_ADMIN_OIDC_CLIENT_SECRET: ${OAUTH_ADMIN_OIDC_CLIENT_SECRET}
+      OAUTH_ADMIN_REDIRECT_URI_ONE: ${OAUTH_ADMIN_REDIRECT_URI_ONE}
+      OAUTH_ADMIN_REDIRECT_URI_TWO: ${OAUTH_ADMIN_REDIRECT_URI_TWO}
+
+      # Turnly Realm
+      OAUTH_OIDC_CLIENT_ID: ${OAUTH_OIDC_CLIENT_ID}
+      OAUTH_OIDC_CLIENT_SECRET: ${OAUTH_OIDC_CLIENT_SECRET}
+      OAUTH_REDIRECT_URI_ONE: ${OAUTH_REDIRECT_URI_ONE}
+      OAUTH_REDIRECT_URI_TWO: ${OAUTH_REDIRECT_URI_TWO}
     command: start-dev --import-realm
     healthcheck:
       test: curl --fail http://iam.turnly.local:8080/realms/master

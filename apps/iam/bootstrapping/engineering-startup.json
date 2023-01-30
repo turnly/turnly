@@ -498,7 +498,7 @@
       "protocol": "openid-connect",
       "attributes": {
         "oidc.ciba.grant.enabled": "false",
-        "backchannel.logout.url": "http://oauth-admin.turnly.local:4181/_oauth-admin/backchannel-logout",
+        "backchannel.logout.url": "http://oauth-admin.turnly.local:4181/oauth-admin/backchannel-logout",
         "backchannel.logout.session.required": "true",
         "post.logout.redirect.uris": "+",
         "oauth2.device.authorization.grant.enabled": "false",
@@ -550,7 +550,7 @@
       "protocol": "openid-connect",
       "attributes": {
         "oidc.ciba.grant.enabled": "false",
-        "backchannel.logout.url": "http://oauth-admin.turnly.local:4181/_oauth-admin/backchannel-logout",
+        "backchannel.logout.url": "http://oauth-admin.turnly.local:4181/oauth-admin/backchannel-logout",
         "backchannel.logout.session.required": "true",
         "post.logout.redirect.uris": "+",
         "oauth2.device.authorization.grant.enabled": "false",
@@ -703,7 +703,7 @@
         "tls-client-certificate-bound-access-tokens": "false",
         "oidc.ciba.grant.enabled": "false",
         "backchannel.logout.session.required": "true",
-        "backchannel.logout.url": "http://oauth-admin.turnly.local:4181/_oauth-admin/backchannel-logout",
+        "backchannel.logout.url": "http://oauth-admin.turnly.local:4181/oauth-admin/backchannel-logout",
         "client_credentials.use_refresh_token": "false",
         "acr.loa.map": "{}",
         "require.pushed.authorization.requests": "false",

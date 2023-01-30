@@ -2,7 +2,7 @@
 ## Docker image for Identity & Access Management
 ##
 
-ARG KC_VERSION=20.0.2
+ARG KC_VERSION=20.0.3
 
 FROM alpine as customizer
 
@@ -32,6 +32,8 @@ RUN /opt/keycloak/bin/kc.sh build
 
 FROM quay.io/keycloak/keycloak:${KC_VERSION} as runner
 COPY --from=builder /opt/keycloak/ /opt/keycloak/
+
+COPY ./bootstrapping/keycloak-home-idp-discovery.jar /opt/keycloak/providers/keycloak-home-idp-discovery.jar
 
 COPY ./bootstrapping/turnly-startup.json /opt/keycloak/data/import/turnly-startup.json
 COPY ./bootstrapping/engineering-startup.json /opt/keycloak/data/import/engineering-startup.json
