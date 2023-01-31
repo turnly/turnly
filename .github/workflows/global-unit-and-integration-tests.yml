@@ -80,14 +80,6 @@ jobs:
         if: steps.filter.outputs.assistance-centers == 'true'
         run: yarn devo assistance-centers test:integration --runInBand
 
-      - name: "🧪 [Business Owners]: run unit tests"
-        if: steps.filter.outputs.business-owners == 'true'
-        run: yarn devo business-owners test:unit
-
-      - name: "🧪 [Business Owners]: run integration tests"
-        if: steps.filter.outputs.business-owners == 'true'
-        run: yarn devo business-owners test:integration --runInBand
-
       - name: "🧪 [Custom Fields]: run unit tests"
         if: steps.filter.outputs.custom-fields == 'true'
         run: yarn devo custom-fields test:unit
@@ -103,11 +95,3 @@ jobs:
       - name: "🧪 [Queuing System]: run integration tests"
         if: steps.filter.outputs.queuing-system == 'true'
         run: yarn devo queuing-system test:integration --runInBand
-
-      - name: "🧪 [Teams]: run unit tests"
-        if: steps.filter.outputs.teams == 'true'
-        run: yarn devo teams test:unit
-
-      - name: "🧪 [Teams]: run integration tests"
-        if: steps.filter.outputs.teams == 'true'
-        run: yarn devo teams test:integration --runInBand

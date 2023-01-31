@@ -2,22 +2,10 @@ addons:
   - apps/addons/**/*
 assistance-centers:
   - apps/assistance-centers/**/*
-teams:
-  - apps/teams/**/*
 custom-fields:
   - apps/custom-fields/**/*
 queuing-system:
   - apps/queuing-system/**/*
-tasks-scheduling:
-  - apps/tasks-scheduling/**/*
-notifications:
-  - apps/notifications/**/*
-business-owners:
-  - apps/business-owners/**/*
-docker:
-  - .devo/**/*
-devo:
-  - .devo/**/*
 documentation:
   - docs/**/*
 environment:

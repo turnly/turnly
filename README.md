@@ -38,7 +38,7 @@ that can be accessed from your own website or application.
  
 We'd love you to try Turnly and share your valuable feedback, and together, we can make it better ❤️
 
-* [x] Try a minimal solution for [Healhcare](https://healthcare.turnly.app)
+* [x] Try a minimal solution for [Healthcare](https://healthcare.turnly.app)
 * [x] Try a minimal solution for [Finance](https://finance.turnly.app)
 * [x] Try a minimal solution for [Small Business](https://small-business.turnly.app)
 
@@ -47,36 +47,17 @@ ___
 ### 📦 Features
 
 Turnly's main features are:
-	
+
 * [x] Define Data Fields to obtain the necessary information about a Customer to match your internal workflow.
 * [x] Your Customers will receive automatic notifications to keep them aware of the life-cycle of their Tickets.
 * [x] Capability to manage multiple Locations (branches), Services offered, Working hours, and Desks per Location.
 * [x] Web widget-based application for ticket-taking.
-* [ ] Web Client for ticket-taking.
-* [ ] Modal Client for ticket-taking.
-* [ ] WebView Client for ticket-taking.
-* [ ] WhatsApp conversation integration for ticket-taking.
-* [ ] Alexa Skill for ticket-taking.
-* [ ] Bot-assisted phone calls to self-ticketing.
-* [ ] Digital Signage (Waiting TV).
-* [ ] No-code live widget builder.
-* [ ] Capability to manage employees as Agents and Managers per Location.
-* [ ] Your Customers can send you feedback on how to improve the experience in your Locations (branches)
-or even give you the best rating, you can use this data for service intelligence.
-* [ ] Receive read-only access to a selected set of data from Turnly in realtime with RTM API.
-* [ ] Allows integrations with external systems to share data through webhooks, beacons, and others.
-* [ ] Integrate data processors or even transformers that allow you to validate the information in the flow of ticket-taking.
-* [ ] Reminders and notifications scheduled for the future.
-* [ ] Support for SMS, Push, Emails, Calls or WhatsApp messages.
-* [ ] Business intelligence, insights and reporting.
 
 ___
 
 ### 🎯 Deployment
 
 - [Deploying Turnly with Docker Compose.](https://github.com/turnly/ops-compose)
-- [Deploying Turnly with Kubernetes.](https://github.com/turnly/ops-kubernetes) - (Coming soon)
-- [Deploying Turnly with One-Click Setups.](https://github.com/turnly/ops-one-click) - (Coming soon)
 
 ___
 
@@ -89,15 +70,6 @@ ___
 ### 🧑🏻‍🚒 Contributing (Development)
 
 Ahoy!, please if you want to correct some typo, update a readme, or contributing with code. Refer to our [Contributing Guide](/CONTRIBUTING.md) for details.
-
-___
-
-### Software Architecture
-
-The microservice architecture enables the rapid, frequent and reliable delivery of large,
-complex applications, and is designed for easy scaling and delegation of responsibilities.
-
-![high-level-architecture](/docs/diagrams/high-level-architecture.png)
 
 ___
 

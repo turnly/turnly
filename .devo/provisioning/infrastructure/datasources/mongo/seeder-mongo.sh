@@ -5,21 +5,6 @@ set -e
 mongo <<EOF
 print("Seeding turnly databases...");
 
-const organizations = [
-  {
-    _id: "org_zyUlCzVfPD6pKQfI_OdkN",
-    name: "Bank of America",
-    status: "active",
-    subdomain: "org-test",
-  },
-];
-
-use business_owners_db
-
-for (const organization of organizations) {
-  db.organizations.insert(organization);
-}
-
 const integrations = [
   {
     _id: "int_UzUldqvxRo3LOQGn-Rzyq",

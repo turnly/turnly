@@ -9,11 +9,8 @@ const databases = [
   "turnly_testing_db",
   "addons_db",
   "assistance_centers_db",
-  "teams_db",
   "custom_fields_db",
   "queuing_system_db",
-  "notifications_db",
-  "business_owners_db",
 ];
 
 for (const database of databases) {

@@ -21,15 +21,10 @@
   "eslint.workingDirectories": [
     "apps/addons",
     "apps/assistance-centers",
-    "apps/teams",
     "apps/custom-fields",
     "apps/queuing-system",
-    "apps/tasks-scheduling",
-    "apps/notifications",
-    "apps/business-owners",
     "apps/widgets-realtime-api",
     "apps/platform-realtime-api",
-    "apps/widgets-api",
-    "apps/helpdesk-api"
+    "apps/widgets-api"
   ]
 }
