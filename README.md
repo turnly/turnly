@@ -106,7 +106,6 @@ ___
 If you need help or just want to hear from Turnly, there are several ways to connect with us:
 
 - Create discussion on [Community Forum](https://github.com/turnly/turnly/discussions)
-- Join on [Slack](https://join.slack.com/t/turnly/shared_invite/zt-1de1x0z68-w_tWv50tUaSnYJW8C1lWIw)
 - Create issue on [Github](https://github.com/turnly/turnly/issues)
 - Follow us on [Twitter](https://twitter.com/turnlyapp)
 
