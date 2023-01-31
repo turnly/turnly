@@ -48,10 +48,8 @@ ___
 
 Turnly's main features are:
 	
-* [x] Define Business Data Fields to obtain the necessary information about a Customer to match your internal workflow.
-* [x] Your Organization gets a subdomain from Turnly (e.g. **https://org-name.turnly.app**)
+* [x] Define Data Fields to obtain the necessary information about a Customer to match your internal workflow.
 * [x] Your Customers will receive automatic notifications to keep them aware of the life-cycle of their Tickets.
-* [x] Authentication with IAM System (SSO & SLO)
 * [x] Capability to manage multiple Locations (branches), Services offered, Working hours, and Desks per Location.
 * [x] Web widget-based application for ticket-taking.
 * [ ] Web Client for ticket-taking.
@@ -79,18 +77,6 @@ ___
 - [Deploying Turnly with Docker Compose.](https://github.com/turnly/ops-compose)
 - [Deploying Turnly with Kubernetes.](https://github.com/turnly/ops-kubernetes) - (Coming soon)
 - [Deploying Turnly with One-Click Setups.](https://github.com/turnly/ops-one-click) - (Coming soon)
-
-___
-
-### 🖼️ Front-end Applications
-
-Our ecosystem is completely divided into multiple applications with specific purposes that share our design system.
-
-| Name                                               | Description                                                          | Live |
-| -------------------------------------------------- | -------------------------------------------------------------------- |:----:|
-| [Widgets](https://github.com/turnly/widgets)       | Web widget-based application for ticket-taking                       | 🟢   |
-| [Helpdesk](https://github.com/turnly/helpdesk)     | App for your organization's agents to serve your customers           | 🟢   |
-| [Backoffice](https://github.com/turnly/backoffice) | App to manage organization resources                                 | 🔴   |
 
 ___
 
