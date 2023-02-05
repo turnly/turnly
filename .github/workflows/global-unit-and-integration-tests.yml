@@ -64,29 +64,21 @@ jobs:
           mongo-password: ${{ inputs.mongo-password }}
           mongo-db: ${{ inputs.mongo-db }}
 
-      - name: "🧪 [Add-ons]: run unit tests"
-        if: steps.filter.outputs.addons == 'true'
-        run: yarn devo addons test:unit
+      - name: "🧪 [Branch Management]: run unit tests"
+        if: steps.filter.outputs.branch-management == 'true'
+        run: yarn devo branch-management test:unit
 
-      - name: "🧪 [Add-ons]: run integration tests"
-        if: steps.filter.outputs.addons == 'true'
-        run: yarn devo addons test:integration --runInBand
+      - name: "🧪 [Branch Management]: run integration tests"
+        if: steps.filter.outputs.branch-management == 'true'
+        run: yarn devo branch-management test:integration --runInBand
 
-      - name: "🧪 [Assistance Centers]: run unit tests"
-        if: steps.filter.outputs.assistance-centers == 'true'
-        run: yarn devo assistance-centers test:unit
+      - name: "🧪 [Business Data Fields]: run unit tests"
+        if: steps.filter.outputs.business-data-fields == 'true'
+        run: yarn devo business-data-fields test:unit
 
-      - name: "🧪 [Assistance Centers]: run integration tests"
-        if: steps.filter.outputs.assistance-centers == 'true'
-        run: yarn devo assistance-centers test:integration --runInBand
-
-      - name: "🧪 [Custom Fields]: run unit tests"
-        if: steps.filter.outputs.custom-fields == 'true'
-        run: yarn devo custom-fields test:unit
-
-      - name: "🧪 [Custom Fields]: run integration tests"
-        if: steps.filter.outputs.custom-fields == 'true'
-        run: yarn devo custom-fields test:integration --runInBand
+      - name: "🧪 [Business Data Fields]: run integration tests"
+        if: steps.filter.outputs.business-data-fields == 'true'
+        run: yarn devo business-data-fields test:integration --runInBand
 
       - name: "🧪 [Queuing System]: run unit tests"
         if: steps.filter.outputs.queuing-system == 'true'

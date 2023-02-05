@@ -7,9 +7,8 @@ print("Creating turnly databases...");
 
 const databases = [
   "turnly_testing_db",
-  "addons_db",
-  "assistance_centers_db",
-  "custom_fields_db",
+  "branch_management_db",
+  "business_data_fields_db",
   "queuing_system_db",
 ];
 

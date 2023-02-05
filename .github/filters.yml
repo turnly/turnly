@@ -1,4 +1,3 @@
-addons: 'apps/addons/**'
-assistance-centers: 'apps/assistance-centers/**'
-custom-fields: 'apps/custom-fields/**'
+branch-management: 'apps/branch-management/**'
+business-data-fields: 'apps/business-data-fields/**'
 queuing-system: 'apps/queuing-system/**'

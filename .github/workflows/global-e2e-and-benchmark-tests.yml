@@ -36,29 +36,21 @@ jobs:
       - name: 🚀 Start all applications
         run: yarn devo start --verbose
 
-      - name: "🧪 [Add-ons]: run e2e tests"
-        if: steps.filter.outputs.addons == 'true'
-        run: yarn devo addons test:e2e
+      - name: "🧪 [Branch Management]: run e2e tests"
+        if: steps.filter.outputs.branch-management == 'true'
+        run: yarn devo branch-management test:e2e
 
-      - name: "🧪 [Add-ons]: run benchmark tests"
-        if: steps.filter.outputs.addons == 'true'
-        run: yarn devo addons test:benchmark
+      - name: "🧪 [Branch Management]: run benchmark tests"
+        if: steps.filter.outputs.branch-management == 'true'
+        run: yarn devo branch-management test:benchmark
 
-      - name: "🧪 [Assistance Centers]: run e2e tests"
-        if: steps.filter.outputs.assistance-centers == 'true'
-        run: yarn devo assistance-centers test:e2e
+      - name: "🧪 [Business Data Fields]: run e2e tests"
+        if: steps.filter.outputs.business-data-fields == 'true'
+        run: yarn devo business-data-fields test:e2e
 
-      - name: "🧪 [Assistance Centers]: run benchmark tests"
-        if: steps.filter.outputs.assistance-centers == 'true'
-        run: yarn devo assistance-centers test:benchmark
-
-      - name: "🧪 [Custom Fields]: run e2e tests"
-        if: steps.filter.outputs.custom-fields == 'true'
-        run: yarn devo custom-fields test:e2e
-
-      - name: "🧪 [Custom Fields]: run benchmark tests"
-        if: steps.filter.outputs.custom-fields == 'true'
-        run: yarn devo custom-fields test:benchmark
+      - name: "🧪 [Business Data Fields]: run benchmark tests"
+        if: steps.filter.outputs.business-data-fields == 'true'
+        run: yarn devo business-data-fields test:benchmark
 
       - name: "🧪 [Queuing System]: run e2e tests"
         if: steps.filter.outputs.queuing-system == 'true'

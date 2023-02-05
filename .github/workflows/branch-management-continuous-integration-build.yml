@@ -1,0 +1,37 @@
+name: 📦 CI - Branch Management Build
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+jobs:
+  registry:
+    name: 📦 Build, Package, and ship to GitHub Registry
+    permissions:
+      contents: read
+      packages: write
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🎬 Check out Git repo
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+
+      - name: 🚀 Setup Registry
+        uses: ./.github/actions/setup-registry
+        id: registry
+        with:
+          password: ${{ secrets.CR_PAT }}
+
+      - name: 🐳 Push Branch Management to GitHub Registry
+        uses: docker/build-push-action@v3
+        with:
+          context: "./apps/branch-management"
+          target: production
+          push: true
+          tags: |
+            ghcr.io/turnly/branch-management:v${{ steps.registry.outputs.VERSION }}
+            ghcr.io/turnly/branch-management:latest

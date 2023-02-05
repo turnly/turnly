@@ -8,12 +8,12 @@ import {
   BadRequestException,
   Guid,
   ResourceNotFoundException,
-  UnauthorizedException,
 } from '@turnly/common'
 import { Events, IRealtimeClient, RealtimeMiddle } from '@turnly/realtime'
 import { Event, EventType } from '@turnly/shared'
+import { isTurnlyCloud } from 'shared/config'
 
-import { Customers, Integrations, setOrganizationId } from '../../../shared/api'
+import { Customers, setOrganizationId, Widgets } from '../../../shared/api'
 
 /**
  * Allow connection guard
@@ -38,21 +38,9 @@ export class AllowConnGuard {
           "The request doesn't meet the parameters required for a secure connection."
         )
 
-      const { meta, data: widget } = await Integrations.getOne({
-        id: widgetId,
-      })
-
-      if (!widget) throw new ResourceNotFoundException(meta?.message)
+      const widget = await this.getWidget(widgetId)
 
       setOrganizationId(widget.organizationId)
-
-      const { origin: formatted } = new URL(origin)
-      const isTrustworthy = !widget.originsList.includes(formatted)
-
-      if (!isTrustworthy)
-        throw new UnauthorizedException(
-          'You are not allowed to connect, please try again later.'
-        )
 
       const { data: customer } = customerId
         ? await Customers.getOne({ id: customerId })
@@ -71,7 +59,6 @@ export class AllowConnGuard {
             widget: {
               id: widget.id,
               name: widget.name,
-              canCustomize: widget.canCustomize,
             },
             customer: {
               id: customer.id,
@@ -100,5 +87,23 @@ export class AllowConnGuard {
       widgetId: query.widgetId as Guid,
       customerId: query.customerId as Guid,
     }
+  }
+
+  private async getWidget(id: Guid) {
+    if (isTurnlyCloud()) {
+      const { meta, data } = await Widgets.getOne({ id })
+
+      if (!data) throw new ResourceNotFoundException(meta?.message)
+
+      return data
+    }
+
+    return new Promise(resolve => {
+      resolve({
+        id: process.env.WIDGET_ID,
+        name: process.env.ORGANIZATION_NAME,
+        organizationId: process.env.ORGANIZATION_ID,
+      })
+    })
   }
 }

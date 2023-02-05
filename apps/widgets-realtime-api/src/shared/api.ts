@@ -14,9 +14,9 @@ export const Customers = new Consumers.QueuingSystem.Customers()
 /**
  * Add-ons Service
  */
-export const Integrations = new Consumers.Addons.Integrations()
+export const Widgets = new Consumers.Addons.Widgets()
 
 export const setOrganizationId = (organizationId: string) => {
   Customers.destroyOrganizationId().setOrganizationId(organizationId)
-  Integrations.destroyOrganizationId().setOrganizationId(organizationId)
+  Widgets.destroyOrganizationId().setOrganizationId(organizationId)
 }

@@ -13,19 +13,6 @@ runs:
       with:
         node-version: ${{ inputs.node-version }}
 
-    - name: 📡 Setting up the domains in hosts file
-      shell: bash
-      run: |
-        DOMAINS=()
-
-        while IFS='' read -r domain; do DOMAINS+=("$domain"); done < <(cat domains)
-
-        for host in "${DOMAINS[@]}"; do
-          echo "Adding the host $host to the hosts file... 📡 "
-
-          sudo echo "127.0.0.1 $host" | sudo tee -a /etc/hosts
-        done
-
     - name: 📦 Pull base dependencies
       shell: bash
       run: docker pull node:${{ inputs.node-version }}-alpine3.17

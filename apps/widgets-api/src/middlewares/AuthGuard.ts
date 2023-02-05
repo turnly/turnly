@@ -52,7 +52,7 @@ export const AuthGuard: AuthChecker<IContext> = async ({ context }) => {
 
   Logger.debug('Checking if widget is authorized...', { widgetId })
 
-  const { data: widget } = await context.dataSources.integrations.getOne(
+  const { data: widget } = await context.dataSources.widgets.getOne(
     String(widgetId)
   )
 

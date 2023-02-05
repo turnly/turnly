@@ -1,0 +1,43 @@
+version: '3.9'
+
+services:
+  business-data-fields:
+    extends:
+      file: common.yml
+      service: common
+    container_name: business-data-fields
+    image: ghcr.io/turnly/business-data-fields:latest
+    build:
+      context: ${DOCKER_RELATIVE_APPS_DIR}/business-data-fields
+      target: ${DOCKER_BUILD_STAGE}
+      dockerfile: Dockerfile
+      args:
+        NODE_ENV: ${NODE_ENV}
+    volumes:
+      - ${DOCKER_RELATIVE_APPS_DIR}/business-data-fields:/app
+    depends_on:
+      elasticsearch: # Disable this if you are using an external ElasticSearch database
+        condition: service_healthy
+      mongo: # Disable this if you are using an external Mongo database
+        condition: service_healthy
+    networks:
+      turnly.network.internal:
+        aliases:
+          - business-data-fields.turnly.local
+    environment:
+      # This service shared env variables that extend from common.yml
+      APP_NAME: business-data-fields
+      ENCRYPTION_SECRET:
+      RABBITMQ_QUEUE: ${CUSTOM_FIELDS_RABBITMQ_QUEUE:-turnly.ms.business_data_fields.queue}
+      MONGO_DB: ${CUSTOM_FIELDS_MONGO_DB:-business_data_fields_db}
+    # ----------------------> WARNING: FOR DEVELOPMENT ONLY <----------------------
+    labels:
+      # External access is used to test new gRPC endpoints with Bloom or Postman,
+      # but in production, microservices communicate on the internal network, so gRPC APIs should not be exposed.
+      - traefik.enable=true
+      - traefik.docker.network=turnly.network.internal
+      - traefik.http.routers.business-data-fields-internal.entrypoints=web
+      - traefik.http.routers.business-data-fields-internal.service=business-data-fields-internal
+      - traefik.http.services.business-data-fields-internal.loadbalancer.server.scheme=h2c
+      - traefik.http.routers.business-data-fields-internal.rule=PathPrefix(`/turnly.business_data_fields.v1`)
+    # ----------------------> WARNING: FOR DEVELOPMENT ONLY <----------------------

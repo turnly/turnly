@@ -41,7 +41,7 @@ the project history. But also, we use the git commit messages to generate change
 | Documentation            | Documentation only changes                   | docs: your message      |
 | Performance Improvements | Change that improves performance             | perf: your message      |
 | Code Refactoring         | Refactor code base                           | refactor: your message  |
-| Continuous Integrations  | Changes to our CI configuration              | ci: your message        |
+| Continuous Widgets  | Changes to our CI configuration              | ci: your message        |
 | Chores                   | Other changes that don't modify src or tests | chore: your message     |
 | Reverts                  | Reverts a previous commit                    | revert: your message    |
 

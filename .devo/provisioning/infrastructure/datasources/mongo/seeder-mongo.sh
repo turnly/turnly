@@ -5,22 +5,6 @@ set -e
 mongo <<EOF
 print("Seeding turnly databases...");
 
-const integrations = [
-  {
-    _id: "int_UzUldqvxRo3LOQGn-Rzyq",
-    name: "Bank of America",
-    status: "active",
-    origins: ["https://www.bankofamerica.com"],
-    organizationId: "org_zyUlCzVfPD6pKQfI_OdkN",
-  },
-];
-
-use addons_db
-
-for (const integration of integrations) {
-  db.integrations.insert(integration);
-}
-
 const locations = [
   {
     _id: "loc_xdeJQM9lFV5GdofxAAMYI",
@@ -63,7 +47,7 @@ const locations = [
   },
 ];
 
-use assistance_centers_db
+use branch_management_db
 
 for (const location of locations) {
   db.locations.insert(location);
@@ -188,7 +172,7 @@ const fields = [
   },
 ];
 
-use custom_fields_db
+use business_data_fields_db
 
 for (const field of fields) {
   db.fields.insert(field);

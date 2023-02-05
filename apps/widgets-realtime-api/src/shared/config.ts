@@ -15,3 +15,5 @@ export const serverOptions = Object.freeze({
 export enum Channels {
   QUEUING = '/queuing',
 }
+
+export const isTurnlyCloud = () => Boolean(process.env.IS_TURNLY_CLOUD)

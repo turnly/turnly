@@ -7,21 +7,16 @@
 import { Consumers } from '@turnly/rpc'
 
 /**
- * Assistance Centers Service
+ * Branch Management Service
  */
-export const Locations = new Consumers.AssistanceCenters.Locations()
-export const Services = new Consumers.AssistanceCenters.Services()
+export const Locations = new Consumers.BranchManagement.Locations()
+export const Services = new Consumers.BranchManagement.Services()
 
 /**
- * Custom Fields Service
+ * Business Data Fields Service
  */
-export const Answers = new Consumers.CustomFields.Answers()
-export const Fields = new Consumers.CustomFields.Fields()
-
-/**
- * Teams Service
- */
-export const Agents = new Consumers.Teams.Agents()
+export const Answers = new Consumers.BusinessDataFields.Answers()
+export const Fields = new Consumers.BusinessDataFields.Fields()
 
 /**
  * Queuing System Service
@@ -32,15 +27,14 @@ export const Tickets = new Consumers.QueuingSystem.Tickets()
 /**
  * Add-ons Service
  */
-export const Integrations = new Consumers.Addons.Integrations()
+export const Widgets = new Consumers.Addons.Widgets()
 
 export const setOrganizationId = (organizationId: string) => {
   Locations.destroyOrganizationId().setOrganizationId(organizationId)
   Services.destroyOrganizationId().setOrganizationId(organizationId)
   Answers.destroyOrganizationId().setOrganizationId(organizationId)
   Fields.destroyOrganizationId().setOrganizationId(organizationId)
-  Agents.destroyOrganizationId().setOrganizationId(organizationId)
   Customers.destroyOrganizationId().setOrganizationId(organizationId)
   Tickets.destroyOrganizationId().setOrganizationId(organizationId)
-  Integrations.destroyOrganizationId().setOrganizationId(organizationId)
+  Widgets.destroyOrganizationId().setOrganizationId(organizationId)
 }

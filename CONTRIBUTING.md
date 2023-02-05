@@ -71,7 +71,7 @@ yarn devo setup --verbose
 yarn devo start
 
 # Start specific services:
-yarn devo start -s addons -s platform-realtime-api
+yarn devo start -s queuing-system -s helpdesk-realtime-api
 
 # OR
 
@@ -80,7 +80,7 @@ yarn devo start --verbose
 
 # Build images before starting containers and re-run setup.
 yarn devo start --verbose --build
-```
+``` 
 
 ### Helpful for development
 
@@ -102,7 +102,7 @@ yarn devo stop --verbose
 yarn devo reload
 
 # Stop specific services:
-yarn devo reload -s platform-realtime-api
+yarn devo reload -s helpdesk-realtime-api
 ```
 
 #### Linting command
@@ -126,17 +126,17 @@ You can take advantage of yarn workspaces to interact with apps, for example,
 you can run the commands for one of your services from DevO using:
 
 ```sh
-yarn devo platform-realtime-api command
+yarn devo helpdesk-realtime-api command
 
 # Same as:
-cd ./apps/platform-realtime-api && yarn run command
+cd ./apps/helpdesk-realtime-api && yarn run command
 
 # -------------------------------------
 
-yarn devo addons build
+yarn devo queueing-system build
 
 # Same as:
-cd ./apps/addons && yarn run build
+cd ./apps/queueing-system && yarn run build
 ```
 
 ### Testing
@@ -182,28 +182,6 @@ All available commands must be run using the `yarn devo` prefix.
 When you run the commands and verbose is not enabled, a `devo.log` file is
 generated with all the execution logs that can help you debug errors.
 
-### Local Domains
-
-Turnly is a SaaS application and all resources are under a custom URL for each organization.
-In development we add the necessary domains for you in your hosts' file and 4 additional
-ones so that you can do tests, we recommend you create your local organization with one of the following names:
-
-* **organization-test**
-* **organization-dev**
-* **org-test**
-* **org-dev**
-
-So when all of this is set up, you will be able to use the following URLs to interact with the APIs:
-
-| Name                                         | URL                                                       |
-| -------------------------------------------- | --------------------------------------------------------- |
-| **Help Desk API**                            | `http://{organization}.turnly.local/api/helpdesk`         |
-| **Back Office API**                          | `http://{organization}.turnly.local/api/backoffice`       |
-| **Widgets API**                              | `http://{organization}.turnly.local/api/widgets`          |
-| **Platform Real Time Messaging API (RTM)**   | `http://{organization}.turnly.local/api/rtm/platform`     |
-| **Widgets Real Time Messaging API (RTM)**    | `http://{organization}.turnly.local/api/rtm/widgets`      |
-| **Identity & Access Management API**         | `http://accounts.turnly.local`                            |
-
 ### Start specific application (Development Mode)
 
 If you don't want to run all of Turnly's apps and services, you can go to the directory of the app
@@ -215,22 +193,17 @@ you want to contribute to and you'll find a README with details on how to run ju
 | ----------------------------------------------------------------------- | -------------------------------------------- |:----:|
 | [Gateway (Application Proxy)](/apps/gateway)                            | API entry point and access management        | 🟢   |
 | [Widgets API](/apps/widgets-api)                                        | GraphQL API for widgets clients              | 🟢   |
-| [Platform Real Time Messaging API (RTM)](/apps/platform-realtime-api)   | A WebSocket-based API for platform events    | 🟢   |
+| [Helpdesk Real Time Messaging API (RTM)](/apps/helpdesk-realtime-api)   | A WebSocket-based API for platform events    | 🟢   |
 | [Widgets Real Time Messaging API (RTM)](/apps/widgets-realtime-api)     | A WebSocket-based API for widgets events     | 🟢   |
 
 ##### Microservices 🔗
 
-| Name                                            | Description                                                       | Live |
-| ----------------------------------------------- | ----------------------------------------------------------------- |:----:|
-| [Add-ons](/apps/addons)                         | Integrations, Webhooks & Beacons                                  | 🟢   |
-| [Assistance Centers](/apps/assistance-centers)  | Locations, services offered, working hours, desk, etc.            | 🟢   |
-| [Business Owners](/apps/business-owners)        | Organizations management, promotions, etc.                        | 🟢   |
-| [Custom Fields](/apps/custom-fields)            | Business Data Fields, Customers and Agents answers.               | 🟢   |
-| [IAM](/apps/iam)                                | Identity & Access Management (SSO).                               | 🟢   |
-| [Notifications](/apps/notifications)            | Customers reminders, SMS, Calls, WhatsApp messages.               | 🔴   |
-| [Queuing System](/apps/queuing-system)          | Tickets and Customers management.                                 | 🟢   |
-| [Tasks Scheduling](/apps/tasks-scheduling)      | Scheduling of internal tasks, cleaning, batch, etc.               | 🔴   |
-| [Teams Management](/apps/teams)                 | Management of the organization's employees (Agents and Managers). | 🟢   |
+| Name                                               | Description                                                       | Live |
+| -------------------------------------------------- | ----------------------------------------------------------------- |:----:|
+| [Branch Management](/apps/branch-management)       | Locations, services offered, working hours, desk, etc.            | 🟢   |
+| [Business Data Fields](/apps/business-data-fields) | Business Data Fields, Customers and Agents answers.               | 🟢   |
+| [Queuing System](/apps/queuing-system)             | Tickets and Customers management.                                 | 🟢   |
+| [Localization](/apps/localization)                 | Countries, timezones and languages support                        | 🔴   |
 
 ### Software Architecture
 

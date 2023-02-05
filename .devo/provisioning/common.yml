@@ -27,7 +27,6 @@ services:
       - MONGO_URI
       - REDIS_HOST
       - REDIS_PASSWORD
-      - STORAGE_HOST
       - ELASTICSEARCH_URI
       - RABBITMQ_URI
       - RABBITMQ_EXCHANGE
