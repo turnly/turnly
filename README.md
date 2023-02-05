@@ -7,7 +7,7 @@
 
   <p align="center">
     <a href="https://turnly.app"><strong>Website</strong></a> ·
-    <a href="https://docs.turnly.app"><strong>Documentation</strong></a> ·
+    <a href="#"><strong>Documentation - Coming soon</strong></a> ·
     <a href="https://github.com/orgs/turnly/projects/2"><strong>Roadmap</strong></a>
     <br />
   </p>
@@ -57,7 +57,7 @@ ___
 
 ### 🎯 Deployment
 
-- [Deploying Turnly with Docker Compose.](https://github.com/turnly/ops-compose)
+- Deploying Turnly with [Docker Compose](https://github.com/turnly/ops-compose) - Coming soon
 
 ___
 
