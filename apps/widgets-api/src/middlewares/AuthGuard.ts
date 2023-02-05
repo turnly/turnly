@@ -77,7 +77,6 @@ export const AuthGuard: AuthChecker<IContext> = async ({ context }) => {
   }
 
   context.req['customer'] = customer
-  context.req['widget'] = widget
   context.req['organizationId'] = widget.organizationId
 
   Observability.ExceptionHandler.setUser(customer)

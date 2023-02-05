@@ -34,12 +34,6 @@ export class TicketsResolver {
     @Ctx() { req: { customer }, dataSources }: IContext
   ) {
     /**
-     * @todo Run processors
-     *
-     * const {} = await Fields.runProcessors({ answers })
-     */
-
-    /**
      * @todo Validate Location status
      *
      * const {} = await Locations.isReadyForServing({ servicedId, locationId, organizationId })

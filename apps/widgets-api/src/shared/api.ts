@@ -27,7 +27,7 @@ export const Tickets = new Consumers.QueuingSystem.Tickets()
 /**
  * Add-ons Service
  */
-export const Widgets = new Consumers.Addons.Widgets()
+export const Widgets = new Consumers.Channels.Widgets()
 
 export const setOrganizationId = (organizationId: string) => {
   Locations.destroyOrganizationId().setOrganizationId(organizationId)

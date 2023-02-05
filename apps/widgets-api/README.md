@@ -89,7 +89,7 @@ Before you begin, you must have completed steps 1 and 2 of the guide to [contrib
 This command will run the necessary infrastructure services for the widgets-api:
 
 ```sh
-yarn devo start -s widgets-api -s addons -s branch-management -s queuing-system -s business-data-fields -s teams --verbose
+yarn devo start -s widgets-api -s branch-management -s queuing-system -s business-data-fields -s teams --verbose
 ```
 
 You can see more helpful commands for development in the [contribution guide](/CONTRIBUTING.md).

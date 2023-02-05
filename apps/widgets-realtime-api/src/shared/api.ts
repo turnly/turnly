@@ -14,7 +14,7 @@ export const Customers = new Consumers.QueuingSystem.Customers()
 /**
  * Add-ons Service
  */
-export const Widgets = new Consumers.Addons.Widgets()
+export const Widgets = new Consumers.Channels.Widgets()
 
 export const setOrganizationId = (organizationId: string) => {
   Customers.destroyOrganizationId().setOrganizationId(organizationId)
