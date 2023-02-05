@@ -7,7 +7,7 @@
 
   <p align="center">
     <a href="https://turnly.app"><strong>Website</strong></a> ·
-    <a href="#"><strong>Documentation - Coming soon</strong></a> ·
+    <a href="https://twitter.com/turnlyapp"><strong>Twitter</strong></a> ·
     <a href="https://github.com/orgs/turnly/projects/2"><strong>Roadmap</strong></a>
     <br />
   </p>
@@ -33,6 +33,12 @@
 Turnly helps businesses save their customers time waiting in physical queues by eliminating
 legacy number-taking systems. Customers join from their smart device to a web widget-based system
 that can be accessed from your own website or application.
+
+### 🙏 Give a Star!
+
+If you like this project or plan to use it in the future, please don't forget to give it a ⭐️
+
+___
 
 ### 🧑🏻‍🚒 Try Turnly now!
  
@@ -61,9 +67,12 @@ ___
 
 ___
 
-### 🙏 Give a Star!
+### 🏷️ Software Architecture
 
-This project needs a ⭐️ from you. Don't forget to leave a star ⭐️
+The microservice architecture enables the rapid, frequent and reliable delivery of large,
+complex applications, and is designed for easy scaling and delegation of responsibilities.
+
+![high-level-architecture](/docs/diagrams/high-level-architecture.png)
 
 ___
 
