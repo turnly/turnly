@@ -4,4 +4,10 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-export const isTurnlyCloud = () => Boolean(process.env.IS_TURNLY_CLOUD)
+
+/**
+ * Turnly Edition
+ *
+ * @returns true if the app is running in Turnly CE
+ */
+export const isCommunityEdition = () => process.env.APP_EDITION === 'community'

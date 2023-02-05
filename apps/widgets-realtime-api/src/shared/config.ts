@@ -16,4 +16,9 @@ export enum Channels {
   QUEUING = '/queuing',
 }
 
-export const isTurnlyCloud = () => Boolean(process.env.IS_TURNLY_CLOUD)
+/**
+ * Turnly Edition
+ *
+ * @returns true if the app is running in Turnly CE
+ */
+export const isCommunityEdition = () => process.env.APP_EDITION === 'community'

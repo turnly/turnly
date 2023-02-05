@@ -11,7 +11,7 @@ import {
 } from '@turnly/common'
 import { Events, IRealtimeClient, RealtimeMiddle } from '@turnly/realtime'
 import { Event, EventType } from '@turnly/shared'
-import { isTurnlyCloud } from 'shared/config'
+import { isCommunityEdition } from 'shared/config'
 
 import { Customers, setOrganizationId, Widgets } from '../../../shared/api'
 
@@ -90,20 +90,20 @@ export class AllowConnGuard {
   }
 
   private async getWidget(id: Guid) {
-    if (isTurnlyCloud()) {
-      const { meta, data } = await Widgets.getOne({ id })
-
-      if (!data) throw new ResourceNotFoundException(meta?.message)
-
-      return data
+    if (isCommunityEdition()) {
+      return new Promise(resolve => {
+        resolve({
+          id: process.env.WIDGET_ID,
+          name: process.env.ORGANIZATION_NAME,
+          organizationId: process.env.ORGANIZATION_ID,
+        })
+      })
     }
 
-    return new Promise(resolve => {
-      resolve({
-        id: process.env.WIDGET_ID,
-        name: process.env.ORGANIZATION_NAME,
-        organizationId: process.env.ORGANIZATION_ID,
-      })
-    })
+    const { meta, data } = await Widgets.getOne({ id })
+
+    if (!data) throw new ResourceNotFoundException(meta?.message)
+
+    return data
   }
 }
