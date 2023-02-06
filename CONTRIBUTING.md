@@ -161,27 +161,6 @@ describe('<scope name> > <task title>', async () => {
 
 We highly recommend you review the [conventions docs.](/docs/conventions.md)
 
-### DevO Tool
-
-**As a concept:**
-
-DevO is a concept adopted in Turnly ecosystem to automate and facilitate all tasks
-in the development environment.
-
-**As a Tool:**
-
-Application written in bash and docker files that are described as docker-backed
-infrastructure provisioning and systems management for the development environment.
-
-##### DevO Commands
-
-All available commands must be run using the `yarn devo` prefix.
-
-##### Verbose and debug
-
-When you run the commands and verbose is not enabled, a `devo.log` file is
-generated with all the execution logs that can help you debug errors.
-
 ### Start specific application (Development Mode)
 
 If you don't want to run all of Turnly's apps and services, you can go to the directory of the app
@@ -191,9 +170,8 @@ you want to contribute to and you'll find a README with details on how to run ju
 
 | Name                                                                    | Description                                  | Live |
 | ----------------------------------------------------------------------- | -------------------------------------------- |:----:|
-| [Gateway (Application Proxy)](/apps/gateway)                            | API entry point and access management        | 🟢   |
 | [Widgets API](/apps/widgets-api)                                        | GraphQL API for widgets clients              | 🟢   |
-| [Helpdesk Real Time Messaging API (RTM)](/apps/helpdesk-realtime-api)   | A WebSocket-based API for platform events    | 🟢   |
+| [Helpdesk Real Time Messaging API (RTM)](/apps/helpdesk-realtime-api)   | A WebSocket-based API for helpdesk events    | 🟢   |
 | [Widgets Real Time Messaging API (RTM)](/apps/widgets-realtime-api)     | A WebSocket-based API for widgets events     | 🟢   |
 
 ##### Microservices 🔗
@@ -211,12 +189,3 @@ The Turnly are built using multiple architectural concepts,
 we highly recommend you review the [architecture docs.](/docs/architecture)
 
 ![high-level-architecture](/docs/diagrams/high-level-architecture.png)
-
-#### How to create a new application
-
-> If you intend to add a new service, BFF, application, or others,
-> use [this guide](/docs/how-to-create-new-application.md) to ensure a successful addition.
-
-### Others resources 🔗
-
-- [Postman Collections](/docs/postman/)
