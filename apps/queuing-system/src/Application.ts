@@ -20,9 +20,9 @@ export class Application extends Startup {
   }
 
   private async setupPresentations(): Promise<void> {
-    const { rpc } = await import('./RPCServer')
+    const { grpc } = await import('./gRPCServer')
 
-    rpc.setup()
+    grpc.setup()
   }
 
   private async setupDatabase(): Promise<void> {
