@@ -54,13 +54,11 @@ curl "https://{organization}.turnly.app/api/widgets/graph" \
 
 ### Inter-services communication (services dependency)
 
-| Name                    | Description                                               |
-| ----------------------- | --------------------------------------------------------- |
-| **Add-ons**             | Used to get the integration (widget).                     |
-| **Branch Management**  | Used to interact with locations and services.             |
-| **Queuing System**      | Used to take tickets and create customers.                |
-| **Business Data Fields**       | Used to obtain the fields that a customer must fill out.  |
-| **Teams**               | Used to get the agent assigned to a ticket.               |
+| Name                     | Description                                               |
+| ------------------------ | --------------------------------------------------------- |
+| **Branch Management**    | Used to interact with locations and services.             |
+| **Queuing System**       | Used to take tickets and create customers.                |
+| **Business Data Fields** | Used to obtain the fields that a customer must fill out.  |
 
 ### Environment Variables
 
