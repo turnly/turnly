@@ -68,8 +68,8 @@ ___
 
 There are two distributions of Turnly:
 
-* The open-source Turnly Community Edition (CE) is available freely under the [BSD 3-Clause License](/LICENSE).
-* The open-core Turnly Enterprise Edition (EE) is a CE-based SaaS edition that includes additional features for small to enterprise-level organizations.
+* Turnly Community Edition (CE) is a open-source edition available freely under the [BSD 3-Clause License](/LICENSE).
+* Turnly Enterprise Edition (EE) is a CE-based SaaS edition that includes additional features for small to enterprise-level organizations.
 
 > Turnly's core components will always be open-source so that you can have self-hosted implementation using the CE distribution.
 
