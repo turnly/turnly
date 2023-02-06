@@ -13,9 +13,4 @@ function setup() {
   execute "yarn install"
 
   line
-
-  info "Adding the domains to the trusted hosts... 🔐 "
-  set_hosts "${TURNLY_DOMAINS[@]}"
-
-  line
 }

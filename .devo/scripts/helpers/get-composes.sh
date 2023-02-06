@@ -6,7 +6,6 @@ function get_composes() {
 
   IGNORE_DIRS=(
     ".gitkeep"
-    "gateway"
   )
 
   INFRA_COMPOSE_FILES=$(find $PROVISIONING_DIR/infrastructure -name "*.yml" -type f)

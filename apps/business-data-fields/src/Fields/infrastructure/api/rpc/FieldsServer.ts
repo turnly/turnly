@@ -4,7 +4,6 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { NotImplementedError } from '@turnly/common'
 import { Producers } from '@turnly/rpc'
 import { Client } from '@turnly/rpc/dist/consumers'
 

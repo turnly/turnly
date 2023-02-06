@@ -5,7 +5,7 @@ services:
     extends:
       file: common.yml
       service: common
-    image: ghcr.io/turnly/gateway:latest
+    image: traefik:latest
     command:
       - --accesslog=true
       - --log.level=DEBUG
@@ -23,9 +23,6 @@ services:
       - --entrypoints.redis.address=:${REDIS_UI_PORT}
       - --entrypoints.tracing.address=:${TRACING_UI_PORT}
     container_name: gateway
-    build:
-      context: ${DOCKER_RELATIVE_APPS_DIR}/gateway
-      dockerfile: Dockerfile
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
     ports:

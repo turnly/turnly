@@ -1,11 +1,6 @@
 #!/bin/bash
 
 function lint() {
-  IGNORE_DIRS=(
-    "gateway"
-    "iam"
-  )
-
   APPS_DIRECTORY=$(get_env_variable "APPS_DIRECTORY")
 
   [[ -z "$APPS_DIRECTORY" ]] && error "Oops! Environment variable APPS_DIRECTORY is not set."
@@ -17,11 +12,6 @@ function lint() {
   for APP_DIR in $APPS_DIRS; do
     if [[ -f "$APP_DIR/package.json" ]]; then
       APP_NAME=$(echo "@turnly/$(basename "$APP_DIR")" | awk '{print tolower($0)}')
-
-      if [[ "${IGNORE_DIRS[*]}" =~ $APP_NAME ]]; then
-        info "Skipping $APP_NAME ..."
-        continue
-      fi
 
       line
       info "Linting $APP_DIR ..."
