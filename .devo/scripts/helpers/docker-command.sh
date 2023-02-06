@@ -16,14 +16,10 @@ function docker_command() {
   line
 
   if [[ $DOCKER_COMMAND == "up" ]]; then
-    execute "${COMPOSE_COMMAND} up -d --renew-anon-volumes $*"
-  fi
-
-  if [[ $DOCKER_COMMAND == "reload" ]]; then
-    execute "${COMPOSE_COMMAND} restart -t 1 $*"
+    execute "${COMPOSE_COMMAND} up -d --remove-orphans $*"
   fi
 
   if [[ $DOCKER_COMMAND == "down" ]]; then
-    execute "${COMPOSE_COMMAND} down"
+    execute "${COMPOSE_COMMAND} down --remove-orphans"
   fi
 }

@@ -5,16 +5,21 @@
   "description": "The next modern Open-Source Queue Management System (QMS)",
   "license": "BSD-3-Clause",
   "author": "Turnly Team <engineering@turnly.app> (https://turnly.app)",
-  "workspaces": {
-    "packages": [
-      "apps/*"
-    ],
-    "nohoist": [
-      "**"
-    ]
-  },
+  "workspaces": [
+    "apps/*"
+  ],
   "scripts": {
-    "devo": "bash ./.devo/devo.sh",
+    "build": "turbo run build",
+    "start": "bash .devo/devo.sh start",
+    "stop": "bash .devo/devo.sh stop",
+    "dev": "turbo run dev --parallel",
+    "lint": "turbo run lint:format lint:check lint:ts:check",
+    "test": "turbo run test:unit test:integration test:e2e test:benchmark",
+    "test:benchmark": "turbo run test:benchmark",
+    "test:e2e": "turbo run test:e2e",
+    "test:integration": "turbo run test:integration",
+    "test:unit": "turbo run test:unit",
+    "test:watch": "turbo run test:watch",
     "prepare": "husky install"
   },
   "commitlint": {
@@ -25,7 +30,8 @@
   "devDependencies": {
     "@commitlint/cli": "^16.2.4",
     "@turnly/eslint-config": "https://github.com/turnly/configs.git",
-    "husky": "^8.0.1"
+    "husky": "^8.0.1",
+    "turbo": "latest"
   },
   "engines": {
     "node": ">=18.12"

@@ -101,4 +101,4 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 
 # Run the application with watch mode for automatic code changes.
-CMD ["yarn", "watch"]
+CMD ["yarn", "dev"]

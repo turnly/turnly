@@ -46,7 +46,7 @@ Via the CLI, use either `--legacy-watch` or `-L` for short:
 
 ```json
 "scripts": {
-  "watch": "nodemon -L --config node_modules/@turnly/eslint-config/nodemon.json src/main.ts"
+  "dev": "nodemon -L --config node_modules/@turnly/eslint-config/nodemon.json src/main.ts"
 }
 ```
 

@@ -2,23 +2,23 @@
   "name": "@turnly/business-data-fields",
   "version": "0.0.1",
   "private": true,
-  "description": "business-data-fields is an on-demand business data fields (business data fields) management service.",
+  "description": "An on-demand business data fields management service",
   "license": "BSD-3-Clause",
   "author": "Turnly Team <engineering@turnly.app> (https://turnly.app)",
   "scripts": {
     "prebuild": "rm -rf dist tsconfig.tsbuildinfo",
     "build": "tsc -p tsconfig.build.json",
+    "dev": "nodemon --config node_modules/@turnly/eslint-config/nodemon.json src/main.ts",
+    "start": "ROOT_DIR=$(pwd) NODE_PATH=dist/ node -r dotenv/config dist/main.js",
     "lint:check": "eslint . --ext .js,.ts",
     "lint:format": "prettier \"./**/*.{ts,js}\" --check",
     "lint:ts:check": "tsc --noEmit",
-    "start": "ROOT_DIR=$(pwd) NODE_PATH=dist/ node -r dotenv/config dist/main.js",
     "test:benchmark": "cross-env NODE_ENV=test echo 'Running benchmark tests... (not implemented yet)'",
     "test:coverage": "cross-env NODE_ENV=test jest --coverage",
     "test:e2e": "cross-env NODE_ENV=test echo 'Running e2e tests... (not implemented yet)'",
     "test:integration": "cross-env NODE_ENV=test jest integration",
     "test:unit": "cross-env NODE_ENV=test jest unit",
-    "test:watch": "cross-env NODE_ENV=test jest --watch --onlyChanged",
-    "watch": "nodemon --config node_modules/@turnly/eslint-config/nodemon.json src/main.ts"
+    "test:watch": "cross-env NODE_ENV=test jest --watch --onlyChanged"
   },
   "prettier": "@turnly/eslint-config/.prettierrc.js",
   "eslintConfig": {

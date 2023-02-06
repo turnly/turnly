@@ -17,6 +17,8 @@ tmp/
 
 # Builds
 **/tsconfig.tsbuildinfo
+**/dist
+**/build
 
 # Husky
 .husky/_
@@ -42,3 +44,5 @@ apps/**/yarn.lock
 # Tests
 **/coverage
 
+# Turbo files
+.turbo
