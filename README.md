@@ -30,9 +30,11 @@
 
 ### 📖 What's Turnly?
 
-Turnly helps businesses save their customers time waiting in physical queues by eliminating
-legacy number-taking systems. Customers join from their smart device to a web widget-based system
-that can be accessed from your own website or application.
+Turnly is an open-source Queue Management System (QMS) that helps businesses
+save their customers' waiting time in lines while capturing valuable insights for
+business intelligence and quantifying business impact.
+
+___
 
 ### 🙏 Give a Star!
 
@@ -54,25 +56,30 @@ ___
 
 Turnly's main features are:
 
-* [x] Define Data Fields to obtain the necessary information about a Customer to match your internal workflow.
-* [x] Your Customers will receive automatic notifications to keep them aware of the life-cycle of their Tickets.
-* [x] Capability to manage multiple Locations (branches), Services offered, Working hours, and Desks per Location.
-* [x] Web widget-based application for ticket-taking.
+* [x] Self-service ticketing via web-widget on your website or app.
+* [x] Use business data fields to get the information you need about your customers.
+* [x] Customers can wait anywhere, check their progress, and receive notifications when it’s their turn to be served.
+* [x] When customers arrive, they can quickly announce themselves through their smart device or an on-site self-service kiosk.
+* [x] Manage multiple locations (branches), services offered, working hours, and desks per location.
+
+___
+
+### 🏷️ High-level architecture overview
+
+There are two distributions of Turnly:
+
+* The open-source Turnly Community Edition (CE) is available freely under the [BSD 3-Clause License](/LICENSE).
+* The open-core Turnly Enterprise Edition (EE) is a CE-based SaaS edition that includes additional features for small to enterprise-level organizations.
+
+> Turnly's core components will always be open-source so that you can have self-hosted implementation using the CE distribution.
+
+![high-level-architecture](/docs/diagrams/high-level-architecture.png)
 
 ___
 
 ### 🎯 Deployment
 
 - Deploying Turnly with [Docker Compose](https://github.com/turnly/ops-compose) - Coming soon
-
-___
-
-### 🏷️ Software Architecture
-
-The microservice architecture enables the rapid, frequent and reliable delivery of large,
-complex applications, and is designed for easy scaling and delegation of responsibilities.
-
-![high-level-architecture](/docs/diagrams/high-level-architecture.png)
 
 ___
 

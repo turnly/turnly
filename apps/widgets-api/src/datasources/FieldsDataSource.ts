@@ -34,7 +34,6 @@ export class FieldsDataSource extends DataSource {
         type,
         placeholder,
         isRequired,
-        processorsList,
         extrasList: extra,
       }) => ({
         id,
@@ -43,7 +42,6 @@ export class FieldsDataSource extends DataSource {
         type,
         placeholder,
         isRequired,
-        hasProcessors: Boolean(processorsList.length),
         extra,
       })
     )

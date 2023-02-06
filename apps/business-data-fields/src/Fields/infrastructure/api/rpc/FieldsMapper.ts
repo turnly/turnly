@@ -26,14 +26,6 @@ export class FieldsMapper {
       field.setEntityType(entity.entityType)
       field.setIsRequired(entity.isRequired)
 
-      if (entity.processors) {
-        const processors = entity.processors.map(processor =>
-          new Producers.BusinessDataFields.Processor().setId(processor.toObject().id)
-        )
-
-        field.setProcessorsList(processors)
-      }
-
       if (entity.extra) {
         const extras = entity.extra.map(extra =>
           new Producers.BusinessDataFields.Extra()

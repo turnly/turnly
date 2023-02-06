@@ -9,7 +9,6 @@ import { AggregateRoot, EntityAttributes } from '@turnly/shared'
 
 import { FieldTypes } from '../enums/FieldTypes'
 import { FieldCreatedEvent } from '../events/FieldCreatedEvent'
-import { Processor } from './Processor'
 
 /**
  * Field
@@ -77,13 +76,6 @@ export class Field extends AggregateRoot {
     private readonly organizationId: Guid,
 
     /**
-     * Processors
-     *
-     * @description The Processors that the Field can be used with.
-     */
-    private processors: Nullable<Processor[]> = null,
-
-    /**
      * Extra
      *
      * @description Free-form data as name/value pairs that can be used
@@ -109,7 +101,6 @@ export class Field extends AggregateRoot {
       attributes.entityType,
       attributes.isRequired,
       attributes.organizationId,
-      attributes.processors,
       attributes.extra
     )
 
@@ -133,7 +124,6 @@ export class Field extends AggregateRoot {
       attributes.entityType,
       attributes.isRequired,
       attributes.organizationId,
-      attributes.processors,
       attributes.extra
     )
   }
@@ -153,7 +143,6 @@ export class Field extends AggregateRoot {
       entityType: this.entityType,
       isRequired: this.isRequired,
       organizationId: this.organizationId,
-      processors: this.processors,
       extra: this.extra,
     }
   }

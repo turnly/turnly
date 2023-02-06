@@ -8,7 +8,6 @@ import { Extra, Guid, Nullable } from '@turnly/common'
 import { ObjectMother } from '@turnly/testing'
 
 import { Field } from '../../../../src/Fields/domain/entities/Field'
-import { Processor } from '../../../../src/Fields/domain/entities/Processor'
 import { FieldTypes } from '../../../../src/Fields/domain/enums/FieldTypes'
 
 export class FieldMother {
@@ -19,7 +18,6 @@ export class FieldMother {
     type: FieldTypes = FieldTypes.EMAIL,
     entityType: string = ObjectMother.word(),
     isRequired: boolean = ObjectMother.boolean(),
-    processors: Nullable<Processor[]> = [],
     organizationId: Guid = ObjectMother.uuid('org'),
     extra: Nullable<Extra[]> = []
   ): Field {
@@ -30,7 +28,6 @@ export class FieldMother {
       type,
       entityType,
       isRequired,
-      processors,
       organizationId,
       extra,
     })
@@ -52,7 +49,6 @@ export class FieldMother {
     ]
   ): Field {
     return this.create(
-      undefined,
       undefined,
       undefined,
       undefined,

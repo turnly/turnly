@@ -98,7 +98,6 @@ const fields = [
     entityType: "customer",
     isRequired: true,
     organizationId: "org_zyUlCzVfPD6pKQfI_OdkN",
-    processors: [],
     extra: [
       {
         key: "format",
@@ -119,7 +118,6 @@ const fields = [
     entityType: "customer",
     isRequired: true,
     organizationId: "org_zyUlCzVfPD6pKQfI_OdkN",
-    processors: [],
     extra: [
       {
         key: "format",
@@ -140,7 +138,6 @@ const fields = [
     entityType: "customer",
     isRequired: false,
     organizationId: "org_zyUlCzVfPD6pKQfI_OdkN",
-    processors: [],
     extra: [
       {
         key: "serviceId",
@@ -162,7 +159,6 @@ const fields = [
     entityType: "customer",
     isRequired: true,
     organizationId: "org_zyUlCzVfPD6pKQfI_OdkN",
-    processors: [],
     extra: [
       {
         key: "serviceId",

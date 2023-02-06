@@ -25,6 +25,11 @@ services:
     environment:
       # This service shared env variables that extend from common.yml
       APP_NAME: widgets-api
+
+      # Self hosted configuration
+      WIDGET_ID: ${WIDGET_ID}
+      ORGANIZATION_ID: ${ORGANIZATION_ID}
+      ORGANIZATION_NAME: ${ORGANIZATION_NAME}
     labels:
       - traefik.enable=true
       - traefik.docker.network=turnly.network.internal

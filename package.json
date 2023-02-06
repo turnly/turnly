@@ -2,9 +2,9 @@
   "name": "@turnly/turnly",
   "version": "0.0.1",
   "private": true,
-  "description": "Open source queue management and customer experience system for walk-ins at physical locations.",
+  "description": "The next modern Open-Source Queue Management System (QMS)",
   "license": "BSD-3-Clause",
-  "author": "Turnly Team <team@turnly.app> (https://turnly.app)",
+  "author": "Turnly Team <engineering@turnly.app> (https://turnly.app)",
   "workspaces": {
     "packages": [
       "apps/*"

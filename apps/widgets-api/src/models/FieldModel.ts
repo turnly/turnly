@@ -35,9 +35,6 @@ export class FieldModel {
   @Field(() => Boolean)
   isRequired: boolean
 
-  @Field(() => Boolean)
-  hasProcessors: boolean
-
   @Field(() => [ExtraModel])
   extra: ExtraModel[]
 }

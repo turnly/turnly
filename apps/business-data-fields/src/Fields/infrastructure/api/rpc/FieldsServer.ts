@@ -45,9 +45,6 @@ export class FieldsServer extends Producers.ServerImplementation<Producers.Busin
   public get implementation() {
     return {
       findCustomerFieldsByService: this.findCustomerFieldsByService.bind(this),
-      runProcessors: () => {
-        throw new NotImplementedError()
-      },
     }
   }
 }

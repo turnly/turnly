@@ -20,9 +20,6 @@
 This service manages the creation of locations (branches), services offered,
 working hours, location desks, etc.
 
-Everything related to the assistance center as such is included in this service,
-except the agents and managers.
-
 ### Technologies stack
 
 | Name                                | Description                                                                   |

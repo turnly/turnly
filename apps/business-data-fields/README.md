@@ -17,11 +17,8 @@
 
 # Business Data Fields
 
-Business data fields for the organizations to obtain the necessary data according to their logic and internal processes.
-
-We send the customer answers to your processor before taking-ticket. A processor can be a lambda function or an external API that performs validations or even data transformation.
-
-Data processors are a great feature that integrates your logic into the flow of taking-ticket.
+An on-demand business data fields management service. The organizations take advantage of this service
+to obtain the necessary data according to their logic and internal processes.
 
 ### Technologies stack
 
@@ -40,7 +37,6 @@ Data processors are a great feature that integrates your logic into the flow of 
 | ------------------ | ----------------------------------------------------------------------------- |
 | **Fields**         | Represents fields that can be used to create custom forms for any entity.     |
 | **Answers**        | Represents the answers to the custom field created.                           |
-| **Processors**     | A processor is a component that can be used to process data.                  |
 
 ### Environment Variables
 

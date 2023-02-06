@@ -27,6 +27,11 @@ services:
       # This service shared env variables that extend from common.yml
       APP_NAME: widgets-realtime-api
       RABBITMQ_QUEUE: ${WIDGETS_REALTIME_API_RABBITMQ_QUEUE:-turnly.ms.widgets_realtime_api.queue}
+
+      # Self hosted configuration
+      WIDGET_ID: ${WIDGET_ID}
+      ORGANIZATION_ID: ${ORGANIZATION_ID}
+      ORGANIZATION_NAME: ${ORGANIZATION_NAME}
     labels:
       - traefik.enable=true
       - traefik.docker.network=turnly.network.internal
