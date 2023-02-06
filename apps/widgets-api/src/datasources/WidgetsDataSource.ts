@@ -6,7 +6,7 @@
  */
 import { Guid } from '@turnly/common'
 
-import { Widgets } from '../shared/api'
+// import { Widgets } from '../shared/api'
 import { isCommunityEdition } from '../shared/config'
 import { DataSource } from './common/DataSource'
 
@@ -15,19 +15,18 @@ export class WidgetsDataSource extends DataSource {
     super()
   }
 
-  public async getOne(id: Guid) {
+  public async getOne(_id: Guid) {
     if (isCommunityEdition()) {
-      return new Promise(resolve => {
-        resolve({
-          data: {
-            id: process.env.WIDGET_ID,
-            name: process.env.ORGANIZATION_NAME,
-            organizationId: process.env.ORGANIZATION_ID,
-          },
-        })
-      })
+      const data = {
+        id: process.env.WIDGET_ID,
+        name: process.env.ORGANIZATION_NAME,
+        organizationId: process.env.ORGANIZATION_ID,
+      }
+
+      return new Promise<any>(resolve => resolve({ data }))
     }
 
-    return Widgets.getOne({ id })
+    return new Promise(resolve => resolve({ data: {} }))
+    // return Widgets.getOne({ id })
   }
 }

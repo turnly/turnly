@@ -18,7 +18,6 @@ services:
       - --entrypoints.websecure.address=:443
       - --entrypoints.rabbitmq.address=:${RABBITMQ_UI_PORT}
       - --entrypoints.kibana.address=:${ELASTICSEARCH_UI_PORT}
-      - --entrypoints.postgres.address=:${POSTGRES_ADMINER_PORT}
       - --entrypoints.mongo.address=:${MONGO_UI_PORT}
       - --entrypoints.redis.address=:${REDIS_UI_PORT}
       - --entrypoints.tracing.address=:${TRACING_UI_PORT}
@@ -33,7 +32,6 @@ services:
       # ----------------------> WARNING: FOR DEVELOPMENT ONLY <----------------------
       - ${RABBITMQ_UI_PORT}:${RABBITMQ_UI_PORT}
       - ${ELASTICSEARCH_UI_PORT}:${ELASTICSEARCH_UI_PORT}
-      - ${POSTGRES_ADMINER_PORT}:${POSTGRES_ADMINER_PORT}
       - ${MONGO_UI_PORT}:${MONGO_UI_PORT}
       - ${REDIS_UI_PORT}:${REDIS_UI_PORT}
       - ${TRACING_UI_PORT}:${TRACING_UI_PORT}
@@ -41,7 +39,6 @@ services:
       turnly.network.public:
       turnly.network.internal:
         aliases:
-          - ${IAM_HOSTNAME}
           - ${APP_DOMAIN}
 
 networks:
