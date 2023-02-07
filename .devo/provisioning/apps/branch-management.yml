@@ -8,13 +8,11 @@ services:
     container_name: branch-management
     image: ghcr.io/turnly/branch-management:latest
     build:
-      context: ${DOCKER_RELATIVE_APPS_DIR}/branch-management
+      context: ../../
       target: ${DOCKER_BUILD_STAGE}
-      dockerfile: Dockerfile
+      dockerfile: apps/branch-management/Dockerfile
       args:
         NODE_ENV: ${NODE_ENV}
-    volumes:
-      - ${DOCKER_RELATIVE_APPS_DIR}/branch-management:/app
     depends_on:
       elasticsearch: # Disable this if you are using an external ElasticSearch database
         condition: service_healthy

@@ -12,7 +12,7 @@
     "build": "turbo run build",
     "start": "bash .devo/devo.sh start",
     "stop": "bash .devo/devo.sh stop",
-    "dev": "turbo run dev --parallel",
+    "dev": "turbo run dev",
     "lint": "turbo run lint:format lint:check lint:ts:check",
     "test": "turbo run test:unit test:integration test:e2e test:benchmark",
     "test:benchmark": "turbo run test:benchmark",
@@ -35,5 +35,6 @@
   },
   "engines": {
     "node": ">=18.12"
-  }
+  },
+  "packageManager": "yarn@1.22.19"
 }

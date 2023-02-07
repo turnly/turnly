@@ -17,53 +17,65 @@
 ARG NODE_VERSION=18.12-alpine3.17 NODE_ENV=production
 
 ##
+## Base
+##
+## Base node image for all stages.
+##
+FROM node:${NODE_VERSION} AS base
+
+RUN apk add --no-cache --update libc6-compat git python3
+
+WORKDIR /app
+
+##
+## Pruning
+##
+## Stage for pruning dependencies with turbo.
+##
+FROM base AS pruning
+
+COPY . .
+RUN npx turbo prune --scope=@turnly/branch-management --docker
+
+##
 ## Deps
 ##
 ## Base stage for installing all dependencies.
 ##
-FROM node:${NODE_VERSION} AS deps
+FROM base AS deps
 
-WORKDIR /app
+COPY .gitignore .gitignore
+COPY --from=pruning /app/out/json/ .
+COPY --from=pruning /app/out/yarn.lock ./yarn.lock
 
-# Copy the application dependency declaration file
-COPY package.json ./
+# Install dependencies
+RUN yarn install --immutable --immutable-cache
 
-# Install required system packages
-RUN apk add --virtual .stage-deps --no-cache --update libc6-compat g++ git cmake make python3 \
-    # Install application dependencies
-    && yarn install --immutable --immutable-cache \
-    # Delete unnecessary files from dependencies
-    && yarn autoclean --init && yarn autoclean --force \
-    # Delete system packages after installation (not needed)
-    && apk del .stage-deps && rm -rf /var/cache/apk/* /tmp/* /var/tmp/*
+##
+## Development
+##
+## Stage for running application in development mode from volumes.
+## This stage requires the source files to be mounted as a run-time volume.
+##
+FROM deps AS development
+
+ARG NODE_ENV
+ENV NODE_ENV=${NODE_ENV}
+
+COPY --from=pruning /app/out/full .
+
+# Run the application with watch mode for automatic code changes.
+CMD ["yarn", "dev", "--filter=@turnly/branch-management", "--parallel"]
 
 ##
 ## Builder
 ##
 ## Stage for building the production source code into a distributable image.
 ##
-FROM node:${NODE_VERSION} AS builder
+FROM development AS builder
 
-ARG NODE_ENV
-ENV NODE_ENV=${NODE_ENV}
-
-WORKDIR /app
-
-# Copy the application source files
-COPY . .
-# Copy dependencies from previous stage
-COPY --from=deps /app/node_modules ./node_modules
-
-# Build source code
-RUN yarn build \
-    # Install git binary for run dependency installation
-    && apk add --virtual .stage-builder --no-cache --update git \
-    # Install production dependencies
-    && yarn install --immutable --immutable-cache --prod --silent --ignore-optional --force \
-    # Delete unnecessary files from dependencies
-    && yarn autoclean --init && yarn autoclean --force \
-    # Delete system packages after installation (not needed)
-    && apk del .stage-builder && rm -rf /var/cache/apk/* /tmp/* /var/tmp/*
+RUN npx turbo run build --filter=@turnly/branch-management... \
+  && yarn install --immutable --immutable-cache --prod --silent --ignore-optional --force
 
 ##
 ## Production
@@ -78,27 +90,8 @@ ENV ROOT_DIR=$(pwd) NODE_PATH=dist/
 
 WORKDIR /app
 
-COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/apps/branch-management/dist ./dist
 COPY --from=builder /app/node_modules ./node_modules
 
 # Run the application with node runtime already installed from distroless image.
 CMD ["dist/main.js"]
-
-##
-## Development
-##
-## Stage for running application in development mode from volumes.
-## This stage requires the source files to be mounted as a run-time volume.
-##
-FROM node:${NODE_VERSION} AS development
-
-ARG NODE_ENV
-ENV NODE_ENV=${NODE_ENV}
-
-WORKDIR /app
-
-# Copy dependencies from deps stage
-COPY --from=deps /app/node_modules ./node_modules
-
-# Run the application with watch mode for automatic code changes.
-CMD ["yarn", "dev"]
