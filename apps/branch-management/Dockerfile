@@ -52,27 +52,16 @@ COPY --from=pruning /app/out/yarn.lock ./yarn.lock
 RUN yarn install --immutable --immutable-cache
 
 ##
-## Development
+## Builder
 ##
-## Stage for running application in development mode from volumes.
-## This stage requires the source files to be mounted as a run-time volume.
+## Stage for building the production source code into a distributable image.
 ##
-FROM deps AS development
+FROM deps AS builder
 
 ARG NODE_ENV
 ENV NODE_ENV=${NODE_ENV}
 
 COPY --from=pruning /app/out/full .
-
-# Run the application with watch mode for automatic code changes.
-CMD ["yarn", "dev", "--filter=@turnly/branch-management", "--parallel"]
-
-##
-## Builder
-##
-## Stage for building the production source code into a distributable image.
-##
-FROM development AS builder
 
 RUN npx turbo run build --filter=@turnly/branch-management... \
   && yarn install --immutable --immutable-cache --prod --silent --ignore-optional --force
@@ -84,8 +73,6 @@ RUN npx turbo run build --filter=@turnly/branch-management... \
 ##
 FROM gcr.io/distroless/nodejs18-debian11 AS production
 
-ARG NODE_ENV
-ENV NODE_ENV=${NODE_ENV}
 ENV ROOT_DIR=$(pwd) NODE_PATH=dist/
 
 WORKDIR /app
@@ -95,3 +82,18 @@ COPY --from=builder /app/node_modules ./node_modules
 
 # Run the application with node runtime already installed from distroless image.
 CMD ["dist/main.js"]
+
+##
+## Development
+##
+## Stage for running application in development mode from volumes.
+## This stage requires the source files to be mounted as a run-time volume.
+##
+FROM base AS development
+
+COPY --from=deps /app/node_modules ./node_modules
+
+WORKDIR /app/apps/branch-management
+
+# Run the application with watch mode for automatic code changes.
+CMD ["yarn", "dev"]
