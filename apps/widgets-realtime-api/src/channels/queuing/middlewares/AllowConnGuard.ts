@@ -89,7 +89,7 @@ export class AllowConnGuard {
     }
   }
 
-  private async getWidget(id: Guid) {
+  private async getWidget(_id: Guid) {
     if (isCommunityEdition()) {
       return new Promise<any>(resolve => {
         resolve({
