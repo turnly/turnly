@@ -22,24 +22,12 @@ ARG NODE_VERSION=18.12-alpine3.17 NODE_ENV=production
 ## Base node image for all stages.
 ##
 FROM node:${NODE_VERSION} AS base
-ENV TZ Etc/UTC
 
-RUN apk add --no-cache --update libc6-compat git tzdata \
-  && cp /usr/share/zoneinfo/${TZ} /etc/localtime && echo ${TZ} > /etc/timezone \
-  && apk del --no-network tzdata \
-  && rm -rf /var/cache/apk/* /tmp/* /var/tmp/*
+RUN apk add --no-cache --update libc6-compat git tzdata && rm -rf /var/cache/apk/* /tmp/* /var/tmp/*
+ENV TZ=Etc/UTC
+RUN ln -fs /usr/share/zoneinfo/${TZ} /etc/localtime && echo ${TZ} > /etc/timezone
 
 WORKDIR /app
-
-##
-## Pruning
-##
-## Stage for pruning dependencies with turbo.
-##
-FROM base AS pruning
-
-COPY . .
-RUN npx turbo prune --scope=@turnly/branch-management --docker
 
 ##
 ## Deps
@@ -48,9 +36,8 @@ RUN npx turbo prune --scope=@turnly/branch-management --docker
 ##
 FROM base AS deps
 
-COPY .gitignore .gitignore
-COPY --from=pruning /app/out/json/ .
-COPY --from=pruning /app/out/yarn.lock ./yarn.lock
+# Copy the application dependency declaration file
+COPY package.json ./
 
 # Install dependencies
 RUN yarn install --immutable --immutable-cache
@@ -60,15 +47,18 @@ RUN yarn install --immutable --immutable-cache
 ##
 ## Stage for building the production source code into a distributable image.
 ##
-FROM deps AS builder
+FROM base AS builder
 
 ARG NODE_ENV
 ENV NODE_ENV=${NODE_ENV}
 
-COPY --from=pruning /app/out/full .
+# Copy the application source files
+COPY . .
+# Copy dependencies from previous stage
+COPY --from=deps /app/node_modules ./node_modules
 
-RUN npx turbo run build --filter=@turnly/branch-management... \
-  && yarn install --immutable --immutable-cache --prod --silent --ignore-optional --force
+# Build source code
+RUN yarn build && yarn install --immutable --immutable-cache --prod --silent --ignore-optional --force
 
 ##
 ## Production
@@ -81,7 +71,7 @@ ENV ROOT_DIR=$(pwd) NODE_PATH=dist/
 
 WORKDIR /app
 
-COPY --from=builder /app/apps/branch-management/dist ./dist
+COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/node_modules ./node_modules
 
 # Run the application with node runtime already installed from distroless image.
@@ -96,8 +86,6 @@ CMD ["dist/main.js"]
 FROM base AS development
 
 COPY --from=deps /app/node_modules ./node_modules
-
-WORKDIR /app/apps/branch-management
 
 # Run the application with watch mode for automatic code changes.
 CMD ["yarn", "dev"]
