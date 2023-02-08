@@ -9,17 +9,18 @@
     "apps/*"
   ],
   "scripts": {
-    "build": "turbo run build",
     "start": "bash .devo/devo.sh start",
     "stop": "bash .devo/devo.sh stop",
-    "dev": "turbo run dev",
-    "lint": "turbo run lint:format lint:check lint:ts:check",
-    "test": "turbo run test:unit test:integration test:e2e test:benchmark",
-    "test:benchmark": "turbo run test:benchmark",
-    "test:e2e": "turbo run test:e2e",
-    "test:integration": "turbo run test:integration",
-    "test:unit": "turbo run test:unit",
-    "test:watch": "turbo run test:watch",
+    "bootstrap": "lerna bootstrap",
+    "build": "lerna run build",
+    "dev": "lerna run dev",
+    "lint": "lerna run lint",
+    "test:benchmark": "cross-env CI=true lerna run test:benchmark",
+    "test:e2e": "cross-env CI=true lerna run test:e2e",
+    "test:integration": "cross-env CI=true lerna run test:integration",
+    "test:unit": "cross-env CI=true lerna run test:unit",
+    "test:watch": "cross-env CI=true lerna run test:watch",
+    "graph": "nx graph",
     "prepare": "husky install"
   },
   "commitlint": {
@@ -31,7 +32,8 @@
     "@commitlint/cli": "^16.2.4",
     "@turnly/eslint-config": "https://github.com/turnly/configs.git",
     "husky": "^8.0.1",
-    "turbo": "latest"
+    "lerna": "^6.4.1",
+    "nx": "15.6.3"
   },
   "engines": {
     "node": ">=18.12"

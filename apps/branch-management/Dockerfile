@@ -22,8 +22,12 @@ ARG NODE_VERSION=18.12-alpine3.17 NODE_ENV=production
 ## Base node image for all stages.
 ##
 FROM node:${NODE_VERSION} AS base
+ENV TZ Etc/UTC
 
-RUN apk add --no-cache --update libc6-compat git python3
+RUN apk add --no-cache --update libc6-compat git tzdata \
+  && cp /usr/share/zoneinfo/${TZ} /etc/localtime && echo ${TZ} > /etc/timezone \
+  && apk del --no-network tzdata \
+  && rm -rf /var/cache/apk/* /tmp/* /var/tmp/*
 
 WORKDIR /app
 

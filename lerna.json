@@ -1,0 +1,15 @@
+{
+  "$schema": "node_modules/lerna/schemas/lerna-schema.json",
+  "packages": ["apps/*"],
+  "npmClient": "yarn",
+  "useNx": true,
+  "useWorkspaces": true,
+  "command": {
+    "version": {
+      "allowBranch": "develop",
+      "conventionalCommits": true,
+      "message": "chore(release): %s"
+    }
+  },
+  "version": "0.0.1"
+}
