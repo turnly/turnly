@@ -18,12 +18,4 @@
     "**/graphql.schema.json": true
   },
   "typescript.tsdk": "node_modules/typescript/lib",
-  "eslint.workingDirectories": [
-    "apps/branch-management",
-    "apps/business-data-fields",
-    "apps/queuing-system",
-    "apps/widgets-realtime-api",
-    "apps/helpdesk-realtime-api",
-    "apps/widgets-api"
-  ]
 }

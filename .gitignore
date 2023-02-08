@@ -47,6 +47,3 @@ build
 
 # NVM
 .nvmrc
-
-# Turbo files
-.turbo
