@@ -41,7 +41,7 @@ but if you're missing something, you can refer to the [Jest](https://jestjs.io/d
 Run only unit tests, they will usually be the fastest tests.
 
 ```sh
-yarn devo queuing-system test:unit
+yarn test:unit
 ```
 
 **Integration**
@@ -49,7 +49,7 @@ yarn devo queuing-system test:unit
 Run only integration tests, time to open the windows :D
 
 ```sh
-yarn devo queuing-system test:integration --runInBand
+yarn test:integration
 ```
 
 **Benchmark**
@@ -57,7 +57,7 @@ yarn devo queuing-system test:integration --runInBand
 Run only benchmark tests, let's see how this is.
 
 ```sh
-yarn devo queuing-system test:benchmark
+yarn test:benchmark
 ```
 
 **e2e**
@@ -65,26 +65,7 @@ yarn devo queuing-system test:benchmark
 Run e2e tests. This command can be quite slow, so use it with caution.
 
 ```sh
-yarn devo queuing-system test:e2e
-```
-
-**Matches**
-
-Run tests that match this spec name (match against the name in `describe` or `test`, basically).
-
-When you are creating tests to some specific code, you may want only execute the tests that you're creating,
-so you waste less time to verify your code. To do this, you can:
-
-```sh
-yarn devo queuing-system test:unit -t name-of-test
-```
-
-**Watch mode**
-
-Run tests related to git-based changed files with watch mode enabled.
-
-```sh
-yarn devo queuing-system test:watch
+yarn test:e2e
 ```
 
 **Coverage**
@@ -92,5 +73,5 @@ yarn devo queuing-system test:watch
 Run all the tests and get the coverage report.
 
 ```sh
-yarn devo queuing-system test:coverage
+yarn test:coverage
 ```

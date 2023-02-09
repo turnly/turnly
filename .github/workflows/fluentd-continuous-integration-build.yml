@@ -29,7 +29,7 @@ jobs:
       - name: 🐳 Push Fluentd to GitHub Registry
         uses: docker/build-push-action@v3
         with:
-          context: "./.devo/provisioning/infrastructure/observability/fluentd"
+          context: "./docker/compose/infrastructure/observability/fluentd"
           push: true
           tags: |
             ghcr.io/turnly/fluentd:v${{ steps.registry.outputs.VERSION }}

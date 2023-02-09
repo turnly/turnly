@@ -14,7 +14,7 @@
 ##
 ## Shared Configuration
 ##
-ARG NODE_VERSION=18.12-alpine3.17 NODE_ENV=production
+ARG NODE_VERSION=18.14-slim NODE_ENV=production
 
 ##
 ## Base
@@ -22,25 +22,24 @@ ARG NODE_VERSION=18.12-alpine3.17 NODE_ENV=production
 ## Base node image for all stages.
 ##
 FROM node:${NODE_VERSION} AS base
-
-RUN apk add --no-cache --update libc6-compat git tzdata && rm -rf /var/cache/apk/* /tmp/* /var/tmp/*
-ENV TZ=Etc/UTC
-RUN ln -fs /usr/share/zoneinfo/${TZ} /etc/localtime && echo ${TZ} > /etc/timezone
-
 WORKDIR /app
+
+RUN --mount=type=cache,id=apt,target=/var/cache/apt \
+  apt-get update \
+  && apt-get install -yqq --no-install-recommends python3 git ca-certificates \
+  && rm -rf /var/lib/apt/lists/*
 
 ##
 ## Deps
 ##
 ## Base stage for installing all dependencies.
 ##
-FROM base AS deps
+FROM base AS dependencies
 
 # Copy the application dependency declaration file
 COPY package.json ./
 
-# Install dependencies
-RUN yarn install --immutable --immutable-cache
+RUN --mount=type=cache,id=yarn,target=/usr/local/share/.cache/yarn yarn install --immutable --immutable-cache
 
 ##
 ## Builder
@@ -55,9 +54,9 @@ ENV NODE_ENV=${NODE_ENV}
 # Copy the application source files
 COPY . .
 # Copy dependencies from previous stage
-COPY --from=deps /app/node_modules ./node_modules
+COPY --from=dependencies /app/node_modules ./node_modules
 
-# Build source code
+# Install production dependencies and build source code
 RUN yarn build && yarn install --immutable --immutable-cache --prod --silent --ignore-optional --force
 
 ##
@@ -85,7 +84,7 @@ CMD ["dist/main.js"]
 ##
 FROM base AS development
 
-COPY --from=deps /app/node_modules ./node_modules
+COPY --from=dependencies /app/node_modules ./node_modules
 
 # Run the application with watch mode for automatic code changes.
-CMD ["yarn", "dev"]
+CMD ["yarn", "watch"]

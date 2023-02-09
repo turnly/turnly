@@ -15,4 +15,4 @@ runs:
 
     - name: 📦 Pull base dependencies
       shell: bash
-      run: docker pull node:${{ inputs.node-version }}-alpine3.17
+      run: docker pull node:${{ inputs.node-version }}-slim

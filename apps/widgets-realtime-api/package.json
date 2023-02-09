@@ -8,8 +8,7 @@
   "scripts": {
     "prebuild": "rm -rf dist tsconfig.tsbuildinfo",
     "build": "tsc -p tsconfig.build.json",
-    "dev": "nodemon --config node_modules/@turnly/eslint-config/nodemon.json src/main.ts",
-    "start": "ROOT_DIR=$(pwd) NODE_PATH=dist/ node -r dotenv/config dist/main.js",
+    "watch": "nodemon --config node_modules/@turnly/eslint-config/nodemon.json src/main.ts",
     "lint": "prettier \"./**/*.{ts,js}\" --check && eslint . --ext .js,.ts && tsc --noEmit"
   },
   "prettier": "@turnly/eslint-config/.prettierrc.js",
@@ -44,6 +43,6 @@
     "typescript": "^4.4.2"
   },
   "engines": {
-    "node": ">=18.12"
+    "node": ">=18.14"
   }
 }

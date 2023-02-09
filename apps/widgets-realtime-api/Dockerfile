@@ -14,56 +14,50 @@
 ##
 ## Shared Configuration
 ##
-ARG NODE_VERSION=18.12-alpine3.17 NODE_ENV=production
+ARG NODE_VERSION=18.14-slim NODE_ENV=production
+
+##
+## Base
+##
+## Base node image for all stages.
+##
+FROM node:${NODE_VERSION} AS base
+WORKDIR /app
+
+RUN --mount=type=cache,id=apt,target=/var/cache/apt \
+  apt-get update \
+  && apt-get install -yqq --no-install-recommends python3 git ca-certificates \
+  && rm -rf /var/lib/apt/lists/*
 
 ##
 ## Deps
 ##
 ## Base stage for installing all dependencies.
 ##
-FROM node:${NODE_VERSION} AS deps
-
-WORKDIR /app
+FROM base AS dependencies
 
 # Copy the application dependency declaration file
 COPY package.json ./
 
-# Install required system packages
-RUN apk add --virtual .stage-deps --no-cache --update libc6-compat g++ git cmake make python3 \
-    # Install application dependencies
-    && yarn install --immutable --immutable-cache \
-    # Delete unnecessary files from dependencies
-    && yarn autoclean --init && yarn autoclean --force \
-    # Delete system packages after installation (not needed)
-    && apk del .stage-deps && rm -rf /var/cache/apk/* /tmp/* /var/tmp/*
+RUN --mount=type=cache,id=yarn,target=/usr/local/share/.cache/yarn yarn install --immutable --immutable-cache
 
 ##
 ## Builder
 ##
 ## Stage for building the production source code into a distributable image.
 ##
-FROM node:${NODE_VERSION} AS builder
+FROM base AS builder
 
 ARG NODE_ENV
 ENV NODE_ENV=${NODE_ENV}
 
-WORKDIR /app
-
 # Copy the application source files
 COPY . .
 # Copy dependencies from previous stage
-COPY --from=deps /app/node_modules ./node_modules
+COPY --from=dependencies /app/node_modules ./node_modules
 
-# Build source code
-RUN yarn build \
-    # Install git binary for run dependency installation
-    && apk add --virtual .stage-builder --no-cache --update git \
-    # Install production dependencies
-    && yarn install --immutable --immutable-cache --prod --silent --ignore-optional --force \
-    # Delete unnecessary files from dependencies
-    && yarn autoclean --init && yarn autoclean --force \
-    # Delete system packages after installation (not needed)
-    && apk del .stage-builder && rm -rf /var/cache/apk/* /tmp/* /var/tmp/*
+# Install production dependencies and build source code
+RUN yarn build && yarn install --immutable --immutable-cache --prod --silent --ignore-optional --force
 
 ##
 ## Production
@@ -72,8 +66,6 @@ RUN yarn build \
 ##
 FROM gcr.io/distroless/nodejs18-debian11 AS production
 
-ARG NODE_ENV
-ENV NODE_ENV=${NODE_ENV}
 ENV ROOT_DIR=$(pwd) NODE_PATH=dist/
 
 WORKDIR /app
@@ -90,15 +82,9 @@ CMD ["dist/main.js"]
 ## Stage for running application in development mode from volumes.
 ## This stage requires the source files to be mounted as a run-time volume.
 ##
-FROM node:${NODE_VERSION} AS development
+FROM base AS development
 
-ARG NODE_ENV
-ENV NODE_ENV=${NODE_ENV}
-
-WORKDIR /app
-
-# Copy dependencies from deps stage
-COPY --from=deps /app/node_modules ./node_modules
+COPY --from=dependencies /app/node_modules ./node_modules
 
 # Run the application with watch mode for automatic code changes.
-CMD ["yarn", "dev"]
+CMD ["yarn", "watch"]

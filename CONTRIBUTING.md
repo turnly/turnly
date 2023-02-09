@@ -24,7 +24,7 @@ First off, thanks for your interest in Turnly and for wanting to contribute!
 To properly set up the Docker environment, ensure you meet the following requirements:
 
 - [Docker](https://www.docker.com)
-- [Node.js v18.12 (LTS)](https://nodejs.org/en/)
+- [Node.js v18.14 (LTS)](https://nodejs.org/en/)
 - [Yarn package manager](https://yarnpkg.com/getting-started/install)
 
 - ⚠️ If you are a **Windows** user, make sure to use a Unix/Linux
