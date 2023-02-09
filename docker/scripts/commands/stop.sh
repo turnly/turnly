@@ -5,9 +5,6 @@ function stop() {
 
   line
 
-  info "Removing the yarn.lock from each app... 📝 "
-  yarn_lock --remove
-
   docker_command down
 
   line

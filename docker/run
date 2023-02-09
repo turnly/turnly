@@ -16,11 +16,8 @@ HELPERS="$BASE_DIR/scripts/helpers"
 source "$HELPERS/helpers.sh"
 
 # Commands sources
-source "$COMMANDS/setup.sh"
 source "$COMMANDS/start.sh"
 source "$COMMANDS/stop.sh"
-source "$COMMANDS/reload.sh"
-source "$COMMANDS/lint.sh"
 
 INPUT=$1
 shift
@@ -51,10 +48,6 @@ if [[ $* == *"-s"* ]]; then
 fi
 
 case $COMMAND in
-setup)
-  get_configs
-  setup "$@"
-  ;;
 start)
   get_configs
   start "$@"
@@ -63,15 +56,7 @@ stop)
   get_configs
   stop "$@"
   ;;
-reload)
-  get_configs
-  reload "$@"
-  ;;
-lint)
-  lint "$@"
-  ;;
 *)
-  VERBOSE=true
-  execute "yarn workspace @turnly/$COMMAND $*"
+  error "Unknown command: $COMMAND"
   ;;
 esac

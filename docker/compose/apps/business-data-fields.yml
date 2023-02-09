@@ -14,7 +14,11 @@ services:
       args:
         NODE_ENV: ${NODE_ENV}
     volumes:
-      - ${DOCKER_RELATIVE_APPS_DIR}/business-data-fields:/app
+      - ${DOCKER_RELATIVE_APPS_DIR}/business-data-fields/src:/app/src
+      - ${DOCKER_RELATIVE_APPS_DIR}/business-data-fields/tests:/app/tests
+      - ${DOCKER_RELATIVE_APPS_DIR}/business-data-fields/package.json:/app/package.json
+      - ${DOCKER_RELATIVE_APPS_DIR}/business-data-fields/tsconfig.json:/app/tsconfig.json
+      - ${DOCKER_RELATIVE_APPS_DIR}/business-data-fields/jest.config.js:/app/jest.config.js
     depends_on:
       elasticsearch: # Disable this if you are using an external ElasticSearch database
         condition: service_healthy

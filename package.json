@@ -5,17 +5,27 @@
   "description": "The next modern Open-Source Queue Management System (QMS)",
   "license": "BSD-3-Clause",
   "author": "Turnly Team <engineering@turnly.app> (https://turnly.app)",
-  "workspaces": {
-    "packages": [
-      "apps/*"
-    ],
-    "nohoist": [
-      "**"
-    ]
-  },
+  "workspaces": [
+    "apps/*"
+  ],
   "scripts": {
-    "devo": "bash ./.devo/devo.sh",
-    "prepare": "husky install"
+    "start": "bash docker/run start",
+    "stop": "bash docker/run stop",
+    "setup": "yarn install && yarn bootstrap",
+    "prepare": "husky install",
+    "build": "lerna run build",
+    "bootstrap": "lerna bootstrap",
+    "lint": "lerna run lint",
+    "test:benchmark": "cross-env CI=true lerna run test:benchmark",
+    "test:e2e": "cross-env CI=true lerna run test:e2e",
+    "test:integration": "cross-env CI=true lerna run test:integration",
+    "test:unit": "cross-env CI=true lerna run test:unit",
+    "test:coverage": "cross-env CI=true lerna run test:coverage",
+    "release": "lerna version --no-push",
+    "release:major": "lerna version major --no-push",
+    "release:minor": "lerna version minor --no-push",
+    "release:patch": "lerna version patch --no-push",
+    "release:preminor": "lerna version preminor --no-push"
   },
   "commitlint": {
     "extends": [
@@ -25,9 +35,12 @@
   "devDependencies": {
     "@commitlint/cli": "^16.2.4",
     "@turnly/eslint-config": "https://github.com/turnly/configs.git",
-    "husky": "^8.0.1"
+    "husky": "^8.0.1",
+    "lerna": "^6.4.1",
+    "nx": "15.6.3"
   },
   "engines": {
-    "node": ">=18.12"
-  }
+    "node": ">=18.14"
+  },
+  "packageManager": "yarn@1.22.19"
 }

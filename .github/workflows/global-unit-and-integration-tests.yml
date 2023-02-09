@@ -20,7 +20,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18.12]
+        node-version: [18.14]
         mongodb-version: [5.0.9]
 
     services:
@@ -66,24 +66,24 @@ jobs:
 
       - name: "🧪 [Branch Management]: run unit tests"
         if: steps.filter.outputs.branch-management == 'true'
-        run: yarn devo branch-management test:unit
+        run: yarn test:unit --scope=@turnly/branch-management
 
       - name: "🧪 [Branch Management]: run integration tests"
         if: steps.filter.outputs.branch-management == 'true'
-        run: yarn devo branch-management test:integration --runInBand
+        run: yarn test:integration --scope=@turnly/branch-management
 
       - name: "🧪 [Business Data Fields]: run unit tests"
         if: steps.filter.outputs.business-data-fields == 'true'
-        run: yarn devo business-data-fields test:unit
+        run: yarn test:unit --scope=@turnly/business-data-fields
 
       - name: "🧪 [Business Data Fields]: run integration tests"
         if: steps.filter.outputs.business-data-fields == 'true'
-        run: yarn devo business-data-fields test:integration --runInBand
+        run: yarn test:integration --scope=@turnly/business-data-fields
 
       - name: "🧪 [Queuing System]: run unit tests"
         if: steps.filter.outputs.queuing-system == 'true'
-        run: yarn devo queuing-system test:unit
+        run: yarn test:unit --scope=@turnly/queuing-system
 
       - name: "🧪 [Queuing System]: run integration tests"
         if: steps.filter.outputs.queuing-system == 'true'
-        run: yarn devo queuing-system test:integration --runInBand
+        run: yarn test:integration --scope=@turnly/queuing-system

@@ -5,14 +5,6 @@ function start() {
 
   line
 
-  info "Checking available ports... 📡 "
-  check_ports "$APP_PORT" "$TRAEFIK_UI_PORT"
-
-  info "Copying the yarn.lock to each app... 📝 "
-  yarn_lock --copy
-
-  line
-
   if [[ $* == *"-s"* ]]; then
     while getopts "s:" opt; do
       case $opt in

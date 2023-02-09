@@ -9,7 +9,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18.12]
+        node-version: [18.14]
         mongodb-version: [5.0.9]
 
     steps:
@@ -34,32 +34,32 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: 🚀 Start all applications
-        run: yarn devo start --verbose
+        run: yarn start --verbose
 
       - name: "🧪 [Branch Management]: run e2e tests"
         if: steps.filter.outputs.branch-management == 'true'
-        run: yarn devo branch-management test:e2e
+        run: yarn test:e2e --scope=@turnly/branch-management
 
       - name: "🧪 [Branch Management]: run benchmark tests"
         if: steps.filter.outputs.branch-management == 'true'
-        run: yarn devo branch-management test:benchmark
+        run: yarn test:benchmark --scope=@turnly/branch-management
 
       - name: "🧪 [Business Data Fields]: run e2e tests"
         if: steps.filter.outputs.business-data-fields == 'true'
-        run: yarn devo business-data-fields test:e2e
+        run: yarn test:e2e --scope=@turnly/business-data-fields
 
       - name: "🧪 [Business Data Fields]: run benchmark tests"
         if: steps.filter.outputs.business-data-fields == 'true'
-        run: yarn devo business-data-fields test:benchmark
+        run: yarn test:benchmark --scope=@turnly/business-data-fields
 
       - name: "🧪 [Queuing System]: run e2e tests"
         if: steps.filter.outputs.queuing-system == 'true'
-        run: yarn devo queuing-system test:e2e
+        run: yarn test:e2e --scope=@turnly/queuing-system
 
       - name: "🧪 [Queuing System]: run benchmark tests"
         if: steps.filter.outputs.queuing-system == 'true'
-        run: yarn devo queuing-system test:benchmark
+        run: yarn test:benchmark --scope=@turnly/queuing-system
 
       - name: 🔥 Teardown
         if: always()
-        run: yarn devo stop --verbose
+        run: yarn stop --verbose

@@ -1,0 +1,6 @@
+{
+  "compilerOptions": {
+    "baseUrl": "."
+  },
+  "extends": "@turnly/eslint-config/tsconfig/tsconfig.app.json"
+}

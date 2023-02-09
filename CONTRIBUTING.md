@@ -24,7 +24,7 @@ First off, thanks for your interest in Turnly and for wanting to contribute!
 To properly set up the Docker environment, ensure you meet the following requirements:
 
 - [Docker](https://www.docker.com)
-- [Node.js v18.12 (LTS)](https://nodejs.org/en/)
+- [Node.js v18.14 (LTS)](https://nodejs.org/en/)
 - [Yarn package manager](https://yarnpkg.com/getting-started/install)
 
 - ⚠️ If you are a **Windows** user, make sure to use a Unix/Linux
@@ -51,35 +51,26 @@ git clone git@github.com:turnly/turnly.git
 #### Step 2: Setup application
 
 ```sh
-# This command will do:
-#
-# 1. Install local dependencies.
+1. Install local dependencies.
+yarn setup
+
 # 2. Copy environment file.
-# 3. And other common tasks.
-yarn devo setup
-
-# OR
-
-# Use verbose to show all the output of commands.
-yarn devo setup --verbose
+cp .example.env .env
 ```
 
 #### Step 3: Start command
 
 ```sh
 # Start all available services:
-yarn devo start
+yarn start --verbose
 
 # Start specific services:
-yarn devo start -s queuing-system -s helpdesk-realtime-api
+yarn start -s queuing-system -s widgets-api --verbose
 
 # OR
 
-# Use verbose to show all the output of the containers and commands.
-yarn devo start --verbose
-
 # Build images before starting containers and re-run setup.
-yarn devo start --verbose --build
+yarn start --verbose --build
 ``` 
 
 ### Helpful for development
@@ -87,56 +78,19 @@ yarn devo start --verbose --build
 #### Stop command
 
 ```sh
-yarn devo stop
+yarn stop
 
 # OR
 
 # Use verbose to show all the output of commands.
-yarn devo stop --verbose
-```
-
-#### Reload command
-
-```sh
-# Stop all available services:
-yarn devo reload
-
-# Stop specific services:
-yarn devo reload -s helpdesk-realtime-api
+yarn stop --verbose
 ```
 
 #### Linting command
 
 ```sh
-# Run linters on each services:
-yarn devo lint --all
-
-# Run linters only if the apps has changed since last commit
-yarn devo lint
-
-# OR
-
-# Use verbose to show all the output of commands.
-yarn devo lint --all --verbose
-```
-
-#### Workspace commands
-
-You can take advantage of yarn workspaces to interact with apps, for example,
-you can run the commands for one of your services from DevO using:
-
-```sh
-yarn devo helpdesk-realtime-api command
-
-# Same as:
-cd ./apps/helpdesk-realtime-api && yarn run command
-
-# -------------------------------------
-
-yarn devo queueing-system build
-
-# Same as:
-cd ./apps/queueing-system && yarn run build
+# Run linter
+yarn lint
 ```
 
 ### Testing

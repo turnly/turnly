@@ -23,7 +23,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18.12]
+        node-version: [18.14]
         mongodb-version: [5.0.9]
 
     steps:
@@ -39,7 +39,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: 🔦 Lint all
-        run: yarn devo lint --all
+        run: yarn lint
 
   commits:
     name: 🔦 Lint Commits Messages

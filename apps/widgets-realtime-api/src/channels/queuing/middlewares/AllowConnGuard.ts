@@ -13,7 +13,7 @@ import { Events, IRealtimeClient, RealtimeMiddle } from '@turnly/realtime'
 import { Event, EventType } from '@turnly/shared'
 import { isCommunityEdition } from 'shared/config'
 
-import { Customers, setOrganizationId, Widgets } from '../../../shared/api'
+import { Customers, setOrganizationId } from '../../../shared/api'
 
 /**
  * Allow connection guard
@@ -89,9 +89,9 @@ export class AllowConnGuard {
     }
   }
 
-  private async getWidget(id: Guid) {
+  private async getWidget(_id: Guid) {
     if (isCommunityEdition()) {
-      return new Promise(resolve => {
+      return new Promise<any>(resolve => {
         resolve({
           id: process.env.WIDGET_ID,
           name: process.env.ORGANIZATION_NAME,
@@ -100,10 +100,11 @@ export class AllowConnGuard {
       })
     }
 
-    const { meta, data } = await Widgets.getOne({ id })
+    // const { meta, data } = await Widgets.getOne({ id })
 
-    if (!data) throw new ResourceNotFoundException(meta?.message)
+    // throw new ResourceNotFoundException(meta?.message)
+    throw new ResourceNotFoundException()
 
-    return data
+    // return data
   }
 }

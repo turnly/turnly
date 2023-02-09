@@ -71,7 +71,7 @@ Before you begin, you must have completed steps 1 and 2 of the guide to [contrib
 This command will run the necessary infrastructure services for the business-data-fields:
 
 ```sh
-yarn devo start -s business-data-fields --verbose
+yarn start -s business-data-fields --verbose
 ```
 
 You can see more helpful commands for development in the [contribution guide](/CONTRIBUTING.md).

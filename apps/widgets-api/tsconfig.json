@@ -3,7 +3,7 @@
     "baseUrl": "./src",
     "outDir": "dist"
   },
-  "extends": "@turnly/eslint-config/tsconfig/tsconfig.app.json",
+  "extends": "../../tsconfig.json",
   "include": [
     "src/**/*",
     "src/*.ts"

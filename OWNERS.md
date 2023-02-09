@@ -31,7 +31,7 @@ Catch-all, everything you want to consult, but like you, we may not know. :D
 
 **DevOps:**
 
-Everything related to IaC, Kubbe, devO, etc.
+Everything related to IaC, Kubbe, etc.
 
 - [Efra](https://github.com/efraa)
 

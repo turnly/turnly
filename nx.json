@@ -1,0 +1,22 @@
+{
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "nx/tasks-runners/default",
+      "options": {
+        "cacheableOperations": [
+          "build",
+          "lint",
+          "prepare"
+        ],
+        "parallel": 5
+      }
+    }
+  },
+  "targetDefaults": {
+    "build": {
+      "dependsOn": ["prebuild", "^build"],
+      "outputs": ["dist/**"]
+    }
+  },
+  "defaultBase": "develop"
+}

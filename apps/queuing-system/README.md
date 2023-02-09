@@ -71,7 +71,7 @@ Before you begin, you must have completed steps 1 and 2 of the guide to [contrib
 This command will run the necessary infrastructure services for the queuing-system:
 
 ```sh
-yarn devo start -s queuing-system --verbose
+yarn start -s queuing-system --verbose
 ```
 
 You can see more helpful commands for development in the [contribution guide](/CONTRIBUTING.md).

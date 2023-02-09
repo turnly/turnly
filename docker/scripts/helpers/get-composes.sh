@@ -1,14 +1,14 @@
 #!/bin/bash
 
 function get_composes() {
-  PROVISIONING_DIR="./.devo/provisioning"
-  COMPOSE_FILES="-f $PROVISIONING_DIR/gateway.yml"
+  COMPOSE_DIR="./docker/compose"
+  COMPOSE_FILES="-f $COMPOSE_DIR/gateway.yml"
 
   IGNORE_DIRS=(
     ".gitkeep"
   )
 
-  INFRA_COMPOSE_FILES=$(find $PROVISIONING_DIR/infrastructure -name "*.yml" -type f)
+  INFRA_COMPOSE_FILES=$(find $COMPOSE_DIR/infrastructure -name "*.yml" -type f)
 
   for file in $INFRA_COMPOSE_FILES; do
     COMPOSE_FILES="$COMPOSE_FILES -f $file"
@@ -22,7 +22,7 @@ function get_composes() {
 
   for APP_DIR in $APPS_DIRS; do
     APP_NAME="$(basename "$APP_DIR")"
-    COMPOSE_FILE=$(echo "$PROVISIONING_DIR/apps/$APP_NAME.yml" | awk '{print tolower($0)}')
+    COMPOSE_FILE=$(echo "$COMPOSE_DIR/apps/$APP_NAME.yml" | awk '{print tolower($0)}')
 
     if [[ -f "$COMPOSE_FILE" ]]; then
       COMPOSE_FILES="$COMPOSE_FILES -f $COMPOSE_FILE"

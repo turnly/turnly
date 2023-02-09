@@ -14,7 +14,11 @@ services:
       args:
         NODE_ENV: ${NODE_ENV}
     volumes:
-      - ${DOCKER_RELATIVE_APPS_DIR}/branch-management:/app
+      - ${DOCKER_RELATIVE_APPS_DIR}/branch-management/src:/app/src
+      - ${DOCKER_RELATIVE_APPS_DIR}/branch-management/tests:/app/tests
+      - ${DOCKER_RELATIVE_APPS_DIR}/branch-management/package.json:/app/package.json
+      - ${DOCKER_RELATIVE_APPS_DIR}/branch-management/tsconfig.json:/app/tsconfig.json
+      - ${DOCKER_RELATIVE_APPS_DIR}/branch-management/jest.config.js:/app/jest.config.js
     depends_on:
       elasticsearch: # Disable this if you are using an external ElasticSearch database
         condition: service_healthy
