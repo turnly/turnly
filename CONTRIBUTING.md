@@ -51,8 +51,8 @@ git clone git@github.com:turnly/turnly.git
 #### Step 2: Setup application
 
 ```sh
-# 1. Install local dependencies.
-yarn install
+1. Install local dependencies.
+yarn setup
 
 # 2. Copy environment file.
 cp .example.env .env
@@ -62,15 +62,12 @@ cp .example.env .env
 
 ```sh
 # Start all available services:
-yarn start
+yarn start --verbose
 
 # Start specific services:
-yarn start -s queuing-system -s helpdesk-realtime-api
+yarn start -s queuing-system -s widgets-api --verbose
 
 # OR
-
-# Use verbose to show all the output of the containers and commands.
-yarn start --verbose
 
 # Build images before starting containers and re-run setup.
 yarn start --verbose --build

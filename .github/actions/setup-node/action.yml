@@ -15,7 +15,7 @@ runs:
         cache: yarn
 
     - name: 📦 Install Dependencies
-      run: yarn install --immutable --immutable-cache
+      run: yarn setup
       shell: bash
 
     - name: 🔗 Copying environment variables
