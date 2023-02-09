@@ -2,7 +2,7 @@
 
 function get_composes() {
   COMPOSE_DIR="./docker/compose"
-  COMPOSE_FILES="-f $COMPOSE_DIR/gateway.yml"
+  COMPOSE_FILES="-f $COMPOSE_DIR/docker-compose.yml"
 
   IGNORE_DIRS=(
     ".gitkeep"

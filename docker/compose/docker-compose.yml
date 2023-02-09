@@ -5,7 +5,7 @@ services:
     extends:
       file: common.yml
       service: common
-    image: traefik:latest
+    image: traefik:v3.0
     command:
       - --accesslog=true
       - --log.level=DEBUG
