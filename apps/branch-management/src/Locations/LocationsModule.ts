@@ -4,20 +4,37 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { Producers } from '@turnly/rpc'
-import {
-  Box,
+
+/**
+ * Dependencies
+ *
+ * @description Register dependencies to the dependency injection container.
+ */
+import 'Locations/SearchAvailableLocationsForServing/dependency/attach-to-dependency-box'
+import 'Locations/Shared/infrastructure/persistence/dependency/attach-to-dependency-box'
+
+/**
+ * Module
+ *
+ * @description Module definition.
+ */
+import type { Producers } from '@turnly/rpc'
+import type {
   ICommandHandler,
   IEventSubscriber,
   IQueryHandler,
   IReadableRepository,
   IWritableRepository,
 } from '@turnly/shared'
-import { SearchAvailableLocationsForServingQueryHandler } from 'Locations/SearchAvailableLocationsForServing'
-import { Location } from 'Locations/Shared/domain/entities/Location'
+import { Box } from '@turnly/shared'
+import type {
+  SearchAvailableLocationsForServingQueryHandler,
+  SearchAvailableLocationsForServingServer,
+} from 'Locations/SearchAvailableLocationsForServing'
+import type { Location } from 'Locations/Shared/domain/entities/Location'
 
-import { LocationsReadableRepo } from './Shared/infrastructure/persistence/mongo/repositories/LocationsReadableRepo'
-import { LocationsWritableRepo } from './Shared/infrastructure/persistence/mongo/repositories/LocationsWritableRepo'
+import type { LocationsReadableRepo } from './Shared/infrastructure/persistence/mongo/repositories/LocationsReadableRepo'
+import type { LocationsWritableRepo } from './Shared/infrastructure/persistence/mongo/repositories/LocationsWritableRepo'
 
 export class LocationsModule {
   public static getServer(): Producers.BranchManagement.ILocationsServer {
@@ -25,9 +42,10 @@ export class LocationsModule {
       getOne: () => {
         throw new Error('Not implemented')
       },
-      find: () => {
-        throw new Error('Not implemented')
-      },
+      find: (...args) =>
+        Box.resolve<SearchAvailableLocationsForServingServer>(
+          'searchAvailableLocationsForServingServer'
+        ).execute(...args),
     }
   }
 

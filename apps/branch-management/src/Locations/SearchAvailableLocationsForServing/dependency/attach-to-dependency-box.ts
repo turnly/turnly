@@ -7,9 +7,13 @@
 import { Box, ioc } from '@turnly/shared'
 
 import { SearchAvailableLocationsForServingController } from '../api/SearchAvailableLocationsForServingController'
+import { SearchAvailableLocationsForServingServer } from '../api/SearchAvailableLocationsForServingServer'
 import { SearchAvailableLocationsForServingQueryHandler } from '../queries/SearchAvailableLocationsForServingQueryHandler'
 
 Box.register({
+  searchAvailableLocationsForServingServer: ioc
+    .asClass(SearchAvailableLocationsForServingServer)
+    .singleton(),
   searchAvailableLocationsForServingController: ioc
     .asClass(SearchAvailableLocationsForServingController)
     .singleton(),

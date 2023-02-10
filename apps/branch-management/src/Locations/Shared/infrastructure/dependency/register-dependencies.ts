@@ -6,14 +6,6 @@
  */
 
 /**
- * Dependencies
- *
- * @description This file is used to register dependencies to the dependency injection container.
- */
-import 'Locations/SearchAvailableLocationsForServing/dependency/attach-to-dependency-box'
-import 'Locations/Shared/infrastructure/persistence/dependency/attach-to-dependency-box'
-
-/**
  * Handlers
  *
  * @description This file is used to register handlers to the bus.
