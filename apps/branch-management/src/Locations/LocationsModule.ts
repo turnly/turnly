@@ -13,11 +13,11 @@ import {
   IReadableRepository,
   IWritableRepository,
 } from '@turnly/shared'
-import { SearchAvailableLocationsForServingQueryHandlerInstance } from 'Locations/SearchAvailableLocationsForServing'
+import { SearchAvailableLocationsForServingQueryHandler } from 'Locations/SearchAvailableLocationsForServing'
 import { Location } from 'Locations/Shared/domain/entities/Location'
 
-import { LocationsReadableRepo } from './persistence/mongo/repositories/LocationsReadableRepo'
-import { LocationsWritableRepo } from './persistence/mongo/repositories/LocationsWritableRepo'
+import { LocationsReadableRepo } from './Shared/infrastructure/persistence/mongo/repositories/LocationsReadableRepo'
+import { LocationsWritableRepo } from './Shared/infrastructure/persistence/mongo/repositories/LocationsWritableRepo'
 
 export class LocationsModule {
   public static getServer(): Producers.BranchManagement.ILocationsServer {
@@ -40,7 +40,11 @@ export class LocationsModule {
   }
 
   public static getQueryHandlers(): IQueryHandler[] {
-    return [SearchAvailableLocationsForServingQueryHandlerInstance]
+    return [
+      Box.resolve<SearchAvailableLocationsForServingQueryHandler>(
+        'searchAvailableLocationsForServingQueryHandler'
+      ),
+    ]
   }
 
   public static getCommandHandlers(): ICommandHandler[] {

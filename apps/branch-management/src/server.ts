@@ -6,7 +6,7 @@
  */
 import { Producers } from '@turnly/rpc'
 import { config } from '@turnly/shared'
-import { LocationsModule } from 'Locations/Shared/infrastructure/LocationsModule'
+import { LocationsModule } from 'Locations/LocationsModule'
 import { ServicesServer } from 'Services/infrastructure/api/rpc'
 import { ServicesFactory } from 'Services/infrastructure/factories/ServicesFactory'
 

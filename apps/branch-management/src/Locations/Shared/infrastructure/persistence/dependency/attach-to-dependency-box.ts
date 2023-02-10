@@ -6,9 +6,9 @@
  */
 import { Box, ioc } from '@turnly/shared'
 
-import { LocationsMapper } from '../persistence/mongo/entity-model-mappers/LocationsMapper'
-import { LocationsReadableRepo } from '../persistence/mongo/repositories/LocationsReadableRepo'
-import { LocationsWritableRepo } from '../persistence/mongo/repositories/LocationsWritableRepo'
+import { LocationsMapper } from '../../api/LocationsMapper'
+import { LocationsReadableRepo } from '../mongo/repositories/LocationsReadableRepo'
+import { LocationsWritableRepo } from '../mongo/repositories/LocationsWritableRepo'
 
 Box.register({
   locationsMapper: ioc.asClass(LocationsMapper).singleton(),

@@ -4,12 +4,12 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import '../../../../../src/Locations/Shared/infrastructure/dependency/dependencies'
+import '../../../../../src/Locations/Shared/infrastructure/dependency/register-dependencies'
 
 import { ResourceNotFoundException } from '@turnly/common'
 import { MongoEnvironmentArranger } from '@turnly/shared'
 
-import { LocationsModule } from '../../../../../src/Locations/Shared/infrastructure/LocationsModule'
+import { LocationsModule } from '../../../../../src/Locations/LocationsModule'
 import { LocationMother } from '../../../../unit/Locations/domain/LocationMother'
 import { LocationsQueryMother } from './LocationsQueryMother'
 
