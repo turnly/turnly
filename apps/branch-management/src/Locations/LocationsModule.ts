@@ -27,42 +27,31 @@ import type {
   IWritableRepository,
 } from '@turnly/shared'
 import { Box } from '@turnly/shared'
-import type {
-  SearchAvailableLocationsForServingQueryHandler,
-  SearchAvailableLocationsForServingServer,
-} from 'Locations/SearchAvailableLocationsForServing'
 import type { Location } from 'Locations/Shared/domain/entities/Location'
-
-import type { LocationsReadableRepo } from './Shared/infrastructure/persistence/mongo/repositories/LocationsReadableRepo'
-import type { LocationsWritableRepo } from './Shared/infrastructure/persistence/mongo/repositories/LocationsWritableRepo'
 
 export class LocationsModule {
   public static getServer(): Producers.BranchManagement.ILocationsServer {
     return {
-      getOne: () => {
+      getOne: (..._args) => {
         throw new Error('Not implemented')
       },
-      find: (...args) =>
-        Box.resolve<SearchAvailableLocationsForServingServer>(
-          'searchAvailableLocationsForServingServer'
-        ).execute(...args),
+      searchAvailableLocationsForServing: (...args) =>
+        Box.resolve('searchAvailableLocationsForServingServer').execute(
+          ...args
+        ),
     }
   }
 
   public static getWritableRepo(): IWritableRepository<Location> {
-    return Box.resolve<LocationsWritableRepo>('locationsWritableRepo')
+    return Box.resolve('locationsWritableRepo')
   }
 
   public static getReadableRepo(): IReadableRepository<Location> {
-    return Box.resolve<LocationsReadableRepo>('locationsReadableRepo')
+    return Box.resolve('locationsReadableRepo')
   }
 
   public static getQueryHandlers(): IQueryHandler[] {
-    return [
-      Box.resolve<SearchAvailableLocationsForServingQueryHandler>(
-        'searchAvailableLocationsForServingQueryHandler'
-      ),
-    ]
+    return [Box.resolve('searchAvailableLocationsForServingQueryHandler')]
   }
 
   public static getCommandHandlers(): ICommandHandler[] {

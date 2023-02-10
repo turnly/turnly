@@ -8,24 +8,26 @@ import { ResourceNotFoundException } from '@turnly/common'
 import { Producers } from '@turnly/rpc'
 import { Client } from '@turnly/rpc/dist/consumers'
 import type { SearchAvailableLocationsForServingController } from 'Locations/SearchAvailableLocationsForServing'
-import { LocationsMapper } from 'Locations/Shared/infrastructure/api/LocationsMapper'
+import { LocationsMapper } from 'Locations/Shared/infrastructure/grpc/LocationsMapper'
 
 export class SearchAvailableLocationsForServingServer {
   public constructor(
     private readonly searchAvailableLocationsForServingController: SearchAvailableLocationsForServingController
   ) {}
 
-  @Producers.CallHandler(Producers.BranchManagement.FindLocationsResponse)
+  @Producers.CallHandler(
+    Producers.BranchManagement.SearchAvailableLocationsForServingResponse
+  )
   public async execute(
     call: Producers.ServerUnaryCall<
-      Producers.BranchManagement.FindLocationsRequest,
-      Producers.BranchManagement.FindLocationsResponse
+      Producers.BranchManagement.SearchAvailableLocationsForServingRequest,
+      Producers.BranchManagement.SearchAvailableLocationsForServingResponse
     >,
-    callback: Producers.ICallback<Producers.BranchManagement.FindLocationsResponse>
+    callback: Producers.ICallback<Producers.BranchManagement.SearchAvailableLocationsForServingResponse>
   ) {
     const { data, meta } =
       await this.searchAvailableLocationsForServingController.execute({
-        searchQuery: call.request.getFindQuery(),
+        searchQuery: call.request.getSearchQuery(),
         country: call.request.getCountry(),
         latitude: parseFloat(call.request.getLatitude() || '0'),
         longitude: parseFloat(call.request.getLongitude() || '0'),
@@ -34,7 +36,8 @@ export class SearchAvailableLocationsForServingServer {
         organizationId: Client.getOrganizationId(call),
       })
 
-    const response = new Producers.BranchManagement.FindLocationsResponse()
+    const response =
+      new Producers.BranchManagement.SearchAvailableLocationsForServingResponse()
     const locations = data?.map(location => LocationsMapper.toRPC(location))
 
     if (!locations?.length) throw new ResourceNotFoundException()
