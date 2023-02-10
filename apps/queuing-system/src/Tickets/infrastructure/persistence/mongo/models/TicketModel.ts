@@ -9,6 +9,7 @@ import mongoose, { Document, Model, Schema } from 'mongoose'
 import { Ticket } from 'Tickets/domain/entities/Ticket'
 import { TicketPriority } from 'Tickets/domain/enums/TicketPriority'
 import { TicketScore } from 'Tickets/domain/enums/TicketScore'
+import { TicketSource } from 'Tickets/domain/enums/TicketSource'
 import { TicketStatus } from 'Tickets/domain/enums/TicketStatus'
 
 export interface ITicketDocument
@@ -28,6 +29,11 @@ const schema = new Schema(
     priority: {
       type: String,
       enum: TicketPriority,
+      required: true,
+    },
+    source: {
+      type: String,
+      enum: TicketSource,
       required: true,
     },
     displayCode: {

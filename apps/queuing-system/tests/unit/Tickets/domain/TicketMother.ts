@@ -6,6 +6,7 @@
  */
 import { Extra, Guid, Nullable } from '@turnly/common'
 import { ObjectMother } from '@turnly/testing'
+import { TicketSource } from 'Tickets/domain/enums/TicketSource'
 
 import { AnnounceTicketCommand } from '../../../../src/Tickets/application/commands/AnnounceTicketCommand'
 import { CreateTicketCommand } from '../../../../src/Tickets/application/commands/CreateTicketCommand'
@@ -21,6 +22,7 @@ export class TicketMother {
   static create(
     status: TicketStatus = TicketStatus.AVAILABLE,
     priority: TicketPriority = TicketPriority.NORMAL,
+    source: TicketSource = TicketSource.FROM_SYSTEM,
     displayCode: string = ObjectMother.displayCode('TEST'),
     serviceId: Guid = ObjectMother.uuid('srv'),
     locationId: Guid = ObjectMother.uuid('loc'),
@@ -31,6 +33,7 @@ export class TicketMother {
     return Ticket.create({
       status,
       priority,
+      source,
       displayCode,
       serviceId,
       locationId,
@@ -54,6 +57,7 @@ export class TicketMother {
 
   static fromCommand(command: CreateTicketCommand): Ticket {
     return TicketMother.create(
+      undefined,
       undefined,
       undefined,
       undefined,
@@ -137,6 +141,7 @@ export class TicketMother {
     ]
   ): Ticket {
     return this.create(
+      undefined,
       undefined,
       undefined,
       undefined,

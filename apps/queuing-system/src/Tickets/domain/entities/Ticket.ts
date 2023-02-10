@@ -17,6 +17,7 @@ import { AggregateRoot, EntityAttributes } from '@turnly/shared'
 
 import { TicketPriority } from '../enums/TicketPriority'
 import { TicketScore } from '../enums/TicketScore'
+import { TicketSource } from '../enums/TicketSource'
 import { TicketStatus } from '../enums/TicketStatus'
 import { TicketAnnouncedEvent } from '../events/TicketAnnouncedEvent'
 import { TicketCalledEvent } from '../events/TicketCalledEvent'
@@ -60,6 +61,13 @@ export class Ticket extends AggregateRoot {
      * @description Represents the priority of a Ticket.
      */
     private readonly priority: TicketPriority,
+
+    /**
+     * Source
+     *
+     * @description Represents the source of a Ticket (e.g. API, Widget, Chat, etc.).
+     */
+    private readonly source: TicketSource,
 
     /**
      * Display Code
@@ -270,7 +278,6 @@ export class Ticket extends AggregateRoot {
 
   public static getActiveStatus(): TicketStatus[] {
     return [
-      TicketStatus.BOOKED,
       TicketStatus.AVAILABLE,
       TicketStatus.ANNOUNCED,
       TicketStatus.CALLED,
@@ -322,6 +329,7 @@ export class Ticket extends AggregateRoot {
       Identifier.generate('ticket'),
       attributes.status,
       attributes.priority,
+      attributes.source,
       attributes.displayCode,
       attributes.serviceId,
       attributes.locationId,
@@ -345,6 +353,7 @@ export class Ticket extends AggregateRoot {
       attributes.id,
       attributes.status,
       attributes.priority,
+      attributes.source,
       attributes.displayCode,
       attributes.serviceId,
       attributes.locationId,
@@ -368,6 +377,7 @@ export class Ticket extends AggregateRoot {
       id: this.id,
       status: this.status,
       priority: this.priority,
+      source: this.source,
       displayCode: this.displayCode,
       serviceId: this.serviceId,
       locationId: this.locationId,

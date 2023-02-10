@@ -9,7 +9,13 @@ import { CreateTicketParams } from 'Tickets/domain/entities/Ticket'
 
 export type CreateTicketCommandParams = Omit<
   CreateTicketParams & { serviceName: string },
-  'displayCode' | 'status' | 'priority' | 'rating' | 'updatedAt' | 'createdAt'
+  | 'displayCode'
+  | 'status'
+  | 'priority'
+  | 'source'
+  | 'rating'
+  | 'updatedAt'
+  | 'createdAt'
 >
 
 export class CreateTicketCommand implements ICommand {
