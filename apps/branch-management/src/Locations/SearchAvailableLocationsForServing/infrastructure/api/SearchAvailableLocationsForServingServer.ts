@@ -7,21 +7,16 @@
 import { ResourceNotFoundException } from '@turnly/common'
 import { Producers } from '@turnly/rpc'
 import { Client } from '@turnly/rpc/dist/consumers'
-import type { SearchAvailableLocationsForServingController } from 'Locations/features/SearchAvailableLocationsForServing'
+import type { SearchAvailableLocationsForServingController } from 'Locations/SearchAvailableLocationsForServing'
+import { LocationsMapper } from 'Locations/Shared/infrastructure/api/LocationsMapper'
 
-import { LocationsMapper } from './LocationsMapper'
-
-export class LocationsServer extends Producers.ServerImplementation<Producers.BranchManagement.ILocationsServer> {
+export class SearchAvailableLocationsForServingServer {
   public constructor(
-    private readonly controllers: {
-      searchAvailableLocationsForServing: SearchAvailableLocationsForServingController
-    }
-  ) {
-    super()
-  }
+    private readonly searchAvailableLocationsForServingController: SearchAvailableLocationsForServingController
+  ) {}
 
   @Producers.CallHandler(Producers.BranchManagement.FindLocationsResponse)
-  public async searchAvailableLocationsForServing(
+  public async execute(
     call: Producers.ServerUnaryCall<
       Producers.BranchManagement.FindLocationsRequest,
       Producers.BranchManagement.FindLocationsResponse
@@ -29,7 +24,7 @@ export class LocationsServer extends Producers.ServerImplementation<Producers.Br
     callback: Producers.ICallback<Producers.BranchManagement.FindLocationsResponse>
   ) {
     const { data, meta } =
-      await this.controllers.searchAvailableLocationsForServing.execute({
+      await this.searchAvailableLocationsForServingController.execute({
         searchQuery: call.request.getFindQuery(),
         country: call.request.getCountry(),
         latitude: parseFloat(call.request.getLatitude() || '0'),
@@ -48,14 +43,5 @@ export class LocationsServer extends Producers.ServerImplementation<Producers.Br
     response.setMeta(Producers.MetaMapper.toRPC(meta))
 
     callback(null, response)
-  }
-
-  public get implementation() {
-    return {
-      getOne: () => {
-        throw new Error('Not implemented')
-      },
-      find: this.searchAvailableLocationsForServing.bind(this),
-    }
   }
 }

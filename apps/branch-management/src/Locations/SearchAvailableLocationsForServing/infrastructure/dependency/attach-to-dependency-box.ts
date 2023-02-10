@@ -6,8 +6,8 @@
  */
 import { Box, ioc } from '@turnly/shared'
 
+import { SearchAvailableLocationsForServingQueryHandler } from '../../application/SearchAvailableLocationsForServingQueryHandler'
 import { SearchAvailableLocationsForServingController } from '../api/SearchAvailableLocationsForServingController'
-import { SearchAvailableLocationsForServingQueryHandler } from '../application/SearchAvailableLocationsForServingQueryHandler'
 
 /**
  * Controllers
@@ -30,9 +30,4 @@ Box.register({
 export const SearchAvailableLocationsForServingQueryHandlerInstance =
   Box.resolve<SearchAvailableLocationsForServingQueryHandler>(
     'searchAvailableLocationsForServingQueryHandler'
-  )
-
-export const SearchAvailableLocationsForServingControllerInstance =
-  Box.resolve<SearchAvailableLocationsForServingController>(
-    'searchAvailableLocationsForServingController'
   )

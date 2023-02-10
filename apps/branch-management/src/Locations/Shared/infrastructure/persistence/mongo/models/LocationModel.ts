@@ -5,8 +5,8 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import { EntityAttributes, timestamps } from '@turnly/shared'
-import { Location } from 'Locations/domain/entities/Location'
-import { LocationStatus } from 'Locations/domain/enums/LocationStatus'
+import { Location } from 'Locations/Shared/domain/entities/Location'
+import { LocationStatus } from 'Locations/Shared/domain/enums/LocationStatus'
 import mongoose, { Document, Model, Schema } from 'mongoose'
 
 export interface ILocationDocument

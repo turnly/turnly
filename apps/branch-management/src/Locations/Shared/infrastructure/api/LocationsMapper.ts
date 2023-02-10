@@ -7,7 +7,7 @@
 import { Nullable } from '@turnly/common'
 import { Producers } from '@turnly/rpc'
 import { EntityAttributes } from '@turnly/shared'
-import { Location } from 'Locations/domain/entities/Location'
+import { Location } from 'Locations/Shared/domain/entities/Location'
 
 export class LocationsMapper {
   public static toRPC(

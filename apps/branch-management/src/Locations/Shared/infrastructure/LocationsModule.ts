@@ -4,6 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
+import { Producers } from '@turnly/rpc'
 import {
   Box,
   ICommandHandler,
@@ -12,20 +13,21 @@ import {
   IReadableRepository,
   IWritableRepository,
 } from '@turnly/shared'
-import { Location } from 'Locations/domain/entities/Location'
-import {
-  SearchAvailableLocationsForServingControllerInstance,
-  SearchAvailableLocationsForServingQueryHandlerInstance,
-} from 'Locations/features/SearchAvailableLocationsForServing'
+import { SearchAvailableLocationsForServingQueryHandlerInstance } from 'Locations/SearchAvailableLocationsForServing'
+import { Location } from 'Locations/Shared/domain/entities/Location'
 
 import { LocationsReadableRepo } from './persistence/mongo/repositories/LocationsReadableRepo'
 import { LocationsWritableRepo } from './persistence/mongo/repositories/LocationsWritableRepo'
 
 export class LocationsModule {
-  public static getControllers() {
+  public static getServer(): Producers.BranchManagement.ILocationsServer {
     return {
-      searchAvailableLocationsForServing:
-        SearchAvailableLocationsForServingControllerInstance,
+      getOne: () => {
+        throw new Error('Not implemented')
+      },
+      find: () => {
+        throw new Error('Not implemented')
+      },
     }
   }
 

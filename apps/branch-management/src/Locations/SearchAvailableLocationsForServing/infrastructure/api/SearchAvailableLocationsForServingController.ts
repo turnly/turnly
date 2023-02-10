@@ -11,8 +11,8 @@ import {
   IQueryBus,
   TimeoutHandler,
 } from '@turnly/shared'
-import { Location } from 'Locations/domain/entities/Location'
-import { SearchAvailableLocationsForServingQuery } from 'Locations/features/SearchAvailableLocationsForServing'
+import { SearchAvailableLocationsForServingQuery } from 'Locations/SearchAvailableLocationsForServing'
+import { Location } from 'Locations/Shared/domain/entities/Location'
 
 import { SearchAvailableLocationsForServingValidator } from './SearchAvailableLocationsForServingValidator'
 

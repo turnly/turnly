@@ -6,9 +6,9 @@
  */
 import { Guid } from '@turnly/common'
 import { ObjectMother } from '@turnly/testing'
-import { LocationStatus } from 'Locations/domain/enums/LocationStatus'
+import { LocationStatus } from 'Locations/Shared/domain/enums/LocationStatus'
 
-import { Location } from '../../../../src/Locations/domain/entities/Location'
+import { Location } from '../../../../src/Locations/Shared/domain/entities/Location'
 
 export class LocationMother {
   static create(

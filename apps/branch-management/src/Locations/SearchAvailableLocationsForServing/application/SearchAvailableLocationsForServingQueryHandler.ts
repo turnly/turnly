@@ -6,9 +6,9 @@
  */
 import { Nullable } from '@turnly/common'
 import { IQueryHandler, QueryBuilder, QueryHandler } from '@turnly/shared'
-import { ILocationsReadableRepo } from 'Locations/domain/contracts/ILocationsRepo'
-import { Location } from 'Locations/domain/entities/Location'
-import { LocationStatus } from 'Locations/domain/enums/LocationStatus'
+import { ILocationsReadableRepo } from 'Locations/Shared/domain/contracts/ILocationsRepo'
+import { Location } from 'Locations/Shared/domain/entities/Location'
+import { LocationStatus } from 'Locations/Shared/domain/enums/LocationStatus'
 
 import { SearchAvailableLocationsForServingQuery } from './SearchAvailableLocationsForServingQuery'
 
