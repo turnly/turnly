@@ -6,7 +6,7 @@
  */
 import { Box, ioc } from '@turnly/shared'
 
-import { LocationsMapper } from '../../api/LocationsMapper'
+import { LocationsMapper } from '../mongo/entity-model-mappers/LocationsMapper'
 import { LocationsReadableRepo } from '../mongo/repositories/LocationsReadableRepo'
 import { LocationsWritableRepo } from '../mongo/repositories/LocationsWritableRepo'
 
