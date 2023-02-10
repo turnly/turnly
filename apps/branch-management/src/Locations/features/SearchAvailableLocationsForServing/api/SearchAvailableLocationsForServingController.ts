@@ -11,34 +11,21 @@ import {
   IQueryBus,
   TimeoutHandler,
 } from '@turnly/shared'
-import { FindLocationsQuery } from 'Locations/application/queries/FindLocationsQuery'
-import { LocationByIdQuery } from 'Locations/application/queries/LocationByIdQuery'
 import { Location } from 'Locations/domain/entities/Location'
+import { SearchAvailableLocationsForServingQuery } from 'Locations/features/SearchAvailableLocationsForServing'
 
-import { validator } from '../validators/LocationsValidator'
+import { SearchAvailableLocationsForServingValidator } from './SearchAvailableLocationsForServingValidator'
 
-export class LocationsController extends Controller {
+export class SearchAvailableLocationsForServingController extends Controller {
   public constructor(private readonly queryBus: IQueryBus) {
     super()
   }
 
   @TimeoutHandler()
-  @InputValidator(validator.get)
-  public async getOne(params: LocationByIdQuery) {
-    const location = await this.queryBus.ask<Nullable<Location>>(
-      new LocationByIdQuery(params.id, params.organizationId)
-    )
-
-    if (!location) throw new ResourceNotFoundException()
-
-    return this.respond.ok(location.toObject())
-  }
-
-  @TimeoutHandler()
-  @InputValidator(validator.find)
-  public async find(params: FindLocationsQuery) {
+  @InputValidator(SearchAvailableLocationsForServingValidator)
+  public async execute(params: SearchAvailableLocationsForServingQuery) {
     const locations = await this.queryBus.ask<Nullable<Location[]>>(
-      new FindLocationsQuery(
+      new SearchAvailableLocationsForServingQuery(
         params.organizationId,
         params.searchQuery,
         params.country,

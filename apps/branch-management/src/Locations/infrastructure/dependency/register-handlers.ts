@@ -6,11 +6,11 @@
  */
 import { commandBus, eventBus, queryBus } from '@turnly/shared'
 
-import { LocationsFactory } from '../factories/LocationsFactory'
+import { LocationsModule } from '../LocationsModule'
 
 /**
  * Location module
  */
-queryBus.register(LocationsFactory.getQueryHandlers())
-commandBus.register(LocationsFactory.getCommandHandlers())
-eventBus.subscribe(LocationsFactory.getEventSubscribers())
+queryBus.register(LocationsModule.getQueryHandlers())
+commandBus.register(LocationsModule.getCommandHandlers())
+eventBus.subscribe(LocationsModule.getEventSubscribers())

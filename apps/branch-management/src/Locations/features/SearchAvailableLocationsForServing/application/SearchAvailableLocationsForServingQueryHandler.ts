@@ -10,11 +10,15 @@ import { ILocationsReadableRepo } from 'Locations/domain/contracts/ILocationsRep
 import { Location } from 'Locations/domain/entities/Location'
 import { LocationStatus } from 'Locations/domain/enums/LocationStatus'
 
-import { FindLocationsQuery } from './FindLocationsQuery'
+import { SearchAvailableLocationsForServingQuery } from './SearchAvailableLocationsForServingQuery'
 
-@QueryHandler(FindLocationsQuery)
-export class FindLocationsQueryHandler
-  implements IQueryHandler<FindLocationsQuery, Nullable<Location[]>>
+@QueryHandler(SearchAvailableLocationsForServingQuery)
+export class SearchAvailableLocationsForServingQueryHandler
+  implements
+    IQueryHandler<
+      SearchAvailableLocationsForServingQuery,
+      Nullable<Location[]>
+    >
 {
   public constructor(
     private readonly locationsReadableRepo: ILocationsReadableRepo
@@ -28,7 +32,7 @@ export class FindLocationsQueryHandler
     longitude: lng,
     limit,
     offset,
-  }: FindLocationsQuery) {
+  }: SearchAvailableLocationsForServingQuery) {
     const query = new QueryBuilder<Location>()
       .equal('organizationId', organizationId)
       .equal('status', LocationStatus.COMPLETE)

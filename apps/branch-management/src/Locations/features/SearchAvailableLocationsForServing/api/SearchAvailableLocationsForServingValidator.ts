@@ -6,12 +6,7 @@
  */
 import { Validator } from '@turnly/shared'
 
-const get = Validator.object({
-  id: Validator.isId(),
-  organizationId: Validator.isId(),
-})
-
-const find = Validator.object({
+export const SearchAvailableLocationsForServingValidator = Validator.object({
   searchQuery: Validator.string(true),
   country: Validator.string(true),
   ...Validator.coords(),
@@ -19,8 +14,3 @@ const find = Validator.object({
   offset: Validator.int(true),
   organizationId: Validator.isId(),
 })
-
-export const validator = {
-  get,
-  find,
-}

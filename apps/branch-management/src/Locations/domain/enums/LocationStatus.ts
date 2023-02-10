@@ -13,9 +13,9 @@ export enum LocationStatus {
   COMPLETE = 'complete',
 
   /**
-   * Imcomplete status
+   * Incomplete status
    *
-   * @description Use it when the location has been Imcomplete.
+   * @description Use it when the location has been Incomplete.
    */
   INCOMPLETE = 'incomplete',
 }

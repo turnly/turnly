@@ -4,17 +4,17 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import '../../../../../src/Locations/infrastructure/register-dependencies/dependencies'
+import '../../../../../src/Locations/infrastructure/dependency/dependencies'
 
 import { ResourceNotFoundException } from '@turnly/common'
 import { MongoEnvironmentArranger } from '@turnly/shared'
 
-import { LocationsFactory } from '../../../../../src/Locations/infrastructure/factories/LocationsFactory'
+import { LocationsModule } from '../../../../../src/Locations/infrastructure/LocationsModule'
 import { LocationMother } from '../../../../unit/Locations/domain/LocationMother'
 import { LocationsQueryMother } from './LocationsQueryMother'
 
-const writableRepo = LocationsFactory.getWritableRepo()
-const readableRepo = LocationsFactory.getReadableRepo()
+const writableRepo = LocationsModule.getWritableRepo()
+const readableRepo = LocationsModule.getReadableRepo()
 const environmentArranger = new MongoEnvironmentArranger()
 
 describe('locations > infrastructure > mongo > validates the expected behavior of mongo-repositories', () => {

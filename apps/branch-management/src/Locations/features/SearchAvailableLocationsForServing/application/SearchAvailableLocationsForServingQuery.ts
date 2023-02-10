@@ -8,7 +8,7 @@
 import type { Guid } from '@turnly/common'
 import type { IQuery } from '@turnly/shared'
 
-export class FindLocationsQuery implements IQuery {
+export class SearchAvailableLocationsForServingQuery implements IQuery {
   public constructor(
     public readonly organizationId: Guid,
     public readonly searchQuery?: string,

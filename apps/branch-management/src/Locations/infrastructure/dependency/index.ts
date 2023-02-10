@@ -4,5 +4,5 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-export * from './LocationByIdQuery'
-export * from './LocationByIdQueryHandler'
+export * from './dependencies'
+export * from './register-handlers'

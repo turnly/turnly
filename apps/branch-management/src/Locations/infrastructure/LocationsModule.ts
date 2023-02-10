@@ -12,17 +12,21 @@ import {
   IReadableRepository,
   IWritableRepository,
 } from '@turnly/shared'
-import { FindLocationsQueryHandler } from 'Locations/application/queries/FindLocationsQuery'
-import { LocationByIdQueryHandler } from 'Locations/application/queries/LocationByIdQuery'
 import { Location } from 'Locations/domain/entities/Location'
+import {
+  SearchAvailableLocationsForServingControllerInstance,
+  SearchAvailableLocationsForServingQueryHandlerInstance,
+} from 'Locations/features/SearchAvailableLocationsForServing'
 
-import { LocationsController } from '../api/controllers/LocationsController'
-import { LocationsReadableRepo } from '../persistence/mongo/repositories/LocationsReadableRepo'
-import { LocationsWritableRepo } from '../persistence/mongo/repositories/LocationsWritableRepo'
+import { LocationsReadableRepo } from './persistence/mongo/repositories/LocationsReadableRepo'
+import { LocationsWritableRepo } from './persistence/mongo/repositories/LocationsWritableRepo'
 
-export class LocationsFactory {
-  public static getController(): LocationsController {
-    return Box.resolve<LocationsController>('locationsController')
+export class LocationsModule {
+  public static getControllers() {
+    return {
+      searchAvailableLocationsForServing:
+        SearchAvailableLocationsForServingControllerInstance,
+    }
   }
 
   public static getWritableRepo(): IWritableRepository<Location> {
@@ -34,10 +38,7 @@ export class LocationsFactory {
   }
 
   public static getQueryHandlers(): IQueryHandler[] {
-    return [
-      Box.resolve<LocationByIdQueryHandler>('locationByIdQueryHandler'),
-      Box.resolve<FindLocationsQueryHandler>('findLocationsQueryHandler'),
-    ]
+    return [SearchAvailableLocationsForServingQueryHandlerInstance]
   }
 
   public static getCommandHandlers(): ICommandHandler[] {

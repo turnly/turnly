@@ -6,8 +6,8 @@
  */
 import { Producers } from '@turnly/rpc'
 import { config } from '@turnly/shared'
-import { LocationsServer } from 'Locations/infrastructure/api/rpc'
-import { LocationsFactory } from 'Locations/infrastructure/factories/LocationsFactory'
+import { LocationsServer } from 'Locations/infrastructure/grpc'
+import { LocationsModule } from 'Locations/infrastructure/LocationsModule'
 import { ServicesServer } from 'Services/infrastructure/api/rpc'
 import { ServicesFactory } from 'Services/infrastructure/factories/ServicesFactory'
 
@@ -15,7 +15,7 @@ import { ServicesFactory } from 'Services/infrastructure/factories/ServicesFacto
  * Servers
  */
 const servicesServer = new ServicesServer(ServicesFactory.getController())
-const locationsServer = new LocationsServer(LocationsFactory.getController())
+const locationsServer = new LocationsServer(LocationsModule.getControllers())
 
 /**
  * Services (RPC)
@@ -33,7 +33,7 @@ const services = [
   },
 ]
 
-export const grpc = new Producers.Server({
+export const server = new Producers.Server({
   address: config.get('rpc.bind_address'),
   services,
 })
