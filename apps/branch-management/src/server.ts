@@ -11,19 +11,15 @@ import { ServicesServer } from 'Services/infrastructure/api/rpc'
 import { ServicesFactory } from 'Services/infrastructure/factories/ServicesFactory'
 
 /**
- * Servers
- */
-const servicesServer = new ServicesServer(ServicesFactory.getController())
-
-/**
- * Services (RPC)
+ * Services (gRPC)
  *
  * @description Defining the services that the RPC server will be able to handle.
  */
 const services = [
   {
     definition: Producers.BranchManagement.ServicesService,
-    implementation: servicesServer.implementation,
+    implementation: new ServicesServer(ServicesFactory.getController())
+      .implementation,
   },
   {
     definition: Producers.BranchManagement.LocationsService,
@@ -31,7 +27,6 @@ const services = [
   },
 ]
 
-export const server = new Producers.Server({
-  address: config.get('rpc.bind_address'),
-  services,
-})
+const port = config.get('server.port')
+
+export const server = new Producers.Server({ port, services })

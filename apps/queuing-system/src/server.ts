@@ -33,7 +33,6 @@ const services = [
   },
 ]
 
-export const grpc = new Producers.Server({
-  address: config.get('rpc.bind_address'),
-  services,
-})
+const port = config.get('server.port')
+
+export const server = new Producers.Server({ port, services })

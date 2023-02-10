@@ -17,7 +17,6 @@ services:
       - NODE_ENV
       - APP_EDITION
       - APP_DOMAIN
-      - RPC_BIND_ADDRESS
       - RPC_CONSUMER_ADDRESS
       - APP_PORT
       - LOGGING_LEVEL
