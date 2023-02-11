@@ -10,10 +10,11 @@ import {
   ResourceNotFoundException,
 } from '@turnly/common'
 import { Events, IRealtimeClient, RealtimeMiddle } from '@turnly/realtime'
+import { IGetWidgetResponse } from '@turnly/rpc/dist/consumers/channels'
 import { Event, EventType } from '@turnly/shared'
 import { isCommunityEdition } from 'shared/config'
 
-import { Customers, setOrganizationId } from '../../../shared/api'
+import { Customers, setOrganizationId, Widgets } from '../../../shared/api'
 
 /**
  * Allow connection guard
@@ -38,7 +39,9 @@ export class AllowConnGuard {
           "The request doesn't meet the parameters required for a secure connection."
         )
 
-      const widget = await this.getWidget(widgetId)
+      const { data: widget } = await this.getWidget(widgetId)
+
+      if (!widget) throw new ResourceNotFoundException()
 
       setOrganizationId(widget.organizationId)
 
@@ -89,22 +92,32 @@ export class AllowConnGuard {
     }
   }
 
-  private async getWidget(_id: Guid) {
+  private async getWidget(id: Guid) {
     if (isCommunityEdition()) {
-      return new Promise<any>(resolve => {
-        resolve({
-          id: process.env.WIDGET_ID,
-          name: process.env.ORGANIZATION_NAME,
-          organizationId: process.env.ORGANIZATION_ID,
-        })
-      })
+      const data = {
+        id: process.env.WIDGET_ID as string,
+        name: process.env.ORGANIZATION_NAME as string,
+        organizationId: process.env.ORGANIZATION_ID as string,
+        originsList: [],
+        position: '',
+        design: '',
+        primaryColor: '',
+        secondaryColor: '',
+        primaryBackground: '',
+        secondaryBackground: '',
+        disabledTelemetry: false,
+        openByDefault: false,
+        showFullscreen: false,
+        showCloseButton: true,
+      }
+
+      return new Promise<IGetWidgetResponse>(resolve => resolve({ data }))
     }
 
-    // const { meta, data } = await Widgets.getOne({ id })
+    const { meta, data } = await Widgets.getOne({ id })
 
-    // throw new ResourceNotFoundException(meta?.message)
-    throw new ResourceNotFoundException()
+    if (!data) throw new ResourceNotFoundException(meta?.message)
 
-    // return data
+    return { data }
   }
 }

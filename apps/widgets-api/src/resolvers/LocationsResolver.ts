@@ -12,12 +12,12 @@ import { Args, Authorized, Ctx, Query, Resolver } from 'type-graphql'
 export class LocationsResolver {
   @Authorized()
   @Query(() => [LocationModel])
-  public async findLocations(
+  public async searchAvailableLocationsForServing(
     @Args()
     { searchQuery, country, latitude, longitude, limit, offset }: LocationsArgs,
     @Ctx() { dataSources }: IContext
   ) {
-    return await dataSources.locations.find({
+    return await dataSources.locations.searchAvailableLocationsForServing({
       searchQuery,
       country,
       latitude,
