@@ -42,7 +42,7 @@ export class TicketsDataSource extends DataSource {
     _organizationId: Guid
   ) {
     /**
-     * @todo Implement method to get calledTo (AssignedTo -> Desk)
+     * TODO: Implement method to get calledTo (AssignedTo -> Desk)
      */
     return null
   }

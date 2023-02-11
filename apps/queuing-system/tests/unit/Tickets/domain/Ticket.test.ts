@@ -21,7 +21,7 @@ describe('tickets > domain > validates the min behavior in the life-cycle of a t
       'customerId',
       'organizationId',
       /**
-       * @todo fix: when you create a ticket, you can't get created_at attribute
+       * TODO: fix: when you create a ticket, you can't get created_at attribute
        * @see https://github.com/turnly/turnly/issues/12
        *
        * 'createdAt',

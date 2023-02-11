@@ -34,7 +34,7 @@ export class TicketsResolver {
     @Ctx() { req: { customer }, dataSources }: IContext
   ) {
     /**
-     * @todo Validate Location status
+     * TODO: Validate Location status
      *
      * const {} = await Locations.isReadyForServing({ servicedId, locationId, organizationId })
      */

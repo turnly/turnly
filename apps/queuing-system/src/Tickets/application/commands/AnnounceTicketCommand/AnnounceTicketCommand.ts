@@ -12,7 +12,7 @@ export type AnnounceTicketParams = {
   organizationId: Guid
   customerId: Guid
   /**
-   * @todo Implement the logic to validate the device location of the customer
+   * TODO: Implement the logic to validate the device location of the customer
    *
    *  customerLocation: {
         latitude: number

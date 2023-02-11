@@ -36,7 +36,7 @@ export class AnnounceTicketCommandHandler
       throw new ResourceNotFoundException()
 
     /**
-     * @todo Implement the logic to validate the device location of the customer
+     * TODO: Implement the logic to validate the device location of the customer
      */
 
     ticket.announce()

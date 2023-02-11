@@ -43,8 +43,8 @@ export class SearchAvailableLocationsForServingQueryHandler
     if (lat && lng) query.orderByGeo('coordinates', { lat, lng })
 
     /**
-     * @todo Implement location status filter-- (Testing it)
-     * @todo Add filters for open locations (Schedules and Holidays)
+     * TODO: Implement location status filter-- (Testing it)
+     * TODO: Add filters for open locations (Schedules and Holidays)
      */
 
     return await this.locationsReadableRepo.find(query.getMany(offset, limit))
