@@ -6,6 +6,7 @@
  */
 import { Guid, Identifier } from '@turnly/common'
 import { AggregateRoot, EntityAttributes } from '@turnly/shared'
+import { LocationCreatedEvent } from 'Locations/CreateLocation/events/LocationCreatedEvent'
 
 import { LocationStatus } from '../enums/LocationStatus'
 
@@ -88,9 +89,7 @@ export class Location extends AggregateRoot {
   public static create(
     attributes: Omit<EntityAttributes<Location>, 'id'>
   ): Location {
-    // location.register(new LocationCreatedEvent(location.toObject()))
-
-    return new Location(
+    const location = new Location(
       Identifier.generate('loc'),
       attributes.name,
       attributes.address,
@@ -100,6 +99,10 @@ export class Location extends AggregateRoot {
       attributes.stopServingBeforeInMinutes,
       attributes.organizationId
     )
+
+    location.register(new LocationCreatedEvent(location.toObject()))
+
+    return location
   }
 
   /**
