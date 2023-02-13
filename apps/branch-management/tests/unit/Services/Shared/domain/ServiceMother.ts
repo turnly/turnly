@@ -7,8 +7,8 @@
 import { Guid } from '@turnly/common'
 import { ObjectMother } from '@turnly/testing'
 
-import { ServiceByIdQuery } from '../../../../src/Services/application/queries/ServiceByIdQuery'
-import { Service } from '../../../../src/Services/Shared/domain/entities/Service'
+import { GetOneServiceQuery } from '../../../../../src/Services/GetOneService'
+import { Service } from '../../../../../src/Services/Shared/domain/entities/Service'
 
 export class ServiceMother {
   static create(
@@ -33,7 +33,7 @@ export class ServiceMother {
     return ObjectMother.repeater(ServiceMother.random, max)
   }
 
-  static fromExistingServiceOnQuery(query: ServiceByIdQuery): Service {
+  static fromExistingServiceOnQuery(query: GetOneServiceQuery): Service {
     return Service.build({
       ...this.random().toObject(),
       organizationId: query.organizationId,

@@ -4,22 +4,22 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { ServiceByIdQueryHandler } from '../../../../../../src/Services/application/queries/ServiceByIdQuery'
-import { ServicesReadableRepo } from '../../../__mocks__/ServicesReadableRepo'
-import { ServiceMother } from '../../../domain/ServiceMother'
-import { ServiceByIdQueryMother } from './ServiceByIdQueryMother'
+import { GetOneServiceQueryHandler } from '../../../../src/Services/GetOneService'
+import { ServicesReadableRepo } from '../Shared/__mocks__/ServicesReadableRepo'
+import { ServiceMother } from '../Shared/domain/ServiceMother'
+import { GetOneServiceQueryMother } from './GetOneServiceQueryMother'
 
 let repository: ServicesReadableRepo
-let handler: ServiceByIdQueryHandler
+let handler: GetOneServiceQueryHandler
 
-describe('services > queries > validates the expected behavior of ServiceByIdQuery', () => {
+describe('services > queries > validates the expected behavior of GetOneServiceQuery', () => {
   beforeEach(() => {
     repository = new ServicesReadableRepo()
-    handler = new ServiceByIdQueryHandler(repository)
+    handler = new GetOneServiceQueryHandler(repository)
   })
 
   it('should get an existing service', async () => {
-    const query = ServiceByIdQueryMother.random()
+    const query = GetOneServiceQueryMother.random()
     const service = ServiceMother.fromExistingServiceOnQuery(query)
 
     repository.attachGetOneResponse(service)

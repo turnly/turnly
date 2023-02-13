@@ -7,17 +7,17 @@
 import { Guid } from '@turnly/common'
 import { ObjectMother } from '@turnly/testing'
 
-import { ServiceByIdQuery } from '../../../../../../src/Services/application/queries/ServiceByIdQuery'
+import { GetOneServiceQuery } from '../../../../src/Services/GetOneService'
 
-export class ServiceByIdQueryMother {
+export class GetOneServiceQueryMother {
   static create(
     id: Guid = ObjectMother.uuid('loc'),
     organizationId: Guid = ObjectMother.uuid('org')
-  ): ServiceByIdQuery {
-    return new ServiceByIdQuery(id, organizationId)
+  ): GetOneServiceQuery {
+    return new GetOneServiceQuery(id, organizationId)
   }
 
-  static random(): ServiceByIdQuery {
+  static random(): GetOneServiceQuery {
     return this.create()
   }
 }

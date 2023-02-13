@@ -10,7 +10,7 @@ import { ResourceNotFoundException } from '@turnly/common'
 import { MongoEnvironmentArranger } from '@turnly/shared'
 
 import { LocationsModule } from '../../../../../src/Locations/LocationsModule'
-import { LocationMother } from '../../../../unit/Locations/domain/LocationMother'
+import { LocationMother } from '../../../../unit/Locations/Shared/domain/LocationMother'
 import { LocationsQueryMother } from './LocationsQueryMother'
 
 const writableRepo = LocationsModule.getWritableRepo()

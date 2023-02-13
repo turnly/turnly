@@ -6,22 +6,22 @@
  */
 import { ObjectMother } from '@turnly/testing'
 
-import { ServicesByLocationQueryHandler } from '../../../../../../src/Services/application/queries/ServicesByLocationQuery'
-import { ServicesReadableRepo } from '../../../__mocks__/ServicesReadableRepo'
-import { ServiceMother } from '../../../domain/ServiceMother'
-import { ServicesByLocationQueryMother } from './ServicesByLocationQueryMother'
+import { GetServicesOfOneLocationQueryHandler } from '../../../../src/Services/GetServicesOfOneLocation'
+import { ServicesReadableRepo } from '../Shared/__mocks__/ServicesReadableRepo'
+import { ServiceMother } from '../Shared/domain/ServiceMother'
+import { GetServicesOfOneLocationQueryMother } from './GetServicesOfOneLocationQueryMother'
 
 let repository: ServicesReadableRepo
-let handler: ServicesByLocationQueryHandler
+let handler: GetServicesOfOneLocationQueryHandler
 
-describe('services > queries > validates the expected behavior of ServicesByLocationQuery', () => {
+describe('services > queries > validates the expected behavior of GetServicesOfOneLocationQuery', () => {
   beforeEach(() => {
     repository = new ServicesReadableRepo()
-    handler = new ServicesByLocationQueryHandler(repository)
+    handler = new GetServicesOfOneLocationQueryHandler(repository)
   })
 
   it('should get a collection of existing services', async () => {
-    const query = ServicesByLocationQueryMother.random()
+    const query = GetServicesOfOneLocationQueryMother.random()
 
     const expected = ObjectMother.repeater(
       ServiceMother.random,

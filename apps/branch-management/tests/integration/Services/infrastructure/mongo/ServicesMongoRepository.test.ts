@@ -10,7 +10,7 @@ import { ResourceNotFoundException } from '@turnly/common'
 import { MongoEnvironmentArranger } from '@turnly/shared'
 
 import { ServicesFactory } from '../../../../../src/Services/Shared/infrastructure/factories/ServicesFactory'
-import { ServiceMother } from '../../../../unit/Services/domain/ServiceMother'
+import { ServiceMother } from '../../../../unit/Services/Shared/domain/ServiceMother'
 import { ServicesQueryMother } from './ServicesQueryMother'
 
 const writableRepo = ServicesFactory.getWritableRepo()

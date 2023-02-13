@@ -6,9 +6,10 @@
  */
 import { Guid } from '@turnly/common'
 import { ObjectMother } from '@turnly/testing'
+import { GetOneLocationQuery } from 'Locations/GetOneLocation'
 import { LocationStatus } from 'Locations/Shared/domain/enums/LocationStatus'
 
-import { Location } from '../../../../src/Locations/Shared/domain/entities/Location'
+import { Location } from '../../../../../src/Locations/Shared/domain/entities/Location'
 
 export class LocationMother {
   static create(
@@ -37,5 +38,13 @@ export class LocationMother {
 
   static collection(max = ObjectMother.integer(2)): Location[] {
     return ObjectMother.repeater(LocationMother.random, max)
+  }
+
+  static fromExistingLocationOnQuery(query: GetOneLocationQuery): Location {
+    return Location.build({
+      ...this.random().toObject(),
+      organizationId: query.organizationId,
+      id: query.id,
+    })
   }
 }
