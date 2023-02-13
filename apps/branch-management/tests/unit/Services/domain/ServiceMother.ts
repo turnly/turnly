@@ -8,7 +8,7 @@ import { Guid } from '@turnly/common'
 import { ObjectMother } from '@turnly/testing'
 
 import { ServiceByIdQuery } from '../../../../src/Services/application/queries/ServiceByIdQuery'
-import { Service } from '../../../../src/Services/domain/entities/Service'
+import { Service } from '../../../../src/Services/Shared/domain/entities/Service'
 
 export class ServiceMother {
   static create(

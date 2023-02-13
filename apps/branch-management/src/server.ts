@@ -7,8 +7,7 @@
 import { Producers } from '@turnly/rpc'
 import { config } from '@turnly/shared'
 import { LocationsModule } from 'Locations/LocationsModule'
-import { ServicesServer } from 'Services/infrastructure/api/rpc'
-import { ServicesFactory } from 'Services/infrastructure/factories/ServicesFactory'
+import { ServicesModule } from 'Services/ServicesModule'
 
 /**
  * Services (gRPC)
@@ -18,8 +17,7 @@ import { ServicesFactory } from 'Services/infrastructure/factories/ServicesFacto
 const services = [
   {
     definition: Producers.BranchManagement.ServicesService,
-    implementation: new ServicesServer(ServicesFactory.getController())
-      .implementation,
+    implementation: ServicesModule.getServer(),
   },
   {
     definition: Producers.BranchManagement.LocationsService,

@@ -6,8 +6,8 @@
  */
 import { Nullable } from '@turnly/common'
 import { IQueryHandler, QueryBuilder, QueryHandler } from '@turnly/shared'
-import { IServicesReadableRepo } from 'Services/domain/contracts/IServicesRepo'
-import { Service } from 'Services/domain/entities/Service'
+import { IServicesReadableRepo } from 'Services/Shared/domain/contracts/IServicesRepo'
+import { Service } from 'Services/Shared/domain/entities/Service'
 
 import { ServicesByLocationQuery } from './ServicesByLocationQuery'
 

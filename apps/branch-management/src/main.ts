@@ -7,7 +7,7 @@
 import dotenv from 'dotenv'
 dotenv.config()
 
-import 'Services/infrastructure/register-dependencies'
+import 'Services/Shared/infrastructure/dependency/register-dependencies'
 import 'Locations/Shared/infrastructure/dependency/register-dependencies'
 
 import { Observability } from '@turnly/common'
