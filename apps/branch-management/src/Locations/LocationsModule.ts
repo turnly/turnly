@@ -12,6 +12,7 @@
  */
 import 'Locations/Shared/infrastructure/persistence/dependency/attach-to-dependency-box'
 import 'Locations/SearchAvailableLocationsForServing/dependency/attach-to-dependency-box'
+import 'Locations/GetOneLocation/dependency/attach-to-dependency-box'
 
 /**
  * Module
@@ -32,9 +33,7 @@ import type { Location } from 'Locations/Shared/domain/entities/Location'
 export class LocationsModule {
   public static getServer(): Producers.BranchManagement.ILocationsServer {
     return {
-      getOne: (..._args) => {
-        throw new Error('Not implemented')
-      },
+      getOne: (...args) => Box.resolve('getOneLocationServer').execute(...args),
       searchAvailableLocationsForServing: (...args) =>
         Box.resolve('searchAvailableLocationsForServingServer').execute(
           ...args
@@ -51,7 +50,10 @@ export class LocationsModule {
   }
 
   public static getQueryHandlers(): IQueryHandler[] {
-    return [Box.resolve('searchAvailableLocationsForServingQueryHandler')]
+    return [
+      Box.resolve('searchAvailableLocationsForServingQueryHandler'),
+      Box.resolve('getOneLocationQueryHandler'),
+    ]
   }
 
   public static getCommandHandlers(): ICommandHandler[] {
