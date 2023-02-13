@@ -9,12 +9,12 @@ import '../../../../../src/Services/Shared/infrastructure/register-dependencies/
 import { ResourceNotFoundException } from '@turnly/common'
 import { MongoEnvironmentArranger } from '@turnly/shared'
 
-import { ServicesFactory } from '../../../../../src/Services/Shared/infrastructure/factories/ServicesFactory'
-import { ServiceMother } from '../../../../unit/Services/Shared/domain/ServiceMother'
+import { ServicesModule } from '../../../../../../src/Services/ServicesModule'
+import { ServiceMother } from '../../../../../unit/Services/Shared/domain/ServiceMother'
 import { ServicesQueryMother } from './ServicesQueryMother'
 
-const writableRepo = ServicesFactory.getWritableRepo()
-const readableRepo = ServicesFactory.getReadableRepo()
+const writableRepo = ServicesModule.getWritableRepo()
+const readableRepo = ServicesModule.getReadableRepo()
 const environmentArranger = new MongoEnvironmentArranger()
 
 describe('services > infrastructure > mongo > validates the expected behavior of mongo-repositories', () => {
