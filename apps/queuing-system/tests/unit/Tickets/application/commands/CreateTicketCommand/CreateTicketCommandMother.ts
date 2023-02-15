@@ -8,6 +8,7 @@ import { Extra, Guid } from '@turnly/common'
 import { ObjectMother } from '@turnly/testing'
 
 import { CreateTicketCommand } from '../../../../../../src/Tickets/application/commands/CreateTicketCommand'
+import { TicketSource } from '../../../../../../src/Tickets/domain/enums/TicketSource'
 
 export class CreateTicketCommandMother {
   static create(
@@ -24,6 +25,7 @@ export class CreateTicketCommandMother {
       locationId,
       customerId,
       organizationId,
+      source: TicketSource.FROM_SYSTEM,
       extra,
     })
   }

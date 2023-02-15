@@ -48,6 +48,7 @@ export class TicketsResolver {
         locationId: input.locationId,
         customerId: customer.id,
         extrasList: input.extra,
+        source: 'from_channel_widget',
       },
     })
 

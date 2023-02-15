@@ -8,6 +8,7 @@ import { BadRequestException } from '@turnly/common'
 import { Producers } from '@turnly/rpc'
 import { Client } from '@turnly/rpc/dist/consumers'
 import { TicketsByLocationFilters } from 'Tickets/application/queries/TicketsForServingFromLocationQuery'
+import { TicketSource } from 'Tickets/domain/enums/TicketSource'
 
 import { TicketsController } from '../controllers/TicketsController'
 import { TicketsMapper } from './TicketsMapper'
@@ -34,6 +35,7 @@ export class TicketsServer extends Producers.ServerImplementation<Producers.Queu
       customerId: payload.getCustomerId(),
       serviceId: payload.getServiceId(),
       serviceName: payload.getServiceName(),
+      source: payload.getSource() as TicketSource,
       organizationId: Client.getOrganizationId(call),
       extra: payload.getExtrasList().map(e => e.toObject()),
     })

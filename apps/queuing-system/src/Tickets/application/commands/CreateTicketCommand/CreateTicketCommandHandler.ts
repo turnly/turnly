@@ -15,7 +15,6 @@ import { ActiveTicketsByCustomerQuery } from 'Tickets/application/queries/Active
 import { ITicketsWritableRepo } from 'Tickets/domain/contracts/ITicketsRepo'
 import { Ticket } from 'Tickets/domain/entities/Ticket'
 import { TicketPriority } from 'Tickets/domain/enums/TicketPriority'
-import { TicketSource } from 'Tickets/domain/enums/TicketSource'
 import { TicketStatus } from 'Tickets/domain/enums/TicketStatus'
 
 import { CreateTicketCommand } from './CreateTicketCommand'
@@ -45,10 +44,6 @@ export class CreateTicketCommandHandler
       status: TicketStatus.AVAILABLE,
       priority: TicketPriority.NORMAL,
       displayCode: await this.generateDisplayCode(params.serviceName),
-      /**
-       * TODO: This should be set to `FROM_X` where X is the source of the ticket.
-       */
-      source: TicketSource.FROM_SYSTEM,
     })
 
     await this.ticketsWritableRepo.save(ticket)

@@ -312,6 +312,10 @@ export class Ticket extends AggregateRoot {
     return this.extra?.find(extra => extra.key === key)?.value ?? null
   }
 
+  public isFromValidSource(): boolean {
+    return Object.values(TicketSource).includes(this.source)
+  }
+
   /**
    * Create Ticket
    *
@@ -330,6 +334,11 @@ export class Ticket extends AggregateRoot {
       attributes.organizationId,
       attributes.extra
     )
+
+    if (!ticket.isFromValidSource())
+      throw new InvalidStateException(
+        "Oops!, we don't know the source from which you are trying to create the ticket."
+      )
 
     ticket.register(new TicketCreatedEvent(ticket.toObject()))
 
