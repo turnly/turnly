@@ -12,7 +12,7 @@
  */
 import 'Services/Shared/infrastructure/persistence/dependency/attach-to-dependency-box'
 import 'Services/GetOneService/dependency/attach-to-dependency-box'
-import 'Services/GetServicesOfOneLocation/dependency/attach-to-dependency-box'
+import 'Services/ListServicesOfOneLocation/dependency/attach-to-dependency-box'
 
 /**
  * Module
@@ -34,8 +34,8 @@ export class ServicesModule {
   public static getServer(): Producers.BranchManagement.IServicesServer {
     return {
       getOne: (...args) => Box.resolve('getOneServiceServer').execute(...args),
-      getServicesOfOneLocation: (...args) =>
-        Box.resolve('getServicesOfOneLocationServer').execute(...args),
+      listServicesOfOneLocation: (...args) =>
+        Box.resolve('listServicesOfOneLocationServer').execute(...args),
     }
   }
 
@@ -49,7 +49,7 @@ export class ServicesModule {
 
   public static getQueryHandlers(): IQueryHandler[] {
     return [
-      Box.resolve('getServicesOfOneLocationQueryHandler'),
+      Box.resolve('listServicesOfOneLocationQueryHandler'),
       Box.resolve('getOneServiceQueryHandler'),
     ]
   }

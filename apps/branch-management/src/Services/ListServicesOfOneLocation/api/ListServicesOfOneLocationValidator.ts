@@ -6,7 +6,7 @@
  */
 import { Validator } from '@turnly/shared'
 
-export const GetServicesOfOneLocationValidator = Validator.object({
+export const ListServicesOfOneLocationValidator = Validator.object({
   locationId: Validator.isId(),
   organizationId: Validator.isId(),
 })

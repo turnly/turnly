@@ -6,32 +6,32 @@
  */
 import { Producers } from '@turnly/rpc'
 import { Client } from '@turnly/rpc/dist/consumers'
-import type { GetServicesOfOneLocationController } from 'Services/GetServicesOfOneLocation'
+import type { ListServicesOfOneLocationController } from 'Services/ListServicesOfOneLocation'
 import { ServicesMapper } from 'Services/Shared/infrastructure/grpc/ServicesMapper'
 
-export class GetServicesOfOneLocationServer {
+export class ListServicesOfOneLocationServer {
   public constructor(
-    private readonly getServicesOfOneLocationController: GetServicesOfOneLocationController
+    private readonly listServicesOfOneLocationController: ListServicesOfOneLocationController
   ) {}
 
   @Producers.CallHandler(
-    Producers.BranchManagement.GetServicesOfOneLocationResponse
+    Producers.BranchManagement.ListServicesOfOneLocationResponse
   )
   public async execute(
     call: Producers.ServerUnaryCall<
-      Producers.BranchManagement.GetServicesOfOneLocationRequest,
-      Producers.BranchManagement.GetServicesOfOneLocationResponse
+      Producers.BranchManagement.ListServicesOfOneLocationRequest,
+      Producers.BranchManagement.ListServicesOfOneLocationResponse
     >,
-    callback: Producers.ICallback<Producers.BranchManagement.GetServicesOfOneLocationResponse>
+    callback: Producers.ICallback<Producers.BranchManagement.ListServicesOfOneLocationResponse>
   ) {
     const { data, meta } =
-      await this.getServicesOfOneLocationController.execute({
+      await this.listServicesOfOneLocationController.execute({
         locationId: call.request.getLocationId(),
         organizationId: Client.getOrganizationId(call),
       })
 
     const response =
-      new Producers.BranchManagement.GetServicesOfOneLocationResponse()
+      new Producers.BranchManagement.ListServicesOfOneLocationResponse()
 
     if (data) response.setDataList(data.map(ServicesMapper.toRPC))
 

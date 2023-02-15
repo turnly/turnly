@@ -11,21 +11,21 @@ import {
   IQueryBus,
   TimeoutHandler,
 } from '@turnly/shared'
-import { GetServicesOfOneLocationQuery } from 'Services/GetServicesOfOneLocation'
+import { ListServicesOfOneLocationQuery } from 'Services/ListServicesOfOneLocation'
 import { Service } from 'Services/Shared/domain/entities/Service'
 
-import { GetServicesOfOneLocationValidator } from './GetServicesOfOneLocationValidator'
+import { ListServicesOfOneLocationValidator } from './ListServicesOfOneLocationValidator'
 
-export class GetServicesOfOneLocationController extends Controller {
+export class ListServicesOfOneLocationController extends Controller {
   public constructor(private readonly queryBus: IQueryBus) {
     super()
   }
 
   @TimeoutHandler()
-  @InputValidator(GetServicesOfOneLocationValidator)
-  public async execute(params: GetServicesOfOneLocationQuery) {
+  @InputValidator(ListServicesOfOneLocationValidator)
+  public async execute(params: ListServicesOfOneLocationQuery) {
     const services = await this.queryBus.ask<Nullable<Service[]>>(
-      new GetServicesOfOneLocationQuery(
+      new ListServicesOfOneLocationQuery(
         params.locationId,
         params.organizationId
       )

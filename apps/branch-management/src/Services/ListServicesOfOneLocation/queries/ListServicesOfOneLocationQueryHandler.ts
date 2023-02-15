@@ -9,11 +9,11 @@ import { IQueryHandler, QueryBuilder, QueryHandler } from '@turnly/shared'
 import { IServicesReadableRepo } from 'Services/Shared/domain/contracts/IServicesRepo'
 import { Service } from 'Services/Shared/domain/entities/Service'
 
-import { GetServicesOfOneLocationQuery } from './GetServicesOfOneLocationQuery'
+import { ListServicesOfOneLocationQuery } from './ListServicesOfOneLocationQuery'
 
-@QueryHandler(GetServicesOfOneLocationQuery)
-export class GetServicesOfOneLocationQueryHandler
-  implements IQueryHandler<GetServicesOfOneLocationQuery, Nullable<Service[]>>
+@QueryHandler(ListServicesOfOneLocationQuery)
+export class ListServicesOfOneLocationQueryHandler
+  implements IQueryHandler<ListServicesOfOneLocationQuery, Nullable<Service[]>>
 {
   public constructor(
     private readonly servicesReadableRepo: IServicesReadableRepo
@@ -22,7 +22,7 @@ export class GetServicesOfOneLocationQueryHandler
   public async execute({
     locationId,
     organizationId,
-  }: GetServicesOfOneLocationQuery) {
+  }: ListServicesOfOneLocationQuery) {
     const query = new QueryBuilder<Service>()
       .equal('locationId', locationId)
       .equal('organizationId', organizationId)
