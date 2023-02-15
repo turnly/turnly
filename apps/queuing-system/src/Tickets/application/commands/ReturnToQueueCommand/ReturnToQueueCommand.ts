@@ -6,14 +6,12 @@
  */
 import { Guid } from '@turnly/common'
 import { ICommand } from '@turnly/shared'
-import { TicketStatus } from 'Tickets/domain/enums/TicketStatus'
 
-export type ResolveTicketParams = {
+export type ReturnToQueueParams = {
   id: Guid
-  status: TicketStatus
   organizationId: Guid
 }
 
-export class ResolveTicketCommand implements ICommand {
-  public constructor(public readonly params: ResolveTicketParams) {}
+export class ReturnToQueueCommand implements ICommand {
+  public constructor(public readonly params: ReturnToQueueParams) {}
 }

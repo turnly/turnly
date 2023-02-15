@@ -56,21 +56,17 @@ const getTicketsForServingFromLocation = Validator.object({
   status: Validator.string(true),
 })
 
-const resolve = Validator.object({
-  id: Validator.isId(),
-  status: Validator.string(),
-  organizationId: Validator.isId(),
-})
-
 export const validator = {
   create,
   get,
   call,
   leave: get,
   announce: get,
+  serve: getDetails,
+  returnToQueue: getDetails,
+  discard: getDetails,
   getTicketsForServingFromLocation,
   getTicketsBeforeYours,
   getTicketsWaitingForService,
-  resolve,
   getDetails,
 }

@@ -16,9 +16,12 @@ import { AnnounceTicketCommandHandler } from 'Tickets/application/commands/Annou
 import { CallTicketCommandHandler } from 'Tickets/application/commands/CallTicketCommand'
 import { CreateTicketCommandHandler } from 'Tickets/application/commands/CreateTicketCommand'
 import { CreateTicketReadingDBCommandHandler } from 'Tickets/application/commands/CreateTicketReadingDBCommand'
+import { DiscardTicketCommandHandler } from 'Tickets/application/commands/DiscardTicketCommand'
 import { LeaveTicketCommandHandler } from 'Tickets/application/commands/LeaveTicketCommand'
-import { ResolveTicketCommandHandler } from 'Tickets/application/commands/ResolveTicketCommand'
+import { ReturnToQueueCommandHandler } from 'Tickets/application/commands/ReturnToQueueCommand'
+import { ServeTicketCommandHandler } from 'Tickets/application/commands/ServeTicketCommand'
 import { ActiveTicketsByCustomerQueryHandler } from 'Tickets/application/queries/ActiveTicketsByCustomerQuery'
+import { GetAnUnexpiredTicketQueryHandler } from 'Tickets/application/queries/GetAnUnexpiredTicketQuery'
 import { TicketByIdQueryHandler } from 'Tickets/application/queries/TicketByIdQuery'
 import { TicketsBeforeYoursQueryHandler } from 'Tickets/application/queries/TicketsBeforeYoursQuery'
 import { TicketsForServingFromLocationQueryHandler } from 'Tickets/application/queries/TicketsForServingFromLocationQuery'
@@ -59,6 +62,9 @@ export class TicketsFactory {
       Box.resolve<TicketsForServingFromLocationQueryHandler>(
         'ticketsByLocationQueryHandler'
       ),
+      Box.resolve<GetAnUnexpiredTicketQueryHandler>(
+        'getAnUnexpiredTicketQueryHandler'
+      ),
     ]
   }
 
@@ -70,8 +76,10 @@ export class TicketsFactory {
       ),
       Box.resolve<LeaveTicketCommandHandler>('leaveTicketCommandHandler'),
       Box.resolve<AnnounceTicketCommandHandler>('announceTicketCommandHandler'),
-      Box.resolve<ResolveTicketCommandHandler>('resolveTicketCommandHandler'),
       Box.resolve<CallTicketCommandHandler>('callTicketCommandHandler'),
+      Box.resolve<ServeTicketCommandHandler>('serveTicketCommandHandler'),
+      Box.resolve<DiscardTicketCommandHandler>('discardTicketCommandHandler'),
+      Box.resolve<ReturnToQueueCommandHandler>('returnToQueueCommandHandler'),
     ]
   }
 

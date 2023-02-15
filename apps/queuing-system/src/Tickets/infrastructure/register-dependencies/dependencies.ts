@@ -10,8 +10,10 @@ import { CallTicketCommandHandler } from 'Tickets/application/commands/CallTicke
 import { CreateTicketCommandHandler } from 'Tickets/application/commands/CreateTicketCommand'
 import { CreateTicketReadingDBCommandHandler } from 'Tickets/application/commands/CreateTicketReadingDBCommand'
 import { LeaveTicketCommandHandler } from 'Tickets/application/commands/LeaveTicketCommand'
-import { ResolveTicketCommandHandler } from 'Tickets/application/commands/ResolveTicketCommand'
+import { ReturnToQueueCommandHandler } from 'Tickets/application/commands/ReturnToQueueCommand'
+import { ServeTicketCommandHandler } from 'Tickets/application/commands/ServeTicketCommand'
 import { ActiveTicketsByCustomerQueryHandler } from 'Tickets/application/queries/ActiveTicketsByCustomerQuery'
+import { GetAnUnexpiredTicketQueryHandler } from 'Tickets/application/queries/GetAnUnexpiredTicketQuery'
 import { TicketByIdQueryHandler } from 'Tickets/application/queries/TicketByIdQuery'
 import { TicketsBeforeYoursQueryHandler } from 'Tickets/application/queries/TicketsBeforeYoursQuery'
 import { TicketsForServingFromLocationQueryHandler } from 'Tickets/application/queries/TicketsForServingFromLocationQuery'
@@ -49,10 +51,14 @@ Box.register({
   announceTicketCommandHandler: ioc
     .asClass(AnnounceTicketCommandHandler)
     .singleton(),
-  resolveTicketCommandHandler: ioc
-    .asClass(ResolveTicketCommandHandler)
-    .singleton(),
   callTicketCommandHandler: ioc.asClass(CallTicketCommandHandler).singleton(),
+  serveTicketCommandHandler: ioc.asClass(ServeTicketCommandHandler).singleton(),
+  discardTicketCommandHandler: ioc
+    .asClass(ServeTicketCommandHandler)
+    .singleton(),
+  returnToQueueCommandHandler: ioc
+    .asClass(ReturnToQueueCommandHandler)
+    .singleton(),
 })
 
 /**
@@ -83,5 +89,8 @@ Box.register({
     .singleton(),
   ticketsByLocationQueryHandler: ioc
     .asClass(TicketsForServingFromLocationQueryHandler)
+    .singleton(),
+  getAnUnexpiredTicketQueryHandler: ioc
+    .asClass(GetAnUnexpiredTicketQueryHandler)
     .singleton(),
 })

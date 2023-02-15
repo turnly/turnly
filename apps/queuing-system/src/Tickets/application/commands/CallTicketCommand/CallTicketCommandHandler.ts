@@ -11,7 +11,7 @@ import {
   IEventBus,
   IQueryBus,
 } from '@turnly/shared'
-import { TicketByIdQuery } from 'Tickets/application/queries/TicketByIdQuery'
+import { GetAnUnexpiredTicketQuery } from 'Tickets/application/queries/GetAnUnexpiredTicketQuery'
 import { ITicketsWritableRepo } from 'Tickets/domain/contracts/ITicketsRepo'
 import { Ticket } from 'Tickets/domain/entities/Ticket'
 
@@ -29,7 +29,7 @@ export class CallTicketCommandHandler
 
   public async execute({ params }: CallTicketCommand) {
     const ticket = await this.queryBus.ask<Nullable<Ticket>>(
-      new TicketByIdQuery(params.id, params.organizationId)
+      new GetAnUnexpiredTicketQuery(params)
     )
 
     if (!ticket) throw new ResourceNotFoundException()

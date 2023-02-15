@@ -34,7 +34,7 @@ export class ServicesModule {
   public static getServer(): Producers.BranchManagement.IServicesServer {
     return {
       getOne: (...args) => Box.resolve('getOneServiceServer').execute(...args),
-      findByLocation: (...args) =>
+      getServicesOfOneLocation: (...args) =>
         Box.resolve('getServicesOfOneLocationServer').execute(...args),
     }
   }

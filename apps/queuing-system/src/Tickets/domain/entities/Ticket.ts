@@ -163,26 +163,37 @@ export class Ticket extends AggregateRoot {
     this.register(new TicketAnnouncedEvent(this.toObject()))
   }
 
-  public resolve(status: TicketStatus): void {
+  public serve(): void {
     if (!this.isCalled())
       throw new InvalidStateException(
-        "Oops!, you're trying to resolve a ticket that has not been called."
+        "Oops!, you're trying to serve a ticket that has not been called."
       )
 
-    const handlers = {
-      [TicketStatus.SERVED]: () => this.serve(),
-      [TicketStatus.DISCARDED]: () => this.discard(),
-      [TicketStatus.RETURNED]: () => this.return(),
-    }
+    this.status = TicketStatus.SERVED
 
-    const handler = handlers[status]
+    this.register(new TicketCompletedEvent(this.toObject()))
+  }
 
-    if (!handler)
+  public discard(): void {
+    if (!this.isCalled())
       throw new InvalidStateException(
-        "Oops!, you're trying to resolve a ticket with an invalid status."
+        "Oops!, you're trying to discard a ticket that has not been called."
       )
 
-    handler()
+    this.status = TicketStatus.DISCARDED
+
+    this.register(new TicketDiscardedEvent(this.toObject()))
+  }
+
+  public returnToQueue(): void {
+    if (!this.isCalled())
+      throw new InvalidStateException(
+        "Oops!, you're trying to return a ticket that has not been called."
+      )
+
+    this.status = TicketStatus.RETURNED
+
+    this.register(new TicketReturnedEvent(this.toObject()))
   }
 
   public call(assigneeId: Guid): void {
@@ -224,24 +235,6 @@ export class Ticket extends AggregateRoot {
     this.status = TicketStatus.SERVED_WITH_RATING
 
     this.register(new TicketCompletedEvent(this.toObject()))
-  }
-
-  private serve(): void {
-    this.status = TicketStatus.SERVED
-
-    this.register(new TicketCompletedEvent(this.toObject()))
-  }
-
-  private discard(): void {
-    this.status = TicketStatus.DISCARDED
-
-    this.register(new TicketDiscardedEvent(this.toObject()))
-  }
-
-  private return(): void {
-    this.status = TicketStatus.RETURNED
-
-    this.register(new TicketReturnedEvent(this.toObject()))
   }
 
   public isOwnedBy(customerId: Guid): boolean {

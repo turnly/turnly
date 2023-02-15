@@ -4,5 +4,5 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-export * from './ResolveTicketCommand'
-export * from './ResolveTicketCommandHandler'
+export * from './GetAnUnexpiredTicketQuery'
+export * from './GetAnUnexpiredTicketQueryHandler'

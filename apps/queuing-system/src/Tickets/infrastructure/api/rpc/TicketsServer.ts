@@ -8,7 +8,6 @@ import { BadRequestException } from '@turnly/common'
 import { Producers } from '@turnly/rpc'
 import { Client } from '@turnly/rpc/dist/consumers'
 import { TicketsByLocationFilters } from 'Tickets/application/queries/TicketsForServingFromLocationQuery'
-import { TicketStatus } from 'Tickets/domain/enums/TicketStatus'
 
 import { TicketsController } from '../controllers/TicketsController'
 import { TicketsMapper } from './TicketsMapper'
@@ -224,21 +223,64 @@ export class TicketsServer extends Producers.ServerImplementation<Producers.Queu
     callback(null, response)
   }
 
-  @Producers.CallHandler(Producers.QueuingSystem.ResolveTicketResponse)
-  public async resolve(
+  @Producers.CallHandler(Producers.QueuingSystem.ServeTicketResponse)
+  public async serve(
     call: Producers.ServerUnaryCall<
-      Producers.QueuingSystem.ResolveTicketRequest,
-      Producers.QueuingSystem.ResolveTicketResponse
+      Producers.QueuingSystem.ServeTicketRequest,
+      Producers.QueuingSystem.ServeTicketResponse
     >,
-    callback: Producers.ICallback<Producers.QueuingSystem.ResolveTicketResponse>
+    callback: Producers.ICallback<Producers.QueuingSystem.ServeTicketResponse>
   ) {
-    const { data, meta } = await this.ticketsController.resolve({
+    const { data, meta } = await this.ticketsController.serve({
       id: call.request.getId(),
       organizationId: Client.getOrganizationId(call),
-      status: call.request.getStatus() as TicketStatus,
     })
 
-    const response = new Producers.QueuingSystem.ResolveTicketResponse()
+    const response = new Producers.QueuingSystem.ServeTicketResponse()
+    const ticket = TicketsMapper.toRPC(data)
+
+    response.setData(ticket)
+    response.setMeta(Producers.MetaMapper.toRPC(meta))
+
+    callback(null, response)
+  }
+
+  @Producers.CallHandler(Producers.QueuingSystem.DiscardTicketResponse)
+  public async discard(
+    call: Producers.ServerUnaryCall<
+      Producers.QueuingSystem.DiscardTicketRequest,
+      Producers.QueuingSystem.DiscardTicketResponse
+    >,
+    callback: Producers.ICallback<Producers.QueuingSystem.DiscardTicketResponse>
+  ) {
+    const { data, meta } = await this.ticketsController.discard({
+      id: call.request.getId(),
+      organizationId: Client.getOrganizationId(call),
+    })
+
+    const response = new Producers.QueuingSystem.DiscardTicketResponse()
+    const ticket = TicketsMapper.toRPC(data)
+
+    response.setData(ticket)
+    response.setMeta(Producers.MetaMapper.toRPC(meta))
+
+    callback(null, response)
+  }
+
+  @Producers.CallHandler(Producers.QueuingSystem.ReturnToQueueResponse)
+  public async returnToQueue(
+    call: Producers.ServerUnaryCall<
+      Producers.QueuingSystem.ReturnToQueueRequest,
+      Producers.QueuingSystem.ReturnToQueueResponse
+    >,
+    callback: Producers.ICallback<Producers.QueuingSystem.ReturnToQueueResponse>
+  ) {
+    const { data, meta } = await this.ticketsController.returnToQueue({
+      id: call.request.getId(),
+      organizationId: Client.getOrganizationId(call),
+    })
+
+    const response = new Producers.QueuingSystem.ReturnToQueueResponse()
     const ticket = TicketsMapper.toRPC(data)
 
     response.setData(ticket)
@@ -280,9 +322,11 @@ export class TicketsServer extends Producers.ServerImplementation<Producers.Queu
       getTicketsForServingFromLocation:
         this.getTicketsForServingFromLocation.bind(this),
       getTicketsWaitingForService: this.getTicketsWaitingForService.bind(this),
-      resolve: this.resolve.bind(this),
+      serve: this.serve.bind(this),
       call: this.call.bind(this),
       getDetails: this.getDetails.bind(this),
+      discard: this.discard.bind(this),
+      returnToQueue: this.returnToQueue.bind(this),
     }
   }
 }

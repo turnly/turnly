@@ -4,6 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
+import { Nullable } from '@turnly/common'
 import {
   DateTime,
   IQueryHandler,
@@ -13,33 +14,27 @@ import {
 import { ITicketsReadableRepo } from 'Tickets/domain/contracts/ITicketsRepo'
 import { Ticket } from 'Tickets/domain/entities/Ticket'
 
-import { TicketsForServingFromLocationQuery } from './TicketsForServingFromLocationQuery'
+import { GetAnUnexpiredTicketQuery } from './GetAnUnexpiredTicketQuery'
 
-@QueryHandler(TicketsForServingFromLocationQuery)
-export class TicketsForServingFromLocationQueryHandler
-  implements IQueryHandler<TicketsForServingFromLocationQuery>
+@QueryHandler(GetAnUnexpiredTicketQuery)
+export class GetAnUnexpiredTicketQueryHandler
+  implements IQueryHandler<GetAnUnexpiredTicketQuery, Nullable<Ticket>>
 {
   public constructor(
     private readonly ticketsReadableRepo: ITicketsReadableRepo
   ) {}
 
   public async execute({
-    locationId,
-    organizationId,
-    status,
-    serviceIds,
-    searchQuery,
-  }: TicketsForServingFromLocationQuery) {
+    params: { id, organizationId },
+  }: GetAnUnexpiredTicketQuery) {
     const today = DateTime.today().toJSDate()
+
     const query = new QueryBuilder<Ticket>()
+      .equal('id', id)
       .equal('organizationId', organizationId)
-      .equal('locationId', locationId)
       .gte('createdAt', today)
+      .getOne()
 
-    if (status) query.in('status', status)
-    if (searchQuery) query.matches(['displayCode'], searchQuery)
-    if (serviceIds?.length) query.in('serviceId', serviceIds)
-
-    return await this.ticketsReadableRepo.find(query.getMany())
+    return await this.ticketsReadableRepo.getOne(query)
   }
 }

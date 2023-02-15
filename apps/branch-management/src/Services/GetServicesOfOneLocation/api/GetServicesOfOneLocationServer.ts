@@ -14,13 +14,15 @@ export class GetServicesOfOneLocationServer {
     private readonly getServicesOfOneLocationController: GetServicesOfOneLocationController
   ) {}
 
-  @Producers.CallHandler(Producers.BranchManagement.FindByLocationResponse)
+  @Producers.CallHandler(
+    Producers.BranchManagement.GetServicesOfOneLocationResponse
+  )
   public async execute(
     call: Producers.ServerUnaryCall<
-      Producers.BranchManagement.FindByLocationRequest,
-      Producers.BranchManagement.FindByLocationResponse
+      Producers.BranchManagement.GetServicesOfOneLocationRequest,
+      Producers.BranchManagement.GetServicesOfOneLocationResponse
     >,
-    callback: Producers.ICallback<Producers.BranchManagement.FindByLocationResponse>
+    callback: Producers.ICallback<Producers.BranchManagement.GetServicesOfOneLocationResponse>
   ) {
     const { data, meta } =
       await this.getServicesOfOneLocationController.execute({
@@ -28,7 +30,8 @@ export class GetServicesOfOneLocationServer {
         organizationId: Client.getOrganizationId(call),
       })
 
-    const response = new Producers.BranchManagement.FindByLocationResponse()
+    const response =
+      new Producers.BranchManagement.GetServicesOfOneLocationResponse()
 
     if (data) response.setDataList(data.map(ServicesMapper.toRPC))
 

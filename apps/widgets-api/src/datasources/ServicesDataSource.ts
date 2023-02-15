@@ -24,7 +24,8 @@ export class ServicesDataSource extends DataSource {
   }
 
   public async getLocationServices(locationId: Guid) {
-    const services = (await Services.findByLocation({ locationId })).dataList
+    const services = (await Services.getServicesOfOneLocation({ locationId }))
+      .dataList
 
     if (!services) return []
 

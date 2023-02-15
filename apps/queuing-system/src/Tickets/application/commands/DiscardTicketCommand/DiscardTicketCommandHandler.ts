@@ -15,11 +15,11 @@ import { GetAnUnexpiredTicketQuery } from 'Tickets/application/queries/GetAnUnex
 import { ITicketsWritableRepo } from 'Tickets/domain/contracts/ITicketsRepo'
 import { Ticket } from 'Tickets/domain/entities/Ticket'
 
-import { LeaveTicketCommand } from './LeaveTicketCommand'
+import { DiscardTicketCommand } from './DiscardTicketCommand'
 
-@CommandHandler(LeaveTicketCommand)
-export class LeaveTicketCommandHandler
-  implements ICommandHandler<LeaveTicketCommand, Ticket>
+@CommandHandler(DiscardTicketCommand)
+export class DiscardTicketCommandHandler
+  implements ICommandHandler<DiscardTicketCommand, Ticket>
 {
   public constructor(
     private readonly eventBus: IEventBus,
@@ -27,15 +27,14 @@ export class LeaveTicketCommandHandler
     private readonly ticketsWritableRepo: ITicketsWritableRepo
   ) {}
 
-  public async execute({ params }: LeaveTicketCommand) {
+  public async execute({ params }: DiscardTicketCommand) {
     const ticket = await this.queryBus.ask<Nullable<Ticket>>(
       new GetAnUnexpiredTicketQuery(params)
     )
 
-    if (!ticket || !ticket.isOwnedBy(params.customerId))
-      throw new ResourceNotFoundException()
+    if (!ticket) throw new ResourceNotFoundException()
 
-    ticket.leave()
+    ticket.discard()
 
     await this.ticketsWritableRepo.save(ticket)
 

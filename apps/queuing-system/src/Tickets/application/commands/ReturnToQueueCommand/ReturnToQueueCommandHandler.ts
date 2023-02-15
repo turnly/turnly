@@ -11,15 +11,15 @@ import {
   IEventBus,
   IQueryBus,
 } from '@turnly/shared'
-import { TicketByIdQuery } from 'Tickets/application/queries/TicketByIdQuery'
+import { GetAnUnexpiredTicketQuery } from 'Tickets/application/queries/GetAnUnexpiredTicketQuery'
 import { ITicketsWritableRepo } from 'Tickets/domain/contracts/ITicketsRepo'
 import { Ticket } from 'Tickets/domain/entities/Ticket'
 
-import { ResolveTicketCommand } from './ResolveTicketCommand'
+import { ReturnToQueueCommand } from './ReturnToQueueCommand'
 
-@CommandHandler(ResolveTicketCommand)
-export class ResolveTicketCommandHandler
-  implements ICommandHandler<ResolveTicketCommand, Ticket>
+@CommandHandler(ReturnToQueueCommand)
+export class ReturnToQueueCommandHandler
+  implements ICommandHandler<ReturnToQueueCommand, Ticket>
 {
   public constructor(
     private readonly eventBus: IEventBus,
@@ -27,14 +27,14 @@ export class ResolveTicketCommandHandler
     private readonly ticketsWritableRepo: ITicketsWritableRepo
   ) {}
 
-  public async execute({ params }: ResolveTicketCommand) {
+  public async execute({ params }: ReturnToQueueCommand) {
     const ticket = await this.queryBus.ask<Nullable<Ticket>>(
-      new TicketByIdQuery(params.id, params.organizationId)
+      new GetAnUnexpiredTicketQuery(params)
     )
 
     if (!ticket) throw new ResourceNotFoundException()
 
-    ticket.resolve(params.status)
+    ticket.returnToQueue()
 
     await this.ticketsWritableRepo.save(ticket)
 

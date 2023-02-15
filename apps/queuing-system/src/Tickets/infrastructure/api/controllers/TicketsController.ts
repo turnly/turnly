@@ -29,13 +29,21 @@ import {
   CreateTicketCommandParams,
 } from 'Tickets/application/commands/CreateTicketCommand'
 import {
+  DiscardTicketCommand,
+  DiscardTicketParams,
+} from 'Tickets/application/commands/DiscardTicketCommand'
+import {
   LeaveTicketCommand,
   LeaveTicketParams,
 } from 'Tickets/application/commands/LeaveTicketCommand'
 import {
-  ResolveTicketCommand,
-  ResolveTicketParams,
-} from 'Tickets/application/commands/ResolveTicketCommand'
+  ReturnToQueueCommand,
+  ReturnToQueueParams,
+} from 'Tickets/application/commands/ReturnToQueueCommand'
+import {
+  ServeTicketCommand,
+  ServeTicketParams,
+} from 'Tickets/application/commands/ServeTicketCommand'
 import { TicketByIdQuery } from 'Tickets/application/queries/TicketByIdQuery'
 import { TicketsBeforeYoursQuery } from 'Tickets/application/queries/TicketsBeforeYoursQuery'
 import {
@@ -126,10 +134,30 @@ export class TicketsController extends Controller {
   }
 
   @TimeoutHandler()
-  @InputValidator(validator.resolve)
-  public async resolve(params: ResolveTicketParams) {
-    const ticket = await this.commandBus.execute<Ticket, ResolveTicketCommand>(
-      new ResolveTicketCommand(params)
+  @InputValidator(validator.serve)
+  public async serve(params: ServeTicketParams) {
+    const ticket = await this.commandBus.execute<Ticket, ServeTicketCommand>(
+      new ServeTicketCommand(params)
+    )
+
+    return this.respond.ok(ticket.toObject())
+  }
+
+  @TimeoutHandler()
+  @InputValidator(validator.discard)
+  public async discard(params: DiscardTicketParams) {
+    const ticket = await this.commandBus.execute<Ticket, DiscardTicketCommand>(
+      new DiscardTicketCommand(params)
+    )
+
+    return this.respond.ok(ticket.toObject())
+  }
+
+  @TimeoutHandler()
+  @InputValidator(validator.returnToQueue)
+  public async returnToQueue(params: ReturnToQueueParams) {
+    const ticket = await this.commandBus.execute<Ticket, ReturnToQueueCommand>(
+      new ReturnToQueueCommand(params)
     )
 
     return this.respond.ok(ticket.toObject())
