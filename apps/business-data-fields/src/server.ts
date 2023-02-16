@@ -8,17 +8,16 @@ import { Producers } from '@turnly/rpc'
 import { config } from '@turnly/shared'
 import { AnswersServer } from 'Answers/infrastructure/api/rpc'
 import { AnswersFactory } from 'Answers/infrastructure/factories/AnswersFactory'
-import { FieldsServer } from 'Fields/infrastructure/api/rpc'
-import { FieldsFactory } from 'Fields/infrastructure/factories/FieldsFactory'
+import { FieldsModule } from 'Fields/FieldsModule'
 
 /**
  * Servers
+ * (deprecated)
  */
 const answersServer = new AnswersServer(AnswersFactory.getController())
-const fieldsServer = new FieldsServer(FieldsFactory.getController())
 
 /**
- * Services (RPC)
+ * Services (gRPC)
  *
  * @description Defining the services that the RPC server will be able to handle.
  */
@@ -29,7 +28,7 @@ const services: Producers.Service[] = [
   },
   {
     definition: Producers.BusinessDataFields.FieldsService,
-    implementation: fieldsServer.implementation,
+    implementation: FieldsModule.getServer(),
   },
 ]
 
