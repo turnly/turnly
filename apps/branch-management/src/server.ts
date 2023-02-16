@@ -14,7 +14,7 @@ import { ServicesModule } from 'Services/ServicesModule'
  *
  * @description Defining the services that the RPC server will be able to handle.
  */
-const services = [
+const services: Producers.Service[] = [
   {
     definition: Producers.BranchManagement.ServicesService,
     implementation: ServicesModule.getServer(),

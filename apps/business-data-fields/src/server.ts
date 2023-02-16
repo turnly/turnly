@@ -22,7 +22,7 @@ const fieldsServer = new FieldsServer(FieldsFactory.getController())
  *
  * @description Defining the services that the RPC server will be able to handle.
  */
-const services = [
+const services: Producers.Service[] = [
   {
     definition: Producers.BusinessDataFields.AnswersService,
     implementation: answersServer.implementation,

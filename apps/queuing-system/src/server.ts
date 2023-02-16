@@ -22,7 +22,7 @@ const customersServer = new CustomersServer(CustomersFactory.getController())
  *
  * @description Defining the services that the RPC server will be able to handle.
  */
-const services = [
+const services: Producers.Service[] = [
   {
     definition: Producers.QueuingSystem.TicketsService,
     implementation: ticketsServer.implementation,

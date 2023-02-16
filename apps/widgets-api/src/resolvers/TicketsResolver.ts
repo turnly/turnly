@@ -48,6 +48,9 @@ export class TicketsResolver {
         locationId: input.locationId,
         customerId: customer.id,
         extrasList: input.extra,
+        /**
+         * TODO: Use an enum for source values
+         */
         source: 'from_channel_widget',
       },
     })
