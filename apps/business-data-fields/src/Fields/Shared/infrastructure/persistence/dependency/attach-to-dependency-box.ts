@@ -11,7 +11,7 @@ import { FieldsReadableRepo } from '../mongo/repositories/FieldsReadableRepo'
 import { FieldsWritableRepo } from '../mongo/repositories/FieldsWritableRepo'
 
 Box.register({
-  FieldsMapper: ioc.asClass(FieldsMapper).singleton(),
-  FieldsReadableRepo: ioc.asClass(FieldsReadableRepo).singleton(),
-  FieldsWritableRepo: ioc.asClass(FieldsWritableRepo).singleton(),
+  fieldsMapper: ioc.asClass(FieldsMapper).singleton(),
+  fieldsReadableRepo: ioc.asClass(FieldsReadableRepo).singleton(),
+  fieldsWritableRepo: ioc.asClass(FieldsWritableRepo).singleton(),
 })
