@@ -39,6 +39,9 @@
     "lerna": "^6.4.1",
     "nx": "15.6.3"
   },
+  "resolutions": {
+    "**/esquery": "1.4.0"
+  },
   "engines": {
     "node": ">=18.14"
   },
