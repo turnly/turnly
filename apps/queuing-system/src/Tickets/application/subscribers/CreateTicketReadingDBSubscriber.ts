@@ -5,10 +5,10 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import { EventsSubscriber, ICommandBus, IEventSubscriber } from '@turnly/shared'
-import { TicketAnnouncedEvent } from 'Tickets/domain/events/TicketAnnouncedEvent'
-import { TicketCancelledEvent } from 'Tickets/domain/events/TicketCancelledEvent'
-import { TicketCompletedEvent } from 'Tickets/domain/events/TicketCompletedEvent'
-import { TicketCreatedEvent } from 'Tickets/domain/events/TicketCreatedEvent'
+import { TicketAnnouncedEvent } from 'Tickets/CreateTicket/events/TicketAnnouncedEvent'
+import { TicketCancelledEvent } from 'Tickets/CreateTicket/events/TicketCancelledEvent'
+import { TicketCompletedEvent } from 'Tickets/CreateTicket/events/TicketCompletedEvent'
+import { TicketCreatedEvent } from 'Tickets/CreateTicket/events/TicketCreatedEvent'
 
 import { CreateTicketReadingDBCommand } from '../commands/CreateTicketReadingDBCommand'
 

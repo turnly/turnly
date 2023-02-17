@@ -6,7 +6,7 @@
  */
 import { Nullable } from '@turnly/common'
 import { IQueryHandler, QueryBuilder, QueryHandler } from '@turnly/shared'
-import { ITicketsReadableRepo } from 'Tickets/domain/contracts/ITicketsRepo'
+import { ITicketsReadableRepo } from 'Tickets/Shared/domain/contracts/ITicketsRepo'
 import { Ticket } from 'Tickets/domain/entities/Ticket'
 
 import { TicketByIdQuery } from './TicketByIdQuery'

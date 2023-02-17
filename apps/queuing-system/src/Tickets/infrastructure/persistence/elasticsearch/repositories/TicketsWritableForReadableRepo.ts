@@ -9,7 +9,7 @@ import {
   ElasticIndexes,
   ElasticWritableRepo,
 } from '@turnly/shared'
-import { ITicketsWritableRepo } from 'Tickets/domain/contracts/ITicketsRepo'
+import { ITicketsWritableRepo } from 'Tickets/Shared/domain/contracts/ITicketsRepo'
 import { Ticket } from 'Tickets/domain/entities/Ticket'
 
 export class TicketsWritableForReadableRepo
