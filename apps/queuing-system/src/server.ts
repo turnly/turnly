@@ -6,8 +6,7 @@
  */
 import { Producers } from '@turnly/rpc'
 import { config } from '@turnly/shared'
-import { CustomersServer } from 'Customers/infrastructure/api/rpc'
-import { CustomersFactory } from 'Customers/infrastructure/factories/CustomersFactory'
+import { CustomersModule } from 'Customers/CustomersModule'
 import { TicketsServer } from 'Tickets/infrastructure/api/rpc'
 import { TicketsFactory } from 'Tickets/infrastructure/factories/TicketsFactory'
 
@@ -15,10 +14,9 @@ import { TicketsFactory } from 'Tickets/infrastructure/factories/TicketsFactory'
  * Servers
  */
 const ticketsServer = new TicketsServer(TicketsFactory.getController())
-const customersServer = new CustomersServer(CustomersFactory.getController())
 
 /**
- * Services (RPC)
+ * Services (gRPC)
  *
  * @description Defining the services that the RPC server will be able to handle.
  */
@@ -29,7 +27,7 @@ const services: Producers.Service[] = [
   },
   {
     definition: Producers.QueuingSystem.CustomersService,
-    implementation: customersServer.implementation,
+    implementation: CustomersModule.getServer(),
   },
 ]
 
