@@ -11,8 +11,8 @@
  * @description Register dependencies to the dependency injection container.
  */
 import 'customers/shared/infrastructure/persistence/dependency/attach-to-dependency-box'
-import 'customers/CustomerById/dependency/attach-to-dependency-box'
-import 'customers/CreateCustomer/dependency/attach-to-dependency-box'
+import 'customers/get-one-customer/dependency/attach-to-dependency-box'
+import 'customers/create-customer/dependency/attach-to-dependency-box'
 
 /**
  * Module
@@ -28,12 +28,12 @@ import type {
   IWritableRepository,
 } from '@turnly/shared'
 import { Box } from '@turnly/shared'
-import type { Customer } from 'customers/shared/domain/entities/Customer'
+import type { Customer } from 'customers/shared/domain/entities/customer.entity'
 
 export class CustomersModule {
   public static getServer(): Producers.QueuingSystem.ICustomersServer {
     return {
-      getOne: (...args) => Box.resolve('customerByIdServer').execute(...args),
+      getOne: (...args) => Box.resolve('getOneCustomerServer').execute(...args),
       create: (..._args) =>
         Box.resolve('createCustomerServer').execute(..._args),
     }
@@ -48,7 +48,7 @@ export class CustomersModule {
   }
 
   public static getQueryHandlers(): IQueryHandler[] {
-    return [Box.resolve('customerByIdQueryHandler')]
+    return [Box.resolve('getOneCustomerQueryHandler')]
   }
 
   public static getCommandHandlers(): ICommandHandler[] {
