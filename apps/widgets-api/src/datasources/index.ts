@@ -6,8 +6,8 @@
  */
 export * from '../shared/api'
 export * from './common/cache-source'
+export * from './common/create-sources'
 export * from './common/data-source'
-export * from './create-sources'
 export * from './customers.datasource'
 export * from './fields.datasource'
 export * from './locations.datasource'
