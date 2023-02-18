@@ -8,10 +8,10 @@
 import 'reflect-metadata'
 
 import { CacheSourceParams } from '@types'
-import { CacheTTL } from 'shared/CacheTTL'
+import { CacheTTL } from 'shared/cache-ttl'
 
-import { paramsToKey } from '../../shared/paramsToKey'
-import { DataSource } from './DataSource'
+import { paramsToKey } from '../../shared/params-to-key'
+import { DataSource } from './data-source'
 
 const defaultOptions: CacheSourceParams = {
   /**

@@ -9,7 +9,7 @@ import { IGetWidgetResponse } from '@turnly/rpc/dist/consumers/channels'
 
 import { Widgets } from '../shared/api'
 import { isCommunityEdition } from '../shared/config'
-import { DataSource } from './common/DataSource'
+import { DataSource } from './common/data-source'
 
 export class WidgetsDataSource extends DataSource {
   public constructor() {

@@ -5,10 +5,10 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import { Guid } from '@turnly/common'
-import { GraphException } from 'shared/GraphException'
+import { GraphException } from 'shared/graph-exception'
 
 import { Services, Tickets } from '../shared/api'
-import { DataSource } from './common/DataSource'
+import { DataSource } from './common/data-source'
 
 export class ServicesDataSource extends DataSource {
   public constructor() {

@@ -5,7 +5,7 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import { IContext } from '@types'
-import { ServiceModel } from 'models/ServiceModel'
+import { ServiceModel } from 'models/service.model'
 import {
   Arg,
   Authorized,

@@ -7,7 +7,7 @@
 import { Guid } from '@turnly/common'
 
 import { Customers } from '../shared/api'
-import { DataSource } from './common/DataSource'
+import { DataSource } from './common/data-source'
 
 export class CustomersDataSource extends DataSource {
   public constructor() {

@@ -7,12 +7,12 @@
 import { IContext } from '@types'
 import { DataSource, Tickets } from 'datasources'
 import { Answers } from 'datasources'
-import { TicketsMapper } from 'mappers/TicketsMapper'
-import { CustomerModel } from 'models/CustomerModel'
-import { LocationModel } from 'models/LocationModel'
-import { ServiceModel } from 'models/ServiceModel'
-import { TicketInput, TicketModel } from 'models/TicketModel'
-import { GraphException } from 'shared/GraphException'
+import { TicketsMapper } from 'mappers/tickets.mapper'
+import { CustomerModel } from 'models/customer.model'
+import { LocationModel } from 'models/location.model'
+import { ServiceModel } from 'models/service.model'
+import { TicketInput, TicketModel } from 'models/ticket.model'
+import { GraphException } from 'shared/graph-exception'
 import {
   Arg,
   Authorized,

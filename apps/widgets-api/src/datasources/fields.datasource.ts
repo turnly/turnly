@@ -5,10 +5,10 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import { Guid } from '@turnly/common'
-import { FieldModel } from 'models/FieldModel'
+import { FieldModel } from 'models/field.model'
 
 import { Fields } from '../shared/api'
-import { DataSource } from './common/DataSource'
+import { DataSource } from './common/data-source'
 
 export class FieldsDataSource extends DataSource {
   public constructor() {

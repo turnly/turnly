@@ -5,7 +5,7 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import { IContext } from '@types'
-import { LocationModel, LocationsArgs } from 'models/LocationModel'
+import { LocationModel, LocationsArgs } from 'models/location.model'
 import { Args, Authorized, Ctx, Query, Resolver } from 'type-graphql'
 
 @Resolver(LocationModel)
