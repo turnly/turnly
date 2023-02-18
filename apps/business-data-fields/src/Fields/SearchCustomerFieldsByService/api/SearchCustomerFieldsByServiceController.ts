@@ -24,10 +24,7 @@ export class SearchCustomerFieldsByServiceController extends Controller {
   @TimeoutHandler()
   @InputValidator(SearchCustomerFieldsByServiceValidator)
   public async execute(params: SearchCustomerFieldsByServiceQuery) {
-    const query = new SearchCustomerFieldsByServiceQuery(
-      params.serviceId,
-      params.organizationId
-    )
+    const query = SearchCustomerFieldsByServiceQuery.build(params)
 
     const fields = await this.queryBus.ask<Nullable<Field[]>>(query)
 

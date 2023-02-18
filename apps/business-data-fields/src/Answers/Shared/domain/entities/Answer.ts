@@ -6,7 +6,7 @@
  */
 import { Extra, Guid, Identifier, Nullable } from '@turnly/common'
 import { AggregateRoot, EntityAttributes } from '@turnly/shared'
-import { AnswerCreatedEvent } from 'Answers/CreateAnswer/events/AnswerCreatedEvent'
+import { AnswerCreatedEvent } from 'Answers/CreateAnswersBulk/events/AnswerCreatedEvent'
 
 import { EntityTypes } from '../enums/EntityType'
 

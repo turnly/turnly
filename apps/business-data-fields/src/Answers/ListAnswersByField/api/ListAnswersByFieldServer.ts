@@ -10,29 +10,32 @@ import { Client } from '@turnly/rpc/dist/consumers'
 import { EntityTypes } from 'Answers/Shared/domain/enums/EntityType'
 import { AnswersMapper } from 'Answers/Shared/infrastructure/grpc/AnswersMapper'
 
-import { FindAnswersController } from './FindAnswersController'
+import { ListAnswersByFieldController } from './ListAnswersByFieldController'
 
-export class FindAnswersServer {
+export class ListAnswersByFieldServer {
   public constructor(
-    private readonly findAnswersController: FindAnswersController
+    private readonly listAnswersByFieldController: ListAnswersByFieldController
   ) {}
 
-  @Producers.CallHandler(Producers.BusinessDataFields.FindAnswersResponse)
+  @Producers.CallHandler(
+    Producers.BusinessDataFields.ListAnswersByFieldResponse
+  )
   public async execute(
     call: Producers.ServerUnaryCall<
-      Producers.BusinessDataFields.FindAnswersRequest,
-      Producers.BusinessDataFields.FindAnswersResponse
+      Producers.BusinessDataFields.ListAnswersByFieldRequest,
+      Producers.BusinessDataFields.ListAnswersByFieldResponse
     >,
-    callback: Producers.ICallback<Producers.BusinessDataFields.FindAnswersResponse>
+    callback: Producers.ICallback<Producers.BusinessDataFields.ListAnswersByFieldResponse>
   ) {
-    const { data, meta } = await this.findAnswersController.execute({
+    const { data, meta } = await this.listAnswersByFieldController.execute({
       entityType: call.request.getEntityType() as EntityTypes,
       fieldId: call.request.getFieldId(),
       extra: call.request.getExtrasList().map(e => e.toObject()),
       organizationId: Client.getOrganizationId(call),
     })
 
-    const response = new Producers.BusinessDataFields.FindAnswersResponse()
+    const response =
+      new Producers.BusinessDataFields.ListAnswersByFieldResponse()
     const answers = data?.map(answer => AnswersMapper.toRPC(answer))
 
     if (!answers?.length) throw new ResourceNotFoundException()

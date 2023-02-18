@@ -11,7 +11,7 @@ const extra = Validator.object({
   value: Validator.string(),
 })
 
-export const FindAnswersValidator = Validator.object({
+export const ListAnswersByFieldValidator = Validator.object({
   entityType: Validator.string(),
   organizationId: Validator.isId(),
   fieldId: Validator.isId(true),

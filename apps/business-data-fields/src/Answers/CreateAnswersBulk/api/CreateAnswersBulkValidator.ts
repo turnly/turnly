@@ -16,12 +16,10 @@ const answer = Validator.object({
   fieldId: Validator.isId(),
   entityId: Validator.isId(),
   entityType: Validator.string(),
-  organizationId: Validator.isId(),
   extra: Validator.getBuilder().array().items(extra).optional(),
 })
 
-export const CreateAnswersBulkValidator = Validator.getBuilder()
-  .array()
-  .items(answer)
-  .min(1)
-  .required()
+export const CreateAnswersBulkValidator = Validator.object({
+  organizationId: Validator.isId(),
+  answers: Validator.getBuilder().array().items(answer).min(1).required(),
+})

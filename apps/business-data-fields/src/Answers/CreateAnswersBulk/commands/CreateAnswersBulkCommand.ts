@@ -4,11 +4,14 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { EntityAttributes, ICommand } from '@turnly/shared'
+import { EntityAttributes, OrganizationCommand } from '@turnly/shared'
 import { Answer } from 'Answers/Shared/domain/entities/Answer'
 
-export class CreateAnswersBulkCommand implements ICommand {
-  public constructor(
-    public readonly params: Omit<EntityAttributes<Answer>, 'id'>[]
-  ) {}
+export type AnswerAttributes = Omit<
+  EntityAttributes<Answer>,
+  'id' | 'organizationId'
+>
+
+export class CreateAnswersBulkCommand extends OrganizationCommand {
+  public readonly answers: AnswerAttributes[]
 }

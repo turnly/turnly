@@ -19,15 +19,17 @@ export class CreateAnswersBulkCommandHandler
     private readonly answersWritableRepo: IAnswersWritableRepo
   ) {}
 
-  public async execute({ params }: CreateAnswersBulkCommand) {
-    const answers = params.map(Answer.create)
+  public async execute({ answers, organizationId }: CreateAnswersBulkCommand) {
+    const resources = answers.map(answer =>
+      Answer.create({ ...answer, organizationId })
+    )
 
-    await this.answersWritableRepo.save(answers)
+    await this.answersWritableRepo.save(resources)
 
-    for (const answer of answers) {
+    for (const answer of resources) {
       this.eventBus.publish(answer.pull())
     }
 
-    return answers
+    return resources
   }
 }

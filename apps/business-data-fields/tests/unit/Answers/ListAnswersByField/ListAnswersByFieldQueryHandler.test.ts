@@ -6,22 +6,22 @@
  */
 import { ObjectMother } from '@turnly/testing'
 
-import { FindAnswersQueryHandler } from '../../../../src/Answers/FindAnswers'
+import { ListAnswersByFieldQueryHandler } from '../../../../src/Answers/ListAnswersByField'
 import { AnswersReadableRepo } from '../Shared/__mocks__/AnswersReadableRepo'
 import { AnswerMother } from '../Shared/domain/AnswerMother'
-import { FindAnswersQueryMother } from './FindAnswersQueryMother'
+import { ListAnswersByFieldQueryMother } from './ListAnswersByFieldQueryMother'
 
 let repository: AnswersReadableRepo
-let handler: FindAnswersQueryHandler
+let handler: ListAnswersByFieldQueryHandler
 
-describe('answers > queries > validates the expected behavior of FindAnswersQuery', () => {
+describe('answers > queries > validates the expected behavior of ListAnswersByFieldQuery', () => {
   beforeEach(() => {
     repository = new AnswersReadableRepo()
-    handler = new FindAnswersQueryHandler(repository)
+    handler = new ListAnswersByFieldQueryHandler(repository)
   })
 
   it('should get a collection of existing answers', async () => {
-    const query = FindAnswersQueryMother.random()
+    const query = ListAnswersByFieldQueryMother.random()
 
     const expected = ObjectMother.repeater(
       AnswerMother.random,

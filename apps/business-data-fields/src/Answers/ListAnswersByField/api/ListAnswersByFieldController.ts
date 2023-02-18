@@ -11,26 +11,21 @@ import {
   IQueryBus,
   TimeoutHandler,
 } from '@turnly/shared'
-import { FindAnswersQuery } from 'Answers/FindAnswers'
+import { ListAnswersByFieldQuery } from 'Answers/ListAnswersByField'
 import { Answer } from 'Answers/Shared/domain/entities/Answer'
 
-import { FindAnswersValidator } from './FindAnswersValidator'
+import { ListAnswersByFieldValidator } from './ListAnswersByFieldValidator'
 
-export class FindAnswersController extends Controller {
+export class ListAnswersByFieldController extends Controller {
   public constructor(private readonly queryBus: IQueryBus) {
     super()
   }
 
   @TimeoutHandler()
-  @InputValidator(FindAnswersValidator)
-  public async execute(params: FindAnswersQuery) {
+  @InputValidator(ListAnswersByFieldValidator)
+  public async execute(params: ListAnswersByFieldQuery) {
     const answers = await this.queryBus.ask<Nullable<Answer[]>>(
-      new FindAnswersQuery(
-        params.organizationId,
-        params.entityType,
-        params.fieldId,
-        params.extra
-      )
+      ListAnswersByFieldQuery.build(params)
     )
 
     if (!answers?.length) throw new ResourceNotFoundException()

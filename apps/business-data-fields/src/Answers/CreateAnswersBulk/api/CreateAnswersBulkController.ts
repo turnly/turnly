@@ -6,7 +6,6 @@
  */
 import {
   Controller,
-  EntityAttributes,
   ICommandBus,
   InputValidator,
   TimeoutHandler,
@@ -23,11 +22,11 @@ export class CreateAnswersBulkController extends Controller {
 
   @TimeoutHandler()
   @InputValidator(CreateAnswersBulkValidator)
-  public async execute(params: Omit<EntityAttributes<Answer>, 'id'>[]) {
+  public async execute(params: CreateAnswersBulkCommand) {
     const answers = await this.commandBus.execute<
       Answer[],
       CreateAnswersBulkCommand
-    >(new CreateAnswersBulkCommand(params))
+    >(CreateAnswersBulkCommand.build(params))
 
     return this.respond.created(answers.map(answer => answer.toObject()))
   }

@@ -11,7 +11,7 @@
  * @description Register dependencies to the dependency injection container.
  */
 import 'Answers/Shared/infrastructure/persistence/dependency/attach-to-dependency-box'
-import 'Answers/FindAnswers/dependency/attach-to-dependency-box'
+import 'Answers/ListAnswersByField/dependency/attach-to-dependency-box'
 
 /**
  * Module
@@ -34,7 +34,8 @@ export class AnswersModule {
     return {
       create: (..._args) =>
         Box.resolve('createAnswersBulkServer').execute(..._args),
-      find: (...args) => Box.resolve('findAnswersServer').execute(...args),
+      listByField: (...args) =>
+        Box.resolve('listAnswersByFieldServer').execute(...args),
     }
   }
 
@@ -47,7 +48,7 @@ export class AnswersModule {
   }
 
   public static getQueryHandlers(): IQueryHandler[] {
-    return [Box.resolve('findAnswersQueryHandler')]
+    return [Box.resolve('listAnswersByFieldQueryHandler')]
   }
 
   public static getCommandHandlers(): ICommandHandler[] {

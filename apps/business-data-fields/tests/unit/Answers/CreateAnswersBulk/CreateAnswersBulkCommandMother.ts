@@ -4,20 +4,17 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { EntityAttributes } from '@turnly/shared'
+import { ObjectMother } from '@turnly/testing'
 
 import { CreateAnswersBulkCommand } from '../../../../src/Answers/CreateAnswersBulk'
-import { Answer } from '../../../../src/Answers/Shared/domain/entities/Answer'
 import { AnswerMother } from '../Shared/domain/AnswerMother'
 
 export class CreateAnswersBulkCommandMother {
-  static create(
-    params: Omit<
-      EntityAttributes<Answer>,
-      'id'
-    >[] = AnswerMother.randomArrayOfPayload()
-  ): CreateAnswersBulkCommand {
-    return new CreateAnswersBulkCommand(params)
+  static create(): CreateAnswersBulkCommand {
+    return CreateAnswersBulkCommand.build({
+      answers: AnswerMother.randomArrayOfPayload(),
+      organizationId: ObjectMother.uuid('org'),
+    })
   }
 
   static random(): CreateAnswersBulkCommand {

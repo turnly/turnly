@@ -9,11 +9,11 @@ import { IQueryHandler, QueryBuilder, QueryHandler } from '@turnly/shared'
 import { IAnswersReadableRepo } from 'Answers/Shared/domain/contracts/IAnswersRepo'
 import { Answer } from 'Answers/Shared/domain/entities/Answer'
 
-import { FindAnswersQuery } from './FindAnswersQuery'
+import { ListAnswersByFieldQuery } from './ListAnswersByFieldQuery'
 
-@QueryHandler(FindAnswersQuery)
-export class FindAnswersQueryHandler
-  implements IQueryHandler<FindAnswersQuery, Nullable<Answer[]>>
+@QueryHandler(ListAnswersByFieldQuery)
+export class ListAnswersByFieldQueryHandler
+  implements IQueryHandler<ListAnswersByFieldQuery, Nullable<Answer[]>>
 {
   public constructor(
     private readonly answersReadableRepo: IAnswersReadableRepo
@@ -24,7 +24,7 @@ export class FindAnswersQueryHandler
     entityType,
     fieldId,
     extra,
-  }: FindAnswersQuery) {
+  }: ListAnswersByFieldQuery) {
     const query = new QueryBuilder<Answer>()
       .equal('organizationId', organizationId)
       .equal('entityType', entityType)

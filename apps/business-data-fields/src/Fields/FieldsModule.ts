@@ -46,7 +46,7 @@ export class FieldsModule {
   }
 
   public static getQueryHandlers(): IQueryHandler[] {
-    return [Box.resolve('seachCustomerFieldsByServiceQueryHandler')]
+    return [Box.resolve('searchCustomerFieldsByServiceQueryHandler')]
   }
 
   public static getCommandHandlers(): ICommandHandler[] {

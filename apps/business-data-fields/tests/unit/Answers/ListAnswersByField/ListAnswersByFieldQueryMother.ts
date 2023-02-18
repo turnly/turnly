@@ -8,19 +8,24 @@ import { Extra, Guid } from '@turnly/common'
 import { ObjectMother } from '@turnly/testing'
 import { EntityTypes } from 'Answers/Shared/domain/enums/EntityType'
 
-import { FindAnswersQuery } from '../../../../src/Answers/FindAnswers'
+import { ListAnswersByFieldQuery } from '../../../../src/Answers/ListAnswersByField'
 
-export class FindAnswersQueryMother {
+export class ListAnswersByFieldQueryMother {
   static create(
     entityType: EntityTypes = EntityTypes.CUSTOMER,
     fieldId: Guid = ObjectMother.uuid('field'),
     extra: Extra[] = ObjectMother.repeater(ObjectMother.extra, 1),
     organizationId: Guid = ObjectMother.uuid('org')
-  ): FindAnswersQuery {
-    return new FindAnswersQuery(organizationId, entityType, fieldId, extra)
+  ): ListAnswersByFieldQuery {
+    return ListAnswersByFieldQuery.build({
+      organizationId,
+      entityType,
+      fieldId,
+      extra,
+    })
   }
 
-  static random(): FindAnswersQuery {
+  static random(): ListAnswersByFieldQuery {
     return this.create()
   }
 }

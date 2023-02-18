@@ -31,13 +31,13 @@ export class CreateAnswersBulkServer {
         ...data,
         entityType: answer.getEntityType() as EntityTypes,
         extra,
-        organizationId: Client.getOrganizationId(call),
       }
     })
 
-    const { data, meta } = await this.createAnswersBulkController.execute(
-      answers
-    )
+    const { data, meta } = await this.createAnswersBulkController.execute({
+      answers,
+      organizationId: Client.getOrganizationId(call),
+    })
 
     const response = new Producers.BusinessDataFields.CreateAnswersResponse()
 

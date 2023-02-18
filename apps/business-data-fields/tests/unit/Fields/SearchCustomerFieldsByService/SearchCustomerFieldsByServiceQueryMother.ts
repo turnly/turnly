@@ -14,7 +14,10 @@ export class SearchCustomerFieldsByServiceQueryMother {
     serviceId: Guid = ObjectMother.uuid('ser'),
     organizationId: Guid = ObjectMother.uuid('org')
   ): SearchCustomerFieldsByServiceQuery {
-    return new SearchCustomerFieldsByServiceQuery(serviceId, organizationId)
+    return SearchCustomerFieldsByServiceQuery.build({
+      serviceId,
+      organizationId,
+    })
   }
 
   static random(): SearchCustomerFieldsByServiceQuery {
