@@ -25,7 +25,7 @@ export class GetOneLocationController extends Controller {
   @InputValidator(GetOneLocationValidator)
   public async execute(params: GetOneLocationQuery) {
     const location = await this.queryBus.ask<Nullable<Location>>(
-      new GetOneLocationQuery(params.id, params.organizationId)
+      GetOneLocationQuery.build(params)
     )
 
     if (!location) throw new ResourceNotFoundException()

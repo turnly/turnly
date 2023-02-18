@@ -25,10 +25,7 @@ export class ListServicesOfOneLocationController extends Controller {
   @InputValidator(ListServicesOfOneLocationValidator)
   public async execute(params: ListServicesOfOneLocationQuery) {
     const services = await this.queryBus.ask<Nullable<Service[]>>(
-      new ListServicesOfOneLocationQuery(
-        params.locationId,
-        params.organizationId
-      )
+      ListServicesOfOneLocationQuery.build(params)
     )
 
     if (!services?.length) throw new ResourceNotFoundException()

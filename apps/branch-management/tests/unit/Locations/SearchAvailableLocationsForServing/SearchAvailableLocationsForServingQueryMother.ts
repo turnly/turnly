@@ -19,15 +19,15 @@ export class SearchAvailableLocationsForServingQueryMother {
     offset: number = ObjectMother.integer(5),
     organizationId: Guid = ObjectMother.uuid('org')
   ): SearchAvailableLocationsForServingQuery {
-    return new SearchAvailableLocationsForServingQuery(
+    return SearchAvailableLocationsForServingQuery.build({
       organizationId,
       searchQuery,
       country,
       limit,
       offset,
       latitude,
-      longitude
-    )
+      longitude,
+    })
   }
 
   static random(): SearchAvailableLocationsForServingQuery {

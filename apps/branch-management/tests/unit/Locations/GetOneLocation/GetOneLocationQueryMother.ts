@@ -14,7 +14,7 @@ export class GetOneLocationQueryMother {
     id: Guid = ObjectMother.uuid('loc'),
     organizationId: Guid = ObjectMother.uuid('org')
   ): GetOneLocationQuery {
-    return new GetOneLocationQuery(id, organizationId)
+    return GetOneLocationQuery.build({ id, organizationId })
   }
 
   static random(): GetOneLocationQuery {

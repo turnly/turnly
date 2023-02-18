@@ -14,7 +14,7 @@ export class ListServicesOfOneLocationQueryMother {
     locationId: Guid = ObjectMother.uuid('loc'),
     organizationId: Guid = ObjectMother.uuid('org')
   ): ListServicesOfOneLocationQuery {
-    return new ListServicesOfOneLocationQuery(locationId, organizationId)
+    return ListServicesOfOneLocationQuery.build({ locationId, organizationId })
   }
 
   static random(): ListServicesOfOneLocationQuery {

@@ -5,11 +5,8 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import { Guid } from '@turnly/common'
-import { IQuery } from '@turnly/shared'
+import { OrganizationQuery } from '@turnly/shared'
 
-export class GetOneServiceQuery implements IQuery {
-  public constructor(
-    public readonly id: Guid,
-    public readonly organizationId: Guid
-  ) {}
+export class GetOneServiceQuery extends OrganizationQuery {
+  public readonly id: Guid
 }

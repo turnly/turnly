@@ -25,7 +25,7 @@ export class GetOneServiceController extends Controller {
   @InputValidator(GetOneServiceValidator)
   public async execute(params: GetOneServiceQuery) {
     const service = await this.queryBus.ask<Nullable<Service>>(
-      new GetOneServiceQuery(params.id, params.organizationId)
+      GetOneServiceQuery.build(params)
     )
 
     if (!service) throw new ResourceNotFoundException()

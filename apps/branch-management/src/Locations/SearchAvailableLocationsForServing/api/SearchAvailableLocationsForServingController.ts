@@ -25,15 +25,7 @@ export class SearchAvailableLocationsForServingController extends Controller {
   @InputValidator(SearchAvailableLocationsForServingValidator)
   public async execute(params: SearchAvailableLocationsForServingQuery) {
     const locations = await this.queryBus.ask<Nullable<Location[]>>(
-      new SearchAvailableLocationsForServingQuery(
-        params.organizationId,
-        params.searchQuery,
-        params.country,
-        params.limit,
-        params.offset,
-        params.latitude,
-        params.longitude
-      )
+      SearchAvailableLocationsForServingQuery.build(params)
     )
 
     if (!locations?.length) throw new ResourceNotFoundException()
