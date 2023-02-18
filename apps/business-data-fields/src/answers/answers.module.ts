@@ -32,8 +32,8 @@ import { Answer } from 'answers/shared/domain/entities/answer.entity'
 export class AnswersModule {
   public static getServer(): Producers.BusinessDataFields.IAnswersServer {
     return {
-      create: (..._args) =>
-        Box.resolve('createAnswersBulkServer').execute(..._args),
+      create: (...args) =>
+        Box.resolve('createAnswersBulkServer').execute(...args),
       listByField: (...args) =>
         Box.resolve('listAnswersByFieldServer').execute(...args),
     }

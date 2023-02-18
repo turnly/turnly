@@ -34,8 +34,7 @@ export class CustomersModule {
   public static getServer(): Producers.QueuingSystem.ICustomersServer {
     return {
       getOne: (...args) => Box.resolve('getOneCustomerServer').execute(...args),
-      create: (..._args) =>
-        Box.resolve('createCustomerServer').execute(..._args),
+      create: (...args) => Box.resolve('createCustomerServer').execute(...args),
     }
   }
 
