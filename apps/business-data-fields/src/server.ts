@@ -6,8 +6,8 @@
  */
 import { Producers } from '@turnly/rpc'
 import { config } from '@turnly/shared'
-import { AnswersModule } from 'eanswers/answers.module'
-import { FieldsModule } from 'efields/fields.module'
+import { AnswersModule } from 'answers/answers.module'
+import { FieldsModule } from 'fields/fields.module'
 
 /**
  * Services (gRPC)
