@@ -4,7 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { BroadcastableEvents } from './broadcastableEvents'
+import { BroadcastableEvents } from './broadcastable-events'
 
 /**
  * Broadcastable events.

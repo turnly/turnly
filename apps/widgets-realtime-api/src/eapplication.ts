@@ -8,7 +8,7 @@ import { BroadcastingEventsSubscriber, Realtime } from '@turnly/realtime'
 import { eventBus } from '@turnly/shared'
 import { BROADCASTABLE_TO_CHANNELS, BroadcastableEvents } from 'broadcasting'
 import { queuingHandlers } from 'channels/queuing/handlers'
-import { AllowConnGuard } from 'channels/queuing/middlewares/AllowConnGuard'
+import { AllowConnGuard } from 'channels/queuing/middlewares/allow-conn.guard'
 import { Channels, serverOptions } from 'shared/config'
 
 export class Application {

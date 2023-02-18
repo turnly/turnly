@@ -7,39 +7,36 @@
 import { Guid } from '@turnly/common'
 import { AbstractRealtimeHandler, IRealtimeChannel } from '@turnly/realtime'
 import { Event, EventPayload, EventType } from '@turnly/shared'
-import { BroadcastableEvents } from 'broadcasting/broadcastableEvents'
+import { BroadcastableEvents } from 'broadcasting/broadcastable-events'
 
-import { RealtimeEventsForQueuing } from '../events/RealtimeEventsForQueuing'
+import { RealtimeEventsForQueuing } from '../events/realtime-events-for-queuing'
 
 interface Payload extends EventPayload {
-  id: Guid
+  serviceId: Guid
   customerId: Guid
-  status: string
+  locationId: Guid
 }
 
-export class RealtimeTicketCancelledHandler extends AbstractRealtimeHandler<
+export class RealtimeTicketsBeforeYoursUpdatedHandler extends AbstractRealtimeHandler<
   Event<Payload>
 > {
   public constructor() {
-    super(RealtimeTicketCancelledHandler.getEvents())
+    super(RealtimeTicketsBeforeYoursUpdatedHandler.getEvents())
   }
 
   public handle(
-    {
-      payload: { customerId, id: ticketId, organizationId, status },
-    }: Event<Payload>,
+    { payload: { locationId, serviceId, organizationId, id } }: Event<Payload>,
     channel: IRealtimeChannel
   ): void {
-    channel.to(customerId).emit(
-      RealtimeEventsForQueuing.TICKET_CANCELLED,
+    const roomId = `${locationId}.${serviceId}`
+    const payload = { locationId, serviceId, organizationId, ticketId: id }
+
+    channel.to(roomId).emit(
+      RealtimeEventsForQueuing.TICKETS_BEFORE_YOURS,
       Event.fromObject({
         type: EventType.INFO,
-        name: RealtimeEventsForQueuing.TICKET_CANCELLED,
-        payload: {
-          ticketId,
-          status,
-          organizationId,
-        },
+        name: RealtimeEventsForQueuing.TICKETS_BEFORE_YOURS,
+        payload,
       })
     )
   }
@@ -48,7 +45,6 @@ export class RealtimeTicketCancelledHandler extends AbstractRealtimeHandler<
     return [
       BroadcastableEvents.TICKET_COMPLETED,
       BroadcastableEvents.TICKET_CANCELLED,
-      BroadcastableEvents.TICKET_RETURNED,
       BroadcastableEvents.TICKET_DISCARDED,
     ]
   }

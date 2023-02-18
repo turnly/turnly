@@ -7,9 +7,9 @@
 import { Guid } from '@turnly/common'
 import { AbstractRealtimeHandler, IRealtimeChannel } from '@turnly/realtime'
 import { Event, EventPayload, EventType } from '@turnly/shared'
-import { BroadcastableEvents } from 'broadcasting/broadcastableEvents'
+import { BroadcastableEvents } from 'broadcasting/broadcastable-events'
 
-import { RealtimeEventsForQueuing } from '../events/RealtimeEventsForQueuing'
+import { RealtimeEventsForQueuing } from '../events/realtime-events-for-queuing'
 
 interface Payload extends EventPayload {
   id: Guid
@@ -17,11 +17,11 @@ interface Payload extends EventPayload {
   status: string
 }
 
-export class RealtimeTicketCalledToDeskHandler extends AbstractRealtimeHandler<
+export class RealtimeTicketCancelledHandler extends AbstractRealtimeHandler<
   Event<Payload>
 > {
   public constructor() {
-    super(RealtimeTicketCalledToDeskHandler.getEvents())
+    super(RealtimeTicketCancelledHandler.getEvents())
   }
 
   public handle(
@@ -31,10 +31,10 @@ export class RealtimeTicketCalledToDeskHandler extends AbstractRealtimeHandler<
     channel: IRealtimeChannel
   ): void {
     channel.to(customerId).emit(
-      RealtimeEventsForQueuing.TICKET_CALLED,
+      RealtimeEventsForQueuing.TICKET_CANCELLED,
       Event.fromObject({
         type: EventType.INFO,
-        name: RealtimeEventsForQueuing.TICKET_CALLED,
+        name: RealtimeEventsForQueuing.TICKET_CANCELLED,
         payload: {
           ticketId,
           status,
@@ -45,6 +45,11 @@ export class RealtimeTicketCalledToDeskHandler extends AbstractRealtimeHandler<
   }
 
   public static getEvents(): BroadcastableEvents[] {
-    return [BroadcastableEvents.TICKET_CALLED]
+    return [
+      BroadcastableEvents.TICKET_COMPLETED,
+      BroadcastableEvents.TICKET_CANCELLED,
+      BroadcastableEvents.TICKET_RETURNED,
+      BroadcastableEvents.TICKET_DISCARDED,
+    ]
   }
 }

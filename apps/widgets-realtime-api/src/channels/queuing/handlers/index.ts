@@ -6,10 +6,10 @@
  */
 import { IRealtimeHandler } from '@turnly/realtime'
 
-import { RealtimeForCustomersHandler } from './RealtimeForCustomersHandler'
-import { RealtimeTicketCalledToDeskHandler } from './RealtimeTicketCalledToDeskHandler'
-import { RealtimeTicketCancelledHandler } from './RealtimeTicketCancelledHandler'
-import { RealtimeTicketsBeforeYoursUpdatedHandler } from './RealtimeTicketsBeforeYoursUpdatedHandler'
+import { RealtimeForCustomersHandler } from './realtime-for-customers-handler'
+import { RealtimeTicketCalledToDeskHandler } from './realtime-ticket-called-to-desk-handler'
+import { RealtimeTicketCancelledHandler } from './realtime-ticket-cancelled-handler'
+import { RealtimeTicketsBeforeYoursUpdatedHandler } from './realtime-tickets-before-yours-updated-handler'
 
 export const queuingHandlers: IRealtimeHandler[] = [
   new RealtimeForCustomersHandler(),
