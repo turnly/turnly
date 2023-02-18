@@ -7,7 +7,7 @@
 import { GetOneLocationQueryHandler } from '../../../../src/locations/get-one-location'
 import { LocationsReadableRepo } from '../shared/__mocks__/locations-readable.repo'
 import { LocationMother } from '../shared/domain/location.entity.mother'
-import { GetOneLocationQueryMother } from './get-one-location-query.mother'
+import { GetOneLocationQueryMother } from './get-one-location.query.mother'
 
 let repository: LocationsReadableRepo
 let handler: GetOneLocationQueryHandler

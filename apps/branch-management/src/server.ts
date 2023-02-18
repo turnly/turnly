@@ -7,7 +7,7 @@
 import { Producers } from '@turnly/rpc'
 import { config } from '@turnly/shared'
 import { LocationsModule } from 'locations/locations.module'
-import { ServicesModule } from 'services/ServicesModule'
+import { ServicesModule } from 'services/services.module'
 
 /**
  * Services (gRPC)
