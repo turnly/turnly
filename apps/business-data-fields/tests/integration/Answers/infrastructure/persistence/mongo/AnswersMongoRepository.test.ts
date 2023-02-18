@@ -9,7 +9,7 @@ import '../../../../../src/Answers/infrastructure/register-dependencies/dependen
 import { ResourceNotFoundException } from '@turnly/common'
 import { MongoEnvironmentArranger } from '@turnly/shared'
 
-import { AnswersModule } from '../../../../../../src/Answers/AnswersModule'
+import { AnswersModule } from '../../../../../../src/Answers/answers.module'
 import { AnswerMother } from '../../../../../unit/Answers/Shared/domain/AnswerMother'
 import { AnswersQueryMother } from './AnswersQueryMother'
 

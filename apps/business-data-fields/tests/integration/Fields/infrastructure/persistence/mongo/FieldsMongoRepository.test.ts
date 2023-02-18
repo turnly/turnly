@@ -9,7 +9,7 @@ import '../../../../../src/Fields/infrastructure/register-dependencies/dependenc
 import { ResourceNotFoundException } from '@turnly/common'
 import { MongoEnvironmentArranger } from '@turnly/shared'
 
-import { FieldsModule } from '../../../../../../src/Fields/FieldsModule'
+import { FieldsModule } from '../../../../../../src/Fields/fields.module'
 import { FieldMother } from '../../../../../unit/Fields/Shared/domain/FieldMother'
 import { FieldsQueryMother } from './FieldsQueryMother'
 

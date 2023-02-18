@@ -6,7 +6,7 @@
  */
 import { commandBus, eventBus, queryBus } from '@turnly/shared'
 
-import { AnswersModule } from '../../../AnswersModule'
+import { AnswersModule } from '../../../answers.module'
 
 /**
  * Answer module
