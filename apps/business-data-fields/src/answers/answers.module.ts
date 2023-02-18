@@ -11,7 +11,7 @@
  * @description Register dependencies to the dependency injection container.
  */
 import 'answers/shared/infrastructure/persistence/dependency/attach-to-dependency-box'
-import 'answers/ListAnswersByField/dependency/attach-to-dependency-box'
+import 'answers/list-answers-by-field/dependency/attach-to-dependency-box'
 
 /**
  * Module
@@ -27,7 +27,7 @@ import {
   IReadableRepository,
   IWritableRepository,
 } from '@turnly/shared'
-import { Answer } from 'answers/shared/domain/entities/Answer'
+import { Answer } from 'answers/shared/domain/entities/answer.entity'
 
 export class AnswersModule {
   public static getServer(): Producers.BusinessDataFields.IAnswersServer {

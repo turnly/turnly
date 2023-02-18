@@ -6,9 +6,9 @@
  */
 import { Box, ioc } from '@turnly/shared'
 
-import { FieldsMapper } from '../mongo/entity-model-mappers/FieldMapper'
-import { FieldsReadableRepo } from '../mongo/repositories/FieldsReadableRepo'
-import { FieldsWritableRepo } from '../mongo/repositories/FieldsWritableRepo'
+import { FieldsMapper } from '../mongo/entity-model-mappers/field.mapper'
+import { FieldsReadableRepo } from '../mongo/repositories/fields-readable.repo'
+import { FieldsWritableRepo } from '../mongo/repositories/fields-writable.repo'
 
 Box.register({
   fieldsMapper: ioc.asClass(FieldsMapper).singleton(),

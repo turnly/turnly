@@ -11,7 +11,7 @@
  * @description Register dependencies to the dependency injection container.
  */
 import 'fields/shared/infrastructure/persistence/dependency/attach-to-dependency-box'
-import 'fields/SearchCustomerFieldsByService/dependency/attach-to-dependency-box'
+import 'fields/search-customer-fields-by-service/dependency/attach-to-dependency-box'
 
 /**
  * Module
@@ -27,7 +27,7 @@ import type {
   IWritableRepository,
 } from '@turnly/shared'
 import { Box } from '@turnly/shared'
-import type { Field } from 'fields/shared/domain/entities/Field'
+import type { Field } from 'fields/shared/domain/entities/field.entity'
 
 export class FieldsModule {
   public static getServer(): Producers.BusinessDataFields.IFieldsServer {
