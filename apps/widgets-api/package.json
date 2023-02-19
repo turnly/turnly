@@ -1,6 +1,6 @@
 {
   "name": "@turnly/widgets-api",
-  "version": "0.1.0",
+  "version": "0.1.3",
   "private": true,
   "description": "Self-service ticketing via web-widget on any website or app",
   "license": "BSD-3-Clause",
@@ -26,8 +26,8 @@
     "@apollo/utils.keyvaluecache": "^1.0.1",
     "@turnly/common": "github:turnly/common.git#latest",
     "@turnly/grpc": "github:turnly/grpc.git#latest",
+    "@turnly/observability": "^0.1.3",
     "@turnly/shared": "github:turnly/shared.git#latest",
-    "@turnly/observability": "0.1.2",
     "apollo-datasource": "^3.3.2",
     "apollo-server-express": "^3.9.0",
     "class-validator": "0.13.2",
