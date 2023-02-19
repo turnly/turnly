@@ -5,7 +5,7 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import { Guid } from '@turnly/common'
-import { IGetWidgetResponse } from '@turnly/rpc/dist/consumers/channels'
+import { IGetWidgetResponse } from '@turnly/grpc/dist/consumers/channels'
 
 import { Widgets } from '../shared/api'
 import { isCommunityEdition } from '../shared/config'

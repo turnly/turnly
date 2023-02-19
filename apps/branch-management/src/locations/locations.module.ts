@@ -19,7 +19,7 @@ import 'locations/get-one-location/dependency/attach-to-dependency-box'
  *
  * @description Module definition.
  */
-import type { Producers } from '@turnly/rpc'
+import type { Producers } from '@turnly/grpc'
 import type {
   ICommandHandler,
   IEventSubscriber,

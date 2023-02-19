@@ -4,8 +4,8 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { Producers } from '@turnly/rpc'
-import { Client } from '@turnly/rpc/dist/consumers'
+import { Producers } from '@turnly/grpc'
+import { Client } from '@turnly/grpc/dist/consumers'
 import type { SearchCustomerFieldsByServiceController } from 'fields/search-customer-fields-by-service'
 import { FieldsMapper } from 'fields/shared/infrastructure/grpc/fields-mapper.grpc'
 

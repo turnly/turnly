@@ -28,7 +28,7 @@ The core service for the queuing system, Customer management and everything rela
 | Mongoose ORM  (@turnly/shared)      | Elegant mongoDB object modeling.                                              |
 | ElasticSearch (@turnly/shared)      | Modern NoSQL database for search and store unstructured data.                 |
 | RabbitMQ      (@turnly/shared)      | A message broker for events.                                                  |
-| gRPC Server   (@turnly/rpc)         | Efficiently connecting polyglot services in microservices architecture.       |
+| gRPC Server   (@turnly/grpc)         | Efficiently connecting polyglot services in microservices architecture.       |
 
 ### Service Modules
 

@@ -2836,7 +2836,7 @@
 
 "@turnly/common@github:turnly/common.git#latest":
   version "1.0.0"
-  resolved "https://codeload.github.com/turnly/common/tar.gz/20c2eacff2493fa72ffa9f9c4059d8b4d258464c"
+  resolved "https://codeload.github.com/turnly/common/tar.gz/00677b8a1c1bec6471b862112b575560ce8b3a1c"
   dependencies:
     "@opentelemetry/api" "^1.4.0"
     "@opentelemetry/exporter-jaeger" "^1.9.1"
@@ -2896,19 +2896,19 @@
     ts-jest "^29.0.5"
     typescript "^4.9.5"
 
+"@turnly/grpc@github:turnly/grpc.git#latest":
+  version "1.0.0"
+  resolved "https://codeload.github.com/turnly/grpc/tar.gz/1db97008463a662caa742771b08ede6ebe3c3de0"
+  dependencies:
+    "@grpc/grpc-js" "^1.6.7"
+    google-protobuf "^3.20.1"
+    grpcjs-interceptors "^0.1.15"
+
 "@turnly/realtime@github:turnly/realtime.git#latest":
   version "1.0.0"
   resolved "https://codeload.github.com/turnly/realtime/tar.gz/d128b4623e05f1a11010fd33e2d5097c6984c48a"
   dependencies:
     socket.io "^4.5.1"
-
-"@turnly/rpc@github:turnly/rpc.git#latest":
-  version "1.0.0"
-  resolved "https://codeload.github.com/turnly/rpc/tar.gz/8146277e06017414036fee5e68ec0fced9a85c1e"
-  dependencies:
-    "@grpc/grpc-js" "^1.6.7"
-    google-protobuf "^3.20.1"
-    grpcjs-interceptors "^0.1.15"
 
 "@turnly/shared@github:turnly/shared.git#latest":
   version "0.0.0"
@@ -2940,7 +2940,7 @@
 
 "@turnly/testing@github:turnly/testing.git#latest":
   version "0.0.0"
-  resolved "https://codeload.github.com/turnly/testing/tar.gz/49fb1f9fd37e976b28986249787ca5eaaa5a0d7c"
+  resolved "https://codeload.github.com/turnly/testing/tar.gz/9bb9960a6e3e53e41d4e3d77eb6faf4a17a9d63a"
   dependencies:
     "@faker-js/faker" "8.0.0-alpha.0"
     "@turnly/common" "github:turnly/common.git#latest"

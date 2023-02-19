@@ -5,7 +5,7 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import { Guid } from '@turnly/common'
-import type { Customer } from '@turnly/rpc/dist/producers/queuing-system'
+import type { Customer } from '@turnly/grpc/dist/producers/queuing-system'
 import { Sources } from 'datasources'
 import type { Request, Response } from 'express'
 

@@ -9,8 +9,8 @@ import {
   Guid,
   ResourceNotFoundException,
 } from '@turnly/common'
+import { IGetWidgetResponse } from '@turnly/grpc/dist/consumers/channels'
 import { Events, IRealtimeClient, RealtimeMiddle } from '@turnly/realtime'
-import { IGetWidgetResponse } from '@turnly/rpc/dist/consumers/channels'
 import { Event, EventType } from '@turnly/shared'
 import { isCommunityEdition } from 'shared/config'
 

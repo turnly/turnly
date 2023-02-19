@@ -4,7 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { Ticket as T } from '@turnly/rpc/dist/producers/queuing-system'
+import { Ticket as T } from '@turnly/grpc/dist/producers/queuing-system'
 import { TicketModel } from 'models/ticket.model'
 
 export class TicketsMapper {

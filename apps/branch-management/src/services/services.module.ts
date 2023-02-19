@@ -19,7 +19,7 @@ import 'services/list-services-of-one-location/dependency/attach-to-dependency-b
  *
  * @description Module definition.
  */
-import type { Producers } from '@turnly/rpc'
+import type { Producers } from '@turnly/grpc'
 import type {
   ICommandHandler,
   IEventSubscriber,

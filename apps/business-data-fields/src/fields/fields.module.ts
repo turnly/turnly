@@ -18,7 +18,7 @@ import 'fields/search-customer-fields-by-service/dependency/attach-to-dependency
  *
  * @description Module definition.
  */
-import type { Producers } from '@turnly/rpc'
+import type { Producers } from '@turnly/grpc'
 import type {
   ICommandHandler,
   IEventSubscriber,

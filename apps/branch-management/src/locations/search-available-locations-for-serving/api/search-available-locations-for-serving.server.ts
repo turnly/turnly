@@ -5,8 +5,8 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import { ResourceNotFoundException } from '@turnly/common'
-import { Producers } from '@turnly/rpc'
-import { Client } from '@turnly/rpc/dist/consumers'
+import { Producers } from '@turnly/grpc'
+import { Client } from '@turnly/grpc/dist/consumers'
 import type { SearchAvailableLocationsForServingController } from 'locations/search-available-locations-for-serving'
 import { LocationsMapper } from 'locations/shared/infrastructure/grpc/locations-mapper.grpc'
 

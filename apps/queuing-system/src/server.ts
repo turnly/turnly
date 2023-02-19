@@ -4,7 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { Producers } from '@turnly/rpc'
+import { Producers } from '@turnly/grpc'
 import { config } from '@turnly/shared'
 import { CustomersModule } from 'customers/customers.module'
 import { TicketsServer } from 'Tickets/infrastructure/api/rpc'

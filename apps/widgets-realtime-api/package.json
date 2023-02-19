@@ -25,7 +25,7 @@
   "dependencies": {
     "@turnly/common": "github:turnly/common.git#latest",
     "@turnly/realtime": "github:turnly/realtime.git#latest",
-    "@turnly/rpc": "github:turnly/rpc.git#latest",
+    "@turnly/grpc": "github:turnly/grpc.git#latest",
     "@turnly/shared": "github:turnly/shared.git#latest",
     "dotenv": "^16.0.1",
     "mongoose": "^6.4.6"

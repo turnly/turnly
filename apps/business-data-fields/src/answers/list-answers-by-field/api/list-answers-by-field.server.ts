@@ -5,8 +5,8 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import { ResourceNotFoundException } from '@turnly/common'
-import { Producers } from '@turnly/rpc'
-import { Client } from '@turnly/rpc/dist/consumers'
+import { Producers } from '@turnly/grpc'
+import { Client } from '@turnly/grpc/dist/consumers'
 import { EntityTypes } from 'answers/shared/domain/enums/entity-type.enum'
 import { AnswersMapper } from 'answers/shared/infrastructure/grpc/answers-mapper.grpc'
 
