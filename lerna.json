@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/lerna/schemas/lerna-schema.json",
-  "packages": ["apps/*"],
+  "packages": ["apps/*", "apis/*", "packages/*"],
   "npmClient": "yarn",
   "useNx": true,
   "useWorkspaces": true,
@@ -9,6 +9,9 @@
       "allowBranch": "develop",
       "conventionalCommits": true,
       "message": "chore(release): %s"
+    },
+    "publish": {
+      "registry": "https://npm.pkg.github.com/turnly"
     }
   },
   "version": "0.0.1"

@@ -6,7 +6,9 @@
   "license": "BSD-3-Clause",
   "author": "Turnly Team <engineering@turnly.app> (https://turnly.app)",
   "workspaces": [
-    "apps/*"
+    "apps/*",
+    "apis/*",
+    "packages/*"
   ],
   "scripts": {
     "start": "bash docker/run start",
@@ -21,6 +23,7 @@
     "test:integration": "cross-env CI=true lerna run test:integration",
     "test:unit": "cross-env CI=true lerna run test:unit",
     "test:coverage": "cross-env CI=true lerna run test:coverage",
+    "publish": "lerna publish from-git",
     "release": "lerna version --no-push",
     "release:major": "lerna version major --no-push",
     "release:minor": "lerna version minor --no-push",

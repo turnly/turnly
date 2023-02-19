@@ -1,0 +1,72 @@
+{
+  "name": "@turnly/observability",
+  "version": "0.0.1",
+  "description": "Identify the underlying cause of problems. Observability can tell you what’s happening, why it’s happening and how to fix it",
+  "homepage": "https://github.com/turnly/turnly#readme",
+  "bugs": {
+    "url": "https://github.com/turnly/turnly/issues"
+  },
+  "repository": "https://github.com/turnly/turnly",
+  "license": "BSD-3-Clause",
+  "author": "Turnly Team <engineering@turnly.app> (https://turnly.app)",
+  "main": "dist/index",
+  "types": "dist/index",
+  "directories": {
+    "test": "tests",
+    "src": "src"
+  },
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "prebuild": "rm -rf dist tsconfig.tsbuildinfo",
+    "build": "tsc -p tsconfig.build.json",
+    "lint": "prettier \"./**/*.{ts,js}\" --check && eslint . --ext .js,.ts && tsc --noEmit"
+  },
+  "prettier": "@turnly/eslint-config/.prettierrc.js",
+  "eslintConfig": {
+    "extends": "@turnly/eslint-config",
+    "ignorePatterns": [
+      "node_modules",
+      "**/*.md",
+      "dist",
+      "jest*",
+      "coverage"
+    ]
+  },
+  "resolutions": {
+    "**/esquery": "1.4.0"
+  },
+  "dependencies": {
+    "@opentelemetry/api": "^1.4.0",
+    "@opentelemetry/exporter-jaeger": "^1.9.1",
+    "@opentelemetry/instrumentation-grpc": "^0.35.1",
+    "@opentelemetry/instrumentation-http": "^0.35.1",
+    "@opentelemetry/sdk-trace-node": "^1.9.1",
+    "@sentry/node": "^7.37.2",
+    "@sentry/tracing": "^7.37.2",
+    "fluent-logger": "^3.4.1",
+    "opentelemetry-instrumentation-socket.io": "^0.34.0",
+    "winston": "^3.3.3"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.4.3",
+    "@turnly/eslint-config": "github:turnly/configs",
+    "@types/node": "^18.13.0",
+    "eslint": "^8.34.0",
+    "husky": "^8.0.3",
+    "prettier": "^2.8.4",
+    "rimraf": "^4.1.2",
+    "ts-jest": "^28.0.5",
+    "ts-node": "^10.2.1",
+    "typescript": "^4.4.2"
+  },
+  "engines": {
+    "node": ">=18.14"
+  },
+  "publishConfig": {
+    "@turnly:registry": "https://npm.pkg.github.com/turnly"
+  }
+}
