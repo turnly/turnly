@@ -7,5 +7,5 @@
   "include": [
     "src/**/*",
     "src/*.ts"
-, "../common/src/constants/exception-messages.enum.ts"  ]
+  ]
 }

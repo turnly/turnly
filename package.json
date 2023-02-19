@@ -7,7 +7,6 @@
   "author": "Turnly Team <engineering@turnly.app> (https://turnly.app)",
   "workspaces": [
     "apps/*",
-    "apis/*",
     "packages/*"
   ],
   "scripts": {

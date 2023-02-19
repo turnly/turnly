@@ -2,7 +2,6 @@
   "$schema": "node_modules/lerna/schemas/lerna-schema.json",
   "packages": [
     "apps/*",
-    "apis/*",
     "packages/*"
   ],
   "npmClient": "yarn",
