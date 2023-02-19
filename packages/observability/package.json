@@ -18,6 +18,7 @@
   "files": [
     "dist",
     "LICENSE",
+    "CHANGELOG.md",
     "README.md"
   ],
   "scripts": {

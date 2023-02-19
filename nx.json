@@ -16,9 +16,6 @@
     "build": {
       "dependsOn": ["prebuild", "^build"],
       "outputs": ["dist/**"]
-    },
-    "release:publish": {
-      "dependsOn": ["prebuild", "^build"]
     }
   },
   "defaultBase": "develop"
