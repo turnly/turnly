@@ -27,6 +27,7 @@
     "@turnly/common": "github:turnly/common.git#latest",
     "@turnly/grpc": "github:turnly/grpc.git#latest",
     "@turnly/shared": "github:turnly/shared.git#latest",
+    "@turnly/observability": "0.1.2",
     "apollo-datasource": "^3.3.2",
     "apollo-server-express": "^3.9.0",
     "class-validator": "0.13.2",

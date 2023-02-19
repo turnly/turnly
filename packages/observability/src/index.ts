@@ -4,4 +4,4 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-export const getDate = () => new Date().toISOString()
+export const getDate = () => new Date()
