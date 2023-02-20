@@ -120,7 +120,7 @@ export * from './api/decorators/timeout-handler.decorator'
 export * from './api/http'
 export * from './api/startup'
 export * from './api/validator'
-export * from './api/versions.enum'
+export * from './constants/versions.enum'
 
 /**
  * Providers

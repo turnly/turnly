@@ -7,37 +7,17 @@
 import { BroadcastingEventsSubscriber, Realtime } from '@turnly/realtime'
 import { eventBus } from '@turnly/shared'
 import { BROADCASTABLE_TO_CHANNELS, BroadcastableEvents } from 'broadcasting'
-import { queuingHandlers } from 'channels/queuing/handlers'
-import { AllowConnGuard } from 'channels/queuing/middlewares/allow-conn.guard'
-import { Channels, serverOptions } from 'shared/config'
 
 export class Application {
-  private readonly realtime: Realtime
-
-  public constructor() {
-    this.realtime = new Realtime(serverOptions)
-  }
-
   /**
    * Sets up application.
    *
    * @memberof Startup
    */
   public async setup(): Promise<void> {
-    this.setupChannels()
-    this.setupBroadcastingEvents()
-  }
+    const { server } = await import('./server')
 
-  /**
-   * Sets up channels.
-   *
-   * @description Create channels and register handlers.
-   */
-  private setupChannels() {
-    this.realtime
-      .listen(Channels.QUEUING)
-      .use(new AllowConnGuard().use())
-      .subscribe(queuingHandlers)
+    this.setupBroadcastingEvents(server)
   }
 
   /**
@@ -45,10 +25,10 @@ export class Application {
    *
    * @description Register broadcasting subscriber to event bus.
    */
-  private setupBroadcastingEvents() {
+  private setupBroadcastingEvents(realtime: Realtime) {
     const subscriber = new BroadcastingEventsSubscriber<BroadcastableEvents>(
       BROADCASTABLE_TO_CHANNELS,
-      this.realtime
+      realtime
     )
 
     eventBus.subscribe([subscriber])
