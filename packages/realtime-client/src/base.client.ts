@@ -6,7 +6,7 @@
  */
 import { io, Socket } from 'socket.io-client'
 
-import type { ClientCallback, Payload, RealtimeConnection } from './types'
+import type { ClientCallback, Payload, RealtimeConnection } from './base.type'
 
 /**
  * Real Time Client

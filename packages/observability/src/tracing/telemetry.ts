@@ -16,7 +16,7 @@ import { NodeTracerProvider } from '@opentelemetry/sdk-trace-node'
 import { SemanticResourceAttributes } from '@opentelemetry/semantic-conventions'
 import { SocketIoInstrumentation } from 'opentelemetry-instrumentation-socket.io'
 
-import { getLoggingLevel } from '../logging/logger-options'
+import { getLoggingLevel } from '../logging/logger-options.util'
 
 export enum InstrumentationType {
   GRPC = 'grpc',

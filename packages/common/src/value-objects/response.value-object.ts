@@ -10,7 +10,7 @@ import {
   ResponseMessages,
   SharedMessages,
 } from '../constants'
-import { Nullable } from '../types/nullable'
+import { Nullable } from '../types/nullable.type'
 
 /**
  * Response

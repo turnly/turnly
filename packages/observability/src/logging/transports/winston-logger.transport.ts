@@ -9,7 +9,7 @@ import fluentLogger from 'fluent-logger'
 import winston from 'winston'
 
 import type { ILogger } from '../logger.interface'
-import { getLoggingLevel } from '../logger-options'
+import { getLoggingLevel } from '../logger-options.util'
 
 const FluentTransport = fluentLogger.support.winstonTransport()
 

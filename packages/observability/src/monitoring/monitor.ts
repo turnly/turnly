@@ -10,9 +10,9 @@ import * as Sentry from '@sentry/node'
 import * as SentryTracing from '@sentry/tracing'
 import { Environment } from '@turnly/common'
 
-import { config } from './config'
+import { config } from './config.const'
+import { Router } from './libs/libs.type'
 import { SentryEvent } from './libs/sentry-event'
-import { Router } from './libs/types'
 
 export class Monitor {
   private static setup(options: Sentry.NodeOptions) {

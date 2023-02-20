@@ -4,5 +4,5 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-export * from './identifier'
-export * from './response'
+export * from './identifier.value-object'
+export * from './response.value-object'

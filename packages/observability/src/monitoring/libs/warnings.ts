@@ -7,7 +7,7 @@
 import { Environment } from '@turnly/common'
 
 import { Logger } from '../../logging'
-import { config } from '../config'
+import { config } from '../config.const'
 
 for (const [key, value] of Object.entries(config)) {
   if (!value && Environment.isNotTest()) {

@@ -11,7 +11,7 @@ import { ApolloServerPluginDrainHttpServer as Plugin } from 'apollo-server-core'
 import { ApolloServer, Config, ExpressContext } from 'apollo-server-express'
 import { buildSchema, BuildSchemaOptions } from 'type-graphql'
 
-import { DataSource } from './data-source'
+import { DataSource } from './base.ds'
 
 /**
  * Graph

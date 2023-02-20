@@ -6,8 +6,8 @@
  */
 import { Environment } from '@turnly/common'
 
-import { Logger } from '../../logging'
-import { tracingConfig } from '../config'
+import { Logger } from '../logging'
+import { tracingConfig } from './config.const'
 
 for (const [key, value] of Object.entries(tracingConfig)) {
   if (key === 'NODE_ENV' && !value) {

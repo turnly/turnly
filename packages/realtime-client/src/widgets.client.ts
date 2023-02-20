@@ -5,7 +5,7 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import { Client } from './base.client'
-import { Payload, RealtimePartialConn } from './types'
+import { Payload, RealtimePartialConn } from './base.type'
 
 /**
  * Real Time Messaging Client (RTM API)

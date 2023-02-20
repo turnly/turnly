@@ -8,7 +8,7 @@ import { Platform } from './platform.client'
 import { Stream } from './stream.client'
 import { Widgets } from './widgets.client'
 
-export * from './types'
+export * from './base.type'
 
 export const Realtime = {
   Platform,

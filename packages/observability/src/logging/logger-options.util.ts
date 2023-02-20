@@ -4,7 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { LoggingLevel } from './logging-level'
+import { LoggingLevel } from './logging-level.enum'
 
 export const getLoggingLevel = (
   level = process.env.LOGGING_LEVEL as string
