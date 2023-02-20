@@ -44,14 +44,10 @@
     "winston": "^3.3.3"
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.4.3",
     "@turnly/eslint-config": "github:turnly/configs",
-    "@types/node": "^18.13.0",
-    "@types/opossum": "^6.2.1",
+    "@types/node": "^18.14.0",
     "eslint": "^8.34.0",
-    "husky": "^8.0.3",
     "prettier": "^2.8.4",
-    "rimraf": "^4.1.2",
     "ts-jest": "^28.0.5",
     "ts-node": "^10.2.1",
     "typescript": "^4.9.5"

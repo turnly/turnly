@@ -40,7 +40,7 @@
   "devDependencies": {
     "@turnly/eslint-config": "github:turnly/configs",
     "@types/jest": "^27.0.1",
-    "@types/node": "^17.0.30",
+    "@types/node": "^18.14.0",
     "eslint": "^8.34.0",
     "jest": "^28.1.1",
     "nodemon": "^2.0.14",

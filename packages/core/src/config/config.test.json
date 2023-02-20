@@ -1,0 +1,9 @@
+{
+  "mongo": {
+    "uri": "mongodb://root:turnly@localhost:27017",
+    "database": "turnly_testing_db"
+  },
+  "elasticsearch": {
+    "uri": "http://localhost:9200"
+  }
+}

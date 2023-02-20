@@ -38,7 +38,7 @@
     "@turnly/eslint-config": "github:turnly/configs",
     "@turnly/testing": "github:turnly/testing.git#latest",
     "@types/jest": "^28.1.4",
-    "@types/node": "^16.10.2",
+    "@types/node": "^18.14.0",
     "cross-env": "^7.0.3",
     "eslint": "^8.34.0",
     "jest": "^28.1.1",
