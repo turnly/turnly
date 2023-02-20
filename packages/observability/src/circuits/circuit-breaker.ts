@@ -7,7 +7,7 @@
 import { Response } from '@turnly/common'
 import Breaker from 'opossum'
 
-import { ExceptionHandler } from '../exception-system'
+import { ExceptionHandler } from '../exceptions'
 import { Logger } from '../logging'
 
 export class CircuitBreaker<TI extends unknown[] = unknown[], TR = unknown> {
