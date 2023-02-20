@@ -4,7 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { Logger, Observability } from '@turnly/common'
+import { ExceptionHandler, Logger, Monitoring } from '@turnly/observability'
 import { Application as ExpressApplication } from 'express'
 
 import { config } from '../config'
@@ -51,8 +51,8 @@ export abstract class Startup {
     clearInterval(this.interval)
 
     app
-      ? Observability.Monitoring.Monitor.forHttp({ name: this.appName, app })
-      : Observability.Monitoring.Monitor.forInternal(this.appName)
+      ? Monitoring.Monitor.forHttp({ name: this.appName, app })
+      : Monitoring.Monitor.forInternal(this.appName)
   }
 
   /**
@@ -61,6 +61,6 @@ export abstract class Startup {
    * @memberof Startup
    */
   protected setupExceptionHandler(): void {
-    Observability.ExceptionHandler.setNamespace(this.appName)
+    ExceptionHandler.setNamespace(this.appName)
   }
 }

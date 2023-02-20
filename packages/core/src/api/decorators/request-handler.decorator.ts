@@ -4,7 +4,8 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { ExceptionHandler, Response, ResponseCodes } from '@turnly/common'
+import { Response, ResponseCodes } from '@turnly/common'
+import { ExceptionHandler } from '@turnly/observability'
 import { Response as ExpressResponse } from 'express'
 
 type RouteAction = (...params: unknown[]) => Promise<Response<unknown>>

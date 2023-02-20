@@ -13,8 +13,3 @@ export * from './errors/not-implemented.error'
 export * from './errors/resource-not-created.error'
 export * from './exceptions'
 export * from './handlers'
-
-/**
- * Constants
- */
-export * from './constants'

@@ -7,12 +7,8 @@
  */
 import 'reflect-metadata'
 
-import {
-  ExceptionHandler,
-  Identifier,
-  Logger,
-  Observability,
-} from '@turnly/common'
+import { Identifier, SharedMessages } from '@turnly/common'
+import { ExceptionHandler, Logger, Monitoring } from '@turnly/observability'
 import compression from 'compression'
 import cookieParser from 'cookie-parser'
 import cors from 'cors'
@@ -26,7 +22,6 @@ import helmet from 'helmet'
 import http from 'http'
 
 import { config } from '../config'
-import { SharedMessages } from '../constants/SharedMessages'
 
 /**
  * HTTP Server
@@ -116,13 +111,13 @@ export class Http {
       const { key, value } = this.getRequestId()
 
       res.setHeader(key, value)
-      Observability.ExceptionHandler.setTag(key, value)
+      ExceptionHandler.setTag(key, value)
 
       next()
     })
 
-    this._app.use(Observability.Monitoring.Monitor.requestHandler())
-    this._app.use(Observability.Monitoring.Monitor.tracingHandler())
+    this._app.use(Monitoring.Monitor.requestHandler())
+    this._app.use(Monitoring.Monitor.tracingHandler())
   }
 
   public stop(): void {

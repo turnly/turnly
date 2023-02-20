@@ -9,7 +9,7 @@
  * Domain
  */
 export * from './constants/event-type.enum'
-export * from './constants/SharedMessages'
+export * from './constants/shared-messages.enum'
 
 /**
  * CQRS
@@ -64,7 +64,6 @@ export * from './contracts/persistence/memory-database.interface'
 /**
  * Value objects
  */
-export * from './value-objects/Duration'
 export * from './value-objects/enum.value-object'
 export * from './value-objects/invalid-argument.error'
 export * from './value-objects/list.value-object'

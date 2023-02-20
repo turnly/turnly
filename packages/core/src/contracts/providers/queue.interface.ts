@@ -4,7 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { QueueMessage } from 'value-objects/queue-message.value-object'
+import { QueueMessage } from '../../value-objects/queue-message.value-object'
 
 export type QueueOptions = {
   name: string

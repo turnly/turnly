@@ -8,11 +8,11 @@
 import type { SearchHit } from '@elastic/elasticsearch/api/types'
 import { ResponseCodes } from '@turnly/common'
 
+import { AggregateRoot } from '../../entities/aggregate-root'
 import {
-  AggregateRoot,
   EntityAttributes,
   QueryBuilderObject,
-} from '../../../domain'
+} from '../../types/entity-attributes.type'
 import { ElasticBuilderAdapter } from './elastic.builder-adapter'
 import { ElasticClient } from './elastic-client'
 

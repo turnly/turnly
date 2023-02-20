@@ -7,7 +7,8 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Guid } from '@turnly/common'
 
-import { AggregateRoot, EntityAttributes } from '../../../domain'
+import { AggregateRoot } from '../../entities/aggregate-root'
+import { EntityAttributes } from '../../types/entity-attributes.type'
 import { ElasticClient } from './elastic-client'
 
 export abstract class ElasticWritableRepo<Entity extends AggregateRoot> {

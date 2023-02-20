@@ -8,11 +8,9 @@
 import { Guid } from '@turnly/common'
 import { Document, FilterQuery, Model } from 'mongoose'
 
-import {
-  AggregateRoot,
-  IEntityMapper,
-  IWritableRepository,
-} from '../../../domain'
+import { IEntityMapper } from '../../contracts/persistence/entity-mapper.interface'
+import { IWritableRepository } from '../../contracts/repositories'
+import { AggregateRoot } from '../../entities/aggregate-root'
 
 export abstract class MongoWritableRepo<
   Entity extends AggregateRoot,

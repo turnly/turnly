@@ -5,7 +5,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { NotImplementedError } from '@turnly/common'
+import { NotImplementedError } from '@turnly/observability'
 import { Router } from 'express'
 
 import { ISetup } from '../contracts/setup.interface'

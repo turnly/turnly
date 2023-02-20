@@ -6,7 +6,7 @@
  */
 import 'reflect-metadata'
 
-import { Logger } from '@turnly/common'
+import { Logger } from '@turnly/observability'
 import * as stopWatch from 'marky'
 
 import { ICommand } from '../contracts/cqrs/command.interface'

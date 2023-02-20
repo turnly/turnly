@@ -4,7 +4,8 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { Environment } from '../../../config/environment'
+import { Environment } from '@turnly/common'
+
 import { Logger } from '../../logging'
 import { tracingConfig } from '../config'
 

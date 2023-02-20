@@ -4,7 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { Exception } from '@turnly/common/dist/observability/exception-system/exceptions/Exception'
+import { Exception } from '@turnly/observability/dist/exceptions/exceptions/exception'
 
 export class InvalidArgumentError extends Exception {
   public constructor(message: string) {

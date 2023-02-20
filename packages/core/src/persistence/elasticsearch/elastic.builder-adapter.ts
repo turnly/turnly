@@ -5,14 +5,17 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 
-import { Logger } from '@turnly/common'
+import { Logger } from '@turnly/observability'
 import bodybuilder from 'bodybuilder'
 
 import { config } from '../../config'
 import { AggregateRoot } from '../../entities/aggregate-root'
 import { Filter } from '../../query-builder/filter.value-object'
 import { Operator } from '../../query-builder/filter-operator.value-object'
-import { QueryBuilderObject, Transformer } from '../../types/entity-attributes.type'
+import {
+  QueryBuilderObject,
+  Transformer,
+} from '../../types/entity-attributes.type'
 
 export enum TypeQueryEnum {
   TERMS = 'terms',

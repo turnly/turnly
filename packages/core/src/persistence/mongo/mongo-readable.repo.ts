@@ -7,12 +7,10 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { FilterQuery, Model } from 'mongoose'
 
-import {
-  AggregateRoot,
-  IEntityMapper,
-  IReadableRepository,
-  QueryBuilderObject,
-} from '../../../domain'
+import { IEntityMapper } from '../../contracts/persistence/entity-mapper.interface'
+import { IReadableRepository } from '../../contracts/repositories'
+import { AggregateRoot } from '../../entities/aggregate-root'
+import { QueryBuilderObject } from '../../types/entity-attributes.type'
 import { MongoBuilderAdapter } from './mongo.builder-adapter'
 
 export abstract class MongoReadableRepo<Entity extends AggregateRoot, D>

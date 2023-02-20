@@ -4,10 +4,10 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { BadRequestException } from '@turnly/common'
+import { BadRequestException } from '@turnly/observability'
 
 import { config } from '../config'
-import { SharedMessages } from '../constants/SharedMessages'
+import { SharedMessages } from '../constants/shared-messages.enum'
 
 export class List<T> {
   private readonly counter: number

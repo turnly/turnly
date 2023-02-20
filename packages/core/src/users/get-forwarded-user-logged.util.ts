@@ -5,7 +5,10 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 
-import { UnauthenticatedException, UnauthorizedException } from '@turnly/common'
+import {
+  UnauthenticatedException,
+  UnauthorizedException,
+} from '@turnly/observability'
 
 import { FORWARDED_USER_HEADER } from './forwarded-user-header.const'
 import { UserLogged } from './user-logged.type'

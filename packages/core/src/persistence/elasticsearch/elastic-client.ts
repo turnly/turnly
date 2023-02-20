@@ -5,7 +5,8 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import { Client, ClientOptions } from '@elastic/elasticsearch'
-import { Logger, ResponseCodes } from '@turnly/common'
+import { ResponseCodes } from '@turnly/common'
+import { Logger } from '@turnly/observability'
 
 import { IndexConfig } from './elastic-types'
 

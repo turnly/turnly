@@ -7,7 +7,7 @@
 
 import { plainToInstance } from 'class-transformer'
 
-import { IQuery } from '../domain'
+import { IQuery } from '../contracts/cqrs/query.interface'
 import { instanceValidator } from '../helpers/instance-validator.util'
 
 export abstract class Query implements IQuery {

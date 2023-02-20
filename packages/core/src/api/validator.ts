@@ -6,7 +6,7 @@
  */
 import Joi, { Schema } from 'joi'
 
-import { SharedMessages } from '../constants/SharedMessages'
+import { SharedMessages } from '../constants/shared-messages.enum'
 
 export class Validator {
   public static object(...args) {
