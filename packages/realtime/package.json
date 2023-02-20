@@ -47,12 +47,9 @@
     "@turnly/common": "github:turnly/common.git#latest",
     "@turnly/shared": "github:turnly/shared.git#latest",
     "@turnly/eslint-config": "github:turnly/configs",
-    "@types/jest": "^27.0.1",
     "@types/node": "^18.14.0",
     "eslint": "^8.34.0",
-    "jest": "^28.1.1",
     "prettier": "^2.3.0",
-    "ts-jest": "^28.0.5",
     "typescript": "^4.9.5"
   },
   "engines": {
