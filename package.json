@@ -6,7 +6,8 @@
   "license": "BSD-3-Clause",
   "author": "Turnly Team <engineering@turnly.app> (https://turnly.app)",
   "workspaces": [
-    "apps/*"
+    "apps/*",
+    "packages/*"
   ],
   "scripts": {
     "start": "bash docker/run start",
@@ -25,7 +26,8 @@
     "release:major": "lerna version major --no-push",
     "release:minor": "lerna version minor --no-push",
     "release:patch": "lerna version patch --no-push",
-    "release:preminor": "lerna version preminor --no-push"
+    "release:preminor": "lerna version preminor --no-push",
+    "release:publish": "lerna publish from-git --no-private"
   },
   "commitlint": {
     "extends": [
@@ -38,6 +40,9 @@
     "husky": "^8.0.1",
     "lerna": "^6.4.1",
     "nx": "15.6.3"
+  },
+  "resolutions": {
+    "**/esquery": "1.4.0"
   },
   "engines": {
     "node": ">=18.14"

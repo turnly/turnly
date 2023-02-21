@@ -15,7 +15,7 @@ Observability.Tracing.Trace.initialize({
   instrumentations: [Observability.Tracing.InstrumentationType.HTTP],
 })
 
-import { Application } from 'Application'
+import { Application } from 'application'
 
 async function bootstrap() {
   await new Application().setup()

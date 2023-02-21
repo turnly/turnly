@@ -31,7 +31,7 @@ the API in the simplest and most user-friendly way.
 | TypeScript                          | Types reduce bugs and increases reliability.                                  |
 | Socket.io   (@turnly/realtime)      | A lib that enables low-latency, bidirectional and event-based communication.  |
 | RabbitMQ    (@turnly/shared)        | A message broker for events.                                                  |
-| gRPC Client (@turnly/rpc)           | Efficiently connecting polyglot services in microservices architecture.       |
+| gRPC Client (@turnly/grpc)           | Efficiently connecting polyglot services in microservices architecture.       |
 
 ### Inter-services communication (services dependency)
 

@@ -1,6 +1,6 @@
 {
   "name": "@turnly/widgets-realtime-api",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "private": true,
   "description": "It's the real-time event bridge that sends data between internal services and applications.",
   "license": "BSD-3-Clause",
@@ -24,8 +24,8 @@
   },
   "dependencies": {
     "@turnly/common": "github:turnly/common.git#latest",
+    "@turnly/grpc": "github:turnly/grpc.git#latest",
     "@turnly/realtime": "github:turnly/realtime.git#latest",
-    "@turnly/rpc": "github:turnly/rpc.git#latest",
     "@turnly/shared": "github:turnly/shared.git#latest",
     "dotenv": "^16.0.1",
     "mongoose": "^6.4.6"
@@ -33,14 +33,17 @@
   "devDependencies": {
     "@turnly/eslint-config": "github:turnly/configs",
     "@types/jest": "^27.0.1",
-    "@types/node": "^17.0.30",
-    "eslint": "^8.14.0",
+    "@types/node": "^18.14.0",
+    "eslint": "^8.34.0",
     "jest": "^28.1.1",
     "nodemon": "^2.0.14",
     "prettier": "^2.3.0",
     "ts-jest": "^28.0.5",
     "ts-node": "^10.2.1",
-    "typescript": "^4.4.2"
+    "typescript": "^4.9.5"
+  },
+  "resolutions": {
+    "**/esquery": "1.4.0"
   },
   "engines": {
     "node": ">=18.14"

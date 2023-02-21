@@ -4,5 +4,5 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-export * from './broadcastableEvents'
-export * from './broadcastableToChannels'
+export * from './broadcastable-events'
+export * from './broadcastable-to-channels'

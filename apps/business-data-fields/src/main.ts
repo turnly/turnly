@@ -15,7 +15,7 @@ import { config, eventBus } from '@turnly/shared'
 
 Observability.Tracing.Trace.initialize({ name: config.get('app.name') })
 
-import { Application } from 'Application'
+import { Application } from 'application'
 
 async function bootstrap() {
   await new Application().setup()

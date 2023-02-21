@@ -1,0 +1,59 @@
+{
+  "name": "@turnly/realtime-client",
+  "version": "0.1.3",
+  "description": "A socket.io-client wrapper to facilitate connecting to our RTM & Streaming API.",
+  "homepage": "https://github.com/turnly/turnly#readme",
+  "bugs": {
+    "url": "https://github.com/turnly/turnly/issues"
+  },
+  "repository": "https://github.com/turnly/turnly",
+  "license": "BSD-3-Clause",
+  "author": "Turnly Team <engineering@turnly.app> (https://turnly.app)",
+  "main": "dist/index",
+  "types": "dist/index",
+  "directories": {
+    "test": "tests",
+    "src": "src"
+  },
+  "files": [
+    "dist",
+    "LICENSE",
+    "CHANGELOG.md",
+    "README.md"
+  ],
+  "scripts": {
+    "prebuild": "rm -rf dist tsconfig.tsbuildinfo",
+    "build": "tsc",
+    "lint": "prettier \"./**/*.{ts,js}\" --check && eslint . --ext .js,.ts && tsc --noEmit"
+  },
+  "prettier": "@turnly/eslint-config/.prettierrc.js",
+  "eslintConfig": {
+    "extends": "@turnly/eslint-config",
+    "ignorePatterns": [
+      "node_modules",
+      "**/*.md",
+      "dist",
+      "jest*",
+      "coverage"
+    ]
+  },
+  "resolutions": {
+    "**/esquery": "1.4.0"
+  },
+  "dependencies": {
+    "socket.io-client": "^4.5.1"
+  },
+  "devDependencies": {
+    "@turnly/eslint-config": "github:turnly/configs",
+    "@types/node": "^18.14.0",
+    "eslint": "^8.34.0",
+    "prettier": "^2.3.0",
+    "typescript": "^4.9.5"
+  },
+  "engines": {
+    "node": ">=18.14"
+  },
+  "publishConfig": {
+    "@turnly:registry": "https://npm.pkg.github.com/turnly"
+  }
+}

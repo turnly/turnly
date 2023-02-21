@@ -5,8 +5,8 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import { BadRequestException } from '@turnly/common'
-import { Producers } from '@turnly/rpc'
-import { Client } from '@turnly/rpc/dist/consumers'
+import { Producers } from '@turnly/grpc'
+import { Client } from '@turnly/grpc/dist/consumers'
 import { TicketsByLocationFilters } from 'Tickets/application/queries/TicketsForServingFromLocationQuery'
 import { TicketSource } from 'Tickets/domain/enums/TicketSource'
 

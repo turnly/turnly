@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "outDir": "dist",
+    "lib": ["ESNext", "DOM"],
+  },
+  "extends": "@turnly/eslint-config/tsconfig/tsconfig.lib.json",
+  "include": [
+    "src/**/*",
+    "src/*.ts"
+  ]
+}

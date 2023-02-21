@@ -4,10 +4,10 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { FieldsResolver } from './FieldsResolver'
-import { LocationsResolver } from './LocationsResolver'
-import { ServicesResolver } from './ServicesResolver'
-import { TicketsResolver } from './TicketsResolver'
+import { FieldsResolver } from './fields.resolver'
+import { LocationsResolver } from './locations.resolver'
+import { ServicesResolver } from './services.resolver'
+import { TicketsResolver } from './tickets.resolver'
 
 export const resolvers = [
   TicketsResolver,

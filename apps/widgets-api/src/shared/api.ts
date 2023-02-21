@@ -4,7 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { Consumers } from '@turnly/rpc'
+import { Consumers } from '@turnly/grpc'
 
 /**
  * Branch Management Service

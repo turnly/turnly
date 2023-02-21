@@ -4,10 +4,10 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { Producers } from '@turnly/rpc'
+import { Producers } from '@turnly/grpc'
 import { config } from '@turnly/shared'
-import { LocationsModule } from 'Locations/LocationsModule'
-import { ServicesModule } from 'Services/ServicesModule'
+import { LocationsModule } from 'locations/locations.module'
+import { ServicesModule } from 'services/services.module'
 
 /**
  * Services (gRPC)
