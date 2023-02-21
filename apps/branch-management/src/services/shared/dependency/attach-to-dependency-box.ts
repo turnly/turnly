@@ -6,9 +6,9 @@
  */
 import { Box, ioc } from '@turnly/shared'
 
-import { ServicesMapper } from '../mongo/entity-model-mappers/services.mapper'
-import { ServicesReadableRepo } from '../mongo/repositories/services-readable.repo'
-import { ServicesWritableRepo } from '../mongo/repositories/services-writable.repo'
+import { ServicesMapper } from '../infrastructure/persistence/mongo/entity-model-mappers/services.mapper'
+import { ServicesReadableRepo } from '../infrastructure/persistence/mongo/repositories/services-readable.repo'
+import { ServicesWritableRepo } from '../infrastructure/persistence/mongo/repositories/services-writable.repo'
 
 Box.register({
   servicesMapper: ioc.asClass(ServicesMapper).singleton(),

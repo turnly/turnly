@@ -6,9 +6,9 @@
  */
 import { Box, ioc } from '@turnly/shared'
 
-import { AnswersMapper } from '../mongo/entity-model-mappers/answers.mapper'
-import { AnswersReadableRepo } from '../mongo/repositories/answers-readable.repo'
-import { AnswersWritableRepo } from '../mongo/repositories/answers-writable.repo'
+import { AnswersMapper } from '../infrastructure/persistence/mongo/entity-model-mappers/answers.mapper'
+import { AnswersReadableRepo } from '../infrastructure/persistence/mongo/repositories/answers-readable.repo'
+import { AnswersWritableRepo } from '../infrastructure/persistence/mongo/repositories/answers-writable.repo'
 
 Box.register({
   answersMapper: ioc.asClass(AnswersMapper).singleton(),

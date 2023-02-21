@@ -12,7 +12,7 @@
  */
 import { commandBus, eventBus, queryBus } from '@turnly/shared'
 
-import { FieldsModule } from '../../../fields.module'
+import { FieldsModule } from '../../fields.module'
 
 /**
  * Field module

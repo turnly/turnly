@@ -4,7 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import '../../../../../../src/services/shared/infrastructure/dependency/register-dependencies'
+import '../../../../../../src/services/shared/dependency/register-dependencies'
 
 import { ResourceNotFoundException } from '@turnly/common'
 import { MongoEnvironmentArranger } from '@turnly/shared'
