@@ -12,7 +12,7 @@
  */
 import { commandBus, eventBus, queryBus } from '@turnly/shared'
 
-import { CustomersModule } from '../../../customers.module'
+import { CustomersModule } from '../../customers.module'
 
 /**
  * Customer module
