@@ -6,18 +6,14 @@
  */
 import { Box, ioc } from '@turnly/shared'
 
-import { CreateTicketReadingDBController } from '../api/CreateTicketReadingDBController'
-import { CreateTicketReadingDBServer } from '../api/CreateTicketReadingDBServer'
 import { CreateTicketReadingDBCommandHandler } from '../commands/CreateTicketReadingDBCommandHandler'
+import { CreateTicketReadingDBSubscriber } from '../subscribers/CreateTicketReadingDBSubscriber'
 
 Box.register({
-  createTicketReadingDBServer: ioc
-    .asClass(CreateTicketReadingDBServer)
-    .singleton(),
-  createTicketReadingDBController: ioc
-    .asClass(CreateTicketReadingDBController)
-    .singleton(),
   createTicketReadingDBCommandHandler: ioc
     .asClass(CreateTicketReadingDBCommandHandler)
+    .singleton(),
+  createTicketReadingDBSubscriber: ioc
+    .asClass(CreateTicketReadingDBSubscriber)
     .singleton(),
 })

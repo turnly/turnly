@@ -11,7 +11,7 @@ import {
   IEventBus,
   IQueryBus,
 } from '@turnly/shared'
-import { GetAnUnexpiredTicketQuery } from 'Tickets/application/queries/GetAnUnexpiredTicketQuery'
+import { GetAnUnexpiredTicketQuery } from 'Tickets/Shared/application/queries/GetAnUnexpiredTicketQuery/GetAnUnexpiredTicketQuery'
 import { ITicketsWritableRepo } from 'Tickets/Shared/domain/contracts/ITicketsRepo'
 import { Ticket } from 'Tickets/Shared/domain/entities/Ticket'
 

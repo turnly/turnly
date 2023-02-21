@@ -10,7 +10,7 @@
  *
  * @description Register dependencies to the dependency injection container.
  */
-import 'Tickets/Shared/infrastructure/persistence/dependency/attach-to-dependency-box'
+import 'Tickets/Shared/dependency/attach-to-dependency-box'
 import 'Tickets/CreateTicket/dependency/attach-to-dependency-box'
 import 'Tickets/AnnounceTicket/dependency/attach-to-dependency-box'
 import 'Tickets/LeaveTicket/dependency/attach-to-dependency-box'
@@ -18,14 +18,20 @@ import 'Tickets/CallTicket/dependency/attach-to-dependency-box'
 import 'Tickets/DiscardTicket/dependency/attach-to-dependency-box'
 import 'Tickets/ServeTicket/dependency/attach-to-dependency-box'
 import 'Tickets/ReturnToQueue/dependency/attach-to-dependency-box'
+import 'Tickets/CreateTicketReadingDB/dependency/attach-to-dependency-box'
+import 'Tickets/get-one-ticket/dependency/attach-to-dependency-box'
+import 'Tickets/get-tickets-waiting-for-service/dependency/attach-to-dependency-box'
+import 'Tickets/TicketsBeforeYours/dependency/attach-to-dependency-box'
+import 'Tickets/TicketsForServingFromLocation/dependency/attach-to-dependency-box'
+import 'Tickets/NotifyCustomerCalled/dependency/attach-to-dependency-box'
+import 'Tickets/GetTicketDetails/dependency/attach-to-dependency-box'
 
-import { NotImplementedError } from '@turnly/common'
+import { Producers } from '@turnly/grpc'
 /**
  * Module
  *
  * @description Module definition.
  */
-import type { Producers } from '@turnly/rpc'
 import type {
   ICommandHandler,
   IEventSubscriber,
@@ -39,20 +45,23 @@ import type { Ticket } from 'Tickets/Shared/domain/entities/Ticket'
 export class TicketsModule {
   public static getServer(): Producers.QueuingSystem.ITicketsServer {
     return {
-      getDetails: (..._args) => new NotImplementedError(),
-      call: (..._args) => Box.resolve('callTicketServer').execute(..._args),
-      getOne: (..._args) => new NotImplementedError(),
-      getTicketsBeforeYours: (..._args) => new NotImplementedError(),
-      getTicketsForServingFromLocation: (..._args) => new NotImplementedError(),
-      leave: (..._args) => Box.resolve('leaveTicketServer').execute(..._args),
-      announce: (..._args) =>
-        Box.resolve('announceTicketServer').execute(..._args),
-      serve: (..._args) => Box.resolve('serveTicketServer').execute(..._args),
-      getTicketsWaitingForService: (..._args) => new NotImplementedError(),
-      returnToQueue: (..._args) =>
-        Box.resolve('returnToQueueServer').execute(..._args),
-      discard: (..._args) =>
-        Box.resolve('discardTicketServer').execute(..._args),
+      getDetails: (...args) =>
+        Box.resolve('getTicketDetailsServer').execute(...args),
+      call: (...args) => Box.resolve('callTicketServer').execute(...args),
+      getOne: (...args) => Box.resolve('getOneTicketServer').execute(...args),
+      getTicketsBeforeYours: (...args) =>
+        Box.resolve('ticketsBeforeYoursServer').execute(...args),
+      getTicketsForServingFromLocation: (...args) =>
+        Box.resolve('ticketsForServingFromLocationServer').execute(...args),
+      leave: (...args) => Box.resolve('leaveTicketServer').execute(...args),
+      announce: (...args) =>
+        Box.resolve('announceTicketServer').execute(...args),
+      serve: (...args) => Box.resolve('serveTicketServer').execute(...args),
+      getTicketsWaitingForService: (...args) =>
+        Box.resolve('getTicketsWaitingForServiceServer').execute(...args),
+      returnToQueue: (...args) =>
+        Box.resolve('returnToQueueServer').execute(...args),
+      discard: (...args) => Box.resolve('discardTicketServer').execute(...args),
       create: (...args) => Box.resolve('createTicketServer').execute(...args),
     }
   }
@@ -66,7 +75,14 @@ export class TicketsModule {
   }
 
   public static getQueryHandlers(): IQueryHandler[] {
-    return []
+    return [
+      Box.resolve('getOneTicketQueryHandler'),
+      Box.resolve('getTicketsWaitingForServiceQueryHandler'),
+      Box.resolve('ticketsBeforeYoursQueryHandler'),
+      Box.resolve('ticketsForServingFromLocationQueryHandler'),
+      Box.resolve('activeTicketsByCustomerQueryHandler'),
+      Box.resolve('getAnUnexpiredTicketQueryHandler'),
+    ]
   }
 
   public static getCommandHandlers(): ICommandHandler[] {
@@ -78,10 +94,14 @@ export class TicketsModule {
       Box.resolve('discardTicketCommandHandler'),
       Box.resolve('serveTicketCommandHandler'),
       Box.resolve('returnToQueueCommandHandler'),
+      Box.resolve('createTicketReadingDBCommandHandler'),
     ]
   }
 
   public static getEventSubscribers(): IEventSubscriber[] {
-    return []
+    return [
+      Box.resolve('createTicketReadingDBSubscriber'),
+      Box.resolve('notifyCustomerCalledSubscriber'),
+    ]
   }
 }
