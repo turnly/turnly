@@ -7,8 +7,8 @@
 import dotenv from 'dotenv'
 dotenv.config()
 
-import 'Fields/infrastructure/register-dependencies'
-import 'Answers/infrastructure/register-dependencies'
+import 'fields/shared/dependency/register-dependencies'
+import 'answers/shared/dependency/register-dependencies'
 
 import { Observability } from '@turnly/common'
 import { config, eventBus } from '@turnly/shared'

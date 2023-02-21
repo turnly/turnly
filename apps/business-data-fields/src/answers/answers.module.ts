@@ -10,7 +10,7 @@
  *
  * @description Register dependencies to the dependency injection container.
  */
-import 'answers/shared/infrastructure/persistence/dependency/attach-to-dependency-box'
+import 'answers/shared/dependency/attach-to-dependency-box'
 import 'answers/list-answers-by-field/dependency/attach-to-dependency-box'
 
 /**
