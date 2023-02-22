@@ -7,13 +7,7 @@
 import { Producers } from '@turnly/grpc'
 import { config } from '@turnly/shared'
 import { CustomersModule } from 'customers/customers.module'
-import { TicketsServer } from 'Tickets/infrastructure/api/rpc'
-import { TicketsFactory } from 'Tickets/infrastructure/factories/TicketsFactory'
-
-/**
- * Servers
- */
-const ticketsServer = new TicketsServer(TicketsFactory.getController())
+import { TicketsModule } from 'Tickets/TicketsModule'
 
 /**
  * Services (gRPC)
@@ -23,7 +17,7 @@ const ticketsServer = new TicketsServer(TicketsFactory.getController())
 const services: Producers.Service[] = [
   {
     definition: Producers.QueuingSystem.TicketsService,
-    implementation: ticketsServer.implementation,
+    implementation: TicketsModule.getServer(),
   },
   {
     definition: Producers.QueuingSystem.CustomersService,
