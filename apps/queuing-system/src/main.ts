@@ -7,7 +7,7 @@
 import dotenv from 'dotenv'
 dotenv.config()
 
-import 'etickets/eshared/dependency/register-dependencies'
+import 'tickets/shared/dependency/register-dependencies'
 import 'customers/shared/dependency/register-dependencies'
 
 import { Observability } from '@turnly/common'
