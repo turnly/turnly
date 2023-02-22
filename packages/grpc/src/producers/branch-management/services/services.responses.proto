@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package turnly.branch_management.v1.services;
+
+import "common.proto";
+
+message Service {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+  string location_id = 4;
+}
+
+message GetServiceResponse {
+  Service data = 1;
+  turnly.common.v1.Meta meta = 2;
+}
+
+message ListServicesOfOneLocationResponse {
+  repeated Service data = 1;
+  turnly.common.v1.Meta meta = 2;
+}

@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package turnly.queuing_system.v1.customers;
+
+import "customers.requests.proto";
+import "customers.responses.proto";
+
+service Customers {
+  rpc Create(CreateCustomerRequest) returns (CreateCustomerResponse) {}
+  rpc GetOne(GetCustomerRequest) returns (GetCustomerResponse) {}
+}

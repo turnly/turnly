@@ -1,0 +1,71 @@
+syntax = "proto3";
+
+package turnly.queuing_system.v1.tickets;
+
+import "common.proto";
+
+message CreateTicketObject {
+  string service_id = 1;
+  string location_id = 2;
+  string customer_id = 3;
+  string service_name = 4;
+  string source = 5;
+  repeated turnly.common.v1.Extra extras = 6;
+}
+
+message CreateTicketRequest {
+  CreateTicketObject ticket = 1;
+}
+
+message GetTicketRequest {
+  string id = 1;
+  string customer_id = 2;
+}
+
+message GetTicketDetailsRequest {
+  string id = 1;
+}
+
+message LeaveTicketRequest {
+  string id = 1;
+  string customer_id = 2;
+}
+
+message AnnounceTicketRequest {
+  string id = 1;
+  string customer_id = 2;
+}
+
+message GetTicketsBeforeYoursRequest {
+  string id = 1;
+  string customer_id = 2;
+}
+
+message GetTicketsWaitingForServiceRequest {
+  repeated string service_ids = 1;
+  string customer_id = 2;
+}
+
+message GetTicketsForServingFromLocationRequest {
+  string location_id = 1;
+  repeated string service_ids = 2;
+  string find_query = 3;
+  string status = 4;
+}
+
+message CallTicketRequest {
+  string id = 1;
+  string agent_id = 2;
+}
+
+message ServeTicketRequest {
+  string id = 1;
+}
+
+message DiscardTicketRequest {
+  string id = 1;
+}
+
+message ReturnToQueueRequest {
+  string id = 1;
+}

@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package turnly.channels.v1.widgets;
+
+import "widgets.requests.proto";
+import "widgets.responses.proto";
+
+service Widgets {
+  rpc GetOne(GetWidgetRequest) returns (GetWidgetResponse) {}
+}

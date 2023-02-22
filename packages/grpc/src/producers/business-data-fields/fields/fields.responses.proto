@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package turnly.business_data_fields.v1.fields;
+
+import "common.proto";
+
+message Field {
+  string id = 1;
+  string label = 2;
+  string description = 3;
+  string placeholder = 4;
+  string type = 5;
+  string entity_type = 6;
+  bool is_required = 7;
+  repeated turnly.common.v1.Extra extras = 9;
+}
+
+message FindCustomerFieldsByServiceResponse {
+  repeated Field data = 1;
+  turnly.common.v1.Meta meta = 2;
+}

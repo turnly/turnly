@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package turnly.branch_management.v1.locations;
+
+message SearchAvailableLocationsForServingRequest {
+  string search_query = 1;
+  string country = 2;
+  string latitude = 3;
+  string longitude = 4;
+  int32 limit = 5;
+  int32 offset = 6;
+}
+
+message GetLocationRequest {
+  string id = 1;
+}

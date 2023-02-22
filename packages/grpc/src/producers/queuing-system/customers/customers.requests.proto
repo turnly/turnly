@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package turnly.queuing_system.v1.customers;
+
+import "common.proto";
+
+message CreateCustomerObject {
+  string name = 1;
+  string lastname = 2;
+  string email = 3;
+  string country = 4;
+  string phone = 5;
+  bool has_whatsapp = 6;
+  bool show_name_signage = 7;
+  repeated turnly.common.v1.Extra extras = 8;
+}
+
+message CreateCustomerRequest {
+  CreateCustomerObject customer = 1;
+}
+
+message GetCustomerRequest {
+  string id = 1;
+}

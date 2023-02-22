@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package turnly.business_data_fields.v1.answers;
+
+import "common.proto";
+
+message Answer {
+  string id = 1;
+  string value = 2;
+  string field_id = 3;
+  string entity_id = 4;
+  string entity_type = 5;
+  repeated turnly.common.v1.Extra extras = 6;
+}
+
+message CreateAnswersResponse {
+  repeated Answer data = 1;
+  turnly.common.v1.Meta meta = 2;
+}
+
+message ListAnswersByFieldResponse {
+  repeated Answer data = 1;
+  turnly.common.v1.Meta meta = 2;
+}

@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package turnly.business_data_fields.v1.answers;
+
+import "answers.requests.proto";
+import "answers.responses.proto";
+
+service Answers {
+  rpc Create(CreateAnswersRequest) returns (CreateAnswersResponse) {}
+  rpc ListByField(ListAnswersByFieldRequest)
+    returns (ListAnswersByFieldResponse) {}
+}

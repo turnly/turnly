@@ -1,0 +1,88 @@
+syntax = "proto3";
+
+package turnly.queuing_system.v1.tickets;
+
+import "common.proto";
+
+message Ticket {
+  message Rating {
+    string score = 1;
+    string comment = 2;
+  }
+  string id = 1;
+  string status = 2;
+  string priority = 3;
+  string source = 4;
+  string display_code = 5;
+  string service_id = 6;
+  string location_id = 7;
+  string customer_id = 8;
+  string assignee_id = 9;
+  string created_at = 10;
+  Rating rating = 11;
+  repeated turnly.common.v1.Extra extras = 12;
+}
+
+message CreateTicketResponse {
+  Ticket data = 1;
+  turnly.common.v1.Meta meta = 2;
+}
+
+message GetTicketDetailsResponse {
+  Ticket data = 1;
+  turnly.common.v1.Meta meta = 2;
+}
+
+message GetTicketResponse {
+  Ticket data = 1;
+  turnly.common.v1.Meta meta = 2;
+}
+
+message GetTicketsBeforeYoursResponse {
+  repeated Ticket data = 1;
+  turnly.common.v1.Meta meta = 2;
+}
+
+message GetTicketsWaitingForServiceResponse {
+  message ServiceTickets {
+    string waiting_for = 1;
+    repeated Ticket tickets = 2;
+  }
+  repeated ServiceTickets data = 1;
+  turnly.common.v1.Meta meta = 2;
+}
+
+message GetTicketsForServingFromLocationResponse {
+  repeated Ticket data = 1;
+  turnly.common.v1.Meta meta = 2;
+}
+
+message LeaveTicketResponse {
+  Ticket data = 1;
+  turnly.common.v1.Meta meta = 2;
+}
+
+message AnnounceTicketResponse {
+  Ticket data = 1;
+  turnly.common.v1.Meta meta = 2;
+}
+
+message CallTicketResponse {
+  Ticket data = 1;
+  turnly.common.v1.Meta meta = 2;
+}
+
+message ServeTicketResponse {
+  Ticket data = 1;
+  turnly.common.v1.Meta meta = 2;
+}
+
+message DiscardTicketResponse {
+  Ticket data = 1;
+  turnly.common.v1.Meta meta = 2;
+}
+
+message ReturnToQueueResponse {
+  Ticket data = 1;
+  turnly.common.v1.Meta meta = 2;
+}

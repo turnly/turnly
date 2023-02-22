@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package turnly.queuing_system.v1.tickets;
+
+import "tickets.requests.proto";
+import "tickets.responses.proto";
+
+service Tickets {
+  rpc Create(CreateTicketRequest) returns (CreateTicketResponse) {}
+  rpc GetOne(GetTicketRequest) returns (GetTicketResponse) {}
+  rpc GetDetails(GetTicketDetailsRequest) returns (GetTicketDetailsResponse) {}
+  rpc Leave(LeaveTicketRequest) returns (LeaveTicketResponse) {}
+  rpc Announce(AnnounceTicketRequest) returns (AnnounceTicketResponse) {}
+  rpc Call(CallTicketRequest) returns (CallTicketResponse) {}
+  rpc GetTicketsBeforeYours(GetTicketsBeforeYoursRequest)
+    returns (GetTicketsBeforeYoursResponse) {}
+  rpc GetTicketsWaitingForService(GetTicketsWaitingForServiceRequest)
+    returns (GetTicketsWaitingForServiceResponse) {}
+  rpc GetTicketsForServingFromLocation(GetTicketsForServingFromLocationRequest)
+    returns (GetTicketsForServingFromLocationResponse) {}
+  rpc Serve(ServeTicketRequest) returns (ServeTicketResponse) {}
+  rpc Discard(DiscardTicketRequest) returns (DiscardTicketResponse) {}
+  rpc ReturnToQueue(ReturnToQueueRequest)
+    returns (ReturnToQueueResponse) {}
+}

@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package turnly.branch_management.v1.locations;
+
+import "locations.requests.proto";
+import "locations.responses.proto";
+
+service Locations {
+  rpc SearchAvailableLocationsForServing(SearchAvailableLocationsForServingRequest)
+    returns (SearchAvailableLocationsForServingResponse) {}
+  rpc GetOne(GetLocationRequest) returns (GetLocationResponse) {}
+}

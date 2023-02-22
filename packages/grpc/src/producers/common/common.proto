@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package turnly.common.v1;
+
+message Meta {
+  message ExceptionMessage {
+    string parameter = 1;
+    string message = 2;
+  }
+
+  int32 status = 1;
+  string title = 2;
+  string message = 3;
+  bool success = 4;
+  int64 timestamp = 5;
+  repeated ExceptionMessage errors = 6;
+}
+
+message Extra {
+  string key = 1;
+  string value = 2;
+}

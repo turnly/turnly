@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package turnly.branch_management.v1.locations;
+
+import "common.proto";
+
+message Location {
+  string id = 1;
+  string name = 2;
+  string address = 3;
+  string country = 4;
+  string latitude = 5;
+  string longitude = 6;
+  int32 stop_serving_before_in_minutes = 7;
+}
+
+message SearchAvailableLocationsForServingResponse {
+  repeated Location data = 1;
+  turnly.common.v1.Meta meta = 2;
+}
+
+message GetLocationResponse {
+  Location data = 1;
+  turnly.common.v1.Meta meta = 2;
+}

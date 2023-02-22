@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package turnly.branch_management.v1.services;
+
+import "services.requests.proto";
+import "services.responses.proto";
+
+service Services {
+  rpc GetOne(GetServiceRequest) returns (GetServiceResponse) {}
+  rpc ListServicesOfOneLocation(ListServicesOfOneLocationRequest)
+    returns (ListServicesOfOneLocationResponse) {}
+}

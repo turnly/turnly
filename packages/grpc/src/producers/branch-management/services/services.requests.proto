@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package turnly.branch_management.v1.services;
+
+message GetServiceRequest {
+  string id = 1;
+}
+
+message ListServicesOfOneLocationRequest {
+  string location_id = 1;
+}
