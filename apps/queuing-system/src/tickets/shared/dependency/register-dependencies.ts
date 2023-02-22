@@ -11,9 +11,9 @@
  * @description This file is used to register handlers to the bus.
  */
 import { commandBus, elasticClient, eventBus, queryBus } from '@turnly/shared'
-import { TicketsMappings } from 'tickets/shared/infrastructure/persistence/elasticsearch/mappings/TicketsMappings'
 
 import { TicketsModule } from '../../tickets.module'
+import { TicketsMappings } from '../infrastructure/persistence/elasticsearch/mappings/TicketsMappings'
 
 /**
  * Ticket module
