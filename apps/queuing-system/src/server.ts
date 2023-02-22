@@ -7,7 +7,7 @@
 import { Producers } from '@turnly/grpc'
 import { config } from '@turnly/shared'
 import { CustomersModule } from 'customers/customers.module'
-import { TicketsModule } from 'Tickets/TicketsModule'
+import { TicketsModule } from 'etickets/TicketsModule'
 
 /**
  * Services (gRPC)
