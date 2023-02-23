@@ -4,7 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-export * from './api/CallTicketController'
-export * from './api/CallTicketServer'
-export * from './commands/CallTicketCommand'
-export * from './commands/CallTicketCommandHandler'
+export * from './api/call-ticket-to-desk.controller'
+export * from './api/call-ticket-to-desk.server'
+export * from './commands/call-ticket-to-desk.command'
+export * from './commands/call-ticket-to-desk.command-handler'

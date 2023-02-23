@@ -4,7 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-export * from './api/CreateTicketController'
-export * from './api/CreateTicketServer'
-export * from './commands/CreateTicketCommand'
-export * from './commands/CreateTicketCommandHandler'
+export * from './api/create-ticket.controller'
+export * from './api/create-ticket.server'
+export * from './commands/create-ticket.command'
+export * from './commands/create-ticket.command-handler'

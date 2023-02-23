@@ -4,7 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-export * from './api/AnnounceTicketController'
-export * from './api/AnnounceTicketServer'
-export * from './commands/AnnounceTicketCommand'
-export * from './commands/AnnounceTicketCommandHandler'
+export * from './api/announce-my-arrival.controller'
+export * from './api/announce-my-arrival.server'
+export * from './commands/announce-my-arrival.command'
+export * from './commands/announce-my-arrival.command-handler'

@@ -6,29 +6,29 @@
  */
 import { Producers } from '@turnly/rpc'
 import { Client } from '@turnly/rpc/dist/consumers'
-import { AnnounceTicketController } from 'tickets/announce-my-arrival'
+import { AnnounceMyArrivalController } from 'tickets/announce-my-arrival'
 import { TicketsMapper } from 'tickets/shared/infrastructure/grpc/TicketsMapper'
 
-export class AnnounceTicketServer {
+export class AnnounceMyArrivalServer {
   public constructor(
-    private readonly announceTicketController: AnnounceTicketController
+    private readonly announceMyArrivalController: AnnounceMyArrivalController
   ) {}
 
-  @Producers.CallHandler(Producers.QueuingSystem.AnnounceTicketResponse)
+  @Producers.CallHandler(Producers.QueuingSystem.AnnounceMyArrivalResponse)
   public async execute(
     call: Producers.ServerUnaryCall<
-      Producers.QueuingSystem.AnnounceTicketRequest,
-      Producers.QueuingSystem.AnnounceTicketResponse
+      Producers.QueuingSystem.AnnounceMyArrivalRequest,
+      Producers.QueuingSystem.AnnounceMyArrivalResponse
     >,
-    callback: Producers.ICallback<Producers.QueuingSystem.AnnounceTicketResponse>
+    callback: Producers.ICallback<Producers.QueuingSystem.AnnounceMyArrivalResponse>
   ) {
-    const { data, meta } = await this.announceTicketController.execute({
+    const { data, meta } = await this.announceMyArrivalController.execute({
       id: call.request.getId(),
       organizationId: Client.getOrganizationId(call),
       customerId: call.request.getCustomerId(),
     })
 
-    const response = new Producers.QueuingSystem.AnnounceTicketResponse()
+    const response = new Producers.QueuingSystem.AnnounceMyArrivalResponse()
     const ticket = TicketsMapper.toRPC(data)
 
     response.setData(ticket)

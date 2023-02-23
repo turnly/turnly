@@ -18,7 +18,6 @@ import 'tickets/call-ticket-to-desk/dependency/attach-to-dependency-box'
 import 'tickets/mark-ticket-as-discarded/dependency/attach-to-dependency-box'
 import 'tickets/mark-ticket-as-served/dependency/attach-to-dependency-box'
 import 'tickets/return-ticket-to-queue/dependency/attach-to-dependency-box'
-import 'tickets/create-ticket-reading-database/dependency/attach-to-dependency-box'
 import 'tickets/get-one-ticket/dependency/attach-to-dependency-box'
 import 'tickets/list-tickets-waiting-for-service/dependency/attach-to-dependency-box'
 import 'tickets/list-tickets-before-yours/dependency/attach-to-dependency-box'
@@ -55,7 +54,7 @@ export class TicketsModule {
         Box.resolve('ticketsForServingFromLocationServer').execute(...args),
       leave: (...args) => Box.resolve('leaveTicketServer').execute(...args),
       announce: (...args) =>
-        Box.resolve('announceTicketServer').execute(...args),
+        Box.resolve('announceMyArrivalServer').execute(...args),
       serve: (...args) => Box.resolve('serveTicketServer').execute(...args),
       getTicketsWaitingForService: (...args) =>
         Box.resolve('getTicketsWaitingForServiceServer').execute(...args),
@@ -89,19 +88,15 @@ export class TicketsModule {
     return [
       Box.resolve('createTicketCommandHandler'),
       Box.resolve('leaveTicketCommandHandler'),
-      Box.resolve('announceTicketCommandHandler'),
+      Box.resolve('announceMyArrivalCommandHandler'),
       Box.resolve('callTicketCommandHandler'),
       Box.resolve('discardTicketCommandHandler'),
       Box.resolve('serveTicketCommandHandler'),
       Box.resolve('returnToQueueCommandHandler'),
-      Box.resolve('createTicketReadingDBCommandHandler'),
     ]
   }
 
   public static getEventSubscribers(): IEventSubscriber[] {
-    return [
-      Box.resolve('createTicketReadingDBSubscriber'),
-      Box.resolve('notifyCustomerCalledSubscriber'),
-    ]
+    return [Box.resolve('notifyCustomerCalledSubscriber')]
   }
 }

@@ -6,7 +6,7 @@
  */
 import { EventsSubscriber, IEventSubscriber } from '@turnly/shared'
 import { NotificationsProvider } from '@turnly/shared'
-import { TicketCalledEvent } from 'tickets/create-ticket/events/TicketCalledEvent'
+import { TicketCalledEvent } from 'tickets/create-ticket/events/ticket-called.event'
 import { Ticket } from 'tickets/shared/domain/entities/Ticket'
 
 enum Channels {

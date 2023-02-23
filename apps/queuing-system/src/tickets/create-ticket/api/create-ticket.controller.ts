@@ -10,21 +10,24 @@ import {
   InputValidator,
   TimeoutHandler,
 } from '@turnly/shared'
-import { CallTicketCommand, CallTicketParams } from 'tickets/call-ticket-to-desk'
+import {
+  CreateTicketCommand,
+  CreateTicketCommandParams,
+} from 'tickets/create-ticket'
 import { Ticket } from 'tickets/shared/domain/entities/Ticket'
 
-import { CallTicketValidator } from './CallTicketValidator'
+import { CreateTicketValidator } from './create-ticket.validator'
 
-export class CallTicketController extends Controller {
+export class CreateTicketController extends Controller {
   public constructor(private readonly commandBus: ICommandBus) {
     super()
   }
 
   @TimeoutHandler()
-  @InputValidator(CallTicketValidator)
-  public async execute(params: CallTicketParams) {
-    const ticket = await this.commandBus.execute<Ticket, CallTicketCommand>(
-      new CallTicketCommand(params)
+  @InputValidator(CreateTicketValidator)
+  public async execute(params: CreateTicketCommandParams) {
+    const ticket = await this.commandBus.execute<Ticket, CreateTicketCommand>(
+      new CreateTicketCommand(params)
     )
 
     return this.respond.created(ticket.toObject())

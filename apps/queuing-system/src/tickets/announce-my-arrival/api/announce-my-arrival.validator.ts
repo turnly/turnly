@@ -6,8 +6,8 @@
  */
 import { Validator } from '@turnly/shared'
 
-export const CallTicketValidator = Validator.object({
+export const AnnounceMyArrivalValidator = Validator.object({
   id: Validator.isId(),
   organizationId: Validator.isId(),
-  agentId: Validator.isId(),
+  customerId: Validator.isId(),
 })

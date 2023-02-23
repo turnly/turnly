@@ -6,14 +6,16 @@
  */
 import { Box, ioc } from '@turnly/shared'
 
-import { AnnounceTicketController } from '../api/AnnounceTicketController'
-import { AnnounceTicketServer } from '../api/AnnounceTicketServer'
-import { AnnounceTicketCommandHandler } from '../commands/AnnounceTicketCommandHandler'
+import { AnnounceMyArrivalController } from '../api/announce-my-arrival.controller'
+import { AnnounceMyArrivalServer } from '../api/announce-my-arrival.server'
+import { AnnounceMyArrivalCommandHandler } from '../commands/announce-my-arrival.command-handler'
 
 Box.register({
-  announceTicketServer: ioc.asClass(AnnounceTicketServer).singleton(),
-  announceTicketController: ioc.asClass(AnnounceTicketController).singleton(),
-  announceTicketCommandHandler: ioc
-    .asClass(AnnounceTicketCommandHandler)
+  announceMyArrivalServer: ioc.asClass(AnnounceMyArrivalServer).singleton(),
+  announceMyArrivalController: ioc
+    .asClass(AnnounceMyArrivalController)
+    .singleton(),
+  announceMyArrivalCommandHandler: ioc
+    .asClass(AnnounceMyArrivalCommandHandler)
     .singleton(),
 })

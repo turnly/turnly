@@ -6,29 +6,29 @@
  */
 import { Producers } from '@turnly/rpc'
 import { Client } from '@turnly/rpc/dist/consumers'
-import { CallTicketController } from 'tickets/call-ticket-to-desk'
+import { CallTicketToDeskController } from 'tickets/call-ticket-to-desk'
 import { TicketsMapper } from 'tickets/shared/infrastructure/grpc/TicketsMapper'
 
-export class CallTicketServer {
+export class CallTicketToDeskServer {
   public constructor(
-    private readonly callTicketController: CallTicketController
+    private readonly callTicketToDeskController: CallTicketToDeskController
   ) {}
 
-  @Producers.CallHandler(Producers.QueuingSystem.CallTicketResponse)
+  @Producers.CallHandler(Producers.QueuingSystem.CallTicketToDeskResponse)
   public async call(
     call: Producers.ServerUnaryCall<
-      Producers.QueuingSystem.CallTicketRequest,
-      Producers.QueuingSystem.CallTicketResponse
+      Producers.QueuingSystem.CallTicketToDeskRequest,
+      Producers.QueuingSystem.CallTicketToDeskResponse
     >,
-    callback: Producers.ICallback<Producers.QueuingSystem.CallTicketResponse>
+    callback: Producers.ICallback<Producers.QueuingSystem.CallTicketToDeskResponse>
   ) {
-    const { data, meta } = await this.callTicketController.execute({
+    const { data, meta } = await this.callTicketToDeskController.execute({
       id: call.request.getId(),
       organizationId: Client.getOrganizationId(call),
       agentId: call.request.getAgentId(),
     })
 
-    const response = new Producers.QueuingSystem.CallTicketResponse()
+    const response = new Producers.QueuingSystem.CallTicketToDeskResponse()
     const ticket = TicketsMapper.toRPC(data)
 
     response.setData(ticket)

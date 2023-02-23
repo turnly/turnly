@@ -7,12 +7,12 @@
 import { Guid } from '@turnly/common'
 import { ICommand } from '@turnly/shared'
 
-export type CallTicketParams = {
+export type CallTicketToDeskParams = {
   id: Guid
   agentId: Guid
   organizationId: Guid
 }
 
-export class CallTicketCommand implements ICommand {
-  public constructor(public readonly params: CallTicketParams) {}
+export class CallTicketToDeskCommand implements ICommand {
+  public constructor(public readonly params: CallTicketToDeskParams) {}
 }

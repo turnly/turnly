@@ -6,12 +6,12 @@
  */
 import { Box, ioc } from '@turnly/shared'
 
-import { CallTicketController } from '../api/CallTicketController'
-import { CallTicketServer } from '../api/CallTicketServer'
-import { CallTicketCommandHandler } from '../commands/CallTicketCommandHandler'
+import { CallTicketToDeskController } from '../api/call-ticket-to-desk.controller'
+import { CallTicketToDeskServer } from '../api/call-ticket-to-desk.server'
+import { CallTicketToDeskCommandHandler } from '../commands/call-ticket-to-desk.command-handler'
 
 Box.register({
-  callTicketServer: ioc.asClass(CallTicketServer).singleton(),
-  callTicketController: ioc.asClass(CallTicketController).singleton(),
-  callTicketCommandHandler: ioc.asClass(CallTicketCommandHandler).singleton(),
+  callTicketToDeskServer: ioc.asClass(CallTicketToDeskServer).singleton(),
+  callTicketToDeskController: ioc.asClass(CallTicketToDeskController).singleton(),
+  callTicketToDeskCommandHandler: ioc.asClass(CallTicketToDeskCommandHandler).singleton(),
 })

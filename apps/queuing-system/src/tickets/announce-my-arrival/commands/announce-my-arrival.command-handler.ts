@@ -15,11 +15,11 @@ import { GetAnUnexpiredTicketQuery } from 'tickets/shared/application/queries/ge
 import { ITicketsWritableRepo } from 'tickets/shared/domain/contracts/ITicketsRepo'
 import { Ticket } from 'tickets/shared/domain/entities/Ticket'
 
-import { CallTicketCommand } from './CallTicketCommand'
+import { AnnounceMyArrivalCommand } from './announce-my-arrival.command'
 
-@CommandHandler(CallTicketCommand)
-export class CallTicketCommandHandler
-  implements ICommandHandler<CallTicketCommand, Ticket>
+@CommandHandler(AnnounceMyArrivalCommand)
+export class AnnounceMyArrivalCommandHandler
+  implements ICommandHandler<AnnounceMyArrivalCommand, Ticket>
 {
   public constructor(
     private readonly eventBus: IEventBus,
@@ -27,14 +27,19 @@ export class CallTicketCommandHandler
     private readonly ticketsWritableRepo: ITicketsWritableRepo
   ) {}
 
-  public async execute({ params }: CallTicketCommand) {
+  public async execute({ params }: AnnounceMyArrivalCommand) {
     const ticket = await this.queryBus.ask<Nullable<Ticket>>(
       new GetAnUnexpiredTicketQuery(params)
     )
 
-    if (!ticket) throw new ResourceNotFoundException()
+    if (!ticket || !ticket.isOwnedBy(params.customerId))
+      throw new ResourceNotFoundException()
 
-    ticket.call(params.agentId)
+    /**
+     * TODO: Implement the logic to validate the device location of the customer
+     */
+
+    ticket.announce()
 
     await this.ticketsWritableRepo.save(ticket)
 

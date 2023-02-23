@@ -11,23 +11,23 @@ import {
   TimeoutHandler,
 } from '@turnly/shared'
 import {
-  AnnounceTicketCommand,
-  AnnounceTicketParams,
+  AnnounceMyArrivalCommand,
+  AnnounceMyArrivalParams,
 } from 'tickets/announce-my-arrival'
 import { Ticket } from 'tickets/shared/domain/entities/Ticket'
 
-import { AnnounceTicketValidator } from './AnnounceTicketValidator'
+import { AnnounceMyArrivalValidator } from './announce-my-arrival.validator'
 
-export class AnnounceTicketController extends Controller {
+export class AnnounceMyArrivalController extends Controller {
   public constructor(private readonly commandBus: ICommandBus) {
     super()
   }
 
   @TimeoutHandler()
-  @InputValidator(AnnounceTicketValidator)
-  public async execute(params: AnnounceTicketParams) {
-    const ticket = await this.commandBus.execute<Ticket, AnnounceTicketCommand>(
-      new AnnounceTicketCommand(params)
+  @InputValidator(AnnounceMyArrivalValidator)
+  public async execute(params: AnnounceMyArrivalParams) {
+    const ticket = await this.commandBus.execute<Ticket, AnnounceMyArrivalCommand>(
+      new AnnounceMyArrivalCommand(params)
     )
 
     return this.respond.ok(ticket.toObject())

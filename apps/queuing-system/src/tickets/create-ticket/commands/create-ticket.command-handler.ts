@@ -17,7 +17,7 @@ import { Ticket } from 'tickets/shared/domain/entities/Ticket'
 import { TicketPriority } from 'tickets/shared/domain/enums/TicketPriority'
 import { TicketStatus } from 'tickets/shared/domain/enums/TicketStatus'
 
-import { CreateTicketCommand } from './CreateTicketCommand'
+import { CreateTicketCommand } from './create-ticket.command'
 
 @CommandHandler(CreateTicketCommand)
 export class CreateTicketCommandHandler
