@@ -4,5 +4,5 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-export * from './elocations'
-export * from './eservices'
+export * from './locations'
+export * from './services'
