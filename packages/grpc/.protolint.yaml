@@ -1,0 +1,27 @@
+lint:
+  rules:
+    no_default: true
+
+    add:
+      - SERVICE_NAMES_UPPER_CAMEL_CASE
+      - ENUM_NAMES_UPPER_CAMEL_CASE
+      - FIELD_NAMES_LOWER_SNAKE_CASE
+      - MESSAGE_NAMES_UPPER_CAMEL_CASE
+      - MAX_LINE_LENGTH
+      - INDENT
+      - IMPORTS_SORTED
+      - PACKAGE_NAME_LOWER_CASE
+      - ORDER
+      - REPEATED_FIELD_NAMES_PLURALIZED
+      - SYNTAX_CONSISTENT
+      - RPC_NAMES_CASE
+      - QUOTE_CONSISTENT
+
+  rules_option:
+    max_line_length:
+      max_chars: 85
+      tab_chars: 2
+
+    quote_consistent:
+      # Available quote are "double" or "single".
+      quote: double

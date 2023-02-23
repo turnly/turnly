@@ -17,7 +17,6 @@ source "$HELPERS/helpers.sh"
 
 # Commands sources
 source "$COMMANDS/setup.sh"
-source "$COMMANDS/lint.sh"
 source "$COMMANDS/build.sh"
 source "$COMMANDS/gen-protos-unix.sh"
 source "$COMMANDS/gen-protos-windows.sh"
@@ -47,9 +46,6 @@ protos)
   else
     gen_protos_unix
   fi
-  ;;
-lint)
-  lint
   ;;
 *)
   error "Unknown command: $COMMAND"

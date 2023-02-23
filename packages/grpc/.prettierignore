@@ -3,3 +3,4 @@ node_modules
 tsconfig.json
 README.md
 dist
+src/**/generated
