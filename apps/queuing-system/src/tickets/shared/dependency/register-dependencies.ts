@@ -13,7 +13,6 @@
 import { commandBus, elasticClient, eventBus, queryBus } from '@turnly/shared'
 
 import { TicketsModule } from '../../tickets.module'
-import { TicketsMappings } from '../infrastructure/persistence/elasticsearch/mappings/TicketsMappings'
 
 /**
  * Ticket module
@@ -25,4 +24,4 @@ eventBus.subscribe(TicketsModule.getEventSubscribers())
 /**
  * Create index if it doesn't exist
  */
-elasticClient.indices([TicketsMappings])
+elasticClient.indices(TicketsModule.getElasticMappings())

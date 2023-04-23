@@ -27,7 +27,6 @@ Catch-all, everything you want to consult, but like you, we may not know. :D
 - [Efra](https://github.com/efraa)
 - [Wardner](https://github.com/wardner)
 - [Jose](https://github.com/DarkCode01)
-- [Pedro](https://github.com/psanders)
 
 **DevOps:**
 

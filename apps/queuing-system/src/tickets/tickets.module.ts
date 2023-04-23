@@ -41,6 +41,8 @@ import type {
 import { Box } from '@turnly/shared'
 import type { Ticket } from 'tickets/shared/domain/entities/Ticket'
 
+import { TicketsMappings } from './shared/infrastructure/persistence/elasticsearch/mappings/TicketsMappings'
+
 export class TicketsModule {
   public static getServer(): Producers.QueuingSystem.ITicketsServer {
     return {
@@ -98,5 +100,9 @@ export class TicketsModule {
 
   public static getEventSubscribers(): IEventSubscriber[] {
     return [Box.resolve('notifyCustomerCalledSubscriber')]
+  }
+
+  public static getElasticMappings() {
+    return [TicketsMappings]
   }
 }
