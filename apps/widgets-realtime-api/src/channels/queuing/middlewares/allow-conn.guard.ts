@@ -9,10 +9,8 @@ import {
   Guid,
   ResourceNotFoundException,
 } from '@turnly/common'
-import { IGetWidgetResponse } from '@turnly/grpc/dist/consumers/channels'
 import { Events, IRealtimeClient, RealtimeMiddle } from '@turnly/realtime'
 import { Event, EventType } from '@turnly/shared'
-import { isCommunityEdition } from 'shared/config'
 
 import { Customers, setOrganizationId, Widgets } from '../../../shared/api'
 
@@ -93,27 +91,6 @@ export class AllowConnGuard {
   }
 
   private async getWidget(id: Guid) {
-    if (isCommunityEdition()) {
-      const data = {
-        id: process.env.WIDGET_ID as string,
-        name: process.env.ORGANIZATION_NAME as string,
-        organizationId: process.env.ORGANIZATION_ID as string,
-        originsList: [],
-        position: '',
-        design: '',
-        primaryColor: '',
-        secondaryColor: '',
-        primaryBackground: '',
-        secondaryBackground: '',
-        disabledTelemetry: false,
-        openByDefault: false,
-        showFullscreen: false,
-        showCloseButton: true,
-      }
-
-      return new Promise<IGetWidgetResponse>(resolve => resolve({ data }))
-    }
-
     const { meta, data } = await Widgets.getOne({ id })
 
     if (!data) throw new ResourceNotFoundException(meta?.message)

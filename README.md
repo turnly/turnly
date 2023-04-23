@@ -42,16 +42,6 @@ If you like this project or plan to use it in the future, please don't forget to
 
 ___
 
-### 🧑🏻‍🚒 Try Turnly now!
- 
-We'd love you to try Turnly and share your valuable feedback, and together, we can make it better ❤️
-
-* [x] Try a minimal solution for [Healthcare](https://healthcare.turnly.app)
-* [x] Try a minimal solution for [Finance](https://finance.turnly.app)
-* [x] Try a minimal solution for [Small Business](https://small-business.turnly.app)
-
-___
-
 ### 📦 Features
 
 Turnly's main features are:
@@ -61,17 +51,26 @@ Turnly's main features are:
 * [x] Customers can wait anywhere, check their progress, and receive notifications when it’s their turn to be served.
 * [x] When customers arrive, they can quickly announce themselves through their smart device or an on-site self-service kiosk.
 * [x] Manage multiple locations (branches), services offered, working hours, and desks per location.
+* [ ] Offline/on site ticket-taking.
+* [ ] Modal Client for ticket-taking.
+* [ ] RN WebView Client for ticket-taking.
+* [ ] WhatsApp conversation integration for ticket-taking.
+* [ ] Alexa Skill for ticket-taking.
+* [ ] Bot-assisted phone calls to self-ticketing.
+* [ ] Digital Signage (Waiting TV).
+* [ ] No-code live widget builder.
+* [ ] Capability to manage employees as Agents and Managers per Location.
+* [ ] Customer feedback.
+* [ ] Receive read-only access to a selected set of data from Turnly in realtime with RTM API.
+* [ ] Allows integrations with external systems to share data through webhooks, beacons, and others.
+* [ ] Integrate data processors or even transformers that allow you to validate the information in the flow of ticket-taking.
+* [ ] Reminders and notifications scheduled for the future.
+* [ ] Support for SMS, Push, Emails, Calls or WhatsApp messages.
+* [ ] Business intelligence, insights and reporting.
 
 ___
 
 ### 🏷️ High-level architecture overview
-
-There are two distributions of Turnly:
-
-* Turnly Community Edition (CE) is a open-source edition available freely under the [BSD 3-Clause License](/LICENSE).
-* Turnly Enterprise Edition (EE) is a CE-based SaaS edition that includes additional features for small to enterprise-level organizations.
-
-> Turnly's core components will always be open-source so that you can have self-hosted implementation using the CE distribution.
 
 ![high-level-architecture](/docs/diagrams/high-level-architecture.png)
 

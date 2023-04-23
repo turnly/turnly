@@ -15,7 +15,6 @@ services:
       turnly.network.internal:
     environment:
       - NODE_ENV
-      - APP_EDITION
       - APP_DOMAIN
       - RPC_CONSUMER_ADDRESS
       - APP_PORT

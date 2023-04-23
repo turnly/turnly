@@ -15,10 +15,3 @@ export const serverOptions = Object.freeze({
 export enum Channels {
   QUEUING = '/queuing',
 }
-
-/**
- * Turnly Edition
- *
- * @returns true if the app is running in Turnly CE
- */
-export const isCommunityEdition = () => process.env.APP_EDITION === 'community'
