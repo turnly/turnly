@@ -101,11 +101,6 @@ export * from './types/entity-attributes.type'
 export * from './types/query.type'
 
 /**
- * Users
- */
-export * from './users'
-
-/**
  * Infrastructure
  */
 /**

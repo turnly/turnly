@@ -13,17 +13,8 @@ import {
 } from 'jsonwebtoken'
 import jwt from 'jsonwebtoken'
 
-import { KeySet } from './jwks'
-
-export interface OidcOptions extends VerifyOptions {
-  /**
-   * JSON Web Key Set (JWKS)
-   *
-   * @description The JWKS endpoint is used to retrieve the public keys used by the OIDC provider to sign the JWTs.
-   * @example https://accounts.turnly.local/.well-known/jwks.json
-   */
-  jwksUri: string
-}
+import { KeySet } from './jwks.service'
+import { OidcOptions } from './jwt.type'
 
 /**
  * OpenID Connect (OIDC)
