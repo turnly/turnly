@@ -20,3 +20,7 @@ message Extra {
   string key = 1;
   string value = 2;
 }
+
+message ExceptionResponse {
+  turnly.common.v1.Meta meta = 1;
+}

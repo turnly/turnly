@@ -5,7 +5,9 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import { OIDC } from '@turnly/auth'
+import { ExceptionHandler, Logger } from '@turnly/observability'
 
+import { MetaMapper } from './meta.mapper'
 import { Action, ICallback } from './request-handler.type'
 import { Context, MiddlewareHandler } from './server-options.type'
 
@@ -32,12 +34,21 @@ export class AuthGuard<Response = unknown, Request = unknown>
         const authorization = metadata.get('authorization').toString()
 
         const user = await this.oidc.verify(authorization)
-        metadata.set('user', JSON.stringify(user))
+        metadata.set('user_logged', JSON.stringify(user))
+
+        Logger.debug('The user is authenticated with the following data:', user)
       }
 
       await next()
     } catch (error: any) {
-      callback(error, null)
+      const handled = ExceptionHandler.handle(error)
+      const { meta } = handled.toResponse()
+
+      const response = new ExceptionResponse()
+
+      response.setMeta(MetaMapper.toRPC(meta))
+
+      handled.isTrusted() ? callback(null, response) : callback(error, null)
     }
   }
 }
