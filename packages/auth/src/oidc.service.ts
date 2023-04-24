@@ -24,7 +24,7 @@ export class OIDC {
   private readonly jwks: KeySet
 
   public constructor(private readonly defaultOptions: OidcOptions) {
-    this.jwks = new KeySet(this.defaultOptions.jwksUri)
+    this.jwks = new KeySet(this.defaultOptions.jwks)
   }
 
   /**
@@ -43,7 +43,7 @@ export class OIDC {
    */
   public async verify<T extends JwtPayload>(
     token: string,
-    options?: VerifyOptions
+    options?: Omit<VerifyOptions, 'algorithms'>
   ): Promise<T> {
     return new Promise((resolve, reject) => {
       if (!token)
@@ -56,7 +56,7 @@ export class OIDC {
       jwt.verify(
         token,
         ({ kid }, callback) => callback(null, this.jwks.getPublicKey(kid)),
-        { ...this.defaultOptions, ...options },
+        { ...this.defaultOptions, ...options, algorithms: ['RS256'] },
         (err, decoded) => {
           if (err) {
             if (err instanceof TokenExpiredError)

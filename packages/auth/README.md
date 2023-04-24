@@ -57,14 +57,16 @@ The OIDC server provides the keys publicly in a URL in the form of a JSON Web Ke
 ```typescript
 import { OIDC, OidcOptions } from '@turnly/auth'
 
-const options: OidcOptions = {
-  algorithms: ['RS256'],
-  audience: ['web'],
-  issuer: 'https://accounts.turnly.local',
-  jwksUri: 'https://accounts.turnly.local/.well-known/jwks.json',
-}
-
-const oidc = new OIDC(options)
+const oidc = new OIDC({
+  issuer: 'https://accounts.turnly.app',
+  jwks: {
+    uri: 'https://accounts.turnly.app/.well-known/jwks.json',
+    /**
+     * The file is used to retrieve the keys from a local file. (Useful for testing)
+     */
+    file: 'path/to/jwks.json',
+  },
+})
 
 /**
  * Setup

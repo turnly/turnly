@@ -4,6 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
+import fs from 'fs'
 import jwks from 'jwks-rsa'
 
 /**
@@ -21,15 +22,44 @@ export class KeySet {
   private keys: jwks.SigningKey[]
 
   public constructor(
-    /**
-     * JSON Web Key Set (JWKS)
-     *
-     * @description The JWKS endpoint is used to retrieve the public keys used by the OIDC provider to sign the JWTs.
-     * @example https://accounts.turnly.local/.well-known/jwks.json
-     */
-    jwksUri: string
+    private readonly params: {
+      /**
+       * JSON Web Key Set (JWKS) URI
+       *
+       * @description The JWKS endpoint is used to retrieve the public keys used by the OIDC provider to sign the JWTs.
+       * @example https://accounts.turnly.local/.well-known/jwks.json
+       */
+      uri: string
+      /**
+       * JSON Web Key Set (JWKS) file
+       *
+       * @description The JWKS file is used to retrieve the public keys used by the OIDC provider to sign the JWTs.
+       * @example /path/to/jwks.json
+       */
+      file?: string
+    }
   ) {
-    this.client = jwks({ jwksUri })
+    const { uri, file } = this.params
+
+    if (!uri && !file)
+      throw new Error(
+        'Oops!, you should provide either a JWKS URI or a JWKS file.'
+      )
+
+    this.client = jwks(
+      file
+        ? {
+            jwksUri: uri,
+            getKeysInterceptor() {
+              const keys = JSON.parse(
+                fs.readFileSync(file, { encoding: 'utf8' })
+              ).keys
+
+              return Promise.resolve(keys)
+            },
+          }
+        : { jwksUri: uri }
+    )
   }
 
   /**

@@ -12,12 +12,21 @@ export interface JwtPayload extends Payload {
   groups: string[]
 }
 
-export interface OidcOptions extends VerifyOptions {
-  /**
-   * JSON Web Key Set (JWKS)
-   *
-   * @description The JWKS endpoint is used to retrieve the public keys used by the OIDC provider to sign the JWTs.
-   * @example https://accounts.turnly.local/.well-known/jwks.json
-   */
-  jwksUri: string
+export interface OidcOptions extends Omit<VerifyOptions, 'algorithms'> {
+  jwks: {
+    /**
+     * JSON Web Key Set (JWKS) URI
+     *
+     * @description The JWKS endpoint is used to retrieve the public keys used by the OIDC provider to sign the JWTs.
+     * @example https://accounts.turnly.local/.well-known/jwks.json
+     */
+    uri: string
+    /**
+     * JSON Web Key Set (JWKS) file
+     *
+     * @description The JWKS file is used to retrieve the public keys used by the OIDC provider to sign the JWTs.
+     * @example /path/to/jwks.json
+     */
+    file?: string
+  }
 }
