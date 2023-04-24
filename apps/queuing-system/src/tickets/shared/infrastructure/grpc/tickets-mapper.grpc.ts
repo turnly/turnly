@@ -7,7 +7,7 @@
 import { Nullable } from '@turnly/common'
 import { Producers } from '@turnly/rpc'
 import { DateTime, EntityAttributes } from '@turnly/shared'
-import { Ticket } from 'tickets/shared/domain/entities/Ticket'
+import { Ticket } from 'tickets/shared/domain/entities/ticket.entity'
 
 export class TicketsMapper {
   public static toRPC(

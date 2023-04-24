@@ -7,7 +7,7 @@
 import { Producers } from '@turnly/rpc'
 import { Client } from '@turnly/rpc/dist/consumers'
 import { MarkTicketAsDiscardedController } from 'tickets/mark-ticket-as-discarded'
-import { TicketsMapper } from 'tickets/shared/infrastructure/grpc/TicketsMapper'
+import { TicketsMapper } from 'tickets/shared/infrastructure/grpc/tickets-mapper.grpc'
 
 export class MarkTicketAsDiscardedServer {
   public constructor(

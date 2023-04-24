@@ -8,7 +8,7 @@ import { ConflictException, Extra } from '@turnly/common'
 import { ObjectMother } from '@turnly/testing'
 
 import { TicketStatus } from '../../../../../src/tickets/shared/domain/enums/TicketStatus'
-import { TicketMother } from './TicketMother'
+import { TicketMother } from './ticket.entity.mother'
 
 describe('tickets > domain > validates the min behavior in the life-cycle of a ticket', () => {
   it('should return the required attributes after ticket-instantiation', () => {

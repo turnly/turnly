@@ -11,8 +11,8 @@ import {
   QueryBuilder,
   QueryHandler,
 } from '@turnly/shared'
-import { ITicketsReadableRepo } from 'tickets/shared/domain/contracts/ITicketsRepo'
-import { Ticket } from 'tickets/shared/domain/entities/Ticket'
+import { ITicketsReadableRepo } from 'tickets/shared/domain/contracts/tickets-repo.interface'
+import { Ticket } from 'tickets/shared/domain/entities/ticket.entity'
 
 import { ListTicketsWaitingForServiceQuery } from './list-tickets-waiting-for-service.query'
 

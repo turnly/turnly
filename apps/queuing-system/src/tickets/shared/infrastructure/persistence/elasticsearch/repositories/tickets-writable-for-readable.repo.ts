@@ -9,8 +9,8 @@ import {
   ElasticIndexes,
   ElasticWritableRepo,
 } from '@turnly/shared'
-import { ITicketsWritableRepo } from 'tickets/shared/domain/contracts/ITicketsRepo'
-import { Ticket } from 'tickets/shared/domain/entities/Ticket'
+import { ITicketsWritableRepo } from 'tickets/shared/domain/contracts/tickets-repo.interface'
+import { Ticket } from 'tickets/shared/domain/entities/ticket.entity'
 
 export class TicketsWritableForReadableRepo
   extends ElasticWritableRepo<Ticket>

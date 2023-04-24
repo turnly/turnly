@@ -7,7 +7,7 @@
 import { Producers } from '@turnly/rpc'
 import { Client } from '@turnly/rpc/dist/consumers'
 import { LeaveTheQueueController } from 'tickets/leave-the-queue'
-import { TicketsMapper } from 'tickets/shared/infrastructure/grpc/TicketsMapper'
+import { TicketsMapper } from 'tickets/shared/infrastructure/grpc/tickets-mapper.grpc'
 
 export class LeaveTheQueueServer {
   public constructor(

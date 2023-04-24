@@ -5,9 +5,9 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import { GetOneTicketQueryHandler } from '../../../../src/tickets/shared/application/queries'
-import { TicketsReadableRepo } from '../shared/__mocks__/TicketsReadableRepo'
-import { TicketMother } from '../shared/domain/TicketMother'
-import { GetOneTicketQueryMother } from './TicketByIdQueryMother'
+import { TicketsReadableRepo } from '../shared/__mocks__/tickets-readable.repo'
+import { TicketMother } from '../shared/domain/ticket.entity.mother'
+import { GetOneTicketQueryMother } from './get-one-ticket.query.mother'
 
 let repository: TicketsReadableRepo
 let handler: GetOneTicketQueryHandler

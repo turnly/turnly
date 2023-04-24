@@ -14,7 +14,7 @@ import {
   CallTicketToDeskCommand,
   CallTicketToDeskParams,
 } from 'tickets/call-ticket-to-desk'
-import { Ticket } from 'tickets/shared/domain/entities/Ticket'
+import { Ticket } from 'tickets/shared/domain/entities/ticket.entity'
 
 import { CallTicketToDeskValidator } from './call-ticket-to-desk.validator'
 

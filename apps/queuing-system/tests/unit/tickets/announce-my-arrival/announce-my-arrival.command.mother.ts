@@ -7,22 +7,22 @@
 import { Guid } from '@turnly/common'
 import { ObjectMother } from '@turnly/testing'
 
-import { AnnounceTicketCommand } from '../../../../src/tickets/announce-my-arrival'
+import { AnnounceMyArrivalCommand } from '../../../../src/tickets/announce-my-arrival'
 
-export class AnnounceTicketCommandMother {
+export class AnnounceMyArrivalCommandMother {
   static create(
     id: Guid = ObjectMother.uuid('ticket'),
     customerId: Guid = ObjectMother.uuid('cust'),
     organizationId: Guid = ObjectMother.uuid('org')
-  ): AnnounceTicketCommand {
-    return new AnnounceTicketCommand({
+  ): AnnounceMyArrivalCommand {
+    return new AnnounceMyArrivalCommand({
       id,
       customerId,
       organizationId,
     })
   }
 
-  static random(): AnnounceTicketCommand {
+  static random(): AnnounceMyArrivalCommand {
     return this.create()
   }
 }

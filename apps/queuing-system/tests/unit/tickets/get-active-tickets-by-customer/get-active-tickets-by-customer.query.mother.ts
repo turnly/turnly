@@ -7,22 +7,17 @@
 import { Guid } from '@turnly/common'
 import { ObjectMother } from '@turnly/testing'
 
-import { LeaveTicketCommand } from '../../../../src/tickets/leave-the-queue'
+import { GetActiveTicketsByCustomerQuery } from '../../../../src/tickets/shared/application/queries'
 
-export class LeaveTicketCommandMother {
+export class GetActiveTicketsByCustomerQueryMother {
   static create(
-    id: Guid = ObjectMother.uuid('ticket'),
     customerId: Guid = ObjectMother.uuid('cust'),
     organizationId: Guid = ObjectMother.uuid('org')
-  ): LeaveTicketCommand {
-    return new LeaveTicketCommand({
-      id,
-      customerId,
-      organizationId,
-    })
+  ): GetActiveTicketsByCustomerQuery {
+    return new GetActiveTicketsByCustomerQuery(customerId, organizationId)
   }
 
-  static random(): LeaveTicketCommand {
+  static random(): GetActiveTicketsByCustomerQuery {
     return this.create()
   }
 }

@@ -6,22 +6,22 @@
  */
 import { ResourceNotFoundException } from '@turnly/common'
 
-import { TicketsBeforeYoursQueryHandler } from '../../../../src/tickets/list-tickets-before-yours'
-import { TicketsReadableRepo } from '../shared/__mocks__/TicketsReadableRepo'
-import { TicketMother } from '../shared/domain/TicketMother'
-import { TicketsBeforeYoursQueryMother } from './TicketsBeforeYoursQueryMother'
+import { ListTicketsBeforeYoursQueryHandler } from '../../../../src/tickets/list-tickets-before-yours'
+import { TicketsReadableRepo } from '../shared/__mocks__/tickets-readable.repo'
+import { TicketMother } from '../shared/domain/ticket.entity.mother'
+import { ListTicketsBeforeYoursQueryMother } from './list-tickets-before-yours.query.mother'
 
 let repository: TicketsReadableRepo
-let handler: TicketsBeforeYoursQueryHandler
+let handler: ListTicketsBeforeYoursQueryHandler
 
 describe('tickets > queries > validates the expected behavior of TicketsBeforeYoursQuery', () => {
   beforeEach(() => {
     repository = new TicketsReadableRepo()
-    handler = new TicketsBeforeYoursQueryHandler(repository)
+    handler = new ListTicketsBeforeYoursQueryHandler(repository)
   })
 
   it('should get a collection of tickets before yours', async () => {
-    const query = TicketsBeforeYoursQueryMother.random()
+    const query = ListTicketsBeforeYoursQueryMother.random()
     const ticket = TicketMother.fromExistingTicketOnQuery({
       ...query,
       id: query.ticketId,
@@ -43,7 +43,7 @@ describe('tickets > queries > validates the expected behavior of TicketsBeforeYo
   })
 
   it('should throw a ResourceNotFoundException when the ticket does not exist', async () => {
-    const query = TicketsBeforeYoursQueryMother.random()
+    const query = ListTicketsBeforeYoursQueryMother.random()
 
     repository.attachGetOneResponse(null)
 

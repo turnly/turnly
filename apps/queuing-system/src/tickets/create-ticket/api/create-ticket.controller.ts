@@ -14,7 +14,7 @@ import {
   CreateTicketCommand,
   CreateTicketCommandParams,
 } from 'tickets/create-ticket'
-import { Ticket } from 'tickets/shared/domain/entities/Ticket'
+import { Ticket } from 'tickets/shared/domain/entities/ticket.entity'
 
 import { CreateTicketValidator } from './create-ticket.validator'
 

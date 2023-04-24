@@ -14,7 +14,7 @@ import {
   AnnounceMyArrivalCommand,
   AnnounceMyArrivalParams,
 } from 'tickets/announce-my-arrival'
-import { Ticket } from 'tickets/shared/domain/entities/Ticket'
+import { Ticket } from 'tickets/shared/domain/entities/ticket.entity'
 
 import { AnnounceMyArrivalValidator } from './announce-my-arrival.validator'
 

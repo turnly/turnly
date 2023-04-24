@@ -6,7 +6,7 @@
  */
 import { IReadableRepository, IWritableRepository } from '@turnly/shared'
 
-import { Ticket } from '../entities/Ticket'
+import { Ticket } from '../entities/ticket.entity'
 
 export type ITicketsReadableRepo = IReadableRepository<Ticket>
 export type ITicketsWritableRepo = IWritableRepository<Ticket>

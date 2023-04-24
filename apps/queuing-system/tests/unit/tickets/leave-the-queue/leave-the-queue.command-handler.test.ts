@@ -7,16 +7,16 @@
 import { ResourceNotFoundException } from '@turnly/common'
 import { TestEventBus, TestQueryBus } from '@turnly/testing'
 
-import { LeaveTicketCommandHandler } from '../../../../src/tickets/leave-the-queue'
+import { LeaveTheQueueCommandHandler } from '../../../../src/tickets/leave-the-queue'
 import { TicketStatus } from '../../../../src/tickets/shared/domain/enums/TicketStatus'
-import { TicketsWritableRepo } from '../shared/__mocks__/TicketsWritableRepo'
-import { TicketMother } from '../shared/domain/TicketMother'
-import { LeaveTicketCommandMother } from './LeaveTicketCommandMother'
+import { TicketsWritableRepo } from '../shared/__mocks__/tickets-writable.repo'
+import { TicketMother } from '../shared/domain/ticket.entity.mother'
+import { LeaveTheQueueCommandMother } from './leave-the-queue.command.mother'
 
 let repository: TicketsWritableRepo
 let queryBus: TestQueryBus
 let eventBus: TestEventBus
-let handler: LeaveTicketCommandHandler
+let handler: LeaveTheQueueCommandHandler
 
 describe('tickets > commands > validates the expected behavior when a ticket is cancelled', () => {
   beforeEach(() => {
@@ -24,11 +24,11 @@ describe('tickets > commands > validates the expected behavior when a ticket is 
     queryBus = new TestQueryBus()
 
     repository = new TicketsWritableRepo()
-    handler = new LeaveTicketCommandHandler(eventBus, queryBus, repository)
+    handler = new LeaveTheQueueCommandHandler(eventBus, queryBus, repository)
   })
 
   it('should leave an existing ticket', async () => {
-    const command = LeaveTicketCommandMother.random()
+    const command = LeaveTheQueueCommandMother.random()
 
     let ticket = TicketMother.fromExistingTicketOnCommand(command)
 
@@ -44,7 +44,7 @@ describe('tickets > commands > validates the expected behavior when a ticket is 
   })
 
   it('should throw a ResourceNotFoundException when the ticket does not exist', async () => {
-    const command = LeaveTicketCommandMother.random()
+    const command = LeaveTheQueueCommandMother.random()
 
     queryBus.attachAskResponse(null)
 
