@@ -4,7 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-export * from './api/TicketsForServingFromLocationController'
-export * from './api/TicketsForServingFromLocationServer'
-export * from './queries/TicketsForServingFromLocationQuery'
-export * from './queries/TicketsForServingFromLocationQueryHandler'
+export * from './api/search-tickets-for-serving-from-location.controller'
+export * from './api/search-tickets-for-serving-from-location.server'
+export * from './queries/search-tickets-for-serving-from-location.query'
+export * from './queries/search-tickets-for-serving-from-location.query-handler'

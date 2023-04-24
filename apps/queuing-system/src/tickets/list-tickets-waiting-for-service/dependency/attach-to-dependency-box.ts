@@ -6,18 +6,18 @@
  */
 import { Box, ioc } from '@turnly/shared'
 
-import { GetTicketsWaitingForServiceController } from '../api/get-tickets-waiting-for-service.controller'
-import { GetTicketsWaitingForServiceServer } from '../api/get-tickets-waiting-for-service.server'
-import { GetTicketsWaitingForServiceQueryHandler } from '../queries/get-tickets-waiting-for-service.query-handler'
+import { ListTicketsWaitingForServiceController } from '../api/list-tickets-waiting-for-service.controller'
+import { ListTicketsWaitingForServiceServer } from '../api/list-tickets-waiting-for-service.server'
+import { ListTicketsWaitingForServiceQueryHandler } from '../queries/list-tickets-waiting-for-service.query-handler'
 
 Box.register({
-  getTicketsWaitingForServiceServer: ioc
-    .asClass(GetTicketsWaitingForServiceServer)
+  listTicketsWaitingForServiceServer: ioc
+    .asClass(ListTicketsWaitingForServiceServer)
     .singleton(),
-  getTicketsWaitingForServiceController: ioc
-    .asClass(GetTicketsWaitingForServiceController)
+  listTicketsWaitingForServiceController: ioc
+    .asClass(ListTicketsWaitingForServiceController)
     .singleton(),
-  getTicketsWaitingForServiceQueryHandler: ioc
-    .asClass(GetTicketsWaitingForServiceQueryHandler)
+  listTicketsWaitingForServiceQueryHandler: ioc
+    .asClass(ListTicketsWaitingForServiceQueryHandler)
     .singleton(),
 })

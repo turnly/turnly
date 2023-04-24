@@ -6,16 +6,16 @@
  */
 import { Box, ioc } from '@turnly/shared'
 
-import { TicketsBeforeYoursController } from '../api/TicketsBeforeYoursController'
-import { TicketsBeforeYoursServer } from '../api/TicketsBeforeYoursServer'
-import { TicketsBeforeYoursQueryHandler } from '../queries/TicketsBeforeYoursQueryHandler'
+import { ListTicketsBeforeYoursController } from '../api/list-tickets-before-yours.controller'
+import { ListTicketsBeforeYoursServer } from '../api/list-tickets-before-yours.server'
+import { ListTicketsBeforeYoursQueryHandler } from '../queries/list-tickets-before-yours.query-handler'
 
 Box.register({
-  ticketsBeforeYoursServer: ioc.asClass(TicketsBeforeYoursServer).singleton(),
-  ticketsBeforeYoursController: ioc
-    .asClass(TicketsBeforeYoursController)
+  listTicketsBeforeYoursServer: ioc.asClass(ListTicketsBeforeYoursServer).singleton(),
+  listTicketsBeforeYoursController: ioc
+    .asClass(ListTicketsBeforeYoursController)
     .singleton(),
-  ticketsBeforeYoursQueryHandler: ioc
-    .asClass(TicketsBeforeYoursQueryHandler)
+  listTicketsBeforeYoursQueryHandler: ioc
+    .asClass(ListTicketsBeforeYoursQueryHandler)
     .singleton(),
 })

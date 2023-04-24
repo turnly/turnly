@@ -4,7 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-export * from './api/ServeTicketController'
-export * from './api/ServeTicketServer'
-export * from './commands/ServeTicketCommand'
-export * from './commands/ServeTicketCommandHandler'
+export * from './api/mark-ticket-as-served.controller'
+export * from './api/mark-ticket-as-served.server'
+export * from './commands/mark-ticket-as-served.command'
+export * from './commands/mark-ticket-as-served.command-handler'

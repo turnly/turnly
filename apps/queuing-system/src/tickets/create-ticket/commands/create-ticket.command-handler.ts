@@ -11,7 +11,7 @@ import {
   IEventBus,
   IQueryBus,
 } from '@turnly/shared'
-import { ActiveTicketsByCustomerQuery } from 'tickets/shared/application/queries/get-active-tickets-by-customer/active-tickets-by-customer.query'
+import { ActiveTicketsByCustomerQuery } from 'tickets/shared/application/queries/get-active-tickets-by-customer/get-active-tickets-by-customer.query'
 import { ITicketsWritableRepo } from 'tickets/shared/domain/contracts/ITicketsRepo'
 import { Ticket } from 'tickets/shared/domain/entities/Ticket'
 import { TicketPriority } from 'tickets/shared/domain/enums/TicketPriority'

@@ -6,12 +6,12 @@
  */
 import { Box, ioc } from '@turnly/shared'
 
-import { LeaveTicketController } from '../api/LeaveTicketController'
-import { LeaveTicketServer } from '../api/LeaveTicketServer'
-import { LeaveTicketCommandHandler } from '../commands/LeaveTicketCommandHandler'
+import { LeaveTheQueueController } from '../api/leave-the-queue.controller'
+import { LeaveTheQueueServer } from '../api/leave-the-queue.server'
+import { LeaveTheQueueCommandHandler } from '../commands/leave-the-queue.command-handler'
 
 Box.register({
-  leaveTicketServer: ioc.asClass(LeaveTicketServer).singleton(),
-  leaveTicketController: ioc.asClass(LeaveTicketController).singleton(),
-  leaveTicketCommandHandler: ioc.asClass(LeaveTicketCommandHandler).singleton(),
+  leaveTheQueueServer: ioc.asClass(LeaveTheQueueServer).singleton(),
+  leaveTheQueueController: ioc.asClass(LeaveTheQueueController).singleton(),
+  leaveTheQueueCommandHandler: ioc.asClass(LeaveTheQueueCommandHandler).singleton(),
 })

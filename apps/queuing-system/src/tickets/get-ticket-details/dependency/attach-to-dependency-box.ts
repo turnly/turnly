@@ -6,8 +6,8 @@
  */
 import { Box, ioc } from '@turnly/shared'
 
-import { GetTicketDetailsController } from '../api/GetTicketDetailsController'
-import { GetTicketDetailsServer } from '../api/GetTicketDetailsServer'
+import { GetTicketDetailsController } from '../api/get-ticket-details.controller'
+import { GetTicketDetailsServer } from '../api/get-ticket-details.server'
 
 Box.register({
   getTicketDetailsServer: ioc.asClass(GetTicketDetailsServer).singleton(),

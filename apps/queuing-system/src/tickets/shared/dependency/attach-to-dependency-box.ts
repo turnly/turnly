@@ -7,7 +7,7 @@
 import { Box, ioc } from '@turnly/shared'
 
 import {
-  ActiveTicketsByCustomerQueryHandler,
+  GetActiveTicketsByCustomerQueryHandler,
   GetAnUnexpiredTicketQueryHandler,
 } from '../application/queries'
 import { TicketsMapper } from '../infrastructure/persistence/mongo/entity-model-mappers/TicketsMapper'
@@ -21,7 +21,7 @@ Box.register({
   getAnUnexpiredTicketQueryHandler: ioc
     .asClass(GetAnUnexpiredTicketQueryHandler)
     .singleton(),
-  activeTicketsByCustomerQueryHandler: ioc
-    .asClass(ActiveTicketsByCustomerQueryHandler)
+  getActiveTicketsByCustomerQueryHandler: ioc
+    .asClass(GetActiveTicketsByCustomerQueryHandler)
     .singleton(),
 })
