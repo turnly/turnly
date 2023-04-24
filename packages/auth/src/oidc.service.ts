@@ -7,14 +7,13 @@
 import { UnauthenticatedException } from '@turnly/observability'
 import {
   JsonWebTokenError,
-  JwtPayload,
   TokenExpiredError,
   VerifyOptions,
 } from 'jsonwebtoken'
 import jwt from 'jsonwebtoken'
 
 import { KeySet } from './jwks.service'
-import { OidcOptions } from './jwt.type'
+import { JwtPayload, OidcOptions } from './jwt.type'
 
 /**
  * OpenID Connect (OIDC)
