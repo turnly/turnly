@@ -4,7 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-export * from './api/DiscardTicketController'
-export * from './api/DiscardTicketServer'
-export * from './commands/DiscardTicketCommand'
-export * from './commands/DiscardTicketCommandHandler'
+export * from './api/mark-ticket-as-discarded.controller'
+export * from './api/mark-ticket-as-discarded.server'
+export * from './commands/mark-ticket-as-discarded.command'
+export * from './commands/mark-ticket-as-discarded.command-handler'

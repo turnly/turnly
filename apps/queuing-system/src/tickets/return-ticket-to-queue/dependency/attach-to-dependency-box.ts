@@ -6,14 +6,14 @@
  */
 import { Box, ioc } from '@turnly/shared'
 
-import { ReturnToQueueController } from '../api/ReturnToQueueController'
-import { ReturnToQueueServer } from '../api/ReturnToQueueServer'
-import { ReturnToQueueCommandHandler } from '../commands/ReturnToQueueCommandHandler'
+import { ReturnTicketToQueueController } from '../api/return-ticket-to-queue.controller'
+import { ReturnTicketToQueueServer } from '../api/return-ticket-to-queue.server'
+import { ReturnTicketToQueueCommandHandler } from '../commands/return-ticket-to-queue.command-handler'
 
 Box.register({
-  returnToQueueServer: ioc.asClass(ReturnToQueueServer).singleton(),
-  returnToQueueController: ioc.asClass(ReturnToQueueController).singleton(),
-  returnToQueueCommandHandler: ioc
-    .asClass(ReturnToQueueCommandHandler)
+  returnTicketToQueueServer: ioc.asClass(ReturnTicketToQueueServer).singleton(),
+  returnTicketToQueueController: ioc.asClass(ReturnTicketToQueueController).singleton(),
+  returnTicketToQueueCommandHandler: ioc
+    .asClass(ReturnTicketToQueueCommandHandler)
     .singleton(),
 })

@@ -6,18 +6,18 @@
  */
 import { Box, ioc } from '@turnly/shared'
 
-import { TicketsForServingFromLocationController } from '../api/TicketsForServingFromLocationController'
-import { TicketsForServingFromLocationServer } from '../api/TicketsForServingFromLocationServer'
-import { TicketsForServingFromLocationQueryHandler } from '../queries/TicketsForServingFromLocationQueryHandler'
+import { SearchTicketsForServingFromLocationController } from '../api/search-tickets-for-serving-from-location.controller'
+import { SearchTicketsForServingFromLocationServer } from '../api/search-tickets-for-serving-from-location.server'
+import { SearchTicketsForServingFromLocationQueryHandler } from '../queries/search-tickets-for-serving-from-location.query-handler'
 
 Box.register({
-  ticketsForServingFromLocationServer: ioc
-    .asClass(TicketsForServingFromLocationServer)
+  searchTicketsForServingFromLocationServer: ioc
+    .asClass(SearchTicketsForServingFromLocationServer)
     .singleton(),
-  ticketsForServingFromLocationController: ioc
-    .asClass(TicketsForServingFromLocationController)
+  searchTicketsForServingFromLocationController: ioc
+    .asClass(SearchTicketsForServingFromLocationController)
     .singleton(),
-  ticketsForServingFromLocationQueryHandler: ioc
-    .asClass(TicketsForServingFromLocationQueryHandler)
+  searchTicketsForServingFromLocationQueryHandler: ioc
+    .asClass(SearchTicketsForServingFromLocationQueryHandler)
     .singleton(),
 })

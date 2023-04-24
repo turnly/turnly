@@ -6,12 +6,12 @@
  */
 import { Box, ioc } from '@turnly/shared'
 
-import { ServeTicketController } from '../api/ServeTicketController'
-import { ServeTicketServer } from '../api/ServeTicketServer'
-import { ServeTicketCommandHandler } from '../commands/ServeTicketCommandHandler'
+import { MarkTicketAsServedController } from '../api/mark-ticket-as-served.controller'
+import { MarkTicketAsServedServer } from '../api/mark-ticket-as-served.server'
+import { MarkTicketAsServedCommandHandler } from '../commands/mark-ticket-as-served.command-handler'
 
 Box.register({
-  serveTicketServer: ioc.asClass(ServeTicketServer).singleton(),
-  serveTicketController: ioc.asClass(ServeTicketController).singleton(),
-  serveTicketCommandHandler: ioc.asClass(ServeTicketCommandHandler).singleton(),
+  markTicketAsServedServer: ioc.asClass(MarkTicketAsServedServer).singleton(),
+  markTicketAsServedController: ioc.asClass(MarkTicketAsServedController).singleton(),
+  markTicketAsServedCommandHandler: ioc.asClass(MarkTicketAsServedCommandHandler).singleton(),
 })

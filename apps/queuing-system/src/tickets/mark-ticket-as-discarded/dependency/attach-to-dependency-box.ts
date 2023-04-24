@@ -6,14 +6,14 @@
  */
 import { Box, ioc } from '@turnly/shared'
 
-import { DiscardTicketController } from '../api/DiscardTicketController'
-import { DiscardTicketServer } from '../api/DiscardTicketServer'
-import { DiscardTicketCommandHandler } from '../commands/DiscardTicketCommandHandler'
+import { MarkTicketAsDiscardedController } from '../api/mark-ticket-as-discarded.controller'
+import { MarkTicketAsDiscardedServer } from '../api/mark-ticket-as-discarded.server'
+import { MarkTicketAsDiscardedCommandHandler } from '../commands/mark-ticket-as-discarded.command-handler'
 
 Box.register({
-  discardTicketServer: ioc.asClass(DiscardTicketServer).singleton(),
-  discardTicketController: ioc.asClass(DiscardTicketController).singleton(),
-  discardTicketCommandHandler: ioc
-    .asClass(DiscardTicketCommandHandler)
+  markTicketAsDiscardedServer: ioc.asClass(MarkTicketAsDiscardedServer).singleton(),
+  markTicketAsDiscardedController: ioc.asClass(MarkTicketAsDiscardedController).singleton(),
+  markTicketAsDiscardedCommandHandler: ioc
+    .asClass(MarkTicketAsDiscardedCommandHandler)
     .singleton(),
 })

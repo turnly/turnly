@@ -48,21 +48,21 @@ export class TicketsModule {
     return {
       getDetails: (...args) =>
         Box.resolve('getTicketDetailsServer').execute(...args),
-      call: (...args) => Box.resolve('callTicketServer').execute(...args),
+      call: (...args) => Box.resolve('CallTicketToDeskServer').execute(...args),
       getOne: (...args) => Box.resolve('getOneTicketServer').execute(...args),
       getTicketsBeforeYours: (...args) =>
-        Box.resolve('ticketsBeforeYoursServer').execute(...args),
+        Box.resolve('listTicketsBeforeYoursServer').execute(...args),
       getTicketsForServingFromLocation: (...args) =>
-        Box.resolve('ticketsForServingFromLocationServer').execute(...args),
-      leave: (...args) => Box.resolve('leaveTicketServer').execute(...args),
+        Box.resolve('searchTicketsForServingFromLocationServer').execute(...args),
+      leave: (...args) => Box.resolve('leaveTheQueueServer').execute(...args),
       announce: (...args) =>
         Box.resolve('announceMyArrivalServer').execute(...args),
-      serve: (...args) => Box.resolve('serveTicketServer').execute(...args),
+      serve: (...args) => Box.resolve('markTicketAsServedServer').execute(...args),
       getTicketsWaitingForService: (...args) =>
-        Box.resolve('getTicketsWaitingForServiceServer').execute(...args),
+        Box.resolve('listTicketsWaitingForServiceServer').execute(...args),
       returnToQueue: (...args) =>
-        Box.resolve('returnToQueueServer').execute(...args),
-      discard: (...args) => Box.resolve('discardTicketServer').execute(...args),
+        Box.resolve('returnTicketToQueueServer').execute(...args),
+      discard: (...args) => Box.resolve('markTicketAsDiscardedServer').execute(...args),
       create: (...args) => Box.resolve('createTicketServer').execute(...args),
     }
   }
@@ -78,10 +78,10 @@ export class TicketsModule {
   public static getQueryHandlers(): IQueryHandler[] {
     return [
       Box.resolve('getOneTicketQueryHandler'),
-      Box.resolve('getTicketsWaitingForServiceQueryHandler'),
-      Box.resolve('ticketsBeforeYoursQueryHandler'),
-      Box.resolve('ticketsForServingFromLocationQueryHandler'),
-      Box.resolve('activeTicketsByCustomerQueryHandler'),
+      Box.resolve('listTicketsWaitingForServiceQueryHandler'),
+      Box.resolve('listTicketsBeforeYoursQueryHandler'),
+      Box.resolve('searchTicketsForServingFromLocationQueryHandler'),
+      Box.resolve('getActiveTicketsByCustomerQueryHandler'),
       Box.resolve('getAnUnexpiredTicketQueryHandler'),
     ]
   }
@@ -89,12 +89,12 @@ export class TicketsModule {
   public static getCommandHandlers(): ICommandHandler[] {
     return [
       Box.resolve('createTicketCommandHandler'),
-      Box.resolve('leaveTicketCommandHandler'),
+      Box.resolve('leaveTheQueueCommandHandler'),
       Box.resolve('announceMyArrivalCommandHandler'),
-      Box.resolve('callTicketCommandHandler'),
-      Box.resolve('discardTicketCommandHandler'),
-      Box.resolve('serveTicketCommandHandler'),
-      Box.resolve('returnToQueueCommandHandler'),
+      Box.resolve('callTicketToDeskCommandHandler'),
+      Box.resolve('markTicketAsDiscardedCommandHandler'),
+      Box.resolve('markTicketAsServedCommandHandler'),
+      Box.resolve('returnTicketToQueueCommandHandler'),
     ]
   }
 

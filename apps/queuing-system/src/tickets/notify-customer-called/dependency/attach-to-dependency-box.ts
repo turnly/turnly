@@ -6,7 +6,7 @@
  */
 import { Box, ioc } from '@turnly/shared'
 
-import { NotifyCustomerCalledSubscriber } from '../subscribers/NotifyCustomerCalledSubscriber'
+import { NotifyCustomerCalledSubscriber } from '../subscribers/notify-customer-called.subscriber'
 
 Box.register({
   notifyCustomerCalledSubscriber: ioc
