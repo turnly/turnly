@@ -5,10 +5,10 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import { EntityAttributes } from '@turnly/shared'
-import { ITicketsMapper } from 'tickets/shared/domain/contracts/ITicketsMapper'
-import { Ticket } from 'tickets/shared/domain/entities/Ticket'
+import { ITicketsMapper } from 'tickets/shared/domain/contracts/tickets-mapper.interface'
+import { Ticket } from 'tickets/shared/domain/entities/ticket.entity'
 
-import { ITicketDocument, TicketModel } from '../models/TicketModel'
+import { ITicketDocument, TicketModel } from '../models/ticket.model'
 
 export class TicketsMapper implements ITicketsMapper<ITicketDocument> {
   public toEntity(document: ITicketDocument): Ticket {

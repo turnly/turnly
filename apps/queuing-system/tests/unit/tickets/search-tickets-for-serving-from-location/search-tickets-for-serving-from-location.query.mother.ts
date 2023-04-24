@@ -8,9 +8,9 @@ import { Guid } from '@turnly/common'
 import { ObjectMother } from '@turnly/testing'
 import { TicketStatus } from 'tickets/shared/domain/enums/TicketStatus'
 
-import { TicketsForServingFromLocationQuery } from '../../../../src/tickets/search-tickets-for-serving-from-location'
+import { SearchTicketsForServingFromLocationQuery } from '../../../../src/tickets/search-tickets-for-serving-from-location'
 
-export class TicketsForServingFromLocationQueryMother {
+export class SearchTicketsForServingFromLocationQueryMother {
   static create(
     locationId: Guid = ObjectMother.uuid('loc'),
     serviceIds: Guid[] = ObjectMother.repeater(
@@ -20,8 +20,8 @@ export class TicketsForServingFromLocationQueryMother {
     status = [TicketStatus.ANNOUNCED],
     searchQuery: string = ObjectMother.word(),
     organizationId: Guid = ObjectMother.uuid('org')
-  ): TicketsForServingFromLocationQuery {
-    return new TicketsForServingFromLocationQuery(
+  ): SearchTicketsForServingFromLocationQuery {
+    return new SearchTicketsForServingFromLocationQuery(
       locationId,
       organizationId,
       status,
@@ -30,7 +30,7 @@ export class TicketsForServingFromLocationQueryMother {
     )
   }
 
-  static random(): TicketsForServingFromLocationQuery {
+  static random(): SearchTicketsForServingFromLocationQuery {
     return this.create()
   }
 }

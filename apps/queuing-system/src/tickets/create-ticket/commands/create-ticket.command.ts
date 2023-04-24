@@ -5,7 +5,7 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import { ICommand } from '@turnly/shared'
-import { CreateTicketParams } from 'tickets/shared/domain/entities/Ticket'
+import { CreateTicketParams } from 'tickets/shared/domain/entities/ticket.entity'
 
 export type CreateTicketCommandParams = Omit<
   CreateTicketParams & { serviceName: string },

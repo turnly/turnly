@@ -5,11 +5,11 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import { MongoWritableRepo } from '@turnly/shared'
-import { ITicketsMapper } from 'tickets/shared/domain/contracts/ITicketsMapper'
-import { ITicketsWritableRepo } from 'tickets/shared/domain/contracts/ITicketsRepo'
-import { Ticket } from 'tickets/shared/domain/entities/Ticket'
+import { ITicketsMapper } from 'tickets/shared/domain/contracts/tickets-mapper.interface'
+import { ITicketsWritableRepo } from 'tickets/shared/domain/contracts/tickets-repo.interface'
+import { Ticket } from 'tickets/shared/domain/entities/ticket.entity'
 
-import { ITicketDocument, TicketModel } from '../models/TicketModel'
+import { ITicketDocument, TicketModel } from '../models/ticket.model'
 
 export class TicketsWritableRepo
   extends MongoWritableRepo<Ticket, ITicketDocument>

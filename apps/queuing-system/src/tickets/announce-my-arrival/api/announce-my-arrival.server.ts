@@ -7,7 +7,7 @@
 import { Producers } from '@turnly/rpc'
 import { Client } from '@turnly/rpc/dist/consumers'
 import { AnnounceMyArrivalController } from 'tickets/announce-my-arrival'
-import { TicketsMapper } from 'tickets/shared/infrastructure/grpc/TicketsMapper'
+import { TicketsMapper } from 'tickets/shared/infrastructure/grpc/tickets-mapper.grpc'
 
 export class AnnounceMyArrivalServer {
   public constructor(

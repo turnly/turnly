@@ -8,12 +8,12 @@ import { Extra, Guid, Nullable } from '@turnly/common'
 import { ObjectMother } from '@turnly/testing'
 import { TicketSource } from 'tickets/shared/domain/enums/TicketSource'
 
-import { AnnounceTicketCommand } from '../../../../../src/tickets/announce-my-arrival'
+import { AnnounceMyArrivalCommand } from '../../../../../src/tickets/announce-my-arrival'
 import { CreateTicketCommand } from '../../../../../src/tickets/create-ticket'
-import { GetOneTicketQuery } from '../../../../../src/tickets/get-one-ticket'
-import { LeaveTicketCommand } from '../../../../../src/tickets/leave-the-queue'
+import { GetOneTicketQuery } from '../../../../../src/tickets/shared/application/queries'
+import { LeaveTheQueueCommand } from '../../../../../src/tickets/leave-the-queue'
 import { Rating } from '../../../../../src/tickets/shared/domain/entities/Rating'
-import { Ticket } from '../../../../../src/tickets/shared/domain/entities/Ticket'
+import { Ticket } from '../../../../../src/tickets/shared/domain/entities/ticket.entity'
 import { TicketPriority } from '../../../../../src/tickets/shared/domain/enums/TicketPriority'
 import { TicketScore } from '../../../../../src/tickets/shared/domain/enums/TicketScore'
 import { TicketStatus } from '../../../../../src/tickets/shared/domain/enums/TicketStatus'
@@ -70,7 +70,7 @@ export class TicketMother {
   }
 
   static fromExistingTicketOnCommand(
-    command: LeaveTicketCommand | AnnounceTicketCommand
+    command: LeaveTheQueueCommand | AnnounceMyArrivalCommand
   ): Ticket {
     return Ticket.build({
       ...this.random().toObject(),

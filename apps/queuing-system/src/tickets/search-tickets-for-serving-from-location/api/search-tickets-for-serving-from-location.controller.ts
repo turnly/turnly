@@ -20,7 +20,7 @@ import {
   SearchTicketsForServingFromLocationParams,
   SearchTicketsForServingFromLocationQuery,
 } from 'tickets/search-tickets-for-serving-from-location'
-import { Ticket } from 'tickets/shared/domain/entities/Ticket'
+import { Ticket } from 'tickets/shared/domain/entities/ticket.entity'
 import { TicketStatus } from 'tickets/shared/domain/enums/TicketStatus'
 
 import { SearchTicketsForServingFromLocationValidator } from './search-tickets-for-serving-from-location.validator'

@@ -6,7 +6,7 @@
  */
 import { EntityAttributes, timestamps } from '@turnly/shared'
 import mongoose, { Document, Model, Schema } from 'mongoose'
-import { Ticket } from 'tickets/shared/domain/entities/Ticket'
+import { Ticket } from 'tickets/shared/domain/entities/ticket.entity'
 import { TicketPriority } from 'tickets/shared/domain/enums/TicketPriority'
 import { TicketScore } from 'tickets/shared/domain/enums/TicketScore'
 import { TicketSource } from 'tickets/shared/domain/enums/TicketSource'

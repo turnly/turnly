@@ -9,12 +9,12 @@ import '../../../../../../src/tickets/infrastructure/register-dependencies/depen
 import { ResourceNotFoundException } from '@turnly/common'
 import { MongoEnvironmentArranger } from '@turnly/shared'
 
-import { TicketsFactory } from '../../../../../../src/tickets/infrastructure/factories/TicketsFactory'
-import { TicketMother } from '../../../../../unit/tickets/shared/domain/TicketMother'
-import { TicketsQueryMother } from './TicketsQueryMother'
+import { TicketsModule } from '../../../../../../src/tickets/tickets.module'
+import { TicketMother } from '../../../../../unit/tickets/shared/domain/ticket.entity.mother'
+import { TicketsQueryMother } from './tickets.query.mother'
 
-const writableRepo = TicketsFactory.getWritableRepo()
-const readableRepo = TicketsFactory.getReadableRepo()
+const writableRepo = TicketsModule.getWritableRepo()
+const readableRepo = TicketsModule.getReadableRepo()
 const environmentArranger = new MongoEnvironmentArranger()
 
 describe('tickets > infrastructure > mongo > validates the expected behavior of mongo-repositories', () => {

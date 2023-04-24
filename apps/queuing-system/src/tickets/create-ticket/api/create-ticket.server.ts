@@ -9,7 +9,7 @@ import { Producers } from '@turnly/rpc'
 import { Client } from '@turnly/rpc/dist/consumers'
 import { CreateTicketController } from 'tickets/create-ticket'
 import { TicketSource } from 'tickets/shared/domain/enums/TicketSource'
-import { TicketsMapper } from 'tickets/shared/infrastructure/grpc/TicketsMapper'
+import { TicketsMapper } from 'tickets/shared/infrastructure/grpc/tickets-mapper.grpc'
 
 export class CreateTicketServer {
   public constructor(

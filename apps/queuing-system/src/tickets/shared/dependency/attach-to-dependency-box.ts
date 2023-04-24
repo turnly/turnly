@@ -10,9 +10,9 @@ import {
   GetActiveTicketsByCustomerQueryHandler,
   GetAnUnexpiredTicketQueryHandler,
 } from '../application/queries'
-import { TicketsMapper } from '../infrastructure/persistence/mongo/entity-model-mappers/TicketsMapper'
-import { TicketsReadableRepo } from '../infrastructure/persistence/mongo/repositories/TicketsReadableRepo'
-import { TicketsWritableRepo } from '../infrastructure/persistence/mongo/repositories/TicketsWritableRepo'
+import { TicketsMapper } from '../infrastructure/persistence/mongo/entity-model-mappers/tickets.mapper'
+import { TicketsReadableRepo } from '../infrastructure/persistence/mongo/repositories/tickets-readable.repo'
+import { TicketsWritableRepo } from '../infrastructure/persistence/mongo/repositories/tickets-writable.repo'
 
 Box.register({
   ticketsMapper: ioc.asClass(TicketsMapper).singleton(),

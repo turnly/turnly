@@ -12,7 +12,7 @@ import {
   TimeoutHandler,
 } from '@turnly/shared'
 import { GetOneTicketQuery } from 'tickets/shared/application/queries'
-import { Ticket } from 'tickets/shared/domain/entities/Ticket'
+import { Ticket } from 'tickets/shared/domain/entities/ticket.entity'
 
 import { GetTicketDetailsValidator } from './get-ticket-details.validator'
 

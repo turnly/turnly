@@ -11,7 +11,7 @@ import {
   TimeoutHandler,
 } from '@turnly/shared'
 import { LeaveTheQueueCommand, LeaveTheQueueParams } from 'tickets/leave-the-queue'
-import { Ticket } from 'tickets/shared/domain/entities/Ticket'
+import { Ticket } from 'tickets/shared/domain/entities/ticket.entity'
 
 import { LeaveTheQueueValidator } from './leave-the-queue.validator'
 

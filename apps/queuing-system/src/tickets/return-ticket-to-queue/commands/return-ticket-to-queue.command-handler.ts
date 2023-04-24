@@ -12,8 +12,8 @@ import {
   IQueryBus,
 } from '@turnly/shared'
 import { GetAnUnexpiredTicketQuery } from 'Tickets/shared/application/queries/get-an-unexpired-ticket'
-import { ITicketsWritableRepo } from 'tickets/shared/domain/contracts/ITicketsRepo'
-import { Ticket } from 'tickets/shared/domain/entities/Ticket'
+import { ITicketsWritableRepo } from 'tickets/shared/domain/contracts/tickets-repo.interface'
+import { Ticket } from 'tickets/shared/domain/entities/ticket.entity'
 
 import { ReturnTicketToQueueCommand } from './return-ticket-to-queue.command'
 

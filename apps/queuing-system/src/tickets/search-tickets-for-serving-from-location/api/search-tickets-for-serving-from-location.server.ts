@@ -6,7 +6,7 @@
  */
 import { Producers } from '@turnly/grpc'
 import { Client } from '@turnly/grpc/dist/consumers'
-import { TicketsMapper } from 'tickets/shared/infrastructure/grpc/TicketsMapper'
+import { TicketsMapper } from 'tickets/shared/infrastructure/grpc/tickets-mapper.grpc'
 import { SearchTicketsForServingFromLocationFilters } from 'tickets/search-tickets-for-serving-from-location'
 
 import { SearchTicketsForServingFromLocationController } from './search-tickets-for-serving-from-location.controller'

@@ -11,7 +11,7 @@ import {
   TimeoutHandler,
 } from '@turnly/shared'
 import { MarkTicketAsServedCommand, MarkTicketAsServedParams } from 'tickets/mark-ticket-as-served'
-import { Ticket } from 'tickets/shared/domain/entities/Ticket'
+import { Ticket } from 'tickets/shared/domain/entities/ticket.entity'
 
 import { MarkTicketAsServedValidator } from './mark-ticket-as-served.validator'
 

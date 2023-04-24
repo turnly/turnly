@@ -7,18 +7,18 @@
 import { Guid } from '@turnly/common'
 import { ObjectMother } from '@turnly/testing'
 
-import { TicketsBeforeYoursQuery } from '../../../../src/tickets/list-tickets-before-yours'
+import { ListTicketsBeforeYoursQuery } from '../../../../src/tickets/list-tickets-before-yours'
 
-export class TicketsBeforeYoursQueryMother {
+export class ListTicketsBeforeYoursQueryMother {
   static create(
     ticketId: Guid = ObjectMother.uuid('ticket'),
     customerId: Guid = ObjectMother.uuid('cust'),
     organizationId: Guid = ObjectMother.uuid('org')
-  ): TicketsBeforeYoursQuery {
-    return new TicketsBeforeYoursQuery(ticketId, customerId, organizationId)
+  ): ListTicketsBeforeYoursQuery {
+    return new ListTicketsBeforeYoursQuery(ticketId, customerId, organizationId)
   }
 
-  static random(): TicketsBeforeYoursQuery {
+  static random(): ListTicketsBeforeYoursQuery {
     return this.create()
   }
 }

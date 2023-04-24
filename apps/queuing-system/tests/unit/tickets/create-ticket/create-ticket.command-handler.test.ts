@@ -8,9 +8,9 @@ import { ConflictException } from '@turnly/common'
 import { TestEventBus, TestQueryBus } from '@turnly/testing'
 
 import { CreateTicketCommandHandler } from '../../../../src/tickets/create-ticket'
-import { TicketsWritableRepo } from '../shared/__mocks__/TicketsWritableRepo'
-import { TicketMother } from '../shared/domain/TicketMother'
-import { CreateTicketCommandMother } from './CreateTicketCommandMother'
+import { TicketsWritableRepo } from '../shared/__mocks__/tickets-writable.repo'
+import { TicketMother } from '../shared/domain/ticket.entity.mother'
+import { CreateTicketCommandMother } from './create-ticket.command.mother'
 
 let repository: TicketsWritableRepo
 let queryBus: TestQueryBus

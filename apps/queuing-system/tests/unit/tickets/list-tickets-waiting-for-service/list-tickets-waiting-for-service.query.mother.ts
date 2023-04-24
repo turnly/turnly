@@ -7,20 +7,20 @@
 import { Guid } from '@turnly/common'
 import { ObjectMother } from '@turnly/testing'
 
-import { GetTicketsWaitingForServiceQuery } from '../../../../src/tickets/list-tickets-waiting-for-service'
+import { ListTicketsWaitingForServiceQuery } from '../../../../src/tickets/list-tickets-waiting-for-service'
 
-export class GetTicketsWaitingForServiceQueryMother {
+export class ListTicketsWaitingForServiceQueryMother {
   static create(
     serviceIds: Guid[] = ObjectMother.repeater(
       () => ObjectMother.uuid('srv'),
       ObjectMother.integer(1)
     ),
     organizationId: Guid = ObjectMother.uuid('org')
-  ): GetTicketsWaitingForServiceQuery {
-    return new GetTicketsWaitingForServiceQuery(serviceIds, organizationId)
+  ): ListTicketsWaitingForServiceQuery {
+    return new ListTicketsWaitingForServiceQuery(serviceIds, organizationId)
   }
 
-  static random(): GetTicketsWaitingForServiceQuery {
+  static random(): ListTicketsWaitingForServiceQuery {
     return this.create()
   }
 }

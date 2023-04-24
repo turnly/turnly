@@ -14,7 +14,7 @@ import {
   MarkTicketAsDiscardedCommand,
   MarkTicketAsDiscardedParams,
 } from 'tickets/mark-ticket-as-discarded'
-import { Ticket } from 'tickets/shared/domain/entities/Ticket'
+import { Ticket } from 'tickets/shared/domain/entities/ticket.entity'
 
 import { MarkTicketAsDiscardedValidator } from './mark-ticket-as-discarded.validator'
 

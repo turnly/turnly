@@ -7,7 +7,7 @@
 import { Producers } from '@turnly/rpc'
 import { Client } from '@turnly/rpc/dist/consumers'
 import { CallTicketToDeskController } from 'tickets/call-ticket-to-desk'
-import { TicketsMapper } from 'tickets/shared/infrastructure/grpc/TicketsMapper'
+import { TicketsMapper } from 'tickets/shared/infrastructure/grpc/tickets-mapper.grpc'
 
 export class CallTicketToDeskServer {
   public constructor(

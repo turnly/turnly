@@ -6,7 +6,7 @@
  */
 import { IReadableRepository } from '@turnly/shared'
 import { TestReadableRepo } from '@turnly/testing'
-import { Ticket } from 'tickets/shared/domain/entities/Ticket'
+import { Ticket } from 'tickets/shared/domain/entities/ticket.entity'
 
 export class TicketsReadableRepo
   extends TestReadableRepo<Ticket>

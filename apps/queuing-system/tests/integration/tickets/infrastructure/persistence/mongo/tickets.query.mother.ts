@@ -6,7 +6,7 @@
  */
 import { QueryBuilder } from '@turnly/shared'
 
-import { Ticket } from '../../../../../../src/tickets/shared/domain/entities/Ticket'
+import { Ticket } from '../../../../../../src/tickets/shared/domain/entities/ticket.entity'
 
 export class TicketsQueryMother {
   static getOneWith(ticket: Ticket) {

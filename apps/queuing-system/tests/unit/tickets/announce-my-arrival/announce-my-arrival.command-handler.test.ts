@@ -7,16 +7,16 @@
 import { ResourceNotFoundException } from '@turnly/common'
 import { TestEventBus, TestQueryBus } from '@turnly/testing'
 
-import { AnnounceTicketCommandHandler } from '../../../../src/tickets/announce-my-arrival'
+import { AnnounceMyArrivalCommandHandler } from '../../../../src/tickets/announce-my-arrival'
 import { TicketStatus } from '../../../../src/tickets/shared/domain/enums/TicketStatus'
-import { TicketsWritableRepo } from '../shared/__mocks__/TicketsWritableRepo'
-import { TicketMother } from '../shared/domain/TicketMother'
-import { AnnounceTicketCommandMother } from './AnnounceTicketCommandMother'
+import { TicketsWritableRepo } from '../shared/__mocks__/tickets-writable.repo'
+import { TicketMother } from '../shared/domain/ticket.entity.mother'
+import { AnnounceMyArrivalCommandMother } from './announce-my-arrival.command.mother'
 
 let repository: TicketsWritableRepo
 let queryBus: TestQueryBus
 let eventBus: TestEventBus
-let handler: AnnounceTicketCommandHandler
+let handler: AnnounceMyArrivalCommandHandler
 
 describe('tickets > commands > validates the expected behavior when a ticket is announce', () => {
   beforeEach(() => {
@@ -24,11 +24,11 @@ describe('tickets > commands > validates the expected behavior when a ticket is 
     queryBus = new TestQueryBus()
 
     repository = new TicketsWritableRepo()
-    handler = new AnnounceTicketCommandHandler(eventBus, queryBus, repository)
+    handler = new AnnounceMyArrivalCommandHandler(eventBus, queryBus, repository)
   })
 
   it('should announce an existing ticket', async () => {
-    const command = AnnounceTicketCommandMother.random()
+    const command = AnnounceMyArrivalCommandMother.random()
 
     let ticket = TicketMother.fromExistingTicketOnCommand(command)
     queryBus.attachAskResponse(ticket)
@@ -43,7 +43,7 @@ describe('tickets > commands > validates the expected behavior when a ticket is 
   })
 
   it('should throw a ResourceNotFoundException when the ticket does not exist', async () => {
-    const command = AnnounceTicketCommandMother.random()
+    const command = AnnounceMyArrivalCommandMother.random()
 
     queryBus.attachAskResponse(null)
 

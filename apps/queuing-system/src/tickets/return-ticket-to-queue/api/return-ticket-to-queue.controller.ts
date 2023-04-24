@@ -14,7 +14,7 @@ import {
   ReturnTicketToQueueCommand,
   ReturnTicketToQueueParams,
 } from 'tickets/return-ticket-to-queue'
-import { Ticket } from 'tickets/shared/domain/entities/Ticket'
+import { Ticket } from 'tickets/shared/domain/entities/ticket.entity'
 
 import { ReturnTicketToQueueValidator } from './return-ticket-to-queue.validator'
 
