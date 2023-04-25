@@ -6,11 +6,11 @@
  */
 import { ArgsType, Field, ID, InputType, Int, ObjectType } from 'type-graphql'
 
-import { AnswerModel } from './AnswerModel'
-import { CustomerModel } from './CustomerModel'
-import { FieldModel } from './FieldModel'
-import { LocationModel } from './LocationModel'
-import { ServiceModel } from './ServiceModel'
+import { AnswerModel } from './answer.model'
+import { CustomerModel } from './customer.model'
+import { FieldModel } from './field.model'
+import { LocationModel } from './location.model'
+import { ServiceModel } from './service.model'
 
 @InputType()
 export class Answers {

@@ -5,14 +5,12 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import { Guid } from '@turnly/common'
-import { GraphException } from 'shared/GraphException'
+import { DataSource, GraphException } from '@turnly/graph'
 
-import { Locations } from '../shared/api'
-// import { CacheSource } from './common/CacheSource'
-import { DataSource } from './common/DataSource'
+import { Locations } from '../api.service'
+import { IContext } from '../context.type'
 
-// @CacheSource()
-export class LocationsDataSource extends DataSource {
+export class LocationsDataSource extends DataSource<IContext> {
   public constructor() {
     super()
   }

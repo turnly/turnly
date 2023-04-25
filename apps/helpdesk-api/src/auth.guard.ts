@@ -4,19 +4,25 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { Logger, Observability, UnauthenticatedException } from '@turnly/common'
-import { getForwardedUserLogged, UserRoles } from '@turnly/core'
-import { IContext } from '@types'
+
+import { UserRoles } from '@turnly/auth'
+import {
+  ExceptionHandler,
+  Logger,
+  UnauthenticatedException,
+} from '@turnly/observability'
 import { AuthChecker } from 'type-graphql'
+
+import { IContext } from './context.type'
 
 const getCredentials = ({ req: { headers } }: IContext) => {
   const roles = [UserRoles.AGENT]
 
-  return getForwardedUserLogged(headers, roles)
+  return { ...headers, roles, sub: '' }
 }
 
 export const AuthGuard: AuthChecker<IContext> = async ({ context }) => {
-  Observability.ExceptionHandler.setUser(null)
+  ExceptionHandler.setUser(null)
   context.setOrganizationId('')
 
   const { sub: userId } = getCredentials(context)
@@ -36,7 +42,7 @@ export const AuthGuard: AuthChecker<IContext> = async ({ context }) => {
   context.req['agent'] = agent
   context.req['organizationId'] = agent.organizationId
 
-  Observability.ExceptionHandler.setUser(agent)
+  ExceptionHandler.setUser(agent)
 
   Logger.debug('AuthGuard executed successfully!', { agent })
 

@@ -1,6 +1,6 @@
 {
   "name": "@turnly/turnly",
-  "version": "0.0.1",
+  "version": "0.1.3",
   "private": true,
   "description": "The next modern Open-Source Queue Management System (QMS)",
   "license": "BSD-3-Clause",

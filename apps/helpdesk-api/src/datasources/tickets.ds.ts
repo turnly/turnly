@@ -5,12 +5,11 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import { Guid } from '@turnly/common'
-import { TicketsMapper } from 'mappers/TicketsMapper'
-import { GraphException } from 'shared/GraphException'
+import { DataSource, GraphException } from '@turnly/graph'
+import { TicketsMapper } from 'datasources/tickets.mapper'
 
-import { Tickets } from '../shared/api'
-// import { CacheSource } from './common/CacheSource'
-import { DataSource } from './common/DataSource'
+import { Tickets } from '../api.service'
+import { IContext } from '../context.type'
 
 export type GetTicketsForServingFromLocationParams = {
   locationId: Guid
@@ -19,8 +18,7 @@ export type GetTicketsForServingFromLocationParams = {
   serviceIds?: Guid[]
 }
 
-// @CacheSource()
-export class TicketsDataSource extends DataSource {
+export class TicketsDataSource extends DataSource<IContext> {
   public constructor() {
     super()
   }

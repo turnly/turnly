@@ -4,12 +4,12 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { Ticket as T } from '@turnly/grpc/dist/producers/queuing-system'
-import { TicketModel } from 'models/TicketModel'
+import { Producers } from '@turnly/grpc'
+import { TicketModel } from 'models/ticket.model'
 
 export class TicketsMapper {
   public static toDTO(
-    ticket: T.AsObject
+    ticket: Producers.QueuingSystem.Ticket.AsObject
   ): Omit<
     TicketModel,
     | 'customer'

@@ -29,11 +29,6 @@ export const Agents = new Consumers.Memberships.Agents()
 export const Customers = new Consumers.QueuingSystem.Customers()
 export const Tickets = new Consumers.QueuingSystem.Tickets()
 
-/**
- * Channels Service
- */
-export const Integrations = new Consumers.Channels.Widgets()
-
 export const setOrganizationId = (organizationId: string) => {
   Locations.destroyOrganizationId().setOrganizationId(organizationId)
   Services.destroyOrganizationId().setOrganizationId(organizationId)
@@ -42,5 +37,4 @@ export const setOrganizationId = (organizationId: string) => {
   Agents.destroyOrganizationId().setOrganizationId(organizationId)
   Customers.destroyOrganizationId().setOrganizationId(organizationId)
   Tickets.destroyOrganizationId().setOrganizationId(organizationId)
-  Integrations.destroyOrganizationId().setOrganizationId(organizationId)
 }

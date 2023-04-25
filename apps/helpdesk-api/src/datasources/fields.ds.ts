@@ -5,15 +5,13 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import { Guid } from '@turnly/common'
-import { FieldModel } from 'models/FieldModel'
+import { DataSource } from '@turnly/graph'
+import { FieldModel } from 'models/field.model'
 
-// import { CacheTTL } from 'shared/CacheTTL'
-import { Fields } from '../shared/api'
-// import { CacheSource } from './common/CacheSource'
-import { DataSource } from './common/DataSource'
+import { Fields } from '../api.service'
+import { IContext } from '../context.type'
 
-// @CacheSource({ ttl: CacheTTL.THREE_MINUTES })
-export class FieldsDataSource extends DataSource {
+export class FieldsDataSource extends DataSource<IContext> {
   public constructor() {
     super()
   }

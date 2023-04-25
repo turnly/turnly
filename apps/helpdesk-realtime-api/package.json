@@ -1,6 +1,6 @@
 {
   "name": "@turnly/helpdesk-realtime-api",
-  "version": "0.0.1",
+  "version": "0.1.3",
   "private": true,
   "description": "It's the real-time event bridge that sends data between internal services and applications.",
   "license": "BSD-3-Clause",

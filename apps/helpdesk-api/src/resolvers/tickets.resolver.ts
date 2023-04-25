@@ -4,16 +4,14 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { IContext } from '@types'
-import { Tickets } from 'datasources'
-import { TicketsMapper } from 'mappers/TicketsMapper'
-import { AnswerModel } from 'models/AnswerModel'
-import { CustomerModel } from 'models/CustomerModel'
-import { FieldModel } from 'models/FieldModel'
-import { LocationModel } from 'models/LocationModel'
-import { ServiceModel } from 'models/ServiceModel'
-import { FindTicketsByLocationArgs, TicketModel } from 'models/TicketModel'
-import { GraphException } from 'shared/GraphException'
+import { GraphException } from '@turnly/graph'
+import { TicketsMapper } from 'datasources/tickets.mapper'
+import { AnswerModel } from 'models/answer.model'
+import { CustomerModel } from 'models/customer.model'
+import { FieldModel } from 'models/field.model'
+import { LocationModel } from 'models/location.model'
+import { ServiceModel } from 'models/service.model'
+import { FindTicketsByLocationArgs, TicketModel } from 'models/ticket.model'
 import {
   Arg,
   Args,
@@ -26,6 +24,9 @@ import {
   Resolver,
   Root,
 } from 'type-graphql'
+
+import { IContext } from '../context.type'
+import { Tickets } from '../datasources'
 
 @Resolver(TicketModel)
 export class TicketsResolver {
@@ -42,23 +43,6 @@ export class TicketsResolver {
       status,
       serviceIds,
     })
-  }
-
-  @Authorized()
-  @Mutation(() => TicketModel)
-  public async resolveTicket(
-    @Arg('id', () => String) id: string,
-    @Arg('status', () => String) status: string,
-    @Ctx() _ctx: IContext
-  ) {
-    const { data: ticket, meta } = await Tickets.resolve({
-      id,
-      status,
-    })
-
-    if (!ticket) throw new GraphException(meta)
-
-    return TicketsMapper.toDTO(ticket)
   }
 
   @Authorized()

@@ -5,12 +5,11 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import { Extra, Guid } from '@turnly/common'
-import { AnswerModel } from 'models/AnswerModel'
+import { DataSource } from '@turnly/graph'
+import { AnswerModel } from 'models/answer.model'
 
-// import { CacheTTL } from 'shared/CacheTTL'
-import { Answers } from '../shared/api'
-// import { CacheSource } from './common/CacheSource'
-import { DataSource } from './common/DataSource'
+import { Answers } from '../api.service'
+import { IContext } from '../context.type'
 
 type FindAnswerParams = {
   entityType: string
@@ -18,8 +17,7 @@ type FindAnswerParams = {
   extra?: Extra[]
 }
 
-// @CacheSource({ ttl: CacheTTL.THREE_MINUTES })
-export class AnswersDataSource extends DataSource {
+export class AnswersDataSource extends DataSource<IContext> {
   public constructor() {
     super()
   }
@@ -30,7 +28,7 @@ export class AnswersDataSource extends DataSource {
     extra = [],
   }: FindAnswerParams): Promise<AnswerModel[]> {
     const data = (
-      await Answers.find({
+      await Answers.listByField({
         entityType,
         fieldId,
         extrasList: extra,
