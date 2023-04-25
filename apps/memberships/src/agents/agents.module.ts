@@ -14,20 +14,20 @@ import 'agents/shared/dependency/attach-to-dependency-box'
 import 'agents/get-one-agent/dependency/attach-to-dependency-box'
 import 'agents/get-agent-by-user-id/dependency/attach-to-dependency-box'
 
-/**
- * Module
- *
- * @description Module definition.
- */
-import type { Producers } from '@turnly/grpc'
 import type {
   ICommandHandler,
   IEventSubscriber,
   IQueryHandler,
   IReadableRepository,
   IWritableRepository,
-} from '@turnly/shared'
-import { Box } from '@turnly/shared'
+} from '@turnly/core'
+import { Box } from '@turnly/core'
+/**
+ * Module
+ *
+ * @description Module definition.
+ */
+import type { Producers } from '@turnly/grpc'
 import type { Agent } from 'agents/shared/domain/entity/agent.entity'
 
 export class AgentsModule {

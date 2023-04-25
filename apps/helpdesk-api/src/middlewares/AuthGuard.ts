@@ -5,7 +5,7 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import { Logger, Observability, UnauthenticatedException } from '@turnly/common'
-import { getForwardedUserLogged, UserRoles } from '@turnly/shared'
+import { getForwardedUserLogged, UserRoles } from '@turnly/core'
 import { IContext } from '@types'
 import { AuthChecker } from 'type-graphql'
 

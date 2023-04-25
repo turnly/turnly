@@ -4,7 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { Box, ioc } from '@turnly/shared'
+import { Box, ioc } from '@turnly/core'
 
 import { GetOneWidgetQueryHandler } from '../application/queries'
 import { WidgetsMapper } from '../infrastructure/persistence/mongo/entity-model-mappers/widgets.mapper'

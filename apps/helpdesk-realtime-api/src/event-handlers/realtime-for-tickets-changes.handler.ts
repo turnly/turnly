@@ -5,7 +5,7 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import { AbstractRealtimeHandler, IRealtimeChannel } from '@turnly/realtime'
-import { Event, EventType } from '@turnly/shared'
+import { Event, EventType } from '@turnly/core'
 
 import { BroadcastableEvents } from '../constants/broadcastable-events.enum'
 import { RealtimeEventsForHelpdesk } from '../constants/realtime-events-for-helpdesk.enum'

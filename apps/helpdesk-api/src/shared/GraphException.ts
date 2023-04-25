@@ -6,7 +6,7 @@
  */
 import { ResponseCodes } from '@turnly/common'
 import { Meta } from '@turnly/grpc/dist/producers/addons'
-import { SharedMessages } from '@turnly/shared'
+import { SharedMessages } from '@turnly/core'
 import { ApolloError } from 'apollo-server-express'
 
 export class GraphException extends ApolloError {

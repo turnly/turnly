@@ -4,7 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { EntityAttributes } from '@turnly/shared'
+import { EntityAttributes } from '@turnly/core'
 import { IWidgetsMapper } from 'widgets/shared/domain/contratcs/widgets-mapper.interface'
 import { Widget } from 'widgets/shared/domain/entities/widget.entity'
 

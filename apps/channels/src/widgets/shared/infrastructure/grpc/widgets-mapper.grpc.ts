@@ -6,7 +6,7 @@
  */
 import { Nullable } from '@turnly/common'
 import { Producers } from '@turnly/grpc'
-import { EntityAttributes } from '@turnly/shared'
+import { EntityAttributes } from '@turnly/core'
 import { Widget } from 'widgets/shared/domain/entities/widget.entity'
 
 export class WidgetsMapper {
