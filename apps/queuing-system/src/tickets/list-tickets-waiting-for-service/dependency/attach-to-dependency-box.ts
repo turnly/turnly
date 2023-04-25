@@ -4,7 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { Box, ioc } from '@turnly/shared'
+import { Box, ioc } from '@turnly/core'
 
 import { ListTicketsWaitingForServiceController } from '../api/list-tickets-waiting-for-service.controller'
 import { ListTicketsWaitingForServiceServer } from '../api/list-tickets-waiting-for-service.server'

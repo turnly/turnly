@@ -10,7 +10,7 @@ import {
   InputValidator,
   IQueryBus,
   TimeoutHandler,
-} from '@turnly/shared'
+} from '@turnly/core'
 import { Customer } from 'customers/shared/domain/entities/customer.entity'
 
 import { GetOneCustomerQuery } from '../queries/get-one-customer.query'

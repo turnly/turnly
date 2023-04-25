@@ -8,7 +8,7 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 import { Observability } from '@turnly/common'
-import { config } from '@turnly/shared'
+import { config } from '@turnly/core'
 
 Observability.Tracing.Trace.initialize({
   name: config.get('app.name'),

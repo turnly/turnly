@@ -14,7 +14,7 @@ import {
   InputValidator,
   IQueryBus,
   TimeoutHandler,
-} from '@turnly/shared'
+} from '@turnly/core'
 import {
   SearchTicketsForServingFromLocationFilters,
   SearchTicketsForServingFromLocationParams,
@@ -40,10 +40,15 @@ export class SearchTicketsForServingFromLocationController extends Controller {
         TicketStatus.CALLED,
         TicketStatus.RECALLED,
       ],
-      [SearchTicketsForServingFromLocationFilters.DISCARDED]: [TicketStatus.DISCARDED],
+      [SearchTicketsForServingFromLocationFilters.DISCARDED]: [
+        TicketStatus.DISCARDED,
+      ],
     }
 
-    const status = statuses[params.status ?? SearchTicketsForServingFromLocationFilters.WAITING]
+    const status =
+      statuses[
+        params.status ?? SearchTicketsForServingFromLocationFilters.WAITING
+      ]
     if (!status)
       throw new BadRequestException(
         'Oops! seems that this status is not valid.'

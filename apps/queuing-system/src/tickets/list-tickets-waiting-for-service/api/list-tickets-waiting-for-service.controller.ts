@@ -10,7 +10,7 @@ import {
   InputValidator,
   IQueryBus,
   TimeoutHandler,
-} from '@turnly/shared'
+} from '@turnly/core'
 import {
   ListTicketsWaitingForServiceQuery,
   TicketsWaitingFor,

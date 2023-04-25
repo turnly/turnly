@@ -4,7 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { QueryBuilder } from '@turnly/shared'
+import { QueryBuilder } from '@turnly/core'
 
 import { Customer } from '../../../../../../src/customers/shared/domain/entities/customer.entity'
 

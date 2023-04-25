@@ -1,4 +1,4 @@
-import { config } from '@turnly/shared'
+import { config } from '@turnly/core'
 
 /**
  * Copyright (c) 2022, Turnly (https://turnly.app)

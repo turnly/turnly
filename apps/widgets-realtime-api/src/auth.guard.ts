@@ -9,8 +9,8 @@ import {
   Guid,
   ResourceNotFoundException,
 } from '@turnly/common'
+import { Event, EventType } from '@turnly/core'
 import { Events, IRealtimeClient, RealtimeMiddle } from '@turnly/realtime'
-import { Event, EventType } from '@turnly/shared'
 
 import { Customers, setOrganizationId, Widgets } from './api.service'
 

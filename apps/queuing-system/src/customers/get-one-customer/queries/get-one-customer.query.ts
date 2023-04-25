@@ -5,7 +5,7 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import { Guid } from '@turnly/common'
-import { OrganizationQuery } from '@turnly/shared'
+import { OrganizationQuery } from '@turnly/core'
 
 export class GetOneCustomerQuery extends OrganizationQuery {
   public readonly id: Guid

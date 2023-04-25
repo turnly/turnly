@@ -7,7 +7,7 @@
 import '../../../../../../src/customers/shared/dependency/register-dependencies'
 
 import { ResourceNotFoundException } from '@turnly/observability'
-import { MongoEnvironmentArranger } from '@turnly/shared'
+import { MongoEnvironmentArranger } from '@turnly/core'
 
 import { CustomersModule } from '../../../../../../src/customers/customers.module'
 import { CustomerMother } from '../../../../../unit/customers/shared/domain/customer.entity.mother'

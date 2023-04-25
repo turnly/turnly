@@ -9,7 +9,7 @@ import {
   IQueryHandler,
   QueryBuilder,
   QueryHandler,
-} from '@turnly/shared'
+} from '@turnly/core'
 import { ITicketsReadableRepo } from 'tickets/shared/domain/contracts/tickets-repo.interface'
 import { Ticket } from 'tickets/shared/domain/entities/ticket.entity'
 

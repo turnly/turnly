@@ -10,7 +10,7 @@
  *
  * @description This file is used to register handlers to the bus.
  */
-import { commandBus, elasticClient, eventBus, queryBus } from '@turnly/shared'
+import { commandBus, elasticClient, eventBus, queryBus } from '@turnly/core'
 
 import { TicketsModule } from '../../tickets.module'
 

@@ -9,8 +9,11 @@ import {
   ICommandBus,
   InputValidator,
   TimeoutHandler,
-} from '@turnly/shared'
-import { LeaveTheQueueCommand, LeaveTheQueueParams } from 'tickets/leave-the-queue'
+} from '@turnly/core'
+import {
+  LeaveTheQueueCommand,
+  LeaveTheQueueParams,
+} from 'tickets/leave-the-queue'
 import { Ticket } from 'tickets/shared/domain/entities/ticket.entity'
 
 import { LeaveTheQueueValidator } from './leave-the-queue.validator'

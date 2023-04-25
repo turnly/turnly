@@ -4,7 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { MongoWritableRepo } from '@turnly/shared'
+import { MongoWritableRepo } from '@turnly/core'
 import { ITicketsMapper } from 'tickets/shared/domain/contracts/tickets-mapper.interface'
 import { ITicketsWritableRepo } from 'tickets/shared/domain/contracts/tickets-repo.interface'
 import { Ticket } from 'tickets/shared/domain/entities/ticket.entity'

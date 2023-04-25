@@ -9,7 +9,7 @@ import {
   ICommandBus,
   InputValidator,
   TimeoutHandler,
-} from '@turnly/shared'
+} from '@turnly/core'
 import {
   AnnounceMyArrivalCommand,
   AnnounceMyArrivalParams,
@@ -26,9 +26,10 @@ export class AnnounceMyArrivalController extends Controller {
   @TimeoutHandler()
   @InputValidator(AnnounceMyArrivalValidator)
   public async execute(params: AnnounceMyArrivalParams) {
-    const ticket = await this.commandBus.execute<Ticket, AnnounceMyArrivalCommand>(
-      new AnnounceMyArrivalCommand(params)
-    )
+    const ticket = await this.commandBus.execute<
+      Ticket,
+      AnnounceMyArrivalCommand
+    >(new AnnounceMyArrivalCommand(params))
 
     return this.respond.ok(ticket.toObject())
   }

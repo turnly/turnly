@@ -10,7 +10,7 @@ import {
   ICommandHandler,
   IEventBus,
   IQueryBus,
-} from '@turnly/shared'
+} from '@turnly/core'
 import { GetAnUnexpiredTicketQuery } from 'Tickets/shared/application/queries/get-an-unexpired-ticket'
 import { ITicketsWritableRepo } from 'tickets/shared/domain/contracts/tickets-repo.interface'
 import { Ticket } from 'tickets/shared/domain/entities/ticket.entity'
