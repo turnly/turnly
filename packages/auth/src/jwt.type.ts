@@ -10,6 +10,7 @@ import { JwtPayload as Payload, VerifyOptions } from 'jsonwebtoken'
 export interface JwtPayload extends Payload {
   sub: string
   groups: string[]
+  typ: 'Bearer' | 'Refresh' | 'Access'
 }
 
 export interface OidcOptions extends Omit<VerifyOptions, 'algorithms'> {
