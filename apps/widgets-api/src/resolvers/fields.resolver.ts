@@ -4,9 +4,10 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { IContext } from '@types'
 import { FieldModel } from 'models/field.model'
 import { Arg, Authorized, Ctx, ID, Query, Resolver } from 'type-graphql'
+
+import { IContext } from '../context.type'
 
 @Resolver(FieldModel)
 export class FieldsResolver {

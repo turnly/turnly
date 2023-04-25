@@ -5,13 +5,13 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import { Guid } from '@turnly/common'
-import { TicketsMapper } from 'mappers/tickets.mapper'
-import { GraphException } from 'shared/graph-exception'
+import { DataSource, GraphException } from '@turnly/graph'
 
-import { Tickets } from '../shared/api'
-import { DataSource } from './common/data-source'
+import { Tickets } from '../api.service'
+import { IContext } from '../context.type'
+import { TicketsMapper } from './tickets.mapper'
 
-export class TicketsDataSource extends DataSource {
+export class TicketsDataSource extends DataSource<IContext> {
   public constructor() {
     super()
   }

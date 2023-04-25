@@ -5,11 +5,12 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import { Guid } from '@turnly/common'
+import { DataSource } from '@turnly/graph'
 
-import { Widgets } from '../shared/api'
-import { DataSource } from './common/data-source'
+import { IContext } from '../context.type'
+import { Widgets } from '../api.service'
 
-export class WidgetsDataSource extends DataSource {
+export class WidgetsDataSource extends DataSource<IContext> {
   public constructor() {
     super()
   }

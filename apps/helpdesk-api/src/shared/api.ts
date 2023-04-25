@@ -30,7 +30,7 @@ export const Customers = new Consumers.QueuingSystem.Customers()
 export const Tickets = new Consumers.QueuingSystem.Tickets()
 
 /**
- * Add-ons Service
+ * Channels Service
  */
 export const Integrations = new Consumers.Addons.Integrations()
 

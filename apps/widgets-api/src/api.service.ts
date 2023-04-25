@@ -25,7 +25,7 @@ export const Customers = new Consumers.QueuingSystem.Customers()
 export const Tickets = new Consumers.QueuingSystem.Tickets()
 
 /**
- * Add-ons Service
+ * Channels Service
  */
 export const Widgets = new Consumers.Channels.Widgets()
 

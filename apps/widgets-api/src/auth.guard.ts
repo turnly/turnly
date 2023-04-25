@@ -10,8 +10,9 @@ import {
   UnauthenticatedException,
   UnauthorizedException,
 } from '@turnly/common'
-import { IContext } from '@types'
 import { AuthChecker } from 'type-graphql'
+
+import { IContext } from './context.type'
 
 const getCredentials = ({ req: { headers } }: IContext) => {
   const authorization = headers.authorization

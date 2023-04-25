@@ -23,13 +23,12 @@
     ]
   },
   "dependencies": {
-    "@apollo/utils.keyvaluecache": "^1.0.1",
-    "@turnly/common": "github:turnly/common.git#latest",
     "@turnly/grpc": "github:turnly/grpc.git#latest",
-    "@turnly/observability": "^0.1.3",
     "@turnly/shared": "github:turnly/shared.git#latest",
-    "apollo-datasource": "^3.3.2",
-    "apollo-server-express": "^3.9.0",
+    "@turnly/graph": "^0.1.3",
+    "@turnly/core": "^0.1.3",
+    "@turnly/common": "^0.1.3",
+    "@turnly/observability": "^0.1.3",
     "class-validator": "0.13.2",
     "dotenv": "^16.0.1",
     "graphql": "15.3.0",

@@ -37,7 +37,7 @@ the API in the simplest and most user-friendly way.
 
 | Name                    | Description                                               |
 | ----------------------- | --------------------------------------------------------- |
-| **Add-ons**             | Used to get the integration (widget).                     |
+| **Channels**             | Used to get the integration (widget).                     |
 | **Queuing System**      | Used to create or get customers.                          |
 
 ### Environment Variables

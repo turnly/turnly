@@ -5,11 +5,12 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import { Guid } from '@turnly/common'
+import { DataSource } from '@turnly/graph'
 
-import { Customers } from '../shared/api'
-import { DataSource } from './common/data-source'
+import { IContext } from '../context.type'
+import { Customers } from '../api.service'
 
-export class CustomersDataSource extends DataSource {
+export class CustomersDataSource extends DataSource<IContext> {
   public constructor() {
     super()
   }

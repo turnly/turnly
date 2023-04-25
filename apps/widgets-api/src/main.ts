@@ -15,10 +15,10 @@ Observability.Tracing.Trace.initialize({
   instrumentations: [Observability.Tracing.InstrumentationType.HTTP],
 })
 
-import { Application } from 'application'
+import { graph } from 'server'
 
 async function bootstrap() {
-  await new Application().setup()
+  await graph.setup()
 }
 
 void bootstrap()

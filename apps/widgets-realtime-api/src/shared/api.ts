@@ -12,7 +12,7 @@ import { Consumers } from '@turnly/grpc'
 export const Customers = new Consumers.QueuingSystem.Customers()
 
 /**
- * Add-ons Service
+ * Channels Service
  */
 export const Widgets = new Consumers.Channels.Widgets()
 

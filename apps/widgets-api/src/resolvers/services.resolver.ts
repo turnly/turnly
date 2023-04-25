@@ -4,7 +4,6 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { IContext } from '@types'
 import { ServiceModel } from 'models/service.model'
 import {
   Arg,
@@ -17,6 +16,8 @@ import {
   Resolver,
   Root,
 } from 'type-graphql'
+
+import { IContext } from '../context.type'
 
 @Resolver(ServiceModel)
 export class ServicesResolver {

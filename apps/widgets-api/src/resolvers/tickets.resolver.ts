@@ -4,15 +4,11 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { IContext } from '@types'
-import { DataSource, Tickets } from 'datasources'
-import { Answers } from 'datasources'
-import { TicketsMapper } from 'mappers/tickets.mapper'
+import { DataSource, GraphException } from '@turnly/graph'
 import { CustomerModel } from 'models/customer.model'
 import { LocationModel } from 'models/location.model'
 import { ServiceModel } from 'models/service.model'
 import { TicketInput, TicketModel } from 'models/ticket.model'
-import { GraphException } from 'shared/graph-exception'
 import {
   Arg,
   Authorized,
@@ -24,6 +20,10 @@ import {
   Resolver,
   Root,
 } from 'type-graphql'
+
+import { IContext } from '../context.type'
+import { Answers, Tickets } from '../datasources'
+import { TicketsMapper } from '../datasources/tickets.mapper'
 
 @Resolver(TicketModel)
 export class TicketsResolver {

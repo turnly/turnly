@@ -11,7 +11,7 @@ import {
   ServicesDataSource,
   TicketsDataSource,
   WidgetsDataSource,
-} from '..'
+} from '.'
 
 export type Sources = ReturnType<typeof createSources>
 
