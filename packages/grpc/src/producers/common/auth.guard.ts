@@ -7,12 +7,13 @@
 import { OIDC } from '@turnly/auth'
 import { ExceptionHandler, Logger } from '@turnly/observability'
 
+import { ExceptionResponse } from '../queuing-system'
 import { MetaMapper } from './meta.mapper'
 import { Action, ICallback } from './request-handler.type'
 import { Context, MiddlewareHandler } from './server-options.type'
 
-export class AuthGuard<Response = unknown, Request = unknown>
-  implements MiddlewareHandler<Response, Request>
+export class AuthGuard<Request = unknown>
+  implements MiddlewareHandler<ExceptionResponse, Request>
 {
   public constructor(
     private readonly oidc: OIDC,
@@ -20,9 +21,9 @@ export class AuthGuard<Response = unknown, Request = unknown>
   ) {}
 
   public async execute(
-    ctx: Context<Response, Request>,
+    ctx: Context<ExceptionResponse, Request>,
     next: Action,
-    callback: ICallback<Response>
+    callback: ICallback<ExceptionResponse>
   ): Promise<void> {
     try {
       const {

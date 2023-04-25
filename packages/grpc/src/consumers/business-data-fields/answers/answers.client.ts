@@ -4,16 +4,16 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
+import { ExtraMapper } from '../../../producers'
 import {
   AnswersClient,
   CreateAnswersObject,
   CreateAnswersRequest,
   ListAnswersByFieldRequest,
-} from '../../../producers/business-data-fields/Answers'
-import { ExtraMapper } from '../../../producers/common/mappers/ExtraMapper'
+} from '../../../producers/business-data-fields'
 import { Client } from '../../common/base.client'
-import { promisify } from '../../common/promisify.util'
 import type { ClientConfig } from '../../common/client-options.type'
+import { promisify } from '../../common/promisify.util'
 import {
   IAnswersClient,
   ICreateAnswersRequest,

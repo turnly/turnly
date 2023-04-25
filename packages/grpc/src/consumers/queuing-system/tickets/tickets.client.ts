@@ -4,7 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { ExtraMapper } from '../../../producers/common/mappers/ExtraMapper'
+import { ExtraMapper } from '../../../producers'
 import {
   AnnounceTicketRequest,
   CallTicketRequest,

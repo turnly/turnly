@@ -9,7 +9,7 @@ import {
   CreateAnswersResponse,
   ListAnswersByFieldRequest,
   ListAnswersByFieldResponse,
-} from '../../../producers/business-data-fields/Answers'
+} from '../../../producers/business-data-fields/answers'
 
 export type ICreateAnswersRequest = CreateAnswersRequest.AsObject
 export type ICreateAnswersResponse = CreateAnswersResponse.AsObject

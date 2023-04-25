@@ -4,7 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { Meta } from '../../branch-management'
+import { Meta } from '../branch-management'
 
 export class MetaMapper {
   public static toRPC(metadata: Record<string, any>): Meta {

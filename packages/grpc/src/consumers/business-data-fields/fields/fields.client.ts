@@ -9,8 +9,8 @@ import {
   FindCustomerFieldsByServiceRequest,
 } from '../../../producers/business-data-fields'
 import { Client } from '../../common/base.client'
-import { promisify } from '../../common/promisify.util'
 import type { ClientConfig } from '../../common/client-options.type'
+import { promisify } from '../../common/promisify.util'
 import {
   IFieldsClient,
   IFindCustomerFieldsByServiceRequest,

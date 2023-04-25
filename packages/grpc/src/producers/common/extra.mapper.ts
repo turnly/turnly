@@ -4,7 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { Extra } from '../../queuing-system'
+import { Extra } from '../queuing-system'
 
 export class ExtraMapper {
   public static toRPC(objects: Extra.AsObject[]): Extra[] {

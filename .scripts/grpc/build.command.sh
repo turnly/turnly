@@ -1,11 +1,13 @@
 #!/usr/bin/env bash
 
 function build() {
-  cd packages/grpc || exit
+  pushd packages/grpc || exit
 
   info "Building sources on $OS system ..."
   yarn build
   info "Building sources on $OS system ... DONE ✅ "
+
+  popd || exit
 
   line
 

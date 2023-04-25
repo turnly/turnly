@@ -10,8 +10,8 @@ import {
   SearchAvailableLocationsForServingRequest,
 } from '../../../producers/branch-management'
 import { Client } from '../../common/base.client'
-import { promisify } from '../../common/promisify.util'
 import type { ClientConfig } from '../../common/client-options.type'
+import { promisify } from '../../common/promisify.util'
 import {
   IGetLocationRequest,
   IGetLocationResponse,

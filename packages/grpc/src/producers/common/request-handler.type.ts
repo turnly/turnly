@@ -7,7 +7,7 @@
 import type { ServiceError } from '@grpc/grpc-js'
 import type { Nullable } from '@turnly/common'
 
-import { Meta } from '../../queuing-system'
+import { Meta } from '../queuing-system'
 
 export interface ICallback<R> {
   (error: Nullable<ServiceError>, response: Nullable<R>): void
