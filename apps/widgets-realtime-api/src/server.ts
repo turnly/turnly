@@ -15,14 +15,25 @@ import { Channels, serverOptions } from './server.config'
 
 const server = new Realtime(serverOptions)
 
-server
-  .listen(Channels.QUEUING)
-  .use(new AuthGuard().use())
-  .subscribe([
-    new RealtimeForCustomersHandler(),
-    new RealtimeTicketsBeforeYoursUpdatedHandler(),
-    new RealtimeTicketCalledToDeskHandler(),
-    new RealtimeTicketCancelledHandler(),
-  ])
+const channel = server.listen(Channels.QUEUING)
+
+/**
+ * Middlewares
+ *
+ * @description Middlewares are executed before the event handlers.
+ */
+channel.use(new AuthGuard().use())
+
+/**
+ * Event handlers
+ *
+ * @description Event handlers are used to notify the clients about the events.
+ */
+channel.subscribe([
+  new RealtimeForCustomersHandler(),
+  new RealtimeTicketsBeforeYoursUpdatedHandler(),
+  new RealtimeTicketCalledToDeskHandler(),
+  new RealtimeTicketCancelledHandler(),
+])
 
 export { server }
