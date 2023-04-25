@@ -4,7 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { IReadableRepository, IWritableRepository } from '@turnly/shared'
+import { IReadableRepository, IWritableRepository } from '@turnly/core'
 
 import { Field } from '../entities/field.entity'
 

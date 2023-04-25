@@ -5,7 +5,7 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import { Nullable } from '@turnly/common'
-import { IQueryHandler, QueryBuilder, QueryHandler } from '@turnly/shared'
+import { IQueryHandler, QueryBuilder, QueryHandler } from '@turnly/core'
 import { IFieldsReadableRepo } from 'fields/shared/domain/contracts/fields-repo.interface'
 import { Field } from 'fields/shared/domain/entities/field.entity'
 

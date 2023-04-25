@@ -9,7 +9,7 @@ import {
   ICommandBus,
   InputValidator,
   TimeoutHandler,
-} from '@turnly/shared'
+} from '@turnly/core'
 import { CreateAnswersBulkCommand } from 'answers/create-answers-bulk'
 import { Answer } from 'answers/shared/domain/entities/answer.entity'
 

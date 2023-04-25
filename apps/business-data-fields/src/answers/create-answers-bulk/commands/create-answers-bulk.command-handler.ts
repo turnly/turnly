@@ -4,7 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { CommandHandler, ICommandHandler, IEventBus } from '@turnly/shared'
+import { CommandHandler, ICommandHandler, IEventBus } from '@turnly/core'
 import { IAnswersWritableRepo } from 'answers/shared/domain/contracts/answers-repo.interface'
 import { Answer } from 'answers/shared/domain/entities/answer.entity'
 

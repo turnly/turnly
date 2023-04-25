@@ -4,10 +4,10 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import '../../../../../src/Fields/infrastructure/register-dependencies/dependencies'
+import '../../../../../src/fields/infrastructure/register-dependencies/dependencies'
 
-import { ResourceNotFoundException } from '@turnly/common'
-import { MongoEnvironmentArranger } from '@turnly/shared'
+import { MongoEnvironmentArranger } from '@turnly/core'
+import { ResourceNotFoundException } from '@turnly/observability'
 
 import { FieldsModule } from '../../../../../../src/fields/fields.module'
 import { FieldMother } from '../../../../../unit/fields/shared/domain/field.entity.mother'

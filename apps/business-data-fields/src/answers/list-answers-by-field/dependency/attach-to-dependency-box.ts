@@ -4,7 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { Box, ioc } from '@turnly/shared'
+import { Box, ioc } from '@turnly/core'
 
 import { ListAnswersByFieldController } from '../api/list-answers-by-field.controller'
 import { ListAnswersByFieldServer } from '../api/list-answers-by-field.server'

@@ -4,7 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { EntityAttributes, timestamps } from '@turnly/shared'
+import { EntityAttributes, timestamps } from '@turnly/core'
 import { Answer } from 'answers/shared/domain/entities/answer.entity'
 import { EntityTypes } from 'answers/shared/domain/enums/entity-type.enum'
 import mongoose, { Document, Model, Schema } from 'mongoose'

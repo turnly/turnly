@@ -4,7 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { Box, ioc } from '@turnly/shared'
+import { Box, ioc } from '@turnly/core'
 
 import { CreateAnswersBulkController } from '../api/create-answers-bulk.controller'
 import { CreateAnswersBulkServer } from '../api/create-answers-bulk.server'

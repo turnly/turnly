@@ -13,12 +13,6 @@
 import 'answers/shared/dependency/attach-to-dependency-box'
 import 'answers/list-answers-by-field/dependency/attach-to-dependency-box'
 
-/**
- * Module
- *
- * @description Module definition.
- */
-import type { Producers } from '@turnly/grpc'
 import {
   Box,
   ICommandHandler,
@@ -26,7 +20,13 @@ import {
   IQueryHandler,
   IReadableRepository,
   IWritableRepository,
-} from '@turnly/shared'
+} from '@turnly/core'
+/**
+ * Module
+ *
+ * @description Module definition.
+ */
+import type { Producers } from '@turnly/grpc'
 import { Answer } from 'answers/shared/domain/entities/answer.entity'
 
 export class AnswersModule {

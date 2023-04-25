@@ -6,7 +6,7 @@
  */
 import '../../../../../src/Organizations/infrastructure/register-dependencies/dependencies'
 
-import { ResourceNotFoundException } from '@turnly/common'
+import { ResourceNotFoundException } from '@turnly/observability'
 import { MongoEnvironmentArranger } from '@turnly/shared'
 
 import { OrganizationsModule } from '../../../../../src/organizations/organizations.module'

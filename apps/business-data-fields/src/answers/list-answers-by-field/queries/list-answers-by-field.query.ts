@@ -6,7 +6,7 @@
  */
 
 import type { Guid } from '@turnly/common'
-import { WithExtraQuery } from '@turnly/shared'
+import { WithExtraQuery } from '@turnly/core'
 import { EntityTypes } from 'answers/shared/domain/enums/entity-type.enum'
 
 export class ListAnswersByFieldQuery extends WithExtraQuery {

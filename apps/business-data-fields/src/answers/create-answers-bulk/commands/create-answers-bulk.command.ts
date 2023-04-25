@@ -4,7 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { EntityAttributes, OrganizationCommand } from '@turnly/shared'
+import { EntityAttributes, OrganizationCommand } from '@turnly/core'
 import { Answer } from 'answers/shared/domain/entities/answer.entity'
 
 export type AnswerAttributes = Omit<

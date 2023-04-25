@@ -4,7 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { ResourceNotFoundException } from '@turnly/common'
+import { ResourceNotFoundException } from '@turnly/observability'
 import {
   Controller,
   InputValidator,

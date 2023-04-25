@@ -5,7 +5,7 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import { Extra, Guid, Identifier, Nullable } from '@turnly/common'
-import { AggregateRoot, EntityAttributes } from '@turnly/shared'
+import { AggregateRoot, EntityAttributes } from '@turnly/core'
 import { AnswerCreatedEvent } from 'answers/create-answers-bulk/events/answer-created.event'
 
 import { EntityTypes } from '../enums/entity-type.enum'

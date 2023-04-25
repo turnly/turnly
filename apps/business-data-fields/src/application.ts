@@ -4,7 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { MongoClient, mongoConfig, Startup } from '@turnly/shared'
+import { MongoClient, mongoConfig, Startup } from '@turnly/core'
 
 export class Application extends Startup {
   /**

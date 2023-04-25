@@ -4,8 +4,8 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
+import { config } from '@turnly/core'
 import { Producers } from '@turnly/grpc'
-import { config } from '@turnly/shared'
 import { AnswersModule } from 'answers/answers.module'
 import { FieldsModule } from 'fields/fields.module'
 

@@ -4,7 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { Box, ioc } from '@turnly/shared'
+import { Box, ioc } from '@turnly/core'
 
 import { FieldsMapper } from '../infrastructure/persistence/mongo/entity-model-mappers/field.mapper'
 import { FieldsReadableRepo } from '../infrastructure/persistence/mongo/repositories/fields-readable.repo'

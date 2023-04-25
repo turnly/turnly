@@ -13,20 +13,20 @@
 import 'fields/shared/dependency/attach-to-dependency-box'
 import 'fields/search-customer-fields-by-service/dependency/attach-to-dependency-box'
 
-/**
- * Module
- *
- * @description Module definition.
- */
-import type { Producers } from '@turnly/grpc'
 import type {
   ICommandHandler,
   IEventSubscriber,
   IQueryHandler,
   IReadableRepository,
   IWritableRepository,
-} from '@turnly/shared'
-import { Box } from '@turnly/shared'
+} from '@turnly/core'
+import { Box } from '@turnly/core'
+/**
+ * Module
+ *
+ * @description Module definition.
+ */
+import type { Producers } from '@turnly/grpc'
 import type { Field } from 'fields/shared/domain/entities/field.entity'
 
 export class FieldsModule {
