@@ -25,8 +25,8 @@ import type {
   IQueryHandler,
   IReadableRepository,
   IWritableRepository,
-} from '@turnly/shared'
-import { Box } from '@turnly/shared'
+} from '@turnly/core'
+import { Box } from '@turnly/core'
 import type { Widget } from 'widgets/shared/domain/entities/widget.entity'
 
 export class WidgetsModule {

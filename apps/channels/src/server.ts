@@ -5,7 +5,7 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import { Producers } from '@turnly/grpc'
-import { config } from '@turnly/shared'
+import { config } from '@turnly/core'
 import { WidgetsModule } from 'widgets/widgets.module'
 
 /**

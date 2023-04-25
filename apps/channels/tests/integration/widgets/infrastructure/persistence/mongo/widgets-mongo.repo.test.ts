@@ -7,7 +7,7 @@
 import '../../../../../../src/widgets/infrastructure/register-dependencies/dependencies'
 
 import { ResourceNotFoundException } from '@turnly/observability'
-import { MongoEnvironmentArranger } from '@turnly/shared'
+import { MongoEnvironmentArranger } from '@turnly/core'
 
 import { WidgetsModule } from '../../../../../../src/widgets/widgets.module'
 import { WidgetMother } from '../../../../../unit/widgets/shared/domain/widget.entity.mother'

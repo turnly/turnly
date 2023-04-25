@@ -4,7 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { EntityAttributes, Event, EventType } from '@turnly/shared'
+import { EntityAttributes, Event, EventType } from '@turnly/core'
 import { Widget } from 'widgets/shared/domain/entities/widget.entity'
 
 type Payload = EntityAttributes<Widget>

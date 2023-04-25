@@ -4,7 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { MongoWritableRepo } from '@turnly/shared'
+import { MongoWritableRepo } from '@turnly/core'
 import { IWidgetsMapper } from 'widgets/shared/domain/contratcs/widgets-mapper.interface'
 import { IWidgetsWritableRepo } from 'widgets/shared/domain/contratcs/widgets-repo.interface'
 import { Widget } from 'widgets/shared/domain/entities/widget.entity'
