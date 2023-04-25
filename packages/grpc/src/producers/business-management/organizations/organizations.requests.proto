@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package turnly.business_management.v1.organizations;
+
+message GetOrganizationRequest {
+  string id = 1;
+}
+
+message GetOrganizationBySubdomainRequest {
+  string subdomain = 1;
+}

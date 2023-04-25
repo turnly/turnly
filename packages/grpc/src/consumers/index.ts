@@ -27,6 +27,16 @@ export * as BranchManagement from './branch-management'
 export * as Channels from './channels'
 
 /**
+ * Business Management
+ */
+export * as BusinessManagement from './business-management'
+
+/**
+ * Memberships
+ */
+export * as Memberships from './memberships'
+
+/**
  * Client
  */
 export { Client } from './common/base.client'
