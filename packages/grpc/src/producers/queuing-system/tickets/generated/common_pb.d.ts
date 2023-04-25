@@ -90,3 +90,26 @@ export namespace Extra {
         value: string,
     }
 }
+
+export class ExceptionResponse extends jspb.Message { 
+
+    hasMeta(): boolean;
+    clearMeta(): void;
+    getMeta(): Meta | undefined;
+    setMeta(value?: Meta): ExceptionResponse;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): ExceptionResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: ExceptionResponse): ExceptionResponse.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: ExceptionResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): ExceptionResponse;
+    static deserializeBinaryFromReader(message: ExceptionResponse, reader: jspb.BinaryReader): ExceptionResponse;
+}
+
+export namespace ExceptionResponse {
+    export type AsObject = {
+        meta?: Meta.AsObject,
+    }
+}

@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 
 function build() {
+  cd packages/grpc || exit
+
   info "Building sources on $OS system ..."
-  tsc -p tsconfig.build.json
+  yarn build
   info "Building sources on $OS system ... DONE ✅ "
 
   line

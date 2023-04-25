@@ -23,9 +23,7 @@
   ],
   "scripts": {
     "prebuild": "rm -rf dist tsconfig.tsbuildinfo",
-    "build": "bash scripts/execute.sh build",
-    "protos": "bash scripts/execute.sh protos",
-    "setup": "bash scripts/execute.sh setup",
+    "build": "tsc -p tsconfig.build.json",
     "lint": "prettier \"./**/*.{ts,js}\" --check && eslint . --ext .js,.ts && tsc --noEmit",
     "test:unit": "cross-env NODE_ENV=test jest"
   },

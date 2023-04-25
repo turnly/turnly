@@ -3,23 +3,20 @@
 set -e
 
 BASE_DIR=$(dirname "$0")
-SHARED="$BASE_DIR/../node_modules/@turnly/eslint-config/scripts"
+SHARED="$BASE_DIR/../../node_modules/@turnly/eslint-config/scripts"
 
 if [[ ! -d "$SHARED" ]]; then
   yarn add https://github.com/turnly/configs.git -W
 fi
 
-COMMANDS="$BASE_DIR/commands"
-HELPERS="$BASE_DIR/helpers"
-
 # Helpers and bin sources
-source "$HELPERS/helpers.sh"
+source "$BASE_DIR/base.helper.sh"
 
 # Commands sources
-source "$COMMANDS/setup.sh"
-source "$COMMANDS/build.sh"
-source "$COMMANDS/gen-protos-unix.sh"
-source "$COMMANDS/gen-protos-windows.sh"
+source "$BASE_DIR/setup.command.sh"
+source "$BASE_DIR/build.command.sh"
+source "$BASE_DIR/gen-protos-unix.command.sh"
+source "$BASE_DIR/gen-protos-windows.command.sh"
 
 INPUT=$1
 shift

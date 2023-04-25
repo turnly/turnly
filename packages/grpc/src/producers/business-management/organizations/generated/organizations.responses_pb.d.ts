@@ -1,4 +1,4 @@
-// package: turnly.business_owners.v1.organizations
+// package: turnly.business_management.v1.organizations
 // file: organizations.responses.proto
 
 /* tslint:disable */

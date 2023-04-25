@@ -1,4 +1,4 @@
-// package: turnly.teams.v1.agents
+// package: turnly.memberships.v1.agents
 // file: agents.proto
 
 /* tslint:disable */
@@ -15,7 +15,7 @@ interface IAgentsService extends grpc.ServiceDefinition<grpc.UntypedServiceImple
 }
 
 interface IAgentsService_IGetOne extends grpc.MethodDefinition<agents_requests_pb.GetAgentRequest, agents_responses_pb.GetAgentResponse> {
-    path: "/turnly.teams.v1.agents.Agents/GetOne";
+    path: "/turnly.memberships.v1.agents.Agents/GetOne";
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<agents_requests_pb.GetAgentRequest>;
@@ -24,7 +24,7 @@ interface IAgentsService_IGetOne extends grpc.MethodDefinition<agents_requests_p
     responseDeserialize: grpc.deserialize<agents_responses_pb.GetAgentResponse>;
 }
 interface IAgentsService_IGetByUserId extends grpc.MethodDefinition<agents_requests_pb.GetAgentByUserIdRequest, agents_responses_pb.GetAgentByUserIdResponse> {
-    path: "/turnly.teams.v1.agents.Agents/GetByUserId";
+    path: "/turnly.memberships.v1.agents.Agents/GetByUserId";
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<agents_requests_pb.GetAgentByUserIdRequest>;

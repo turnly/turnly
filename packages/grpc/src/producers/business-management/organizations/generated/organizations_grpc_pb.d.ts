@@ -1,4 +1,4 @@
-// package: turnly.business_owners.v1.organizations
+// package: turnly.business_management.v1.organizations
 // file: organizations.proto
 
 /* tslint:disable */
@@ -15,7 +15,7 @@ interface IOrganizationsService extends grpc.ServiceDefinition<grpc.UntypedServi
 }
 
 interface IOrganizationsService_IGetOne extends grpc.MethodDefinition<organizations_requests_pb.GetOrganizationRequest, organizations_responses_pb.GetOrganizationResponse> {
-    path: "/turnly.business_owners.v1.organizations.Organizations/GetOne";
+    path: "/turnly.business_management.v1.organizations.Organizations/GetOne";
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<organizations_requests_pb.GetOrganizationRequest>;
@@ -24,7 +24,7 @@ interface IOrganizationsService_IGetOne extends grpc.MethodDefinition<organizati
     responseDeserialize: grpc.deserialize<organizations_responses_pb.GetOrganizationResponse>;
 }
 interface IOrganizationsService_IGetBySubdomain extends grpc.MethodDefinition<organizations_requests_pb.GetOrganizationBySubdomainRequest, organizations_responses_pb.GetOrganizationResponse> {
-    path: "/turnly.business_owners.v1.organizations.Organizations/GetBySubdomain";
+    path: "/turnly.business_management.v1.organizations.Organizations/GetBySubdomain";
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<organizations_requests_pb.GetOrganizationBySubdomainRequest>;

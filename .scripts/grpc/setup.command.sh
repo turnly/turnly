@@ -23,7 +23,5 @@ function setup() {
     yarn install
   fi
 
-  npx husky install
-
   info "Installing dependencies... DONE ✅ "
 }

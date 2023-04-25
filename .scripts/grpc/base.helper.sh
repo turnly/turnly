@@ -14,4 +14,4 @@ source "$BIN/execute.sh"
 source "$SHARED_HELPERS/git-branch-name.sh"
 
 # Helpers sources
-source "$HELPERS/get-services.sh"
+source "$BASE_DIR/get-services.helper.sh"

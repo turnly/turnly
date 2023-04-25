@@ -1,4 +1,4 @@
-// package: turnly.teams.v1.agents
+// package: turnly.memberships.v1.agents
 // file: agents.proto
 
 /* tslint:disable */

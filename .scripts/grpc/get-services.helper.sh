@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function get_services() {
-  SERVICES_PATH="./src/producers"
+  SERVICES_PATH="./packages/grpc/src/producers"
   SERVICES="$SERVICES_PATH/**"
 
   IGNORE_COMMON_PATH="$SERVICES_PATH/common"
