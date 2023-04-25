@@ -4,7 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { EntityAttributes } from '@turnly/shared'
+import { EntityAttributes } from '@turnly/core'
 import { IServicesMapper } from 'services/shared/domain/contracts/services-mapper.interface'
 import { Service } from 'services/shared/domain/entities/service.entity'
 

@@ -4,13 +4,14 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { Nullable, ResourceNotFoundException } from '@turnly/common'
+import { Nullable } from '@turnly/common'
 import {
   Controller,
   InputValidator,
   IQueryBus,
   TimeoutHandler,
-} from '@turnly/shared'
+} from '@turnly/core'
+import { ResourceNotFoundException } from '@turnly/observability'
 import { GetOneServiceQuery } from 'services/get-one-service'
 import { Service } from 'services/shared/domain/entities/service.entity'
 

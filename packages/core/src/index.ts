@@ -164,3 +164,8 @@ export * from './queries/with-organization.query'
  * Class validator
  */
 export * as ClassValidators from 'class-validator'
+
+/**
+ * Config
+ */
+export * from './config'

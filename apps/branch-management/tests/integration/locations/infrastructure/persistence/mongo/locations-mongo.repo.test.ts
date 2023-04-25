@@ -6,8 +6,8 @@
  */
 import '../../../../../../src/locations/shared/dependency/register-dependencies'
 
-import { ResourceNotFoundException } from '@turnly/common'
-import { MongoEnvironmentArranger } from '@turnly/shared'
+import { MongoEnvironmentArranger } from '@turnly/core'
+import { ResourceNotFoundException } from '@turnly/observability'
 
 import { LocationsModule } from '../../../../../../src/locations/locations.module'
 import { LocationMother } from '../../../../../unit/locations/shared/domain/location.entity.mother'

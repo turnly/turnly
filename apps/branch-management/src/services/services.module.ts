@@ -14,20 +14,20 @@ import 'services/shared/dependency/attach-to-dependency-box'
 import 'services/get-one-service/dependency/attach-to-dependency-box'
 import 'services/list-services-of-one-location/dependency/attach-to-dependency-box'
 
-/**
- * Module
- *
- * @description Module definition.
- */
-import type { Producers } from '@turnly/grpc'
 import type {
   ICommandHandler,
   IEventSubscriber,
   IQueryHandler,
   IReadableRepository,
   IWritableRepository,
-} from '@turnly/shared'
-import { Box } from '@turnly/shared'
+} from '@turnly/core'
+import { Box } from '@turnly/core'
+/**
+ * Module
+ *
+ * @description Module definition.
+ */
+import type { Producers } from '@turnly/grpc'
 import type { Service } from 'services/shared/domain/entities/service.entity'
 
 export class ServicesModule {

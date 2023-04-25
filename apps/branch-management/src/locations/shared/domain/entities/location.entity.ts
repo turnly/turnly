@@ -5,7 +5,7 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import { Guid, Identifier } from '@turnly/common'
-import { AggregateRoot, EntityAttributes } from '@turnly/shared'
+import { AggregateRoot, EntityAttributes } from '@turnly/core'
 import { LocationCreatedEvent } from 'locations/create-location/events/location-created.event'
 
 import { LocationStatus } from '../enums/location-status.enum'

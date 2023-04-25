@@ -28,7 +28,7 @@ promotions, exchanges, early adopters, etc.
 | Express.js    (@turnly/shared)      | Fast, unopinionated, minimalist web framework for Node.js                     |
 | Mongoose ORM  (@turnly/shared)      | Elegant mongoDB object modeling.                                              |
 | RabbitMQ      (@turnly/shared)      | A message broker for events.                                                  |
-| gRPC Server   (@turnly/rpc)         | Efficiently connecting polyglot services in microservices architecture.       |
+| gRPC Server   (@turnly/grpc)         | Efficiently connecting polyglot services in microservices architecture.       |
 
 ### Service Modules
 

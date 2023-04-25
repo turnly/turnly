@@ -4,7 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { IEntityMapper } from '@turnly/shared'
+import { IEntityMapper } from '@turnly/core'
 import { Location } from 'locations/shared/domain/entities/location.entity'
 
 export type ILocationsMapper<Model> = IEntityMapper<Location, Model>

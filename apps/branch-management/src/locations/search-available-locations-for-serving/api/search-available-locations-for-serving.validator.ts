@@ -4,7 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { Validator } from '@turnly/shared'
+import { Validator } from '@turnly/core'
 
 export const SearchAvailableLocationsForServingValidator = Validator.object({
   searchQuery: Validator.string(true),

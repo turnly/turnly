@@ -4,7 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { MongoReadableRepo } from '@turnly/shared'
+import { MongoReadableRepo } from '@turnly/core'
 import { IServicesMapper } from 'services/shared/domain/contracts/services-mapper.interface'
 import { IServicesReadableRepo } from 'services/shared/domain/contracts/services-repo.interface'
 import { Service } from 'services/shared/domain/entities/service.entity'

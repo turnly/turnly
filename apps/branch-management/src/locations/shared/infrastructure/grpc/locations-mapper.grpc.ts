@@ -6,7 +6,7 @@
  */
 import { Nullable } from '@turnly/common'
 import { Producers } from '@turnly/grpc'
-import { EntityAttributes } from '@turnly/shared'
+import { EntityAttributes } from '@turnly/core'
 import { Location } from 'locations/shared/domain/entities/location.entity'
 
 export class LocationsMapper {

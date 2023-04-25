@@ -4,7 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { Box, ioc } from '@turnly/shared'
+import { Box, ioc } from '@turnly/core'
 
 import { ServicesMapper } from '../infrastructure/persistence/mongo/entity-model-mappers/services.mapper'
 import { ServicesReadableRepo } from '../infrastructure/persistence/mongo/repositories/services-readable.repo'

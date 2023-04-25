@@ -4,7 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { Box, ioc } from '@turnly/shared'
+import { Box, ioc } from '@turnly/core'
 
 import { SearchAvailableLocationsForServingController } from '../api/search-available-locations-for-serving.controller'
 import { SearchAvailableLocationsForServingServer } from '../api/search-available-locations-for-serving.server'

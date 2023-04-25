@@ -4,7 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { Producers } from '@turnly/rpc'
+import { Producers } from '@turnly/grpc'
 import { OrganizationsMapper } from 'organizations/shared/infrastructure/grpc/organizations-mapper.grpc'
 
 import { GetOneOrganizationController } from './get-one-organization.controller'
