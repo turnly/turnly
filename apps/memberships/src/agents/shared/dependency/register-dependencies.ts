@@ -4,7 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { commandBus, eventBus, queryBus } from '@turnly/shared'
+import { commandBus, eventBus, queryBus } from '@turnly/core'
 
 import { AgentsModule } from '../../agents.module'
 

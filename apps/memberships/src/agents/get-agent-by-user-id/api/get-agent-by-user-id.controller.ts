@@ -10,7 +10,7 @@ import {
   InputValidator,
   IQueryBus,
   TimeoutHandler,
-} from '@turnly/shared'
+} from '@turnly/core'
 import { Agent } from 'agents/shared/domain/entity/agent.entity'
 
 import { GetAgentByUserIdQuery } from '../queries/get-agent-by-user-id.query'

@@ -4,7 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { MongoWritableRepo } from '@turnly/shared'
+import { MongoWritableRepo } from '@turnly/core'
 import { IAgentsMapper } from 'Agents/domain/contracts/IAgentsMapper'
 import { IAgentsWritableRepo } from 'Agents/domain/contracts/IAgentsRepo'
 import { Agent } from 'agents/shared/domain/entity/agent.entity'

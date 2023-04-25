@@ -24,10 +24,10 @@ Management of the organization's employees (Agents and Managers).
 | Name                                | Description                                                                   |
 | ----------------------------------- | ----------------------------------------------------------------------------- |
 | TypeScript                          | Types reduce bugs and increases reliability.                                  |
-| Express.js    (@turnly/shared)      | Fast, unopinionated, minimalist web framework for Node.js                     |
-| Mongoose ORM  (@turnly/shared)      | Elegant mongoDB object modeling.                                              |
-| ElasticSearch (@turnly/shared)      | Modern NoSQL database for search and store unstructured data.                 |
-| RabbitMQ      (@turnly/shared)      | A message broker for events.                                                  |
+| Express.js    (@turnly/core)      | Fast, unopinionated, minimalist web framework for Node.js                     |
+| Mongoose ORM  (@turnly/core)      | Elegant mongoDB object modeling.                                              |
+| ElasticSearch (@turnly/core)      | Modern NoSQL database for search and store unstructured data.                 |
+| RabbitMQ      (@turnly/core)      | A message broker for events.                                                  |
 | gRPC Server   (@turnly/grpc)         | Efficiently connecting polyglot services in microservices architecture.       |
 
 ### Service Modules

@@ -4,7 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { Box, ioc } from '@turnly/shared'
+import { Box, ioc } from '@turnly/core'
 
 import { GetOneAgentController } from '../api/get-one-agent.controller'
 import { GetOneAgentServer } from '../api/get-one-agent.server'

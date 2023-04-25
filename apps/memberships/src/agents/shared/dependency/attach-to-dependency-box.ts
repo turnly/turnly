@@ -4,7 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { Box, ioc } from '@turnly/shared'
+import { Box, ioc } from '@turnly/core'
 
 import { GetOneAgentQueryHandler } from '../application/queries'
 import { AgentsMapper } from '../infrastructure/persistence/mongo/entity-model-mappers/agents.mapper'

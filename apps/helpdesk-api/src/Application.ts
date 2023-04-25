@@ -6,7 +6,7 @@
  */
 import 'reflect-metadata'
 
-import { Http, Startup } from '@turnly/shared'
+import { Http, Startup } from '@turnly/core'
 import { ApolloServerPluginDrainHttpServer } from 'apollo-server-core'
 import { ApolloServer } from 'apollo-server-express'
 import { createSources, DataSource, setOrganizationId } from 'datasources'

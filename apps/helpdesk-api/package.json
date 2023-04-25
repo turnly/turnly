@@ -24,9 +24,9 @@
   },
   "dependencies": {
     "@apollo/utils.keyvaluecache": "^1.0.1",
-    "@turnly/common": "github:turnly/common.git#latest",
-    "@turnly/grpc": "github:turnly/rpc.git#latest",
-    "@turnly/shared": "github:turnly/shared.git#latest",
+    "@turnly/common": "^0.1.3",
+    "@turnly/grpc": "^0.1.3",
+    "@turnly/core": "^0.1.3",
     "apollo-datasource": "^3.3.2",
     "apollo-server-express": "^3.9.0",
     "class-validator": "^0.14.0",
@@ -48,7 +48,10 @@
     "ts-node": "^10.2.1",
     "typescript": "^4.4.2"
   },
+  "resolutions": {
+    "**/esquery": "1.4.0"
+  },
   "engines": {
-    "node": ">=18.12"
+    "node": ">=18.14"
   }
 }

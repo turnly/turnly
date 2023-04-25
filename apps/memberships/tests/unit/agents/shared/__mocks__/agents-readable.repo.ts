@@ -4,7 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { IReadableRepository } from '@turnly/shared'
+import { IReadableRepository } from '@turnly/core'
 import { TestReadableRepo } from '@turnly/testing'
 import { Agent } from 'agents/shared/domain/entity/agent.entity'
 

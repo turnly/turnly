@@ -5,8 +5,8 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import { Nullable } from '@turnly/common'
+import { EntityAttributes } from '@turnly/core'
 import { Producers } from '@turnly/grpc'
-import { EntityAttributes } from '@turnly/shared'
 import { Agent } from 'agents/shared/domain/entity/agent.entity'
 
 export class AgentsMapper {
