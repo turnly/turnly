@@ -1,0 +1,7 @@
+jest*
+node_modules
+tsconfig.json
+README.md
+dist
+ormconfig.js
+**/migrations
