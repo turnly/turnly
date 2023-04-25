@@ -4,7 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { Validator } from '@turnly/shared'
+import { Validator } from '@turnly/core'
 
 const extra = Validator.object({
   key: Validator.string(),

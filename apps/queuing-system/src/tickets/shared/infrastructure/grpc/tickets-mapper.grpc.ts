@@ -6,7 +6,7 @@
  */
 import { Nullable } from '@turnly/common'
 import { Producers } from '@turnly/grpc'
-import { DateTime, EntityAttributes } from '@turnly/shared'
+import { DateTime, EntityAttributes } from '@turnly/core'
 import { Ticket } from 'tickets/shared/domain/entities/ticket.entity'
 
 export class TicketsMapper {

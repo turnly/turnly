@@ -11,7 +11,7 @@ import 'tickets/shared/dependency/register-dependencies'
 import 'customers/shared/dependency/register-dependencies'
 
 import { Observability } from '@turnly/common'
-import { config, eventBus } from '@turnly/shared'
+import { config, eventBus } from '@turnly/core'
 
 Observability.Tracing.Trace.initialize({ name: config.get('app.name') })
 

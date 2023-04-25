@@ -9,7 +9,7 @@ import {
   ICommandBus,
   InputValidator,
   TimeoutHandler,
-} from '@turnly/shared'
+} from '@turnly/core'
 import {
   ReturnTicketToQueueCommand,
   ReturnTicketToQueueParams,
@@ -26,9 +26,10 @@ export class ReturnTicketToQueueController extends Controller {
   @TimeoutHandler()
   @InputValidator(ReturnTicketToQueueValidator)
   public async execute(params: ReturnTicketToQueueParams) {
-    const ticket = await this.commandBus.execute<Ticket, ReturnTicketToQueueCommand>(
-      new ReturnTicketToQueueCommand(params)
-    )
+    const ticket = await this.commandBus.execute<
+      Ticket,
+      ReturnTicketToQueueCommand
+    >(new ReturnTicketToQueueCommand(params))
 
     return this.respond.ok(ticket.toObject())
   }

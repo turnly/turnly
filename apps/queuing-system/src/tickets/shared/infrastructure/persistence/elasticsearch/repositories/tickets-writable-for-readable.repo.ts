@@ -8,7 +8,7 @@ import {
   ElasticClient,
   ElasticIndexes,
   ElasticWritableRepo,
-} from '@turnly/shared'
+} from '@turnly/core'
 import { ITicketsWritableRepo } from 'tickets/shared/domain/contracts/tickets-repo.interface'
 import { Ticket } from 'tickets/shared/domain/entities/ticket.entity'
 

@@ -4,8 +4,8 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { EventsSubscriber, IEventSubscriber } from '@turnly/shared'
-import { NotificationsProvider } from '@turnly/shared'
+import { EventsSubscriber, IEventSubscriber } from '@turnly/core'
+import { NotificationsProvider } from '@turnly/core'
 import { TicketCalledEvent } from 'tickets/create-ticket/events/ticket-called.event'
 import { Ticket } from 'tickets/shared/domain/entities/ticket.entity'
 

@@ -13,7 +13,7 @@ import {
   InvalidStateException,
   Nullable,
 } from '@turnly/common'
-import { AggregateRoot, EntityAttributes } from '@turnly/shared'
+import { AggregateRoot, EntityAttributes } from '@turnly/core'
 import { TicketAnnouncedEvent } from 'tickets/create-ticket/events/ticket-announced.event'
 import { TicketCalledEvent } from 'tickets/create-ticket/events/ticket-called.event'
 import { TicketCancelledEvent } from 'tickets/create-ticket/events/ticket-cancelled.event'

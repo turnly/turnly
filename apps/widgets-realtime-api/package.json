@@ -23,10 +23,11 @@
     ]
   },
   "dependencies": {
-    "@turnly/common": "github:turnly/common.git#latest",
-    "@turnly/grpc": "github:turnly/grpc.git#latest",
-    "@turnly/realtime": "github:turnly/realtime.git#latest",
-    "@turnly/shared": "github:turnly/shared.git#latest",
+    "@turnly/common": "^0.1.3",
+    "@turnly/grpc": "^0.1.3",
+    "@turnly/core": "^0.1.3",
+    "@turnly/observability": "^0.1.3",
+    "@turnly/realtime": "^0.1.3",
     "dotenv": "^16.0.1",
     "mongoose": "^6.4.6"
   },

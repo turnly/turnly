@@ -10,7 +10,7 @@ import {
   ICommandHandler,
   IEventBus,
   IQueryBus,
-} from '@turnly/shared'
+} from '@turnly/core'
 import { ActiveTicketsByCustomerQuery } from 'tickets/shared/application/queries/get-active-tickets-by-customer/get-active-tickets-by-customer.query'
 import { ITicketsWritableRepo } from 'tickets/shared/domain/contracts/tickets-repo.interface'
 import { Ticket } from 'tickets/shared/domain/entities/ticket.entity'

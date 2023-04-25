@@ -25,7 +25,6 @@ import 'tickets/search-tickets-for-serving-from-location/dependency/attach-to-de
 import 'tickets/notify-customer-called/dependency/attach-to-dependency-box'
 import 'tickets/get-ticket-details/dependency/attach-to-dependency-box'
 
-import { Producers } from '@turnly/grpc'
 /**
  * Module
  *
@@ -37,8 +36,9 @@ import type {
   IQueryHandler,
   IReadableRepository,
   IWritableRepository,
-} from '@turnly/shared'
-import { Box } from '@turnly/shared'
+} from '@turnly/core'
+import { Box } from '@turnly/core'
+import { Producers } from '@turnly/grpc'
 import type { Ticket } from 'tickets/shared/domain/entities/ticket.entity'
 
 import { TicketsMappings } from './shared/infrastructure/persistence/elasticsearch/mappings/tickets.mappings'
@@ -53,16 +53,20 @@ export class TicketsModule {
       getTicketsBeforeYours: (...args) =>
         Box.resolve('listTicketsBeforeYoursServer').execute(...args),
       getTicketsForServingFromLocation: (...args) =>
-        Box.resolve('searchTicketsForServingFromLocationServer').execute(...args),
+        Box.resolve('searchTicketsForServingFromLocationServer').execute(
+          ...args
+        ),
       leave: (...args) => Box.resolve('leaveTheQueueServer').execute(...args),
       announce: (...args) =>
         Box.resolve('announceMyArrivalServer').execute(...args),
-      serve: (...args) => Box.resolve('markTicketAsServedServer').execute(...args),
+      serve: (...args) =>
+        Box.resolve('markTicketAsServedServer').execute(...args),
       getTicketsWaitingForService: (...args) =>
         Box.resolve('listTicketsWaitingForServiceServer').execute(...args),
       returnToQueue: (...args) =>
         Box.resolve('returnTicketToQueueServer').execute(...args),
-      discard: (...args) => Box.resolve('markTicketAsDiscardedServer').execute(...args),
+      discard: (...args) =>
+        Box.resolve('markTicketAsDiscardedServer').execute(...args),
       create: (...args) => Box.resolve('createTicketServer').execute(...args),
     }
   }

@@ -9,7 +9,7 @@ import {
   ICommandBus,
   InputValidator,
   TimeoutHandler,
-} from '@turnly/shared'
+} from '@turnly/core'
 import { CreateCustomersCommand } from 'customers/create-customer'
 import {
   CreateCustomerParams,

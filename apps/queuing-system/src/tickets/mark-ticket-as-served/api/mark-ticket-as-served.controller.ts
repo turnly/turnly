@@ -9,8 +9,11 @@ import {
   ICommandBus,
   InputValidator,
   TimeoutHandler,
-} from '@turnly/shared'
-import { MarkTicketAsServedCommand, MarkTicketAsServedParams } from 'tickets/mark-ticket-as-served'
+} from '@turnly/core'
+import {
+  MarkTicketAsServedCommand,
+  MarkTicketAsServedParams,
+} from 'tickets/mark-ticket-as-served'
 import { Ticket } from 'tickets/shared/domain/entities/ticket.entity'
 
 import { MarkTicketAsServedValidator } from './mark-ticket-as-served.validator'
@@ -23,9 +26,10 @@ export class MarkTicketAsServedController extends Controller {
   @TimeoutHandler()
   @InputValidator(MarkTicketAsServedValidator)
   public async execute(params: MarkTicketAsServedParams) {
-    const ticket = await this.commandBus.execute<Ticket, MarkTicketAsServedCommand>(
-      new MarkTicketAsServedCommand(params)
-    )
+    const ticket = await this.commandBus.execute<
+      Ticket,
+      MarkTicketAsServedCommand
+    >(new MarkTicketAsServedCommand(params))
 
     return this.respond.ok(ticket.toObject())
   }

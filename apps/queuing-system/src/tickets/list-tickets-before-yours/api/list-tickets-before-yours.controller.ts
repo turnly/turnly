@@ -10,7 +10,7 @@ import {
   InputValidator,
   IQueryBus,
   TimeoutHandler,
-} from '@turnly/shared'
+} from '@turnly/core'
 import { ListTicketsBeforeYoursQuery } from 'tickets/list-tickets-before-yours'
 import { Ticket } from 'tickets/shared/domain/entities/ticket.entity'
 

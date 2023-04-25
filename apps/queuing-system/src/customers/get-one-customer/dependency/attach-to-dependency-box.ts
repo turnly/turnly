@@ -4,7 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { Box, ioc } from '@turnly/shared'
+import { Box, ioc } from '@turnly/core'
 
 import { GetOneCustomerController } from '../api/get-one-customer.controller'
 import { GetOneCustomerServer } from '../api/get-one-customer.server'
