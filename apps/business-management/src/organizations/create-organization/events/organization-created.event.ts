@@ -5,7 +5,7 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import { Guid } from '@turnly/common'
-import { EntityAttributes, Event, EventType } from '@turnly/shared'
+import { EntityAttributes, Event, EventType } from '@turnly/core'
 
 import { Organization } from '../../shared/domain/entities/organization.entity'
 

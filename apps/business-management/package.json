@@ -8,17 +8,13 @@
   "scripts": {
     "prebuild": "rm -rf dist tsconfig.tsbuildinfo",
     "build": "tsc -p tsconfig.build.json",
-    "lint:check": "eslint . --ext .js,.ts",
-    "lint:format": "prettier \"./**/*.{ts,js}\" --check",
-    "lint:ts:check": "tsc --noEmit",
-    "start": "ROOT_DIR=$(pwd) NODE_PATH=dist/ node -r dotenv/config dist/main.js",
+    "watch": "nodemon --config node_modules/@turnly/eslint-config/nodemon.json src/main.ts",
+    "lint": "prettier \"./**/*.{ts,js}\" --check && eslint . --ext .js,.ts && tsc --noEmit",
     "test:benchmark": "cross-env NODE_ENV=test echo 'Running benchmark tests... (not implemented yet)'",
     "test:coverage": "cross-env NODE_ENV=test jest --coverage",
     "test:e2e": "cross-env NODE_ENV=test echo 'Running e2e tests... (not implemented yet)'",
-    "test:integration": "cross-env NODE_ENV=test jest integration",
-    "test:unit": "cross-env NODE_ENV=test jest unit",
-    "test:watch": "cross-env NODE_ENV=test jest --watch --onlyChanged",
-    "watch": "nodemon --config node_modules/@turnly/eslint-config/nodemon.json src/main.ts"
+    "test:integration": "cross-env NODE_ENV=test jest integration --runInBand",
+    "test:unit": "cross-env NODE_ENV=test jest unit"
   },
   "prettier": "@turnly/eslint-config/.prettierrc.js",
   "eslintConfig": {
@@ -32,15 +28,16 @@
     ]
   },
   "dependencies": {
-    "@turnly/common": "github:turnly/common.git#latest",
-    "@turnly/eslint-config": "github:turnly/configs",
-    "@turnly/grpc": "github:turnly/rpc.git#latest",
-    "@turnly/shared": "github:turnly/shared.git#latest",
+    "@turnly/common": "^0.1.3",
+    "@turnly/grpc": "^0.1.3",
+    "@turnly/core": "^0.1.3",
+    "@turnly/observability": "^0.1.3",
     "dotenv": "^16.0.1",
     "mongoose": "^6.4.6"
   },
   "devDependencies": {
-    "@turnly/testing": "github:turnly/testing.git#latest",
+    "@turnly/eslint-config": "github:turnly/configs",
+    "@turnly/testing": "^0.1.3",
     "@types/jest": "^28.1.4",
     "@types/node": "^16.10.2",
     "cross-env": "^7.0.3",
@@ -52,7 +49,10 @@
     "ts-node": "^10.2.1",
     "typescript": "^4.4.2"
   },
+  "resolutions": {
+    "**/esquery": "1.4.0"
+  },
   "engines": {
-    "node": ">=18.12"
+    "node": ">=18.14"
   }
 }

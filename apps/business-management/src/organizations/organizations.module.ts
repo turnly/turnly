@@ -14,20 +14,20 @@ import 'organizations/shared/dependency/attach-to-dependency-box'
 import 'organizations/get-one-organization/dependency/attach-to-dependency-box'
 import 'organizations/get-organization-by-subdomain/dependency/attach-to-dependency-box'
 
-/**
- * Module
- *
- * @description Module definition.
- */
-import type { Producers } from '@turnly/grpc'
 import type {
   ICommandHandler,
   IEventSubscriber,
   IQueryHandler,
   IReadableRepository,
   IWritableRepository,
-} from '@turnly/shared'
-import { Box } from '@turnly/shared'
+} from '@turnly/core'
+import { Box } from '@turnly/core'
+/**
+ * Module
+ *
+ * @description Module definition.
+ */
+import type { Producers } from '@turnly/grpc'
 import type { Organization } from 'organizations/shared/domain/entities/organization.entity'
 
 export class OrganizationsModule {
