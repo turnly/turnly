@@ -11,7 +11,7 @@ import {
   IQueryBus,
   TimeoutHandler,
 } from '@turnly/shared'
-import { GetOneOrganizationQuery } from 'organizations/shared/application/queries/'
+import { GetOneOrganizationQuery } from 'organizations/shared/application/queries'
 import { Organization } from 'organizations/shared/domain/entities/organization.entity'
 
 import { GetOneOrganizationValidator } from './get-one-organization.validator'

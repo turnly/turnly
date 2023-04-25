@@ -12,7 +12,7 @@ import { GetOrganizationBySubdomainQueryMother } from './get-organization-by-sub
 let repository: OrganizationsReadableRepo
 let handler: GetOrganizationBySubdomainQueryHandler
 
-describe('organizations > queries > validates the expected behavior of OrganizationBySubdomainQuery', () => {
+describe('organizations > queries > validates the expected behavior of GetOrganizationBySubdomainQuery', () => {
   beforeEach(() => {
     repository = new OrganizationsReadableRepo()
     handler = new GetOrganizationBySubdomainQueryHandler(repository)

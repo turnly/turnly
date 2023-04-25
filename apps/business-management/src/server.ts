@@ -6,7 +6,7 @@
  */
 import { Producers } from '@turnly/rpc'
 import { config } from '@turnly/shared'
-import { OrganizationsModule } from 'Organizations/infrastructure/factories/OrganizationsModule'
+import { OrganizationsModule } from 'organizations/organizations.module'
 
 /**
  * Services (gRPC)
