@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package turnly.memberships.v1.agents;
+
+import "common.proto";
+
+message Agent {
+  string id = 1;
+  string name = 2;
+  string lastname = 3;
+  string location_id = 4;
+  string nick = 5;
+  string position = 6;
+  string desk_id = 7;
+  repeated string serving_from_ids = 8;
+  string user_id = 9;
+  string organization_id = 10;
+}
+
+message GetAgentResponse {
+  Agent data = 1;
+  turnly.common.v1.Meta meta = 2;
+}
+
+message GetAgentByUserIdResponse {
+  Agent data = 1;
+  turnly.common.v1.Meta meta = 2;
+}

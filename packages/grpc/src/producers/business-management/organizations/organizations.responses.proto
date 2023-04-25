@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package turnly.business_management.v1.organizations;
+
+import "common.proto";
+
+message Organization {
+  string id = 1;
+  string name = 2;
+  string subdomain = 3;
+  string status = 4;
+}
+
+message GetOrganizationResponse {
+  Organization data = 1;
+  turnly.common.v1.Meta meta = 2;
+}
