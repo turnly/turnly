@@ -4,12 +4,13 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
+
 import {
+  ExceptionHandler,
   Logger,
-  Observability,
   UnauthenticatedException,
   UnauthorizedException,
-} from '@turnly/common'
+} from '@turnly/observability'
 import { AuthChecker } from 'type-graphql'
 
 import { IContext } from './context.type'
@@ -34,7 +35,7 @@ const getCredentials = ({ req: { headers } }: IContext) => {
 }
 
 export const AuthGuard: AuthChecker<IContext> = async ({ context }) => {
-  Observability.ExceptionHandler.setUser(null)
+  ExceptionHandler.setUser(null)
   context.setOrganizationId('')
 
   const { widgetId, customerId } = getCredentials(context)
@@ -80,7 +81,7 @@ export const AuthGuard: AuthChecker<IContext> = async ({ context }) => {
   context.req['customer'] = customer
   context.req['organizationId'] = widget.organizationId
 
-  Observability.ExceptionHandler.setUser(customer)
+  ExceptionHandler.setUser(customer)
 
   Logger.debug('AuthGuard executed successfully!', { widget })
 

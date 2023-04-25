@@ -8,8 +8,8 @@ import { Guid } from '@turnly/common'
 import { DataSource } from '@turnly/graph'
 import { FieldModel } from 'models/field.model'
 
-import { IContext } from '../context.type'
 import { Fields } from '../api.service'
+import { IContext } from '../context.type'
 
 export class FieldsDataSource extends DataSource<IContext> {
   public constructor() {

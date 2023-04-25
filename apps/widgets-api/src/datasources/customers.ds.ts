@@ -7,8 +7,8 @@
 import { Guid } from '@turnly/common'
 import { DataSource } from '@turnly/graph'
 
-import { IContext } from '../context.type'
 import { Customers } from '../api.service'
+import { IContext } from '../context.type'
 
 export class CustomersDataSource extends DataSource<IContext> {
   public constructor() {

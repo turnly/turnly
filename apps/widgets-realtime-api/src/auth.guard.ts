@@ -4,12 +4,12 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
+import { Guid } from '@turnly/common'
+import { Event, EventType } from '@turnly/core'
 import {
   BadRequestException,
-  Guid,
   ResourceNotFoundException,
-} from '@turnly/common'
-import { Event, EventType } from '@turnly/core'
+} from '@turnly/observability'
 import { Events, IRealtimeClient, RealtimeMiddle } from '@turnly/realtime'
 
 import { Customers, setOrganizationId, Widgets } from './api.service'
