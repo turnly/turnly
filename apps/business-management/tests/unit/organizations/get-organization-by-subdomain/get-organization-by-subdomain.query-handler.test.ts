@@ -1,0 +1,33 @@
+/**
+ * Copyright (c) 2022, Turnly (https://turnly.app)
+ * All rights reserved.
+ *
+ * Licensed under BSD 3-Clause License. See LICENSE for terms.
+ */
+import { GetOrganizationBySubdomainQueryHandler } from '../../../../src/organizations/get-organization-by-subdomain'
+import { OrganizationsReadableRepo } from '../shared/__mocks__/organizations-readable.repo'
+import { OrganizationMother } from '../shared/domain/organization.entity.mother'
+import { GetOrganizationBySubdomainQueryMother } from './get-organization-by-subdomain.query.mother'
+
+let repository: OrganizationsReadableRepo
+let handler: GetOrganizationBySubdomainQueryHandler
+
+describe('organizations > queries > validates the expected behavior of OrganizationBySubdomainQuery', () => {
+  beforeEach(() => {
+    repository = new OrganizationsReadableRepo()
+    handler = new GetOrganizationBySubdomainQueryHandler(repository)
+  })
+
+  it('should get an existing organization', async () => {
+    const query = GetOrganizationBySubdomainQueryMother.random()
+    const organization =
+      OrganizationMother.fromExistingOrganizationOnQueryBySubdomain(query)
+
+    repository.attachGetOneResponse(organization)
+
+    const response = await handler.execute(query)
+
+    expect(response).toEqual(organization)
+    repository.assertGetOneHasBeenCalled()
+  })
+})

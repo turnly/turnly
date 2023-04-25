@@ -1,0 +1,58 @@
+{
+  "name": "@turnly/business-management",
+  "version": "0.0.1",
+  "private": true,
+  "description": "A service to manage business owners (organizations)",
+  "license": "BSD-3-Clause",
+  "author": "Turnly Team <team@turnly.app> (https://turnly.app)",
+  "scripts": {
+    "prebuild": "rm -rf dist tsconfig.tsbuildinfo",
+    "build": "tsc -p tsconfig.build.json",
+    "lint:check": "eslint . --ext .js,.ts",
+    "lint:format": "prettier \"./**/*.{ts,js}\" --check",
+    "lint:ts:check": "tsc --noEmit",
+    "start": "ROOT_DIR=$(pwd) NODE_PATH=dist/ node -r dotenv/config dist/main.js",
+    "test:benchmark": "cross-env NODE_ENV=test echo 'Running benchmark tests... (not implemented yet)'",
+    "test:coverage": "cross-env NODE_ENV=test jest --coverage",
+    "test:e2e": "cross-env NODE_ENV=test echo 'Running e2e tests... (not implemented yet)'",
+    "test:integration": "cross-env NODE_ENV=test jest integration",
+    "test:unit": "cross-env NODE_ENV=test jest unit",
+    "test:watch": "cross-env NODE_ENV=test jest --watch --onlyChanged",
+    "watch": "nodemon --config node_modules/@turnly/eslint-config/nodemon.json src/main.ts"
+  },
+  "prettier": "@turnly/eslint-config/.prettierrc.js",
+  "eslintConfig": {
+    "extends": "@turnly/eslint-config",
+    "ignorePatterns": [
+      "node_modules",
+      "**/*.md",
+      "dist",
+      "jest*",
+      "coverage"
+    ]
+  },
+  "dependencies": {
+    "@turnly/common": "github:turnly/common.git#latest",
+    "@turnly/eslint-config": "github:turnly/configs",
+    "@turnly/rpc": "github:turnly/rpc.git#latest",
+    "@turnly/shared": "github:turnly/shared.git#latest",
+    "dotenv": "^16.0.1",
+    "mongoose": "^6.4.6"
+  },
+  "devDependencies": {
+    "@turnly/testing": "github:turnly/testing.git#latest",
+    "@types/jest": "^28.1.4",
+    "@types/node": "^16.10.2",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.14.0",
+    "jest": "^28.1.1",
+    "nodemon": "^2.0.14",
+    "prettier": "^2.3.0",
+    "ts-jest": "^28.0.5",
+    "ts-node": "^10.2.1",
+    "typescript": "^4.4.2"
+  },
+  "engines": {
+    "node": ">=18.12"
+  }
+}
