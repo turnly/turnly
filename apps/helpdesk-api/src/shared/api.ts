@@ -32,7 +32,7 @@ export const Tickets = new Consumers.QueuingSystem.Tickets()
 /**
  * Channels Service
  */
-export const Integrations = new Consumers.Addons.Integrations()
+export const Integrations = new Consumers.Channels.Integrations()
 
 export const setOrganizationId = (organizationId: string) => {
   Locations.destroyOrganizationId().setOrganizationId(organizationId)

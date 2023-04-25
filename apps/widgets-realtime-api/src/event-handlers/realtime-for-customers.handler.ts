@@ -6,9 +6,9 @@
  */
 import { AbstractRealtimeHandler, IRealtimeChannel } from '@turnly/realtime'
 import { Event, EventType } from '@turnly/shared'
-import { BroadcastableEvents } from 'broadcasting/broadcastable-events'
+import { BroadcastableEvents } from 'constants/broadcastable-events.enum'
 
-import { RealtimeEventsForQueuing } from '../events/realtime-events-for-queuing'
+import { RealtimeEventsForQueuing } from '../constants/realtime-events-for-queuing.enum'
 
 export class RealtimeForCustomersHandler extends AbstractRealtimeHandler {
   public constructor() {

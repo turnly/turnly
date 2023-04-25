@@ -45,7 +45,7 @@ const queuing = Server.listen('/queuing')
 /**
  * Sets up the middleware
  */
-queuing.use(new AllowConnGuard().use())
+queuing.use(new AuthGuard().use())
 ```
 
 This example creates a WebSocket server, listening on port 3000,

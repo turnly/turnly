@@ -12,7 +12,7 @@ import {
 import { Events, IRealtimeClient, RealtimeMiddle } from '@turnly/realtime'
 import { Event, EventType } from '@turnly/shared'
 
-import { Customers, setOrganizationId, Widgets } from '../../../shared/api'
+import { Customers, setOrganizationId, Widgets } from './api.service'
 
 /**
  * Allow connection guard
@@ -22,11 +22,11 @@ import { Customers, setOrganizationId, Widgets } from '../../../shared/api'
  *
  * @author Turnly
  */
-export class AllowConnGuard {
+export class AuthGuard {
   /**
    * Middle execute
    *
-   * @memberof AllowConnGuard
+   * @memberof AuthGuard
    */
   public use = (): RealtimeMiddle => async (connection, next) => {
     try {

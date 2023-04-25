@@ -6,7 +6,9 @@
  */
 import { BroadcastingEventsSubscriber, Realtime } from '@turnly/realtime'
 import { eventBus } from '@turnly/shared'
-import { BROADCASTABLE_TO_CHANNELS, BroadcastableEvents } from 'broadcasting'
+
+import { BroadcastableEvents } from './constants/broadcastable-events.enum'
+import { BROADCASTABLE_TO_CHANNELS } from './constants/broadcastable-to-channels.const'
 
 export class Application {
   /**
