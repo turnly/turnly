@@ -15,7 +15,7 @@
   </p>
 </div>
 
-# Platform Real Time Messaging API (RTM)
+# Helpdesk Real Time Messaging API (RTM)
 
 The RTM API is a WebSocket-based API that allows you to receive
 read-only access to a selected set of data from Turnly in realtime.
@@ -37,7 +37,7 @@ the API in the simplest and most user-friendly way.
 
 | Name                    | Description                                               |
 | ----------------------- | --------------------------------------------------------- |
-| **Channels**             | Used to get the integration (widget).                     |
+| **Channels**            | Used to get the integration (widget).                     |
 | **Queuing System**      | Used to create or get customers.                          |
 
 ### Environment Variables
@@ -68,10 +68,10 @@ Before you begin, you must have completed steps 1 and 2 of the guide to [contrib
 
 **Start**
 
-This command will run the necessary infrastructure services for the platform-realtime-api:
+This command will run the necessary infrastructure services for the helpdesk-realtime-api:
 
 ```sh
-yarn devo start -s platform-realtime-api -s addons -s queuing-system --verbose
+yarn devo start -s helpdesk-realtime-api -s addons -s queuing-system --verbose
 ```
 
 You can see more helpful commands for development in the [contribution guide](/CONTRIBUTING.md).

@@ -4,7 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { BroadcastableEvents } from './broadcastableEvents'
+import { BroadcastableEvents } from './broadcastable-events.enum'
 
 /**
  * Broadcastable events.
@@ -12,21 +12,6 @@ import { BroadcastableEvents } from './broadcastableEvents'
  * @description Events that can be broadcasted to channels.
  */
 export const BROADCASTABLE_TO_CHANNELS = {
-  stream: [
-    /**
-     * Ticket events
-     */
-    BroadcastableEvents.TICKET_ANNOUNCED,
-    BroadcastableEvents.TICKET_CANCELLED,
-    BroadcastableEvents.TICKET_RETURNED,
-
-    /**
-     * Customer events
-     */
-    BroadcastableEvents.CUSTOMER_CREATED,
-    BroadcastableEvents.CUSTOMER_UPDATED,
-    BroadcastableEvents.CUSTOMER_DELETED,
-  ],
   helpdesk: [
     /**
      * Ticket events
