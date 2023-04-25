@@ -4,8 +4,8 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { Producers } from '@turnly/rpc'
-import { Client } from '@turnly/rpc/dist/consumers'
+import { Producers } from '@turnly/grpc'
+import { Client } from '@turnly/grpc/dist/consumers'
 import { AgentsMapper } from 'agents/shared/infrastructure/grpc/agents-mapper.grpc'
 
 import { GetOneAgentController } from './get-one-agent.controller'

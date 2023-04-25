@@ -5,15 +5,15 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import { Nullable } from '@turnly/common'
-import { Producers } from '@turnly/rpc'
+import { Producers } from '@turnly/grpc'
 import { EntityAttributes } from '@turnly/shared'
 import { Agent } from 'agents/shared/domain/entity/agent.entity'
 
 export class AgentsMapper {
   public static toRPC(
     entity: Nullable<EntityAttributes<Agent>> | undefined
-  ): Producers.Teams.Agent {
-    const agent = new Producers.Teams.Agent()
+  ): Producers.Memberships.Agent {
+    const agent = new Producers.Memberships.Agent()
 
     if (entity) {
       agent.setId(entity.id)

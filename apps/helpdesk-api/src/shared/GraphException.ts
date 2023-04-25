@@ -5,7 +5,7 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import { ResponseCodes } from '@turnly/common'
-import { Meta } from '@turnly/rpc/dist/producers/addons'
+import { Meta } from '@turnly/grpc/dist/producers/addons'
 import { SharedMessages } from '@turnly/shared'
 import { ApolloError } from 'apollo-server-express'
 

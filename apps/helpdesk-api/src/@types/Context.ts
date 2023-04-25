@@ -5,7 +5,7 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import { Guid } from '@turnly/common'
-import type { Agent } from '@turnly/rpc/dist/producers/teams'
+import type { Agent } from '@turnly/grpc/dist/producers/memberships'
 import { Sources } from 'datasources'
 import type { Request, Response } from 'express'
 

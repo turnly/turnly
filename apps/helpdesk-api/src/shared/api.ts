@@ -4,7 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { Consumers } from '@turnly/rpc'
+import { Consumers } from '@turnly/grpc'
 
 /**
  * Assistance Centers Service
@@ -19,9 +19,9 @@ export const Answers = new Consumers.CustomFields.Answers()
 export const Fields = new Consumers.CustomFields.Fields()
 
 /**
- * Teams Service
+ * Memberships Service
  */
-export const Agents = new Consumers.Teams.Agents()
+export const Agents = new Consumers.Memberships.Agents()
 
 /**
  * Queuing System Service

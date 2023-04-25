@@ -29,7 +29,7 @@
   "dependencies": {
     "@apollo/utils.keyvaluecache": "^1.0.1",
     "@turnly/common": "github:turnly/common.git#latest",
-    "@turnly/rpc": "github:turnly/rpc.git#latest",
+    "@turnly/grpc": "github:turnly/rpc.git#latest",
     "@turnly/shared": "github:turnly/shared.git#latest",
     "apollo-datasource": "^3.3.2",
     "apollo-server-express": "^3.9.0",

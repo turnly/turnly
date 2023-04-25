@@ -5,7 +5,7 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import { Nullable } from '@turnly/common'
-import { Producers } from '@turnly/rpc'
+import { Producers } from '@turnly/grpc'
 import { DateTime, EntityAttributes } from '@turnly/shared'
 import { Ticket } from 'tickets/shared/domain/entities/ticket.entity'
 
