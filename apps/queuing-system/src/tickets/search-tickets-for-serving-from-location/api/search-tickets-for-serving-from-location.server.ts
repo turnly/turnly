@@ -4,10 +4,9 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { Producers } from '@turnly/grpc'
-import { Client } from '@turnly/grpc/dist/consumers'
-import { TicketsMapper } from 'tickets/shared/infrastructure/grpc/tickets-mapper.grpc'
+import { Consumers, Producers } from '@turnly/grpc'
 import { SearchTicketsForServingFromLocationFilters } from 'tickets/search-tickets-for-serving-from-location'
+import { TicketsMapper } from 'tickets/shared/infrastructure/grpc/tickets-mapper.grpc'
 
 import { SearchTicketsForServingFromLocationController } from './search-tickets-for-serving-from-location.controller'
 
@@ -31,8 +30,9 @@ export class SearchTicketsForServingFromLocationServer {
         searchQuery: call.request.getFindQuery(),
         locationId: call.request.getLocationId(),
         serviceIds: call.request.getServiceIdsList(),
-        status: call.request.getStatus() as SearchTicketsForServingFromLocationFilters,
-        organizationId: Client.getOrganizationId(call),
+        status:
+          call.request.getStatus() as SearchTicketsForServingFromLocationFilters,
+        organizationId: Consumers.Client.getOrganizationId(call),
       })
 
     const response =

@@ -31,7 +31,7 @@ message LeaveTicketRequest {
   string customer_id = 2;
 }
 
-message AnnounceTicketRequest {
+message AnnounceMyArrivalRequest {
   string id = 1;
   string customer_id = 2;
 }
@@ -53,7 +53,7 @@ message GetTicketsForServingFromLocationRequest {
   string status = 4;
 }
 
-message CallTicketRequest {
+message CallTicketToDeskRequest {
   string id = 1;
   string agent_id = 2;
 }

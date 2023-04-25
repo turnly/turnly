@@ -4,8 +4,8 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { BroadcastingEventsSubscriber, Realtime } from '@turnly/realtime'
 import { eventBus } from '@turnly/core'
+import { BroadcastingEventsSubscriber, Realtime } from '@turnly/realtime'
 
 import { BroadcastableEvents } from './constants/broadcastable-events.enum'
 import { BROADCASTABLE_TO_CHANNELS } from './constants/broadcastable-to-channels.const'

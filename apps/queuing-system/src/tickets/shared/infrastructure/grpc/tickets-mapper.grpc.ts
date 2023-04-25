@@ -5,8 +5,9 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import { Nullable } from '@turnly/common'
+import { EntityAttributes } from '@turnly/core'
+import { DateTime } from '@turnly/datetime'
 import { Producers } from '@turnly/grpc'
-import { DateTime, EntityAttributes } from '@turnly/core'
 import { Ticket } from 'tickets/shared/domain/entities/ticket.entity'
 
 export class TicketsMapper {

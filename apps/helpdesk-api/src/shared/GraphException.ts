@@ -5,12 +5,12 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import { ResponseCodes } from '@turnly/common'
-import { Meta } from '@turnly/grpc/dist/producers/addons'
 import { SharedMessages } from '@turnly/core'
+import { Producers } from '@turnly/grpc'
 import { ApolloError } from 'apollo-server-express'
 
 export class GraphException extends ApolloError {
-  constructor(meta?: Meta.AsObject) {
+  constructor(meta?: Producers.Channels.Meta.AsObject) {
     const message = meta?.message ?? SharedMessages.UNKNOWN_EXCEPTION
 
     super(

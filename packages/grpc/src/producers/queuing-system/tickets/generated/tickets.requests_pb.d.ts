@@ -133,23 +133,23 @@ export namespace LeaveTicketRequest {
     }
 }
 
-export class AnnounceTicketRequest extends jspb.Message { 
+export class AnnounceMyArrivalRequest extends jspb.Message { 
     getId(): string;
-    setId(value: string): AnnounceTicketRequest;
+    setId(value: string): AnnounceMyArrivalRequest;
     getCustomerId(): string;
-    setCustomerId(value: string): AnnounceTicketRequest;
+    setCustomerId(value: string): AnnounceMyArrivalRequest;
 
     serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): AnnounceTicketRequest.AsObject;
-    static toObject(includeInstance: boolean, msg: AnnounceTicketRequest): AnnounceTicketRequest.AsObject;
+    toObject(includeInstance?: boolean): AnnounceMyArrivalRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: AnnounceMyArrivalRequest): AnnounceMyArrivalRequest.AsObject;
     static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
     static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: AnnounceTicketRequest, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): AnnounceTicketRequest;
-    static deserializeBinaryFromReader(message: AnnounceTicketRequest, reader: jspb.BinaryReader): AnnounceTicketRequest;
+    static serializeBinaryToWriter(message: AnnounceMyArrivalRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): AnnounceMyArrivalRequest;
+    static deserializeBinaryFromReader(message: AnnounceMyArrivalRequest, reader: jspb.BinaryReader): AnnounceMyArrivalRequest;
 }
 
-export namespace AnnounceTicketRequest {
+export namespace AnnounceMyArrivalRequest {
     export type AsObject = {
         id: string,
         customerId: string,
@@ -235,23 +235,23 @@ export namespace GetTicketsForServingFromLocationRequest {
     }
 }
 
-export class CallTicketRequest extends jspb.Message { 
+export class CallTicketToDeskRequest extends jspb.Message { 
     getId(): string;
-    setId(value: string): CallTicketRequest;
+    setId(value: string): CallTicketToDeskRequest;
     getAgentId(): string;
-    setAgentId(value: string): CallTicketRequest;
+    setAgentId(value: string): CallTicketToDeskRequest;
 
     serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): CallTicketRequest.AsObject;
-    static toObject(includeInstance: boolean, msg: CallTicketRequest): CallTicketRequest.AsObject;
+    toObject(includeInstance?: boolean): CallTicketToDeskRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: CallTicketToDeskRequest): CallTicketToDeskRequest.AsObject;
     static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
     static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: CallTicketRequest, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): CallTicketRequest;
-    static deserializeBinaryFromReader(message: CallTicketRequest, reader: jspb.BinaryReader): CallTicketRequest;
+    static serializeBinaryToWriter(message: CallTicketToDeskRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): CallTicketToDeskRequest;
+    static deserializeBinaryFromReader(message: CallTicketToDeskRequest, reader: jspb.BinaryReader): CallTicketToDeskRequest;
 }
 
-export namespace CallTicketRequest {
+export namespace CallTicketToDeskRequest {
     export type AsObject = {
         id: string,
         agentId: string,

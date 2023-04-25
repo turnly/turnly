@@ -4,8 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { Producers } from '@turnly/grpc'
-import { Client } from '@turnly/grpc/dist/consumers'
+import { Consumers, Producers } from '@turnly/grpc'
 import { AgentsMapper } from 'agents/shared/infrastructure/grpc/agents-mapper.grpc'
 
 import { GetOneAgentController } from './get-one-agent.controller'
@@ -25,7 +24,7 @@ export class GetOneAgentServer {
   ) {
     const { data, meta } = await this.getOneAgentController.execute({
       id: call.request.getId(),
-      organizationId: Client.getOrganizationId(call),
+      organizationId: Consumers.Client.getOrganizationId(call),
     })
 
     const response = new Producers.Memberships.GetAgentResponse()

@@ -4,13 +4,9 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
+import { IQueryHandler, QueryBuilder, QueryHandler } from '@turnly/core'
+import { DateTime } from '@turnly/datetime'
 import { ResourceNotFoundException } from '@turnly/observability'
-import {
-  DateTime,
-  IQueryHandler,
-  QueryBuilder,
-  QueryHandler,
-} from '@turnly/core'
 import { ITicketsReadableRepo } from 'tickets/shared/domain/contracts/tickets-repo.interface'
 import { Ticket } from 'tickets/shared/domain/entities/ticket.entity'
 

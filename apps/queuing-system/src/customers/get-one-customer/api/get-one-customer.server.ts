@@ -4,8 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { Producers } from '@turnly/grpc'
-import { Client } from '@turnly/grpc/dist/consumers'
+import { Consumers, Producers } from '@turnly/grpc'
 import { GetOneCustomerController } from 'customers/get-one-customer'
 import { CustomersMapper } from 'customers/shared/infrastructure/grpc/customers-mapper.grpc'
 
@@ -24,7 +23,7 @@ export class GetOneCustomerServer {
   ) {
     const { data, meta } = await this.getOneCustomerController.execute({
       id: call.request.getId(),
-      organizationId: Client.getOrganizationId(call),
+      organizationId: Consumers.Client.getOrganizationId(call),
     })
 
     const response = new Producers.QueuingSystem.GetCustomerResponse()

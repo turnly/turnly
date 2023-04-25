@@ -4,8 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { Producers } from '@turnly/grpc'
-import { Client } from '@turnly/grpc/dist/consumers'
+import { Consumers, Producers } from '@turnly/grpc'
 import { ResourceNotFoundException } from '@turnly/observability'
 import type { SearchAvailableLocationsForServingController } from 'locations/search-available-locations-for-serving'
 import { LocationsMapper } from 'locations/shared/infrastructure/grpc/locations-mapper.grpc'
@@ -33,7 +32,7 @@ export class SearchAvailableLocationsForServingServer {
         longitude: parseFloat(call.request.getLongitude() || '0'),
         limit: call.request.getLimit(),
         offset: call.request.getOffset(),
-        organizationId: Client.getOrganizationId(call),
+        organizationId: Consumers.Client.getOrganizationId(call),
       })
 
     const response =

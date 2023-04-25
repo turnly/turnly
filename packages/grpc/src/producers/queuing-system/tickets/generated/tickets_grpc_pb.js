@@ -5,48 +5,48 @@ var grpc = require('@grpc/grpc-js');
 var tickets_requests_pb = require('./tickets.requests_pb.js');
 var tickets_responses_pb = require('./tickets.responses_pb.js');
 
-function serialize_turnly_queuing_system_v1_tickets_AnnounceTicketRequest(arg) {
-  if (!(arg instanceof tickets_requests_pb.AnnounceTicketRequest)) {
-    throw new Error('Expected argument of type turnly.queuing_system.v1.tickets.AnnounceTicketRequest');
+function serialize_turnly_queuing_system_v1_tickets_AnnounceMyArrivalRequest(arg) {
+  if (!(arg instanceof tickets_requests_pb.AnnounceMyArrivalRequest)) {
+    throw new Error('Expected argument of type turnly.queuing_system.v1.tickets.AnnounceMyArrivalRequest');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_turnly_queuing_system_v1_tickets_AnnounceTicketRequest(buffer_arg) {
-  return tickets_requests_pb.AnnounceTicketRequest.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_turnly_queuing_system_v1_tickets_AnnounceMyArrivalRequest(buffer_arg) {
+  return tickets_requests_pb.AnnounceMyArrivalRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_turnly_queuing_system_v1_tickets_AnnounceTicketResponse(arg) {
-  if (!(arg instanceof tickets_responses_pb.AnnounceTicketResponse)) {
-    throw new Error('Expected argument of type turnly.queuing_system.v1.tickets.AnnounceTicketResponse');
+function serialize_turnly_queuing_system_v1_tickets_AnnounceMyArrivalResponse(arg) {
+  if (!(arg instanceof tickets_responses_pb.AnnounceMyArrivalResponse)) {
+    throw new Error('Expected argument of type turnly.queuing_system.v1.tickets.AnnounceMyArrivalResponse');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_turnly_queuing_system_v1_tickets_AnnounceTicketResponse(buffer_arg) {
-  return tickets_responses_pb.AnnounceTicketResponse.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_turnly_queuing_system_v1_tickets_AnnounceMyArrivalResponse(buffer_arg) {
+  return tickets_responses_pb.AnnounceMyArrivalResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_turnly_queuing_system_v1_tickets_CallTicketRequest(arg) {
-  if (!(arg instanceof tickets_requests_pb.CallTicketRequest)) {
-    throw new Error('Expected argument of type turnly.queuing_system.v1.tickets.CallTicketRequest');
+function serialize_turnly_queuing_system_v1_tickets_CallTicketToDeskRequest(arg) {
+  if (!(arg instanceof tickets_requests_pb.CallTicketToDeskRequest)) {
+    throw new Error('Expected argument of type turnly.queuing_system.v1.tickets.CallTicketToDeskRequest');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_turnly_queuing_system_v1_tickets_CallTicketRequest(buffer_arg) {
-  return tickets_requests_pb.CallTicketRequest.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_turnly_queuing_system_v1_tickets_CallTicketToDeskRequest(buffer_arg) {
+  return tickets_requests_pb.CallTicketToDeskRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_turnly_queuing_system_v1_tickets_CallTicketResponse(arg) {
-  if (!(arg instanceof tickets_responses_pb.CallTicketResponse)) {
-    throw new Error('Expected argument of type turnly.queuing_system.v1.tickets.CallTicketResponse');
+function serialize_turnly_queuing_system_v1_tickets_CallTicketToDeskResponse(arg) {
+  if (!(arg instanceof tickets_responses_pb.CallTicketToDeskResponse)) {
+    throw new Error('Expected argument of type turnly.queuing_system.v1.tickets.CallTicketToDeskResponse');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_turnly_queuing_system_v1_tickets_CallTicketResponse(buffer_arg) {
-  return tickets_responses_pb.CallTicketResponse.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_turnly_queuing_system_v1_tickets_CallTicketToDeskResponse(buffer_arg) {
+  return tickets_responses_pb.CallTicketToDeskResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_turnly_queuing_system_v1_tickets_CreateTicketRequest(arg) {
@@ -319,23 +319,23 @@ var TicketsService = exports.TicketsService = {
     path: '/turnly.queuing_system.v1.tickets.Tickets/Announce',
     requestStream: false,
     responseStream: false,
-    requestType: tickets_requests_pb.AnnounceTicketRequest,
-    responseType: tickets_responses_pb.AnnounceTicketResponse,
-    requestSerialize: serialize_turnly_queuing_system_v1_tickets_AnnounceTicketRequest,
-    requestDeserialize: deserialize_turnly_queuing_system_v1_tickets_AnnounceTicketRequest,
-    responseSerialize: serialize_turnly_queuing_system_v1_tickets_AnnounceTicketResponse,
-    responseDeserialize: deserialize_turnly_queuing_system_v1_tickets_AnnounceTicketResponse,
+    requestType: tickets_requests_pb.AnnounceMyArrivalRequest,
+    responseType: tickets_responses_pb.AnnounceMyArrivalResponse,
+    requestSerialize: serialize_turnly_queuing_system_v1_tickets_AnnounceMyArrivalRequest,
+    requestDeserialize: deserialize_turnly_queuing_system_v1_tickets_AnnounceMyArrivalRequest,
+    responseSerialize: serialize_turnly_queuing_system_v1_tickets_AnnounceMyArrivalResponse,
+    responseDeserialize: deserialize_turnly_queuing_system_v1_tickets_AnnounceMyArrivalResponse,
   },
   call: {
     path: '/turnly.queuing_system.v1.tickets.Tickets/Call',
     requestStream: false,
     responseStream: false,
-    requestType: tickets_requests_pb.CallTicketRequest,
-    responseType: tickets_responses_pb.CallTicketResponse,
-    requestSerialize: serialize_turnly_queuing_system_v1_tickets_CallTicketRequest,
-    requestDeserialize: deserialize_turnly_queuing_system_v1_tickets_CallTicketRequest,
-    responseSerialize: serialize_turnly_queuing_system_v1_tickets_CallTicketResponse,
-    responseDeserialize: deserialize_turnly_queuing_system_v1_tickets_CallTicketResponse,
+    requestType: tickets_requests_pb.CallTicketToDeskRequest,
+    responseType: tickets_responses_pb.CallTicketToDeskResponse,
+    requestSerialize: serialize_turnly_queuing_system_v1_tickets_CallTicketToDeskRequest,
+    requestDeserialize: deserialize_turnly_queuing_system_v1_tickets_CallTicketToDeskRequest,
+    responseSerialize: serialize_turnly_queuing_system_v1_tickets_CallTicketToDeskResponse,
+    responseDeserialize: deserialize_turnly_queuing_system_v1_tickets_CallTicketToDeskResponse,
   },
   getTicketsBeforeYours: {
     path: '/turnly.queuing_system.v1.tickets.Tickets/GetTicketsBeforeYours',

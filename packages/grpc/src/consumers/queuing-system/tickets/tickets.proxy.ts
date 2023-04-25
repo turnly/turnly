@@ -10,10 +10,10 @@ import { Proxy } from '../../common/base.proxy'
 import type { ClientConfig } from '../../common/client-options.type'
 import { Tickets as Service } from './tickets.client'
 import type {
-  IAnnounceTicketRequest,
-  IAnnounceTicketResponse,
-  ICallTicketRequest,
-  ICallTicketResponse,
+  IAnnounceMyArrivalRequest,
+  IAnnounceMyArrivalResponse,
+  ICallTicketToDeskRequest,
+  ICallTicketToDeskResponse,
   ICreateTicketRequest,
   ICreateTicketResponse,
   IDiscardTicketRequest,
@@ -50,8 +50,8 @@ export class Tickets extends Proxy<Service> {
     ILeaveTicketResponse
   >
   private announceBreaker: CircuitBreaker<
-    IAnnounceTicketRequest[],
-    IAnnounceTicketResponse
+    IAnnounceMyArrivalRequest[],
+    IAnnounceMyArrivalResponse
   >
   private serveBreaker: CircuitBreaker<
     IServeTicketRequest[],
@@ -65,7 +65,10 @@ export class Tickets extends Proxy<Service> {
     IReturnToQueueRequest[],
     IReturnToQueueResponse
   >
-  private callBreaker: CircuitBreaker<ICallTicketRequest[], ICallTicketResponse>
+  private callBreaker: CircuitBreaker<
+    ICallTicketToDeskRequest[],
+    ICallTicketToDeskResponse
+  >
   private getTicketsBeforeYoursBreaker: CircuitBreaker<
     IGetTicketsBeforeYoursRequest[],
     IGetTicketsBeforeYoursResponse
@@ -203,11 +206,11 @@ export class Tickets extends Proxy<Service> {
     return this.leaveBreaker.execute(request)
   }
 
-  public async announce(request: IAnnounceTicketRequest) {
+  public async announce(request: IAnnounceMyArrivalRequest) {
     return this.announceBreaker.execute(request)
   }
 
-  public async call(request: ICallTicketRequest) {
+  public async call(request: ICallTicketToDeskRequest) {
     return this.callBreaker.execute(request)
   }
 

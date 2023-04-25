@@ -10,8 +10,8 @@ service Tickets {
   rpc GetOne(GetTicketRequest) returns (GetTicketResponse) {}
   rpc GetDetails(GetTicketDetailsRequest) returns (GetTicketDetailsResponse) {}
   rpc Leave(LeaveTicketRequest) returns (LeaveTicketResponse) {}
-  rpc Announce(AnnounceTicketRequest) returns (AnnounceTicketResponse) {}
-  rpc Call(CallTicketRequest) returns (CallTicketResponse) {}
+  rpc Announce(AnnounceMyArrivalRequest) returns (AnnounceMyArrivalResponse) {}
+  rpc Call(CallTicketToDeskRequest) returns (CallTicketToDeskResponse) {}
   rpc GetTicketsBeforeYours(GetTicketsBeforeYoursRequest)
     returns (GetTicketsBeforeYoursResponse) {}
   rpc GetTicketsWaitingForService(GetTicketsWaitingForServiceRequest)

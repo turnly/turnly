@@ -62,12 +62,12 @@ message LeaveTicketResponse {
   turnly.common.v1.Meta meta = 2;
 }
 
-message AnnounceTicketResponse {
+message AnnounceMyArrivalResponse {
   Ticket data = 1;
   turnly.common.v1.Meta meta = 2;
 }
 
-message CallTicketResponse {
+message CallTicketToDeskResponse {
   Ticket data = 1;
   turnly.common.v1.Meta meta = 2;
 }

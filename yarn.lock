@@ -3019,23 +3019,6 @@
     "@tufjs/canonical-json" "1.0.0"
     minimatch "^7.4.6"
 
-"@turnly/common@github:turnly/common.git#latest":
-  version "1.0.0"
-  resolved "git+ssh://git@github.com/turnly/common.git#00677b8a1c1bec6471b862112b575560ce8b3a1c"
-  dependencies:
-    "@opentelemetry/api" "^1.4.0"
-    "@opentelemetry/exporter-jaeger" "^1.9.1"
-    "@opentelemetry/instrumentation-grpc" "^0.35.1"
-    "@opentelemetry/instrumentation-http" "^0.35.1"
-    "@opentelemetry/sdk-trace-node" "^1.9.1"
-    "@sentry/node" "^7.37.2"
-    "@sentry/tracing" "^7.37.2"
-    fluent-logger "^3.4.1"
-    nanoid "^4.0.1"
-    opentelemetry-instrumentation-socket.io "^0.34.0"
-    opossum "^7.1.0"
-    winston "^3.3.3"
-
 "@turnly/eslint-config@github:turnly/configs":
   version "0.0.0"
   uid "2529b3ba8cf873810f43dedd4862007d42e15354"
@@ -3080,66 +3063,6 @@
     prettier "^2.8.4"
     ts-jest "^29.0.5"
     typescript "^4.9.5"
-
-"@turnly/grpc@github:turnly/grpc.git#latest":
-  version "1.0.0"
-  resolved "git+ssh://git@github.com/turnly/grpc.git#1db97008463a662caa742771b08ede6ebe3c3de0"
-  dependencies:
-    "@grpc/grpc-js" "^1.6.7"
-    google-protobuf "^3.20.1"
-    grpcjs-interceptors "^0.1.15"
-
-"@turnly/grpc@github:turnly/rpc.git#latest":
-  version "1.0.0"
-  uid "1db97008463a662caa742771b08ede6ebe3c3de0"
-  resolved "git+ssh://git@github.com/turnly/rpc.git#1db97008463a662caa742771b08ede6ebe3c3de0"
-  dependencies:
-    "@grpc/grpc-js" "^1.6.7"
-    google-protobuf "^3.20.1"
-    grpcjs-interceptors "^0.1.15"
-
-"@turnly/realtime@github:turnly/realtime.git#latest":
-  version "1.0.0"
-  resolved "git+ssh://git@github.com/turnly/realtime.git#d128b4623e05f1a11010fd33e2d5097c6984c48a"
-  dependencies:
-    socket.io "^4.5.1"
-
-"@turnly/shared@github:turnly/shared.git#latest":
-  version "0.0.0"
-  resolved "git+ssh://git@github.com/turnly/shared.git#2cea6763616024d7d3c1411f2a4ae25e62866e70"
-  dependencies:
-    "@elastic/elasticsearch" "7.17.0"
-    amqp-ts "^1.8.0"
-    awilix "^7.0.3"
-    bodybuilder "^2.4.0"
-    class-transformer "^0.5.1"
-    class-validator "^0.14.0"
-    compression "^1.7.4"
-    convict "^6.2.3"
-    cookie-parser "^1.4.5"
-    cors "^2.8.5"
-    express "^4.17.1"
-    helmet "^5.0.2"
-    joi "^17.4.2"
-    luxon "^2.4.0"
-    marky "^1.2.4"
-    p-queue "^6.6.2"
-    p-retry "^4.2.0"
-    phone "^3.1.31"
-    redis "^4.1.0"
-    reflect-metadata "^0.1.13"
-    request-ip "^2.1.3"
-    twilio "^3.83.4"
-    ua-parser-js "^1.0.2"
-
-"@turnly/testing@github:turnly/testing.git#latest":
-  version "0.0.0"
-  resolved "git+ssh://git@github.com/turnly/testing.git#9bb9960a6e3e53e41d4e3d77eb6faf4a17a9d63a"
-  dependencies:
-    "@faker-js/faker" "8.0.0-alpha.0"
-    "@turnly/common" "github:turnly/common.git#latest"
-    "@turnly/shared" "github:turnly/shared.git#latest"
-    jest "^29.4.3"
 
 "@types/accepts@^1.3.5":
   version "1.3.5"
@@ -6143,7 +6066,7 @@ google-protobuf@3.15.8:
   resolved "https://registry.yarnpkg.com/google-protobuf/-/google-protobuf-3.15.8.tgz#5f3948905e4951c867d6bc143f385a80e2a39efe"
   integrity sha512-2jtfdqTaSxk0cuBJBtTTWsot4WtR9RVr2rXg7x7OoqiuOKopPrwXpM1G4dXIkLcUNRh3RKzz76C8IOkksZSeOw==
 
-google-protobuf@^3.20.1, google-protobuf@^3.21.2:
+google-protobuf@^3.21.2:
   version "3.21.2"
   resolved "https://registry.yarnpkg.com/google-protobuf/-/google-protobuf-3.21.2.tgz#4580a2bea8bbb291ee579d1fefb14d6fa3070ea4"
   integrity sha512-3MSOYFO5U9mPGikIYCzK0SaThypfGgS6bHqrUGXG3DPHCrb+txNqeEcns1W0lkGfk0rCyNXm7xB9rMxnCiZOoA==
@@ -8126,11 +8049,6 @@ lru_map@^0.3.3:
   version "0.3.3"
   resolved "https://registry.yarnpkg.com/lru_map/-/lru_map-0.3.3.tgz#b5c8351b9464cbd750335a79650a0ec0e56118dd"
   integrity sha512-Pn9cox5CsMYngeDbmChANltQl+5pi6XmTrraMSzhPmMBbmgcxmqWry0U3PGapCU1yB4/LqCcom7qhHZiF/jGfQ==
-
-luxon@^2.4.0:
-  version "2.5.2"
-  resolved "https://registry.yarnpkg.com/luxon/-/luxon-2.5.2.tgz#17ed497f0277e72d58a4756d6a9abee4681457b6"
-  integrity sha512-Yg7/RDp4nedqmLgyH0LwgGRvMEKVzKbUdkBYyCosbHgJ+kaOUx0qzSiSatVc3DFygnirTPYnMM2P5dg2uH1WvA==
 
 luxon@^3.2.1:
   version "3.3.0"

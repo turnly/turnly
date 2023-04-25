@@ -4,14 +4,15 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { Nullable, ResourceNotFoundException } from '@turnly/common'
+import { Nullable } from '@turnly/common'
 import {
   CommandHandler,
   ICommandHandler,
   IEventBus,
   IQueryBus,
 } from '@turnly/core'
-import { GetAnUnexpiredTicketQuery } from 'Tickets/shared/application/queries/get-an-unexpired-ticket'
+import { ResourceNotFoundException } from '@turnly/observability'
+import { GetAnUnexpiredTicketQuery } from 'tickets/shared/application/queries'
 import { ITicketsWritableRepo } from 'tickets/shared/domain/contracts/tickets-repo.interface'
 import { Ticket } from 'tickets/shared/domain/entities/ticket.entity'
 

@@ -24,7 +24,11 @@ describe('tickets > commands > validates the expected behavior when a ticket is 
     queryBus = new TestQueryBus()
 
     repository = new TicketsWritableRepo()
-    handler = new AnnounceMyArrivalCommandHandler(eventBus, queryBus, repository)
+    handler = new AnnounceMyArrivalCommandHandler(
+      eventBus,
+      queryBus,
+      repository
+    )
   })
 
   it('should announce an existing ticket', async () => {

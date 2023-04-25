@@ -4,8 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { Producers } from '@turnly/grpc'
-import { Client } from '@turnly/grpc/dist/consumers'
+import { Consumers, Producers } from '@turnly/grpc'
 import { CallTicketToDeskController } from 'tickets/call-ticket-to-desk'
 import { TicketsMapper } from 'tickets/shared/infrastructure/grpc/tickets-mapper.grpc'
 
@@ -24,7 +23,7 @@ export class CallTicketToDeskServer {
   ) {
     const { data, meta } = await this.callTicketToDeskController.execute({
       id: call.request.getId(),
-      organizationId: Client.getOrganizationId(call),
+      organizationId: Consumers.Client.getOrganizationId(call),
       agentId: call.request.getAgentId(),
     })
 

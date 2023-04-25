@@ -317,58 +317,58 @@ export namespace LeaveTicketResponse {
     }
 }
 
-export class AnnounceTicketResponse extends jspb.Message { 
+export class AnnounceMyArrivalResponse extends jspb.Message { 
 
     hasData(): boolean;
     clearData(): void;
     getData(): Ticket | undefined;
-    setData(value?: Ticket): AnnounceTicketResponse;
+    setData(value?: Ticket): AnnounceMyArrivalResponse;
 
     hasMeta(): boolean;
     clearMeta(): void;
     getMeta(): common_pb.Meta | undefined;
-    setMeta(value?: common_pb.Meta): AnnounceTicketResponse;
+    setMeta(value?: common_pb.Meta): AnnounceMyArrivalResponse;
 
     serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): AnnounceTicketResponse.AsObject;
-    static toObject(includeInstance: boolean, msg: AnnounceTicketResponse): AnnounceTicketResponse.AsObject;
+    toObject(includeInstance?: boolean): AnnounceMyArrivalResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: AnnounceMyArrivalResponse): AnnounceMyArrivalResponse.AsObject;
     static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
     static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: AnnounceTicketResponse, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): AnnounceTicketResponse;
-    static deserializeBinaryFromReader(message: AnnounceTicketResponse, reader: jspb.BinaryReader): AnnounceTicketResponse;
+    static serializeBinaryToWriter(message: AnnounceMyArrivalResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): AnnounceMyArrivalResponse;
+    static deserializeBinaryFromReader(message: AnnounceMyArrivalResponse, reader: jspb.BinaryReader): AnnounceMyArrivalResponse;
 }
 
-export namespace AnnounceTicketResponse {
+export namespace AnnounceMyArrivalResponse {
     export type AsObject = {
         data?: Ticket.AsObject,
         meta?: common_pb.Meta.AsObject,
     }
 }
 
-export class CallTicketResponse extends jspb.Message { 
+export class CallTicketToDeskResponse extends jspb.Message { 
 
     hasData(): boolean;
     clearData(): void;
     getData(): Ticket | undefined;
-    setData(value?: Ticket): CallTicketResponse;
+    setData(value?: Ticket): CallTicketToDeskResponse;
 
     hasMeta(): boolean;
     clearMeta(): void;
     getMeta(): common_pb.Meta | undefined;
-    setMeta(value?: common_pb.Meta): CallTicketResponse;
+    setMeta(value?: common_pb.Meta): CallTicketToDeskResponse;
 
     serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): CallTicketResponse.AsObject;
-    static toObject(includeInstance: boolean, msg: CallTicketResponse): CallTicketResponse.AsObject;
+    toObject(includeInstance?: boolean): CallTicketToDeskResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: CallTicketToDeskResponse): CallTicketToDeskResponse.AsObject;
     static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
     static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: CallTicketResponse, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): CallTicketResponse;
-    static deserializeBinaryFromReader(message: CallTicketResponse, reader: jspb.BinaryReader): CallTicketResponse;
+    static serializeBinaryToWriter(message: CallTicketToDeskResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): CallTicketToDeskResponse;
+    static deserializeBinaryFromReader(message: CallTicketToDeskResponse, reader: jspb.BinaryReader): CallTicketToDeskResponse;
 }
 
-export namespace CallTicketResponse {
+export namespace CallTicketToDeskResponse {
     export type AsObject = {
         data?: Ticket.AsObject,
         meta?: common_pb.Meta.AsObject,

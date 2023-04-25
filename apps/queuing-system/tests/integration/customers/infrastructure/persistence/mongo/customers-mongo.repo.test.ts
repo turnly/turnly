@@ -6,8 +6,8 @@
  */
 import '../../../../../../src/customers/shared/dependency/register-dependencies'
 
-import { ResourceNotFoundException } from '@turnly/observability'
 import { MongoEnvironmentArranger } from '@turnly/core'
+import { ResourceNotFoundException } from '@turnly/observability'
 
 import { CustomersModule } from '../../../../../../src/customers/customers.module'
 import { CustomerMother } from '../../../../../unit/customers/shared/domain/customer.entity.mother'

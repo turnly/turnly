@@ -4,16 +4,13 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
+import { Extra, Guid, Identifier, Nullable } from '@turnly/common'
+import { AggregateRoot, EntityAttributes } from '@turnly/core'
 import {
   BadRequestException,
   ConflictException,
-  Extra,
-  Guid,
-  Identifier,
   InvalidStateException,
-  Nullable,
-} from '@turnly/common'
-import { AggregateRoot, EntityAttributes } from '@turnly/core'
+} from '@turnly/observability'
 import { TicketAnnouncedEvent } from 'tickets/create-ticket/events/ticket-announced.event'
 import { TicketCalledEvent } from 'tickets/create-ticket/events/ticket-called.event'
 import { TicketCancelledEvent } from 'tickets/create-ticket/events/ticket-cancelled.event'

@@ -4,8 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { Producers } from '@turnly/grpc'
-import { Client } from '@turnly/grpc/dist/consumers'
+import { Consumers, Producers } from '@turnly/grpc'
 import { TicketsMapper } from 'tickets/shared/infrastructure/grpc/tickets-mapper.grpc'
 
 import { GetTicketDetailsController } from './get-ticket-details.controller'
@@ -25,7 +24,7 @@ export class GetTicketDetailsServer {
   ) {
     const { data, meta } = await this.getTicketDetailsController.execute({
       id: call.request.getId(),
-      organizationId: Client.getOrganizationId(call),
+      organizationId: Consumers.Client.getOrganizationId(call),
     })
 
     const response = new Producers.QueuingSystem.GetTicketDetailsResponse()

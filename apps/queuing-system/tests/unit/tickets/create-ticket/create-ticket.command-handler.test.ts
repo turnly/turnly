@@ -4,7 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { ConflictException } from '@turnly/common'
+import { ConflictException } from '@turnly/observability'
 import { TestEventBus, TestQueryBus } from '@turnly/testing'
 
 import { CreateTicketCommandHandler } from '../../../../src/tickets/create-ticket'

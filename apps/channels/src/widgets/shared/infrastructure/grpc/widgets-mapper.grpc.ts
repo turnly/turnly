@@ -5,8 +5,8 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import { Nullable } from '@turnly/common'
-import { Producers } from '@turnly/grpc'
 import { EntityAttributes } from '@turnly/core'
+import { Producers } from '@turnly/grpc'
 import { Widget } from 'widgets/shared/domain/entities/widget.entity'
 
 export class WidgetsMapper {
@@ -20,7 +20,6 @@ export class WidgetsMapper {
       widget.setName(entity.name)
       widget.setOriginsList(entity.origins)
       widget.setOrganizationId(entity.organizationId)
-      widget.setCanCustomize(true)
     }
 
     return widget

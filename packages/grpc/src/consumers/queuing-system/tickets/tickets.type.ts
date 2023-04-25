@@ -5,10 +5,10 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import {
-  AnnounceTicketRequest,
-  AnnounceTicketResponse,
-  CallTicketRequest,
-  CallTicketResponse,
+  AnnounceMyArrivalRequest,
+  AnnounceMyArrivalResponse,
+  CallTicketToDeskRequest,
+  CallTicketToDeskResponse,
   CreateTicketRequest,
   CreateTicketResponse,
   DiscardTicketRequest,
@@ -40,8 +40,8 @@ export type IGetTicketResponse = GetTicketResponse.AsObject
 export type IGetTicketDetailsRequest = GetTicketDetailsRequest.AsObject
 export type IGetTicketDetailsResponse = GetTicketDetailsResponse.AsObject
 
-export type ICallTicketRequest = CallTicketRequest.AsObject
-export type ICallTicketResponse = CallTicketResponse.AsObject
+export type ICallTicketToDeskRequest = CallTicketToDeskRequest.AsObject
+export type ICallTicketToDeskResponse = CallTicketToDeskResponse.AsObject
 
 export type IGetTicketsBeforeYoursRequest =
   GetTicketsBeforeYoursRequest.AsObject
@@ -56,8 +56,8 @@ export type IGetTicketsWaitingForServiceResponse =
 export type ILeaveTicketRequest = LeaveTicketRequest.AsObject
 export type ILeaveTicketResponse = LeaveTicketResponse.AsObject
 
-export type IAnnounceTicketRequest = AnnounceTicketRequest.AsObject
-export type IAnnounceTicketResponse = AnnounceTicketResponse.AsObject
+export type IAnnounceMyArrivalRequest = AnnounceMyArrivalRequest.AsObject
+export type IAnnounceMyArrivalResponse = AnnounceMyArrivalResponse.AsObject
 
 export type IServeTicketRequest = ServeTicketRequest.AsObject
 export type IServeTicketResponse = ServeTicketResponse.AsObject
@@ -77,7 +77,9 @@ export interface ITicketsClient {
   create(request: ICreateTicketRequest): Promise<ICreateTicketResponse>
   getOne(request: IGetTicketRequest): Promise<IGetTicketResponse>
   leave(request: ILeaveTicketRequest): Promise<ILeaveTicketResponse>
-  announce(request: IAnnounceTicketRequest): Promise<IAnnounceTicketResponse>
+  announce(
+    request: IAnnounceMyArrivalRequest
+  ): Promise<IAnnounceMyArrivalResponse>
   getTicketsBeforeYours(
     request: IGetTicketsBeforeYoursRequest
   ): Promise<IGetTicketsBeforeYoursResponse>
@@ -87,7 +89,7 @@ export interface ITicketsClient {
   getTicketsForServingFromLocation(
     request: IGetTicketsForServingFromLocationRequest
   ): Promise<IGetTicketsForServingFromLocationResponse>
-  call(request: ICallTicketRequest): Promise<ICallTicketResponse>
+  call(request: ICallTicketToDeskRequest): Promise<ICallTicketToDeskResponse>
   serve(request: IServeTicketRequest): Promise<IServeTicketResponse>
   discard(request: IDiscardTicketRequest): Promise<IDiscardTicketResponse>
   returnToQueue(request: IReturnToQueueRequest): Promise<IReturnToQueueResponse>

@@ -9,10 +9,10 @@ dotenv.config()
 
 import 'widgets/shared/dependency/register-dependencies'
 
-import { Observability } from '@turnly/common'
 import { config, eventBus } from '@turnly/core'
+import { Tracing } from '@turnly/observability'
 
-Observability.Tracing.Trace.initialize({ name: config.get('app.name') })
+Tracing.Trace.initialize({ name: config.get('app.name') })
 
 import { Application } from 'application'
 

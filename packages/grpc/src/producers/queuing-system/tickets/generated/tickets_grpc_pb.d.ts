@@ -60,23 +60,23 @@ interface ITicketsService_ILeave extends grpc.MethodDefinition<tickets_requests_
     responseSerialize: grpc.serialize<tickets_responses_pb.LeaveTicketResponse>;
     responseDeserialize: grpc.deserialize<tickets_responses_pb.LeaveTicketResponse>;
 }
-interface ITicketsService_IAnnounce extends grpc.MethodDefinition<tickets_requests_pb.AnnounceTicketRequest, tickets_responses_pb.AnnounceTicketResponse> {
+interface ITicketsService_IAnnounce extends grpc.MethodDefinition<tickets_requests_pb.AnnounceMyArrivalRequest, tickets_responses_pb.AnnounceMyArrivalResponse> {
     path: "/turnly.queuing_system.v1.tickets.Tickets/Announce";
     requestStream: false;
     responseStream: false;
-    requestSerialize: grpc.serialize<tickets_requests_pb.AnnounceTicketRequest>;
-    requestDeserialize: grpc.deserialize<tickets_requests_pb.AnnounceTicketRequest>;
-    responseSerialize: grpc.serialize<tickets_responses_pb.AnnounceTicketResponse>;
-    responseDeserialize: grpc.deserialize<tickets_responses_pb.AnnounceTicketResponse>;
+    requestSerialize: grpc.serialize<tickets_requests_pb.AnnounceMyArrivalRequest>;
+    requestDeserialize: grpc.deserialize<tickets_requests_pb.AnnounceMyArrivalRequest>;
+    responseSerialize: grpc.serialize<tickets_responses_pb.AnnounceMyArrivalResponse>;
+    responseDeserialize: grpc.deserialize<tickets_responses_pb.AnnounceMyArrivalResponse>;
 }
-interface ITicketsService_ICall extends grpc.MethodDefinition<tickets_requests_pb.CallTicketRequest, tickets_responses_pb.CallTicketResponse> {
+interface ITicketsService_ICall extends grpc.MethodDefinition<tickets_requests_pb.CallTicketToDeskRequest, tickets_responses_pb.CallTicketToDeskResponse> {
     path: "/turnly.queuing_system.v1.tickets.Tickets/Call";
     requestStream: false;
     responseStream: false;
-    requestSerialize: grpc.serialize<tickets_requests_pb.CallTicketRequest>;
-    requestDeserialize: grpc.deserialize<tickets_requests_pb.CallTicketRequest>;
-    responseSerialize: grpc.serialize<tickets_responses_pb.CallTicketResponse>;
-    responseDeserialize: grpc.deserialize<tickets_responses_pb.CallTicketResponse>;
+    requestSerialize: grpc.serialize<tickets_requests_pb.CallTicketToDeskRequest>;
+    requestDeserialize: grpc.deserialize<tickets_requests_pb.CallTicketToDeskRequest>;
+    responseSerialize: grpc.serialize<tickets_responses_pb.CallTicketToDeskResponse>;
+    responseDeserialize: grpc.deserialize<tickets_responses_pb.CallTicketToDeskResponse>;
 }
 interface ITicketsService_IGetTicketsBeforeYours extends grpc.MethodDefinition<tickets_requests_pb.GetTicketsBeforeYoursRequest, tickets_responses_pb.GetTicketsBeforeYoursResponse> {
     path: "/turnly.queuing_system.v1.tickets.Tickets/GetTicketsBeforeYours";
@@ -140,8 +140,8 @@ export interface ITicketsServer extends grpc.UntypedServiceImplementation {
     getOne: grpc.handleUnaryCall<tickets_requests_pb.GetTicketRequest, tickets_responses_pb.GetTicketResponse>;
     getDetails: grpc.handleUnaryCall<tickets_requests_pb.GetTicketDetailsRequest, tickets_responses_pb.GetTicketDetailsResponse>;
     leave: grpc.handleUnaryCall<tickets_requests_pb.LeaveTicketRequest, tickets_responses_pb.LeaveTicketResponse>;
-    announce: grpc.handleUnaryCall<tickets_requests_pb.AnnounceTicketRequest, tickets_responses_pb.AnnounceTicketResponse>;
-    call: grpc.handleUnaryCall<tickets_requests_pb.CallTicketRequest, tickets_responses_pb.CallTicketResponse>;
+    announce: grpc.handleUnaryCall<tickets_requests_pb.AnnounceMyArrivalRequest, tickets_responses_pb.AnnounceMyArrivalResponse>;
+    call: grpc.handleUnaryCall<tickets_requests_pb.CallTicketToDeskRequest, tickets_responses_pb.CallTicketToDeskResponse>;
     getTicketsBeforeYours: grpc.handleUnaryCall<tickets_requests_pb.GetTicketsBeforeYoursRequest, tickets_responses_pb.GetTicketsBeforeYoursResponse>;
     getTicketsWaitingForService: grpc.handleUnaryCall<tickets_requests_pb.GetTicketsWaitingForServiceRequest, tickets_responses_pb.GetTicketsWaitingForServiceResponse>;
     getTicketsForServingFromLocation: grpc.handleUnaryCall<tickets_requests_pb.GetTicketsForServingFromLocationRequest, tickets_responses_pb.GetTicketsForServingFromLocationResponse>;
@@ -163,12 +163,12 @@ export interface ITicketsClient {
     leave(request: tickets_requests_pb.LeaveTicketRequest, callback: (error: grpc.ServiceError | null, response: tickets_responses_pb.LeaveTicketResponse) => void): grpc.ClientUnaryCall;
     leave(request: tickets_requests_pb.LeaveTicketRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: tickets_responses_pb.LeaveTicketResponse) => void): grpc.ClientUnaryCall;
     leave(request: tickets_requests_pb.LeaveTicketRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: tickets_responses_pb.LeaveTicketResponse) => void): grpc.ClientUnaryCall;
-    announce(request: tickets_requests_pb.AnnounceTicketRequest, callback: (error: grpc.ServiceError | null, response: tickets_responses_pb.AnnounceTicketResponse) => void): grpc.ClientUnaryCall;
-    announce(request: tickets_requests_pb.AnnounceTicketRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: tickets_responses_pb.AnnounceTicketResponse) => void): grpc.ClientUnaryCall;
-    announce(request: tickets_requests_pb.AnnounceTicketRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: tickets_responses_pb.AnnounceTicketResponse) => void): grpc.ClientUnaryCall;
-    call(request: tickets_requests_pb.CallTicketRequest, callback: (error: grpc.ServiceError | null, response: tickets_responses_pb.CallTicketResponse) => void): grpc.ClientUnaryCall;
-    call(request: tickets_requests_pb.CallTicketRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: tickets_responses_pb.CallTicketResponse) => void): grpc.ClientUnaryCall;
-    call(request: tickets_requests_pb.CallTicketRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: tickets_responses_pb.CallTicketResponse) => void): grpc.ClientUnaryCall;
+    announce(request: tickets_requests_pb.AnnounceMyArrivalRequest, callback: (error: grpc.ServiceError | null, response: tickets_responses_pb.AnnounceMyArrivalResponse) => void): grpc.ClientUnaryCall;
+    announce(request: tickets_requests_pb.AnnounceMyArrivalRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: tickets_responses_pb.AnnounceMyArrivalResponse) => void): grpc.ClientUnaryCall;
+    announce(request: tickets_requests_pb.AnnounceMyArrivalRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: tickets_responses_pb.AnnounceMyArrivalResponse) => void): grpc.ClientUnaryCall;
+    call(request: tickets_requests_pb.CallTicketToDeskRequest, callback: (error: grpc.ServiceError | null, response: tickets_responses_pb.CallTicketToDeskResponse) => void): grpc.ClientUnaryCall;
+    call(request: tickets_requests_pb.CallTicketToDeskRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: tickets_responses_pb.CallTicketToDeskResponse) => void): grpc.ClientUnaryCall;
+    call(request: tickets_requests_pb.CallTicketToDeskRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: tickets_responses_pb.CallTicketToDeskResponse) => void): grpc.ClientUnaryCall;
     getTicketsBeforeYours(request: tickets_requests_pb.GetTicketsBeforeYoursRequest, callback: (error: grpc.ServiceError | null, response: tickets_responses_pb.GetTicketsBeforeYoursResponse) => void): grpc.ClientUnaryCall;
     getTicketsBeforeYours(request: tickets_requests_pb.GetTicketsBeforeYoursRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: tickets_responses_pb.GetTicketsBeforeYoursResponse) => void): grpc.ClientUnaryCall;
     getTicketsBeforeYours(request: tickets_requests_pb.GetTicketsBeforeYoursRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: tickets_responses_pb.GetTicketsBeforeYoursResponse) => void): grpc.ClientUnaryCall;
@@ -203,12 +203,12 @@ export class TicketsClient extends grpc.Client implements ITicketsClient {
     public leave(request: tickets_requests_pb.LeaveTicketRequest, callback: (error: grpc.ServiceError | null, response: tickets_responses_pb.LeaveTicketResponse) => void): grpc.ClientUnaryCall;
     public leave(request: tickets_requests_pb.LeaveTicketRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: tickets_responses_pb.LeaveTicketResponse) => void): grpc.ClientUnaryCall;
     public leave(request: tickets_requests_pb.LeaveTicketRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: tickets_responses_pb.LeaveTicketResponse) => void): grpc.ClientUnaryCall;
-    public announce(request: tickets_requests_pb.AnnounceTicketRequest, callback: (error: grpc.ServiceError | null, response: tickets_responses_pb.AnnounceTicketResponse) => void): grpc.ClientUnaryCall;
-    public announce(request: tickets_requests_pb.AnnounceTicketRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: tickets_responses_pb.AnnounceTicketResponse) => void): grpc.ClientUnaryCall;
-    public announce(request: tickets_requests_pb.AnnounceTicketRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: tickets_responses_pb.AnnounceTicketResponse) => void): grpc.ClientUnaryCall;
-    public call(request: tickets_requests_pb.CallTicketRequest, callback: (error: grpc.ServiceError | null, response: tickets_responses_pb.CallTicketResponse) => void): grpc.ClientUnaryCall;
-    public call(request: tickets_requests_pb.CallTicketRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: tickets_responses_pb.CallTicketResponse) => void): grpc.ClientUnaryCall;
-    public call(request: tickets_requests_pb.CallTicketRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: tickets_responses_pb.CallTicketResponse) => void): grpc.ClientUnaryCall;
+    public announce(request: tickets_requests_pb.AnnounceMyArrivalRequest, callback: (error: grpc.ServiceError | null, response: tickets_responses_pb.AnnounceMyArrivalResponse) => void): grpc.ClientUnaryCall;
+    public announce(request: tickets_requests_pb.AnnounceMyArrivalRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: tickets_responses_pb.AnnounceMyArrivalResponse) => void): grpc.ClientUnaryCall;
+    public announce(request: tickets_requests_pb.AnnounceMyArrivalRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: tickets_responses_pb.AnnounceMyArrivalResponse) => void): grpc.ClientUnaryCall;
+    public call(request: tickets_requests_pb.CallTicketToDeskRequest, callback: (error: grpc.ServiceError | null, response: tickets_responses_pb.CallTicketToDeskResponse) => void): grpc.ClientUnaryCall;
+    public call(request: tickets_requests_pb.CallTicketToDeskRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: tickets_responses_pb.CallTicketToDeskResponse) => void): grpc.ClientUnaryCall;
+    public call(request: tickets_requests_pb.CallTicketToDeskRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: tickets_responses_pb.CallTicketToDeskResponse) => void): grpc.ClientUnaryCall;
     public getTicketsBeforeYours(request: tickets_requests_pb.GetTicketsBeforeYoursRequest, callback: (error: grpc.ServiceError | null, response: tickets_responses_pb.GetTicketsBeforeYoursResponse) => void): grpc.ClientUnaryCall;
     public getTicketsBeforeYours(request: tickets_requests_pb.GetTicketsBeforeYoursRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: tickets_responses_pb.GetTicketsBeforeYoursResponse) => void): grpc.ClientUnaryCall;
     public getTicketsBeforeYours(request: tickets_requests_pb.GetTicketsBeforeYoursRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: tickets_responses_pb.GetTicketsBeforeYoursResponse) => void): grpc.ClientUnaryCall;

@@ -4,17 +4,17 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import {
-  BadRequestException,
-  Nullable,
-  ResourceNotFoundException,
-} from '@turnly/common'
+import { Nullable } from '@turnly/common'
 import {
   Controller,
   InputValidator,
   IQueryBus,
   TimeoutHandler,
 } from '@turnly/core'
+import {
+  BadRequestException,
+  ResourceNotFoundException,
+} from '@turnly/observability'
 import {
   SearchTicketsForServingFromLocationFilters,
   SearchTicketsForServingFromLocationParams,

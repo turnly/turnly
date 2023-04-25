@@ -5,12 +5,8 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import { Nullable } from '@turnly/common'
-import {
-  DateTime,
-  IQueryHandler,
-  QueryBuilder,
-  QueryHandler,
-} from '@turnly/core'
+import { IQueryHandler, QueryBuilder, QueryHandler } from '@turnly/core'
+import { DateTime } from '@turnly/datetime'
 import { ITicketsReadableRepo } from 'tickets/shared/domain/contracts/tickets-repo.interface'
 import { Ticket } from 'tickets/shared/domain/entities/ticket.entity'
 

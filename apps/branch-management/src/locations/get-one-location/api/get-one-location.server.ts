@@ -4,8 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { Producers } from '@turnly/grpc'
-import { Client } from '@turnly/grpc/dist/consumers'
+import { Consumers, Producers } from '@turnly/grpc'
 import type { GetOneLocationController } from 'locations/get-one-location'
 import { LocationsMapper } from 'locations/shared/infrastructure/grpc/locations-mapper.grpc'
 
@@ -24,7 +23,7 @@ export class GetOneLocationServer {
   ) {
     const { data, meta } = await this.getOneLocationController.execute({
       id: call.request.getId(),
-      organizationId: Client.getOrganizationId(call),
+      organizationId: Consumers.Client.getOrganizationId(call),
     })
 
     const response = new Producers.BranchManagement.GetLocationResponse()

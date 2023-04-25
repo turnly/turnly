@@ -4,14 +4,15 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { ConflictException, generateCode } from '@turnly/common'
+import { generateCode } from '@turnly/common'
 import {
   CommandHandler,
   ICommandHandler,
   IEventBus,
   IQueryBus,
 } from '@turnly/core'
-import { ActiveTicketsByCustomerQuery } from 'tickets/shared/application/queries/get-active-tickets-by-customer/get-active-tickets-by-customer.query'
+import { ConflictException } from '@turnly/observability'
+import { GetActiveTicketsByCustomerQuery } from 'tickets/shared/application/queries'
 import { ITicketsWritableRepo } from 'tickets/shared/domain/contracts/tickets-repo.interface'
 import { Ticket } from 'tickets/shared/domain/entities/ticket.entity'
 import { TicketPriority } from 'tickets/shared/domain/enums/TicketPriority'
@@ -31,7 +32,10 @@ export class CreateTicketCommandHandler
 
   public async execute({ params }: CreateTicketCommand) {
     const tickets = await this.queryBus.ask<Ticket[]>(
-      new ActiveTicketsByCustomerQuery(params.customerId, params.organizationId)
+      new GetActiveTicketsByCustomerQuery(
+        params.customerId,
+        params.organizationId
+      )
     )
 
     if (tickets.length)

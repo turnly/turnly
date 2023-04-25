@@ -12,8 +12,8 @@ import { Organization } from 'organizations/shared/domain/entities/organization.
 export class OrganizationsMapper {
   public static toRPC(
     entity: Nullable<EntityAttributes<Organization>> | undefined
-  ): Producers.BusinessOwners.Organization {
-    const organization = new Producers.BusinessOwners.Organization()
+  ): Producers.BusinessManagement.Organization {
+    const organization = new Producers.BusinessManagement.Organization()
 
     if (entity) {
       organization.setId(entity.id)

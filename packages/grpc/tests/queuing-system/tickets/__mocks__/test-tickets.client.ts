@@ -8,8 +8,8 @@ import { CallOptions, Metadata } from '@grpc/grpc-js'
 
 import { ICallback } from '../../../../src/producers'
 import {
-  AnnounceTicketRequest,
-  AnnounceTicketResponse,
+  AnnounceMyArrivalRequest,
+  AnnounceMyArrivalResponse,
   CreateTicketRequest,
   CreateTicketResponse,
   GetTicketRequest,
@@ -58,10 +58,10 @@ export class TestTicketsClient {
   }
 
   public announce(
-    _request: AnnounceTicketRequest,
+    _request: AnnounceMyArrivalRequest,
     _metadata: Metadata,
     _options: Partial<CallOptions>,
-    callback: ICallback<AnnounceTicketResponse>
+    callback: ICallback<AnnounceMyArrivalResponse>
   ) {
     callback(null, this.announceMock())
   }
@@ -102,7 +102,7 @@ export class TestTicketsClient {
     return this
   }
 
-  public attachAnnounceResponse(response: AnnounceTicketResponse) {
+  public attachAnnounceResponse(response: AnnounceMyArrivalResponse) {
     this.announceMock.mockReturnValue(response)
 
     return this

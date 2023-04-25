@@ -4,7 +4,8 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { ConflictException, Extra } from '@turnly/common'
+import { Extra } from '@turnly/common'
+import { ConflictException } from '@turnly/observability'
 import { ObjectMother } from '@turnly/testing'
 
 import { TicketStatus } from '../../../../../src/tickets/shared/domain/enums/TicketStatus'

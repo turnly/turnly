@@ -6,8 +6,8 @@
  */
 import '../../../../../../src/tickets/infrastructure/register-dependencies/dependencies'
 
-import { ResourceNotFoundException } from '@turnly/observability'
 import { MongoEnvironmentArranger } from '@turnly/core'
+import { ResourceNotFoundException } from '@turnly/observability'
 
 import { TicketsModule } from '../../../../../../src/tickets/tickets.module'
 import { TicketMother } from '../../../../../unit/tickets/shared/domain/ticket.entity.mother'

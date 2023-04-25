@@ -6,8 +6,8 @@
  */
 import { ExtraMapper } from '../../../producers'
 import {
-  AnnounceTicketRequest,
-  CallTicketRequest,
+  AnnounceMyArrivalRequest,
+  CallTicketToDeskRequest,
   DiscardTicketRequest,
   GetTicketDetailsRequest,
   GetTicketRequest,
@@ -27,10 +27,10 @@ import { Client } from '../../common/base.client'
 import type { ClientConfig } from '../../common/client-options.type'
 import { promisify } from '../../common/promisify.util'
 import {
-  IAnnounceTicketRequest,
-  IAnnounceTicketResponse,
-  ICallTicketRequest,
-  ICallTicketResponse,
+  IAnnounceMyArrivalRequest,
+  IAnnounceMyArrivalResponse,
+  ICallTicketToDeskRequest,
+  ICallTicketToDeskResponse,
   ICreateTicketRequest,
   ICreateTicketResponse,
   IDiscardTicketRequest,
@@ -133,9 +133,9 @@ export class Tickets extends Client<TicketsClient> implements ITicketsClient {
   }
 
   public async announce(
-    request: IAnnounceTicketRequest
-  ): Promise<IAnnounceTicketResponse> {
-    const req = new AnnounceTicketRequest()
+    request: IAnnounceMyArrivalRequest
+  ): Promise<IAnnounceMyArrivalResponse> {
+    const req = new AnnounceMyArrivalRequest()
       .setId(request.id)
       .setCustomerId(request.customerId)
 
@@ -148,8 +148,10 @@ export class Tickets extends Client<TicketsClient> implements ITicketsClient {
     ).toObject()
   }
 
-  public async call(request: ICallTicketRequest): Promise<ICallTicketResponse> {
-    const req = new CallTicketRequest()
+  public async call(
+    request: ICallTicketToDeskRequest
+  ): Promise<ICallTicketToDeskResponse> {
+    const req = new CallTicketToDeskRequest()
       .setId(request.id)
       .setAgentId(request.agentId)
 
