@@ -34,9 +34,7 @@ export class WidgetMother {
     return ObjectMother.repeater(WidgetMother.random, max)
   }
 
-  static fromExistingWidgetOnQuery(
-    query: GetOneWidgetQuery
-  ): Widget {
+  static fromExistingWidgetOnQuery(query: GetOneWidgetQuery): Widget {
     return Widget.build({
       ...this.random().toObject(),
       id: query.id,

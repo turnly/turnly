@@ -7,10 +7,16 @@
 
 import { JwtPayload as Payload, VerifyOptions } from 'jsonwebtoken'
 
+export enum JwtType {
+  BEARER = 'Bearer',
+  REFRESH = 'Refresh',
+  ID = 'ID',
+}
+
 export interface JwtPayload extends Payload {
   sub: string
   groups: string[]
-  typ: 'Bearer' | 'Refresh' | 'Access'
+  typ: JwtType
 }
 
 export interface OidcOptions extends Omit<VerifyOptions, 'algorithms'> {

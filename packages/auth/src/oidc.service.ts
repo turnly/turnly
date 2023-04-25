@@ -13,7 +13,7 @@ import {
 import jwt from 'jsonwebtoken'
 
 import { KeySet } from './jwks.service'
-import { JwtPayload, OidcOptions } from './jwt.type'
+import { JwtPayload, JwtType, OidcOptions } from './jwt.type'
 
 /**
  * OpenID Connect (OIDC)
@@ -62,19 +62,26 @@ export class OIDC {
             if (err instanceof TokenExpiredError)
               return reject(
                 new UnauthenticatedException(
-                  'Access denied! Your access token has expired.'
+                  'Oops! Your token has expired and is no longer valid.'
                 )
               )
 
             if (err instanceof JsonWebTokenError)
               return reject(
                 new UnauthenticatedException(
-                  'Access denied! Your access token is invalid.'
+                  'Oops! Your token is invalid and cannot be verified.'
                 )
               )
 
             return reject(err)
           }
+
+          if (decoded && decoded['typ'] !== JwtType.BEARER)
+            return reject(
+              new UnauthenticatedException(
+                'Oops! Your token type is invalid, we expected a access token (Bearer) but received a different token type.'
+              )
+            )
 
           resolve(decoded as T)
         }
