@@ -9,8 +9,8 @@ import 'reflect-metadata'
 
 import type { KeyValueCacheSetOptions } from '@apollo/utils.keyvaluecache'
 
-import { CacheTTL } from './cache-ttl.enum'
 import { DataSource } from './base.ds'
+import { CacheTTL } from './cache-ttl.enum'
 import { paramsToKey } from './params-to-key.util'
 
 export interface CacheSourceParams extends KeyValueCacheSetOptions {

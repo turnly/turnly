@@ -35,7 +35,8 @@
       "**/*.md",
       "dist",
       "jest*",
-      "coverage"
+      "coverage",
+      "src/**/generated"
     ]
   },
   "resolutions": {
