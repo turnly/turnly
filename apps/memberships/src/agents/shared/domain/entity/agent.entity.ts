@@ -6,7 +6,7 @@
  */
 import { Extra, Guid, Identifier, Nullable } from '@turnly/common'
 import { AggregateRoot, EntityAttributes } from '@turnly/core'
-import { AgentCreatedEvent } from 'agents/create-agent/events/agent-created.event'
+import { AgentCreatedEvent } from 'agents/create-agent/agent-created.event'
 
 /**
  * Agent

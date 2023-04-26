@@ -7,7 +7,7 @@
 import { Guid } from '@turnly/common'
 import { ObjectMother } from '@turnly/testing'
 
-import { GetOneAgentQuery } from '../../../../src/agents/shared/application/queries'
+import { GetOneAgentQuery } from '../../../../src/agents/get-one-agent'
 
 export class GetOneAgentQueryMother {
   static create(

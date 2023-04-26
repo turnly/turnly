@@ -8,7 +8,7 @@ import { EntityAttributes } from '@turnly/core'
 import { IAgentsMapper } from 'agents/shared/domain/contracts/agents-mapper.interface'
 import { Agent } from 'agents/shared/domain/entity/agent.entity'
 
-import { AgentModel, IAgentDocument } from '../models/agent.model'
+import { AgentModel, IAgentDocument } from './agent.model'
 
 export class AgentsMapper implements IAgentsMapper<IAgentDocument> {
   public toEntity(document: IAgentDocument): Agent {

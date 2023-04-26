@@ -12,21 +12,21 @@ import {
   TimeoutHandler,
 } from '@turnly/core'
 import { ResourceNotFoundException } from '@turnly/observability'
-import { GetOneAgentQuery } from 'agents/shared/application/queries'
 import { Agent } from 'agents/shared/domain/entity/agent.entity'
 
-import { GetOneAgentValidator } from './get-one-agent.validator'
+import { GetAgentByUserIdQuery } from './get-agent-by-user-id.query'
+import { GetAgentByUserIdValidator } from './get-agent-by-user-id.validator'
 
-export class GetOneAgentController extends Controller {
+export class GetAgentByUserIdController extends Controller {
   public constructor(private readonly queryBus: IQueryBus) {
     super()
   }
 
   @TimeoutHandler()
-  @InputValidator(GetOneAgentValidator)
-  public async execute(params: GetOneAgentQuery) {
+  @InputValidator(GetAgentByUserIdValidator)
+  public async execute(params: GetAgentByUserIdQuery) {
     const agent = await this.queryBus.ask<Nullable<Agent>>(
-      new GetOneAgentQuery(params.id, params.organizationId)
+      new GetAgentByUserIdQuery(params.userId)
     )
 
     if (!agent) throw new ResourceNotFoundException()

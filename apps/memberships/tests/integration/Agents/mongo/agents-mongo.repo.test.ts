@@ -9,8 +9,8 @@ import '../../../../../src/Agents/infrastructure/register-dependencies/dependenc
 import { MongoEnvironmentArranger } from '@turnly/core'
 import { ResourceNotFoundException } from '@turnly/observability'
 
-import { AgentsModule } from '../../../../../src/agents/agents.module'
-import { AgentMother } from '../../../../unit/agents/shared/domain/agent.entity.mother'
+import { AgentsModule } from '../../../../src/agents/agents.module'
+import { AgentMother } from '../../../unit/agents/shared/agent.entity.mother'
 import { AgentsQueryMother } from './agents-query.mother'
 
 const writableRepo = AgentsModule.getWritableRepo()

@@ -6,9 +6,9 @@
  */
 import { Box, ioc } from '@turnly/core'
 
-import { GetAgentByUserIdController } from '../api/get-agent-by-user-id.controller'
-import { GetAgentByUserIdServer } from '../api/get-agent-by-user-id.server'
-import { GetAgentByUserIdQueryHandler } from '../queries/get-agent-by-user-id.query-handler'
+import { GetAgentByUserIdController } from './get-agent-by-user-id.controller'
+import { GetAgentByUserIdQueryHandler } from './get-agent-by-user-id.query-handler'
+import { GetAgentByUserIdServer } from './get-agent-by-user-id.server'
 
 Box.register({
   getAgentByUserIdServer: ioc.asClass(GetAgentByUserIdServer).singleton(),

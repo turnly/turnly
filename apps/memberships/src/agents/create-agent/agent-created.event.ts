@@ -5,8 +5,7 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import { EntityAttributes, Event, EventType } from '@turnly/core'
-
-import { Agent } from '../../shared/domain/entity/agent.entity'
+import { Agent } from 'agents/shared/domain/entity/agent.entity'
 
 type Payload = EntityAttributes<Agent>
 

@@ -5,7 +5,7 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import { Producers } from '@turnly/grpc'
-import { AgentsMapper } from 'agents/shared/infrastructure/grpc/agents-mapper.grpc'
+import { AgentsMapper } from 'agents/shared/infrastructure/agents-to-grpc.mapper'
 
 import { GetAgentByUserIdController } from './get-agent-by-user-id.controller'
 

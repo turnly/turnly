@@ -10,9 +10,9 @@
  *
  * @description Register dependencies to the dependency injection container.
  */
-import 'agents/shared/dependency/attach-to-dependency-box'
-import 'agents/get-one-agent/dependency/attach-to-dependency-box'
-import 'agents/get-agent-by-user-id/dependency/attach-to-dependency-box'
+import 'agents/shared/shared.dependency'
+import 'agents/get-one-agent/get-one-agent.dependency'
+import 'agents/get-agent-by-user-id/get-agent-by-user-id.dependency'
 
 import type {
   ICommandHandler,

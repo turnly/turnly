@@ -4,9 +4,9 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { GetOneAgentQueryHandler } from '../../../../src/agents/shared/application/queries'
-import { AgentsReadableRepo } from '../shared/__mocks__/agents-readable.repo'
-import { AgentMother } from '../shared/domain/agent.entity.mother'
+import { GetOneAgentQueryHandler } from '../../../../src/agents/get-one-agent'
+import { AgentMother } from '../shared/agent.entity.mother'
+import { AgentsReadableRepo } from '../shared/agents-readable.repo'
 import { GetOneAgentQueryMother } from './get-one-agent.query.mother'
 
 let repository: AgentsReadableRepo

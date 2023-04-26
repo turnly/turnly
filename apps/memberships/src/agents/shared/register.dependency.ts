@@ -6,7 +6,7 @@
  */
 import { commandBus, eventBus, queryBus } from '@turnly/core'
 
-import { AgentsModule } from '../../agents.module'
+import { AgentsModule } from '../agents.module'
 
 /**
  * Agents module

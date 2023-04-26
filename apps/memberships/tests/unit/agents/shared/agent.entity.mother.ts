@@ -7,8 +7,8 @@
 import { Extra, Guid, Nullable } from '@turnly/common'
 import { ObjectMother } from '@turnly/testing'
 
-import { GetOneAgentQuery } from '../../../../../src/agents/shared/application/queries'
-import { Agent } from '../../../../../src/agents/shared/domain/entity/agent.entity'
+import { GetOneAgentQuery } from '../../../../src/agents/get-one-agent'
+import { Agent } from '../../../../src/agents/shared/domain/entity/agent.entity'
 
 export class AgentMother {
   static create(

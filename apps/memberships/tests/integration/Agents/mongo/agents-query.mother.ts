@@ -6,7 +6,7 @@
  */
 import { QueryBuilder } from '@turnly/core'
 
-import { Agent } from '../../../../../src/agents/shared/domain/entity/agent.entity'
+import { Agent } from '../../../../src/agents/shared/domain/entity/agent.entity'
 
 export class AgentsQueryMother {
   static getOneWith(agent: Agent) {

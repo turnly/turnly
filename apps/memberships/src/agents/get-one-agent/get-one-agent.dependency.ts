@@ -6,8 +6,8 @@
  */
 import { Box, ioc } from '@turnly/core'
 
-import { GetOneAgentController } from '../api/get-one-agent.controller'
-import { GetOneAgentServer } from '../api/get-one-agent.server'
+import { GetOneAgentController } from './get-one-agent.controller'
+import { GetOneAgentServer } from './get-one-agent.server'
 
 Box.register({
   getOneAgentServer: ioc.asClass(GetOneAgentServer).singleton(),

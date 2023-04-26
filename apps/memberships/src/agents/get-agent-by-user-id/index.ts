@@ -4,7 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-export * from './api/get-agent-by-user-id.controller'
-export * from './api/get-agent-by-user-id.server'
-export * from './queries/get-agent-by-user-id.query'
-export * from './queries/get-agent-by-user-id.query-handler'
+export * from './get-agent-by-user-id.controller'
+export * from './get-agent-by-user-id.query'
+export * from './get-agent-by-user-id.query-handler'
+export * from './get-agent-by-user-id.server'
