@@ -7,8 +7,8 @@
 import { Guid } from '@turnly/common'
 import { ObjectMother } from '@turnly/testing'
 
-import { GetOneServiceQuery } from '../../../../../src/services/get-one-service'
-import { Service } from '../../../../../src/services/shared/domain/entities/service.entity'
+import { GetOneServiceQuery } from '../../../../src/services/get-one-service'
+import { Service } from '../../../../src/services/shared/domain/entities/service.entity'
 
 export class ServiceMother {
   static create(

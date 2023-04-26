@@ -7,7 +7,7 @@
 import { IReadableRepository } from '@turnly/core'
 import { TestReadableRepo } from '@turnly/testing'
 
-import { Service } from '../../../../../src/services/shared/domain/entities/service.entity'
+import { Service } from '../../../../src/services/shared/domain/entities/service.entity'
 
 export class ServicesReadableRepo
   extends TestReadableRepo<Service>

@@ -9,7 +9,7 @@ import { ObjectMother } from '@turnly/testing'
 import { GetOneLocationQuery } from 'locations/get-one-location'
 import { LocationStatus } from 'locations/shared/domain/enums/location-status.enum'
 
-import { Location } from '../../../../../src/locations/shared/domain/entities/location.entity'
+import { Location } from '../../../../src/locations/shared/domain/entities/location.entity'
 
 export class LocationMother {
   static create(

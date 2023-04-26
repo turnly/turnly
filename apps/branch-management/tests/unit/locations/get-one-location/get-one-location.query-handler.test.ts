@@ -5,8 +5,8 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import { GetOneLocationQueryHandler } from '../../../../src/locations/get-one-location'
-import { LocationsReadableRepo } from '../shared/__mocks__/locations-readable.repo'
-import { LocationMother } from '../shared/domain/location.entity.mother'
+import { LocationMother } from '../shared/location.entity.mother'
+import { LocationsReadableRepo } from '../shared/locations-readable.repo'
 import { GetOneLocationQueryMother } from './get-one-location.query.mother'
 
 let repository: LocationsReadableRepo

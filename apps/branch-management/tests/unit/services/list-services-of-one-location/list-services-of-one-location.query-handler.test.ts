@@ -7,8 +7,8 @@
 import { ObjectMother } from '@turnly/testing'
 
 import { ListServicesOfOneLocationQueryHandler } from '../../../../src/services/list-services-of-one-location'
-import { ServicesReadableRepo } from '../shared/__mocks__/services-readable.repo'
-import { ServiceMother } from '../shared/domain/service.entity.mother'
+import { ServiceMother } from '../shared/service.entity.mother'
+import { ServicesReadableRepo } from '../shared/services-readable.repo'
 import { ListServicesOfOneLocationQueryMother } from './list-services-of-one-location.query.mother'
 
 let repository: ServicesReadableRepo

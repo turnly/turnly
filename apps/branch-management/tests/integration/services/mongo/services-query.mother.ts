@@ -6,7 +6,7 @@
  */
 import { QueryBuilder } from '@turnly/core'
 
-import { Service } from '../../../../../../src/services/shared/domain/entities/service.entity'
+import { Service } from '../../../../src/services/shared/domain/entities/service.entity'
 
 export class ServicesQueryMother {
   static getOneWith(service: Service) {

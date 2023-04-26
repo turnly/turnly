@@ -4,13 +4,13 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import '../../../../../../src/locations/shared/register.dependency'
+import '../../../../src/locations/shared/register.dependency'
 
 import { MongoEnvironmentArranger } from '@turnly/core'
 import { ResourceNotFoundException } from '@turnly/observability'
 
-import { LocationsModule } from '../../../../../../src/locations/locations.module'
-import { LocationMother } from '../../../../../unit/locations/shared/domain/location.entity.mother'
+import { LocationsModule } from '../../../../src/locations/locations.module'
+import { LocationMother } from '../../../unit/locations/shared/location.entity.mother'
 import { LocationsQueryMother } from './locations-query.mother'
 
 const writableRepo = LocationsModule.getWritableRepo()
