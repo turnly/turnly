@@ -12,7 +12,7 @@ on:
   push:
     paths:
       - apps/**
-      - .github/workflows/global-continuous-integration-tests.yml
+      - .github/workflows/tests.global.ci.yml
     branches:
       - develop
       - main
@@ -20,7 +20,7 @@ on:
 jobs:
   unit_and_integration:
     name: 🧩 Unit & Integration
-    uses: ./.github/workflows/global-unit-and-integration-tests.yml
+    uses: ./.github/workflows/tests.global-unit-integration.ci.yml
     with:
       mongo-username: root
       mongo-password: turnly
@@ -28,4 +28,4 @@ jobs:
 
   e2e_and_benchmark:
     name: 🧩 E2E & Benchmark
-    uses: ./.github/workflows/global-e2e-and-benchmark-tests.yml
+    uses: ./.github/workflows/tests.global-e2e-and-benchmark.ci.yml

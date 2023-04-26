@@ -11,7 +11,7 @@ on:
   push:
     paths:
       - apps/**
-      - .github/workflows/global-continuous-integration-linters.yml
+      - .github/workflows/lint.global.ci.yml
     branches:
       - develop
       - main
