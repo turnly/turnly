@@ -23,7 +23,7 @@
   ],
   "scripts": {
     "prebuild": "rm -rf dist tsconfig.tsbuildinfo",
-    "build": "tsc -p tsconfig.build.json",
+    "build": "tsc -p tsconfig.build.json && bash ./scripts/postbuild.sh",
     "lint": "prettier \"./**/*.{ts,js}\" --check && eslint . --ext .js,.ts && tsc --noEmit",
     "test:unit": "cross-env NODE_ENV=test jest"
   },

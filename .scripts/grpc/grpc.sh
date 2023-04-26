@@ -14,7 +14,6 @@ source "$BASE_DIR/base.helper.sh"
 
 # Commands sources
 source "$BASE_DIR/setup.command.sh"
-source "$BASE_DIR/build.command.sh"
 source "$BASE_DIR/gen-protos-unix.command.sh"
 source "$BASE_DIR/gen-protos-windows.command.sh"
 
@@ -28,10 +27,6 @@ info "Turnly gRPC Package Management 📦  • Current OS: $OS"
 line
 
 case $COMMAND in
-build)
-  get_services
-  build
-  ;;
 setup)
   setup
   ;;
