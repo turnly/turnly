@@ -7,7 +7,7 @@
   "author": "Turnly Team <engineering@turnly.app> (https://turnly.app)",
   "scripts": {
     "prebuild": "rm -rf dist tsconfig.tsbuildinfo",
-    "build": "tsc -p tsconfig.build.json",
+    "build": "tsc",
     "watch": "nodemon --config node_modules/@turnly/eslint-config/nodemon.json src/main.ts",
     "lint": "prettier \"./**/*.{ts,js}\" --check && eslint . --ext .js,.ts && tsc --noEmit"
   },

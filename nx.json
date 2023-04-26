@@ -7,14 +7,13 @@
           "build",
           "lint",
           "prepare"
-        ],
-        "parallel": 5
+        ]
       }
     }
   },
   "targetDefaults": {
     "build": {
-      "dependsOn": ["prebuild", "^build"],
+      "dependsOn": ["^build"],
       "outputs": ["dist/**"]
     }
   },

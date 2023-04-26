@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
 
 function build() {
+  npx lerna run build \
+    --scope @turnly/auth \
+    --scope @turnly/common \
+    --scope @turnly/observability \
+    --scope @turnly/testing
+
   pushd packages/grpc || exit
 
   info "Building sources on $OS system ..."

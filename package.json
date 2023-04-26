@@ -12,10 +12,9 @@
   "scripts": {
     "start": "bash docker/run start",
     "stop": "bash docker/run stop",
-    "setup": "yarn install && yarn bootstrap",
+    "setup": "yarn install && yarn grpc:setup && lerna bootstrap",
     "prepare": "husky install",
-    "build": "lerna run build",
-    "bootstrap": "lerna bootstrap",
+    "build": "lerna run build --ignore @turnly/grpc",
     "lint": "lerna run lint",
     "test:benchmark": "cross-env CI=true lerna run test:benchmark",
     "test:e2e": "cross-env CI=true lerna run test:e2e",
@@ -28,7 +27,9 @@
     "release:patch": "lerna version patch --no-push",
     "release:preminor": "lerna version preminor --no-push",
     "release:publish": "lerna publish from-git --no-private",
-    "protos:gen": "bash .scripts/grpc/grpc.sh setup && bash .scripts/grpc/grpc.sh protos"
+    "grpc:setup": "bash .scripts/grpc/grpc.sh setup",
+    "grpc:protos": "bash .scripts/grpc/grpc.sh protos",
+    "grpc:build": "bash .scripts/grpc/grpc.sh build"
   },
   "commitlint": {
     "extends": [
