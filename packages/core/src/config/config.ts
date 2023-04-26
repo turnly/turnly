@@ -180,7 +180,7 @@ const config = convict({
       doc: 'The addresses of the rpc servers for clients',
       format: String,
       default: '',
-      env: 'RPC_CONSUMER_ADDRESS',
+      env: 'GRPC_CONSUMER_ADDRESS',
     },
   },
 })

@@ -46,7 +46,7 @@ the API in the simplest and most user-friendly way.
 | ------------------------ | ---------------------------------------------- |
 | `APP_NAME`               | Used for observability of this application.    |
 | `APP_PORT`               | Port to expose by the application.             |
-| `RPC_CONSUMER_ADDRESS`   | The addresses of the rpc servers for clients.  |
+| `GRPC_CONSUMER_ADDRESS`   | The addresses of the rpc servers for clients.  |
 | `RABBITMQ_QUEUE`         | Events queue name in RabbitMQ.                 |
 
 **Shared Environment Variables**

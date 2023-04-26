@@ -1,0 +1,169 @@
+# WARNING!
+# Use this file only for development purposes.
+# We're exposing here sensitive ports and services.
+
+services:
+  branch-management:
+    build:
+      context: ./apps/branch-management
+      dockerfile: Dockerfile
+      target: ${DOCKER_BUILD_STAGE}
+    depends_on:
+      elasticsearch:
+        condition: service_healthy
+      mongo:
+        condition: service_healthy
+    volumes:
+      - ./apps/branch-management/src:/app/src
+      - ./apps/branch-management/tests:/app/tests
+      - ./apps/branch-management/package.json:/app/package.json
+      - ./apps/branch-management/tsconfig.json:/app/tsconfig.json
+      - ./apps/branch-management/jest.config.js:/app/jest.config.js
+
+  mongo:
+    image: mongo:5.0.12
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
+    expose:
+      - 27017
+    volumes:
+      - mongo_data:/data/db
+      - ./etc/create-mongo-databases.sh:/docker-entrypoint-initdb.d/init-mongo.sh:ro
+    networks:
+      turnly.vpc.internal:
+        aliases:
+          - mongo.turnly.local
+    healthcheck:
+      test: ['CMD', 'mongo', 'ping']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  mongo-ui:
+    image: mongo-express:latest
+    ports:
+      - ${MONGO_UI_PORT}:8081
+    networks:
+      - turnly.vpc.internal
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: ${MONGO_USERNAME}
+      ME_CONFIG_MONGODB_ADMINPASSWORD: ${MONGO_PASSWORD}
+      ME_CONFIG_MONGODB_URL: ${MONGO_URI}
+
+  rabbitmq:
+    image: rabbitmq:3.10.5-management-alpine
+    tty: true
+    stdin_open: true
+    expose:
+      - 5672
+    ports:
+      - ${RABBITMQ_UI_PORT}:15672
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq/mnesia/
+    networks:
+      turnly.vpc.internal:
+        aliases:
+          - rabbitmq.turnly.local
+    healthcheck:
+      test: ['CMD', 'rabbitmqctl', 'ping', '--silent']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.17.4
+    volumes:
+      - elasticsearch_data:/usr/share/elasticsearch/data:rw
+    expose:
+      - 9200
+    environment:
+      discovery.type: "single-node"
+      node.name: "turnly"
+      bootstrap.memory_lock: true
+      ES_JAVA_OPTS: "-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    networks:
+      turnly.vpc.internal:
+        aliases:
+          - elasticsearch.turnly.local
+    healthcheck:
+      test: curl -s -f ${ELASTICSEARCH_URI}/_cat/health >/dev/null || exit 1
+      interval: 20s
+      timeout: 15s
+      retries: 10
+
+  postgres:
+    image: postgres:15.1-alpine
+    expose:
+      - 5432
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    networks:
+      turnly.vpc.internal:
+        aliases:
+          - postgres.turnly.local
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  postgres-ui:
+    image: adminer:4.8.1
+    networks:
+      - turnly.vpc.internal
+    environment:
+      ADMINER_DEFAULT_SERVER: postgres.turnly.local
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  logging:
+    image: ghcr.io/turnly/fluentd:latest
+    build: ./etc/fluentd
+    volumes:
+      - ./etc/fluentd/fluent.conf:/fluentd/etc/fluent.conf:ro
+    depends_on:
+      elasticsearch:
+        condition: service_healthy
+    expose:
+      - 24224
+      - 24224/udp
+    networks:
+      turnly.vpc.internal:
+        aliases:
+          - logging.turnly.local
+
+  tracing:
+    image: jaegertracing/all-in-one:1.40
+    depends_on:
+      elasticsearch:
+        condition: service_healthy
+    expose:
+      - 14268
+      - 16686
+      - 14250
+    ports:
+      - ${TRACING_UI_PORT}:16686
+    environment:
+      COLLECTOR_OTLP_ENABLED: true
+      SPAN_STORAGE_TYPE: elasticsearch
+      ES_SERVER_URLS: ${ELASTICSEARCH_URI}
+    networks:
+      turnly.vpc.internal:
+        aliases:
+          - tracing.turnly.local
+
+volumes:
+  rabbitmq_data:
+  mongo_data:
+  elasticsearch_data:
+  pg_data:

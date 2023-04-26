@@ -1,0 +1,63 @@
+# WARNING!
+# Use this file only for development purposes.
+# We're exposing here sensitive ports and services.
+
+x-environment: &environment
+  NODE_ENV: ${NODE_ENV}
+  APP_DOMAIN: ${APP_DOMAIN}
+  GRPC_CONSUMER_ADDRESS: ${GRPC_CONSUMER_ADDRESS}
+  APP_PORT: ${APP_PORT}
+  AUTH_OIDC_ISSUER: ${AUTH_OIDC_ISSUER}
+  AUTH_OIDC_JWKS_URI: ${AUTH_OIDC_JWKS_URI}
+  LOGGING_LEVEL: ${LOGGING_LEVEL}
+  SENTRY_DSN: ${SENTRY_DSN}
+  FLUENT_HOST: ${FLUENT_HOST}
+  FLUENT_PORT: ${FLUENT_PORT}
+  TRACING_ENDPOINT: ${TRACING_ENDPOINT}
+  MONGO_URI: ${MONGO_URI}
+  ELASTICSEARCH_URI: ${ELASTICSEARCH_URI}
+  RABBITMQ_URI: ${RABBITMQ_URI}
+  RABBITMQ_EXCHANGE: ${RABBITMQ_EXCHANGE}
+  TWILIO_ACCOUNT_SID: ${TWILIO_ACCOUNT_SID}
+  TWILIO_AUTH_TOKEN: ${TWILIO_AUTH_TOKEN}
+  TWILIO_PHONE_NUMBER: ${TWILIO_PHONE_NUMBER}
+  DB_DEBUG: ${DB_DEBUG}
+
+services:
+  gateway:
+    image: traefik:v3.0
+    command:
+      - --api.insecure=true
+      - --providers.docker
+      - --providers.docker.exposedbydefault=false
+      - --entrypoints.web.address=:80
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    ports:
+      - 80:80
+      - ${TRAEFIK_UI_PORT}:8080
+    networks:
+      - turnly.vpc.internal
+
+  branch-management:
+    image: ghcr.io/turnly/branch-management:latest
+    restart: unless-stopped
+    environment:
+      <<: *environment
+      APP_NAME: branch-management
+      MONGO_DB: branch-management-db
+      RABBITMQ_QUEUE: turnly.ms.branch-management.queue
+    networks:
+      turnly.vpc.internal:
+        aliases:
+          - branch-management.turnly.local
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.branch-management.entrypoints=web
+      - traefik.http.routers.branch-management.service=branch-management
+      - traefik.http.services.branch-management.loadbalancer.server.scheme=h2c
+      - traefik.http.routers.branch-management.rule=PathPrefix(`/turnly.branch_management.v1`)
+
+networks:
+  turnly.vpc.internal:
+    name: turnly.vpc.internal
