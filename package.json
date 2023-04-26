@@ -10,9 +10,9 @@
     "packages/*"
   ],
   "scripts": {
-    "start": "bash docker/run start",
-    "stop": "bash docker/run stop",
-    "setup": "yarn install && yarn grpc:setup && lerna bootstrap",
+    "start": "docker compose -f compose.yaml -f compose.dev.yaml up -d --remove-orphans",
+    "stop": "docker compose -f compose.yaml -f compose.dev.yaml down --remove-orphans",
+    "setup": "yarn grpc:setup && lerna bootstrap",
     "prepare": "husky install",
     "build": "lerna run build",
     "lint": "lerna run lint",

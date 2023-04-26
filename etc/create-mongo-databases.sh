@@ -6,10 +6,13 @@ mongo <<EOF
 print("Creating turnly databases...");
 
 const databases = [
-  "turnly_testing_db",
-  "branch_management_db",
-  "business_data_fields_db",
-  "queuing_system_db",
+  "testing-db",
+  "branch-management-db",
+  "business-data-fields-db",
+  "business-management-db",
+  "channels-db",
+  "memberships-db",
+  "queuing-system-db",
 ];
 
 for (const database of databases) {

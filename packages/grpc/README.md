@@ -36,7 +36,7 @@ import { Consumers } from '@turnly/grpc'
 
 const Tickets = new Consumers.QueuingSystem.Tickets({
   /**
-   * This param is optional, if we find RPC_CONSUMER_ADDRESS in your .env we will ignore it.
+   * This param is optional, if we find GRPC_CONSUMER_ADDRESS in your .env we will ignore it.
    */
   address: '0.0.0.0:50052',
 })

@@ -71,7 +71,7 @@ export abstract class Client<IClient extends gRPCClient> {
   public getAddress(): string {
     const address =
       this.options?.address ||
-      process.env.RPC_CONSUMER_ADDRESS ||
+      process.env.GRPC_CONSUMER_ADDRESS ||
       this.getInternalAddress()
 
     if (!address)
