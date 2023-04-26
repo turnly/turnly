@@ -7,7 +7,7 @@
 import { TestEventBus } from '@turnly/testing'
 
 import { CreateCustomerCommandHandler } from '../../../../src/customers/create-customer'
-import { CustomersWritableRepo } from '../shared/__mocks__/customers-writable.repo'
+import { CustomersWritableRepo } from '../shared/customers-writable.repo'
 import { CreateCustomerCommandMother } from './create-customer.command.mother'
 
 let repository: CustomersWritableRepo

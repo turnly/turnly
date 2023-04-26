@@ -7,9 +7,9 @@
 import { Extra, Guid, Nullable } from '@turnly/common'
 import { ObjectMother } from '@turnly/testing'
 
-import { CreateCustomersCommand } from '../../../../../src/customers/create-customer'
-import { GetOneCustomerQuery } from '../../../../../src/customers/get-one-customer'
-import { Customer } from '../../../../../src/customers/shared/domain/entities/customer.entity'
+import { CreateCustomersCommand } from '../../../../src/customers/create-customer'
+import { GetOneCustomerQuery } from '../../../../src/customers/get-one-customer'
+import { Customer } from '../../../../src/customers/shared/domain/entities/customer.entity'
 
 export class CustomerMother {
   static create(

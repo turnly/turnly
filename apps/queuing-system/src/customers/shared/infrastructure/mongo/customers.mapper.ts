@@ -8,7 +8,7 @@ import { EntityAttributes } from '@turnly/core'
 import { ICustomersMapper } from 'customers/shared/domain/contracts/customers-mapper.interface'
 import { Customer } from 'customers/shared/domain/entities/customer.entity'
 
-import { CustomerDocument, CustomerModel } from '../models/customer.model'
+import { CustomerDocument, CustomerModel } from './customer.model'
 
 export class CustomersMapper implements ICustomersMapper<CustomerDocument> {
   public toEntity(document: CustomerDocument): Customer {

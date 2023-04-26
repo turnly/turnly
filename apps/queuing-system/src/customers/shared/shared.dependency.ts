@@ -6,9 +6,9 @@
  */
 import { Box, ioc } from '@turnly/core'
 
-import { CustomersMapper } from '../infrastructure/persistence/mongo/entity-model-mappers/customers.mapper'
-import { CustomersReadableRepo } from '../infrastructure/persistence/mongo/repositories/customers-readable.repo'
-import { CustomersWritableRepo } from '../infrastructure/persistence/mongo/repositories/customers-writable.repo'
+import { CustomersMapper } from './infrastructure/mongo/customers.mapper'
+import { CustomersReadableRepo } from './infrastructure/mongo/customers-readable.repo'
+import { CustomersWritableRepo } from './infrastructure/mongo/customers-writable.repo'
 
 Box.register({
   customersMapper: ioc.asClass(CustomersMapper).singleton(),

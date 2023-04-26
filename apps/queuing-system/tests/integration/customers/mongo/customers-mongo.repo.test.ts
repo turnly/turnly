@@ -4,13 +4,13 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import '../../../../../../src/customers/shared/dependency/register-dependencies'
+import '../../../../src/customers/shared/register.dependency'
 
 import { MongoEnvironmentArranger } from '@turnly/core'
 import { ResourceNotFoundException } from '@turnly/observability'
 
-import { CustomersModule } from '../../../../../../src/customers/customers.module'
-import { CustomerMother } from '../../../../../unit/customers/shared/domain/customer.entity.mother'
+import { CustomersModule } from '../../../../src/customers/customers.module'
+import { CustomerMother } from '../../../unit/customers/shared/customer.entity.mother'
 import { CustomersQueryMother } from './customers.query.mother'
 
 const writableRepo = CustomersModule.getWritableRepo()

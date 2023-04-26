@@ -10,9 +10,9 @@
  *
  * @description Register dependencies to the dependency injection container.
  */
-import 'customers/shared/dependency/attach-to-dependency-box'
-import 'customers/get-one-customer/dependency/attach-to-dependency-box'
-import 'customers/create-customer/dependency/attach-to-dependency-box'
+import 'customers/shared/shared.dependency'
+import 'customers/get-one-customer/get-one-customer.dependency'
+import 'customers/create-customer/create-customer.dependency'
 
 import type {
   ICommandHandler,

@@ -6,9 +6,9 @@
  */
 import { Box, ioc } from '@turnly/core'
 
-import { CreateCustomerController } from '../api/create-customer.controller'
-import { CreateCustomerServer } from '../api/create-customer.server'
-import { CreateCustomerCommandHandler } from '../commands/create-customer.command-handler'
+import { CreateCustomerCommandHandler } from './create-customer.command-handler'
+import { CreateCustomerController } from './create-customer.controller'
+import { CreateCustomerServer } from './create-customer.server'
 
 Box.register({
   createCustomerServer: ioc.asClass(CreateCustomerServer).singleton(),

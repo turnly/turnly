@@ -6,7 +6,7 @@
  */
 import { Extra, Guid, Identifier, Nullable } from '@turnly/common'
 import { AggregateRoot, EntityAttributes } from '@turnly/core'
-import { CustomerCreatedEvent } from 'customers/create-customer/events/customer-created.event'
+import { CustomerCreatedEvent } from 'customers/create-customer/customer-created.event'
 
 export interface CreateCustomerParams
   extends Partial<Omit<EntityAttributes<Customer>, 'id'>> {

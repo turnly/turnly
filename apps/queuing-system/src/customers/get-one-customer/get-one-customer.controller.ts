@@ -14,7 +14,7 @@ import {
 import { ResourceNotFoundException } from '@turnly/observability'
 import { Customer } from 'customers/shared/domain/entities/customer.entity'
 
-import { GetOneCustomerQuery } from '../queries/get-one-customer.query'
+import { GetOneCustomerQuery } from './get-one-customer.query'
 import { GetOneCustomerValidator } from './get-one-customer.validator'
 
 export class GetOneCustomerController extends Controller {

@@ -6,9 +6,9 @@
  */
 import { Box, ioc } from '@turnly/core'
 
-import { GetOneCustomerController } from '../api/get-one-customer.controller'
-import { GetOneCustomerServer } from '../api/get-one-customer.server'
-import { GetOneCustomerQueryHandler } from '../queries/get-one-customer.query-handler'
+import { GetOneCustomerController } from './get-one-customer.controller'
+import { GetOneCustomerQueryHandler } from './get-one-customer.query-handler'
+import { GetOneCustomerServer } from './get-one-customer.server'
 
 Box.register({
   getOneCustomerServer: ioc.asClass(GetOneCustomerServer).singleton(),
