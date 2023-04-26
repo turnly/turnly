@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.4](https://github.com/turnly/turnly/compare/v0.1.3...v0.1.4) (2023-04-26)
+
+
+### Features
+
+* **core:** fix package-jsons ([0e3fa84](https://github.com/turnly/turnly/commit/0e3fa84705644705a5af30cd630a2e880bcf217b))
+
+
+
+
+
 # [0.1.0](https://github.com/turnly/turnly/compare/v0.0.1...v0.1.0) (2023-02-19)
 
 

@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.4](https://github.com/turnly/turnly/compare/v0.1.3...v0.1.4) (2023-04-26)
+
+
+### Features
+
+* **core:** fix package-jsons ([0e3fa84](https://github.com/turnly/turnly/commit/0e3fa84705644705a5af30cd630a2e880bcf217b))
+* **queuing-system:** migrate tickets entity commands to slice arch ([4a6db1a](https://github.com/turnly/turnly/commit/4a6db1a9e8f8f77c55181403271a64235df080fe))
+* **queuing-system:** migrate tickets entity to slice arch with tests ([8c11b55](https://github.com/turnly/turnly/commit/8c11b556c3e90f7f2aeff9317acc0e061eee0a5e))
+* **queuing-system:** rename ticket entity to match the slice arch ([41c7b38](https://github.com/turnly/turnly/commit/41c7b38a5ca9c2adcb88bdd255240927b0b51e51))
+* **queuing-system:** renamed tests and shared folder to match slice arch naming ([573f47b](https://github.com/turnly/turnly/commit/573f47b2d79789851d983fb381b1320f48364bf4))
+
+
+
+
+
 # [0.1.0](https://github.com/turnly/turnly/compare/v0.0.1...v0.1.0) (2023-02-19)
 
 

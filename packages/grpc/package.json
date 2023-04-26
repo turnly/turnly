@@ -1,6 +1,6 @@
 {
   "name": "@turnly/grpc",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "This shared module facilitates inter-services communication through the RPC protocol.",
   "homepage": "https://github.com/turnly/turnly#readme",
   "bugs": {
@@ -44,15 +44,15 @@
   },
   "dependencies": {
     "@grpc/grpc-js": "^1.8.9",
+    "@turnly/auth": "^0.1.4",
     "google-protobuf": "^3.21.2",
-    "grpcjs-interceptors": "^0.1.15",
-    "@turnly/auth": "^0.1.3"
+    "grpcjs-interceptors": "^0.1.15"
   },
   "devDependencies": {
-    "@turnly/common": "^0.1.3",
-    "@turnly/observability": "^0.1.3",
-    "@turnly/testing": "^0.1.3",
+    "@turnly/common": "^0.1.4",
     "@turnly/eslint-config": "github:turnly/configs",
+    "@turnly/observability": "^0.1.4",
+    "@turnly/testing": "^0.1.4",
     "@types/jest": "^28.1.4",
     "@types/node": "^18.14.0",
     "cross-env": "^7.0.3",

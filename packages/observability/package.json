@@ -1,6 +1,6 @@
 {
   "name": "@turnly/observability",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Identify the underlying cause of problems.",
   "homepage": "https://github.com/turnly/turnly#readme",
   "bugs": {
@@ -54,7 +54,7 @@
     "winston": "^3.3.3"
   },
   "devDependencies": {
-    "@turnly/common": "^0.1.3",
+    "@turnly/common": "^0.1.4",
     "@turnly/eslint-config": "github:turnly/configs",
     "@types/node": "^18.14.0",
     "@types/opossum": "^6.2.1",

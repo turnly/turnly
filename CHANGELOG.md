@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.4](https://github.com/turnly/turnly/compare/v0.1.3...v0.1.4) (2023-04-26)
+
+
+### Features
+
+* add auth package ([1bb7f88](https://github.com/turnly/turnly/commit/1bb7f88443a2ce4e0bae9cc64f6a7c73aba251e4))
+* add file support for oidc ([2284949](https://github.com/turnly/turnly/commit/2284949892ae4325eb07f7d28bcf6b74e08397b3))
+* add grpc auth-guard ([9226832](https://github.com/turnly/turnly/commit/9226832efcfb350348cb29f25913492b7660f93f))
+* add grpc auth-guard ([d4503e0](https://github.com/turnly/turnly/commit/d4503e01259dfb4bbc053dd10c1a8a9b51cf9a30))
+* add grpc package for the new microservises ([0d5a3f9](https://github.com/turnly/turnly/commit/0d5a3f96cf8c92db88bb14dbd51b7003800bf05a))
+* add helpdesk-api and realtime-api ([ddb80c2](https://github.com/turnly/turnly/commit/ddb80c23176892bb47b3042215006d77d925fcef))
+* add helpdesk-realtime api ([ce1207b](https://github.com/turnly/turnly/commit/ce1207b4c5a03219a7ec25ebfb5df4ca9313f82e))
+* **business-management:** re-add old business-owners ms and rename it ([7bc2718](https://github.com/turnly/turnly/commit/7bc2718b2ef353ce2858d53f92aedd335368343d))
+* **channels-api:** re-add integration entity and test ([e7b7a5b](https://github.com/turnly/turnly/commit/e7b7a5bcd323d6eda0c4457a3c4467c0431beea3))
+* **core:** fix package-jsons ([0e3fa84](https://github.com/turnly/turnly/commit/0e3fa84705644705a5af30cd630a2e880bcf217b))
+* handle error from auth-guard ([1d3ea95](https://github.com/turnly/turnly/commit/1d3ea9596876926fba02e3571ccc4cf9f82c34ac))
+* **memberships:** re-add teams-ms renamed to memberships ([5dcd4da](https://github.com/turnly/turnly/commit/5dcd4da7f90e1011e4d678201df72ed0a26da48b))
+* **queuing-system:** migrate tickets entity commands to slice arch ([4a6db1a](https://github.com/turnly/turnly/commit/4a6db1a9e8f8f77c55181403271a64235df080fe))
+* **queuing-system:** migrate tickets entity to slice arch with tests ([8c11b55](https://github.com/turnly/turnly/commit/8c11b556c3e90f7f2aeff9317acc0e061eee0a5e))
+* **queuing-system:** rename ticket entity to match the slice arch ([41c7b38](https://github.com/turnly/turnly/commit/41c7b38a5ca9c2adcb88bdd255240927b0b51e51))
+* **queuing-system:** renamed tests and shared folder to match slice arch naming ([573f47b](https://github.com/turnly/turnly/commit/573f47b2d79789851d983fb381b1320f48364bf4))
+* rename integrations to widgets ([271d699](https://github.com/turnly/turnly/commit/271d6998a9105bcbba46060eb6b55f17e2aebed3))
+* update auth package ([e94097b](https://github.com/turnly/turnly/commit/e94097b79ec34c2b07067024b5672ded59d4f60f))
+* update yarn ([d9a8f9d](https://github.com/turnly/turnly/commit/d9a8f9d7e105694c1d84230af36cc3c0b90d0e10))
+* validate token type ([974e4b9](https://github.com/turnly/turnly/commit/974e4b96b4dd261793c16a4bafe35781e18f0f34))
+
+
+
+
+
 ## [0.1.3](https://github.com/turnly/turnly/compare/v0.1.2...v0.1.3) (2023-02-19)
 
 **Note:** Version bump only for package @turnly/turnly
