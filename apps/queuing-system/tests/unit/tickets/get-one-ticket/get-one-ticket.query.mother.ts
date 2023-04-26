@@ -7,7 +7,7 @@
 import { Guid } from '@turnly/common'
 import { ObjectMother } from '@turnly/testing'
 
-import { GetOneTicketQuery } from '../../../../src/tickets/shared/application/queries'
+import { GetOneTicketQuery } from '../../../../src/tickets/get-one-ticket'
 
 export class GetOneTicketQueryMother {
   static create(

@@ -6,9 +6,9 @@
  */
 import { ObjectMother } from '@turnly/testing'
 
-import { GetActiveTicketsByCustomerQueryHandler } from '../../../../src/tickets/shared/application/queries'
-import { TicketsReadableRepo } from '../shared/__mocks__/tickets-readable.repo'
-import { TicketMother } from '../shared/domain/ticket.entity.mother'
+import { GetActiveTicketsByCustomerQueryHandler } from '../../../../src/tickets/get-active-tickets-by-customer/get-active-tickets-by-customer.query-handler'
+import { TicketMother } from '../shared/ticket.entity.mother'
+import { TicketsReadableRepo } from '../shared/tickets-readable.repo'
 import { GetActiveTicketsByCustomerQueryMother } from './get-active-tickets-by-customer.query.mother'
 
 let repository: TicketsReadableRepo

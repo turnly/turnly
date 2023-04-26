@@ -10,20 +10,20 @@
  *
  * @description Register dependencies to the dependency injection container.
  */
-import 'tickets/shared/dependency/attach-to-dependency-box'
-import 'tickets/create-ticket/dependency/attach-to-dependency-box'
-import 'tickets/announce-my-arrival/dependency/attach-to-dependency-box'
-import 'tickets/leave-the-queue/dependency/attach-to-dependency-box'
-import 'tickets/call-ticket-to-desk/dependency/attach-to-dependency-box'
-import 'tickets/mark-ticket-as-discarded/dependency/attach-to-dependency-box'
-import 'tickets/mark-ticket-as-served/dependency/attach-to-dependency-box'
-import 'tickets/return-ticket-to-queue/dependency/attach-to-dependency-box'
-import 'tickets/get-one-ticket/dependency/attach-to-dependency-box'
-import 'tickets/list-tickets-waiting-for-service/dependency/attach-to-dependency-box'
-import 'tickets/list-tickets-before-yours/dependency/attach-to-dependency-box'
-import 'tickets/search-tickets-for-serving-from-location/dependency/attach-to-dependency-box'
-import 'tickets/notify-customer-called/dependency/attach-to-dependency-box'
-import 'tickets/get-ticket-details/dependency/attach-to-dependency-box'
+import 'tickets/shared/shared.dependency'
+import 'tickets/create-ticket/create-ticket.dependency'
+import 'tickets/announce-my-arrival/announce-my-arrival.dependency'
+import 'tickets/leave-the-queue/leave-the-queue.dependency'
+import 'tickets/call-ticket-to-desk/call-ticket-to-desk.dependency'
+import 'tickets/mark-ticket-as-discarded/mark-ticket-as-discarded.dependency'
+import 'tickets/mark-ticket-as-served/mark-ticket-as-served.dependency'
+import 'tickets/return-ticket-to-queue/return-ticket-to-queue.dependency'
+import 'tickets/get-one-ticket/get-one-ticket.dependency'
+import 'tickets/list-tickets-waiting-for-service/list-tickets-waiting-for-service.dependency'
+import 'tickets/list-tickets-before-yours/list-tickets-before-yours.dependency'
+import 'tickets/search-tickets-for-serving-from-location/search-tickets-for-serving-from-location.dependency'
+import 'tickets/notify-customer-called/notify-customer-called.dependency'
+import 'tickets/get-ticket-details/get-ticket-details.dependency'
 
 /**
  * Module
@@ -41,7 +41,7 @@ import { Box } from '@turnly/core'
 import { Producers } from '@turnly/grpc'
 import type { Ticket } from 'tickets/shared/domain/entities/ticket.entity'
 
-import { TicketsMappings } from './shared/infrastructure/persistence/elasticsearch/mappings/tickets.mappings'
+import { TicketsMappings } from './shared/infrastructure/elasticsearch/tickets.mappings'
 
 export class TicketsModule {
   public static getServer(): Producers.QueuingSystem.ITicketsServer {

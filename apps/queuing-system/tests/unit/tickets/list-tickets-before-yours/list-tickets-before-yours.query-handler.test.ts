@@ -7,8 +7,8 @@
 import { ResourceNotFoundException } from '@turnly/observability'
 
 import { ListTicketsBeforeYoursQueryHandler } from '../../../../src/tickets/list-tickets-before-yours'
-import { TicketsReadableRepo } from '../shared/__mocks__/tickets-readable.repo'
-import { TicketMother } from '../shared/domain/ticket.entity.mother'
+import { TicketMother } from '../shared/ticket.entity.mother'
+import { TicketsReadableRepo } from '../shared/tickets-readable.repo'
 import { ListTicketsBeforeYoursQueryMother } from './list-tickets-before-yours.query.mother'
 
 let repository: TicketsReadableRepo

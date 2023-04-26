@@ -11,13 +11,13 @@ import {
   ConflictException,
   InvalidStateException,
 } from '@turnly/observability'
-import { TicketAnnouncedEvent } from 'tickets/create-ticket/events/ticket-announced.event'
-import { TicketCalledEvent } from 'tickets/create-ticket/events/ticket-called.event'
-import { TicketCancelledEvent } from 'tickets/create-ticket/events/ticket-cancelled.event'
-import { TicketCompletedEvent } from 'tickets/create-ticket/events/ticket-completed.event'
-import { TicketCreatedEvent } from 'tickets/create-ticket/events/ticket-created.event'
-import { TicketDiscardedEvent } from 'tickets/create-ticket/events/ticket-discarded.event'
-import { TicketReturnedEvent } from 'tickets/create-ticket/events/ticket-returned.event'
+import { TicketAnnouncedEvent } from 'tickets/announce-my-arrival/ticket-announced.event'
+import { TicketCalledEvent } from 'tickets/call-ticket-to-desk/ticket-called.event'
+import { TicketCreatedEvent } from 'tickets/create-ticket/ticket-created.event'
+import { TicketCancelledEvent } from 'tickets/leave-the-queue/ticket-cancelled.event'
+import { TicketDiscardedEvent } from 'tickets/mark-ticket-as-discarded/ticket-discarded.event'
+import { TicketCompletedEvent } from 'tickets/mark-ticket-as-served/ticket-completed.event'
+import { TicketReturnedEvent } from 'tickets/return-ticket-to-queue/ticket-returned.event'
 
 import { TicketPriority } from '../enums/TicketPriority'
 import { TicketScore } from '../enums/TicketScore'

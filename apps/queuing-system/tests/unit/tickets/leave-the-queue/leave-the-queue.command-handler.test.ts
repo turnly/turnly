@@ -9,8 +9,8 @@ import { TestEventBus, TestQueryBus } from '@turnly/testing'
 
 import { LeaveTheQueueCommandHandler } from '../../../../src/tickets/leave-the-queue'
 import { TicketStatus } from '../../../../src/tickets/shared/domain/enums/TicketStatus'
-import { TicketsWritableRepo } from '../shared/__mocks__/tickets-writable.repo'
-import { TicketMother } from '../shared/domain/ticket.entity.mother'
+import { TicketMother } from '../shared/ticket.entity.mother'
+import { TicketsWritableRepo } from '../shared/tickets-writable.repo'
 import { LeaveTheQueueCommandMother } from './leave-the-queue.command.mother'
 
 let repository: TicketsWritableRepo

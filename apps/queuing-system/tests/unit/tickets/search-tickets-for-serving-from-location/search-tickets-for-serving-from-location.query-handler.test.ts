@@ -6,7 +6,7 @@
  */
 
 import { SearchTicketsForServingFromLocationQueryHandler } from '../../../../src/tickets/search-tickets-for-serving-from-location'
-import { TicketsReadableRepo } from '../shared/__mocks__/tickets-readable.repo'
+import { TicketsReadableRepo } from '../shared/tickets-readable.repo'
 import { SearchTicketsForServingFromLocationQueryMother } from './search-tickets-for-serving-from-location.query.mother'
 
 let repository: TicketsReadableRepo

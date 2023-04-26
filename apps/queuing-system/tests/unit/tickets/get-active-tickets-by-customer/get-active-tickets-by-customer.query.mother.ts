@@ -7,7 +7,7 @@
 import { Guid } from '@turnly/common'
 import { ObjectMother } from '@turnly/testing'
 
-import { GetActiveTicketsByCustomerQuery } from '../../../../src/tickets/shared/application/queries'
+import { GetActiveTicketsByCustomerQuery } from '../../../../src/tickets/get-active-tickets-by-customer/get-active-tickets-by-customer.query'
 
 export class GetActiveTicketsByCustomerQueryMother {
   static create(

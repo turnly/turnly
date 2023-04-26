@@ -9,8 +9,8 @@ import { TestEventBus, TestQueryBus } from '@turnly/testing'
 
 import { AnnounceMyArrivalCommandHandler } from '../../../../src/tickets/announce-my-arrival'
 import { TicketStatus } from '../../../../src/tickets/shared/domain/enums/TicketStatus'
-import { TicketsWritableRepo } from '../shared/__mocks__/tickets-writable.repo'
-import { TicketMother } from '../shared/domain/ticket.entity.mother'
+import { TicketMother } from '../shared/ticket.entity.mother'
+import { TicketsWritableRepo } from '../shared/tickets-writable.repo'
 import { AnnounceMyArrivalCommandMother } from './announce-my-arrival.command.mother'
 
 let repository: TicketsWritableRepo

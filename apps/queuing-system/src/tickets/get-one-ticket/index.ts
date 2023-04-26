@@ -4,5 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-export * from './api/get-one-ticket.controller'
-export * from './api/get-one-ticket.server'
+export * from './get-one-ticket.controller'
+export * from './get-one-ticket.query'
+export * from './get-one-ticket.query-handler'
+export * from './get-one-ticket.server'

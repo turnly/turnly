@@ -4,5 +4,5 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-export * from './api/get-ticket-details.controller'
-export * from './api/get-ticket-details.server'
+export * from './get-ticket-details.controller'
+export * from './get-ticket-details.server'

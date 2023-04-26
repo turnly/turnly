@@ -6,7 +6,7 @@
  */
 
 import { ListTicketsWaitingForServiceQueryHandler } from '../../../../src/tickets/list-tickets-waiting-for-service'
-import { TicketsReadableRepo } from '../shared/__mocks__/tickets-readable.repo'
+import { TicketsReadableRepo } from '../shared/tickets-readable.repo'
 import { ListTicketsWaitingForServiceQueryMother } from './list-tickets-waiting-for-service.query.mother'
 
 let repository: TicketsReadableRepo
