@@ -12,9 +12,9 @@ import {
   TimeoutHandler,
 } from '@turnly/core'
 import { ResourceNotFoundException } from '@turnly/observability'
-import { GetOneOrganizationQuery } from 'organizations/shared/application/queries'
 import { Organization } from 'organizations/shared/domain/entities/organization.entity'
 
+import { GetOneOrganizationQuery } from './get-one-organization.query'
 import { GetOneOrganizationValidator } from './get-one-organization.validator'
 
 export class GetOneOrganizationController extends Controller {

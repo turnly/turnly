@@ -6,9 +6,9 @@
  */
 import { Box, ioc } from '@turnly/core'
 
-import { GetOrganizationBySubdomainController } from '../api/get-organization-by-subdomain.controller'
-import { GetOrganizationBySubdomainServer } from '../api/get-organization-by-subdomain.server'
-import { GetOrganizationBySubdomainQueryHandler } from '../queries/get-organization-by-subdomain.query-handler'
+import { GetOrganizationBySubdomainController } from './get-organization-by-subdomain.controller'
+import { GetOrganizationBySubdomainQueryHandler } from './get-organization-by-subdomain.query-handler'
+import { GetOrganizationBySubdomainServer } from './get-organization-by-subdomain.server'
 
 Box.register({
   getOrganizationBySubdomainServer: ioc

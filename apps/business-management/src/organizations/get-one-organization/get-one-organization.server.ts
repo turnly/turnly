@@ -5,27 +5,26 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import { Producers } from '@turnly/grpc'
-import { OrganizationsMapper } from 'organizations/shared/infrastructure/grpc/organizations-mapper.grpc'
+import { OrganizationsMapper } from 'organizations/shared/infrastructure/organizations-to-grpc.mapper'
 
-import { GetOrganizationBySubdomainController } from './get-organization-by-subdomain.controller'
+import { GetOneOrganizationController } from './get-one-organization.controller'
 
-export class GetOrganizationBySubdomainServer {
+export class GetOneOrganizationServer {
   public constructor(
-    private readonly getOrganizationBySubdomainController: GetOrganizationBySubdomainController
+    private readonly getOneOrganizationController: GetOneOrganizationController
   ) {}
 
   @Producers.CallHandler(Producers.BusinessManagement.GetOrganizationResponse)
   public async execute(
     call: Producers.ServerUnaryCall<
-      Producers.BusinessManagement.GetOrganizationBySubdomainRequest,
+      Producers.BusinessManagement.GetOrganizationRequest,
       Producers.BusinessManagement.GetOrganizationResponse
     >,
     callback: Producers.ICallback<Producers.BusinessManagement.GetOrganizationResponse>
   ) {
-    const { data, meta } =
-      await this.getOrganizationBySubdomainController.execute({
-        subdomain: call.request.getSubdomain(),
-      })
+    const { data, meta } = await this.getOneOrganizationController.execute({
+      id: call.request.getId(),
+    })
 
     const response = new Producers.BusinessManagement.GetOrganizationResponse()
     const organization = OrganizationsMapper.toRPC(data)

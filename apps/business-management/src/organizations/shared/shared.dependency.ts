@@ -5,11 +5,11 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import { Box, ioc } from '@turnly/core'
+import { GetOneOrganizationQueryHandler } from 'organizations/get-one-organization'
 
-import { GetOneOrganizationQueryHandler } from '../application/queries'
-import { OrganizationsMapper } from '../infrastructure/persistence/mongo/entity-model-mappers/organizations.mapper'
-import { OrganizationsReadableRepo } from '../infrastructure/persistence/mongo/repositories/organizations-readable.repo'
-import { OrganizationsWritableRepo } from '../infrastructure/persistence/mongo/repositories/organizations-writable.repo'
+import { OrganizationsMapper } from './infrastructure/mongo/organizations.mapper'
+import { OrganizationsReadableRepo } from './infrastructure/mongo/organizations-readable.repo'
+import { OrganizationsWritableRepo } from './infrastructure/mongo/organizations-writable.repo'
 
 Box.register({
   organizationsMapper: ioc.asClass(OrganizationsMapper).singleton(),

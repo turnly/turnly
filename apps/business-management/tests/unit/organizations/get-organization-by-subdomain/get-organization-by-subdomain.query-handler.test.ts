@@ -5,8 +5,8 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import { GetOrganizationBySubdomainQueryHandler } from '../../../../src/organizations/get-organization-by-subdomain'
-import { OrganizationsReadableRepo } from '../shared/__mocks__/organizations-readable.repo'
-import { OrganizationMother } from '../shared/domain/organization.entity.mother'
+import { OrganizationMother } from '../shared/organization.entity.mother'
+import { OrganizationsReadableRepo } from '../shared/organizations-readable.repo'
 import { GetOrganizationBySubdomainQueryMother } from './get-organization-by-subdomain.query.mother'
 
 let repository: OrganizationsReadableRepo

@@ -14,7 +14,7 @@ import {
 import { ResourceNotFoundException } from '@turnly/observability'
 import { Organization } from 'organizations/shared/domain/entities/organization.entity'
 
-import { GetOrganizationBySubdomainQuery } from '../queries/get-organization-by-subdomain.query'
+import { GetOrganizationBySubdomainQuery } from './get-organization-by-subdomain.query'
 import { GetOrganizationBySubdomainValidator } from './get-organization-by-subdomain.validator'
 
 export class GetOrganizationBySubdomainController extends Controller {

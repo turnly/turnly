@@ -7,7 +7,7 @@
 import { Guid } from '@turnly/common'
 import { ObjectMother } from '@turnly/testing'
 
-import { GetOneOrganizationQuery } from '../../../../src/organizations/shared/application/queries'
+import { GetOneOrganizationQuery } from '../../../../src/organizations/get-one-organization'
 
 export class GetOneOrganizationQueryMother {
   static create(id: Guid = ObjectMother.uuid('org')): GetOneOrganizationQuery {

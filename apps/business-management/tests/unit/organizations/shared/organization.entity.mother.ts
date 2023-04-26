@@ -7,9 +7,9 @@
 import { ObjectMother } from '@turnly/testing'
 import { OrganizationStatus } from 'organizations/shared/domain/enums/organization-status.enum'
 
-import { GetOrganizationBySubdomainQuery } from '../../../../../src/organizations/get-organization-by-subdomain'
-import { GetOneOrganizationQuery } from '../../../../../src/organizations/shared/application/queries'
-import { Organization } from '../../../../../src/organizations/shared/domain/entities/organization.entity'
+import { GetOneOrganizationQuery } from '../../../../src/organizations/get-one-organization'
+import { GetOrganizationBySubdomainQuery } from '../../../../src/organizations/get-organization-by-subdomain'
+import { Organization } from '../../../../src/organizations/shared/domain/entities/organization.entity'
 
 export class OrganizationMother {
   static create(

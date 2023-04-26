@@ -10,9 +10,9 @@
  *
  * @description Register dependencies to the dependency injection container.
  */
-import 'organizations/shared/dependency/attach-to-dependency-box'
-import 'organizations/get-one-organization/dependency/attach-to-dependency-box'
-import 'organizations/get-organization-by-subdomain/dependency/attach-to-dependency-box'
+import 'organizations/shared/shared.dependency'
+import 'organizations/get-one-organization/get-one-organization.dependency'
+import 'organizations/get-organization-by-subdomain/get-organization-by-subdomain.dependency'
 
 import type {
   ICommandHandler,

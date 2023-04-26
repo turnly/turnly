@@ -6,8 +6,8 @@
  */
 import { Box, ioc } from '@turnly/core'
 
-import { GetOneOrganizationController } from '../api/get-one-organization.controller'
-import { GetOneOrganizationServer } from '../api/get-one-organization.server'
+import { GetOneOrganizationController } from './get-one-organization.controller'
+import { GetOneOrganizationServer } from './get-one-organization.server'
 
 Box.register({
   getOneOrganizationServer: ioc.asClass(GetOneOrganizationServer).singleton(),

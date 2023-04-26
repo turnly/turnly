@@ -4,9 +4,9 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { GetOneOrganizationQueryHandler } from '../../../../src/organizations/shared/application/queries'
-import { OrganizationsReadableRepo } from '../shared/__mocks__/organizations-readable.repo'
-import { OrganizationMother } from '../shared/domain/organization.entity.mother'
+import { GetOneOrganizationQueryHandler } from '../../../../src/organizations/get-one-organization'
+import { OrganizationMother } from '../shared/organization.entity.mother'
+import { OrganizationsReadableRepo } from '../shared/organizations-readable.repo'
 import { GetOneOrganizationQueryMother } from './get-one-organization.query.mother'
 
 let repository: OrganizationsReadableRepo

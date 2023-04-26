@@ -9,10 +9,7 @@ import { IOrganizationsMapper } from 'organizations/shared/domain/contracts/orga
 import { IOrganizationsWritableRepo } from 'organizations/shared/domain/contracts/organizations-repo.interface'
 import { Organization } from 'organizations/shared/domain/entities/organization.entity'
 
-import {
-  IOrganizationDocument,
-  OrganizationModel,
-} from '../models/organization.model'
+import { IOrganizationDocument, OrganizationModel } from './organization.model'
 
 export class OrganizationsWritableRepo
   extends MongoWritableRepo<Organization, IOrganizationDocument>

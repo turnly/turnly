@@ -7,7 +7,7 @@
 import { Guid } from '@turnly/common'
 import { EntityAttributes, Event, EventType } from '@turnly/core'
 
-import { Organization } from '../../shared/domain/entities/organization.entity'
+import { Organization } from '../shared/domain/entities/organization.entity'
 
 type Payload = EntityAttributes<Organization> & { organizationId: Guid }
 

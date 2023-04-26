@@ -7,7 +7,7 @@
 import { Guid, Identifier } from '@turnly/common'
 import { AggregateRoot, EntityAttributes } from '@turnly/core'
 
-import { OrganizationCreatedEvent } from '../../../create-organization/events/organization-created.event'
+import { OrganizationCreatedEvent } from '../../../create-organization/organization-created.event'
 import { OrganizationStatus } from '../enums/organization-status.enum'
 
 /**

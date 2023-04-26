@@ -8,10 +8,7 @@ import { EntityAttributes } from '@turnly/core'
 import { IOrganizationsMapper } from 'organizations/shared/domain/contracts/organizations-mapper.interface'
 import { Organization } from 'organizations/shared/domain/entities/organization.entity'
 
-import {
-  IOrganizationDocument,
-  OrganizationModel,
-} from '../models/organization.model'
+import { IOrganizationDocument, OrganizationModel } from './organization.model'
 
 export class OrganizationsMapper
   implements IOrganizationsMapper<IOrganizationDocument>

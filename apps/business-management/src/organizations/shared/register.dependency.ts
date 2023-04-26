@@ -12,7 +12,7 @@
  */
 import { commandBus, eventBus, queryBus } from '@turnly/core'
 
-import { OrganizationsModule } from '../../organizations.module'
+import { OrganizationsModule } from '../organizations.module'
 
 /**
  * Organization module
