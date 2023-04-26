@@ -12,9 +12,9 @@ import {
   TimeoutHandler,
 } from '@turnly/core'
 import { ResourceNotFoundException } from '@turnly/observability'
-import { GetOneWidgetQuery } from 'widgets/shared/application/queries'
 import { Widget } from 'widgets/shared/domain/entities/widget.entity'
 
+import { GetOneWidgetQuery } from './get-one-widget.query'
 import { GetOneWidgetValidator } from './get-one-widget.validator'
 
 export class GetOneWidgetController extends Controller {

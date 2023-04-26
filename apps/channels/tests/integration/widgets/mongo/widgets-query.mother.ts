@@ -6,7 +6,7 @@
  */
 import { QueryBuilder } from '@turnly/core'
 
-import { Widget } from '../../../../../../src/widgets/shared/domain/entities/widget.entity'
+import { Widget } from '../../../../src/widgets/shared/domain/entities/widget.entity'
 
 export class WidgetsQueryMother {
   static getOneWith(widget: Widget) {

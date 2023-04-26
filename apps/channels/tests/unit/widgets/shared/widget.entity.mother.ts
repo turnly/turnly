@@ -8,8 +8,8 @@ import { Guid } from '@turnly/common'
 import { ObjectMother } from '@turnly/testing'
 import { WidgetStatus } from 'widgets/shared/domain/enums/widget-status.enum'
 
-import { GetOneWidgetQuery } from '../../../../../src/widgets/shared/application/queries'
-import { Widget } from '../../../../../src/widgets/shared/domain/entities/widget.entity'
+import { GetOneWidgetQuery } from '../../../../src/widgets/get-one-widget'
+import { Widget } from '../../../../src/widgets/shared/domain/entities/widget.entity'
 
 export class WidgetMother {
   static create(

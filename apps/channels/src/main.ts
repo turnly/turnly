@@ -7,7 +7,7 @@
 import dotenv from 'dotenv'
 dotenv.config()
 
-import 'widgets/shared/dependency/register-dependencies'
+import 'widgets/shared/register.dependency'
 
 import { config, eventBus } from '@turnly/core'
 import { Tracing } from '@turnly/observability'

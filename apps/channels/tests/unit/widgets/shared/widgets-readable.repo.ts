@@ -7,7 +7,7 @@
 import { IReadableRepository } from '@turnly/core'
 import { TestReadableRepo } from '@turnly/testing'
 
-import { Widget } from '../../../../../src/widgets/shared/domain/entities/widget.entity'
+import { Widget } from '../../../../src/widgets/shared/domain/entities/widget.entity'
 
 export class WidgetsReadableRepo
   extends TestReadableRepo<Widget>

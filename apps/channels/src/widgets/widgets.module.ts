@@ -10,8 +10,8 @@
  *
  * @description Register dependencies to the dependency injection container.
  */
-import 'widgets/shared/dependency/attach-to-dependency-box'
-import 'widgets/get-one-widget/dependency/attach-to-dependency-box'
+import 'widgets/shared/shared.dependency'
+import 'widgets/get-one-widget/get-one-widget.dependency'
 
 import type {
   ICommandHandler,

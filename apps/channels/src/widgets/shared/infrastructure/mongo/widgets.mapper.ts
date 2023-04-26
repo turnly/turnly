@@ -8,7 +8,7 @@ import { EntityAttributes } from '@turnly/core'
 import { IWidgetsMapper } from 'widgets/shared/domain/contratcs/widgets-mapper.interface'
 import { Widget } from 'widgets/shared/domain/entities/widget.entity'
 
-import { IWidgetDocument, WidgetModel } from '../models/widget.model'
+import { IWidgetDocument, WidgetModel } from './widget.model'
 
 export class WidgetsMapper implements IWidgetsMapper<IWidgetDocument> {
   public toEntity(document: IWidgetDocument): Widget {

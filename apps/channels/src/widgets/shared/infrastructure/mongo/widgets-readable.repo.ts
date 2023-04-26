@@ -4,16 +4,16 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { MongoWritableRepo } from '@turnly/core'
+import { MongoReadableRepo } from '@turnly/core'
 import { IWidgetsMapper } from 'widgets/shared/domain/contratcs/widgets-mapper.interface'
-import { IWidgetsWritableRepo } from 'widgets/shared/domain/contratcs/widgets-repo.interface'
+import { IWidgetsReadableRepo } from 'widgets/shared/domain/contratcs/widgets-repo.interface'
 import { Widget } from 'widgets/shared/domain/entities/widget.entity'
 
-import { IWidgetDocument, WidgetModel } from '../models/widget.model'
+import { IWidgetDocument, WidgetModel } from './widget.model'
 
-export class WidgetsWritableRepo
-  extends MongoWritableRepo<Widget, IWidgetDocument>
-  implements IWidgetsWritableRepo
+export class WidgetsReadableRepo
+  extends MongoReadableRepo<Widget, IWidgetDocument>
+  implements IWidgetsReadableRepo
 {
   public constructor(widgetsMapper: IWidgetsMapper<IWidgetDocument>) {
     super(WidgetModel, widgetsMapper)

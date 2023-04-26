@@ -7,7 +7,7 @@
 import { Guid } from '@turnly/common'
 import { ObjectMother } from '@turnly/testing'
 
-import { GetOneWidgetQuery } from '../../../../src/widgets/shared/application/queries'
+import { GetOneWidgetQuery } from '../../../../src/widgets/get-one-widget'
 
 export class GetOneWidgetQueryMother {
   static create(id: Guid = ObjectMother.uuid('int')): GetOneWidgetQuery {

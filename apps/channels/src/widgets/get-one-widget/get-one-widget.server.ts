@@ -5,7 +5,7 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import { Producers } from '@turnly/grpc'
-import { WidgetsMapper } from 'widgets/shared/infrastructure/grpc/widgets-mapper.grpc'
+import { WidgetsMapper } from 'widgets/shared/infrastructure/widgets-to-grpc.mapper'
 
 import { GetOneWidgetController } from './get-one-widget.controller'
 

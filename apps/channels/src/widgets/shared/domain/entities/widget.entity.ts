@@ -6,7 +6,7 @@
  */
 import { Guid, Identifier } from '@turnly/common'
 import { AggregateRoot, EntityAttributes } from '@turnly/core'
-import { WidgetCreatedEvent } from 'widgets/create-widget/events/widget-created.event'
+import { WidgetCreatedEvent } from 'widgets/create-widget/widget-created.event'
 
 import { WidgetStatus } from '../enums/widget-status.enum'
 

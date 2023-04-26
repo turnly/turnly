@@ -4,9 +4,9 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { GetOneWidgetQueryHandler } from '../../../../src/widgets/shared/application/queries'
-import { WidgetsReadableRepo } from '../shared/__mocks__/widgets-readable.repo'
-import { WidgetMother } from '../shared/domain/widget.entity.mother'
+import { GetOneWidgetQueryHandler } from '../../../../src/widgets/get-one-widget'
+import { WidgetMother } from '../shared/widget.entity.mother'
+import { WidgetsReadableRepo } from '../shared/widgets-readable.repo'
 import { GetOneWidgetQueryMother } from './get-one-widget.query.mother'
 
 let repository: WidgetsReadableRepo

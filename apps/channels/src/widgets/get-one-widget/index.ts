@@ -4,5 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-export * from './api/get-one-widget.controller'
-export * from './api/get-one-widget.server'
+export * from './get-one-widget.controller'
+export * from './get-one-widget.query'
+export * from './get-one-widget.query-handler'
+export * from './get-one-widget.server'

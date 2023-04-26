@@ -6,7 +6,7 @@
  */
 import { commandBus, eventBus, queryBus } from '@turnly/core'
 
-import { WidgetsModule } from '../../widgets.module'
+import { WidgetsModule } from '../widgets.module'
 
 /**
  * Widgets module

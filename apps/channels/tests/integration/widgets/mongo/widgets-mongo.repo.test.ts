@@ -9,8 +9,8 @@ import '../../../../../../src/widgets/infrastructure/register-dependencies/depen
 import { MongoEnvironmentArranger } from '@turnly/core'
 import { ResourceNotFoundException } from '@turnly/observability'
 
-import { WidgetsModule } from '../../../../../../src/widgets/widgets.module'
-import { WidgetMother } from '../../../../../unit/widgets/shared/domain/widget.entity.mother'
+import { WidgetsModule } from '../../../../src/widgets/widgets.module'
+import { WidgetMother } from '../../../unit/widgets/shared/widget.entity.mother'
 import { WidgetsQueryMother } from './widgets-query.mother'
 
 const writableRepo = WidgetsModule.getWritableRepo()

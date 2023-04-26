@@ -6,8 +6,8 @@
  */
 import { Box, ioc } from '@turnly/core'
 
-import { GetOneWidgetController } from '../api/get-one-widget.controller'
-import { GetOneWidgetServer } from '../api/get-one-widget.server'
+import { GetOneWidgetController } from './get-one-widget.controller'
+import { GetOneWidgetServer } from './get-one-widget.server'
 
 Box.register({
   getOneWidgetServer: ioc.asClass(GetOneWidgetServer).singleton(),
