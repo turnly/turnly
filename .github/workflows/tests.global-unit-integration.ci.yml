@@ -1,0 +1,89 @@
+name: 🧩 Unit & Integration
+
+on:
+  workflow_call:
+    inputs:
+      mongo-username:
+        type: string
+        required: true
+      mongo-password:
+        type: string
+        required: true
+      mongo-db:
+        type: string
+        required: true
+
+jobs:
+  tests:
+    name: 🎲 Run tests
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.14]
+        mongodb-version: [5.0.9]
+
+    services:
+      mongo:
+        image: mongo:${{ matrix.mongodb-version }}
+        ports:
+          - 27017:27017
+        env:
+          MONGO_INITDB_ROOT_USERNAME: ${{ inputs.mongo-username }}
+          MONGO_INITDB_ROOT_PASSWORD: ${{ inputs.mongo-password }}
+        options: >-
+          --name mongo
+          --hostname mongo
+          --health-cmd mongo
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - name: 🏷️ Check out Git repo
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+
+      # - name: 🔍 Map the changes to the appropriate applications
+      #   uses: dorny/paths-filter@v2
+      #   id: filter
+      #   with:
+      #     filters: .github/filters.yml
+
+      # - name: 🚀 Setup Node
+      #   uses: ./.github/actions/setup-node
+      #   with:
+      #     node-version: ${{ matrix.node-version }}
+
+      # - name: 💊 Setting integration tests dependencies...
+      #   uses: ./.github/actions/setup-mongodb
+      #   with:
+      #     mongo-username: ${{ inputs.mongo-username }}
+      #     mongo-password: ${{ inputs.mongo-password }}
+      #     mongo-db: ${{ inputs.mongo-db }}
+
+      # - name: "🧪 [Branch Management]: run unit tests"
+      #   if: steps.filter.outputs.branch-management == 'true'
+      #   run: yarn test:unit --scope=@turnly/branch-management
+
+      # - name: "🧪 [Branch Management]: run integration tests"
+      #   if: steps.filter.outputs.branch-management == 'true'
+      #   run: yarn test:integration --scope=@turnly/branch-management
+
+      # - name: "🧪 [Business Data Fields]: run unit tests"
+      #   if: steps.filter.outputs.business-data-fields == 'true'
+      #   run: yarn test:unit --scope=@turnly/business-data-fields
+
+      # - name: "🧪 [Business Data Fields]: run integration tests"
+      #   if: steps.filter.outputs.business-data-fields == 'true'
+      #   run: yarn test:integration --scope=@turnly/business-data-fields
+
+      # - name: "🧪 [Queuing System]: run unit tests"
+      #   if: steps.filter.outputs.queuing-system == 'true'
+      #   run: yarn test:unit --scope=@turnly/queuing-system
+
+      # - name: "🧪 [Queuing System]: run integration tests"
+      #   if: steps.filter.outputs.queuing-system == 'true'
+      #   run: yarn test:integration --scope=@turnly/queuing-system

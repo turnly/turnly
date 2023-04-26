@@ -18,6 +18,14 @@ runs:
       run: yarn setup
       shell: bash
 
+    - name: 📦 Build gRPC packages
+      run: yarn grpc:build
+      shell: bash
+
+    - name: 📦 Build packages
+      run: yarn build
+      shell: bash
+
     - name: 🔗 Copying environment variables
       run: |
         cp .env.example .env
