@@ -6,9 +6,9 @@
  */
 import { Box, ioc } from '@turnly/core'
 
-import { SearchAvailableLocationsForServingController } from '../api/search-available-locations-for-serving.controller'
-import { SearchAvailableLocationsForServingServer } from '../api/search-available-locations-for-serving.server'
-import { SearchAvailableLocationsForServingQueryHandler } from '../queries/search-available-locations-for-serving.query-handler'
+import { SearchAvailableLocationsForServingController } from './search-available-locations-for-serving.controller'
+import { SearchAvailableLocationsForServingQueryHandler } from './search-available-locations-for-serving.query-handler'
+import { SearchAvailableLocationsForServingServer } from './search-available-locations-for-serving.server'
 
 Box.register({
   searchAvailableLocationsForServingServer: ioc

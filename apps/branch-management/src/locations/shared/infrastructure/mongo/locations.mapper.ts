@@ -7,7 +7,7 @@
 import { ILocationsMapper } from 'locations/shared/domain/contracts/locations-mapper.interface'
 import { Location } from 'locations/shared/domain/entities/location.entity'
 
-import { ILocationDocument, LocationModel } from '../models/location.model'
+import { ILocationDocument, LocationModel } from './location.model'
 
 export class LocationsMapper implements ILocationsMapper<ILocationDocument> {
   public toEntity(document: ILocationDocument): Location {

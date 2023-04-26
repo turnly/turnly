@@ -7,7 +7,7 @@
 import { Consumers, Producers } from '@turnly/grpc'
 import { ResourceNotFoundException } from '@turnly/observability'
 import type { SearchAvailableLocationsForServingController } from 'locations/search-available-locations-for-serving'
-import { LocationsMapper } from 'locations/shared/infrastructure/grpc/locations-mapper.grpc'
+import { LocationsMapper } from 'locations/shared/infrastructure/locations-to-grpc.mapper'
 
 export class SearchAvailableLocationsForServingServer {
   public constructor(

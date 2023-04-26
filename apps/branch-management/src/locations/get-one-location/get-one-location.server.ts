@@ -6,7 +6,7 @@
  */
 import { Consumers, Producers } from '@turnly/grpc'
 import type { GetOneLocationController } from 'locations/get-one-location'
-import { LocationsMapper } from 'locations/shared/infrastructure/grpc/locations-mapper.grpc'
+import { LocationsMapper } from 'locations/shared/infrastructure/locations-to-grpc.mapper'
 
 export class GetOneLocationServer {
   public constructor(

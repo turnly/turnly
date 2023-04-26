@@ -6,9 +6,9 @@
  */
 import { Box, ioc } from '@turnly/core'
 
-import { GetOneLocationController } from '../api/get-one-location.controller'
-import { GetOneLocationServer } from '../api/get-one-location.server'
-import { GetOneLocationQueryHandler } from '../queries/get-one-location.query-handler'
+import { GetOneLocationController } from './get-one-location.controller'
+import { GetOneLocationQueryHandler } from './get-one-location.query-handler'
+import { GetOneLocationServer } from './get-one-location.server'
 
 Box.register({
   getOneLocationServer: ioc.asClass(GetOneLocationServer).singleton(),

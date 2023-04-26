@@ -6,7 +6,7 @@
  */
 import { Guid, Identifier } from '@turnly/common'
 import { AggregateRoot, EntityAttributes } from '@turnly/core'
-import { LocationCreatedEvent } from 'locations/create-location/events/location-created.event'
+import { LocationCreatedEvent } from 'locations/create-location/location-created.event'
 
 import { LocationStatus } from '../enums/location-status.enum'
 

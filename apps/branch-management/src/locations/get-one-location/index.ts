@@ -4,7 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-export * from './api/get-one-location.controller'
-export * from './api/get-one-location.server'
-export * from './queries/get-one-location.query'
-export * from './queries/get-one-location.query-handler'
+export * from './get-one-location.controller'
+export * from './get-one-location.query'
+export * from './get-one-location.query-handler'
+export * from './get-one-location.server'

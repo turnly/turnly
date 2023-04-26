@@ -9,7 +9,7 @@ import { ILocationsMapper } from 'locations/shared/domain/contracts/locations-ma
 import { ILocationsReadableRepo } from 'locations/shared/domain/contracts/locations-repo.interface'
 import { Location } from 'locations/shared/domain/entities/location.entity'
 
-import { ILocationDocument, LocationModel } from '../models/location.model'
+import { ILocationDocument, LocationModel } from './location.model'
 
 export class LocationsReadableRepo
   extends MongoReadableRepo<Location, ILocationDocument>
