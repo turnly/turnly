@@ -21,7 +21,7 @@ export class CreateCustomerCommandMother {
     organizationId: Guid = ObjectMother.uuid('org'),
     extra: Extra[] = []
   ): CreateCustomersCommand {
-    return new CreateCustomersCommand({
+    return CreateCustomersCommand.build({
       name,
       lastname,
       email,

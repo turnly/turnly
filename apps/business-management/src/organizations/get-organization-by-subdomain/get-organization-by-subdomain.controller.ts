@@ -26,7 +26,7 @@ export class GetOrganizationBySubdomainController extends Controller {
   @InputValidator(GetOrganizationBySubdomainValidator)
   public async execute(params: { subdomain: string }) {
     const organization = await this.queryBus.ask<Nullable<Organization>>(
-      new GetOrganizationBySubdomainQuery(params.subdomain)
+      GetOrganizationBySubdomainQuery.build(params)
     )
 
     if (!organization) throw new ResourceNotFoundException()

@@ -11,10 +11,7 @@ import {
   TimeoutHandler,
 } from '@turnly/core'
 import { CreateCustomersCommand } from 'customers/create-customer'
-import {
-  CreateCustomerParams,
-  Customer,
-} from 'customers/shared/domain/entities/customer.entity'
+import { Customer } from 'customers/shared/domain/entities/customer.entity'
 
 import { CreateCustomerValidator } from './create-customer.validator'
 
@@ -25,11 +22,11 @@ export class CreateCustomerController extends Controller {
 
   @TimeoutHandler()
   @InputValidator(CreateCustomerValidator)
-  public async execute(params: CreateCustomerParams) {
+  public async execute(params: CreateCustomersCommand) {
     const customer = await this.commandBus.execute<
       Customer,
       CreateCustomersCommand
-    >(new CreateCustomersCommand(params))
+    >(CreateCustomersCommand.build(params))
 
     return this.respond.created(customer.toObject())
   }

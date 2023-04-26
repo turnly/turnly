@@ -28,9 +28,9 @@ export class MarkTicketAsDiscardedCommandHandler
     private readonly ticketsWritableRepo: ITicketsWritableRepo
   ) {}
 
-  public async execute({ params }: MarkTicketAsDiscardedCommand) {
+  public async execute(command: MarkTicketAsDiscardedCommand) {
     const ticket = await this.queryBus.ask<Nullable<Ticket>>(
-      new GetAnUnexpiredTicketQuery(params)
+      GetAnUnexpiredTicketQuery.build(command)
     )
 
     if (!ticket) throw new ResourceNotFoundException()

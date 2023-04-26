@@ -28,12 +28,12 @@ export class AnnounceMyArrivalCommandHandler
     private readonly ticketsWritableRepo: ITicketsWritableRepo
   ) {}
 
-  public async execute({ params }: AnnounceMyArrivalCommand) {
+  public async execute(command: AnnounceMyArrivalCommand) {
     const ticket = await this.queryBus.ask<Nullable<Ticket>>(
-      new GetAnUnexpiredTicketQuery(params)
+      GetAnUnexpiredTicketQuery.build(command)
     )
 
-    if (!ticket || !ticket.isOwnedBy(params.customerId))
+    if (!ticket || !ticket.isOwnedBy(command.customerId))
       throw new ResourceNotFoundException()
 
     /**

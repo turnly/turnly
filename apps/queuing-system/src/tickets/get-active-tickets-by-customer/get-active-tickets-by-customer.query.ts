@@ -5,11 +5,8 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import { Guid } from '@turnly/common'
-import { IQuery } from '@turnly/core'
+import { OrganizationQuery } from '@turnly/core'
 
-export class GetActiveTicketsByCustomerQuery implements IQuery {
-  public constructor(
-    public readonly customerId: Guid,
-    public readonly organizationId: Guid
-  ) {}
+export class GetActiveTicketsByCustomerQuery extends OrganizationQuery {
+  public readonly customerId: Guid
 }

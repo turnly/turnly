@@ -19,8 +19,8 @@ export class CreateCustomerCommandHandler
     private readonly customerWritableRepo: ICustomerWritableRepo
   ) {}
 
-  public async execute({ params }: CreateCustomersCommand) {
-    const customer = Customer.create(params)
+  public async execute(command: CreateCustomersCommand) {
+    const customer = Customer.create(command)
 
     await this.customerWritableRepo.save(customer)
 

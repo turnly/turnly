@@ -5,12 +5,11 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import { Guid } from '@turnly/common'
-import { ICommand } from '@turnly/core'
+import { OrganizationCommand } from '@turnly/core'
 
-export type AnnounceMyArrivalParams = {
-  id: Guid
-  organizationId: Guid
-  customerId: Guid
+export class AnnounceMyArrivalCommand extends OrganizationCommand {
+  public readonly id: Guid
+  public readonly customerId: Guid
   /**
    * TODO: Implement the logic to validate the device location of the customer
    *
@@ -19,8 +18,4 @@ export type AnnounceMyArrivalParams = {
         longitude: number
       }
    */
-}
-
-export class AnnounceMyArrivalCommand implements ICommand {
-  public constructor(public readonly params: AnnounceMyArrivalParams) {}
 }

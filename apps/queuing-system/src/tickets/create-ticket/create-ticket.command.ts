@@ -4,14 +4,15 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { ICommand } from '@turnly/core'
-import { CreateTicketParams } from 'tickets/shared/domain/entities/ticket.entity'
+import { Extra, Guid, Nullable } from '@turnly/common'
+import { OrganizationCommand } from '@turnly/core'
+import { TicketSource } from 'tickets/shared/domain/enums/TicketSource'
 
-export type CreateTicketCommandParams = Omit<
-  CreateTicketParams & { serviceName: string },
-  'displayCode' | 'status' | 'priority' | 'rating' | 'updatedAt' | 'createdAt'
->
-
-export class CreateTicketCommand implements ICommand {
-  public constructor(public readonly params: CreateTicketCommandParams) {}
+export class CreateTicketCommand extends OrganizationCommand {
+  public readonly source: TicketSource
+  public readonly serviceId: Guid
+  public readonly locationId: Guid
+  public readonly customerId: Guid
+  public readonly extra: Nullable<Extra[]>
+  public readonly serviceName: string
 }

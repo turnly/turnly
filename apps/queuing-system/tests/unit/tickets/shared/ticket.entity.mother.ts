@@ -61,11 +61,11 @@ export class TicketMother {
       undefined,
       undefined,
       undefined,
-      command.params.serviceId,
-      command.params.locationId,
-      command.params.customerId,
-      command.params.organizationId,
-      command.params.extra
+      command.serviceId,
+      command.locationId,
+      command.customerId,
+      command.organizationId,
+      command.extra
     )
   }
 
@@ -75,9 +75,9 @@ export class TicketMother {
     return Ticket.build({
       ...this.random().toObject(),
       status: TicketStatus.AVAILABLE,
-      customerId: command.params.customerId,
-      organizationId: command.params.organizationId,
-      id: command.params.id,
+      customerId: command.customerId,
+      organizationId: command.organizationId,
+      id: command.id,
     })
   }
 

@@ -17,7 +17,10 @@ export class ListTicketsWaitingForServiceQueryMother {
     ),
     organizationId: Guid = ObjectMother.uuid('org')
   ): ListTicketsWaitingForServiceQuery {
-    return new ListTicketsWaitingForServiceQuery(serviceIds, organizationId)
+    return ListTicketsWaitingForServiceQuery.build({
+      serviceIds,
+      organizationId,
+    })
   }
 
   static random(): ListTicketsWaitingForServiceQuery {

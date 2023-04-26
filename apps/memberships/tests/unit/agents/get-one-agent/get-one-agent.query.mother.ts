@@ -14,7 +14,7 @@ export class GetOneAgentQueryMother {
     id: Guid = ObjectMother.uuid('agent'),
     organizationId: Guid = ObjectMother.uuid('org')
   ): GetOneAgentQuery {
-    return new GetOneAgentQuery(id, organizationId)
+    return GetOneAgentQuery.build({ id, organizationId })
   }
 
   static random(): GetOneAgentQuery {

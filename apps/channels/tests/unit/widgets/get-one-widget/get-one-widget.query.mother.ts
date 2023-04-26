@@ -11,7 +11,7 @@ import { GetOneWidgetQuery } from '../../../../src/widgets/get-one-widget'
 
 export class GetOneWidgetQueryMother {
   static create(id: Guid = ObjectMother.uuid('int')): GetOneWidgetQuery {
-    return new GetOneWidgetQuery(id)
+    return GetOneWidgetQuery.build({ id })
   }
 
   static random(): GetOneWidgetQuery {

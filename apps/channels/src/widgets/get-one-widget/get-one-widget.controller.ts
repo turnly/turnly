@@ -26,7 +26,7 @@ export class GetOneWidgetController extends Controller {
   @InputValidator(GetOneWidgetValidator)
   public async execute(params: { id: Guid }) {
     const widget = await this.queryBus.ask<Nullable<Widget>>(
-      new GetOneWidgetQuery(params.id)
+      GetOneWidgetQuery.build(params)
     )
 
     if (!widget) throw new ResourceNotFoundException()

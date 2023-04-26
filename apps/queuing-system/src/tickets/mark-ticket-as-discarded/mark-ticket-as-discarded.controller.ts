@@ -10,10 +10,7 @@ import {
   InputValidator,
   TimeoutHandler,
 } from '@turnly/core'
-import {
-  MarkTicketAsDiscardedCommand,
-  MarkTicketAsDiscardedParams,
-} from 'tickets/mark-ticket-as-discarded'
+import { MarkTicketAsDiscardedCommand } from 'tickets/mark-ticket-as-discarded'
 import { Ticket } from 'tickets/shared/domain/entities/ticket.entity'
 
 import { MarkTicketAsDiscardedValidator } from './mark-ticket-as-discarded.validator'
@@ -25,11 +22,11 @@ export class MarkTicketAsDiscardedController extends Controller {
 
   @TimeoutHandler()
   @InputValidator(MarkTicketAsDiscardedValidator)
-  public async execute(params: MarkTicketAsDiscardedParams) {
+  public async execute(params: MarkTicketAsDiscardedCommand) {
     const ticket = await this.commandBus.execute<
       Ticket,
       MarkTicketAsDiscardedCommand
-    >(new MarkTicketAsDiscardedCommand(params))
+    >(MarkTicketAsDiscardedCommand.build(params))
 
     return this.respond.ok(ticket.toObject())
   }

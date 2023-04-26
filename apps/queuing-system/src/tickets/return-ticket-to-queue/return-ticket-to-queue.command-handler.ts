@@ -28,9 +28,9 @@ export class ReturnTicketToQueueCommandHandler
     private readonly ticketsWritableRepo: ITicketsWritableRepo
   ) {}
 
-  public async execute({ params }: ReturnTicketToQueueCommand) {
+  public async execute(command: ReturnTicketToQueueCommand) {
     const ticket = await this.queryBus.ask<Nullable<Ticket>>(
-      new GetAnUnexpiredTicketQuery(params)
+      GetAnUnexpiredTicketQuery.build(command)
     )
 
     if (!ticket) throw new ResourceNotFoundException()

@@ -10,10 +10,7 @@ import {
   InputValidator,
   TimeoutHandler,
 } from '@turnly/core'
-import {
-  LeaveTheQueueCommand,
-  LeaveTheQueueParams,
-} from 'tickets/leave-the-queue'
+import { LeaveTheQueueCommand } from 'tickets/leave-the-queue'
 import { Ticket } from 'tickets/shared/domain/entities/ticket.entity'
 
 import { LeaveTheQueueValidator } from './leave-the-queue.validator'
@@ -25,9 +22,9 @@ export class LeaveTheQueueController extends Controller {
 
   @TimeoutHandler()
   @InputValidator(LeaveTheQueueValidator)
-  public async execute(params: LeaveTheQueueParams) {
+  public async execute(params: LeaveTheQueueCommand) {
     const ticket = await this.commandBus.execute<Ticket, LeaveTheQueueCommand>(
-      new LeaveTheQueueCommand(params)
+      LeaveTheQueueCommand.build(params)
     )
 
     return this.respond.ok(ticket.toObject())

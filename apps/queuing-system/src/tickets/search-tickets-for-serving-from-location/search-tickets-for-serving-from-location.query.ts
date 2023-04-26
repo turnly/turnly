@@ -5,7 +5,7 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import { Guid } from '@turnly/common'
-import { IQuery } from '@turnly/core'
+import { OrganizationQuery } from '@turnly/core'
 import { TicketStatus } from 'tickets/shared/domain/enums/TicketStatus'
 
 export enum SearchTicketsForServingFromLocationFilters {
@@ -21,12 +21,9 @@ export type SearchTicketsForServingFromLocationParams = {
   readonly serviceIds?: Guid[]
 }
 
-export class SearchTicketsForServingFromLocationQuery implements IQuery {
-  public constructor(
-    public readonly locationId: Guid,
-    public readonly organizationId: Guid,
-    public readonly status?: TicketStatus[],
-    public readonly searchQuery?: string,
-    public readonly serviceIds?: Guid[]
-  ) {}
+export class SearchTicketsForServingFromLocationQuery extends OrganizationQuery {
+  public readonly locationId: Guid
+  public readonly status?: TicketStatus[]
+  public readonly searchQuery?: string
+  public readonly serviceIds?: Guid[]
 }

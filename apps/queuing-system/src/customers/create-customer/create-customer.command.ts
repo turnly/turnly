@@ -4,9 +4,15 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { ICommand } from '@turnly/core'
-import { CreateCustomerParams } from 'customers/shared/domain/entities/customer.entity'
+import { Nullable } from '@turnly/common'
+import { WithExtraCommand } from '@turnly/core'
 
-export class CreateCustomersCommand implements ICommand {
-  public constructor(public readonly params: CreateCustomerParams) {}
+export class CreateCustomersCommand extends WithExtraCommand {
+  public readonly name?: string
+  public readonly lastname?: Nullable<string>
+  public readonly email?: Nullable<string>
+  public readonly phone?: Nullable<string>
+  public readonly country?: Nullable<string>
+  public readonly hasWhatsapp?: boolean
+  public readonly showNameSignage?: boolean
 }

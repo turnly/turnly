@@ -28,9 +28,9 @@ export class MarkTicketAsServedCommandHandler
     private readonly ticketsWritableRepo: ITicketsWritableRepo
   ) {}
 
-  public async execute({ params }: MarkTicketAsServedCommand) {
+  public async execute(command: MarkTicketAsServedCommand) {
     const ticket = await this.queryBus.ask<Nullable<Ticket>>(
-      new GetAnUnexpiredTicketQuery(params)
+      GetAnUnexpiredTicketQuery.build(command)
     )
 
     if (!ticket) throw new ResourceNotFoundException()

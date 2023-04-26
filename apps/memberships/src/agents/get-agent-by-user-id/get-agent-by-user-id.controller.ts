@@ -26,7 +26,7 @@ export class GetAgentByUserIdController extends Controller {
   @InputValidator(GetAgentByUserIdValidator)
   public async execute(params: GetAgentByUserIdQuery) {
     const agent = await this.queryBus.ask<Nullable<Agent>>(
-      new GetAgentByUserIdQuery(params.userId)
+      GetAgentByUserIdQuery.build(params)
     )
 
     if (!agent) throw new ResourceNotFoundException()

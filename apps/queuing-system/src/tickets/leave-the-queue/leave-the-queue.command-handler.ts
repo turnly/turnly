@@ -28,12 +28,12 @@ export class LeaveTheQueueCommandHandler
     private readonly ticketsWritableRepo: ITicketsWritableRepo
   ) {}
 
-  public async execute({ params }: LeaveTheQueueCommand) {
+  public async execute(command: LeaveTheQueueCommand) {
     const ticket = await this.queryBus.ask<Nullable<Ticket>>(
-      new GetAnUnexpiredTicketQuery(params)
+      GetAnUnexpiredTicketQuery.build(command)
     )
 
-    if (!ticket || !ticket.isOwnedBy(params.customerId))
+    if (!ticket || !ticket.isOwnedBy(command.customerId))
       throw new ResourceNotFoundException()
 
     ticket.leave()

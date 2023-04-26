@@ -55,13 +55,10 @@ export class SearchTicketsForServingFromLocationController extends Controller {
       )
 
     const tickets = await this.queryBus.ask<Nullable<Ticket[]>>(
-      new SearchTicketsForServingFromLocationQuery(
-        params.locationId,
-        params.organizationId,
+      SearchTicketsForServingFromLocationQuery.build({
+        ...params,
         status,
-        params.searchQuery,
-        params.serviceIds
-      )
+      })
     )
 
     if (!tickets) throw new ResourceNotFoundException()

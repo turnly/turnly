@@ -26,7 +26,7 @@ export class GetTicketDetailsController extends Controller {
   @InputValidator(GetTicketDetailsValidator)
   public async execute(params: GetOneTicketQuery) {
     const ticket = await this.queryBus.ask<Nullable<Ticket>>(
-      new GetOneTicketQuery(params.id, params.organizationId)
+      GetOneTicketQuery.bind(params)
     )
 
     if (!ticket) throw new ResourceNotFoundException()

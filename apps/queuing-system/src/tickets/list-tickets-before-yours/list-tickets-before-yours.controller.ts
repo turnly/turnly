@@ -26,11 +26,7 @@ export class ListTicketsBeforeYoursController extends Controller {
   @InputValidator(ListTicketsBeforeYoursValidator)
   public async execute(params: ListTicketsBeforeYoursQuery) {
     const tickets = await this.queryBus.ask<Nullable<Ticket[]>>(
-      new ListTicketsBeforeYoursQuery(
-        params.ticketId,
-        params.customerId,
-        params.organizationId
-      )
+      ListTicketsBeforeYoursQuery.build(params)
     )
 
     if (!tickets) throw new ResourceNotFoundException()

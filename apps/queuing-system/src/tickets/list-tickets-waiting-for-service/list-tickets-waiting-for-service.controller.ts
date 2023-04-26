@@ -27,10 +27,7 @@ export class ListTicketsWaitingForServiceController extends Controller {
   @InputValidator(ListTicketsWaitingForServiceValidator)
   public async execute(params: ListTicketsWaitingForServiceQuery) {
     const tickets = await this.queryBus.ask<TicketsWaitingFor[]>(
-      new ListTicketsWaitingForServiceQuery(
-        params.serviceIds,
-        params.organizationId
-      )
+      ListTicketsWaitingForServiceQuery.build(params)
     )
 
     if (!tickets) throw new ResourceNotFoundException()

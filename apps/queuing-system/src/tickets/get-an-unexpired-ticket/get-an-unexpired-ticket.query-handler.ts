@@ -20,9 +20,7 @@ export class GetAnUnexpiredTicketQueryHandler
     private readonly ticketsReadableRepo: ITicketsReadableRepo
   ) {}
 
-  public async execute({
-    params: { id, organizationId },
-  }: GetAnUnexpiredTicketQuery) {
+  public async execute({ id, organizationId }: GetAnUnexpiredTicketQuery) {
     const today = DateTime.today().toJSDate()
 
     const query = new QueryBuilder<Ticket>()

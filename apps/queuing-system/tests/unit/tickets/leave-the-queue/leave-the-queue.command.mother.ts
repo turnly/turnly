@@ -15,7 +15,7 @@ export class LeaveTheQueueCommandMother {
     customerId: Guid = ObjectMother.uuid('cust'),
     organizationId: Guid = ObjectMother.uuid('org')
   ): LeaveTheQueueCommand {
-    return new LeaveTheQueueCommand({
+    return LeaveTheQueueCommand.build({
       id,
       customerId,
       organizationId,

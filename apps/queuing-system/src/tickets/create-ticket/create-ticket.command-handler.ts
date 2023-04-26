@@ -30,12 +30,9 @@ export class CreateTicketCommandHandler
     private readonly ticketsWritableRepo: ITicketsWritableRepo
   ) {}
 
-  public async execute({ params }: CreateTicketCommand) {
+  public async execute(command: CreateTicketCommand) {
     const tickets = await this.queryBus.ask<Ticket[]>(
-      new GetActiveTicketsByCustomerQuery(
-        params.customerId,
-        params.organizationId
-      )
+      GetActiveTicketsByCustomerQuery.build(command)
     )
 
     if (tickets.length)
@@ -44,10 +41,10 @@ export class CreateTicketCommandHandler
       )
 
     const ticket = Ticket.create({
-      ...params,
+      ...command,
       status: TicketStatus.AVAILABLE,
       priority: TicketPriority.NORMAL,
-      displayCode: await this.generateDisplayCode(params.serviceName),
+      displayCode: await this.generateDisplayCode(command.serviceName),
     })
 
     await this.ticketsWritableRepo.save(ticket)

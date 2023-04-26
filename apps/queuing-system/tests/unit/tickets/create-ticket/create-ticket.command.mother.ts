@@ -19,7 +19,7 @@ export class CreateTicketCommandMother {
     organizationId: Guid = ObjectMother.uuid('org'),
     extra: Extra[] = []
   ): CreateTicketCommand {
-    return new CreateTicketCommand({
+    return CreateTicketCommand.build({
       serviceId,
       serviceName,
       locationId,

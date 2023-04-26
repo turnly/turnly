@@ -10,10 +10,7 @@ import {
   InputValidator,
   TimeoutHandler,
 } from '@turnly/core'
-import {
-  CallTicketToDeskCommand,
-  CallTicketToDeskParams,
-} from 'tickets/call-ticket-to-desk'
+import { CallTicketToDeskCommand } from 'tickets/call-ticket-to-desk'
 import { Ticket } from 'tickets/shared/domain/entities/ticket.entity'
 
 import { CallTicketToDeskValidator } from './call-ticket-to-desk.validator'
@@ -25,11 +22,11 @@ export class CallTicketToDeskController extends Controller {
 
   @TimeoutHandler()
   @InputValidator(CallTicketToDeskValidator)
-  public async execute(params: CallTicketToDeskParams) {
+  public async execute(params: CallTicketToDeskCommand) {
     const ticket = await this.commandBus.execute<
       Ticket,
       CallTicketToDeskCommand
-    >(new CallTicketToDeskCommand(params))
+    >(CallTicketToDeskCommand.build(params))
 
     return this.respond.created(ticket.toObject())
   }

@@ -28,14 +28,14 @@ export class CallTicketToDeskCommandHandler
     private readonly ticketsWritableRepo: ITicketsWritableRepo
   ) {}
 
-  public async execute({ params }: CallTicketToDeskCommand) {
+  public async execute(command: CallTicketToDeskCommand) {
     const ticket = await this.queryBus.ask<Nullable<Ticket>>(
-      new GetAnUnexpiredTicketQuery(params)
+      GetAnUnexpiredTicketQuery.build(command)
     )
 
     if (!ticket) throw new ResourceNotFoundException()
 
-    ticket.call(params.agentId)
+    ticket.call(command.agentId)
 
     await this.ticketsWritableRepo.save(ticket)
 

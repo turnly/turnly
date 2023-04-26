@@ -15,7 +15,11 @@ export class ListTicketsBeforeYoursQueryMother {
     customerId: Guid = ObjectMother.uuid('cust'),
     organizationId: Guid = ObjectMother.uuid('org')
   ): ListTicketsBeforeYoursQuery {
-    return new ListTicketsBeforeYoursQuery(ticketId, customerId, organizationId)
+    return ListTicketsBeforeYoursQuery.build({
+      ticketId,
+      customerId,
+      organizationId,
+    })
   }
 
   static random(): ListTicketsBeforeYoursQuery {

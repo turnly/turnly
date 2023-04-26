@@ -12,7 +12,7 @@ export class GetOrganizationBySubdomainQueryMother {
   static create(
     subdomain: string = ObjectMother.word()
   ): GetOrganizationBySubdomainQuery {
-    return new GetOrganizationBySubdomainQuery(subdomain)
+    return GetOrganizationBySubdomainQuery.build({ subdomain })
   }
 
   static random(): GetOrganizationBySubdomainQuery {

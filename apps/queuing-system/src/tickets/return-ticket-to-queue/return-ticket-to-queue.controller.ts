@@ -10,10 +10,7 @@ import {
   InputValidator,
   TimeoutHandler,
 } from '@turnly/core'
-import {
-  ReturnTicketToQueueCommand,
-  ReturnTicketToQueueParams,
-} from 'tickets/return-ticket-to-queue'
+import { ReturnTicketToQueueCommand } from 'tickets/return-ticket-to-queue'
 import { Ticket } from 'tickets/shared/domain/entities/ticket.entity'
 
 import { ReturnTicketToQueueValidator } from './return-ticket-to-queue.validator'
@@ -25,11 +22,11 @@ export class ReturnTicketToQueueController extends Controller {
 
   @TimeoutHandler()
   @InputValidator(ReturnTicketToQueueValidator)
-  public async execute(params: ReturnTicketToQueueParams) {
+  public async execute(params: ReturnTicketToQueueCommand) {
     const ticket = await this.commandBus.execute<
       Ticket,
       ReturnTicketToQueueCommand
-    >(new ReturnTicketToQueueCommand(params))
+    >(ReturnTicketToQueueCommand.build(params))
 
     return this.respond.ok(ticket.toObject())
   }

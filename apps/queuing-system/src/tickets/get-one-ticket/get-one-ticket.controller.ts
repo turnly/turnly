@@ -26,7 +26,7 @@ export class GetOneTicketController extends Controller {
   @InputValidator(GetOneTicketValidator)
   public async execute(params: GetOneTicketQuery & { customerId: string }) {
     const ticket = await this.queryBus.ask<Nullable<Ticket>>(
-      new GetOneTicketQuery(params.id, params.organizationId)
+      GetOneTicketQuery.build(params)
     )
 
     if (!ticket || !ticket.isOwnedBy(params.customerId))

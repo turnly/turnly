@@ -14,7 +14,7 @@ export class GetActiveTicketsByCustomerQueryMother {
     customerId: Guid = ObjectMother.uuid('cust'),
     organizationId: Guid = ObjectMother.uuid('org')
   ): GetActiveTicketsByCustomerQuery {
-    return new GetActiveTicketsByCustomerQuery(customerId, organizationId)
+    return GetActiveTicketsByCustomerQuery.build({ customerId, organizationId })
   }
 
   static random(): GetActiveTicketsByCustomerQuery {

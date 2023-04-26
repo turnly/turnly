@@ -15,7 +15,7 @@ export class AnnounceMyArrivalCommandMother {
     customerId: Guid = ObjectMother.uuid('cust'),
     organizationId: Guid = ObjectMother.uuid('org')
   ): AnnounceMyArrivalCommand {
-    return new AnnounceMyArrivalCommand({
+    return AnnounceMyArrivalCommand.build({
       id,
       customerId,
       organizationId,

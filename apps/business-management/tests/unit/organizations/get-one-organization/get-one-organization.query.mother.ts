@@ -11,7 +11,7 @@ import { GetOneOrganizationQuery } from '../../../../src/organizations/get-one-o
 
 export class GetOneOrganizationQueryMother {
   static create(id: Guid = ObjectMother.uuid('org')): GetOneOrganizationQuery {
-    return new GetOneOrganizationQuery(id)
+    return GetOneOrganizationQuery.build({ id })
   }
 
   static random(): GetOneOrganizationQuery {

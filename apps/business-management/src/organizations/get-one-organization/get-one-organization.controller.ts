@@ -26,7 +26,7 @@ export class GetOneOrganizationController extends Controller {
   @InputValidator(GetOneOrganizationValidator)
   public async execute(params: { id: Guid }) {
     const organization = await this.queryBus.ask<Nullable<Organization>>(
-      new GetOneOrganizationQuery(params.id)
+      GetOneOrganizationQuery.build(params)
     )
 
     if (!organization) throw new ResourceNotFoundException()

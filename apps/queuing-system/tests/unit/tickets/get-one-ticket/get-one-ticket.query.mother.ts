@@ -14,7 +14,7 @@ export class GetOneTicketQueryMother {
     id: Guid = ObjectMother.uuid('ticket'),
     organizationId: Guid = ObjectMother.uuid('org')
   ): GetOneTicketQuery {
-    return new GetOneTicketQuery(id, organizationId)
+    return GetOneTicketQuery.build({ id, organizationId })
   }
 
   static random(): GetOneTicketQuery {

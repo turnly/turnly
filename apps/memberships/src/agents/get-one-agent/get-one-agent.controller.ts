@@ -26,7 +26,7 @@ export class GetOneAgentController extends Controller {
   @InputValidator(GetOneAgentValidator)
   public async execute(params: GetOneAgentQuery) {
     const agent = await this.queryBus.ask<Nullable<Agent>>(
-      new GetOneAgentQuery(params.id, params.organizationId)
+      GetOneAgentQuery.build(params)
     )
 
     if (!agent) throw new ResourceNotFoundException()

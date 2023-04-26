@@ -21,13 +21,13 @@ export class SearchTicketsForServingFromLocationQueryMother {
     searchQuery: string = ObjectMother.word(),
     organizationId: Guid = ObjectMother.uuid('org')
   ): SearchTicketsForServingFromLocationQuery {
-    return new SearchTicketsForServingFromLocationQuery(
+    return SearchTicketsForServingFromLocationQuery.build({
       locationId,
       organizationId,
       status,
       searchQuery,
-      serviceIds
-    )
+      serviceIds,
+    })
   }
 
   static random(): SearchTicketsForServingFromLocationQuery {

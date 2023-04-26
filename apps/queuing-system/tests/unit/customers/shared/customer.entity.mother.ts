@@ -46,15 +46,15 @@ export class CustomerMother {
 
   static fromCommand(command: CreateCustomersCommand): Customer {
     return CustomerMother.create(
-      command.params.name,
+      command.name,
       undefined,
       undefined,
       undefined,
       undefined,
-      command.params.hasWhatsapp,
-      command.params.showNameSignage,
-      command.params.organizationId,
-      command.params.extra
+      command.hasWhatsapp,
+      command.showNameSignage,
+      command.organizationId,
+      command.extra
     )
   }
 

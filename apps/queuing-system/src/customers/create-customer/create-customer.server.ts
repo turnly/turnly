@@ -37,6 +37,7 @@ export class CreateCustomerServer {
       : {}
 
     const { data, meta } = await this.createCustomerController.execute({
+      extra: [],
       ...input,
       organizationId: Consumers.Client.getOrganizationId(call),
     })

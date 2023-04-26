@@ -5,8 +5,8 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import { Guid } from '@turnly/common'
-import { IQuery } from '@turnly/core'
+import { Query } from '@turnly/core'
 
-export class GetAgentByUserIdQuery implements IQuery {
-  public constructor(public readonly userId: Guid) {}
+export class GetAgentByUserIdQuery extends Query {
+  public readonly userId: Guid
 }
