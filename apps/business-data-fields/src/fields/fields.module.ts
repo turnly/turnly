@@ -10,8 +10,8 @@
  *
  * @description Register dependencies to the dependency injection container.
  */
-import 'fields/shared/dependency/attach-to-dependency-box'
-import 'fields/search-customer-fields-by-service/dependency/attach-to-dependency-box'
+import 'fields/shared/shared.dependency'
+import 'fields/search-customer-fields-by-service/search-customer-fields-by-service.dependency'
 
 import type {
   ICommandHandler,

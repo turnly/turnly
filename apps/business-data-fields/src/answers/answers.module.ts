@@ -10,8 +10,9 @@
  *
  * @description Register dependencies to the dependency injection container.
  */
-import 'answers/shared/dependency/attach-to-dependency-box'
-import 'answers/list-answers-by-field/dependency/attach-to-dependency-box'
+import 'answers/shared/shared.dependency'
+import 'answers/list-answers-by-field/list-answers-by-field.dependency'
+import 'answers/create-answers-bulk/create-answers-bulk.dependency'
 
 import {
   Box,

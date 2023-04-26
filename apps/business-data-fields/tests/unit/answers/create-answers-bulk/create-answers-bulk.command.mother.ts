@@ -7,7 +7,7 @@
 import { ObjectMother } from '@turnly/testing'
 
 import { CreateAnswersBulkCommand } from '../../../../src/answers/create-answers-bulk'
-import { AnswerMother } from '../shared/domain/answer.entity.mother'
+import { AnswerMother } from '../shared/answer.entity.mother'
 
 export class CreateAnswersBulkCommandMother {
   static create(): CreateAnswersBulkCommand {

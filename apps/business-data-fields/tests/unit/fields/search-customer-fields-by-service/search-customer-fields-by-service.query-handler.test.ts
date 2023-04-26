@@ -7,8 +7,8 @@
 import { ObjectMother } from '@turnly/testing'
 
 import { SearchCustomerFieldsByServiceQueryHandler } from '../../../../src/fields/search-customer-fields-by-service'
-import { FieldsReadableRepo } from '../shared/__mocks__/fields-readable.repo'
-import { FieldMother } from '../shared/domain/field.entity.mother'
+import { FieldMother } from '../shared/field.entity.mother'
+import { FieldsReadableRepo } from '../shared/fields-readable.repo'
 import { SearchCustomerFieldsByServiceQueryMother } from './search-customer-fields-by-service.query.mother'
 
 let repository: FieldsReadableRepo

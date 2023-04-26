@@ -7,7 +7,7 @@
 import { TestEventBus } from '@turnly/testing'
 
 import { CreateAnswersBulkCommandHandler } from '../../../../src/answers/create-answers-bulk'
-import { AnswersWritableRepo } from '../shared/__mocks__/answers-writable.repo'
+import { AnswersWritableRepo } from '../shared/answers-writable.repo'
 import { CreateAnswersBulkCommandMother } from './create-answers-bulk.command.mother'
 
 let repository: AnswersWritableRepo

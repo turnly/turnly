@@ -7,8 +7,8 @@
 import { ObjectMother } from '@turnly/testing'
 
 import { ListAnswersByFieldQueryHandler } from '../../../../src/answers/list-answers-by-field'
-import { AnswersReadableRepo } from '../shared/__mocks__/answers-readable.repo'
-import { AnswerMother } from '../shared/domain/answer.entity.mother'
+import { AnswerMother } from '../shared/answer.entity.mother'
+import { AnswersReadableRepo } from '../shared/answers-readable.repo'
 import { ListAnswersByFieldQueryMother } from './list-answers-by-field.query.mother'
 
 let repository: AnswersReadableRepo

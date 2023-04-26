@@ -6,7 +6,7 @@
  */
 import { Extra, Guid, Identifier, Nullable } from '@turnly/common'
 import { AggregateRoot, EntityAttributes } from '@turnly/core'
-import { FieldCreatedEvent } from 'fields/create-field/events/field-created.event'
+import { FieldCreatedEvent } from 'fields/create-field/field-created.event'
 
 import { FieldTypes } from '../enums/field-types.enum'
 
