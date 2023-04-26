@@ -6,7 +6,7 @@
  */
 import { Consumers, Producers } from '@turnly/grpc'
 import type { GetOneServiceController } from 'services/get-one-service'
-import { ServicesMapper } from 'services/shared/infrastructure/grpc/services-mapper.grpc'
+import { ServicesMapper } from 'services/shared/infrastructure/services-to-grpc.mapper'
 
 export class GetOneServiceServer {
   public constructor(

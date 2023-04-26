@@ -6,7 +6,7 @@
  */
 import { Guid, Identifier } from '@turnly/common'
 import { AggregateRoot, EntityAttributes } from '@turnly/core'
-import { ServiceCreatedEvent } from 'services/create-service/events/service-created.event'
+import { ServiceCreatedEvent } from 'services/create-service/service-created.event'
 
 /**
  * Service

@@ -6,9 +6,9 @@
  */
 import { Box, ioc } from '@turnly/core'
 
-import { ListServicesOfOneLocationController } from '../api/list-services-of-one-location.controller'
-import { ListServicesOfOneLocationServer } from '../api/list-services-of-one-location.server'
-import { ListServicesOfOneLocationQueryHandler } from '../queries/list-services-of-one-location.query-handler'
+import { ListServicesOfOneLocationController } from './list-services-of-one-location.controller'
+import { ListServicesOfOneLocationQueryHandler } from './list-services-of-one-location.query-handler'
+import { ListServicesOfOneLocationServer } from './list-services-of-one-location.server'
 
 Box.register({
   listServicesOfOneLocationServer: ioc

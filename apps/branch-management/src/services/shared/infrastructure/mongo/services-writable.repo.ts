@@ -4,16 +4,16 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { MongoReadableRepo } from '@turnly/core'
+import { MongoWritableRepo } from '@turnly/core'
 import { IServicesMapper } from 'services/shared/domain/contracts/services-mapper.interface'
-import { IServicesReadableRepo } from 'services/shared/domain/contracts/services-repo.interface'
+import { IServicesWritableRepo } from 'services/shared/domain/contracts/services-repo.interface'
 import { Service } from 'services/shared/domain/entities/service.entity'
 
-import { IServiceDocument, ServiceModel } from '../models/service.model'
+import { IServiceDocument, ServiceModel } from './service.model'
 
-export class ServicesReadableRepo
-  extends MongoReadableRepo<Service, IServiceDocument>
-  implements IServicesReadableRepo
+export class ServicesWritableRepo
+  extends MongoWritableRepo<Service, IServiceDocument>
+  implements IServicesWritableRepo
 {
   public constructor(servicesMapper: IServicesMapper<IServiceDocument>) {
     super(ServiceModel, servicesMapper)

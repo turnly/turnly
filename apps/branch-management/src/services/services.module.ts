@@ -10,9 +10,9 @@
  *
  * @description Register dependencies to the dependency injection container.
  */
-import 'services/shared/dependency/attach-to-dependency-box'
-import 'services/get-one-service/dependency/attach-to-dependency-box'
-import 'services/list-services-of-one-location/dependency/attach-to-dependency-box'
+import 'services/shared/shared.dependency'
+import 'services/get-one-service/get-one-service.dependency'
+import 'services/list-services-of-one-location/list-services-of-one-location.dependency'
 
 import type {
   ICommandHandler,

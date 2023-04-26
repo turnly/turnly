@@ -8,7 +8,7 @@ import { EntityAttributes } from '@turnly/core'
 import { IServicesMapper } from 'services/shared/domain/contracts/services-mapper.interface'
 import { Service } from 'services/shared/domain/entities/service.entity'
 
-import { IServiceDocument, ServiceModel } from '../models/service.model'
+import { IServiceDocument, ServiceModel } from './service.model'
 
 export class ServicesMapper implements IServicesMapper<IServiceDocument> {
   public toEntity(document: IServiceDocument): Service {
