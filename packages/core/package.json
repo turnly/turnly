@@ -43,7 +43,7 @@
   "dependencies": {
     "@elastic/elasticsearch": "7.17.0",
     "@turnly/common": "^0.1.14",
-    "@turnly/datetime": "^0.1.12",
+    "@turnly/datetime": "^0.1.14",
     "@turnly/observability": "^0.1.14",
     "amqp-ts": "^1.8.0",
     "awilix": "^7.0.3",

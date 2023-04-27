@@ -1,6 +1,6 @@
 {
   "name": "@turnly/realtime-client",
-  "version": "0.1.8",
+  "version": "0.1.14",
   "description": "A socket.io-client wrapper to facilitate connecting to our RTM & Streaming API.",
   "homepage": "https://github.com/turnly/turnly#readme",
   "bugs": {
