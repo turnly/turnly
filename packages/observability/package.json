@@ -63,7 +63,7 @@
     "typescript": "^4.9.5"
   },
   "peerDependencies": {
-    "@turnly/common": "^0.1.4"
+    "@turnly/common": "^0.1.5"
   },
   "engines": {
     "node": ">=18.14"
