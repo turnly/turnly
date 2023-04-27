@@ -1,6 +1,6 @@
 {
   "name": "@turnly/core",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "description": "This module is the shared abstraction by all applications.",
   "homepage": "https://github.com/turnly/turnly#readme",
   "bugs": {
@@ -70,7 +70,7 @@
     "@turnly/common": "^0.1.11",
     "@turnly/datetime": "^0.1.11",
     "@turnly/eslint-config": "github:turnly/configs",
-    "@turnly/observability": "^0.1.11",
+    "@turnly/observability": "^0.1.12",
     "@types/compression": "^1.7.1",
     "@types/convict": "^6.1.1",
     "@types/cors": "^2.8.12",
