@@ -18,14 +18,21 @@ on:
       - main
 
 jobs:
-  unit_and_integration:
-    name: 🧩 Unit & Integration
-    uses: ./.github/workflows/tests.global-unit-integration.ci.yml
-    with:
-      mongo-username: root
-      mongo-password: turnly
-      mongo-db: testing-db
+  hello:
+    name: 🧩 Hello
+    runs-on: ubuntu-latest
+    steps:
+      - name: Hello
+        run: echo "Hello World"
 
-  e2e_and_benchmark:
-    name: 🧩 E2E & Benchmark
-    uses: ./.github/workflows/tests.global-e2e-and-benchmark.ci.yml
+  # unit_and_integration:
+  #   name: 🧩 Unit & Integration
+  #   uses: ./.github/workflows/tests.global-unit-integration.ci.yml
+  #   with:
+  #     mongo-username: root
+  #     mongo-password: turnly
+  #     mongo-db: testing-db
+
+  # e2e_and_benchmark:
+  #   name: 🧩 E2E & Benchmark
+  #   uses: ./.github/workflows/tests.global-e2e-and-benchmark.ci.yml

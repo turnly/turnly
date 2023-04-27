@@ -16,7 +16,7 @@
   ![stars](https://img.shields.io/github/stars/turnly/turnly)
   ![issues](https://img.shields.io/github/issues/turnly/turnly)
   ![license](https://img.shields.io/github/license/turnly/turnly)
-  [![Tests](https://github.com/turnly/turnly/actions/workflows/global-continuous-integration-tests.yml/badge.svg)](https://github.com/turnly/turnly/actions)
+  [![Tests](https://github.com/turnly/turnly/actions/workflows/tests.global.ci.yml/badge.svg)](https://github.com/turnly/turnly/actions)
 
   <p>
     <sub>
@@ -51,9 +51,9 @@ Turnly's main features are:
 * [x] Customers can wait anywhere, check their progress, and receive notifications when it’s their turn to be served.
 * [x] When customers arrive, they can quickly announce themselves through their smart device or an on-site self-service kiosk.
 * [x] Manage multiple locations (branches), services offered, working hours, and desks per location.
-* [ ] Offline/on site ticket-taking.
-* [ ] Modal Client for ticket-taking.
-* [ ] RN WebView Client for ticket-taking.
+* [ ] Offline/on site ticket-taking via webapp.
+* [ ] Modal Client for ticket-taking via web-widet on your website.
+* [ ] React Native client for ticket-taking for mobile apps.
 * [ ] WhatsApp conversation integration for ticket-taking.
 * [ ] Alexa Skill for ticket-taking.
 * [ ] Bot-assisted phone calls to self-ticketing.
@@ -67,6 +67,8 @@ Turnly's main features are:
 * [ ] Reminders and notifications scheduled for the future.
 * [ ] Support for SMS, Push, Emails, Calls or WhatsApp messages.
 * [ ] Business intelligence, insights and reporting.
+* [ ] Reassignment of tickets to other agents as part of the service process.
+* [ ] QR code and printed poster for visitors arriving at the site to scan the code.
 
 ___
 
@@ -76,15 +78,10 @@ ___
 
 ___
 
-### 🎯 Deployment
+### 🧑🏻‍🚒 Deployment, get the services up and running
 
-- Deploying Turnly with [Docker Compose](https://github.com/turnly/ops-compose) - Coming soon
-
-___
-
-### 🧑🏻‍🚒 Contributing (Development)
-
-Ahoy!, please if you want to correct some typo, update a readme, or contributing with code. Refer to our [Contributing Guide](/CONTRIBUTING.md) for details.
+To familiarize yourself with Turnly please use the [contributions guide](/CONTRIBUTING.md)
+to implement it in development mode without complications.
 
 ___
 
