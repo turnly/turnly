@@ -39,7 +39,7 @@ FROM base AS dependencies
 # Copy the application dependency declaration file
 COPY package.json ./
 
-RUN --mount=type=cache,id=yarn,target=/usr/local/share/.cache/yarn yarn install --immutable --immutable-cache
+RUN yarn install --immutable --immutable-cache
 
 ##
 ## Builder
