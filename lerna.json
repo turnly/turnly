@@ -14,7 +14,7 @@
       "message": "chore(release): %s"
     },
     "publish": {
-      "registry": "https://npm.pkg.github.com/turnly"
+      "registry": "registry.npmjs.org"
     }
   },
   "version": "0.1.6"
