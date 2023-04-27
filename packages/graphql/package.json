@@ -69,6 +69,6 @@
     "node": ">=18.14"
   },
   "publishConfig": {
-    "@turnly:registry": "https://npm.pkg.github.com/turnly"
+    "access": "public"
   }
 }
