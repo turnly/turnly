@@ -4,10 +4,6 @@
 
 services:
   branch-management:
-    build:
-      context: ./apps/branch-management
-      dockerfile: Dockerfile
-      target: development
     depends_on:
       elasticsearch:
         condition: service_healthy
@@ -21,10 +17,6 @@ services:
       - ./apps/branch-management/jest.config.js:/app/jest.config.js
 
   business-data-fields:
-    build:
-      context: ./apps/business-data-fields
-      dockerfile: Dockerfile
-      target: development
     depends_on:
       elasticsearch:
         condition: service_healthy
@@ -38,10 +30,6 @@ services:
       - ./apps/business-data-fields/jest.config.js:/app/jest.config.js
 
   business-management:
-    build:
-      context: ./apps/business-management
-      dockerfile: Dockerfile
-      target: development
     depends_on:
       elasticsearch:
         condition: service_healthy
@@ -55,10 +43,6 @@ services:
       - ./apps/business-management/jest.config.js:/app/jest.config.js
 
   channels:
-    build:
-      context: ./apps/channels
-      dockerfile: Dockerfile
-      target: development
     depends_on:
       elasticsearch:
         condition: service_healthy
@@ -72,10 +56,6 @@ services:
       - ./apps/channels/jest.config.js:/app/jest.config.js
 
   memberships:
-    build:
-      context: ./apps/memberships
-      dockerfile: Dockerfile
-      target: development
     depends_on:
       elasticsearch:
         condition: service_healthy
@@ -89,10 +69,6 @@ services:
       - ./apps/memberships/jest.config.js:/app/jest.config.js
 
   queuing-system:
-    build:
-      context: ./apps/queuing-system
-      dockerfile: Dockerfile
-      target: development
     depends_on:
       elasticsearch:
         condition: service_healthy
@@ -106,10 +82,6 @@ services:
       - ./apps/queuing-system/jest.config.js:/app/jest.config.js
 
   helpdesk-api:
-    build:
-      context: ./apps/helpdesk-api
-      dockerfile: Dockerfile
-      target: development
     volumes:
       - ./apps/helpdesk-api/src:/app/src
       - ./apps/helpdesk-api/tests:/app/tests
@@ -118,10 +90,6 @@ services:
       - ./apps/helpdesk-api/jest.config.js:/app/jest.config.js
 
   helpdesk-realtime-api:
-    build:
-      context: ./apps/helpdesk-realtime-api
-      dockerfile: Dockerfile
-      target: development
     volumes:
       - ./apps/helpdesk-realtime-api/src:/app/src
       - ./apps/helpdesk-realtime-api/tests:/app/tests
@@ -130,10 +98,6 @@ services:
       - ./apps/helpdesk-realtime-api/jest.config.js:/app/jest.config.js
 
   widgets-api:
-    build:
-      context: ./apps/widgets-api
-      dockerfile: Dockerfile
-      target: development
     volumes:
       - ./apps/widgets-api/src:/app/src
       - ./apps/widgets-api/tests:/app/tests
@@ -142,10 +106,6 @@ services:
       - ./apps/widgets-api/jest.config.js:/app/jest.config.js
 
   widgets-realtime-api:
-    build:
-      context: ./apps/widgets-realtime-api
-      dockerfile: Dockerfile
-      target: development
     volumes:
       - ./apps/widgets-realtime-api/src:/app/src
       - ./apps/widgets-realtime-api/tests:/app/tests

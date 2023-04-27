@@ -41,6 +41,7 @@ services:
 
   branch-management:
     image: ghcr.io/turnly/branch-management:latest
+    build: ./apps/branch-management
     restart: unless-stopped
     environment:
       <<: *environment
@@ -61,6 +62,7 @@ services:
 
   business-data-fields:
     image: ghcr.io/turnly/business-data-fields:latest
+    build: ./apps/business-data-fields
     restart: unless-stopped
     environment:
       <<: *environment
@@ -81,6 +83,7 @@ services:
 
   business-management:
     image: ghcr.io/turnly/business-management:latest
+    build: ./apps/business-management
     restart: unless-stopped
     environment:
       <<: *environment
@@ -101,6 +104,7 @@ services:
 
   channels:
     image: ghcr.io/turnly/channels:latest
+    build: ./apps/channels
     restart: unless-stopped
     environment:
       <<: *environment
@@ -121,6 +125,7 @@ services:
 
   memberships:
     image: ghcr.io/turnly/memberships:latest
+    build: ./apps/memberships
     restart: unless-stopped
     environment:
       <<: *environment
@@ -141,6 +146,7 @@ services:
 
   queuing-system:
     image: ghcr.io/turnly/queuing-system:latest
+    build: ./apps/queuing-system
     restart: unless-stopped
     environment:
       <<: *environment
@@ -161,6 +167,7 @@ services:
 
   helpdesk-api:
     image: ghcr.io/turnly/helpdesk-api:latest
+    build: ./apps/helpdesk-api
     restart: unless-stopped
     environment:
       <<: *environment
@@ -176,6 +183,7 @@ services:
 
   helpdesk-realtime-api:
     image: ghcr.io/turnly/helpdesk-realtime-api:latest
+    build: ./apps/helpdesk-realtime-api
     restart: unless-stopped
     environment:
       <<: *environment
@@ -192,6 +200,7 @@ services:
 
   widgets-api:
     image: ghcr.io/turnly/widgets-api:latest
+    build: ./apps/widgets-api
     restart: unless-stopped
     environment:
       <<: *environment
@@ -207,6 +216,7 @@ services:
 
   widgets-realtime-api:
     image: ghcr.io/turnly/widgets-realtime-api:latest
+    build: ./apps/widgets-realtime-api
     restart: unless-stopped
     environment:
       <<: *environment
