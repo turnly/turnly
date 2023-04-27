@@ -1,6 +1,6 @@
 {
   "name": "@turnly/helpdesk-realtime-api",
-  "version": "0.1.14",
+  "version": "0.1.15",
   "private": true,
   "description": "It's the real-time event bridge that sends data between internal services and applications.",
   "license": "BSD-3-Clause",
@@ -24,9 +24,9 @@
   },
   "dependencies": {
     "@turnly/common": "^0.1.14",
-    "@turnly/core": "^0.1.14",
-    "@turnly/grpc": "^0.1.14",
-    "@turnly/realtime": "^0.1.14",
+    "@turnly/core": "^0.1.15",
+    "@turnly/grpc": "^0.1.15",
+    "@turnly/realtime": "^0.1.15",
     "dotenv": "^16.0.1",
     "mongoose": "^6.4.6"
   },
