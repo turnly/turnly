@@ -41,7 +41,7 @@
     "**/esquery": "1.4.0"
   },
   "dependencies": {
-    "nanoid": "^4.0.1"
+    "nanoid": "3.3.6"
   },
   "devDependencies": {
     "@turnly/eslint-config": "github:turnly/configs",
