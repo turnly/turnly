@@ -1,6 +1,6 @@
 {
   "name": "@turnly/widgets-realtime-api",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "private": true,
   "description": "It's the real-time event bridge that sends data between internal services and applications.",
   "license": "BSD-3-Clause",
@@ -23,11 +23,11 @@
     ]
   },
   "dependencies": {
-    "@turnly/common": "^0.1.12",
-    "@turnly/core": "^0.1.12",
-    "@turnly/grpc": "^0.1.12",
-    "@turnly/observability": "^0.1.12",
-    "@turnly/realtime": "^0.1.12",
+    "@turnly/common": "^0.1.13",
+    "@turnly/core": "^0.1.13",
+    "@turnly/grpc": "^0.1.13",
+    "@turnly/observability": "^0.1.13",
+    "@turnly/realtime": "^0.1.13",
     "dotenv": "^16.0.1",
     "mongoose": "^6.4.6"
   },
