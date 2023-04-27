@@ -1,6 +1,6 @@
 {
   "name": "@turnly/auth",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "...",
   "homepage": "https://github.com/turnly/turnly#readme",
   "bugs": {
@@ -46,7 +46,7 @@
   },
   "devDependencies": {
     "@turnly/eslint-config": "github:turnly/configs",
-    "@turnly/observability": "^0.1.5",
+    "@turnly/observability": "^0.1.6",
     "@types/node": "^18.14.0",
     "eslint": "^8.34.0",
     "prettier": "^2.3.0",
