@@ -59,6 +59,168 @@ services:
       - traefik.http.services.branch-management.loadbalancer.server.port=${APP_PORT}
       - traefik.http.routers.branch-management.rule=PathPrefix(`/turnly.branch_management.v1`)
 
+  business-data-fields:
+    image: ghcr.io/turnly/business-data-fields:latest
+    restart: unless-stopped
+    environment:
+      <<: *environment
+      APP_NAME: business-data-fields
+      MONGO_DB: business-data-fields-db
+      RABBITMQ_QUEUE: turnly.ms.business-data-fields.queue
+    networks:
+      turnly.vpc.internal:
+        aliases:
+          - business-data-fields.turnly.local
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.business-data-fields.entrypoints=web
+      - traefik.http.routers.business-data-fields.service=business-data-fields
+      - traefik.http.services.business-data-fields.loadbalancer.server.scheme=h2c
+      - traefik.http.services.business-data-fields.loadbalancer.server.port=${APP_PORT}
+      - traefik.http.routers.business-data-fields.rule=PathPrefix(`/turnly.business_data_fields.v1`)
+
+  business-management:
+    image: ghcr.io/turnly/business-management:latest
+    restart: unless-stopped
+    environment:
+      <<: *environment
+      APP_NAME: business-management
+      MONGO_DB: business-management-db
+      RABBITMQ_QUEUE: turnly.ms.business-management.queue
+    networks:
+      turnly.vpc.internal:
+        aliases:
+          - business-management.turnly.local
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.business-management.entrypoints=web
+      - traefik.http.routers.business-management.service=business-management
+      - traefik.http.services.business-management.loadbalancer.server.scheme=h2c
+      - traefik.http.services.business-management.loadbalancer.server.port=${APP_PORT}
+      - traefik.http.routers.business-management.rule=PathPrefix(`/turnly.business_management.v1`)
+
+  channels:
+    image: ghcr.io/turnly/channels:latest
+    restart: unless-stopped
+    environment:
+      <<: *environment
+      APP_NAME: channels
+      MONGO_DB: channels-db
+      RABBITMQ_QUEUE: turnly.ms.channels.queue
+    networks:
+      turnly.vpc.internal:
+        aliases:
+          - channels.turnly.local
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.channels.entrypoints=web
+      - traefik.http.routers.channels.service=channels
+      - traefik.http.services.channels.loadbalancer.server.scheme=h2c
+      - traefik.http.services.channels.loadbalancer.server.port=${APP_PORT}
+      - traefik.http.routers.channels.rule=PathPrefix(`/turnly.channels.v1`)
+
+  memberships:
+    image: ghcr.io/turnly/memberships:latest
+    restart: unless-stopped
+    environment:
+      <<: *environment
+      APP_NAME: memberships
+      MONGO_DB: memberships-db
+      RABBITMQ_QUEUE: turnly.ms.memberships.queue
+    networks:
+      turnly.vpc.internal:
+        aliases:
+          - memberships.turnly.local
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.memberships.entrypoints=web
+      - traefik.http.routers.memberships.service=memberships
+      - traefik.http.services.memberships.loadbalancer.server.scheme=h2c
+      - traefik.http.services.memberships.loadbalancer.server.port=${APP_PORT}
+      - traefik.http.routers.memberships.rule=PathPrefix(`/turnly.memberships.v1`)
+
+  queuing-system:
+    image: ghcr.io/turnly/queuing-system:latest
+    restart: unless-stopped
+    environment:
+      <<: *environment
+      APP_NAME: queuing-system
+      MONGO_DB: queuing-system-db
+      RABBITMQ_QUEUE: turnly.ms.queuing-system.queue
+    networks:
+      turnly.vpc.internal:
+        aliases:
+          - queuing-system.turnly.local
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.queuing-system.entrypoints=web
+      - traefik.http.routers.queuing-system.service=queuing-system
+      - traefik.http.services.queuing-system.loadbalancer.server.scheme=h2c
+      - traefik.http.services.queuing-system.loadbalancer.server.port=${APP_PORT}
+      - traefik.http.routers.queuing-system.rule=PathPrefix(`/turnly.queuing-system.v1`)
+
+  helpdesk-api:
+    image: ghcr.io/turnly/helpdesk-api:latest
+    restart: unless-stopped
+    environment:
+      <<: *environment
+      APP_NAME: helpdesk-api
+    networks:
+      - turnly.vpc.internal
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.helpdesk-api.entrypoints=web
+      - traefik.http.routers.helpdesk-api.service=helpdesk-api
+      - traefik.http.services.helpdesk-api.loadbalancer.server.port=${APP_PORT}
+      - traefik.http.routers.helpdesk-api.rule=PathPrefix(`/api/helpdesk`)
+
+  helpdesk-realtime-api:
+    image: ghcr.io/turnly/helpdesk-realtime-api:latest
+    restart: unless-stopped
+    environment:
+      <<: *environment
+      APP_NAME: helpdesk-realtime-api
+      RABBITMQ_QUEUE: turnly.ms.helpdesk-realtime-api.queue
+    networks:
+      - turnly.vpc.internal
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.helpdesk-realtime-api.entrypoints=web
+      - traefik.http.routers.helpdesk-realtime-api.service=helpdesk-realtime-api
+      - traefik.http.services.helpdesk-realtime-api.loadbalancer.server.port=${APP_PORT}
+      - traefik.http.routers.helpdesk-realtime-api.rule=PathPrefix(`/api/rtm/helpdesk`)
+
+  widgets-api:
+    image: ghcr.io/turnly/widgets-api:latest
+    restart: unless-stopped
+    environment:
+      <<: *environment
+      APP_NAME: widgets-api
+    networks:
+      - turnly.vpc.internal
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.widgets-api.entrypoints=web
+      - traefik.http.routers.widgets-api.service=widgets-api
+      - traefik.http.services.widgets-api.loadbalancer.server.port=${APP_PORT}
+      - traefik.http.routers.widgets-api.rule=PathPrefix(`/api/widgets`)
+
+  widgets-realtime-api:
+    image: ghcr.io/turnly/widgets-realtime-api:latest
+    restart: unless-stopped
+    environment:
+      <<: *environment
+      APP_NAME: widgets-realtime-api
+      RABBITMQ_QUEUE: turnly.ms.widgets-realtime-api.queue
+    networks:
+      - turnly.vpc.internal
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.widgets-realtime-api.entrypoints=web
+      - traefik.http.routers.widgets-realtime-api.service=widgets-realtime-api
+      - traefik.http.services.widgets-realtime-api.loadbalancer.server.port=${APP_PORT}
+      - traefik.http.routers.widgets-realtime-api.rule=PathPrefix(`/api/rtm/widgets`)
+
 networks:
   turnly.vpc.internal:
     name: turnly.vpc.internal

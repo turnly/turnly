@@ -19,3 +19,136 @@ services:
       - ./apps/branch-management/package.json:/app/package.json
       - ./apps/branch-management/tsconfig.json:/app/tsconfig.json
       - ./apps/branch-management/jest.config.js:/app/jest.config.js
+
+  business-data-fields:
+    build:
+      context: ./apps/business-data-fields
+      dockerfile: Dockerfile
+      target: development
+    depends_on:
+      elasticsearch:
+        condition: service_healthy
+      mongo:
+        condition: service_healthy
+    volumes:
+      - ./apps/business-data-fields/src:/app/src
+      - ./apps/business-data-fields/tests:/app/tests
+      - ./apps/business-data-fields/package.json:/app/package.json
+      - ./apps/business-data-fields/tsconfig.json:/app/tsconfig.json
+      - ./apps/business-data-fields/jest.config.js:/app/jest.config.js
+
+  business-management:
+    build:
+      context: ./apps/business-management
+      dockerfile: Dockerfile
+      target: development
+    depends_on:
+      elasticsearch:
+        condition: service_healthy
+      mongo:
+        condition: service_healthy
+    volumes:
+      - ./apps/business-management/src:/app/src
+      - ./apps/business-management/tests:/app/tests
+      - ./apps/business-management/package.json:/app/package.json
+      - ./apps/business-management/tsconfig.json:/app/tsconfig.json
+      - ./apps/business-management/jest.config.js:/app/jest.config.js
+
+  channels:
+    build:
+      context: ./apps/channels
+      dockerfile: Dockerfile
+      target: development
+    depends_on:
+      elasticsearch:
+        condition: service_healthy
+      mongo:
+        condition: service_healthy
+    volumes:
+      - ./apps/channels/src:/app/src
+      - ./apps/channels/tests:/app/tests
+      - ./apps/channels/package.json:/app/package.json
+      - ./apps/channels/tsconfig.json:/app/tsconfig.json
+      - ./apps/channels/jest.config.js:/app/jest.config.js
+
+  memberships:
+    build:
+      context: ./apps/memberships
+      dockerfile: Dockerfile
+      target: development
+    depends_on:
+      elasticsearch:
+        condition: service_healthy
+      mongo:
+        condition: service_healthy
+    volumes:
+      - ./apps/memberships/src:/app/src
+      - ./apps/memberships/tests:/app/tests
+      - ./apps/memberships/package.json:/app/package.json
+      - ./apps/memberships/tsconfig.json:/app/tsconfig.json
+      - ./apps/memberships/jest.config.js:/app/jest.config.js
+
+  queuing-system:
+    build:
+      context: ./apps/queuing-system
+      dockerfile: Dockerfile
+      target: development
+    depends_on:
+      elasticsearch:
+        condition: service_healthy
+      mongo:
+        condition: service_healthy
+    volumes:
+      - ./apps/queuing-system/src:/app/src
+      - ./apps/queuing-system/tests:/app/tests
+      - ./apps/queuing-system/package.json:/app/package.json
+      - ./apps/queuing-system/tsconfig.json:/app/tsconfig.json
+      - ./apps/queuing-system/jest.config.js:/app/jest.config.js
+
+  helpdesk-api:
+    build:
+      context: ./apps/helpdesk-api
+      dockerfile: Dockerfile
+      target: development
+    volumes:
+      - ./apps/helpdesk-api/src:/app/src
+      - ./apps/helpdesk-api/tests:/app/tests
+      - ./apps/helpdesk-api/package.json:/app/package.json
+      - ./apps/helpdesk-api/tsconfig.json:/app/tsconfig.json
+      - ./apps/helpdesk-api/jest.config.js:/app/jest.config.js
+
+  helpdesk-realtime-api:
+    build:
+      context: ./apps/helpdesk-realtime-api
+      dockerfile: Dockerfile
+      target: development
+    volumes:
+      - ./apps/helpdesk-realtime-api/src:/app/src
+      - ./apps/helpdesk-realtime-api/tests:/app/tests
+      - ./apps/helpdesk-realtime-api/package.json:/app/package.json
+      - ./apps/helpdesk-realtime-api/tsconfig.json:/app/tsconfig.json
+      - ./apps/helpdesk-realtime-api/jest.config.js:/app/jest.config.js
+
+  widgets-api:
+    build:
+      context: ./apps/widgets-api
+      dockerfile: Dockerfile
+      target: development
+    volumes:
+      - ./apps/widgets-api/src:/app/src
+      - ./apps/widgets-api/tests:/app/tests
+      - ./apps/widgets-api/package.json:/app/package.json
+      - ./apps/widgets-api/tsconfig.json:/app/tsconfig.json
+      - ./apps/widgets-api/jest.config.js:/app/jest.config.js
+
+  widgets-realtime-api:
+    build:
+      context: ./apps/widgets-realtime-api
+      dockerfile: Dockerfile
+      target: development
+    volumes:
+      - ./apps/widgets-realtime-api/src:/app/src
+      - ./apps/widgets-realtime-api/tests:/app/tests
+      - ./apps/widgets-realtime-api/package.json:/app/package.json
+      - ./apps/widgets-realtime-api/tsconfig.json:/app/tsconfig.json
+      - ./apps/widgets-realtime-api/jest.config.js:/app/jest.config.js
