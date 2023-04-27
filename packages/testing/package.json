@@ -1,6 +1,6 @@
 {
   "name": "@turnly/testing",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Some stuff for testing, such as mocks, object mother, etc.",
   "homepage": "https://github.com/turnly/turnly#readme",
   "bugs": {
@@ -45,7 +45,7 @@
   },
   "devDependencies": {
     "@turnly/common": "^0.1.5",
-    "@turnly/core": "^0.1.6",
+    "@turnly/core": "^0.1.7",
     "@turnly/eslint-config": "github:turnly/configs",
     "@types/jest": "^29.4.0",
     "@types/node": "^18.14.0",
