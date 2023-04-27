@@ -28,9 +28,9 @@
     ]
   },
   "dependencies": {
-    "@turnly/common": "^0.1.9",
+    "@turnly/common": "^0.1.10",
     "@turnly/core": "^0.1.10",
-    "@turnly/datetime": "^0.1.9",
+    "@turnly/datetime": "^0.1.10",
     "@turnly/grpc": "^0.1.10",
     "@turnly/observability": "^0.1.10",
     "dotenv": "^16.0.1",

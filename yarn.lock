@@ -8498,7 +8498,7 @@ msgpack-lite@*:
   dependencies:
     event-lite "^0.1.1"
     ieee754 "^1.1.8"
-    int64-buffer "^0.1.9"
+    int64-buffer "^0.1.10"
     isarray "^1.0.0"
 
 multimatch@5.0.0:

@@ -1,6 +1,6 @@
 {
   "name": "@turnly/common",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "Common parts between all services in general terms.",
   "homepage": "https://github.com/turnly/turnly#readme",
   "bugs": {

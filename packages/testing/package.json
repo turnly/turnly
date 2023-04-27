@@ -44,7 +44,7 @@
     "@faker-js/faker": "8.0.0-alpha.0"
   },
   "devDependencies": {
-    "@turnly/common": "^0.1.9",
+    "@turnly/common": "^0.1.10",
     "@turnly/core": "^0.1.10",
     "@turnly/eslint-config": "github:turnly/configs",
     "@types/jest": "^29.4.0",
@@ -55,8 +55,8 @@
     "typescript": "^4.9.5"
   },
   "peerDependencies": {
-    "@turnly/common": "^0.1.9",
-    "@turnly/core": "^0.1.9",
+    "@turnly/common": "^0.1.10",
+    "@turnly/core": "^0.1.10",
     "jest": "^29.4.3"
   },
   "engines": {

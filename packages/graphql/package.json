@@ -50,7 +50,7 @@
     "type-graphql": "^1.1.1"
   },
   "devDependencies": {
-    "@turnly/common": "^0.1.9",
+    "@turnly/common": "^0.1.10",
     "@turnly/core": "^0.1.10",
     "@turnly/eslint-config": "github:turnly/configs",
     "@turnly/observability": "^0.1.10",
@@ -61,9 +61,9 @@
     "typescript": "^4.9.5"
   },
   "peerDependencies": {
-    "@turnly/common": "^0.1.9",
-    "@turnly/core": "^0.1.9",
-    "@turnly/observability": "^0.1.9"
+    "@turnly/common": "^0.1.10",
+    "@turnly/core": "^0.1.10",
+    "@turnly/observability": "^0.1.10"
   },
   "engines": {
     "node": ">=18.14"
