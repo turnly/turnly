@@ -7,19 +7,23 @@
 import dotenv from 'dotenv'
 dotenv.config()
 
-import 'services/shared/register.dependency'
-import 'locations/shared/register.dependency'
-
 import { config, eventBus } from '@turnly/core'
 import { Tracing } from '@turnly/observability'
 
 Tracing.Trace.initialize({ name: config.get('app.name') })
 
-import { Application } from 'application'
+/**
+ * Register dependencies
+ *
+ * @description Register dependencies to the dependency injection container.
+ */
+import 'services/shared/register.dependency'
+import 'locations/shared/register.dependency'
 
 async function bootstrap() {
-  await new Application().setup()
+  const { Application } = await import('./application')
 
+  new Application().setup()
   await eventBus.setup()
 }
 
