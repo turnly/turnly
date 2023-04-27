@@ -36,4 +36,10 @@ export interface OidcOptions extends Omit<VerifyOptions, 'algorithms'> {
      */
     file?: string
   }
+  /**
+   * Ignore token type
+   *
+   * @description If set to true, the JWT type will not be verified.
+   */
+  ignoreType?: boolean
 }

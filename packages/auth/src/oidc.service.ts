@@ -76,7 +76,7 @@ export class OIDC {
             return reject(err)
           }
 
-          if (decoded && decoded['typ'] !== JwtType.BEARER)
+          if (!this.isValidType((decoded as T)['typ']))
             return reject(
               new UnauthenticatedException(
                 'Oops! Your token type is invalid, we expected a access token (Bearer) but received a different token type.'
@@ -87,5 +87,11 @@ export class OIDC {
         }
       )
     })
+  }
+
+  private isValidType(type?: JwtType): boolean {
+    if (this.defaultOptions.ignoreType) return true
+
+    return type === JwtType.BEARER
   }
 }

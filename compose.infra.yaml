@@ -3,23 +3,6 @@
 # We're exposing here sensitive ports and services.
 
 services:
-  branch-management:
-    build:
-      context: ./apps/branch-management
-      dockerfile: Dockerfile
-      target: ${DOCKER_BUILD_STAGE}
-    depends_on:
-      elasticsearch:
-        condition: service_healthy
-      mongo:
-        condition: service_healthy
-    volumes:
-      - ./apps/branch-management/src:/app/src
-      - ./apps/branch-management/tests:/app/tests
-      - ./apps/branch-management/package.json:/app/package.json
-      - ./apps/branch-management/tsconfig.json:/app/tsconfig.json
-      - ./apps/branch-management/jest.config.js:/app/jest.config.js
-
   mongo:
     image: mongo:5.0.12
     environment:
@@ -103,7 +86,8 @@ services:
     environment:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_USER: ${POSTGRES_USER}
-      POSTGRES_DB: ${POSTGRES_DB}
+      TZ: UTC
+      PGTZ: UTC
     volumes:
       - pg_data:/var/lib/postgresql/data
     networks:
@@ -118,10 +102,12 @@ services:
 
   postgres-ui:
     image: adminer:4.8.1
+    ports:
+      - ${POSTGRES_UI_PORT}:8080
     networks:
       - turnly.vpc.internal
     environment:
-      ADMINER_DEFAULT_SERVER: postgres.turnly.local
+      ADMINER_DEFAULT_SERVER: postgres
     depends_on:
       postgres:
         condition: service_healthy

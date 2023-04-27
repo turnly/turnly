@@ -10,8 +10,8 @@
     "packages/*"
   ],
   "scripts": {
-    "start": "docker compose -f compose.yaml -f compose.dev.yaml up -d --remove-orphans",
-    "stop": "docker compose -f compose.yaml -f compose.dev.yaml down --remove-orphans",
+    "start": "docker compose -f compose.yaml -f compose.infra.yaml -f compose.watch.yaml up -d --remove-orphans",
+    "stop": "docker compose -f compose.yaml -f compose.infra.yaml -f compose.watch.yaml down --remove-orphans",
     "setup": "yarn grpc:setup && lerna bootstrap",
     "prepare": "husky install",
     "build": "lerna run build",

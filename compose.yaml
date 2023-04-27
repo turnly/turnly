@@ -56,6 +56,7 @@ services:
       - traefik.http.routers.branch-management.entrypoints=web
       - traefik.http.routers.branch-management.service=branch-management
       - traefik.http.services.branch-management.loadbalancer.server.scheme=h2c
+      - traefik.http.services.branch-management.loadbalancer.server.port=${APP_PORT}
       - traefik.http.routers.branch-management.rule=PathPrefix(`/turnly.branch_management.v1`)
 
 networks:

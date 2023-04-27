@@ -1,0 +1,21 @@
+# WARNING!
+# Use this file only for development purposes.
+# We're exposing here sensitive ports and services.
+
+services:
+  branch-management:
+    build:
+      context: ./apps/branch-management
+      dockerfile: Dockerfile
+      target: development
+    depends_on:
+      elasticsearch:
+        condition: service_healthy
+      mongo:
+        condition: service_healthy
+    volumes:
+      - ./apps/branch-management/src:/app/src
+      - ./apps/branch-management/tests:/app/tests
+      - ./apps/branch-management/package.json:/app/package.json
+      - ./apps/branch-management/tsconfig.json:/app/tsconfig.json
+      - ./apps/branch-management/jest.config.js:/app/jest.config.js
