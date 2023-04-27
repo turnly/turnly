@@ -41,6 +41,9 @@
     "**/esquery": "1.4.0"
   },
   "dependencies": {
+    "@turnly/common": "^0.1.12",
+    "@turnly/datetime": "^0.1.12",
+    "@turnly/observability": "^0.1.12",
     "@elastic/elasticsearch": "7.17.0",
     "amqp-ts": "^1.8.0",
     "awilix": "^7.0.3",
@@ -67,10 +70,7 @@
     "ua-parser-js": "^1.0.2"
   },
   "devDependencies": {
-    "@turnly/common": "^0.1.11",
-    "@turnly/datetime": "^0.1.11",
     "@turnly/eslint-config": "github:turnly/configs",
-    "@turnly/observability": "^0.1.12",
     "@types/compression": "^1.7.1",
     "@types/convict": "^6.1.1",
     "@types/cors": "^2.8.12",
@@ -82,11 +82,6 @@
     "eslint": "^8.34.0",
     "prettier": "^2.3.0",
     "typescript": "^4.9.5"
-  },
-  "peerDependencies": {
-    "@turnly/common": "^0.1.11",
-    "@turnly/datetime": "^0.1.11",
-    "@turnly/observability": "^0.1.11"
   },
   "engines": {
     "node": ">=18.14"

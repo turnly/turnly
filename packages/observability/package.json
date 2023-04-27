@@ -41,6 +41,7 @@
     "**/esquery": "1.4.0"
   },
   "dependencies": {
+    "@turnly/common": "^0.1.12",
     "@opentelemetry/api": "^1.4.0",
     "@opentelemetry/exporter-jaeger": "^1.9.1",
     "@opentelemetry/instrumentation-grpc": "^0.35.1",
@@ -54,16 +55,12 @@
     "winston": "^3.3.3"
   },
   "devDependencies": {
-    "@turnly/common": "^0.1.11",
     "@turnly/eslint-config": "github:turnly/configs",
     "@types/node": "^18.14.0",
     "@types/opossum": "^6.2.1",
     "eslint": "^8.34.0",
     "prettier": "^2.8.4",
     "typescript": "^4.9.5"
-  },
-  "peerDependencies": {
-    "@turnly/common": "^0.1.11"
   },
   "engines": {
     "node": ">=18.14"

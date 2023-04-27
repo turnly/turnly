@@ -43,15 +43,15 @@
     "**/esquery": "1.4.0"
   },
   "dependencies": {
+    "@turnly/common": "^0.1.12",
+    "@turnly/observability": "^0.1.12",
     "@grpc/grpc-js": "^1.8.9",
     "@turnly/auth": "^0.1.12",
     "google-protobuf": "^3.21.2",
     "grpcjs-interceptors": "^0.1.15"
   },
   "devDependencies": {
-    "@turnly/common": "^0.1.11",
     "@turnly/eslint-config": "github:turnly/configs",
-    "@turnly/observability": "^0.1.12",
     "@turnly/testing": "^0.1.12",
     "@types/jest": "^28.1.4",
     "@types/node": "^18.14.0",
@@ -63,10 +63,6 @@
     "prettier": "^2.3.0",
     "ts-jest": "^28.0.5",
     "typescript": "^4.9.5"
-  },
-  "peerDependencies": {
-    "@turnly/common": "^0.1.11",
-    "@turnly/observability": "^0.1.11"
   },
   "engines": {
     "node": ">=18.14"
