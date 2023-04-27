@@ -1,6 +1,6 @@
 {
   "name": "@turnly/business-data-fields",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "private": true,
   "description": "An on-demand business data fields management service",
   "license": "BSD-3-Clause",
@@ -28,16 +28,16 @@
     ]
   },
   "dependencies": {
-    "@turnly/common": "^0.1.4",
-    "@turnly/core": "^0.1.4",
-    "@turnly/grpc": "^0.1.4",
-    "@turnly/observability": "^0.1.4",
+    "@turnly/common": "^0.1.5",
+    "@turnly/core": "^0.1.5",
+    "@turnly/grpc": "^0.1.5",
+    "@turnly/observability": "^0.1.5",
     "dotenv": "^16.0.1",
     "mongoose": "^6.4.6"
   },
   "devDependencies": {
     "@turnly/eslint-config": "github:turnly/configs",
-    "@turnly/testing": "^0.1.4",
+    "@turnly/testing": "^0.1.5",
     "@types/jest": "^28.1.4",
     "@types/node": "^18.14.0",
     "cross-env": "^7.0.3",

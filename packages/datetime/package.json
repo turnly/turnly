@@ -1,6 +1,6 @@
 {
   "name": "@turnly/datetime",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Library for working with dates and times in JavaScript",
   "homepage": "https://github.com/turnly/turnly#readme",
   "bugs": {
