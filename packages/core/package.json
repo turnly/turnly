@@ -1,6 +1,6 @@
 {
   "name": "@turnly/core",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "This module is the shared abstraction by all applications.",
   "homepage": "https://github.com/turnly/turnly#readme",
   "bugs": {
@@ -67,10 +67,10 @@
     "ua-parser-js": "^1.0.2"
   },
   "devDependencies": {
-    "@turnly/common": "^0.1.7",
-    "@turnly/datetime": "^0.1.7",
+    "@turnly/common": "^0.1.8",
+    "@turnly/datetime": "^0.1.8",
     "@turnly/eslint-config": "github:turnly/configs",
-    "@turnly/observability": "^0.1.7",
+    "@turnly/observability": "^0.1.8",
     "@types/compression": "^1.7.1",
     "@types/convict": "^6.1.1",
     "@types/cors": "^2.8.12",
