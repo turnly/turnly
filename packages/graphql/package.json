@@ -1,6 +1,6 @@
 {
   "name": "@turnly/graph",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "The best way to build a production-ready TypeScript GraphQL server.",
   "homepage": "https://github.com/turnly/turnly#readme",
   "bugs": {
@@ -50,10 +50,10 @@
     "type-graphql": "^1.1.1"
   },
   "devDependencies": {
-    "@turnly/common": "^0.1.8",
-    "@turnly/core": "^0.1.8",
+    "@turnly/common": "^0.1.9",
+    "@turnly/core": "^0.1.9",
     "@turnly/eslint-config": "github:turnly/configs",
-    "@turnly/observability": "^0.1.8",
+    "@turnly/observability": "^0.1.9",
     "@types/node": "^18.14.0",
     "eslint": "^8.34.0",
     "jest": "^28.1.1",

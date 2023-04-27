@@ -1,6 +1,6 @@
 {
   "name": "@turnly/widgets-api",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "private": true,
   "description": "Self-service ticketing via web-widget on any website or app",
   "license": "BSD-3-Clause",
@@ -23,11 +23,11 @@
     ]
   },
   "dependencies": {
-    "@turnly/common": "^0.1.8",
-    "@turnly/core": "^0.1.8",
-    "@turnly/graph": "^0.1.8",
-    "@turnly/grpc": "^0.1.8",
-    "@turnly/observability": "^0.1.8",
+    "@turnly/common": "^0.1.9",
+    "@turnly/core": "^0.1.9",
+    "@turnly/graph": "^0.1.9",
+    "@turnly/grpc": "^0.1.9",
+    "@turnly/observability": "^0.1.9",
     "class-validator": "0.13.2",
     "dotenv": "^16.0.1",
     "graphql": "15.3.0",

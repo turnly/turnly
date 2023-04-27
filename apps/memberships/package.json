@@ -1,6 +1,6 @@
 {
   "name": "@turnly/memberships",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "private": true,
   "description": "A service that handles everything related to an organization's team (employees) like agents or location managers.",
   "license": "BSD-3-Clause",
@@ -28,15 +28,15 @@
     ]
   },
   "dependencies": {
-    "@turnly/common": "^0.1.8",
-    "@turnly/core": "^0.1.8",
-    "@turnly/grpc": "^0.1.8",
+    "@turnly/common": "^0.1.9",
+    "@turnly/core": "^0.1.9",
+    "@turnly/grpc": "^0.1.9",
     "dotenv": "^16.0.1",
     "mongoose": "^6.4.6"
   },
   "devDependencies": {
     "@turnly/eslint-config": "github:turnly/configs",
-    "@turnly/testing": "^0.1.8",
+    "@turnly/testing": "^0.1.9",
     "@types/jest": "^28.1.4",
     "@types/node": "^16.10.2",
     "cross-env": "^7.0.3",
