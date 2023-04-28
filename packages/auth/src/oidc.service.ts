@@ -5,15 +5,11 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import { UnauthenticatedException } from '@turnly/observability'
-import {
-  JsonWebTokenError,
-  TokenExpiredError,
-  VerifyOptions,
-} from 'jsonwebtoken'
+import { JsonWebTokenError, TokenExpiredError } from 'jsonwebtoken'
 import jwt from 'jsonwebtoken'
 
 import { KeySet } from './jwks.service'
-import { JwtPayload, JwtType, OidcOptions } from './jwt.type'
+import { JwtType, OidcOptions, VerifyOptions } from './jwt.type'
 
 /**
  * OpenID Connect (OIDC)
@@ -41,46 +37,42 @@ export class OIDC {
    *
    * @description Use this method to verify the JWTs issued by the OIDC provider.
    */
-  public async verify<T extends JwtPayload>(
+  public async verify<T extends jwt.JwtPayload>(
     token: string,
-    options?: Omit<VerifyOptions, 'algorithms'>
+    defaultOptions?: VerifyOptions
   ): Promise<T> {
     return new Promise((resolve, reject) => {
       if (!token)
-        return reject(
-          new UnauthenticatedException(
-            "Access denied! You're trying to access a protected resource without an access token."
-          )
+        throw new UnauthenticatedException(
+          "Access denied! You're trying to access a protected resource without an access token."
         )
+
+      const options = this.getVerifyOptions(defaultOptions)
 
       jwt.verify(
         token,
         ({ kid }, callback) => callback(null, this.jwks.getPublicKey(kid)),
-        { ...this.defaultOptions, ...options, algorithms: ['RS256'] },
+        options,
         (err, decoded) => {
           if (err) {
             if (err instanceof TokenExpiredError)
-              return reject(
-                new UnauthenticatedException(
-                  'Oops! Your token has expired and is no longer valid.'
-                )
+              throw new UnauthenticatedException(
+                'Oops! Your token has expired and is no longer valid.'
               )
 
             if (err instanceof JsonWebTokenError)
-              return reject(
-                new UnauthenticatedException(
-                  'Oops! Your token is invalid and cannot be verified.'
-                )
+              throw new UnauthenticatedException(
+                'Oops! Your token is invalid and cannot be verified.'
               )
 
             return reject(err)
           }
 
-          if (!this.isValidType((decoded as T)['typ']))
-            return reject(
-              new UnauthenticatedException(
-                'Oops! Your token type is invalid, we expected a access token (Bearer) but received a different token type.'
-              )
+          const tokenType = OIDC.getTypeFromPayload(decoded as T, options)
+
+          if (!OIDC.isValidType(options, tokenType))
+            throw new UnauthenticatedException(
+              'Oops! Your token type is invalid, we expected a different token type.'
             )
 
           resolve(decoded as T)
@@ -89,9 +81,39 @@ export class OIDC {
     })
   }
 
-  private isValidType(type?: JwtType): boolean {
-    if (this.defaultOptions.ignoreType) return true
+  private getVerifyOptions(options?: VerifyOptions) {
+    return {
+      ...this.defaultOptions,
+      ...options,
+      /**
+       * NOTE: The algorithms option is not configurable. We only support RS256.
+       */
+      algorithms: ['RS256'] as jwt.Algorithm[],
+    }
+  }
 
-    return type === JwtType.BEARER
+  private static getTypeFromPayload<T extends jwt.JwtPayload>(
+    payload: T,
+    options: VerifyOptions
+  ) {
+    const key = options['typeProperty'] || 'typ'
+
+    return payload[key] as JwtType | string
+  }
+
+  private static isValidType(
+    options: VerifyOptions,
+    tokenType?: JwtType | string
+  ): boolean {
+    const { ignoreType: canIgnoreType, type: validType } = options
+
+    if (canIgnoreType) return true
+
+    if (!validType)
+      throw new UnauthenticatedException(
+        "Oops! You didn't specify a token type or didn't allow to ignore the token type."
+      )
+
+    return tokenType === validType
   }
 }

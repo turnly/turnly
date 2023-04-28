@@ -5,7 +5,7 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 
-import { JwtPayload as Payload, VerifyOptions } from 'jsonwebtoken'
+import { JwtPayload, VerifyOptions as VOptions } from 'jsonwebtoken'
 
 export enum JwtType {
   BEARER = 'Bearer',
@@ -13,13 +13,38 @@ export enum JwtType {
   ID = 'ID',
 }
 
-export interface JwtPayload extends Payload {
+export interface AuthPayload extends JwtPayload {
   sub: string
   groups: string[]
-  typ: JwtType
+  typ: JwtType | string
 }
 
-export interface OidcOptions extends Omit<VerifyOptions, 'algorithms'> {
+export interface VerifyOptions extends Omit<VOptions, 'algorithms'> {
+  /**
+   * Ignore token type
+   *
+   * @description If set to true, the JWT type will not be verified.
+   */
+  ignoreType?: boolean
+
+  /**
+   * Token type
+   *
+   * @description The type of the JWT token.
+   * @example 'Bearer' | 'Refresh' | 'ID' | 'access_token' | 'refresh_token' | 'id_token'
+   */
+  type?: JwtType | string
+
+  /**
+   * Type property
+   *
+   * @description The name of the property that contains the JWT type.
+   * @example 'typ' | 'token_type' | 'source'
+   */
+  typeProperty?: string
+}
+
+export interface OidcOptions extends VerifyOptions {
   jwks: {
     /**
      * JSON Web Key Set (JWKS) URI
@@ -36,10 +61,4 @@ export interface OidcOptions extends Omit<VerifyOptions, 'algorithms'> {
      */
     file?: string
   }
-  /**
-   * Ignore token type
-   *
-   * @description If set to true, the JWT type will not be verified.
-   */
-  ignoreType?: boolean
 }
