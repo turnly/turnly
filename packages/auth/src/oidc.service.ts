@@ -20,16 +20,11 @@ export class OIDC {
   private readonly jwks: KeySet
 
   public constructor(private readonly defaultOptions: OidcOptions) {
-    this.jwks = new KeySet(this.defaultOptions.jwks)
-  }
-
-  /**
-   * Setup
-   *
-   * @description Use this method to initialize the OIDC class. It will fetch the signing keys from the JWKS endpoint.
-   */
-  public async setup(): Promise<void> {
-    await this.jwks.getSigningKeys()
+    this.jwks = new KeySet({
+      cache: true,
+      cacheMaxAge: 7200000, // 2 hours
+      ...this.defaultOptions.jwks,
+    })
   }
 
   /**
@@ -51,7 +46,12 @@ export class OIDC {
 
       jwt.verify(
         token,
-        ({ kid }, callback) => callback(null, this.jwks.getPublicKey(kid)),
+        ({ kid }, callback) => {
+          this.jwks
+            .getPublicKey(kid)
+            .then(key => callback(null, key))
+            .catch(err => callback(err))
+        },
         options,
         (err, decoded) => {
           if (err) {

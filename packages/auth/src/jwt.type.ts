@@ -52,13 +52,22 @@ export interface OidcOptions extends VerifyOptions {
      * @description The JWKS endpoint is used to retrieve the public keys used by the OIDC provider to sign the JWTs.
      * @example https://accounts.turnly.local/.well-known/jwks.json
      */
-    uri: string
+    jwksUri: string
+
     /**
-     * JSON Web Key Set (JWKS) file
+     * Cache
      *
-     * @description The JWKS file is used to retrieve the public keys used by the OIDC provider to sign the JWTs.
-     * @example /path/to/jwks.json
+     * @description If set to true, the JWKS will be cached.
+     * @default true
      */
-    file?: string
+    cache?: boolean
+
+    /**
+     * Cache max age
+     *
+     * @description The maximum age of the JWKS cache in milliseconds.
+     * @default 7200000 (2 hours)
+     */
+    cacheMaxAge?: number
   }
 }

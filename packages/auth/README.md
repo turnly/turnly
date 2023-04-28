@@ -64,28 +64,29 @@ const oidc = new OIDC({
      * The uri is used to retrieve the signing keys from the JWKS endpoint.
      * You can use the JWKS endpoint provided by the OIDC provider. For example, Auth0, Supertokens, etc.
      */
-    uri: 'https://turnly.us.auth0.com/.well-known/jwks.json',
+    jwksUri: 'https://turnly.us.auth0.com/.well-known/jwks.json',
+    /**
+     * The cache option is used to cache the signing keys.
+     */
+    cache: true,
+    /**
+     * The cacheMaxAge option is used to set the maximum age of the cache. (in milliseconds)
+     * Default: 2 hours
+     */
+    cacheMaxAge: 300_000,
   },
   /**
    * The token type is used to verify the token type in the payload.
    * If you want to ignore the token type, set the ignoreType option to true.
-   * @example type: 'refresh'
+   * @example type: 'Refresh'
    */
-  type: 'bearer',
+  type: 'Bearer',
   /**
    * The typeProperty is used to retrieve the token type from the payload.
    * @example typeProperty: 'typ'
    */
   typeProperty: 'token_type',
 })
-
-/**
- * Setup
- *
- * It will fetch the signing keys from the JWKS endpoint.
- * Run this one time before you start verifying the tokens.
- */
-await oidc.setup()
 
 const payload = await oidc.verify('__TOKEN___')
 ```
