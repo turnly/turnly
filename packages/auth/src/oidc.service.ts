@@ -9,7 +9,8 @@ import { JsonWebTokenError, TokenExpiredError } from 'jsonwebtoken'
 import jwt from 'jsonwebtoken'
 
 import { KeySet } from './jwks.service'
-import { JwtType, OidcOptions, VerifyOptions } from './jwt.type'
+import { JwtType, OIDCVerifierOptions, VerifyOptions } from './jwt.type'
+import { Messages } from './messages.enum'
 
 /**
  * OpenID Connect (OIDC)
@@ -17,14 +18,32 @@ import { JwtType, OidcOptions, VerifyOptions } from './jwt.type'
  * @description The OIDC class is used to verify the JWTs issued by the OIDC provider and to retrieve the public keys used to sign the JWTs.
  */
 export class OIDC {
-  private readonly jwks: KeySet
+  private readonly keySet: KeySet
 
-  public constructor(private readonly defaultOptions: OidcOptions) {
-    this.jwks = new KeySet({
-      cache: true,
-      cacheMaxAge: 7200000, // 2 hours
-      ...this.defaultOptions.jwks,
+  public constructor(private readonly defaultOptions: OIDCVerifierOptions) {
+    const { jwks } = this.getDefaultOptions()
+
+    this.keySet = new KeySet(jwks)
+  }
+
+  public getDefaultOptions() {
+    const options = Object.freeze({
+      issuer: process.env.AUTH_ISSUER,
+      audience: process.env.AUTH_AUDIENCE,
+      ...this.defaultOptions,
+      jwks: {
+        jwksUri: process.env.AUTH_JWKS_URI as string,
+        cache: true,
+        cacheMaxAge: 7_200_000, // 2 hours
+        ...this.defaultOptions?.['jwks'],
+      },
     })
+
+    if (!options.issuer) throw new Error(Messages.MISSING_ISSUER)
+
+    if (!options.jwks['jwksUri']) throw new Error(Messages.MISSING_JWKS_URI)
+
+    return options
   }
 
   /**
@@ -34,20 +53,22 @@ export class OIDC {
    */
   public async verify<T extends jwt.JwtPayload>(
     token: string,
-    defaultOptions?: VerifyOptions
+    extraOptions?: VerifyOptions
   ): Promise<T> {
     return new Promise((resolve, reject) => {
-      if (!token)
-        throw new UnauthenticatedException(
-          "Access denied! You're trying to access a protected resource without an access token."
-        )
+      const options = Object.freeze({
+        ...this.getDefaultOptions(),
+        ...extraOptions,
+        algorithms: ['RS256'] as jwt.Algorithm[],
+      })
 
-      const options = this.getVerifyOptions(defaultOptions)
+      if (!token)
+        return reject(new UnauthenticatedException(Messages.ACCESS_DENIED))
 
       jwt.verify(
         token,
         ({ kid }, callback) => {
-          this.jwks
+          this.keySet
             .getPublicKey(kid)
             .then(key => callback(null, key))
             .catch(err => callback(err))
@@ -55,25 +76,26 @@ export class OIDC {
         options,
         (err, decoded) => {
           if (err) {
-            if (err instanceof TokenExpiredError)
-              throw new UnauthenticatedException(
-                'Oops! Your token has expired and is no longer valid.'
+            if (err instanceof TokenExpiredError) {
+              return reject(
+                new UnauthenticatedException(Messages.TOKEN_EXPIRED)
               )
+            }
 
-            if (err instanceof JsonWebTokenError)
-              throw new UnauthenticatedException(
-                'Oops! Your token is invalid and cannot be verified.'
+            if (err instanceof JsonWebTokenError) {
+              return reject(
+                new UnauthenticatedException(Messages.GENERAL_ERROR)
               )
+            }
 
             return reject(err)
           }
 
-          const tokenType = OIDC.getTypeFromPayload(decoded as T, options)
-
-          if (!OIDC.isValidType(options, tokenType))
-            throw new UnauthenticatedException(
-              'Oops! Your token type is invalid, we expected a different token type.'
-            )
+          try {
+            OIDC.checkTokenType({ payload: decoded as T, options })
+          } catch (error) {
+            return reject(error)
+          }
 
           resolve(decoded as T)
         }
@@ -81,39 +103,25 @@ export class OIDC {
     })
   }
 
-  private getVerifyOptions(options?: VerifyOptions) {
-    return {
-      ...this.defaultOptions,
-      ...options,
-      /**
-       * NOTE: The algorithms option is not configurable. We only support RS256.
-       */
-      algorithms: ['RS256'] as jwt.Algorithm[],
-    }
-  }
-
-  private static getTypeFromPayload<T extends jwt.JwtPayload>(
-    payload: T,
+  private static checkTokenType<T extends jwt.JwtPayload>(params: {
+    payload: T
     options: VerifyOptions
-  ) {
-    const key = options['typeProperty'] || 'typ'
+  }) {
+    const {
+      payload,
+      options: { tokenType },
+    } = params
 
-    return payload[key] as JwtType | string
-  }
+    if (!tokenType) return
 
-  private static isValidType(
-    options: VerifyOptions,
-    tokenType?: JwtType | string
-  ): boolean {
-    const { ignoreType: canIgnoreType, type: validType } = options
+    const type = payload[tokenType.propertyToLookup] as JwtType
 
-    if (canIgnoreType) return true
+    if (!tokenType.type)
+      throw new UnauthenticatedException(Messages.MISSING_TYPE)
 
-    if (!validType)
-      throw new UnauthenticatedException(
-        "Oops! You didn't specify a token type or didn't allow to ignore the token type."
-      )
+    if (!type) throw new UnauthenticatedException(Messages.MISSING_TOKEN_TYPE)
 
-    return tokenType === validType
+    if (type !== tokenType.type)
+      throw new UnauthenticatedException(Messages.INVALID_TOKEN_TYPE)
   }
 }

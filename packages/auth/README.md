@@ -58,11 +58,18 @@ The OIDC server provides the keys publicly in a URL in the form of a JSON Web Ke
 import { OIDC } from '@turnly/auth'
 
 const oidc = new OIDC({
-  issuer: 'turnly',
+  /**
+   * The issuer is used to validate the issuer of the JWTs.
+   * You can also provide the `AUTH_ISSUER` environment variable.
+   */
+  issuer: 'https://turnly.us.auth0.com',
+  /**
+   * JWKs (JSON Web Key Set)
+   */
   jwks: {
     /**
      * The uri is used to retrieve the signing keys from the JWKS endpoint.
-     * You can use the JWKS endpoint provided by the OIDC provider. For example, Auth0, Supertokens, etc.
+     * You can also provide the `AUTH_JWKS_URI` environment variable.
      */
     jwksUri: 'https://turnly.us.auth0.com/.well-known/jwks.json',
     /**
@@ -71,22 +78,28 @@ const oidc = new OIDC({
     cache: true,
     /**
      * The cacheMaxAge option is used to set the maximum age of the cache. (in milliseconds)
-     * Default: 2 hours
+     * Default: 7_200_000 (2 hours)
      */
     cacheMaxAge: 300_000,
   },
-  /**
-   * The token type is used to verify the token type in the payload.
-   * If you want to ignore the token type, set the ignoreType option to true.
-   * @example type: 'Refresh'
-   */
-  type: 'Bearer',
-  /**
-   * The typeProperty is used to retrieve the token type from the payload.
-   * @example typeProperty: 'typ'
-   */
-  typeProperty: 'token_type',
 })
 
-const payload = await oidc.verify('__TOKEN___')
+const payload = await oidc.verify('__TOKEN___', {
+  /**
+   * Token type
+   *
+   * @description This is optional verification for validating the expected token type.
+   */
+  tokenType: {
+    /**
+     * The expected value of the token type.
+     * @example Standard values are `Bearer` | `ID` | `Refresh`
+     */
+    type: 'Bearer',
+    /**
+     * The property to lookup the token type.
+     */
+    propertyToLookup: 'token_type',
+  },
+})
 ```
