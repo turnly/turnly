@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.17](https://github.com/turnly/turnly/compare/v0.1.16...v0.1.17) (2023-04-28)
+
+
+### Features
+
+* update oidc ([64000d6](https://github.com/turnly/turnly/commit/64000d6fe0d97cced0e669b13e1d2e1254ea536b))
+* update oidc ([0141914](https://github.com/turnly/turnly/commit/01419145d8bc2a35d10c0e08036bc4c8e277b7a4))
+
+
+
+
+
 ## [0.1.16](https://github.com/turnly/turnly/compare/v0.1.15...v0.1.16) (2023-04-27)
 
 **Note:** Version bump only for package @turnly/turnly
