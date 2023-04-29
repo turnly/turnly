@@ -51,13 +51,13 @@ Turnly's main features are:
 * [x] Customers can wait anywhere, check their progress, and receive notifications when it’s their turn to be served.
 * [x] When customers arrive, they can quickly announce themselves through their smart device or an on-site self-service kiosk.
 * [x] Manage multiple locations (branches), services offered, working hours, and desks per location.
-* [ ] Offline/on site ticket-taking via webapp.
+* [ ] Self check-in kiosk (On-site).
+* [ ] Digital Signage (Waiting TV).
 * [ ] Modal Client for ticket-taking via web-widet on your website.
 * [ ] React Native client for ticket-taking for mobile apps.
 * [ ] WhatsApp conversation integration for ticket-taking.
 * [ ] Alexa Skill for ticket-taking.
 * [ ] Bot-assisted phone calls to self-ticketing.
-* [ ] Digital Signage (Waiting TV).
 * [ ] No-code live widget builder.
 * [ ] Capability to manage employees as Agents and Managers per Location.
 * [ ] Customer feedback.
@@ -69,12 +69,6 @@ Turnly's main features are:
 * [ ] Business intelligence, insights and reporting.
 * [ ] Reassignment of tickets to other agents as part of the service process.
 * [ ] QR code and printed poster for visitors arriving at the site to scan the code.
-
-___
-
-### 🏷️ High-level architecture overview
-
-![high-level-architecture](/docs/diagrams/high-level-architecture.png)
 
 ___
 
