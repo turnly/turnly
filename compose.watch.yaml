@@ -89,13 +89,13 @@ services:
       - ./apps/helpdesk-api/tsconfig.json:/app/tsconfig.json
       - ./apps/helpdesk-api/jest.config.js:/app/jest.config.js
 
-  helpdesk-realtime-api:
+  helpdesk-rtm:
     volumes:
-      - ./apps/helpdesk-realtime-api/src:/app/src
-      - ./apps/helpdesk-realtime-api/tests:/app/tests
-      - ./apps/helpdesk-realtime-api/package.json:/app/package.json
-      - ./apps/helpdesk-realtime-api/tsconfig.json:/app/tsconfig.json
-      - ./apps/helpdesk-realtime-api/jest.config.js:/app/jest.config.js
+      - ./apps/helpdesk-rtm/src:/app/src
+      - ./apps/helpdesk-rtm/tests:/app/tests
+      - ./apps/helpdesk-rtm/package.json:/app/package.json
+      - ./apps/helpdesk-rtm/tsconfig.json:/app/tsconfig.json
+      - ./apps/helpdesk-rtm/jest.config.js:/app/jest.config.js
 
   queuing-system-api:
     volumes:

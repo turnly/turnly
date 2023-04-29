@@ -15,5 +15,5 @@ export const serverOptions = Object.freeze({
 export enum Channels {
   WIDGETS = '/widgets',
   KIOSKS = '/kiosks',
-  DIGITAL_SIGNAGE = '/digital-signage',
+  DIGITAL_SIGNAGE = '/signage',
 }

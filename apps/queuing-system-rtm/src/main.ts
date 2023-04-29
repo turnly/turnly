@@ -12,7 +12,7 @@ import { Tracing } from '@turnly/observability'
 
 Tracing.Trace.initialize({ name: config.get('app.name') })
 
-import { Application } from 'application'
+import { Application } from './application'
 
 async function bootstrap() {
   await new Application().setup()

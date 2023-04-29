@@ -181,22 +181,22 @@ services:
       - traefik.http.services.helpdesk-api.loadbalancer.server.port=${APP_PORT}
       - traefik.http.routers.helpdesk-api.rule=PathPrefix(`/api/helpdesk`)
 
-  helpdesk-realtime-api:
-    image: ghcr.io/turnly/helpdesk-realtime-api:latest
-    build: ./apps/helpdesk-realtime-api
+  helpdesk-rtm:
+    image: ghcr.io/turnly/helpdesk-rtm:latest
+    build: ./apps/helpdesk-rtm
     restart: unless-stopped
     environment:
       <<: *environment
-      APP_NAME: helpdesk-realtime-api
-      RABBITMQ_QUEUE: turnly.ms.helpdesk-realtime-api.queue
+      APP_NAME: helpdesk-rtm
+      RABBITMQ_QUEUE: turnly.ms.helpdesk-rtm.queue
     networks:
       - turnly.vpc.internal
     labels:
       - traefik.enable=true
-      - traefik.http.routers.helpdesk-realtime-api.entrypoints=web
-      - traefik.http.routers.helpdesk-realtime-api.service=helpdesk-realtime-api
-      - traefik.http.services.helpdesk-realtime-api.loadbalancer.server.port=${APP_PORT}
-      - traefik.http.routers.helpdesk-realtime-api.rule=PathPrefix(`/api/rtm/helpdesk`)
+      - traefik.http.routers.helpdesk-rtm.entrypoints=web
+      - traefik.http.routers.helpdesk-rtm.service=helpdesk-rtm
+      - traefik.http.services.helpdesk-rtm.loadbalancer.server.port=${APP_PORT}
+      - traefik.http.routers.helpdesk-rtm.rule=PathPrefix(`/api/rtm/helpdesk`)
 
   queuing-system-api:
     image: ghcr.io/turnly/queuing-system-api:latest
