@@ -15,13 +15,13 @@
   </p>
 </div>
 
-# Widgets API — Backend for Frontend
+# Queuing System API — Backend for Frontend
 
 Turnly Widgets is a live ticketing solution that helps businesses improve the
 customer experience by allowing them to take tickets from their websites
 in an interactive and simple way.
 
-The Widgets API is a GraphQL API that offers flexibility and the ability
+The Queuing System API is a GraphQL API that offers flexibility and the ability
 to define precisely the data you want to retrieve.
 
 To use this API, you will need to authenticate requests with the integration (widgetId)
@@ -84,10 +84,10 @@ Before you begin, you must have completed steps 1 and 2 of the guide to [contrib
 
 **Start**
 
-This command will run the necessary infrastructure services for the widgets-api:
+This command will run the necessary infrastructure services for the queuing-system-api:
 
 ```sh
-yarn start -s widgets-api -s branch-management -s queuing-system -s business-data-fields --verbose
+yarn start -s queuing-system-api -s branch-management -s queuing-system -s business-data-fields --verbose
 ```
 
 You can see more helpful commands for development in the [contribution guide](/CONTRIBUTING.md).

@@ -97,18 +97,18 @@ services:
       - ./apps/helpdesk-realtime-api/tsconfig.json:/app/tsconfig.json
       - ./apps/helpdesk-realtime-api/jest.config.js:/app/jest.config.js
 
-  widgets-api:
+  queuing-system-api:
     volumes:
-      - ./apps/widgets-api/src:/app/src
-      - ./apps/widgets-api/tests:/app/tests
-      - ./apps/widgets-api/package.json:/app/package.json
-      - ./apps/widgets-api/tsconfig.json:/app/tsconfig.json
-      - ./apps/widgets-api/jest.config.js:/app/jest.config.js
+      - ./apps/queuing-system-api/src:/app/src
+      - ./apps/queuing-system-api/tests:/app/tests
+      - ./apps/queuing-system-api/package.json:/app/package.json
+      - ./apps/queuing-system-api/tsconfig.json:/app/tsconfig.json
+      - ./apps/queuing-system-api/jest.config.js:/app/jest.config.js
 
-  widgets-realtime-api:
+  queuing-system-rtm:
     volumes:
-      - ./apps/widgets-realtime-api/src:/app/src
-      - ./apps/widgets-realtime-api/tests:/app/tests
-      - ./apps/widgets-realtime-api/package.json:/app/package.json
-      - ./apps/widgets-realtime-api/tsconfig.json:/app/tsconfig.json
-      - ./apps/widgets-realtime-api/jest.config.js:/app/jest.config.js
+      - ./apps/queuing-system-rtm/src:/app/src
+      - ./apps/queuing-system-rtm/tests:/app/tests
+      - ./apps/queuing-system-rtm/package.json:/app/package.json
+      - ./apps/queuing-system-rtm/tsconfig.json:/app/tsconfig.json
+      - ./apps/queuing-system-rtm/jest.config.js:/app/jest.config.js

@@ -1,4 +1,4 @@
-name: 📦 CI - Widgets API Build
+name: 📦 CI - Queuing System API Build
 
 on:
   release:
@@ -26,12 +26,12 @@ jobs:
         with:
           password: ${{ secrets.CR_PAT }}
 
-      - name: 🐳 Push Widgets API to GitHub Registry
+      - name: 🐳 Push Queuing System API to GitHub Registry
         uses: docker/build-push-action@v3
         with:
-          context: "./apps/widgets-api"
+          context: "./apps/queuing-system-api"
           target: production
           push: true
           tags: |
-            ghcr.io/turnly/widgets-api:v${{ steps.registry.outputs.VERSION }}
-            ghcr.io/turnly/widgets-api:latest
+            ghcr.io/turnly/queuing-system-api:v${{ steps.registry.outputs.VERSION }}
+            ghcr.io/turnly/queuing-system-api:latest

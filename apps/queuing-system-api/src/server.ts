@@ -13,7 +13,7 @@ import { createSources, setOrganizationId } from './datasources'
 import { resolvers } from './resolvers'
 
 export const graph = new Graph({
-  path: '/api/widgets/graph',
+  path: '/api/queuing-system/graph',
   schema: {
     resolvers,
     authChecker,

@@ -68,10 +68,10 @@ Before you begin, you must have completed steps 1 and 2 of the guide to [contrib
 
 **Start**
 
-This command will run the necessary infrastructure services for the widgets-realtime-api:
+This command will run the necessary infrastructure services for the queuing-system-rtm:
 
 ```sh
-yarn start -s widgets-realtime-api -s channels -s queuing-system --verbose
+yarn start -s queuing-system-rtm -s channels -s queuing-system --verbose
 ```
 
 You can see more helpful commands for development in the [contribution guide](/CONTRIBUTING.md).

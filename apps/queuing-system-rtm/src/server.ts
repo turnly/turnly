@@ -15,7 +15,7 @@ import { Channels, serverOptions } from './server.config'
 
 const server = new Realtime(serverOptions)
 
-const channel = server.listen(Channels.QUEUING)
+const channel = server.listen(Channels.WIDGETS)
 
 /**
  * Middlewares

@@ -79,7 +79,7 @@ const rtm = new Realtime.Platform({
 rtm.subscribe('service.tickets.ahead', event => console.log(event))
 ```
 
-#### widgets Realtime API
+#### Realtime API
 
 ```typescript
 import { Realtime } from '@turnly/realtime-client'

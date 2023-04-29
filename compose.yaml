@@ -198,38 +198,38 @@ services:
       - traefik.http.services.helpdesk-realtime-api.loadbalancer.server.port=${APP_PORT}
       - traefik.http.routers.helpdesk-realtime-api.rule=PathPrefix(`/api/rtm/helpdesk`)
 
-  widgets-api:
-    image: ghcr.io/turnly/widgets-api:latest
-    build: ./apps/widgets-api
+  queuing-system-api:
+    image: ghcr.io/turnly/queuing-system-api:latest
+    build: ./apps/queuing-system-api
     restart: unless-stopped
     environment:
       <<: *environment
-      APP_NAME: widgets-api
+      APP_NAME: queuing-system-api
     networks:
       - turnly.vpc.internal
     labels:
       - traefik.enable=true
-      - traefik.http.routers.widgets-api.entrypoints=web
-      - traefik.http.routers.widgets-api.service=widgets-api
-      - traefik.http.services.widgets-api.loadbalancer.server.port=${APP_PORT}
-      - traefik.http.routers.widgets-api.rule=PathPrefix(`/api/widgets`)
+      - traefik.http.routers.queuing-system-api.entrypoints=web
+      - traefik.http.routers.queuing-system-api.service=queuing-system-api
+      - traefik.http.services.queuing-system-api.loadbalancer.server.port=${APP_PORT}
+      - traefik.http.routers.queuing-system-api.rule=PathPrefix(`/api/queuing-system`)
 
-  widgets-realtime-api:
-    image: ghcr.io/turnly/widgets-realtime-api:latest
-    build: ./apps/widgets-realtime-api
+  queuing-system-rtm:
+    image: ghcr.io/turnly/queuing-system-rtm:latest
+    build: ./apps/queuing-system-rtm
     restart: unless-stopped
     environment:
       <<: *environment
-      APP_NAME: widgets-realtime-api
-      RABBITMQ_QUEUE: turnly.ms.widgets-realtime-api.queue
+      APP_NAME: queuing-system-rtm
+      RABBITMQ_QUEUE: turnly.ms.queuing-system-rtm.queue
     networks:
       - turnly.vpc.internal
     labels:
       - traefik.enable=true
-      - traefik.http.routers.widgets-realtime-api.entrypoints=web
-      - traefik.http.routers.widgets-realtime-api.service=widgets-realtime-api
-      - traefik.http.services.widgets-realtime-api.loadbalancer.server.port=${APP_PORT}
-      - traefik.http.routers.widgets-realtime-api.rule=PathPrefix(`/api/rtm/widgets`)
+      - traefik.http.routers.queuing-system-rtm.entrypoints=web
+      - traefik.http.routers.queuing-system-rtm.service=queuing-system-rtm
+      - traefik.http.services.queuing-system-rtm.loadbalancer.server.port=${APP_PORT}
+      - traefik.http.routers.queuing-system-rtm.rule=PathPrefix(`/api/rtm/queuing-system`)
 
 networks:
   turnly.vpc.internal:

@@ -9,9 +9,11 @@ import { config } from '@turnly/core'
 export const serverOptions = Object.freeze({
   name: config.get('app.name'),
   port: config.get('server.port'),
-  path: '/api/rtm/widgets',
+  path: '/api/rtm/queuing-system',
 })
 
 export enum Channels {
-  QUEUING = '/queuing',
+  WIDGETS = '/widgets',
+  KIOSKS = '/kiosks',
+  DIGITAL_SIGNAGE = '/digital-signage',
 }
