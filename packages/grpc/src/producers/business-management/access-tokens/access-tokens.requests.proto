@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package turnly.business_management.v1.access_tokens;
+
+message CreateAccessTokenRequest {
+  string name = 1;
+  repeated string scopes = 2;
+  string create_by_type = 3;
+  string create_by_id = 4;
+}
+
+message ExchangeAccessTokenRequest {
+  repeated string scopes = 2;
+}
+
+
+message GetAccessTokenRequest {
+  string token = 1;
+}

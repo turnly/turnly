@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package turnly.business_management.v1.access_tokens;
+
+import "common.proto";
+
+message AccessToken {
+  string id = 1;
+  string name = 2;
+  repeated string scopes = 3;
+  string create_by_type = 4;
+  string create_by_id = 5;
+  string prefix = 6;
+  string token = 7;
+}
+
+message CreateAccessTokenResponse {
+  AccessToken data = 1;
+  turnly.common.v1.Meta meta = 2;
+}
+
+message ExchangeAccessTokenResponse {
+  AccessToken data = 1;
+  turnly.common.v1.Meta meta = 2;
+}
+
+message GetAccessTokenResponse {
+  AccessToken data = 1;
+  turnly.common.v1.Meta meta = 2;
+}
