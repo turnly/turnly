@@ -18,18 +18,20 @@ export class MembersMapper {
     if (entity) {
       member.setId(entity.id)
       member.setName(entity.name)
-      member.setLastname(entity.lastname)
-      member.setLocationId(entity.locationId)
-      member.setOrganizationId(entity.organizationId)
+      member.setRole(entity.role)
+      member.setUserId(entity.userId)
 
-      if (entity.userId) member.setUserId(entity.userId)
+      if (entity.locationId) member.setLocationId(entity.locationId)
 
-      if (entity.nick) member.setNick(entity.nick)
+      if (entity.extra) {
+        const extras = entity.extra.map(extra =>
+          new Producers.BusinessManagement.Extra()
+            .setKey(extra.key)
+            .setValue(extra.value)
+        )
 
-      if (entity.position) member.setPosition(entity.position)
-
-      if (entity.servingFromIds)
-        member.setServingFromIdsList(entity.servingFromIds)
+        member.setExtrasList(extras)
+      }
     }
 
     return member

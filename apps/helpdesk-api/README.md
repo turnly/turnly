@@ -32,11 +32,10 @@ Turnly Helpdesk
 
 | Name                    | Description                                               |
 | ----------------------- | --------------------------------------------------------- |
-| **Channels**             | Used to get the integration (helpdesk).                     |
+| **Channels**            | Used to get the integration (helpdesk).                   |
 | **Assistance Centers**  | Used to interact with locations and services.             |
 | **Queuing System**      | Used to take tickets and create customers.                |
 | **Custom Fields**       | Used to obtain the fields that a customer must fill out.  |
-| **Memberships**               | Used to get the agent assigned to a ticket.               |
 
 ### Environment Variables
 

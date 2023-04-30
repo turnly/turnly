@@ -21,6 +21,13 @@ export class OrganizationMother {
       name,
       status,
       subdomain,
+      brandingLogo: '',
+      disabledTelemetry: false,
+      brandingPrimaryColor: '',
+      brandingSecondaryColor: '',
+      brandingPrimaryBackground: '',
+      brandingSecondaryBackground: '',
+      brandingDesignType: '',
     })
   }
 

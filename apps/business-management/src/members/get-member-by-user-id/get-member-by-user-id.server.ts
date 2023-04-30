@@ -26,7 +26,8 @@ export class GetMemberByUserIdServer {
       userId: call.request.getUserId(),
     })
 
-    const response = new Producers.BusinessManagement.GetMemberByUserIdResponse()
+    const response =
+      new Producers.BusinessManagement.GetMemberByUserIdResponse()
     const member = MembersMapper.toRPC(data)
 
     response.setData(member)

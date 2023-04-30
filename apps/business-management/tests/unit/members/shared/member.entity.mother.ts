@@ -4,6 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
+import { MemberRoles } from '@turnly/auth'
 import { Extra, Guid, Nullable } from '@turnly/common'
 import { ObjectMother } from '@turnly/testing'
 
@@ -13,26 +14,18 @@ import { Member } from '../../../../src/members/shared/domain/entity/member.enti
 export class MemberMother {
   static create(
     name: string = ObjectMother.names(),
-    lastname: string = ObjectMother.names(),
-    locationId: Guid = ObjectMother.uuid('loc'),
-    userId: Guid = ObjectMother.uuid('agt'),
-    nick: string = ObjectMother.names(),
-    position: string = ObjectMother.position(),
-    deskId: Guid = ObjectMother.uuid('desk'),
-    servingFromIds: Guid[] = [ObjectMother.uuid('loc')],
+    role: MemberRoles = MemberRoles.AGENT,
+    userId: Guid = ObjectMother.uuid('member'),
     organizationId: Guid = ObjectMother.uuid('org'),
+    locationId: Guid = ObjectMother.uuid('loc'),
     extra: Nullable<Extra[]> = []
   ): Member {
     return Member.create({
       name,
-      lastname,
-      locationId,
+      role,
       userId,
-      nick,
-      position,
-      deskId,
-      servingFromIds,
       organizationId,
+      locationId,
       extra,
     })
   }
@@ -63,10 +56,6 @@ export class MemberMother {
     ]
   ): Member {
     return this.create(
-      undefined,
-      undefined,
-      undefined,
-      undefined,
       undefined,
       undefined,
       undefined,
