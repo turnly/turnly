@@ -34,7 +34,8 @@
     "@turnly/grpc": "^0.1.18",
     "@turnly/observability": "^0.1.16",
     "dotenv": "^16.0.1",
-    "mongoose": "^6.4.6"
+    "mongoose": "^6.4.6",
+    "bcrypt": "^5.1.0"
   },
   "devDependencies": {
     "@turnly/eslint-config": "github:turnly/configs",

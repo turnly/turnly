@@ -39,8 +39,8 @@ export class Identifier {
    * @memberof Identifier
    * @param size Size of the ID. The default size is 32.
    */
-  public static generate(prefix: string, size = this.sizes.min): Guid {
-    return `${prefix}_${nanoid(size)}`
+  public static generate(prefix?: string, size = this.sizes.min): Guid {
+    return prefix ? `${prefix}_${nanoid(size)}` : nanoid(size)
   }
 
   /**

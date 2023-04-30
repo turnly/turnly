@@ -6,6 +6,7 @@
  */
 import { config } from '@turnly/core'
 import { Producers } from '@turnly/grpc'
+import { AccessTokensModule } from 'access-tokens/access-tokens.module'
 import { MembersModule } from 'members/members.module'
 import { OrganizationsModule } from 'organizations/organizations.module'
 
@@ -22,6 +23,10 @@ const services: Producers.Service[] = [
   {
     definition: Producers.BusinessManagement.MembersService,
     implementation: MembersModule.getServer(),
+  },
+  {
+    definition: Producers.BusinessManagement.AccessTokensService,
+    implementation: AccessTokensModule.getServer(),
   },
 ]
 
