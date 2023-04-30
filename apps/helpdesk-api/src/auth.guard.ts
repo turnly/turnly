@@ -5,7 +5,7 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 
-import { UserRoles } from '@turnly/auth'
+import { MemberRoles } from '@turnly/auth'
 import {
   ExceptionHandler,
   Logger,
@@ -16,7 +16,7 @@ import { AuthChecker } from 'type-graphql'
 import { IContext } from './context.type'
 
 const getCredentials = ({ req: { headers } }: IContext) => {
-  const roles = [UserRoles.AGENT]
+  const roles = [MemberRoles.AGENT]
 
   return { ...headers, roles, sub: '' }
 }

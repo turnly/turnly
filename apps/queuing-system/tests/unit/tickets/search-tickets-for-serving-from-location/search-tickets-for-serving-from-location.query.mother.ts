@@ -6,7 +6,7 @@
  */
 import { Guid } from '@turnly/common'
 import { ObjectMother } from '@turnly/testing'
-import { TicketStatus } from 'tickets/shared/domain/enums/TicketStatus'
+import { TicketStatus } from 'tickets/shared/domain/enums/ticket-status.enum'
 
 import { SearchTicketsForServingFromLocationQuery } from '../../../../src/tickets/search-tickets-for-serving-from-location'
 

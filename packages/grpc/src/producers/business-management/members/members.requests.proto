@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package turnly.business_management.v1.members;
+
+message GetMemberRequest {
+  string id = 1;
+}
+
+message GetMemberByUserIdRequest {
+  string user_id = 1;
+}

@@ -102,7 +102,14 @@ proto.turnly.business_management.v1.organizations.Organization.toObject = functi
     id: jspb.Message.getFieldWithDefault(msg, 1, ""),
     name: jspb.Message.getFieldWithDefault(msg, 2, ""),
     subdomain: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    status: jspb.Message.getFieldWithDefault(msg, 4, "")
+    status: jspb.Message.getFieldWithDefault(msg, 4, ""),
+    brandingLogo: jspb.Message.getFieldWithDefault(msg, 5, ""),
+    brandingPrimaryColor: jspb.Message.getFieldWithDefault(msg, 6, ""),
+    brandingSecondaryColor: jspb.Message.getFieldWithDefault(msg, 7, ""),
+    brandingDesignType: jspb.Message.getFieldWithDefault(msg, 8, ""),
+    brandingPrimaryBackground: jspb.Message.getFieldWithDefault(msg, 9, ""),
+    brandingSecondaryBackground: jspb.Message.getFieldWithDefault(msg, 10, ""),
+    disabledTelemetry: jspb.Message.getBooleanFieldWithDefault(msg, 11, false)
   };
 
   if (includeInstance) {
@@ -154,6 +161,34 @@ proto.turnly.business_management.v1.organizations.Organization.deserializeBinary
     case 4:
       var value = /** @type {string} */ (reader.readString());
       msg.setStatus(value);
+      break;
+    case 5:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setBrandingLogo(value);
+      break;
+    case 6:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setBrandingPrimaryColor(value);
+      break;
+    case 7:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setBrandingSecondaryColor(value);
+      break;
+    case 8:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setBrandingDesignType(value);
+      break;
+    case 9:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setBrandingPrimaryBackground(value);
+      break;
+    case 10:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setBrandingSecondaryBackground(value);
+      break;
+    case 11:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setDisabledTelemetry(value);
       break;
     default:
       reader.skipField();
@@ -209,6 +244,55 @@ proto.turnly.business_management.v1.organizations.Organization.serializeBinaryTo
   if (f.length > 0) {
     writer.writeString(
       4,
+      f
+    );
+  }
+  f = message.getBrandingLogo();
+  if (f.length > 0) {
+    writer.writeString(
+      5,
+      f
+    );
+  }
+  f = message.getBrandingPrimaryColor();
+  if (f.length > 0) {
+    writer.writeString(
+      6,
+      f
+    );
+  }
+  f = message.getBrandingSecondaryColor();
+  if (f.length > 0) {
+    writer.writeString(
+      7,
+      f
+    );
+  }
+  f = message.getBrandingDesignType();
+  if (f.length > 0) {
+    writer.writeString(
+      8,
+      f
+    );
+  }
+  f = message.getBrandingPrimaryBackground();
+  if (f.length > 0) {
+    writer.writeString(
+      9,
+      f
+    );
+  }
+  f = message.getBrandingSecondaryBackground();
+  if (f.length > 0) {
+    writer.writeString(
+      10,
+      f
+    );
+  }
+  f = message.getDisabledTelemetry();
+  if (f) {
+    writer.writeBool(
+      11,
       f
     );
   }
@@ -284,6 +368,132 @@ proto.turnly.business_management.v1.organizations.Organization.prototype.getStat
  */
 proto.turnly.business_management.v1.organizations.Organization.prototype.setStatus = function(value) {
   return jspb.Message.setProto3StringField(this, 4, value);
+};
+
+
+/**
+ * optional string branding_logo = 5;
+ * @return {string}
+ */
+proto.turnly.business_management.v1.organizations.Organization.prototype.getBrandingLogo = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.turnly.business_management.v1.organizations.Organization} returns this
+ */
+proto.turnly.business_management.v1.organizations.Organization.prototype.setBrandingLogo = function(value) {
+  return jspb.Message.setProto3StringField(this, 5, value);
+};
+
+
+/**
+ * optional string branding_primary_color = 6;
+ * @return {string}
+ */
+proto.turnly.business_management.v1.organizations.Organization.prototype.getBrandingPrimaryColor = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 6, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.turnly.business_management.v1.organizations.Organization} returns this
+ */
+proto.turnly.business_management.v1.organizations.Organization.prototype.setBrandingPrimaryColor = function(value) {
+  return jspb.Message.setProto3StringField(this, 6, value);
+};
+
+
+/**
+ * optional string branding_secondary_color = 7;
+ * @return {string}
+ */
+proto.turnly.business_management.v1.organizations.Organization.prototype.getBrandingSecondaryColor = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 7, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.turnly.business_management.v1.organizations.Organization} returns this
+ */
+proto.turnly.business_management.v1.organizations.Organization.prototype.setBrandingSecondaryColor = function(value) {
+  return jspb.Message.setProto3StringField(this, 7, value);
+};
+
+
+/**
+ * optional string branding_design_type = 8;
+ * @return {string}
+ */
+proto.turnly.business_management.v1.organizations.Organization.prototype.getBrandingDesignType = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 8, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.turnly.business_management.v1.organizations.Organization} returns this
+ */
+proto.turnly.business_management.v1.organizations.Organization.prototype.setBrandingDesignType = function(value) {
+  return jspb.Message.setProto3StringField(this, 8, value);
+};
+
+
+/**
+ * optional string branding_primary_background = 9;
+ * @return {string}
+ */
+proto.turnly.business_management.v1.organizations.Organization.prototype.getBrandingPrimaryBackground = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 9, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.turnly.business_management.v1.organizations.Organization} returns this
+ */
+proto.turnly.business_management.v1.organizations.Organization.prototype.setBrandingPrimaryBackground = function(value) {
+  return jspb.Message.setProto3StringField(this, 9, value);
+};
+
+
+/**
+ * optional string branding_secondary_background = 10;
+ * @return {string}
+ */
+proto.turnly.business_management.v1.organizations.Organization.prototype.getBrandingSecondaryBackground = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 10, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.turnly.business_management.v1.organizations.Organization} returns this
+ */
+proto.turnly.business_management.v1.organizations.Organization.prototype.setBrandingSecondaryBackground = function(value) {
+  return jspb.Message.setProto3StringField(this, 10, value);
+};
+
+
+/**
+ * optional bool disabled_telemetry = 11;
+ * @return {boolean}
+ */
+proto.turnly.business_management.v1.organizations.Organization.prototype.getDisabledTelemetry = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 11, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.turnly.business_management.v1.organizations.Organization} returns this
+ */
+proto.turnly.business_management.v1.organizations.Organization.prototype.setDisabledTelemetry = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 11, value);
 };
 
 

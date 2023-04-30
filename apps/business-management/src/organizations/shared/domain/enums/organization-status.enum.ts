@@ -12,5 +12,5 @@
  */
 export enum OrganizationStatus {
   ACTIVE = 'active',
-  DISABLED = 'disabled',
+  BLOCKED = 'BLOCKED',
 }

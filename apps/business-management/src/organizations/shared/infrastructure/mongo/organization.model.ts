@@ -32,6 +32,28 @@ const schema = new Schema(
       unique: true,
       required: true,
     },
+    disabledTelemetry: {
+      type: Boolean,
+      default: false,
+    },
+    brandingLogo: {
+      type: String,
+    },
+    brandingPrimaryColor: {
+      type: String,
+    },
+    brandingSecondaryColor: {
+      type: String,
+    },
+    brandingPrimaryBackground: {
+      type: String,
+    },
+    brandingSecondaryBackground: {
+      type: String,
+    },
+    brandingDesignType: {
+      type: String,
+    },
   },
   { timestamps }
 )

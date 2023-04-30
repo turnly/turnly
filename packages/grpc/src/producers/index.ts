@@ -35,8 +35,3 @@ export * as Channels from './channels'
  * Business Management generated
  */
 export * as BusinessManagement from './business-management'
-
-/**
- * Memberships generated
- */
-export * as Memberships from './memberships'

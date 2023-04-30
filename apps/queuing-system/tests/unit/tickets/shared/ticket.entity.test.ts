@@ -8,7 +8,7 @@ import { Extra } from '@turnly/common'
 import { ConflictException } from '@turnly/observability'
 import { ObjectMother } from '@turnly/testing'
 
-import { TicketStatus } from '../../../../src/tickets/shared/domain/enums/TicketStatus'
+import { TicketStatus } from '../../../../src/tickets/shared/domain/enums/ticket-status.enum'
 import { TicketMother } from './ticket.entity.mother'
 
 describe('tickets > domain > validates the min behavior in the life-cycle of a ticket', () => {

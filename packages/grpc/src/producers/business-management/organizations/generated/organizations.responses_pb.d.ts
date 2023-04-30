@@ -16,6 +16,20 @@ export class Organization extends jspb.Message {
     setSubdomain(value: string): Organization;
     getStatus(): string;
     setStatus(value: string): Organization;
+    getBrandingLogo(): string;
+    setBrandingLogo(value: string): Organization;
+    getBrandingPrimaryColor(): string;
+    setBrandingPrimaryColor(value: string): Organization;
+    getBrandingSecondaryColor(): string;
+    setBrandingSecondaryColor(value: string): Organization;
+    getBrandingDesignType(): string;
+    setBrandingDesignType(value: string): Organization;
+    getBrandingPrimaryBackground(): string;
+    setBrandingPrimaryBackground(value: string): Organization;
+    getBrandingSecondaryBackground(): string;
+    setBrandingSecondaryBackground(value: string): Organization;
+    getDisabledTelemetry(): boolean;
+    setDisabledTelemetry(value: boolean): Organization;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): Organization.AsObject;
@@ -33,6 +47,13 @@ export namespace Organization {
         name: string,
         subdomain: string,
         status: string,
+        brandingLogo: string,
+        brandingPrimaryColor: string,
+        brandingSecondaryColor: string,
+        brandingDesignType: string,
+        brandingPrimaryBackground: string,
+        brandingSecondaryBackground: string,
+        disabledTelemetry: boolean,
     }
 }
 

@@ -15,8 +15,8 @@ import { ConflictException } from '@turnly/observability'
 import { GetActiveTicketsByCustomerQuery } from 'tickets/get-active-tickets-by-customer/get-active-tickets-by-customer.query'
 import { ITicketsWritableRepo } from 'tickets/shared/domain/contracts/tickets-repo.interface'
 import { Ticket } from 'tickets/shared/domain/entities/ticket.entity'
-import { TicketPriority } from 'tickets/shared/domain/enums/TicketPriority'
-import { TicketStatus } from 'tickets/shared/domain/enums/TicketStatus'
+import { TicketPriority } from 'tickets/shared/domain/enums/ticket-priority.enum'
+import { TicketStatus } from 'tickets/shared/domain/enums/ticket-status.enum'
 
 import { CreateTicketCommand } from './create-ticket.command'
 

@@ -11,7 +11,6 @@ const databases = [
   "business-data-fields-db",
   "business-management-db",
   "channels-db",
-  "memberships-db",
   "queuing-system-db",
 ];
 
