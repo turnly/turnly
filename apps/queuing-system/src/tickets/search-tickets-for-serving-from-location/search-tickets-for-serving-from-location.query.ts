@@ -6,7 +6,7 @@
  */
 import { Guid } from '@turnly/common'
 import { OrganizationQuery } from '@turnly/core'
-import { TicketStatus } from 'tickets/shared/domain/enums/TicketStatus'
+import { TicketStatus } from 'tickets/shared/domain/enums/ticket-status.enum'
 
 export enum SearchTicketsForServingFromLocationFilters {
   WAITING = 'waiting',

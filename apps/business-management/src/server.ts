@@ -6,6 +6,7 @@
  */
 import { config } from '@turnly/core'
 import { Producers } from '@turnly/grpc'
+import { MembersModule } from 'members/members.module'
 import { OrganizationsModule } from 'organizations/organizations.module'
 
 /**
@@ -17,6 +18,10 @@ const services: Producers.Service[] = [
   {
     definition: Producers.BusinessManagement.OrganizationsService,
     implementation: OrganizationsModule.getServer(),
+  },
+  {
+    definition: Producers.BusinessManagement.MembersService,
+    implementation: MembersModule.getServer(),
   },
 ]
 

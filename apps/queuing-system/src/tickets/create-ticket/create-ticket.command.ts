@@ -6,7 +6,7 @@
  */
 import { Extra, Guid, Nullable } from '@turnly/common'
 import { OrganizationCommand } from '@turnly/core'
-import { TicketSource } from 'tickets/shared/domain/enums/TicketSource'
+import { TicketSource } from 'tickets/shared/domain/enums/ticket-source.enum'
 
 export class CreateTicketCommand extends OrganizationCommand {
   public readonly source: TicketSource

@@ -8,7 +8,7 @@ import { ResourceNotFoundException } from '@turnly/observability'
 import { TestEventBus, TestQueryBus } from '@turnly/testing'
 
 import { LeaveTheQueueCommandHandler } from '../../../../src/tickets/leave-the-queue'
-import { TicketStatus } from '../../../../src/tickets/shared/domain/enums/TicketStatus'
+import { TicketStatus } from '../../../../src/tickets/shared/domain/enums/ticket-status.enum'
 import { TicketMother } from '../shared/ticket.entity.mother'
 import { TicketsWritableRepo } from '../shared/tickets-writable.repo'
 import { LeaveTheQueueCommandMother } from './leave-the-queue.command.mother'

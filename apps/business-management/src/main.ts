@@ -18,6 +18,7 @@ Tracing.Trace.initialize({ name: config.get('app.name') })
  * @description Register dependencies to the dependency injection container.
  */
 import 'organizations/shared/register.dependency'
+import 'members/shared/register.dependency'
 
 async function bootstrap() {
   const { Application } = await import('./application')

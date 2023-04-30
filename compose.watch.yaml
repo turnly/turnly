@@ -55,19 +55,6 @@ services:
       - ./apps/channels/tsconfig.json:/app/tsconfig.json
       - ./apps/channels/jest.config.js:/app/jest.config.js
 
-  memberships:
-    depends_on:
-      elasticsearch:
-        condition: service_healthy
-      mongo:
-        condition: service_healthy
-    volumes:
-      - ./apps/memberships/src:/app/src
-      - ./apps/memberships/tests:/app/tests
-      - ./apps/memberships/package.json:/app/package.json
-      - ./apps/memberships/tsconfig.json:/app/tsconfig.json
-      - ./apps/memberships/jest.config.js:/app/jest.config.js
-
   queuing-system:
     depends_on:
       elasticsearch:

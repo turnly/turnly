@@ -7,7 +7,7 @@
 import { Consumers, Producers } from '@turnly/grpc'
 import { BadRequestException } from '@turnly/observability'
 import { CreateTicketController } from 'tickets/create-ticket'
-import { TicketSource } from 'tickets/shared/domain/enums/TicketSource'
+import { TicketSource } from 'tickets/shared/domain/enums/ticket-source.enum'
 import { TicketsMapper } from 'tickets/shared/infrastructure/tickets-to-grpc.mapper'
 
 export class CreateTicketServer {

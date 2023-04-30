@@ -123,27 +123,6 @@ services:
       - traefik.http.services.channels.loadbalancer.server.port=${APP_PORT}
       - traefik.http.routers.channels.rule=PathPrefix(`/turnly.channels.v1`)
 
-  memberships:
-    image: ghcr.io/turnly/memberships:latest
-    build: ./apps/memberships
-    restart: unless-stopped
-    environment:
-      <<: *environment
-      APP_NAME: memberships
-      MONGO_DB: memberships-db
-      RABBITMQ_QUEUE: turnly.ms.memberships.queue
-    networks:
-      turnly.vpc.internal:
-        aliases:
-          - memberships.turnly.local
-    labels:
-      - traefik.enable=true
-      - traefik.http.routers.memberships.entrypoints=web
-      - traefik.http.routers.memberships.service=memberships
-      - traefik.http.services.memberships.loadbalancer.server.scheme=h2c
-      - traefik.http.services.memberships.loadbalancer.server.port=${APP_PORT}
-      - traefik.http.routers.memberships.rule=PathPrefix(`/turnly.memberships.v1`)
-
   queuing-system:
     image: ghcr.io/turnly/queuing-system:latest
     build: ./apps/queuing-system
@@ -164,39 +143,6 @@ services:
       - traefik.http.services.queuing-system.loadbalancer.server.scheme=h2c
       - traefik.http.services.queuing-system.loadbalancer.server.port=${APP_PORT}
       - traefik.http.routers.queuing-system.rule=PathPrefix(`/turnly.queuing-system.v1`)
-
-  helpdesk-api:
-    image: ghcr.io/turnly/helpdesk-api:latest
-    build: ./apps/helpdesk-api
-    restart: unless-stopped
-    environment:
-      <<: *environment
-      APP_NAME: helpdesk-api
-    networks:
-      - turnly.vpc.internal
-    labels:
-      - traefik.enable=true
-      - traefik.http.routers.helpdesk-api.entrypoints=web
-      - traefik.http.routers.helpdesk-api.service=helpdesk-api
-      - traefik.http.services.helpdesk-api.loadbalancer.server.port=${APP_PORT}
-      - traefik.http.routers.helpdesk-api.rule=PathPrefix(`/api/helpdesk`)
-
-  helpdesk-rtm:
-    image: ghcr.io/turnly/helpdesk-rtm:latest
-    build: ./apps/helpdesk-rtm
-    restart: unless-stopped
-    environment:
-      <<: *environment
-      APP_NAME: helpdesk-rtm
-      RABBITMQ_QUEUE: turnly.ms.helpdesk-rtm.queue
-    networks:
-      - turnly.vpc.internal
-    labels:
-      - traefik.enable=true
-      - traefik.http.routers.helpdesk-rtm.entrypoints=web
-      - traefik.http.routers.helpdesk-rtm.service=helpdesk-rtm
-      - traefik.http.services.helpdesk-rtm.loadbalancer.server.port=${APP_PORT}
-      - traefik.http.routers.helpdesk-rtm.rule=PathPrefix(`/api/rtm/helpdesk`)
 
   queuing-system-api:
     image: ghcr.io/turnly/queuing-system-api:latest
@@ -230,6 +176,39 @@ services:
       - traefik.http.routers.queuing-system-rtm.service=queuing-system-rtm
       - traefik.http.services.queuing-system-rtm.loadbalancer.server.port=${APP_PORT}
       - traefik.http.routers.queuing-system-rtm.rule=PathPrefix(`/api/rtm/queuing-system`)
+
+  helpdesk-api:
+    image: ghcr.io/turnly/helpdesk-api:latest
+    build: ./apps/helpdesk-api
+    restart: unless-stopped
+    environment:
+      <<: *environment
+      APP_NAME: helpdesk-api
+    networks:
+      - turnly.vpc.internal
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.helpdesk-api.entrypoints=web
+      - traefik.http.routers.helpdesk-api.service=helpdesk-api
+      - traefik.http.services.helpdesk-api.loadbalancer.server.port=${APP_PORT}
+      - traefik.http.routers.helpdesk-api.rule=PathPrefix(`/api/helpdesk`)
+
+  helpdesk-rtm:
+    image: ghcr.io/turnly/helpdesk-rtm:latest
+    build: ./apps/helpdesk-rtm
+    restart: unless-stopped
+    environment:
+      <<: *environment
+      APP_NAME: helpdesk-rtm
+      RABBITMQ_QUEUE: turnly.ms.helpdesk-rtm.queue
+    networks:
+      - turnly.vpc.internal
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.helpdesk-rtm.entrypoints=web
+      - traefik.http.routers.helpdesk-rtm.service=helpdesk-rtm
+      - traefik.http.services.helpdesk-rtm.loadbalancer.server.port=${APP_PORT}
+      - traefik.http.routers.helpdesk-rtm.rule=PathPrefix(`/api/rtm/helpdesk`)
 
 networks:
   turnly.vpc.internal:

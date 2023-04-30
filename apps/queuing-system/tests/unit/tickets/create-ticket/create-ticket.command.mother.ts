@@ -8,7 +8,7 @@ import { Extra, Guid } from '@turnly/common'
 import { ObjectMother } from '@turnly/testing'
 
 import { CreateTicketCommand } from '../../../../src/tickets/create-ticket'
-import { TicketSource } from '../../../../src/tickets/shared/domain/enums/TicketSource'
+import { TicketSource } from '../../../../src/tickets/shared/domain/enums/ticket-source.enum'
 
 export class CreateTicketCommandMother {
   static create(

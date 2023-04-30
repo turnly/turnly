@@ -7,10 +7,10 @@
 import { EntityAttributes, timestamps } from '@turnly/core'
 import mongoose, { Document, Model, Schema } from 'mongoose'
 import { Ticket } from 'tickets/shared/domain/entities/ticket.entity'
-import { TicketPriority } from 'tickets/shared/domain/enums/TicketPriority'
-import { TicketScore } from 'tickets/shared/domain/enums/TicketScore'
-import { TicketSource } from 'tickets/shared/domain/enums/TicketSource'
-import { TicketStatus } from 'tickets/shared/domain/enums/TicketStatus'
+import { TicketPriority } from 'tickets/shared/domain/enums/ticket-priority.enum'
+import { TicketScore } from 'tickets/shared/domain/enums/ticket-score.enum'
+import { TicketSource } from 'tickets/shared/domain/enums/ticket-source.enum'
+import { TicketStatus } from 'tickets/shared/domain/enums/ticket-status.enum'
 
 export interface ITicketDocument
   extends Omit<EntityAttributes<Ticket>, 'id'>,

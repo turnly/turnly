@@ -19,11 +19,11 @@ import { TicketDiscardedEvent } from 'tickets/mark-ticket-as-discarded/ticket-di
 import { TicketCompletedEvent } from 'tickets/mark-ticket-as-served/ticket-completed.event'
 import { TicketReturnedEvent } from 'tickets/return-ticket-to-queue/ticket-returned.event'
 
-import { TicketPriority } from '../enums/TicketPriority'
-import { TicketScore } from '../enums/TicketScore'
-import { TicketSource } from '../enums/TicketSource'
-import { TicketStatus } from '../enums/TicketStatus'
-import { Rating } from './Rating'
+import { TicketPriority } from '../enums/ticket-priority.enum'
+import { TicketScore } from '../enums/ticket-score.enum'
+import { TicketSource } from '../enums/ticket-source.enum'
+import { TicketStatus } from '../enums/ticket-status.enum'
+import { Rating } from './rating.entity'
 
 type IgnoreAttrs = 'id' | 'assigneeId' | 'createdAt' | 'rating' | 'updatedAt'
 export type CreateTicketParams = Omit<EntityAttributes<Ticket>, IgnoreAttrs>

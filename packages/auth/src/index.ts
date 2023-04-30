@@ -10,6 +10,6 @@
  */
 export * from './jwks.service'
 export * from './jwt.type'
+export * from './member-roles.enum'
 export * from './messages.enum'
 export * from './oidc.service'
-export * from './user-roles.enum'

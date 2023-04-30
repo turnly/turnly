@@ -4,7 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { Guid, Identifier } from '@turnly/common'
+import { Guid, Identifier, Nullable } from '@turnly/common'
 import { AggregateRoot, EntityAttributes } from '@turnly/core'
 
 import { OrganizationCreatedEvent } from '../../../create-organization/organization-created.event'
@@ -46,7 +46,56 @@ export class Organization extends AggregateRoot {
      * @description The subdomain is a unique identifier for
      * the Organization that is used to access the application.
      */
-    private subdomain: string
+    private subdomain: string,
+
+    /**
+     * Disabled Telemetry
+     *
+     * @description Our application collects telemetry data to help us improve the application.
+     */
+    private disabledTelemetry: boolean = false,
+
+    /**
+     * Branding Logo
+     *
+     * @description The logo of the Organization.
+     */
+    private brandingLogo: Nullable<string> = null,
+
+    /**
+     * Branding Primary Color
+     *
+     * @description The primary color of the Organization branding.
+     */
+    private brandingPrimaryColor: Nullable<string> = null,
+
+    /**
+     * Branding Secondary Color
+     *
+     * @description The secondary color of the Organization branding.
+     */
+    private brandingSecondaryColor: Nullable<string> = null,
+
+    /**
+     * Branding Primary Background
+     *
+     * @description The primary background of the Organization branding.
+     */
+    private brandingPrimaryBackground: Nullable<string> = null,
+
+    /**
+     * Branding Secondary Background
+     *
+     * @description The secondary background of the Organization branding.
+     */
+    private brandingSecondaryBackground: Nullable<string> = null,
+
+    /**
+     * Branding Design Type
+     *
+     * @description The design type of the Organization branding (flat, rounded, etc.).
+     */
+    private brandingDesignType: Nullable<string> = null
   ) {
     super(id)
   }
@@ -65,7 +114,14 @@ export class Organization extends AggregateRoot {
       organizationId,
       attributes.name,
       attributes.status,
-      attributes.subdomain
+      attributes.subdomain,
+      attributes.disabledTelemetry,
+      attributes.brandingLogo,
+      attributes.brandingPrimaryColor,
+      attributes.brandingSecondaryColor,
+      attributes.brandingPrimaryBackground,
+      attributes.brandingSecondaryBackground,
+      attributes.brandingDesignType
     )
 
     organization.register(
@@ -90,7 +146,14 @@ export class Organization extends AggregateRoot {
       attributes.id,
       attributes.name,
       attributes.status,
-      attributes.subdomain
+      attributes.subdomain,
+      attributes.disabledTelemetry,
+      attributes.brandingLogo,
+      attributes.brandingPrimaryColor,
+      attributes.brandingSecondaryColor,
+      attributes.brandingPrimaryBackground,
+      attributes.brandingSecondaryBackground,
+      attributes.brandingDesignType
     )
   }
 
@@ -105,6 +168,13 @@ export class Organization extends AggregateRoot {
       name: this.name,
       status: this.status,
       subdomain: this.subdomain,
+      disabledTelemetry: this.disabledTelemetry,
+      brandingLogo: this.brandingLogo,
+      brandingPrimaryColor: this.brandingPrimaryColor,
+      brandingSecondaryColor: this.brandingSecondaryColor,
+      brandingPrimaryBackground: this.brandingPrimaryBackground,
+      brandingSecondaryBackground: this.brandingSecondaryBackground,
+      brandingDesignType: this.brandingDesignType,
     }
   }
 }
