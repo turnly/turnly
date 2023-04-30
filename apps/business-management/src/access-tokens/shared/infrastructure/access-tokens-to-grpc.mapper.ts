@@ -9,9 +9,13 @@ import { EntityAttributes } from '@turnly/core'
 import { Producers } from '@turnly/grpc'
 import { AccessToken } from 'access-tokens/shared/domain/entity/access-token.entity'
 
+type AccessTokenRPC = Omit<EntityAttributes<AccessToken>, 'token'> & {
+  token?: string
+}
+
 export class AccessTokensMapper {
   public static toRPC(
-    entity: Nullable<EntityAttributes<AccessToken>> | undefined
+    entity: Nullable<AccessTokenRPC> | undefined
   ): Producers.BusinessManagement.AccessToken {
     const accessToken = new Producers.BusinessManagement.AccessToken()
 
@@ -21,9 +25,10 @@ export class AccessTokensMapper {
         .setName(entity.name)
         .setScopesList(entity.scopes)
         .setPrefix(entity.prefix)
-        .setToken(entity.token)
-        .setCreateByType(entity.createByType)
-        .setCreateById(entity.createById)
+        .setCreatedByType(entity.createdByType)
+        .setCreatedById(entity.createdById)
+
+      if (entity.token) accessToken.setToken(entity.token)
     }
 
     return accessToken

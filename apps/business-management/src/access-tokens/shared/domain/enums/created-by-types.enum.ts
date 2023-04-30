@@ -4,7 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-export enum CreateByTypes {
+export enum CreatedByTypes {
   API = 'api',
   MEMBER = 'member',
   OWNER = 'owner',

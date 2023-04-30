@@ -28,6 +28,6 @@ export class GetOneAccessTokenController extends Controller {
       GetOneAccessTokenQuery.build(params)
     )
 
-    return this.respond.ok(accessToken.toObject())
+    return this.respond.ok({ ...accessToken.toObject(), token: undefined })
   }
 }

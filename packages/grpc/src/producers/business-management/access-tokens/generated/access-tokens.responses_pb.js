@@ -153,8 +153,8 @@ proto.turnly.business_management.v1.access_tokens.AccessToken.toObject = functio
     id: jspb.Message.getFieldWithDefault(msg, 1, ""),
     name: jspb.Message.getFieldWithDefault(msg, 2, ""),
     scopesList: (f = jspb.Message.getRepeatedField(msg, 3)) == null ? undefined : f,
-    createByType: jspb.Message.getFieldWithDefault(msg, 4, ""),
-    createById: jspb.Message.getFieldWithDefault(msg, 5, ""),
+    createdByType: jspb.Message.getFieldWithDefault(msg, 4, ""),
+    createdById: jspb.Message.getFieldWithDefault(msg, 5, ""),
     prefix: jspb.Message.getFieldWithDefault(msg, 6, ""),
     token: jspb.Message.getFieldWithDefault(msg, 7, "")
   };
@@ -207,11 +207,11 @@ proto.turnly.business_management.v1.access_tokens.AccessToken.deserializeBinaryF
       break;
     case 4:
       var value = /** @type {string} */ (reader.readString());
-      msg.setCreateByType(value);
+      msg.setCreatedByType(value);
       break;
     case 5:
       var value = /** @type {string} */ (reader.readString());
-      msg.setCreateById(value);
+      msg.setCreatedById(value);
       break;
     case 6:
       var value = /** @type {string} */ (reader.readString());
@@ -271,14 +271,14 @@ proto.turnly.business_management.v1.access_tokens.AccessToken.serializeBinaryToW
       f
     );
   }
-  f = message.getCreateByType();
+  f = message.getCreatedByType();
   if (f.length > 0) {
     writer.writeString(
       4,
       f
     );
   }
-  f = message.getCreateById();
+  f = message.getCreatedById();
   if (f.length > 0) {
     writer.writeString(
       5,
@@ -376,10 +376,10 @@ proto.turnly.business_management.v1.access_tokens.AccessToken.prototype.clearSco
 
 
 /**
- * optional string create_by_type = 4;
+ * optional string created_by_type = 4;
  * @return {string}
  */
-proto.turnly.business_management.v1.access_tokens.AccessToken.prototype.getCreateByType = function() {
+proto.turnly.business_management.v1.access_tokens.AccessToken.prototype.getCreatedByType = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
 };
 
@@ -388,16 +388,16 @@ proto.turnly.business_management.v1.access_tokens.AccessToken.prototype.getCreat
  * @param {string} value
  * @return {!proto.turnly.business_management.v1.access_tokens.AccessToken} returns this
  */
-proto.turnly.business_management.v1.access_tokens.AccessToken.prototype.setCreateByType = function(value) {
+proto.turnly.business_management.v1.access_tokens.AccessToken.prototype.setCreatedByType = function(value) {
   return jspb.Message.setProto3StringField(this, 4, value);
 };
 
 
 /**
- * optional string create_by_id = 5;
+ * optional string created_by_id = 5;
  * @return {string}
  */
-proto.turnly.business_management.v1.access_tokens.AccessToken.prototype.getCreateById = function() {
+proto.turnly.business_management.v1.access_tokens.AccessToken.prototype.getCreatedById = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
 };
 
@@ -406,7 +406,7 @@ proto.turnly.business_management.v1.access_tokens.AccessToken.prototype.getCreat
  * @param {string} value
  * @return {!proto.turnly.business_management.v1.access_tokens.AccessToken} returns this
  */
-proto.turnly.business_management.v1.access_tokens.AccessToken.prototype.setCreateById = function(value) {
+proto.turnly.business_management.v1.access_tokens.AccessToken.prototype.setCreatedById = function(value) {
   return jspb.Message.setProto3StringField(this, 5, value);
 };
 

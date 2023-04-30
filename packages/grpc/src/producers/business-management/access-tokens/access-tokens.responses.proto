@@ -8,8 +8,8 @@ message AccessToken {
   string id = 1;
   string name = 2;
   repeated string scopes = 3;
-  string create_by_type = 4;
-  string create_by_id = 5;
+  string created_by_type = 4;
+  string created_by_id = 5;
   string prefix = 6;
   string token = 7;
 }

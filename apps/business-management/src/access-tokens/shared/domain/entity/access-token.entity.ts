@@ -10,7 +10,7 @@ import { InvalidStateException } from '@turnly/observability'
 import { AccessTokenCreatedEvent } from 'access-tokens/create-access-token/access-token-created.event'
 import bcrypt from 'bcrypt'
 
-import { CreateByTypes } from '../enums/create-by-types.enum'
+import { CreatedByTypes } from '../enums/created-by-types.enum'
 import { Scopes } from '../enums/scopes.enum'
 
 /**
@@ -62,18 +62,18 @@ export class AccessToken extends AggregateRoot {
     private token: string,
 
     /**
-     * Create By
+     * Created By
      *
      * @description The user or app that created the AccessToken.
      */
-    private createByType: CreateByTypes,
+    private createdByType: CreatedByTypes,
 
     /**
-     * Create By ID
+     * Created By ID
      *
      * @description The ID of the user or app that created the AccessToken.
      */
-    private createById: Guid,
+    private createdById: Guid,
 
     /**
      * Organization
@@ -85,14 +85,26 @@ export class AccessToken extends AggregateRoot {
     super(id)
   }
 
+  public isSameToken(token: string): boolean {
+    return bcrypt.compareSync(token, this.token)
+  }
+
   public encrypt(): AccessToken {
     this.token = bcrypt.hashSync(this.token, 10)
 
     return this
   }
 
-  public isSameToken(token: string): boolean {
-    return bcrypt.compareSync(token, this.token)
+  public changeToDecryptedToken(decryptedToken: string): AccessToken {
+    if (!this.isSameToken(decryptedToken)) {
+      throw new InvalidStateException(
+        'Oops! The token you are looking for appears to be corrupted or has been revoked.'
+      )
+    }
+
+    this.token = decryptedToken
+
+    return this
   }
 
   public can(scope: Scopes): boolean {
@@ -137,8 +149,8 @@ export class AccessToken extends AggregateRoot {
       attributes.scopes,
       prefix,
       token,
-      attributes.createByType,
-      attributes.createById,
+      attributes.createdByType,
+      attributes.createdById,
       attributes.organizationId
     )
 
@@ -159,8 +171,8 @@ export class AccessToken extends AggregateRoot {
       attributes.scopes,
       attributes.prefix,
       attributes.token,
-      attributes.createByType,
-      attributes.createById,
+      attributes.createdByType,
+      attributes.createdById,
       attributes.organizationId
     )
   }
@@ -188,8 +200,8 @@ export class AccessToken extends AggregateRoot {
       scopes: this.scopes,
       prefix: this.prefix,
       token: this.token,
-      createByType: this.createByType,
-      createById: this.createById,
+      createdByType: this.createdByType,
+      createdById: this.createdById,
       organizationId: this.organizationId,
     }
   }
