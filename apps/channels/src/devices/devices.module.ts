@@ -13,6 +13,7 @@
 import 'devices/shared/shared.dependency'
 import 'devices/create-device/create-device.dependency'
 import 'devices/get-one-device-by-criteria-by-criteria/get-one-device-by-criteria.dependency'
+import 'devices/pair-to-location/pair-to-location.dependency'
 
 import type {
   ICommandHandler,
@@ -43,7 +44,10 @@ export class DevicesModule {
   }
 
   public static getCommandHandlers(): ICommandHandler[] {
-    return [Box.resolve('createDeviceCommandHandler')]
+    return [
+      Box.resolve('createDeviceCommandHandler'),
+      Box.resolve('pairToLocationCommandHandler'),
+    ]
   }
 
   public static getEventSubscribers(): IEventSubscriber[] {

@@ -9,7 +9,7 @@ import { AggregateRoot, EntityAttributes } from '@turnly/core'
 import { DateTime } from '@turnly/datetime'
 import { BadRequestException } from '@turnly/observability'
 import { DeviceCreatedEvent } from 'devices/create-device/device-created.event'
-import { DevicePairedEvent } from 'devices/create-device/device-paired.event'
+import { DevicePairedEvent } from 'devices/pair-to-location'
 
 import { DeviceStatus } from '../enums/device-status.enum'
 import { DeviceTypes } from '../enums/device-types.enum'
@@ -90,19 +90,31 @@ export class Device extends AggregateRoot {
     super(id)
   }
 
-  public pairTo(locationId: Guid, pairedBy?: Guid): Device {
+  public pairTo(params: {
+    locationId: Guid
+    token: string
+    pairedBy?: Guid
+  }): Device {
     if (this.locationId || this.status === DeviceStatus.PAIRED) {
       throw new BadRequestException(
         'Oops, This Device is already paired with a Location'
       )
     }
 
-    this.locationId = locationId
+    if (this.status !== DeviceStatus.UNPAIRED) {
+      throw new BadRequestException(
+        'Oops, This Device is not in a valid state to be paired'
+      )
+    }
+
+    this.locationId = params.locationId
     this.status = DeviceStatus.PAIRED
-    this.pairedBy = pairedBy || this.pairedBy
+    this.pairedBy = params.pairedBy || this.pairedBy
     this.pairedAt = DateTime.now().toJSDate()
 
-    this.register(new DevicePairedEvent(this.toObject()))
+    this.register(
+      new DevicePairedEvent({ ...this.toObject(), accessToken: params.token })
+    )
 
     return this
   }

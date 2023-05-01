@@ -12,7 +12,6 @@
  */
 export enum DeviceStatus {
   PAIRED = 'paired',
-  PAIRING = 'pairing',
   UNPAIRED = 'unpaired',
   NOT_RESPONDING = 'not-responding',
   OFFLINE = 'offline',

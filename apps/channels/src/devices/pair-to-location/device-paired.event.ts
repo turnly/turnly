@@ -7,7 +7,9 @@
 import { EntityAttributes, Event, EventType } from '@turnly/core'
 import { Device } from 'devices/shared/domain/entities/device.entity'
 
-type Payload = EntityAttributes<Device>
+type Payload = EntityAttributes<Device> & {
+  accessToken: string
+}
 
 export class DevicePairedEvent extends Event<Payload> {
   public constructor(payload: Payload) {

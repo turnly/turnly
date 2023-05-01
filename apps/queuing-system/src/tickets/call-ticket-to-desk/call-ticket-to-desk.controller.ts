@@ -28,6 +28,6 @@ export class CallTicketToDeskController extends Controller {
       CallTicketToDeskCommand
     >(CallTicketToDeskCommand.build(params))
 
-    return this.respond.created(ticket.toObject())
+    return this.respond.ok(ticket.toObject())
   }
 }
