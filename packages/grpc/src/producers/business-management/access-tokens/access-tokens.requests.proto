@@ -5,8 +5,6 @@ package turnly.business_management.v1.access_tokens;
 message CreateAccessTokenRequest {
   string name = 1;
   repeated string scopes = 2;
-  string created_by_type = 3;
-  string created_by_id = 4;
 }
 
 message ExchangeAccessTokenRequest {

@@ -13,10 +13,6 @@ export class CreateAccessTokenRequest extends jspb.Message {
     getScopesList(): Array<string>;
     setScopesList(value: Array<string>): CreateAccessTokenRequest;
     addScopes(value: string, index?: number): string;
-    getCreatedByType(): string;
-    setCreatedByType(value: string): CreateAccessTokenRequest;
-    getCreatedById(): string;
-    setCreatedById(value: string): CreateAccessTokenRequest;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): CreateAccessTokenRequest.AsObject;
@@ -32,8 +28,6 @@ export namespace CreateAccessTokenRequest {
     export type AsObject = {
         name: string,
         scopesList: Array<string>,
-        createdByType: string,
-        createdById: string,
     }
 }
 

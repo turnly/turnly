@@ -24,9 +24,6 @@ export class AccessTokensMapper {
         .setId(entity.id)
         .setName(entity.name)
         .setScopesList(entity.scopes)
-        .setPrefix(entity.prefix)
-        .setCreatedByType(entity.createdByType)
-        .setCreatedById(entity.createdById)
 
       if (entity.token) accessToken.setToken(entity.token)
     }

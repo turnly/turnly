@@ -16,12 +16,6 @@ export class AccessToken extends jspb.Message {
     getScopesList(): Array<string>;
     setScopesList(value: Array<string>): AccessToken;
     addScopes(value: string, index?: number): string;
-    getCreatedByType(): string;
-    setCreatedByType(value: string): AccessToken;
-    getCreatedById(): string;
-    setCreatedById(value: string): AccessToken;
-    getPrefix(): string;
-    setPrefix(value: string): AccessToken;
     getToken(): string;
     setToken(value: string): AccessToken;
 
@@ -40,9 +34,6 @@ export namespace AccessToken {
         id: string,
         name: string,
         scopesList: Array<string>,
-        createdByType: string,
-        createdById: string,
-        prefix: string,
         token: string,
     }
 }

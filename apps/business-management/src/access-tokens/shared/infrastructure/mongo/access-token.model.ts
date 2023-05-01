@@ -35,14 +35,6 @@ const schema = new Schema(
       required: true,
       unique: true,
     },
-    createdByType: {
-      type: String,
-      required: true,
-    },
-    createdById: {
-      type: String,
-      required: true,
-    },
     organizationId: {
       type: String,
       required: true,

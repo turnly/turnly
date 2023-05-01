@@ -11,8 +11,6 @@ import { InvalidStateException } from '@turnly/observability'
 import { AccessTokenCreatedEvent } from 'access-tokens/create-access-token/access-token-created.event'
 import bcrypt from 'bcrypt'
 
-import { CreatedByTypes } from '../enums/created-by-types.enum'
-
 /**
  * AccessToken
  *
@@ -60,20 +58,6 @@ export class AccessToken extends AggregateRoot {
      * @description The actual token hash.
      */
     private token: string,
-
-    /**
-     * Created By
-     *
-     * @description The user or app that created the AccessToken.
-     */
-    private createdByType: CreatedByTypes,
-
-    /**
-     * Created By ID
-     *
-     * @description The ID of the user or app that created the AccessToken.
-     */
-    private createdById: Guid,
 
     /**
      * Organization
@@ -149,8 +133,6 @@ export class AccessToken extends AggregateRoot {
       attributes.scopes,
       prefix,
       token,
-      attributes.createdByType,
-      attributes.createdById,
       attributes.organizationId
     )
 
@@ -171,8 +153,6 @@ export class AccessToken extends AggregateRoot {
       attributes.scopes,
       attributes.prefix,
       attributes.token,
-      attributes.createdByType,
-      attributes.createdById,
       attributes.organizationId
     )
   }
@@ -200,8 +180,6 @@ export class AccessToken extends AggregateRoot {
       scopes: this.scopes,
       prefix: this.prefix,
       token: this.token,
-      createdByType: this.createdByType,
-      createdById: this.createdById,
       organizationId: this.organizationId,
     }
   }

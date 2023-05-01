@@ -6,7 +6,6 @@
  */
 import { Scopes } from '@turnly/auth'
 import { Consumers, Producers } from '@turnly/grpc'
-import { CreatedByTypes } from 'access-tokens/shared/domain/enums/created-by-types.enum'
 import { AccessTokensMapper } from 'access-tokens/shared/infrastructure/access-tokens-to-grpc.mapper'
 
 import { CreateAccessTokenController } from './create-access-token.controller'
@@ -27,8 +26,6 @@ export class CreateAccessTokenServer {
     const { data, meta } = await this.createAccessTokenController.execute({
       name: call.request.getName(),
       scopes: call.request.getScopesList() as Scopes[],
-      createdByType: call.request.getCreatedByType() as CreatedByTypes,
-      createdById: call.request.getCreatedById(),
       organizationId: Consumers.Client.getOrganizationId(call),
     })
 

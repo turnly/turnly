@@ -9,7 +9,5 @@ import { Validator } from '@turnly/core'
 export const CreateAccessTokenValidator = Validator.object({
   name: Validator.string(),
   scopes: Validator.getBuilder().array().items(Validator.string()),
-  createdByType: Validator.string(),
-  createdById: Validator.string(),
   organizationId: Validator.isId(),
 })

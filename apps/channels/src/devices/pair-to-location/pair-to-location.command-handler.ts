@@ -67,12 +67,6 @@ export class PairToLocationCommandHandler
     const { data, meta } = await this.tokensClient.create({
       name: params.name,
       scopesList: params.scopes,
-      /**
-       * TODO: Use an enum for this values instead of hardcoding them
-       * Maybe we not even need this values
-       */
-      createdByType: 'api',
-      createdById: 'api',
     })
 
     if (!data) throw new ConflictException(String(meta?.message))

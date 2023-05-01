@@ -53,8 +53,6 @@ export class AccessTokens
     const req = new CreateAccessTokenRequest()
       .setName(request.name)
       .setScopesList(request.scopesList)
-      .setCreatedByType(request.createdByType)
-      .setCreatedById(request.createdById)
 
     return (
       await promisify(this.client.create.bind(this.client))(
