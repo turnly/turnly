@@ -1,6 +1,6 @@
 {
   "name": "@turnly/branch-management",
-  "version": "0.1.21",
+  "version": "0.1.22",
   "private": true,
   "description": "This service manages the creation of locations, services offered, working hours, etc.",
   "license": "BSD-3-Clause",

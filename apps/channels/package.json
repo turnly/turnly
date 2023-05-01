@@ -1,6 +1,6 @@
 {
   "name": "@turnly/channels",
-  "version": "0.1.21",
+  "version": "0.1.22",
   "private": true,
   "description": "Enables integrations between external systems to share data.",
   "license": "BSD-3-Clause",

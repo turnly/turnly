@@ -1,6 +1,6 @@
 {
   "name": "@turnly/helpdesk-rtm",
-  "version": "0.1.21",
+  "version": "0.1.22",
   "private": true,
   "description": "It's the real-time event bridge that sends data between internal services and applications.",
   "license": "BSD-3-Clause",

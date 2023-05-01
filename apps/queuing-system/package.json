@@ -1,6 +1,6 @@
 {
   "name": "@turnly/queuing-system",
-  "version": "0.1.21",
+  "version": "0.1.22",
   "private": true,
   "description": "The core service for the queuing system, customer management and everything related to the life-cycle of a ticket.",
   "license": "BSD-3-Clause",

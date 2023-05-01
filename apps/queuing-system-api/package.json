@@ -1,6 +1,6 @@
 {
   "name": "@turnly/queuing-system-api",
-  "version": "0.1.21",
+  "version": "0.1.22",
   "private": true,
   "description": "Self-service ticketing via web-widget on any website or app",
   "license": "BSD-3-Clause",
