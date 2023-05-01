@@ -23,7 +23,7 @@ import 'customers/shared/register.dependency'
 async function bootstrap() {
   const { Application } = await import('./application')
 
-  new Application().setup()
+  await new Application().setup()
   await eventBus.setup()
 }
 

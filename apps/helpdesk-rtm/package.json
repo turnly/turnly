@@ -28,7 +28,7 @@
     "@turnly/grpc": "^0.1.21",
     "@turnly/realtime": "^0.1.21",
     "dotenv": "^16.0.1",
-    "mongoose": "^6.4.6"
+    "mongoose": "^7.1.0"
   },
   "devDependencies": {
     "@turnly/eslint-config": "github:turnly/configs",
