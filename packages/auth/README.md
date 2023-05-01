@@ -99,7 +99,7 @@ const payload = await oidc.verify('__TOKEN___', {
     /**
      * The property to lookup the token type.
      */
-    propertyToLookup: 'token_type',
+    claim: 'token_type',
   },
 })
 ```

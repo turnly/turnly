@@ -114,9 +114,9 @@ export class OIDC {
 
     const verifyOptions = { ...this.defaultOptions.tokenType, ...tokenType }
 
-    if (!verifyOptions.propertyToLookup) return
+    if (!verifyOptions.claim) return
 
-    const type = payload[verifyOptions.propertyToLookup] as JwtType
+    const type = payload[verifyOptions.claim] as JwtType
 
     if (!verifyOptions.type)
       throw new UnauthenticatedException(Messages.MISSING_TYPE)

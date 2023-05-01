@@ -42,7 +42,7 @@ export interface VerifyOptions extends Options {
      * @description The property of the JWT token that contains the type.
      * @example 'typ' | 'token_type' | 'source'
      */
-    propertyToLookup: string
+    claim: string
   }
 }
 
