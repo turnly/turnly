@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package turnly.channels.v1.digital_signage;
+
+import "common.proto";
+
+message DigitalSignageEntity {
+  string id = 1;
+  string name = 2;
+  string device_id = 3;
+  string refresh_time_unit = 4;
+  int32 refresh_time_value = 5;
+  string location_id = 6;
+  string organization_id = 7;
+  string clear_tickets_after = 8;
+  repeated string service_ids = 9;
+  string display_order = 10;
+}
+
+message GetPairingCodeDigitalSignageResponse {
+  DigitalSignageEntity data = 1;
+  turnly.common.v1.Meta meta = 2;
+}
+
+message PairToLocationDigitalSignageResponse {
+  DigitalSignageEntity data = 1;
+  turnly.common.v1.Meta meta = 2;
+}

@@ -12,9 +12,9 @@
  */
 export enum DeviceTypes {
   ALEXA = 'alexa',
-  GOOGLE_HOME = 'google-home',
+  GOOGLE_HOME = 'google_home',
   HOMEKIT = 'homekit',
   WIDGET = 'widget',
   KIOSK = 'kiosk',
-  DIGITAL_SIGNAGE = 'digital-signage',
+  DIGITAL_SIGNAGE = 'digital_signage',
 }

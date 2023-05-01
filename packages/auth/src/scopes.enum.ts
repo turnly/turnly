@@ -14,6 +14,7 @@ export enum Scopes {
   TICKETS_GET = 'tickets:get',
   TICKETS_LIST = 'tickets:list',
   TICKETS_UPDATE = 'tickets:update',
+  TICKETS_DISPLAY_ON_SIGNAGE = 'tickets:display_on_signage',
 
   /**
    * Customers
