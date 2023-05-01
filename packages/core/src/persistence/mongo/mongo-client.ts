@@ -16,8 +16,8 @@ export class MongoClient {
   public async connect() {
     if (!this.client) mongoose.set('strictQuery', true)
 
-    return (
-      this.client ?? (this.client = await mongoose.connect(this.config.url))
-    )
+    this.client = await mongoose.connect(this.config.url)
+
+    return this.client
   }
 }

@@ -14,9 +14,7 @@ services:
       - mongo_data:/data/db
       - ./etc/create-mongo-databases.sh:/docker-entrypoint-initdb.d/init-mongo.sh:ro
     networks:
-      turnly.vpc.internal:
-        aliases:
-          - mongo.turnly.local
+      - turnly.vpc.internal
     healthcheck:
       test: ['CMD', 'mongo', 'ping']
       interval: 10s
@@ -29,9 +27,13 @@ services:
       - ${MONGO_UI_PORT}:8081
     networks:
       - turnly.vpc.internal
+    depends_on:
+      mongo:
+        condition: service_healthy
     environment:
       ME_CONFIG_MONGODB_ADMINUSERNAME: ${MONGO_USERNAME}
       ME_CONFIG_MONGODB_ADMINPASSWORD: ${MONGO_PASSWORD}
+      ME_CONFIG_MONGODB_URL: ${MONGO_URI}
 
   rabbitmq:
     image: rabbitmq:3.10.5-management-alpine

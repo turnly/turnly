@@ -48,14 +48,8 @@ export abstract class MongoWritableRepo<
       entity: Entity
     }[]
   ) {
-    return this.model.bulkWrite(
-      entities.map(({ id: _id, entity }) => ({
-        updateOne: {
-          filter: { _id },
-          update: this.toDocument(entity),
-          upsert: true,
-        },
-      }))
+    return this.model.bulkSave(
+      entities.map(({ entity }) => this.toDocument(entity))
     )
   }
 
