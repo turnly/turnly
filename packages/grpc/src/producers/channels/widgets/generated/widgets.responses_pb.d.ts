@@ -12,24 +12,14 @@ export class Widget extends jspb.Message {
     setId(value: string): Widget;
     getName(): string;
     setName(value: string): Widget;
+    getDeviceId(): string;
+    setDeviceId(value: string): Widget;
     clearOriginsList(): void;
     getOriginsList(): Array<string>;
     setOriginsList(value: Array<string>): Widget;
     addOrigins(value: string, index?: number): string;
     getPosition(): string;
     setPosition(value: string): Widget;
-    getDesign(): string;
-    setDesign(value: string): Widget;
-    getPrimaryColor(): string;
-    setPrimaryColor(value: string): Widget;
-    getSecondaryColor(): string;
-    setSecondaryColor(value: string): Widget;
-    getPrimaryBackground(): string;
-    setPrimaryBackground(value: string): Widget;
-    getSecondaryBackground(): string;
-    setSecondaryBackground(value: string): Widget;
-    getDisabledTelemetry(): boolean;
-    setDisabledTelemetry(value: boolean): Widget;
     getOpenByDefault(): boolean;
     setOpenByDefault(value: boolean): Widget;
     getShowFullscreen(): boolean;
@@ -53,14 +43,9 @@ export namespace Widget {
     export type AsObject = {
         id: string,
         name: string,
+        deviceId: string,
         originsList: Array<string>,
         position: string,
-        design: string,
-        primaryColor: string,
-        secondaryColor: string,
-        primaryBackground: string,
-        secondaryBackground: string,
-        disabledTelemetry: boolean,
         openByDefault: boolean,
         showFullscreen: boolean,
         showCloseButton: boolean,

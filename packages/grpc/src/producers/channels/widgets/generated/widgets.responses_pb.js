@@ -73,7 +73,7 @@ if (goog.DEBUG && !COMPILED) {
  * @private {!Array<number>}
  * @const
  */
-proto.turnly.channels.v1.widgets.Widget.repeatedFields_ = [3];
+proto.turnly.channels.v1.widgets.Widget.repeatedFields_ = [4];
 
 
 
@@ -108,18 +108,13 @@ proto.turnly.channels.v1.widgets.Widget.toObject = function(includeInstance, msg
   var f, obj = {
     id: jspb.Message.getFieldWithDefault(msg, 1, ""),
     name: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    originsList: (f = jspb.Message.getRepeatedField(msg, 3)) == null ? undefined : f,
-    position: jspb.Message.getFieldWithDefault(msg, 4, ""),
-    design: jspb.Message.getFieldWithDefault(msg, 5, ""),
-    primaryColor: jspb.Message.getFieldWithDefault(msg, 6, ""),
-    secondaryColor: jspb.Message.getFieldWithDefault(msg, 7, ""),
-    primaryBackground: jspb.Message.getFieldWithDefault(msg, 8, ""),
-    secondaryBackground: jspb.Message.getFieldWithDefault(msg, 9, ""),
-    disabledTelemetry: jspb.Message.getBooleanFieldWithDefault(msg, 10, false),
-    openByDefault: jspb.Message.getBooleanFieldWithDefault(msg, 11, false),
-    showFullscreen: jspb.Message.getBooleanFieldWithDefault(msg, 12, false),
-    showCloseButton: jspb.Message.getBooleanFieldWithDefault(msg, 13, false),
-    organizationId: jspb.Message.getFieldWithDefault(msg, 14, "")
+    deviceId: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    originsList: (f = jspb.Message.getRepeatedField(msg, 4)) == null ? undefined : f,
+    position: jspb.Message.getFieldWithDefault(msg, 5, ""),
+    openByDefault: jspb.Message.getBooleanFieldWithDefault(msg, 6, false),
+    showFullscreen: jspb.Message.getBooleanFieldWithDefault(msg, 7, false),
+    showCloseButton: jspb.Message.getBooleanFieldWithDefault(msg, 8, false),
+    organizationId: jspb.Message.getFieldWithDefault(msg, 9, "")
   };
 
   if (includeInstance) {
@@ -166,49 +161,29 @@ proto.turnly.channels.v1.widgets.Widget.deserializeBinaryFromReader = function(m
       break;
     case 3:
       var value = /** @type {string} */ (reader.readString());
-      msg.addOrigins(value);
+      msg.setDeviceId(value);
       break;
     case 4:
       var value = /** @type {string} */ (reader.readString());
-      msg.setPosition(value);
+      msg.addOrigins(value);
       break;
     case 5:
       var value = /** @type {string} */ (reader.readString());
-      msg.setDesign(value);
+      msg.setPosition(value);
       break;
     case 6:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setPrimaryColor(value);
-      break;
-    case 7:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setSecondaryColor(value);
-      break;
-    case 8:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setPrimaryBackground(value);
-      break;
-    case 9:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setSecondaryBackground(value);
-      break;
-    case 10:
-      var value = /** @type {boolean} */ (reader.readBool());
-      msg.setDisabledTelemetry(value);
-      break;
-    case 11:
       var value = /** @type {boolean} */ (reader.readBool());
       msg.setOpenByDefault(value);
       break;
-    case 12:
+    case 7:
       var value = /** @type {boolean} */ (reader.readBool());
       msg.setShowFullscreen(value);
       break;
-    case 13:
+    case 8:
       var value = /** @type {boolean} */ (reader.readBool());
       msg.setShowCloseButton(value);
       break;
-    case 14:
+    case 9:
       var value = /** @type {string} */ (reader.readString());
       msg.setOrganizationId(value);
       break;
@@ -255,87 +230,52 @@ proto.turnly.channels.v1.widgets.Widget.serializeBinaryToWriter = function(messa
       f
     );
   }
+  f = message.getDeviceId();
+  if (f.length > 0) {
+    writer.writeString(
+      3,
+      f
+    );
+  }
   f = message.getOriginsList();
   if (f.length > 0) {
     writer.writeRepeatedString(
-      3,
+      4,
       f
     );
   }
   f = message.getPosition();
   if (f.length > 0) {
     writer.writeString(
-      4,
-      f
-    );
-  }
-  f = message.getDesign();
-  if (f.length > 0) {
-    writer.writeString(
       5,
-      f
-    );
-  }
-  f = message.getPrimaryColor();
-  if (f.length > 0) {
-    writer.writeString(
-      6,
-      f
-    );
-  }
-  f = message.getSecondaryColor();
-  if (f.length > 0) {
-    writer.writeString(
-      7,
-      f
-    );
-  }
-  f = message.getPrimaryBackground();
-  if (f.length > 0) {
-    writer.writeString(
-      8,
-      f
-    );
-  }
-  f = message.getSecondaryBackground();
-  if (f.length > 0) {
-    writer.writeString(
-      9,
-      f
-    );
-  }
-  f = message.getDisabledTelemetry();
-  if (f) {
-    writer.writeBool(
-      10,
       f
     );
   }
   f = message.getOpenByDefault();
   if (f) {
     writer.writeBool(
-      11,
+      6,
       f
     );
   }
   f = message.getShowFullscreen();
   if (f) {
     writer.writeBool(
-      12,
+      7,
       f
     );
   }
   f = message.getShowCloseButton();
   if (f) {
     writer.writeBool(
-      13,
+      8,
       f
     );
   }
   f = message.getOrganizationId();
   if (f.length > 0) {
     writer.writeString(
-      14,
+      9,
       f
     );
   }
@@ -379,11 +319,29 @@ proto.turnly.channels.v1.widgets.Widget.prototype.setName = function(value) {
 
 
 /**
- * repeated string origins = 3;
+ * optional string device_id = 3;
+ * @return {string}
+ */
+proto.turnly.channels.v1.widgets.Widget.prototype.getDeviceId = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.turnly.channels.v1.widgets.Widget} returns this
+ */
+proto.turnly.channels.v1.widgets.Widget.prototype.setDeviceId = function(value) {
+  return jspb.Message.setProto3StringField(this, 3, value);
+};
+
+
+/**
+ * repeated string origins = 4;
  * @return {!Array<string>}
  */
 proto.turnly.channels.v1.widgets.Widget.prototype.getOriginsList = function() {
-  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 3));
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 4));
 };
 
 
@@ -392,7 +350,7 @@ proto.turnly.channels.v1.widgets.Widget.prototype.getOriginsList = function() {
  * @return {!proto.turnly.channels.v1.widgets.Widget} returns this
  */
 proto.turnly.channels.v1.widgets.Widget.prototype.setOriginsList = function(value) {
-  return jspb.Message.setField(this, 3, value || []);
+  return jspb.Message.setField(this, 4, value || []);
 };
 
 
@@ -402,7 +360,7 @@ proto.turnly.channels.v1.widgets.Widget.prototype.setOriginsList = function(valu
  * @return {!proto.turnly.channels.v1.widgets.Widget} returns this
  */
 proto.turnly.channels.v1.widgets.Widget.prototype.addOrigins = function(value, opt_index) {
-  return jspb.Message.addToRepeatedField(this, 3, value, opt_index);
+  return jspb.Message.addToRepeatedField(this, 4, value, opt_index);
 };
 
 
@@ -416,28 +374,10 @@ proto.turnly.channels.v1.widgets.Widget.prototype.clearOriginsList = function() 
 
 
 /**
- * optional string position = 4;
+ * optional string position = 5;
  * @return {string}
  */
 proto.turnly.channels.v1.widgets.Widget.prototype.getPosition = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
-};
-
-
-/**
- * @param {string} value
- * @return {!proto.turnly.channels.v1.widgets.Widget} returns this
- */
-proto.turnly.channels.v1.widgets.Widget.prototype.setPosition = function(value) {
-  return jspb.Message.setProto3StringField(this, 4, value);
-};
-
-
-/**
- * optional string design = 5;
- * @return {string}
- */
-proto.turnly.channels.v1.widgets.Widget.prototype.getDesign = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
 };
 
@@ -446,107 +386,17 @@ proto.turnly.channels.v1.widgets.Widget.prototype.getDesign = function() {
  * @param {string} value
  * @return {!proto.turnly.channels.v1.widgets.Widget} returns this
  */
-proto.turnly.channels.v1.widgets.Widget.prototype.setDesign = function(value) {
+proto.turnly.channels.v1.widgets.Widget.prototype.setPosition = function(value) {
   return jspb.Message.setProto3StringField(this, 5, value);
 };
 
 
 /**
- * optional string primary_color = 6;
- * @return {string}
- */
-proto.turnly.channels.v1.widgets.Widget.prototype.getPrimaryColor = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 6, ""));
-};
-
-
-/**
- * @param {string} value
- * @return {!proto.turnly.channels.v1.widgets.Widget} returns this
- */
-proto.turnly.channels.v1.widgets.Widget.prototype.setPrimaryColor = function(value) {
-  return jspb.Message.setProto3StringField(this, 6, value);
-};
-
-
-/**
- * optional string secondary_color = 7;
- * @return {string}
- */
-proto.turnly.channels.v1.widgets.Widget.prototype.getSecondaryColor = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 7, ""));
-};
-
-
-/**
- * @param {string} value
- * @return {!proto.turnly.channels.v1.widgets.Widget} returns this
- */
-proto.turnly.channels.v1.widgets.Widget.prototype.setSecondaryColor = function(value) {
-  return jspb.Message.setProto3StringField(this, 7, value);
-};
-
-
-/**
- * optional string primary_background = 8;
- * @return {string}
- */
-proto.turnly.channels.v1.widgets.Widget.prototype.getPrimaryBackground = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 8, ""));
-};
-
-
-/**
- * @param {string} value
- * @return {!proto.turnly.channels.v1.widgets.Widget} returns this
- */
-proto.turnly.channels.v1.widgets.Widget.prototype.setPrimaryBackground = function(value) {
-  return jspb.Message.setProto3StringField(this, 8, value);
-};
-
-
-/**
- * optional string secondary_background = 9;
- * @return {string}
- */
-proto.turnly.channels.v1.widgets.Widget.prototype.getSecondaryBackground = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 9, ""));
-};
-
-
-/**
- * @param {string} value
- * @return {!proto.turnly.channels.v1.widgets.Widget} returns this
- */
-proto.turnly.channels.v1.widgets.Widget.prototype.setSecondaryBackground = function(value) {
-  return jspb.Message.setProto3StringField(this, 9, value);
-};
-
-
-/**
- * optional bool disabled_telemetry = 10;
- * @return {boolean}
- */
-proto.turnly.channels.v1.widgets.Widget.prototype.getDisabledTelemetry = function() {
-  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 10, false));
-};
-
-
-/**
- * @param {boolean} value
- * @return {!proto.turnly.channels.v1.widgets.Widget} returns this
- */
-proto.turnly.channels.v1.widgets.Widget.prototype.setDisabledTelemetry = function(value) {
-  return jspb.Message.setProto3BooleanField(this, 10, value);
-};
-
-
-/**
- * optional bool open_by_default = 11;
+ * optional bool open_by_default = 6;
  * @return {boolean}
  */
 proto.turnly.channels.v1.widgets.Widget.prototype.getOpenByDefault = function() {
-  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 11, false));
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 6, false));
 };
 
 
@@ -555,16 +405,16 @@ proto.turnly.channels.v1.widgets.Widget.prototype.getOpenByDefault = function() 
  * @return {!proto.turnly.channels.v1.widgets.Widget} returns this
  */
 proto.turnly.channels.v1.widgets.Widget.prototype.setOpenByDefault = function(value) {
-  return jspb.Message.setProto3BooleanField(this, 11, value);
+  return jspb.Message.setProto3BooleanField(this, 6, value);
 };
 
 
 /**
- * optional bool show_fullscreen = 12;
+ * optional bool show_fullscreen = 7;
  * @return {boolean}
  */
 proto.turnly.channels.v1.widgets.Widget.prototype.getShowFullscreen = function() {
-  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 12, false));
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 7, false));
 };
 
 
@@ -573,16 +423,16 @@ proto.turnly.channels.v1.widgets.Widget.prototype.getShowFullscreen = function()
  * @return {!proto.turnly.channels.v1.widgets.Widget} returns this
  */
 proto.turnly.channels.v1.widgets.Widget.prototype.setShowFullscreen = function(value) {
-  return jspb.Message.setProto3BooleanField(this, 12, value);
+  return jspb.Message.setProto3BooleanField(this, 7, value);
 };
 
 
 /**
- * optional bool show_close_button = 13;
+ * optional bool show_close_button = 8;
  * @return {boolean}
  */
 proto.turnly.channels.v1.widgets.Widget.prototype.getShowCloseButton = function() {
-  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 13, false));
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 8, false));
 };
 
 
@@ -591,16 +441,16 @@ proto.turnly.channels.v1.widgets.Widget.prototype.getShowCloseButton = function(
  * @return {!proto.turnly.channels.v1.widgets.Widget} returns this
  */
 proto.turnly.channels.v1.widgets.Widget.prototype.setShowCloseButton = function(value) {
-  return jspb.Message.setProto3BooleanField(this, 13, value);
+  return jspb.Message.setProto3BooleanField(this, 8, value);
 };
 
 
 /**
- * optional string organization_id = 14;
+ * optional string organization_id = 9;
  * @return {string}
  */
 proto.turnly.channels.v1.widgets.Widget.prototype.getOrganizationId = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 14, ""));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 9, ""));
 };
 
 
@@ -609,7 +459,7 @@ proto.turnly.channels.v1.widgets.Widget.prototype.getOrganizationId = function()
  * @return {!proto.turnly.channels.v1.widgets.Widget} returns this
  */
 proto.turnly.channels.v1.widgets.Widget.prototype.setOrganizationId = function(value) {
-  return jspb.Message.setProto3StringField(this, 14, value);
+  return jspb.Message.setProto3StringField(this, 9, value);
 };
 
 

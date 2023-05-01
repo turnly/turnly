@@ -7,18 +7,13 @@ import "common.proto";
 message Widget {
   string id = 1;
   string name = 2;
-  repeated string origins = 3;
-  string position = 4;
-  string design = 5;
-  string primary_color = 6;
-  string secondary_color = 7;
-  string primary_background = 8;
-  string secondary_background = 9;
-  bool disabled_telemetry = 10;
-  bool open_by_default = 11;
-  bool show_fullscreen = 12;
-  bool show_close_button = 13;
-  string organization_id = 14;
+  string device_id = 3;
+  repeated string origins = 4;
+  string position = 5;
+  bool open_by_default = 6;
+  bool show_fullscreen = 7;
+  bool show_close_button = 8;
+  string organization_id = 9;
 }
 
 message GetWidgetResponse {

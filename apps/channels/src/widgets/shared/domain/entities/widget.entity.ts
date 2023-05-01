@@ -4,7 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { Guid, Identifier } from '@turnly/common'
+import { Guid, Identifier, Nullable } from '@turnly/common'
 import { AggregateRoot, EntityAttributes } from '@turnly/core'
 import { WidgetCreatedEvent } from 'widgets/create-widget/widget-created.event'
 
@@ -53,7 +53,42 @@ export class Widget extends AggregateRoot {
      *
      * @description The Organization that the Widget belongs to.
      */
-    private readonly organizationId: Guid
+    private readonly organizationId: Guid,
+
+    /**
+     * Device
+     *
+     * @description The Device that the Widget is connected to.
+     */
+    private readonly deviceId: Guid,
+
+    /**
+     * Open by default
+     *
+     * @description If the Widget should be open by default.
+     */
+    private openByDefault: boolean = false,
+
+    /**
+     * Show fullscreen
+     *
+     * @description If the Widget should be shown in fullscreen.
+     */
+    private showFullscreen: boolean = false,
+
+    /**
+     * Show close button
+     *
+     * @description If the Widget should show a close button.
+     */
+    private showCloseButton: boolean = false,
+
+    /**
+     * Position
+     *
+     * @description The position of the Widget. (e.g. right, left)
+     */
+    private position: Nullable<string> = null
   ) {
     super(id)
   }
@@ -71,7 +106,12 @@ export class Widget extends AggregateRoot {
       attributes.name,
       attributes.status,
       attributes.origins,
-      attributes.organizationId
+      attributes.organizationId,
+      attributes.deviceId,
+      attributes.openByDefault,
+      attributes.showFullscreen,
+      attributes.showCloseButton,
+      attributes.position
     )
 
     widget.register(new WidgetCreatedEvent(widget.toObject()))
@@ -90,7 +130,12 @@ export class Widget extends AggregateRoot {
       attributes.name,
       attributes.status,
       attributes.origins,
-      attributes.organizationId
+      attributes.organizationId,
+      attributes.deviceId,
+      attributes.openByDefault,
+      attributes.showFullscreen,
+      attributes.showCloseButton,
+      attributes.position
     )
   }
 
@@ -106,6 +151,11 @@ export class Widget extends AggregateRoot {
       status: this.status,
       origins: this.origins,
       organizationId: this.organizationId,
+      deviceId: this.deviceId,
+      openByDefault: this.openByDefault,
+      showFullscreen: this.showFullscreen,
+      showCloseButton: this.showCloseButton,
+      position: this.position,
     }
   }
 }

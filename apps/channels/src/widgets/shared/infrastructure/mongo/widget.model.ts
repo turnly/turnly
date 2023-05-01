@@ -36,6 +36,25 @@ const schema = new Schema(
       required: true,
       index: true,
     },
+    deviceId: {
+      type: String,
+      required: true,
+    },
+    openByDefault: {
+      type: Boolean,
+      default: false,
+    },
+    showFullscreen: {
+      type: Boolean,
+      default: false,
+    },
+    showCloseButton: {
+      type: Boolean,
+      default: false,
+    },
+    position: {
+      type: String,
+    },
   },
   { timestamps }
 )

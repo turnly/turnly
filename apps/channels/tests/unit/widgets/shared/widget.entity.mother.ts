@@ -16,13 +16,23 @@ export class WidgetMother {
     name: string = ObjectMother.names(),
     status: WidgetStatus = WidgetStatus.ACTIVE,
     origins: string[] = [ObjectMother.names(), ObjectMother.names()],
-    organizationId: Guid = ObjectMother.uuid('org')
+    organizationId: Guid = ObjectMother.uuid('org'),
+    deviceId: Guid = ObjectMother.uuid('device'),
+    openByDefault: boolean = ObjectMother.boolean(),
+    showFullscreen: boolean = ObjectMother.boolean(),
+    showCloseButton: boolean = ObjectMother.boolean(),
+    position: string = ObjectMother.names()
   ): Widget {
     return Widget.create({
       name,
       status,
       origins,
       organizationId,
+      deviceId,
+      openByDefault,
+      showFullscreen,
+      showCloseButton,
+      position,
     })
   }
 
