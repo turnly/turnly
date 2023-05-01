@@ -5,7 +5,6 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import { Box, ioc } from '@turnly/core'
-import { GetOneOrganizationQueryHandler } from 'organizations/get-one-organization'
 
 import { OrganizationsMapper } from './infrastructure/mongo/organizations.mapper'
 import { OrganizationsReadableRepo } from './infrastructure/mongo/organizations-readable.repo'
@@ -15,7 +14,4 @@ Box.register({
   organizationsMapper: ioc.asClass(OrganizationsMapper).singleton(),
   organizationsReadableRepo: ioc.asClass(OrganizationsReadableRepo).singleton(),
   organizationsWritableRepo: ioc.asClass(OrganizationsWritableRepo).singleton(),
-  getOneOrganizationQueryHandler: ioc
-    .asClass(GetOneOrganizationQueryHandler)
-    .singleton(),
 })
