@@ -32,6 +32,7 @@
     "@turnly/core": "^0.1.16",
     "@turnly/grpc": "^0.1.18",
     "@turnly/observability": "^0.1.16",
+    "@turnly/datetime": "^0.1.15",
     "dotenv": "^16.0.1",
     "mongoose": "^6.4.6"
   },

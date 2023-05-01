@@ -72,6 +72,18 @@ export class Member extends AggregateRoot {
     super(id)
   }
 
+  public isOwner(): boolean {
+    return this.role === MemberRoles.OWNER
+  }
+
+  public isManager(): boolean {
+    return this.role === MemberRoles.MANAGER
+  }
+
+  public isAgent(): boolean {
+    return this.role === MemberRoles.AGENT
+  }
+
   public asOwner(): Member {
     if (this.role !== MemberRoles.OWNER) {
       throw new UnauthorizedException(

@@ -5,7 +5,6 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import { Box, ioc } from '@turnly/core'
-import { GetOneWidgetQueryHandler } from 'widgets/get-one-widget'
 
 import { WidgetsMapper } from './infrastructure/mongo/widgets.mapper'
 import { WidgetsReadableRepo } from './infrastructure/mongo/widgets-readable.repo'
@@ -15,5 +14,4 @@ Box.register({
   widgetsMapper: ioc.asClass(WidgetsMapper).singleton(),
   widgetsReadableRepo: ioc.asClass(WidgetsReadableRepo).singleton(),
   widgetsWritableRepo: ioc.asClass(WidgetsWritableRepo).singleton(),
-  getOneWidgetQueryHandler: ioc.asClass(GetOneWidgetQueryHandler).singleton(),
 })

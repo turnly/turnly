@@ -13,8 +13,7 @@ import { WidgetStatus } from '../enums/widget-status.enum'
 /**
  * Widget
  *
- * @description Represent an Widget that is used to connect
- * to a third-party service or applications.
+ * @description Represent an Widget that is used to take tickets from a website.
  *
  * @author Turnly
  */
@@ -102,7 +101,7 @@ export class Widget extends AggregateRoot {
     attributes: Omit<EntityAttributes<Widget>, 'id'>
   ): Widget {
     const widget = new Widget(
-      Identifier.generate('int'),
+      Identifier.generate('widget'),
       attributes.name,
       attributes.status,
       attributes.origins,

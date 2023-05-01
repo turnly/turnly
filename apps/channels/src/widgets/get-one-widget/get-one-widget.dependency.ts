@@ -7,9 +7,11 @@
 import { Box, ioc } from '@turnly/core'
 
 import { GetOneWidgetController } from './get-one-widget.controller'
+import { GetOneWidgetQueryHandler } from './get-one-widget.query-handler'
 import { GetOneWidgetServer } from './get-one-widget.server'
 
 Box.register({
+  getOneWidgetQueryHandler: ioc.asClass(GetOneWidgetQueryHandler).singleton(),
   getOneWidgetServer: ioc.asClass(GetOneWidgetServer).singleton(),
   getOneWidgetController: ioc.asClass(GetOneWidgetController).singleton(),
 })

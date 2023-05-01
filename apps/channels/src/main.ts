@@ -17,6 +17,7 @@ Tracing.Trace.initialize({ name: config.get('app.name') })
  *
  * @description Register dependencies to the dependency injection container.
  */
+import 'devices/shared/register.dependency'
 import 'widgets/shared/register.dependency'
 
 async function bootstrap() {
