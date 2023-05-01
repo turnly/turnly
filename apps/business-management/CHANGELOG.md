@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.1.19 (2023-05-01)
+
+
+### Features
+
+* add device module ([5d0c77d](https://github.com/turnly/turnly/commit/5d0c77dfefdfde2ce5117fb6f5c9579e3decc47a))
+* add endpoint to create access token ([6e88c45](https://github.com/turnly/turnly/commit/6e88c4563bcb378c5f48decd209407e019bf00d6))
+* add endpoint to get access token ([a2827de](https://github.com/turnly/turnly/commit/a2827de9a4d28ac0beda3c9bd3f7ee6c71ddcd49))
+* add members module ([af19a1c](https://github.com/turnly/turnly/commit/af19a1cb4c7c3dc88399a92cebd4d29a1ba30540))
+* add plan to organization entity ([a59a6bd](https://github.com/turnly/turnly/commit/a59a6bd701ab70396b8f8f4520622213b44eb0b0))
+* **business-management:** re-add old business-owners ms and rename it ([7bc2718](https://github.com/turnly/turnly/commit/7bc2718b2ef353ce2858d53f92aedd335368343d))
+* validate organization status ([194cb91](https://github.com/turnly/turnly/commit/194cb913df5830ab5a321cef52f324e6576b308a))
+
+
+
+
+
 ## [0.1.18](https://github.com/turnly/turnly/compare/v0.1.17...v0.1.18) (2023-04-28)
 
 **Note:** Version bump only for package @turnly/business-management

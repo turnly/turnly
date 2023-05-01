@@ -1,6 +1,6 @@
 {
   "name": "@turnly/auth",
-  "version": "0.1.18",
+  "version": "0.1.19",
   "description": "...",
   "homepage": "https://github.com/turnly/turnly#readme",
   "bugs": {
@@ -41,7 +41,7 @@
     "**/esquery": "1.4.0"
   },
   "dependencies": {
-    "@turnly/observability": "^0.1.16",
+    "@turnly/observability": "^0.1.19",
     "jsonwebtoken": "^9.0.0",
     "jwks-rsa": "^3.0.1"
   },

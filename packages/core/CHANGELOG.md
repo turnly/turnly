@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.1.19 (2023-05-01)
+
+
+### Features
+
+* update auth package ([e94097b](https://github.com/turnly/turnly/commit/e94097b79ec34c2b07067024b5672ded59d4f60f))
+
+
+
+
+
 ## [0.1.16](https://github.com/turnly/turnly/compare/v0.1.15...v0.1.16) (2023-04-27)
 
 **Note:** Version bump only for package @turnly/core

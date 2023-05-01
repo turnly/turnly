@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.1.19 (2023-05-01)
+
+
+### Features
+
+* add device module ([5d0c77d](https://github.com/turnly/turnly/commit/5d0c77dfefdfde2ce5117fb6f5c9579e3decc47a))
+* add feature to pair device with location ([b0f8304](https://github.com/turnly/turnly/commit/b0f8304bade6e31957b702e2dd1b6ad1c8e537f9))
+* add members module ([af19a1c](https://github.com/turnly/turnly/commit/af19a1cb4c7c3dc88399a92cebd4d29a1ba30540))
+* rename integrations to widgets ([271d699](https://github.com/turnly/turnly/commit/271d6998a9105bcbba46060eb6b55f17e2aebed3))
+* update widgets entity ([2866241](https://github.com/turnly/turnly/commit/28662418706e5bf3f91e589e2202dce8c4d7c887))
+* validate token type ([974e4b9](https://github.com/turnly/turnly/commit/974e4b96b4dd261793c16a4bafe35781e18f0f34))
+
+
+
+
+
 ## [0.1.18](https://github.com/turnly/turnly/compare/v0.1.17...v0.1.18) (2023-04-28)
 
 **Note:** Version bump only for package @turnly/channels

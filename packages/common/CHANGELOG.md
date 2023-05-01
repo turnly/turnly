@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.1.19 (2023-05-01)
+
+
+### Features
+
+* add endpoint to get access token ([a2827de](https://github.com/turnly/turnly/commit/a2827de9a4d28ac0beda3c9bd3f7ee6c71ddcd49))
+
+
+
+
+
 ## [0.1.14](https://github.com/turnly/turnly/compare/v0.1.13...v0.1.14) (2023-04-27)
 
 **Note:** Version bump only for package @turnly/common
