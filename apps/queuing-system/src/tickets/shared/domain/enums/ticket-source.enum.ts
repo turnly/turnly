@@ -14,11 +14,8 @@
  * @author Turnly
  */
 export enum TicketSource {
-  FROM_API = 'from_api',
-  FROM_AGENT = 'from_agent',
-  FROM_SYSTEM = 'from_system',
-  FROM_WIDGET = 'from_channel_widget',
-  FROM_CHAT = 'from_channel_chat',
-  FROM_VOICE = 'from_channel_voice',
-  FROM_MOBILE = 'from_channel_mobile',
+  FROM_API = 'api',
+  FROM_MEMBER = 'member',
+  FROM_WIDGET = 'channels.widgets',
+  FROM_KIOSK = 'channels.kiosk',
 }

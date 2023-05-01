@@ -5,7 +5,7 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import { CommandHandler, ICommandHandler, IEventBus } from '@turnly/core'
-import { ICustomerWritableRepo } from 'customers/shared/domain/contracts/customers-repo.interface'
+import { ICustomersWritableRepo } from 'customers/shared/domain/contracts/customers-repo.interface'
 import { Customer } from 'customers/shared/domain/entities/customer.entity'
 
 import { CreateCustomersCommand } from './create-customer.command'
@@ -16,13 +16,13 @@ export class CreateCustomerCommandHandler
 {
   public constructor(
     private readonly eventBus: IEventBus,
-    private readonly customerWritableRepo: ICustomerWritableRepo
+    private readonly customersWritableRepo: ICustomersWritableRepo
   ) {}
 
   public async execute(command: CreateCustomersCommand) {
     const customer = Customer.create(command)
 
-    await this.customerWritableRepo.save(customer)
+    await this.customersWritableRepo.save(customer)
 
     this.eventBus.publish(customer.pull())
 

@@ -22,7 +22,7 @@ export class TicketMother {
   static create(
     status: TicketStatus = TicketStatus.AVAILABLE,
     priority: TicketPriority = TicketPriority.NORMAL,
-    source: TicketSource = TicketSource.FROM_SYSTEM,
+    source: TicketSource = TicketSource.FROM_API,
     displayCode: string = ObjectMother.displayCode('TEST'),
     serviceId: Guid = ObjectMother.uuid('srv'),
     locationId: Guid = ObjectMother.uuid('loc'),

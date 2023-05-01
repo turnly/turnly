@@ -8,5 +8,5 @@ import { IReadableRepository, IWritableRepository } from '@turnly/core'
 
 import { Customer } from '../entities/customer.entity'
 
-export type ICustomerReadableRepo = IReadableRepository<Customer>
-export type ICustomerWritableRepo = IWritableRepository<Customer>
+export type ICustomersReadableRepo = IReadableRepository<Customer>
+export type ICustomersWritableRepo = IWritableRepository<Customer>

@@ -11,19 +11,21 @@
  * @description Register dependencies to the dependency injection container.
  */
 import 'tickets/shared/shared.dependency'
-import 'tickets/create-ticket/create-ticket.dependency'
 import 'tickets/announce-my-arrival/announce-my-arrival.dependency'
-import 'tickets/leave-the-queue/leave-the-queue.dependency'
 import 'tickets/call-ticket-to-desk/call-ticket-to-desk.dependency'
+import 'tickets/create-ticket/create-ticket.dependency'
+import 'tickets/get-active-tickets-by-customer/get-active-tickets-by-customer.dependency'
+import 'tickets/get-an-unexpired-ticket/get-an-unexpired-ticket.dependency'
+import 'tickets/get-one-ticket/get-one-ticket.dependency'
+import 'tickets/get-ticket-details/get-ticket-details.dependency'
+import 'tickets/leave-the-queue/leave-the-queue.dependency'
+import 'tickets/list-tickets-before-yours/list-tickets-before-yours.dependency'
+import 'tickets/list-tickets-waiting-for-service/list-tickets-waiting-for-service.dependency'
 import 'tickets/mark-ticket-as-discarded/mark-ticket-as-discarded.dependency'
 import 'tickets/mark-ticket-as-served/mark-ticket-as-served.dependency'
-import 'tickets/return-ticket-to-queue/return-ticket-to-queue.dependency'
-import 'tickets/get-one-ticket/get-one-ticket.dependency'
-import 'tickets/list-tickets-waiting-for-service/list-tickets-waiting-for-service.dependency'
-import 'tickets/list-tickets-before-yours/list-tickets-before-yours.dependency'
-import 'tickets/search-tickets-for-serving-from-location/search-tickets-for-serving-from-location.dependency'
 import 'tickets/notify-customer-called/notify-customer-called.dependency'
-import 'tickets/get-ticket-details/get-ticket-details.dependency'
+import 'tickets/return-ticket-to-queue/return-ticket-to-queue.dependency'
+import 'tickets/search-tickets-for-serving-from-location/search-tickets-for-serving-from-location.dependency'
 
 /**
  * Module
@@ -81,12 +83,12 @@ export class TicketsModule {
 
   public static getQueryHandlers(): IQueryHandler[] {
     return [
-      Box.resolve('getOneTicketQueryHandler'),
-      Box.resolve('listTicketsWaitingForServiceQueryHandler'),
-      Box.resolve('listTicketsBeforeYoursQueryHandler'),
-      Box.resolve('searchTicketsForServingFromLocationQueryHandler'),
       Box.resolve('getActiveTicketsByCustomerQueryHandler'),
       Box.resolve('getAnUnexpiredTicketQueryHandler'),
+      Box.resolve('getOneTicketQueryHandler'),
+      Box.resolve('listTicketsBeforeYoursQueryHandler'),
+      Box.resolve('listTicketsWaitingForServiceQueryHandler'),
+      Box.resolve('searchTicketsForServingFromLocationQueryHandler'),
     ]
   }
 

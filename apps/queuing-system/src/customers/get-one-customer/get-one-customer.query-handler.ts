@@ -6,7 +6,7 @@
  */
 import { Nullable } from '@turnly/common'
 import { IQueryHandler, QueryBuilder, QueryHandler } from '@turnly/core'
-import { ICustomerReadableRepo } from 'customers/shared/domain/contracts/customers-repo.interface'
+import { ICustomersReadableRepo } from 'customers/shared/domain/contracts/customers-repo.interface'
 import { Customer } from 'customers/shared/domain/entities/customer.entity'
 
 import { GetOneCustomerQuery } from './get-one-customer.query'
@@ -16,7 +16,7 @@ export class GetOneCustomerQueryHandler
   implements IQueryHandler<GetOneCustomerQuery, Nullable<Customer>>
 {
   public constructor(
-    private readonly customerReadableRepo: ICustomerReadableRepo
+    private readonly customersReadableRepo: ICustomersReadableRepo
   ) {}
 
   public async execute({ id, organizationId }: GetOneCustomerQuery) {
@@ -25,6 +25,6 @@ export class GetOneCustomerQueryHandler
       .equal('organizationId', organizationId)
       .getOne()
 
-    return await this.customerReadableRepo.getOne(query)
+    return await this.customersReadableRepo.getOne(query)
   }
 }

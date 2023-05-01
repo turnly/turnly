@@ -12,7 +12,6 @@
  */
 import 'access-tokens/shared/shared.dependency'
 import 'access-tokens/get-one-access-token/get-one-access-token.dependency'
-import 'access-tokens/get-access-token-by-user-id/get-access-token-by-user-id.dependency'
 import 'access-tokens/create-access-token/create-access-token.dependency'
 
 import type {
@@ -38,8 +37,9 @@ export class AccessTokensModule {
         Box.resolve('getOneAccessTokenServer').execute(...args),
       create: (...args) =>
         Box.resolve('createAccessTokenServer').execute(...args),
-      exchange: (...args) =>
-        Box.resolve('exchangeAccessTokenServer').execute(...args),
+      exchange: () => {
+        throw new Error('Not implemented')
+      },
     }
   }
 

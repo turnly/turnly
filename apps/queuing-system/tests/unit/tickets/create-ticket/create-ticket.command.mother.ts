@@ -25,7 +25,7 @@ export class CreateTicketCommandMother {
       locationId,
       customerId,
       organizationId,
-      source: TicketSource.FROM_SYSTEM,
+      source: TicketSource.FROM_API,
       extra,
     })
   }

@@ -6,14 +6,14 @@
  */
 import { MongoReadableRepo } from '@turnly/core'
 import { ICustomersMapper } from 'customers/shared/domain/contracts/customers-mapper.interface'
-import { ICustomerReadableRepo } from 'customers/shared/domain/contracts/customers-repo.interface'
+import { ICustomersReadableRepo } from 'customers/shared/domain/contracts/customers-repo.interface'
 import { Customer } from 'customers/shared/domain/entities/customer.entity'
 
 import { CustomerDocument, CustomerModel } from './customer.model'
 
 export class CustomersReadableRepo
   extends MongoReadableRepo<Customer, CustomerDocument>
-  implements ICustomerReadableRepo
+  implements ICustomersReadableRepo
 {
   public constructor(customersMapper: ICustomersMapper<CustomerDocument>) {
     super(CustomerModel, customersMapper)

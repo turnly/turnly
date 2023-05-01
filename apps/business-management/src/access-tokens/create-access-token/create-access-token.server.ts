@@ -4,9 +4,9 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
+import { Scopes } from '@turnly/auth'
 import { Consumers, Producers } from '@turnly/grpc'
 import { CreatedByTypes } from 'access-tokens/shared/domain/enums/created-by-types.enum'
-import { Scopes } from 'access-tokens/shared/domain/enums/scopes.enum'
 import { AccessTokensMapper } from 'access-tokens/shared/infrastructure/access-tokens-to-grpc.mapper'
 
 import { CreateAccessTokenController } from './create-access-token.controller'

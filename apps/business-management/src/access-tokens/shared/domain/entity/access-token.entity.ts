@@ -4,6 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
+import { Scopes } from '@turnly/auth'
 import { Guid, Identifier } from '@turnly/common'
 import { AggregateRoot, EntityAttributes } from '@turnly/core'
 import { InvalidStateException } from '@turnly/observability'
@@ -11,7 +12,6 @@ import { AccessTokenCreatedEvent } from 'access-tokens/create-access-token/acces
 import bcrypt from 'bcrypt'
 
 import { CreatedByTypes } from '../enums/created-by-types.enum'
-import { Scopes } from '../enums/scopes.enum'
 
 /**
  * AccessToken

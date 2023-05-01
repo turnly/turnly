@@ -6,14 +6,14 @@
  */
 import { MongoWritableRepo } from '@turnly/core'
 import { ICustomersMapper } from 'customers/shared/domain/contracts/customers-mapper.interface'
-import { ICustomerWritableRepo } from 'customers/shared/domain/contracts/customers-repo.interface'
+import { ICustomersWritableRepo } from 'customers/shared/domain/contracts/customers-repo.interface'
 import { Customer } from 'customers/shared/domain/entities/customer.entity'
 
 import { CustomerDocument, CustomerModel } from './customer.model'
 
 export class CustomersWritableRepo
   extends MongoWritableRepo<Customer, CustomerDocument>
-  implements ICustomerWritableRepo
+  implements ICustomersWritableRepo
 {
   public constructor(customersMapper: ICustomersMapper<CustomerDocument>) {
     super(CustomerModel, customersMapper)
