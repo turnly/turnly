@@ -25,7 +25,7 @@ import { TicketSource } from '../enums/ticket-source.enum'
 import { TicketStatus } from '../enums/ticket-status.enum'
 import { Rating } from './rating.entity'
 
-type IgnoreAttrs = 'id' | 'assigneeId' | 'createdAt' | 'rating' | 'updatedAt'
+type IgnoreAttrs = 'id' | 'assigneeId' | 'rating' | 'updatedAt' | 'createdAt'
 export type CreateTicketParams = Omit<EntityAttributes<Ticket>, IgnoreAttrs>
 
 /**
@@ -102,26 +102,26 @@ export class Ticket extends AggregateRoot {
     private readonly organizationId: Guid,
 
     /**
-     * Extra
-     *
-     * @description Free-form data as name/value pairs that can be used
-     * to store additional information about the Ticket.
-     */
-    private readonly extra: Nullable<Extra[]> = null,
-
-    /**
      * Created At
      *
      * @description The date and time the Ticket was created.
      */
-    private readonly createdAt?: Nullable<Date>,
+    private readonly createdAt: Date,
 
     /**
      * Update At
      *
      * @description The date and time the Ticket was updated.
      */
-    private readonly updatedAt: Nullable<Date> = null,
+    private readonly updatedAt: Date,
+
+    /**
+     * Extra
+     *
+     * @description Free-form data as name/value pairs that can be used
+     * to store additional information about the Ticket.
+     */
+    private readonly extra: Nullable<Extra[]> = null,
 
     /**
      * Assignee
@@ -318,7 +318,12 @@ export class Ticket extends AggregateRoot {
    *
    * @description Creates a new Ticket.
    */
-  public static create(attributes: CreateTicketParams): Ticket {
+  public static create({
+    createdAt = new Date(),
+    ...attributes
+  }: CreateTicketParams & {
+    createdAt?: Date
+  }): Ticket {
     const ticket = new Ticket(
       Identifier.generate('ticket'),
       attributes.status,
@@ -329,6 +334,8 @@ export class Ticket extends AggregateRoot {
       attributes.locationId,
       attributes.customerId,
       attributes.organizationId,
+      createdAt,
+      createdAt,
       attributes.extra
     )
 
@@ -358,9 +365,9 @@ export class Ticket extends AggregateRoot {
       attributes.locationId,
       attributes.customerId,
       attributes.organizationId,
-      attributes.extra,
       attributes.createdAt,
       attributes.updatedAt,
+      attributes.extra,
       attributes.assigneeId,
       attributes.rating
     )
@@ -383,8 +390,8 @@ export class Ticket extends AggregateRoot {
       customerId: this.customerId,
       organizationId: this.organizationId,
       assigneeId: this.assigneeId,
-      createdAt: this.createdAt as Date,
-      updatedAt: this.updatedAt as Date,
+      createdAt: this.createdAt,
+      updatedAt: this.updatedAt,
       rating: this.rating,
       extra: this.extra,
     }

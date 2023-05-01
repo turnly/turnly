@@ -39,6 +39,7 @@ export class TicketMother {
       locationId,
       customerId,
       organizationId,
+      createdAt: ObjectMother.date(),
       extra,
     })
   }

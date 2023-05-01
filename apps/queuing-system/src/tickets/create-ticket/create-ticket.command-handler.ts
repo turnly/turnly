@@ -13,6 +13,7 @@ import {
 } from '@turnly/core'
 import { ConflictException } from '@turnly/observability'
 import { GetActiveTicketsByCustomerQuery } from 'tickets/get-active-tickets-by-customer/get-active-tickets-by-customer.query'
+import { GetOneTicketQuery } from 'tickets/get-one-ticket'
 import { ITicketsWritableRepo } from 'tickets/shared/domain/contracts/tickets-repo.interface'
 import { Ticket } from 'tickets/shared/domain/entities/ticket.entity'
 import { TicketPriority } from 'tickets/shared/domain/enums/ticket-priority.enum'
@@ -51,7 +52,11 @@ export class CreateTicketCommandHandler
 
     this.eventBus.publish(ticket.pull())
 
-    return ticket
+    const { id, organizationId } = ticket.toObject()
+
+    return await this.queryBus.ask<Ticket>(
+      GetOneTicketQuery.build({ id, organizationId })
+    )
   }
 
   private async generateDisplayCode(serviceName: string) {
