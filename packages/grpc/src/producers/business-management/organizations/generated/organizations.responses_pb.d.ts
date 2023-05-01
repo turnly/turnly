@@ -12,10 +12,12 @@ export class Organization extends jspb.Message {
     setId(value: string): Organization;
     getName(): string;
     setName(value: string): Organization;
-    getSubdomain(): string;
-    setSubdomain(value: string): Organization;
     getStatus(): string;
     setStatus(value: string): Organization;
+    getSubdomain(): string;
+    setSubdomain(value: string): Organization;
+    getPlan(): string;
+    setPlan(value: string): Organization;
     getBrandingLogo(): string;
     setBrandingLogo(value: string): Organization;
     getBrandingPrimaryColor(): string;
@@ -45,8 +47,9 @@ export namespace Organization {
     export type AsObject = {
         id: string,
         name: string,
-        subdomain: string,
         status: string,
+        subdomain: string,
+        plan: string,
         brandingLogo: string,
         brandingPrimaryColor: string,
         brandingSecondaryColor: string,

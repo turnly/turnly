@@ -5,6 +5,7 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import { ObjectMother } from '@turnly/testing'
+import { OrganizationPlans } from 'organizations/shared/domain/enums/organization-plans.enum'
 import { OrganizationStatus } from 'organizations/shared/domain/enums/organization-status.enum'
 
 import { GetOneOrganizationQuery } from '../../../../src/organizations/get-one-organization'
@@ -21,6 +22,7 @@ export class OrganizationMother {
       name,
       status,
       subdomain,
+      plan: OrganizationPlans.OPEN_SOURCE,
       brandingLogo: '',
       disabledTelemetry: false,
       brandingPrimaryColor: '',

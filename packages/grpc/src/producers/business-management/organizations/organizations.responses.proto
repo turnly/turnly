@@ -7,15 +7,16 @@ import "common.proto";
 message Organization {
   string id = 1;
   string name = 2;
-  string subdomain = 3;
-  string status = 4;
-  string branding_logo = 5;
-  string branding_primary_color = 6;
-  string branding_secondary_color = 7;
-  string branding_design_type = 8;
-  string branding_primary_background = 9;
-  string branding_secondary_background = 10;
-  bool disabled_telemetry = 11;
+  string status = 3;
+  string subdomain = 4;
+  string plan = 5;
+  string branding_logo = 6;
+  string branding_primary_color = 7;
+  string branding_secondary_color = 8;
+  string branding_design_type = 9;
+  string branding_primary_background = 10;
+  string branding_secondary_background = 11;
+  bool disabled_telemetry = 12;
 }
 
 message GetOrganizationResponse {

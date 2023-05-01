@@ -8,6 +8,7 @@ import { Guid, Identifier, Nullable } from '@turnly/common'
 import { AggregateRoot, EntityAttributes } from '@turnly/core'
 
 import { OrganizationCreatedEvent } from '../../../create-organization/organization-created.event'
+import { OrganizationPlans } from '../enums/organization-plans.enum'
 import { OrganizationStatus } from '../enums/organization-status.enum'
 
 /**
@@ -47,6 +48,13 @@ export class Organization extends AggregateRoot {
      * the Organization that is used to access the application.
      */
     private subdomain: string,
+
+    /**
+     * Plan
+     *
+     * @description The current plan of the Organization (open-source, basic, etc.).
+     */
+    private plan: OrganizationPlans,
 
     /**
      * Disabled Telemetry
@@ -100,6 +108,62 @@ export class Organization extends AggregateRoot {
     super(id)
   }
 
+  public canCustomizeBranding(): boolean {
+    const plans = [
+      OrganizationPlans.PLUS,
+      OrganizationPlans.BUSINESS,
+      OrganizationPlans.ENTERPRISE,
+    ]
+
+    return plans.includes(this.plan)
+  }
+
+  public setBranding(branding: {
+    brandingLogo?: Nullable<string>
+    brandingPrimaryColor?: Nullable<string>
+    brandingSecondaryColor?: Nullable<string>
+    brandingPrimaryBackground?: Nullable<string>
+    brandingSecondaryBackground?: Nullable<string>
+    brandingDesignType?: Nullable<string>
+  }): Organization {
+    const {
+      brandingLogo,
+      brandingPrimaryColor,
+      brandingSecondaryColor,
+      brandingPrimaryBackground,
+      brandingSecondaryBackground,
+      brandingDesignType,
+    } = branding
+
+    if (this.canCustomizeBranding()) {
+      this.brandingLogo = brandingLogo ?? null
+      this.brandingPrimaryColor = brandingPrimaryColor ?? null
+      this.brandingSecondaryColor = brandingSecondaryColor ?? null
+      this.brandingPrimaryBackground = brandingPrimaryBackground ?? null
+      this.brandingSecondaryBackground = brandingSecondaryBackground ?? null
+      this.brandingDesignType = brandingDesignType ?? null
+    }
+
+    return this
+  }
+
+  public isActive(): boolean {
+    return this.status === OrganizationStatus.ACTIVE
+  }
+
+  public isBlocked(): boolean {
+    const statuses = [
+      OrganizationStatus.BLOCKED,
+      OrganizationStatus.SUSPENDED,
+      OrganizationStatus.PENDING_FOR_APPROVAL,
+      OrganizationStatus.PENDING_FOR_PAYMENT,
+      OrganizationStatus.PENDING_FOR_TRIAL,
+      OrganizationStatus.PENDING_FOR_VERIFICATION,
+    ]
+
+    return statuses.includes(this.status)
+  }
+
   /**
    * Create Organization
    *
@@ -115,14 +179,11 @@ export class Organization extends AggregateRoot {
       attributes.name,
       attributes.status,
       attributes.subdomain,
-      attributes.disabledTelemetry,
-      attributes.brandingLogo,
-      attributes.brandingPrimaryColor,
-      attributes.brandingSecondaryColor,
-      attributes.brandingPrimaryBackground,
-      attributes.brandingSecondaryBackground,
-      attributes.brandingDesignType
+      attributes.plan,
+      attributes.disabledTelemetry
     )
+
+    organization.setBranding(attributes)
 
     organization.register(
       new OrganizationCreatedEvent({
@@ -142,19 +203,18 @@ export class Organization extends AggregateRoot {
   public static build(
     attributes: EntityAttributes<Organization>
   ): Organization {
-    return new Organization(
+    const organization = new Organization(
       attributes.id,
       attributes.name,
       attributes.status,
       attributes.subdomain,
-      attributes.disabledTelemetry,
-      attributes.brandingLogo,
-      attributes.brandingPrimaryColor,
-      attributes.brandingSecondaryColor,
-      attributes.brandingPrimaryBackground,
-      attributes.brandingSecondaryBackground,
-      attributes.brandingDesignType
+      attributes.plan,
+      attributes.disabledTelemetry
     )
+
+    organization.setBranding(attributes)
+
+    return organization
   }
 
   /**
@@ -168,6 +228,7 @@ export class Organization extends AggregateRoot {
       name: this.name,
       status: this.status,
       subdomain: this.subdomain,
+      plan: this.plan,
       disabledTelemetry: this.disabledTelemetry,
       brandingLogo: this.brandingLogo,
       brandingPrimaryColor: this.brandingPrimaryColor,
