@@ -92,7 +92,7 @@ export class OIDC {
           }
 
           try {
-            OIDC.checkTokenType({ payload: decoded as T, options })
+            this.checkTokenType({ payload: decoded as T, options })
           } catch (error) {
             return reject(error)
           }
@@ -103,7 +103,7 @@ export class OIDC {
     })
   }
 
-  private static checkTokenType<T extends jwt.JwtPayload>(params: {
+  private checkTokenType<T extends jwt.JwtPayload>(params: {
     payload: T
     options: VerifyOptions
   }) {
@@ -112,16 +112,18 @@ export class OIDC {
       options: { tokenType },
     } = params
 
-    if (!tokenType) return
+    const verifyOptions = { ...this.defaultOptions.tokenType, ...tokenType }
 
-    const type = payload[tokenType.propertyToLookup] as JwtType
+    if (!verifyOptions.propertyToLookup) return
 
-    if (!tokenType.type)
+    const type = payload[verifyOptions.propertyToLookup] as JwtType
+
+    if (!verifyOptions.type)
       throw new UnauthenticatedException(Messages.MISSING_TYPE)
 
     if (!type) throw new UnauthenticatedException(Messages.MISSING_TOKEN_TYPE)
 
-    if (type !== tokenType.type)
+    if (type !== verifyOptions.type)
       throw new UnauthenticatedException(Messages.INVALID_TOKEN_TYPE)
   }
 }
