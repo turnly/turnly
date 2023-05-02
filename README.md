@@ -52,7 +52,7 @@ Turnly's main features are:
 * [x] When customers arrive, they can quickly announce themselves through their smart device or an on-site self-service kiosk.
 * [x] Manage multiple locations (branches), services offered, working hours, and desks per location.
 * [ ] Self check-in kiosk (On-site).
-* [ ] Digital Signage (Waiting TV).
+* [ ] Signage Displays (Waiting TV).
 * [ ] Modal Client for ticket-taking via web-widet on your website.
 * [ ] React Native client for ticket-taking for mobile apps.
 * [ ] WhatsApp conversation integration for ticket-taking.

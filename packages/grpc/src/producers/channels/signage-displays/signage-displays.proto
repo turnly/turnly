@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package turnly.channels.v1.signage_displays;
+
+import "signage-displays.requests.proto";
+import "signage-displays.responses.proto";
+
+service SignageDisplays {
+  rpc GetPairingCode(GetPairingCodeSignageDisplayRequest)
+    returns (GetPairingCodeSignageDisplayResponse) {}
+  rpc PairToLocation(PairToLocationSignageDisplayRequest)
+    returns (PairToLocationSignageDisplayResponse) {}
+  rpc Unpair(UnpairSignageDisplayRequest)
+    returns (UnpairSignageDisplayResponse) {}
+}

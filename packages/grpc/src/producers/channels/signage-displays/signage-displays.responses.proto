@@ -1,10 +1,10 @@
 syntax = "proto3";
 
-package turnly.channels.v1.digital_signage;
+package turnly.channels.v1.signage_displays;
 
 import "common.proto";
 
-message DigitalSignageEntity {
+message SignageDisplay {
   string id = 1;
   string name = 2;
   string device_id = 3;
@@ -14,15 +14,20 @@ message DigitalSignageEntity {
   string organization_id = 7;
   string clear_tickets_after = 8;
   repeated string service_ids = 9;
-  string display_order = 10;
+  string order = 10;
 }
 
-message GetPairingCodeDigitalSignageResponse {
-  DigitalSignageEntity data = 1;
+message GetPairingCodeSignageDisplayResponse {
+  SignageDisplay data = 1;
   turnly.common.v1.Meta meta = 2;
 }
 
-message PairToLocationDigitalSignageResponse {
-  DigitalSignageEntity data = 1;
+message PairToLocationSignageDisplayResponse {
+  SignageDisplay data = 1;
+  turnly.common.v1.Meta meta = 2;
+}
+
+message UnpairSignageDisplayResponse {
+  SignageDisplay data = 1;
   turnly.common.v1.Meta meta = 2;
 }

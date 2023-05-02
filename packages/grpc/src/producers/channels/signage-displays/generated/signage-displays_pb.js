@@ -1,4 +1,4 @@
-// source: digital-signage.proto
+// source: signage-displays.proto
 /**
  * @fileoverview
  * @enhanceable
@@ -21,7 +21,7 @@ var global = (function() {
   return Function('return this')();
 }.call(null));
 
-var digital$signage_requests_pb = require('./digital-signage.requests_pb.js');
-goog.object.extend(proto, digital$signage_requests_pb);
-var digital$signage_responses_pb = require('./digital-signage.responses_pb.js');
-goog.object.extend(proto, digital$signage_responses_pb);
+var signage$displays_requests_pb = require('./signage-displays.requests_pb.js');
+goog.object.extend(proto, signage$displays_requests_pb);
+var signage$displays_responses_pb = require('./signage-displays.responses_pb.js');
+goog.object.extend(proto, signage$displays_responses_pb);

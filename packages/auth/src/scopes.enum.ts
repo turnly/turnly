@@ -57,14 +57,14 @@ export enum Scopes {
   DEVICES_UPDATE = 'devices:update',
 
   /**
-   * Digital Signage
+   * Signage Displays
    */
-  DIGITAL_SIGNAGE_ALL = 'digital_signage:*',
-  DIGITAL_SIGNAGE_CREATE = 'digital_signage:create',
-  DIGITAL_SIGNAGE_DELETE = 'digital_signage:delete',
-  DIGITAL_SIGNAGE_GET = 'digital_signage:get',
-  DIGITAL_SIGNAGE_LIST = 'digital_signage:list',
-  DIGITAL_SIGNAGE_UPDATE = 'digital_signage:update',
+  SIGNAGE_DISPLAYS_ALL = 'signage_displays:*',
+  SIGNAGE_DISPLAYS_CREATE = 'signage_displays:create',
+  SIGNAGE_DISPLAYS_DELETE = 'signage_displays:delete',
+  SIGNAGE_DISPLAYS_GET = 'signage_displays:get',
+  SIGNAGE_DISPLAYS_LIST = 'signage_displays:list',
+  SIGNAGE_DISPLAYS_UPDATE = 'signage_displays:update',
 
   /**
    * Organizations

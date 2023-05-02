@@ -4,5 +4,5 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-export * from './digital-signage.proxy'
-export * from './digital-signage.type'
+export * from './signage-displays.proxy'
+export * from './signage-displays.type'
