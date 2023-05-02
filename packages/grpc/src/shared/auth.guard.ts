@@ -43,8 +43,11 @@ export class AuthGuard<Request = unknown>
 
         if (!token) throw new UnauthenticatedException()
 
-        const member = await this.oidc.verify(token)
-        metadata.set('member', JSON.stringify(member))
+        const { sub } = await this.oidc.verify(token)
+
+        if (!sub) throw new UnauthenticatedException()
+
+        metadata.set('user_id', sub)
       }
 
       await next()
