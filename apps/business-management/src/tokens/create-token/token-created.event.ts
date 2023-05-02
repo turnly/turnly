@@ -5,14 +5,12 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import { EntityAttributes, Event, EventType } from '@turnly/core'
-import { Device } from 'devices/shared/domain/entities/device.entity'
+import { Token } from 'tokens/shared/domain/entity/token.entity'
 
-type Payload = EntityAttributes<Device> & {
-  secret: string
-}
+type Payload = EntityAttributes<Token>
 
-export class DevicePairedEvent extends Event<Payload> {
+export class TokenCreatedEvent extends Event<Payload> {
   public constructor(payload: Payload) {
-    super(EventType.UPDATE, payload)
+    super(EventType.CREATE, payload)
   }
 }

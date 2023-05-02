@@ -18,4 +18,4 @@ export * from './members'
 /**
  * Access Tokens generated
  */
-export * from './access-tokens'
+export * from './tokens'

@@ -96,7 +96,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Features
 
 * adapter select component ([3f18da1](https://github.com/turnly/turnly/commit/3f18da103c67e17bd7e8a5b4003e05c365754769))
-* add access-tokens grpc package ([820a643](https://github.com/turnly/turnly/commit/820a643e640d59199c1ff06572efaefe889d9aaf))
+* add tokens grpc package ([820a643](https://github.com/turnly/turnly/commit/820a643e640d59199c1ff06572efaefe889d9aaf))
 * add alfred micro-service with service and location entities ([2297ef0](https://github.com/turnly/turnly/commit/2297ef069007816b369b5cc4aef84f10b699a873))
 * add auth package ([1bb7f88](https://github.com/turnly/turnly/commit/1bb7f88443a2ce4e0bae9cc64f6a7c73aba251e4))
 * add build method to integration entity ([87d06c0](https://github.com/turnly/turnly/commit/87d06c0ddaaec0b584f80492c8797a75a5d79cce))

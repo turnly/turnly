@@ -92,7 +92,7 @@ export class Device extends AggregateRoot {
 
   public pairTo(params: {
     locationId: Guid
-    token: string
+    secret: string
     pairedBy?: Guid
   }): Device {
     if (this.locationId || this.status === DeviceStatus.PAIRED) {
@@ -113,7 +113,7 @@ export class Device extends AggregateRoot {
     this.pairedAt = DateTime.now().toJSDate()
 
     this.register(
-      new DevicePairedEvent({ ...this.toObject(), accessToken: params.token })
+      new DevicePairedEvent({ ...this.toObject(), secret: params.secret })
     )
 
     return this

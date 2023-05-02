@@ -6,9 +6,9 @@
  */
 import { config, oidc } from '@turnly/core'
 import { AuthGuard, Producers } from '@turnly/grpc'
-import { AccessTokensModule } from 'access-tokens/access-tokens.module'
 import { MembersModule } from 'members/members.module'
 import { OrganizationsModule } from 'organizations/organizations.module'
+import { TokensModule } from 'tokens/tokens.module'
 
 /**
  * Services (gRPC)
@@ -25,8 +25,8 @@ const services: Producers.Service[] = [
     implementation: MembersModule.getServer(),
   },
   {
-    definition: Producers.BusinessManagement.AccessTokensService,
-    implementation: AccessTokensModule.getServer(),
+    definition: Producers.BusinessManagement.TokensService,
+    implementation: TokensModule.getServer(),
   },
 ]
 

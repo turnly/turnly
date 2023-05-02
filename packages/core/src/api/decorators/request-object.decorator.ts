@@ -35,8 +35,6 @@ export class RequestDecorator<
 
   public getClientId = () => this.req.get('x-client-id') as Guid
 
-  public getAccessToken = () => this.req.get('authorization')?.split(' ')?.[1]
-
   public getAuthorization = () => this.req.get('authorization')
 
   public getIp = () => getClientIp(this.req) ?? 'unknown'
@@ -96,7 +94,6 @@ export class RequestDecorator<
       ip: this.getIp(),
       appId: this.getAppId(),
       clientId: this.getClientId(),
-      token: this.getAccessToken(),
       authorization: this.getAuthorization(),
       browser: this.getBrowser(),
       us: this.getUserAgent(),

@@ -23,14 +23,13 @@ import { Device } from 'devices/shared/domain/entities/device.entity'
 
 import { PairToLocationCommand } from './pair-to-location.command'
 
-type AccessToken = Producers.BusinessManagement.AccessToken.AsObject
+type Token = Producers.BusinessManagement.Token.AsObject
 
 @CommandHandler(PairToLocationCommand)
 export class PairToLocationCommandHandler
   implements ICommandHandler<PairToLocationCommand, Device>
 {
-  private readonly tokensClient =
-    new Consumers.BusinessManagement.AccessTokens()
+  private readonly tokensClient = new Consumers.BusinessManagement.Tokens()
 
   public constructor(
     private readonly eventBus: IEventBus,
@@ -46,9 +45,9 @@ export class PairToLocationCommandHandler
     if (!device) throw new ResourceNotFoundException()
 
     const { name } = device.toObject()
-    const { token } = await this.getAccessToken({ ...command, name })
+    const { secret } = await this.getToken({ ...command, name })
 
-    device.pairTo({ ...command, token })
+    device.pairTo({ ...command, secret })
 
     await this.devicesWritableRepo.save(device)
 
@@ -57,11 +56,11 @@ export class PairToLocationCommandHandler
     return device
   }
 
-  private async getAccessToken(params: {
+  private async getToken(params: {
     name: string
     scopes: Scopes[]
     organizationId: Guid
-  }): Promise<AccessToken> {
+  }): Promise<Token> {
     this.tokensClient.setOrganizationId(params.organizationId)
 
     const { data, meta } = await this.tokensClient.create({

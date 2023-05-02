@@ -12,7 +12,7 @@
  */
 import 'devices/shared/shared.dependency'
 import 'devices/create-device/create-device.dependency'
-import 'devices/get-one-device-by-criteria-by-criteria/get-one-device-by-criteria.dependency'
+import 'devices/get-one-device-by-criteria/get-one-device-by-criteria.dependency'
 import 'devices/pair-to-location/pair-to-location.dependency'
 
 import type {

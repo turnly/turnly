@@ -19,7 +19,7 @@ Tracing.Trace.initialize({ name: config.get('app.name') })
  */
 import 'organizations/shared/register.dependency'
 import 'members/shared/register.dependency'
-import 'access-tokens/shared/register.dependency'
+import 'tokens/shared/register.dependency'
 
 async function bootstrap() {
   const { Application } = await import('./application')

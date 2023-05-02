@@ -37,7 +37,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* add access-tokens grpc package ([820a643](https://github.com/turnly/turnly/commit/820a643e640d59199c1ff06572efaefe889d9aaf))
+* add tokens grpc package ([820a643](https://github.com/turnly/turnly/commit/820a643e640d59199c1ff06572efaefe889d9aaf))
 * add endpoint to create access token ([6e88c45](https://github.com/turnly/turnly/commit/6e88c4563bcb378c5f48decd209407e019bf00d6))
 * add grpc auth-guard ([9226832](https://github.com/turnly/turnly/commit/9226832efcfb350348cb29f25913492b7660f93f))
 * add grpc package for the new microservises ([0d5a3f9](https://github.com/turnly/turnly/commit/0d5a3f96cf8c92db88bb14dbd51b7003800bf05a))
