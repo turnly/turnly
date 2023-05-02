@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package turnly.branch_management.v1.opening_hours;
+
+import "opening-hours.requests.proto";
+import "opening-hours.responses.proto";
+
+service OpeningHours {
+  rpc ListLocationHours(ListLocationHoursRequest) returns (ListLocationHoursResponse) {};
+  rpc Create(CreateRequest) returns (CreateResponse) {};
+}

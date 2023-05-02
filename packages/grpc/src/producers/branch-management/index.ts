@@ -13,3 +13,8 @@ export * from './locations'
  * Services generated
  */
 export * from './services'
+
+/**
+ * Opening Hours generated
+ */
+export * from './opening-hours'

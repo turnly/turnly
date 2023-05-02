@@ -4,6 +4,5 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-export * from './locations'
-export * from './opening-hours'
-export * from './services'
+export * from './opening-hours.proxy'
+export * from './opening-hours.type'

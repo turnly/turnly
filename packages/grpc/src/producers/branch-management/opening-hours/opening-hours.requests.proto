@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package turnly.branch_management.v1.opening_hours;
+
+message ListLocationHoursRequest {
+  string location_id = 1;
+}
+
+message CreateOpeningHoursObject {
+  string id = 1;
+  string name = 2;
+  int32 day_of_week = 3;
+  bool closed_all_day = 4;
+  bool open_all_day = 5;
+  int32 open_hour = 6;
+  int32 open_minutes = 7;
+  int32 close_hour = 8;
+  int32 close_minutes = 9;
+  string location_id = 10;
+}
+
+message CreateRequest {
+  repeated CreateOpeningHoursObject opening_hours = 1;
+}
