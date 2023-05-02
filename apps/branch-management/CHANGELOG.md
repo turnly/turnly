@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.23](https://github.com/turnly/turnly/compare/v0.1.22...v0.1.23) (2023-05-02)
+
+
+### Features
+
+* add auth to grpc services ([e69fd0d](https://github.com/turnly/turnly/commit/e69fd0d3e03655967de0a20404a1f1b36e60ab55))
+
+
+
+
+
 ## [0.1.22](https://github.com/turnly/turnly/compare/v0.1.21...v0.1.22) (2023-05-01)
 
 **Note:** Version bump only for package @turnly/branch-management

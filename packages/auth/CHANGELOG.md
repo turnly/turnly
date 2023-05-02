@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.23](https://github.com/turnly/turnly/compare/v0.1.22...v0.1.23) (2023-05-02)
+
+
+### Features
+
+* **grpc:** add digital-signage ([4fe094c](https://github.com/turnly/turnly/commit/4fe094cecac66fa5d96963b1df75a5b59f60bf71))
+
+
+
+
+
 ## 0.1.19 (2023-05-01)
 
 

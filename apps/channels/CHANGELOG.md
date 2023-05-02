@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.23](https://github.com/turnly/turnly/compare/v0.1.22...v0.1.23) (2023-05-02)
+
+
+### Features
+
+* add auth to grpc services ([e69fd0d](https://github.com/turnly/turnly/commit/e69fd0d3e03655967de0a20404a1f1b36e60ab55))
+* add auth variables ([8c00e2b](https://github.com/turnly/turnly/commit/8c00e2b0db761be0d174f26785c15b83890e0cb2))
+* **grpc:** add digital-signage ([4fe094c](https://github.com/turnly/turnly/commit/4fe094cecac66fa5d96963b1df75a5b59f60bf71))
+* remove create-by params ([b2b6153](https://github.com/turnly/turnly/commit/b2b61539355167f34dce516b18209760f5f84328))
+
+
+
+
+
 ## [0.1.22](https://github.com/turnly/turnly/compare/v0.1.21...v0.1.22) (2023-05-01)
 
 **Note:** Version bump only for package @turnly/channels

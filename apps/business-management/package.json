@@ -1,6 +1,6 @@
 {
   "name": "@turnly/business-management",
-  "version": "0.1.22",
+  "version": "0.1.23",
   "private": true,
   "description": "A service to manage business owners (organizations)",
   "license": "BSD-3-Clause",
@@ -28,10 +28,10 @@
     ]
   },
   "dependencies": {
-    "@turnly/auth": "^0.1.19",
+    "@turnly/auth": "^0.1.23",
     "@turnly/common": "^0.1.19",
-    "@turnly/core": "^0.1.21",
-    "@turnly/grpc": "^0.1.21",
+    "@turnly/core": "^0.1.23",
+    "@turnly/grpc": "^0.1.23",
     "@turnly/observability": "^0.1.19",
     "bcrypt": "^5.1.0",
     "dotenv": "^16.0.1",
@@ -39,7 +39,7 @@
   },
   "devDependencies": {
     "@turnly/eslint-config": "github:turnly/configs",
-    "@turnly/testing": "^0.1.21",
+    "@turnly/testing": "^0.1.23",
     "@types/jest": "^28.1.4",
     "@types/node": "^16.10.2",
     "cross-env": "^7.0.3",
