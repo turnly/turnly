@@ -4,7 +4,6 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-export * from './auth.guard'
 export * from './base.server'
 export * from './call-handler.decorator'
 export * from './extra.mapper'

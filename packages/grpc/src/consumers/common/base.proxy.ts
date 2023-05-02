@@ -38,6 +38,16 @@ export abstract class Proxy<S extends Client<gRPCClient>> {
     return this.service.getOrganizationId()
   }
 
+  public setAuthorization(authorization: string) {
+    this.service.setAuthorization(authorization)
+
+    return this
+  }
+
+  public getAuthorization(): string {
+    return this.service.getAuthorization()
+  }
+
   public static getOrganizationId(
     call: ServerUnaryCall<unknown, unknown>
   ): Guid {

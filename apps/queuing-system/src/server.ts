@@ -4,8 +4,8 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { config } from '@turnly/core'
-import { Producers } from '@turnly/grpc'
+import { config, oidc } from '@turnly/core'
+import { AuthGuard, Producers } from '@turnly/grpc'
 import { CustomersModule } from 'customers/customers.module'
 import { TicketsModule } from 'tickets/tickets.module'
 
@@ -27,4 +27,8 @@ const services: Producers.Service[] = [
 
 const port = config.get('server.port')
 
-export const server = new Producers.Server({ port, services })
+export const server = new Producers.Server({
+  port,
+  services,
+  middlewares: [new AuthGuard(oidc)],
+})

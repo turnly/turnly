@@ -62,6 +62,16 @@ export abstract class Client<IClient extends gRPCClient> {
     return this.metadata.get('organization_id').toString()
   }
 
+  public setAuthorization(authorization: string) {
+    this.metadata.set('authorization', authorization)
+
+    return this
+  }
+
+  public getAuthorization(): string {
+    return this.metadata.get('authorization').toString()
+  }
+
   public static getOrganizationId(
     call: ServerUnaryCall<unknown, unknown>
   ): Guid {

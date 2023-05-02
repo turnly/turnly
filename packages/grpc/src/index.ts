@@ -13,3 +13,8 @@ export * as Consumers from './consumers'
  * Producers
  */
 export * as Producers from './producers'
+
+/**
+ * Shared
+ */
+export * from './shared/auth.guard'

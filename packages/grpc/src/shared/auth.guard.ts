@@ -5,12 +5,18 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import { OIDC } from '@turnly/auth'
-import { ExceptionHandler, Logger } from '@turnly/observability'
+import {
+  ExceptionHandler,
+  UnauthenticatedException,
+} from '@turnly/observability'
 
-import { ExceptionResponse } from '../queuing-system'
-import { MetaMapper } from './meta.mapper'
-import { Action, ICallback } from './request-handler.type'
-import { Context, MiddlewareHandler } from './server-options.type'
+import { MetaMapper } from '../producers/common/meta.mapper'
+import { Action, ICallback } from '../producers/common/request-handler.type'
+import {
+  Context,
+  MiddlewareHandler,
+} from '../producers/common/server-options.type'
+import { ExceptionResponse } from '../producers/queuing-system'
 
 export class AuthGuard<Request = unknown>
   implements MiddlewareHandler<ExceptionResponse, Request>
@@ -33,11 +39,12 @@ export class AuthGuard<Request = unknown>
 
       if (!this.ignorePaths.includes(path)) {
         const authorization = metadata.get('authorization').toString()
+        const token = authorization.split(' ')[1]
 
-        const user = await this.oidc.verify(authorization)
-        metadata.set('user_logged', JSON.stringify(user))
+        if (!token) throw new UnauthenticatedException()
 
-        Logger.debug('The user is authenticated with the following data:', user)
+        const member = await this.oidc.verify(token)
+        metadata.set('member', JSON.stringify(member))
       }
 
       await next()
