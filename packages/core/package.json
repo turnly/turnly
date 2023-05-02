@@ -45,6 +45,7 @@
     "@turnly/common": "^0.1.19",
     "@turnly/datetime": "^0.1.19",
     "@turnly/observability": "^0.1.19",
+    "@turnly/auth": "^0.1.19",
     "amqp-ts": "^1.8.0",
     "awilix": "^7.0.3",
     "bodybuilder": "^2.4.0",

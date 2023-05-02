@@ -7,6 +7,7 @@
 /**
  * Inversion of Control container for the application.
  */
+import { OIDC } from '@turnly/auth'
 import * as ioc from 'awilix'
 
 import { EventBus } from '../bus/base.event-bus'
@@ -33,6 +34,7 @@ Box.register({
 let eventBus: EventBus
 let elasticClient: ElasticClient
 let notificationsProvider: NotificationsProvider
+let oidc: OIDC
 
 const queryBus = Box.resolve<InMemoryQueryBus>('queryBus')
 const commandBus = Box.resolve<InMemoryCommandBus>('commandBus')
@@ -66,6 +68,29 @@ if (config.get('twilio.sid') && config.get('twilio.token')) {
   )
 }
 
+if (
+  config.get('auth.issuer') &&
+  config.get('auth.jwks_uri') &&
+  config.get('auth.tokenTypeClaim')
+) {
+  Box.register({
+    oidc: ioc.asFunction(
+      () =>
+        new OIDC({
+          issuer: config.get('auth.issuer'),
+          jwks: {
+            jwksUri: config.get('auth.jwks_uri'),
+          },
+          tokenType: {
+            claim: config.get('auth.tokenTypeClaim'),
+            type: 'Bearer',
+          },
+        })
+    ),
+  })
+  oidc = Box.resolve<OIDC>('oidc')
+}
+
 export {
   Box,
   commandBus,
@@ -73,5 +98,6 @@ export {
   eventBus,
   ioc,
   notificationsProvider,
+  oidc,
   queryBus,
 }

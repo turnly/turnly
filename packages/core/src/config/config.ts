@@ -33,6 +33,26 @@ const config = convict({
       env: 'BATCH_LIMIT',
     },
   },
+  auth: {
+    issuer: {
+      doc: 'The issuer of the JWT token',
+      format: String,
+      default: '',
+      env: 'AUTH_ISSUER',
+    },
+    jwks_uri: {
+      doc: 'The URI of the JWKS',
+      format: String,
+      default: '',
+      env: 'AUTH_JWKS_URI',
+    },
+    tokenTypeClaim: {
+      doc: 'The claim that holds the token type',
+      format: String,
+      default: 'https://turnly.app/token_type',
+      env: 'AUTH_TOKEN_TYPE_CLAIM',
+    },
+  },
   server: {
     port: {
       doc: 'The port to bind to',
@@ -170,12 +190,6 @@ const config = convict({
     },
   },
   rpc: {
-    bind_address: {
-      doc: 'The address to bind to',
-      format: String,
-      default: '',
-      env: 'RPC_BIND_ADDRESS',
-    },
     consumer_address: {
       doc: 'The addresses of the rpc servers for clients',
       format: String,
