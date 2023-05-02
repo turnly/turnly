@@ -46,6 +46,15 @@ message GetTicketsWaitingForServiceRequest {
   string customer_id = 2;
 }
 
+message SearchTicketsToDisplayOnDigitalSignageRequest {
+  string location_id = 1;
+  repeated string service_ids = 2;
+  bool after_called = 3;
+  int32 limit = 4;
+  int32 offset = 5;
+  string order = 6;
+}
+
 message GetTicketsForServingFromLocationRequest {
   string location_id = 1;
   repeated string service_ids = 2;

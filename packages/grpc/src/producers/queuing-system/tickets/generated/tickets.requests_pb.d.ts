@@ -204,6 +204,43 @@ export namespace GetTicketsWaitingForServiceRequest {
     }
 }
 
+export class SearchTicketsToDisplayOnDigitalSignageRequest extends jspb.Message { 
+    getLocationId(): string;
+    setLocationId(value: string): SearchTicketsToDisplayOnDigitalSignageRequest;
+    clearServiceIdsList(): void;
+    getServiceIdsList(): Array<string>;
+    setServiceIdsList(value: Array<string>): SearchTicketsToDisplayOnDigitalSignageRequest;
+    addServiceIds(value: string, index?: number): string;
+    getAfterCalled(): boolean;
+    setAfterCalled(value: boolean): SearchTicketsToDisplayOnDigitalSignageRequest;
+    getLimit(): number;
+    setLimit(value: number): SearchTicketsToDisplayOnDigitalSignageRequest;
+    getOffset(): number;
+    setOffset(value: number): SearchTicketsToDisplayOnDigitalSignageRequest;
+    getOrder(): string;
+    setOrder(value: string): SearchTicketsToDisplayOnDigitalSignageRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): SearchTicketsToDisplayOnDigitalSignageRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: SearchTicketsToDisplayOnDigitalSignageRequest): SearchTicketsToDisplayOnDigitalSignageRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: SearchTicketsToDisplayOnDigitalSignageRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): SearchTicketsToDisplayOnDigitalSignageRequest;
+    static deserializeBinaryFromReader(message: SearchTicketsToDisplayOnDigitalSignageRequest, reader: jspb.BinaryReader): SearchTicketsToDisplayOnDigitalSignageRequest;
+}
+
+export namespace SearchTicketsToDisplayOnDigitalSignageRequest {
+    export type AsObject = {
+        locationId: string,
+        serviceIdsList: Array<string>,
+        afterCalled: boolean,
+        limit: number,
+        offset: number,
+        order: string,
+    }
+}
+
 export class GetTicketsForServingFromLocationRequest extends jspb.Message { 
     getLocationId(): string;
     setLocationId(value: string): GetTicketsForServingFromLocationRequest;

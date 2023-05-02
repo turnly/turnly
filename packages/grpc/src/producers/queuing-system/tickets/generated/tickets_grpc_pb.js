@@ -247,6 +247,28 @@ function deserialize_turnly_queuing_system_v1_tickets_ReturnToQueueResponse(buff
   return tickets_responses_pb.ReturnToQueueResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_turnly_queuing_system_v1_tickets_SearchTicketsToDisplayOnDigitalSignageRequest(arg) {
+  if (!(arg instanceof tickets_requests_pb.SearchTicketsToDisplayOnDigitalSignageRequest)) {
+    throw new Error('Expected argument of type turnly.queuing_system.v1.tickets.SearchTicketsToDisplayOnDigitalSignageRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_turnly_queuing_system_v1_tickets_SearchTicketsToDisplayOnDigitalSignageRequest(buffer_arg) {
+  return tickets_requests_pb.SearchTicketsToDisplayOnDigitalSignageRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_turnly_queuing_system_v1_tickets_SearchTicketsToDisplayOnDigitalSignageResponse(arg) {
+  if (!(arg instanceof tickets_responses_pb.SearchTicketsToDisplayOnDigitalSignageResponse)) {
+    throw new Error('Expected argument of type turnly.queuing_system.v1.tickets.SearchTicketsToDisplayOnDigitalSignageResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_turnly_queuing_system_v1_tickets_SearchTicketsToDisplayOnDigitalSignageResponse(buffer_arg) {
+  return tickets_responses_pb.SearchTicketsToDisplayOnDigitalSignageResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_turnly_queuing_system_v1_tickets_ServeTicketRequest(arg) {
   if (!(arg instanceof tickets_requests_pb.ServeTicketRequest)) {
     throw new Error('Expected argument of type turnly.queuing_system.v1.tickets.ServeTicketRequest');
@@ -402,6 +424,17 @@ var TicketsService = exports.TicketsService = {
     requestDeserialize: deserialize_turnly_queuing_system_v1_tickets_ReturnToQueueRequest,
     responseSerialize: serialize_turnly_queuing_system_v1_tickets_ReturnToQueueResponse,
     responseDeserialize: deserialize_turnly_queuing_system_v1_tickets_ReturnToQueueResponse,
+  },
+  searchTicketsToDisplayOnDigitalSignage: {
+    path: '/turnly.queuing_system.v1.tickets.Tickets/SearchTicketsToDisplayOnDigitalSignage',
+    requestStream: false,
+    responseStream: false,
+    requestType: tickets_requests_pb.SearchTicketsToDisplayOnDigitalSignageRequest,
+    responseType: tickets_responses_pb.SearchTicketsToDisplayOnDigitalSignageResponse,
+    requestSerialize: serialize_turnly_queuing_system_v1_tickets_SearchTicketsToDisplayOnDigitalSignageRequest,
+    requestDeserialize: deserialize_turnly_queuing_system_v1_tickets_SearchTicketsToDisplayOnDigitalSignageRequest,
+    responseSerialize: serialize_turnly_queuing_system_v1_tickets_SearchTicketsToDisplayOnDigitalSignageResponse,
+    responseDeserialize: deserialize_turnly_queuing_system_v1_tickets_SearchTicketsToDisplayOnDigitalSignageResponse,
   },
 };
 

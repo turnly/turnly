@@ -288,6 +288,34 @@ export namespace GetTicketsForServingFromLocationResponse {
     }
 }
 
+export class SearchTicketsToDisplayOnDigitalSignageResponse extends jspb.Message { 
+    clearDataList(): void;
+    getDataList(): Array<Ticket>;
+    setDataList(value: Array<Ticket>): SearchTicketsToDisplayOnDigitalSignageResponse;
+    addData(value?: Ticket, index?: number): Ticket;
+
+    hasMeta(): boolean;
+    clearMeta(): void;
+    getMeta(): common_pb.Meta | undefined;
+    setMeta(value?: common_pb.Meta): SearchTicketsToDisplayOnDigitalSignageResponse;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): SearchTicketsToDisplayOnDigitalSignageResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: SearchTicketsToDisplayOnDigitalSignageResponse): SearchTicketsToDisplayOnDigitalSignageResponse.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: SearchTicketsToDisplayOnDigitalSignageResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): SearchTicketsToDisplayOnDigitalSignageResponse;
+    static deserializeBinaryFromReader(message: SearchTicketsToDisplayOnDigitalSignageResponse, reader: jspb.BinaryReader): SearchTicketsToDisplayOnDigitalSignageResponse;
+}
+
+export namespace SearchTicketsToDisplayOnDigitalSignageResponse {
+    export type AsObject = {
+        dataList: Array<Ticket.AsObject>,
+        meta?: common_pb.Meta.AsObject,
+    }
+}
+
 export class LeaveTicketResponse extends jspb.Message { 
 
     hasData(): boolean;

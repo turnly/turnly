@@ -22,6 +22,7 @@ interface ITicketsService extends grpc.ServiceDefinition<grpc.UntypedServiceImpl
     serve: ITicketsService_IServe;
     discard: ITicketsService_IDiscard;
     returnToQueue: ITicketsService_IReturnToQueue;
+    searchTicketsToDisplayOnDigitalSignage: ITicketsService_ISearchTicketsToDisplayOnDigitalSignage;
 }
 
 interface ITicketsService_ICreate extends grpc.MethodDefinition<tickets_requests_pb.CreateTicketRequest, tickets_responses_pb.CreateTicketResponse> {
@@ -132,6 +133,15 @@ interface ITicketsService_IReturnToQueue extends grpc.MethodDefinition<tickets_r
     responseSerialize: grpc.serialize<tickets_responses_pb.ReturnToQueueResponse>;
     responseDeserialize: grpc.deserialize<tickets_responses_pb.ReturnToQueueResponse>;
 }
+interface ITicketsService_ISearchTicketsToDisplayOnDigitalSignage extends grpc.MethodDefinition<tickets_requests_pb.SearchTicketsToDisplayOnDigitalSignageRequest, tickets_responses_pb.SearchTicketsToDisplayOnDigitalSignageResponse> {
+    path: "/turnly.queuing_system.v1.tickets.Tickets/SearchTicketsToDisplayOnDigitalSignage";
+    requestStream: false;
+    responseStream: false;
+    requestSerialize: grpc.serialize<tickets_requests_pb.SearchTicketsToDisplayOnDigitalSignageRequest>;
+    requestDeserialize: grpc.deserialize<tickets_requests_pb.SearchTicketsToDisplayOnDigitalSignageRequest>;
+    responseSerialize: grpc.serialize<tickets_responses_pb.SearchTicketsToDisplayOnDigitalSignageResponse>;
+    responseDeserialize: grpc.deserialize<tickets_responses_pb.SearchTicketsToDisplayOnDigitalSignageResponse>;
+}
 
 export const TicketsService: ITicketsService;
 
@@ -148,6 +158,7 @@ export interface ITicketsServer extends grpc.UntypedServiceImplementation {
     serve: grpc.handleUnaryCall<tickets_requests_pb.ServeTicketRequest, tickets_responses_pb.ServeTicketResponse>;
     discard: grpc.handleUnaryCall<tickets_requests_pb.DiscardTicketRequest, tickets_responses_pb.DiscardTicketResponse>;
     returnToQueue: grpc.handleUnaryCall<tickets_requests_pb.ReturnToQueueRequest, tickets_responses_pb.ReturnToQueueResponse>;
+    searchTicketsToDisplayOnDigitalSignage: grpc.handleUnaryCall<tickets_requests_pb.SearchTicketsToDisplayOnDigitalSignageRequest, tickets_responses_pb.SearchTicketsToDisplayOnDigitalSignageResponse>;
 }
 
 export interface ITicketsClient {
@@ -187,6 +198,9 @@ export interface ITicketsClient {
     returnToQueue(request: tickets_requests_pb.ReturnToQueueRequest, callback: (error: grpc.ServiceError | null, response: tickets_responses_pb.ReturnToQueueResponse) => void): grpc.ClientUnaryCall;
     returnToQueue(request: tickets_requests_pb.ReturnToQueueRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: tickets_responses_pb.ReturnToQueueResponse) => void): grpc.ClientUnaryCall;
     returnToQueue(request: tickets_requests_pb.ReturnToQueueRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: tickets_responses_pb.ReturnToQueueResponse) => void): grpc.ClientUnaryCall;
+    searchTicketsToDisplayOnDigitalSignage(request: tickets_requests_pb.SearchTicketsToDisplayOnDigitalSignageRequest, callback: (error: grpc.ServiceError | null, response: tickets_responses_pb.SearchTicketsToDisplayOnDigitalSignageResponse) => void): grpc.ClientUnaryCall;
+    searchTicketsToDisplayOnDigitalSignage(request: tickets_requests_pb.SearchTicketsToDisplayOnDigitalSignageRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: tickets_responses_pb.SearchTicketsToDisplayOnDigitalSignageResponse) => void): grpc.ClientUnaryCall;
+    searchTicketsToDisplayOnDigitalSignage(request: tickets_requests_pb.SearchTicketsToDisplayOnDigitalSignageRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: tickets_responses_pb.SearchTicketsToDisplayOnDigitalSignageResponse) => void): grpc.ClientUnaryCall;
 }
 
 export class TicketsClient extends grpc.Client implements ITicketsClient {
@@ -227,4 +241,7 @@ export class TicketsClient extends grpc.Client implements ITicketsClient {
     public returnToQueue(request: tickets_requests_pb.ReturnToQueueRequest, callback: (error: grpc.ServiceError | null, response: tickets_responses_pb.ReturnToQueueResponse) => void): grpc.ClientUnaryCall;
     public returnToQueue(request: tickets_requests_pb.ReturnToQueueRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: tickets_responses_pb.ReturnToQueueResponse) => void): grpc.ClientUnaryCall;
     public returnToQueue(request: tickets_requests_pb.ReturnToQueueRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: tickets_responses_pb.ReturnToQueueResponse) => void): grpc.ClientUnaryCall;
+    public searchTicketsToDisplayOnDigitalSignage(request: tickets_requests_pb.SearchTicketsToDisplayOnDigitalSignageRequest, callback: (error: grpc.ServiceError | null, response: tickets_responses_pb.SearchTicketsToDisplayOnDigitalSignageResponse) => void): grpc.ClientUnaryCall;
+    public searchTicketsToDisplayOnDigitalSignage(request: tickets_requests_pb.SearchTicketsToDisplayOnDigitalSignageRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: tickets_responses_pb.SearchTicketsToDisplayOnDigitalSignageResponse) => void): grpc.ClientUnaryCall;
+    public searchTicketsToDisplayOnDigitalSignage(request: tickets_requests_pb.SearchTicketsToDisplayOnDigitalSignageRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: tickets_responses_pb.SearchTicketsToDisplayOnDigitalSignageResponse) => void): grpc.ClientUnaryCall;
 }

@@ -16,6 +16,7 @@ import {
   GetTicketsWaitingForServiceRequest,
   LeaveTicketRequest,
   ReturnToQueueRequest,
+  SearchTicketsToDisplayOnDigitalSignageRequest,
   ServeTicketRequest,
 } from '../../../producers/queuing-system'
 import {
@@ -49,6 +50,8 @@ import {
   ILeaveTicketResponse,
   IReturnToQueueRequest,
   IReturnToQueueResponse,
+  ISearchTicketsToDisplayOnDigitalSignageRequest,
+  ISearchTicketsToDisplayOnDigitalSignageResponse,
   IServeTicketRequest,
   IServeTicketResponse,
   ITicketsClient,
@@ -248,6 +251,24 @@ export class Tickets extends Client<TicketsClient> implements ITicketsClient {
     return (
       await promisify(
         this.client.getTicketsForServingFromLocation.bind(this.client)
+      )(req, this.getMeta(), {})
+    ).toObject()
+  }
+
+  public async searchTicketsToDisplayOnDigitalSignage(
+    request: ISearchTicketsToDisplayOnDigitalSignageRequest
+  ): Promise<ISearchTicketsToDisplayOnDigitalSignageResponse> {
+    const req = new SearchTicketsToDisplayOnDigitalSignageRequest()
+      .setLocationId(request.locationId)
+      .setServiceIdsList(request.serviceIdsList)
+      .setLimit(request.limit)
+      .setOffset(request.offset)
+      .setAfterCalled(request.afterCalled)
+      .setOrder(request.order)
+
+    return (
+      await promisify(
+        this.client.searchTicketsToDisplayOnDigitalSignage.bind(this.client)
       )(req, this.getMeta(), {})
     ).toObject()
   }
