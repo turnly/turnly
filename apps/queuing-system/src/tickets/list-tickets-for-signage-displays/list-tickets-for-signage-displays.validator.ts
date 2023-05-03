@@ -6,10 +6,11 @@
  */
 import { Validator } from '@turnly/core'
 
-export const SearchTicketsToDisplayOnDigitalSignageValidator = Validator.object({
+export const ListTicketsForSignageDisplaysValidator = Validator.object({
   serviceIds: Validator.getBuilder().array().items(Validator.isId(true)),
   locationId: Validator.isId(),
   organizationId: Validator.isId(),
+  clearTicketsAfter: Validator.string(),
   limit: Validator.int(true),
   offset: Validator.int(true),
 })

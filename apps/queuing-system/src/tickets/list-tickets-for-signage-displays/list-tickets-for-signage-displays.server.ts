@@ -8,36 +8,38 @@ import { OrderTypes } from '@turnly/core'
 import { Consumers, Producers } from '@turnly/grpc'
 import { TicketsMapper } from 'tickets/shared/infrastructure/tickets-to-grpc.mapper'
 
-import { SearchTicketsToDisplayOnDigitalSignageController } from './search-tickets-to-display-on-digital-signage.controller'
+import { ListTicketsForSignageDisplaysController } from './list-tickets-for-signage-displays.controller'
+import { ClearTicketsAfter } from './list-tickets-for-signage-displays.query'
 
-export class SearchTicketsToDisplayOnDigitalSignageServer {
+export class ListTicketsForSignageDisplaysServer {
   public constructor(
-    private readonly searchTicketsToDisplayOnDigitalSignageController: SearchTicketsToDisplayOnDigitalSignageController
+    private readonly listTicketsForSignageDisplaysController: ListTicketsForSignageDisplaysController
   ) {}
 
   @Producers.CallHandler(
-    Producers.QueuingSystem.SearchTicketsToDisplayOnDigitalSignageResponse
+    Producers.QueuingSystem.ListTicketsForSignageDisplaysResponse
   )
   public async execute(
     call: Producers.ServerUnaryCall<
-      Producers.QueuingSystem.SearchTicketsToDisplayOnDigitalSignageRequest,
-      Producers.QueuingSystem.SearchTicketsToDisplayOnDigitalSignageResponse
+      Producers.QueuingSystem.ListTicketsForSignageDisplaysRequest,
+      Producers.QueuingSystem.ListTicketsForSignageDisplaysResponse
     >,
-    callback: Producers.ICallback<Producers.QueuingSystem.SearchTicketsToDisplayOnDigitalSignageResponse>
+    callback: Producers.ICallback<Producers.QueuingSystem.ListTicketsForSignageDisplaysResponse>
   ) {
     const { data, meta } =
-      await this.searchTicketsToDisplayOnDigitalSignageController.execute({
+      await this.listTicketsForSignageDisplaysController.execute({
         locationId: call.request.getLocationId(),
         serviceIds: call.request.getServiceIdsList(),
         order: call.request.getOrder() as OrderTypes,
-        afterCalled: call.request.getAfterCalled(),
+        clearTicketsAfter:
+          call.request.getClearTicketsAfter() as ClearTicketsAfter,
         limit: call.request.getLimit(),
         offset: call.request.getOffset(),
         organizationId: Consumers.Client.getOrganizationId(call),
       })
 
     const response =
-      new Producers.QueuingSystem.SearchTicketsToDisplayOnDigitalSignageResponse()
+      new Producers.QueuingSystem.ListTicketsForSignageDisplaysResponse()
 
     if (data) response.setDataList(data.map(TicketsMapper.toRPC))
 

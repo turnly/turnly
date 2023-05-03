@@ -204,37 +204,37 @@ export namespace GetTicketsWaitingForServiceRequest {
     }
 }
 
-export class SearchTicketsToDisplayOnDigitalSignageRequest extends jspb.Message { 
+export class ListTicketsForSignageDisplaysRequest extends jspb.Message { 
     getLocationId(): string;
-    setLocationId(value: string): SearchTicketsToDisplayOnDigitalSignageRequest;
+    setLocationId(value: string): ListTicketsForSignageDisplaysRequest;
     clearServiceIdsList(): void;
     getServiceIdsList(): Array<string>;
-    setServiceIdsList(value: Array<string>): SearchTicketsToDisplayOnDigitalSignageRequest;
+    setServiceIdsList(value: Array<string>): ListTicketsForSignageDisplaysRequest;
     addServiceIds(value: string, index?: number): string;
-    getAfterCalled(): boolean;
-    setAfterCalled(value: boolean): SearchTicketsToDisplayOnDigitalSignageRequest;
+    getClearTicketsAfter(): string;
+    setClearTicketsAfter(value: string): ListTicketsForSignageDisplaysRequest;
     getLimit(): number;
-    setLimit(value: number): SearchTicketsToDisplayOnDigitalSignageRequest;
+    setLimit(value: number): ListTicketsForSignageDisplaysRequest;
     getOffset(): number;
-    setOffset(value: number): SearchTicketsToDisplayOnDigitalSignageRequest;
+    setOffset(value: number): ListTicketsForSignageDisplaysRequest;
     getOrder(): string;
-    setOrder(value: string): SearchTicketsToDisplayOnDigitalSignageRequest;
+    setOrder(value: string): ListTicketsForSignageDisplaysRequest;
 
     serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): SearchTicketsToDisplayOnDigitalSignageRequest.AsObject;
-    static toObject(includeInstance: boolean, msg: SearchTicketsToDisplayOnDigitalSignageRequest): SearchTicketsToDisplayOnDigitalSignageRequest.AsObject;
+    toObject(includeInstance?: boolean): ListTicketsForSignageDisplaysRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: ListTicketsForSignageDisplaysRequest): ListTicketsForSignageDisplaysRequest.AsObject;
     static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
     static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: SearchTicketsToDisplayOnDigitalSignageRequest, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): SearchTicketsToDisplayOnDigitalSignageRequest;
-    static deserializeBinaryFromReader(message: SearchTicketsToDisplayOnDigitalSignageRequest, reader: jspb.BinaryReader): SearchTicketsToDisplayOnDigitalSignageRequest;
+    static serializeBinaryToWriter(message: ListTicketsForSignageDisplaysRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): ListTicketsForSignageDisplaysRequest;
+    static deserializeBinaryFromReader(message: ListTicketsForSignageDisplaysRequest, reader: jspb.BinaryReader): ListTicketsForSignageDisplaysRequest;
 }
 
-export namespace SearchTicketsToDisplayOnDigitalSignageRequest {
+export namespace ListTicketsForSignageDisplaysRequest {
     export type AsObject = {
         locationId: string,
         serviceIdsList: Array<string>,
-        afterCalled: boolean,
+        clearTicketsAfter: string,
         limit: number,
         offset: number,
         order: string,

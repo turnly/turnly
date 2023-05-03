@@ -288,28 +288,28 @@ export namespace GetTicketsForServingFromLocationResponse {
     }
 }
 
-export class SearchTicketsToDisplayOnDigitalSignageResponse extends jspb.Message { 
+export class ListTicketsForSignageDisplaysResponse extends jspb.Message { 
     clearDataList(): void;
     getDataList(): Array<Ticket>;
-    setDataList(value: Array<Ticket>): SearchTicketsToDisplayOnDigitalSignageResponse;
+    setDataList(value: Array<Ticket>): ListTicketsForSignageDisplaysResponse;
     addData(value?: Ticket, index?: number): Ticket;
 
     hasMeta(): boolean;
     clearMeta(): void;
     getMeta(): common_pb.Meta | undefined;
-    setMeta(value?: common_pb.Meta): SearchTicketsToDisplayOnDigitalSignageResponse;
+    setMeta(value?: common_pb.Meta): ListTicketsForSignageDisplaysResponse;
 
     serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): SearchTicketsToDisplayOnDigitalSignageResponse.AsObject;
-    static toObject(includeInstance: boolean, msg: SearchTicketsToDisplayOnDigitalSignageResponse): SearchTicketsToDisplayOnDigitalSignageResponse.AsObject;
+    toObject(includeInstance?: boolean): ListTicketsForSignageDisplaysResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: ListTicketsForSignageDisplaysResponse): ListTicketsForSignageDisplaysResponse.AsObject;
     static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
     static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: SearchTicketsToDisplayOnDigitalSignageResponse, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): SearchTicketsToDisplayOnDigitalSignageResponse;
-    static deserializeBinaryFromReader(message: SearchTicketsToDisplayOnDigitalSignageResponse, reader: jspb.BinaryReader): SearchTicketsToDisplayOnDigitalSignageResponse;
+    static serializeBinaryToWriter(message: ListTicketsForSignageDisplaysResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): ListTicketsForSignageDisplaysResponse;
+    static deserializeBinaryFromReader(message: ListTicketsForSignageDisplaysResponse, reader: jspb.BinaryReader): ListTicketsForSignageDisplaysResponse;
 }
 
-export namespace SearchTicketsToDisplayOnDigitalSignageResponse {
+export namespace ListTicketsForSignageDisplaysResponse {
     export type AsObject = {
         dataList: Array<Ticket.AsObject>,
         meta?: common_pb.Meta.AsObject,

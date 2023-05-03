@@ -25,10 +25,10 @@ import {
   GetTicketsWaitingForServiceResponse,
   LeaveTicketRequest,
   LeaveTicketResponse,
+  ListTicketsForSignageDisplaysRequest,
+  ListTicketsForSignageDisplaysResponse,
   ReturnToQueueRequest,
   ReturnToQueueResponse,
-  SearchTicketsToDisplayOnDigitalSignageRequest,
-  SearchTicketsToDisplayOnDigitalSignageResponse,
   ServeTicketRequest,
   ServeTicketResponse,
 } from '../../../producers/queuing-system'
@@ -75,10 +75,10 @@ export type IGetTicketsForServingFromLocationRequest =
 export type IGetTicketsForServingFromLocationResponse =
   GetTicketsForServingFromLocationResponse.AsObject
 
-export type ISearchTicketsToDisplayOnDigitalSignageRequest =
-  SearchTicketsToDisplayOnDigitalSignageRequest.AsObject
-export type ISearchTicketsToDisplayOnDigitalSignageResponse =
-  SearchTicketsToDisplayOnDigitalSignageResponse.AsObject
+export type IListTicketsForSignageDisplaysRequest =
+  ListTicketsForSignageDisplaysRequest.AsObject
+export type IListTicketsForSignageDisplaysResponse =
+  ListTicketsForSignageDisplaysResponse.AsObject
 
 export interface ITicketsClient {
   create(request: ICreateTicketRequest): Promise<ICreateTicketResponse>
@@ -100,7 +100,7 @@ export interface ITicketsClient {
   serve(request: IServeTicketRequest): Promise<IServeTicketResponse>
   discard(request: IDiscardTicketRequest): Promise<IDiscardTicketResponse>
   returnToQueue(request: IReturnToQueueRequest): Promise<IReturnToQueueResponse>
-  searchTicketsToDisplayOnDigitalSignage(
-    request: ISearchTicketsToDisplayOnDigitalSignageRequest
-  ): Promise<ISearchTicketsToDisplayOnDigitalSignageResponse>
+  listTicketsForSignageDisplays(
+    request: IListTicketsForSignageDisplaysRequest
+  ): Promise<IListTicketsForSignageDisplaysResponse>
 }

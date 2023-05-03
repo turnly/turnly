@@ -57,7 +57,7 @@ message GetTicketsForServingFromLocationResponse {
   turnly.common.v1.Meta meta = 2;
 }
 
-message SearchTicketsToDisplayOnDigitalSignageResponse {
+message ListTicketsForSignageDisplaysResponse {
   repeated Ticket data = 1;
   turnly.common.v1.Meta meta = 2;
 }

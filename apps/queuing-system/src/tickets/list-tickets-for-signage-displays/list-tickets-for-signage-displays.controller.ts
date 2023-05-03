@@ -11,27 +11,22 @@ import {
   IQueryBus,
   TimeoutHandler,
 } from '@turnly/core'
-import {
-  ResourceNotFoundException,
-} from '@turnly/observability'
-import {
-  SearchTicketsToDisplayOnDigitalSignageQuery,
-} from 'tickets/search-tickets-to-display-on-digital-signage'
+import { ResourceNotFoundException } from '@turnly/observability'
+import { ListTicketsForSignageDisplaysQuery } from 'tickets/list-tickets-for-signage-displays'
 import { Ticket } from 'tickets/shared/domain/entities/ticket.entity'
 
-import { SearchTicketsToDisplayOnDigitalSignageValidator } from './search-tickets-to-display-on-digital-signage.validator'
+import { ListTicketsForSignageDisplaysValidator } from './list-tickets-for-signage-displays.validator'
 
-export class SearchTicketsToDisplayOnDigitalSignageController extends Controller {
+export class ListTicketsForSignageDisplaysController extends Controller {
   public constructor(private readonly queryBus: IQueryBus) {
     super()
   }
 
   @TimeoutHandler()
-  @InputValidator(SearchTicketsToDisplayOnDigitalSignageValidator)
-  public async execute(params: SearchTicketsToDisplayOnDigitalSignageQuery) {
-
+  @InputValidator(ListTicketsForSignageDisplaysValidator)
+  public async execute(params: ListTicketsForSignageDisplaysQuery) {
     const tickets = await this.queryBus.ask<Nullable<Ticket[]>>(
-      SearchTicketsToDisplayOnDigitalSignageQuery.build(params)
+      ListTicketsForSignageDisplaysQuery.build(params)
     )
 
     if (!tickets) throw new ResourceNotFoundException()

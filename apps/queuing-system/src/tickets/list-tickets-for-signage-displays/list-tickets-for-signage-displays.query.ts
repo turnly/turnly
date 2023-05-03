@@ -7,10 +7,15 @@
 import { Guid } from '@turnly/common'
 import { OrderTypes, OrganizationQuery } from '@turnly/core'
 
-export class SearchTicketsToDisplayOnDigitalSignageQuery extends OrganizationQuery {
+export enum ClearTicketsAfter {
+  CALLING = 'calling',
+  SERVING = 'serving',
+}
+
+export class ListTicketsForSignageDisplaysQuery extends OrganizationQuery {
   public readonly locationId: Guid
   public readonly serviceIds?: Guid[]
-  public readonly afterCalled?: boolean
+  public readonly clearTicketsAfter: ClearTicketsAfter
   public readonly limit?: number
   public readonly offset?: number
   public readonly order?: OrderTypes

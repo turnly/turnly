@@ -26,7 +26,7 @@ import 'tickets/mark-ticket-as-served/mark-ticket-as-served.dependency'
 import 'tickets/notify-customer-called/notify-customer-called.dependency'
 import 'tickets/return-ticket-to-queue/return-ticket-to-queue.dependency'
 import 'tickets/search-tickets-for-serving-from-location/search-tickets-for-serving-from-location.dependency'
-import 'tickets/search-tickets-to-display-on-digital-signage/search-tickets-to-display-on-digital-signage.dependency'
+import 'tickets/list-tickets-for-signage-displays/list-tickets-for-signage-displays.dependency'
 
 /**
  * Module
@@ -71,8 +71,8 @@ export class TicketsModule {
       discard: (...args) =>
         Box.resolve('markTicketAsDiscardedServer').execute(...args),
       create: (...args) => Box.resolve('createTicketServer').execute(...args),
-      searchTicketsToDisplayOnDigitalSignage: (...args) =>
-        Box.resolve('searchTicketsToDisplayOnDigitalSignageServer').execute(...args),
+      listTicketsForSignageDisplays: (...args) =>
+        Box.resolve('listTicketsForSignageDisplaysServer').execute(...args),
     }
   }
 
@@ -92,7 +92,7 @@ export class TicketsModule {
       Box.resolve('listTicketsBeforeYoursQueryHandler'),
       Box.resolve('listTicketsWaitingForServiceQueryHandler'),
       Box.resolve('searchTicketsForServingFromLocationQueryHandler'),
-      Box.resolve('searchTicketsToDisplayOnDigitalSignageQueryHandler'),
+      Box.resolve('listTicketsForSignageDisplaysQueryHandler'),
     ]
   }
 

@@ -30,10 +30,10 @@ import type {
   IGetTicketsWaitingForServiceResponse,
   ILeaveTicketRequest,
   ILeaveTicketResponse,
+  IListTicketsForSignageDisplaysRequest,
+  IListTicketsForSignageDisplaysResponse,
   IReturnToQueueRequest,
   IReturnToQueueResponse,
-  ISearchTicketsToDisplayOnDigitalSignageRequest,
-  ISearchTicketsToDisplayOnDigitalSignageResponse,
   IServeTicketRequest,
   IServeTicketResponse,
 } from './tickets.type'
@@ -88,9 +88,9 @@ export class Tickets extends Proxy<Service> {
     IGetTicketDetailsResponse
   >
 
-  private searchTicketsToDisplayOnDigitalSignageBreaker: CircuitBreaker<
-    ISearchTicketsToDisplayOnDigitalSignageRequest[],
-    ISearchTicketsToDisplayOnDigitalSignageResponse
+  private listTicketsForSignageDisplaysBreaker: CircuitBreaker<
+    IListTicketsForSignageDisplaysRequest[],
+    IListTicketsForSignageDisplaysResponse
   >
 
   public constructor(config?: ClientConfig) {
@@ -199,9 +199,9 @@ export class Tickets extends Proxy<Service> {
     /**
      * Search Tickets To Display on Digital Signage Breaker
      */
-    this.searchTicketsToDisplayOnDigitalSignageBreaker = new CircuitBreaker(
-      this.service.searchTicketsToDisplayOnDigitalSignage.bind(this.service),
-      { name: 'QueuingSystem.Tickets.searchTicketsToDisplayOnDigitalSignage' }
+    this.listTicketsForSignageDisplaysBreaker = new CircuitBreaker(
+      this.service.listTicketsForSignageDisplays.bind(this.service),
+      { name: 'QueuingSystem.Tickets.listTicketsForSignageDisplays' }
     )
   }
 
@@ -257,9 +257,9 @@ export class Tickets extends Proxy<Service> {
     return this.getTicketsForServingFromLocationBreaker.execute(request)
   }
 
-  public async searchTicketsToDisplayOnDigitalSignage(
-    request: ISearchTicketsToDisplayOnDigitalSignageRequest
+  public async listTicketsForSignageDisplays(
+    request: IListTicketsForSignageDisplaysRequest
   ) {
-    return this.searchTicketsToDisplayOnDigitalSignageBreaker.execute(request)
+    return this.listTicketsForSignageDisplaysBreaker.execute(request)
   }
 }

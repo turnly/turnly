@@ -15,8 +15,8 @@ import {
   GetTicketsForServingFromLocationRequest,
   GetTicketsWaitingForServiceRequest,
   LeaveTicketRequest,
+  ListTicketsForSignageDisplaysRequest,
   ReturnToQueueRequest,
-  SearchTicketsToDisplayOnDigitalSignageRequest,
   ServeTicketRequest,
 } from '../../../producers/queuing-system'
 import {
@@ -48,10 +48,10 @@ import {
   IGetTicketsWaitingForServiceResponse,
   ILeaveTicketRequest,
   ILeaveTicketResponse,
+  IListTicketsForSignageDisplaysRequest,
+  IListTicketsForSignageDisplaysResponse,
   IReturnToQueueRequest,
   IReturnToQueueResponse,
-  ISearchTicketsToDisplayOnDigitalSignageRequest,
-  ISearchTicketsToDisplayOnDigitalSignageResponse,
   IServeTicketRequest,
   IServeTicketResponse,
   ITicketsClient,
@@ -255,20 +255,20 @@ export class Tickets extends Client<TicketsClient> implements ITicketsClient {
     ).toObject()
   }
 
-  public async searchTicketsToDisplayOnDigitalSignage(
-    request: ISearchTicketsToDisplayOnDigitalSignageRequest
-  ): Promise<ISearchTicketsToDisplayOnDigitalSignageResponse> {
-    const req = new SearchTicketsToDisplayOnDigitalSignageRequest()
+  public async listTicketsForSignageDisplays(
+    request: IListTicketsForSignageDisplaysRequest
+  ): Promise<IListTicketsForSignageDisplaysResponse> {
+    const req = new ListTicketsForSignageDisplaysRequest()
       .setLocationId(request.locationId)
       .setServiceIdsList(request.serviceIdsList)
       .setLimit(request.limit)
       .setOffset(request.offset)
-      .setAfterCalled(request.afterCalled)
+      .setClearTicketsAfter(request.clearTicketsAfter)
       .setOrder(request.order)
 
     return (
       await promisify(
-        this.client.searchTicketsToDisplayOnDigitalSignage.bind(this.client)
+        this.client.listTicketsForSignageDisplays.bind(this.client)
       )(req, this.getMeta(), {})
     ).toObject()
   }
