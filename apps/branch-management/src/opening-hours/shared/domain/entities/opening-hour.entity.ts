@@ -6,6 +6,7 @@
  */
 import { Guid, Identifier } from '@turnly/common'
 import { AggregateRoot, EntityAttributes } from '@turnly/core'
+import { BadRequestException } from '@turnly/observability'
 import { OpeningHourCreatedEvent } from 'opening-hours/bulk-opening-hours/opening-hour-created.event'
 
 /**
@@ -16,6 +17,13 @@ import { OpeningHourCreatedEvent } from 'opening-hours/bulk-opening-hours/openin
  * @author Turnly
  */
 export class OpeningHour extends AggregateRoot {
+  /**
+   * Day of Week
+   *
+   * @description The days of the week that the location is open at (0 = Sunday, 1 = Monday, etc.).
+   */
+  public static readonly DAY_OF_WEEK = [0, 1, 2, 3, 4, 5, 6]
+
   protected constructor(
     /**
      * ID
@@ -97,6 +105,14 @@ export class OpeningHour extends AggregateRoot {
     super(id)
   }
 
+  public static isDayOfWeek(dayOfWeek: number): boolean {
+    return OpeningHour.DAY_OF_WEEK.includes(dayOfWeek)
+  }
+
+  public isSameDayOfWeek(dayOfWeek: number): boolean {
+    return this.dayOfWeek === dayOfWeek
+  }
+
   /**
    * Create Opening Hour
    *
@@ -105,6 +121,12 @@ export class OpeningHour extends AggregateRoot {
   public static create(
     attributes: Omit<EntityAttributes<OpeningHour>, 'id'>
   ): OpeningHour {
+    if (!OpeningHour.isDayOfWeek(attributes.dayOfWeek)) {
+      throw new BadRequestException(
+        'Oops!, You are trying to create an Opening Hour with an invalid day of week.'
+      )
+    }
+
     const openingHour = new OpeningHour(
       Identifier.generate('hour'),
       attributes.name,
@@ -130,6 +152,12 @@ export class OpeningHour extends AggregateRoot {
    * @description Builds a Opening Hour from an object.
    */
   public static build(attributes: EntityAttributes<OpeningHour>): OpeningHour {
+    if (!OpeningHour.isDayOfWeek(attributes.dayOfWeek)) {
+      throw new BadRequestException(
+        'Oops!, You are trying to create an Opening Hour with an invalid day of week.'
+      )
+    }
+
     return new OpeningHour(
       attributes.id,
       attributes.name,

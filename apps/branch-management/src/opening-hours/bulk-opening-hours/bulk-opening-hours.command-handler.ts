@@ -4,7 +4,13 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { CommandHandler, ICommandHandler, IEventBus } from '@turnly/core'
+import {
+  CommandHandler,
+  ICommandHandler,
+  IEventBus,
+  IQueryBus,
+} from '@turnly/core'
+import { ListLocationHoursQuery } from 'opening-hours/list-location-hours'
 import { IOpeningHoursWritableRepo } from 'opening-hours/shared/domain/contracts/opening-hours-repo.interface'
 import { OpeningHour } from 'opening-hours/shared/domain/entities/opening-hour.entity'
 
@@ -16,24 +22,45 @@ export class BulkOpeningHoursCommandHandler
 {
   public constructor(
     private readonly eventBus: IEventBus,
+    private readonly queryBus: IQueryBus,
     private readonly openingHoursWritableRepo: IOpeningHoursWritableRepo
   ) {}
 
-  public async execute({
-    openingHours,
-    organizationId,
-    locationId,
-  }: BulkOpeningHoursCommand) {
-    const resources = openingHours.map(openingHour =>
-      OpeningHour.create({ ...openingHour, organizationId, locationId })
-    )
+  public async execute(command: BulkOpeningHoursCommand) {
+    const hours = await this.updateExistingHours(command)
 
-    await this.openingHoursWritableRepo.save(resources)
+    for (const { dayOfWeek, ...hour } of command.openingHours) {
+      const isHour = hours.find(h => h.isSameDayOfWeek(dayOfWeek))
 
-    for (const openingHour of resources) {
-      this.eventBus.publish(openingHour.pull())
+      if (!isHour)
+        hours.push(OpeningHour.create({ ...hour, dayOfWeek, ...command }))
     }
 
-    return resources
+    await this.openingHoursWritableRepo.save(hours)
+
+    for (const hour of hours) {
+      this.eventBus.publish(hour.pull())
+    }
+
+    return hours
+  }
+
+  private async updateExistingHours({
+    openingHours,
+    ...command
+  }: BulkOpeningHoursCommand) {
+    const hours = await this.queryBus.ask<OpeningHour[]>(
+      ListLocationHoursQuery.build({ ...command })
+    )
+
+    return hours.map(hour => {
+      const updates = openingHours.find(({ dayOfWeek }) =>
+        hour.isSameDayOfWeek(dayOfWeek)
+      )
+
+      return updates
+        ? OpeningHour.build({ ...hour.toObject(), ...updates })
+        : hour
+    })
   }
 }
