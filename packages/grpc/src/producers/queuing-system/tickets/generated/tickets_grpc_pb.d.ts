@@ -22,6 +22,7 @@ interface ITicketsService extends grpc.ServiceDefinition<grpc.UntypedServiceImpl
     serve: ITicketsService_IServe;
     discard: ITicketsService_IDiscard;
     returnToQueue: ITicketsService_IReturnToQueue;
+    listTicketsForSignageDisplays: ITicketsService_IListTicketsForSignageDisplays;
 }
 
 interface ITicketsService_ICreate extends grpc.MethodDefinition<tickets_requests_pb.CreateTicketRequest, tickets_responses_pb.CreateTicketResponse> {
@@ -132,6 +133,15 @@ interface ITicketsService_IReturnToQueue extends grpc.MethodDefinition<tickets_r
     responseSerialize: grpc.serialize<tickets_responses_pb.ReturnToQueueResponse>;
     responseDeserialize: grpc.deserialize<tickets_responses_pb.ReturnToQueueResponse>;
 }
+interface ITicketsService_IListTicketsForSignageDisplays extends grpc.MethodDefinition<tickets_requests_pb.ListTicketsForSignageDisplaysRequest, tickets_responses_pb.ListTicketsForSignageDisplaysResponse> {
+    path: "/turnly.queuing_system.v1.tickets.Tickets/ListTicketsForSignageDisplays";
+    requestStream: false;
+    responseStream: false;
+    requestSerialize: grpc.serialize<tickets_requests_pb.ListTicketsForSignageDisplaysRequest>;
+    requestDeserialize: grpc.deserialize<tickets_requests_pb.ListTicketsForSignageDisplaysRequest>;
+    responseSerialize: grpc.serialize<tickets_responses_pb.ListTicketsForSignageDisplaysResponse>;
+    responseDeserialize: grpc.deserialize<tickets_responses_pb.ListTicketsForSignageDisplaysResponse>;
+}
 
 export const TicketsService: ITicketsService;
 
@@ -148,6 +158,7 @@ export interface ITicketsServer extends grpc.UntypedServiceImplementation {
     serve: grpc.handleUnaryCall<tickets_requests_pb.ServeTicketRequest, tickets_responses_pb.ServeTicketResponse>;
     discard: grpc.handleUnaryCall<tickets_requests_pb.DiscardTicketRequest, tickets_responses_pb.DiscardTicketResponse>;
     returnToQueue: grpc.handleUnaryCall<tickets_requests_pb.ReturnToQueueRequest, tickets_responses_pb.ReturnToQueueResponse>;
+    listTicketsForSignageDisplays: grpc.handleUnaryCall<tickets_requests_pb.ListTicketsForSignageDisplaysRequest, tickets_responses_pb.ListTicketsForSignageDisplaysResponse>;
 }
 
 export interface ITicketsClient {
@@ -187,6 +198,9 @@ export interface ITicketsClient {
     returnToQueue(request: tickets_requests_pb.ReturnToQueueRequest, callback: (error: grpc.ServiceError | null, response: tickets_responses_pb.ReturnToQueueResponse) => void): grpc.ClientUnaryCall;
     returnToQueue(request: tickets_requests_pb.ReturnToQueueRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: tickets_responses_pb.ReturnToQueueResponse) => void): grpc.ClientUnaryCall;
     returnToQueue(request: tickets_requests_pb.ReturnToQueueRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: tickets_responses_pb.ReturnToQueueResponse) => void): grpc.ClientUnaryCall;
+    listTicketsForSignageDisplays(request: tickets_requests_pb.ListTicketsForSignageDisplaysRequest, callback: (error: grpc.ServiceError | null, response: tickets_responses_pb.ListTicketsForSignageDisplaysResponse) => void): grpc.ClientUnaryCall;
+    listTicketsForSignageDisplays(request: tickets_requests_pb.ListTicketsForSignageDisplaysRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: tickets_responses_pb.ListTicketsForSignageDisplaysResponse) => void): grpc.ClientUnaryCall;
+    listTicketsForSignageDisplays(request: tickets_requests_pb.ListTicketsForSignageDisplaysRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: tickets_responses_pb.ListTicketsForSignageDisplaysResponse) => void): grpc.ClientUnaryCall;
 }
 
 export class TicketsClient extends grpc.Client implements ITicketsClient {
@@ -227,4 +241,7 @@ export class TicketsClient extends grpc.Client implements ITicketsClient {
     public returnToQueue(request: tickets_requests_pb.ReturnToQueueRequest, callback: (error: grpc.ServiceError | null, response: tickets_responses_pb.ReturnToQueueResponse) => void): grpc.ClientUnaryCall;
     public returnToQueue(request: tickets_requests_pb.ReturnToQueueRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: tickets_responses_pb.ReturnToQueueResponse) => void): grpc.ClientUnaryCall;
     public returnToQueue(request: tickets_requests_pb.ReturnToQueueRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: tickets_responses_pb.ReturnToQueueResponse) => void): grpc.ClientUnaryCall;
+    public listTicketsForSignageDisplays(request: tickets_requests_pb.ListTicketsForSignageDisplaysRequest, callback: (error: grpc.ServiceError | null, response: tickets_responses_pb.ListTicketsForSignageDisplaysResponse) => void): grpc.ClientUnaryCall;
+    public listTicketsForSignageDisplays(request: tickets_requests_pb.ListTicketsForSignageDisplaysRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: tickets_responses_pb.ListTicketsForSignageDisplaysResponse) => void): grpc.ClientUnaryCall;
+    public listTicketsForSignageDisplays(request: tickets_requests_pb.ListTicketsForSignageDisplaysRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: tickets_responses_pb.ListTicketsForSignageDisplaysResponse) => void): grpc.ClientUnaryCall;
 }

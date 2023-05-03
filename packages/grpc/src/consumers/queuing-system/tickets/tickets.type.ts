@@ -25,6 +25,8 @@ import {
   GetTicketsWaitingForServiceResponse,
   LeaveTicketRequest,
   LeaveTicketResponse,
+  ListTicketsForSignageDisplaysRequest,
+  ListTicketsForSignageDisplaysResponse,
   ReturnToQueueRequest,
   ReturnToQueueResponse,
   ServeTicketRequest,
@@ -73,6 +75,11 @@ export type IGetTicketsForServingFromLocationRequest =
 export type IGetTicketsForServingFromLocationResponse =
   GetTicketsForServingFromLocationResponse.AsObject
 
+export type IListTicketsForSignageDisplaysRequest =
+  ListTicketsForSignageDisplaysRequest.AsObject
+export type IListTicketsForSignageDisplaysResponse =
+  ListTicketsForSignageDisplaysResponse.AsObject
+
 export interface ITicketsClient {
   create(request: ICreateTicketRequest): Promise<ICreateTicketResponse>
   getOne(request: IGetTicketRequest): Promise<IGetTicketResponse>
@@ -93,4 +100,7 @@ export interface ITicketsClient {
   serve(request: IServeTicketRequest): Promise<IServeTicketResponse>
   discard(request: IDiscardTicketRequest): Promise<IDiscardTicketResponse>
   returnToQueue(request: IReturnToQueueRequest): Promise<IReturnToQueueResponse>
+  listTicketsForSignageDisplays(
+    request: IListTicketsForSignageDisplaysRequest
+  ): Promise<IListTicketsForSignageDisplaysResponse>
 }
