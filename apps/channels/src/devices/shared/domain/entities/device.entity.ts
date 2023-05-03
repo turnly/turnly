@@ -148,7 +148,7 @@ export class Device extends AggregateRoot {
     const pairingCode = Identifier.generate('', 5)
 
     const device = new Device(
-      Identifier.generate('dev'),
+      Identifier.generate('dvc'),
       attributes.name,
       status,
       attributes.type,

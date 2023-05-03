@@ -325,7 +325,7 @@ export class Ticket extends AggregateRoot {
     createdAt?: Date
   }): Ticket {
     const ticket = new Ticket(
-      Identifier.generate('ticket'),
+      Identifier.generate('tkt'),
       attributes.status,
       attributes.priority,
       attributes.source,

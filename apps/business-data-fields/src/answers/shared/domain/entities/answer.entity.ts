@@ -81,7 +81,7 @@ export class Answer extends AggregateRoot {
     attributes: Omit<EntityAttributes<Answer>, 'id'>
   ): Answer {
     const answer = new Answer(
-      Identifier.generate('answer'),
+      Identifier.generate('ans'),
       attributes.value,
       attributes.fieldId,
       attributes.entityId,

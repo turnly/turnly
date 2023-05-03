@@ -19,9 +19,9 @@ import { TokenCreatedEvent } from 'tokens/create-token/token-created.event'
  * @author Turnly
  */
 export class Token extends AggregateRoot {
-  private static PREFIX_LENGTH = 6
-  private static TOKEN_LENGTH = 32
-  private static TOKEN_PREFIX = 'st'
+  private static PREFIX_LENGTH = 8
+  private static SECRET_LENGTH = 32
+  private static SECRET_PREFIX = 'st_key'
 
   protected constructor(
     /**
@@ -121,11 +121,11 @@ export class Token extends AggregateRoot {
       )
     }
 
-    const prefix = Identifier.generate(Token.TOKEN_PREFIX, Token.PREFIX_LENGTH)
-    const secret = Identifier.generate(prefix, Token.TOKEN_LENGTH)
+    const prefix = Identifier.generate(Token.SECRET_PREFIX, Token.PREFIX_LENGTH)
+    const secret = Identifier.generate(prefix, Token.SECRET_LENGTH)
 
     const token = new Token(
-      Identifier.generate('token'),
+      Identifier.generate('tkn'),
       attributes.name,
       attributes.scopes,
       prefix,
@@ -160,7 +160,7 @@ export class Token extends AggregateRoot {
      *
      * @summary The 1 is added to the length to include the underscore in the prefix length.
      */
-    const length = this.TOKEN_PREFIX.length + this.PREFIX_LENGTH + 1
+    const length = this.SECRET_PREFIX.length + this.PREFIX_LENGTH + 1
 
     return secret.slice(0, length)
   }

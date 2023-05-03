@@ -30,7 +30,7 @@ export class Identifier {
   private static readonly sizes = {
     medium: 35,
     normal: 28,
-    min: 21,
+    min: 20,
   }
 
   /**

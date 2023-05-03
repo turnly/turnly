@@ -139,7 +139,7 @@ export class Member extends AggregateRoot {
     attributes: Omit<EntityAttributes<Member>, 'id'>
   ): Member {
     const member = new Member(
-      Identifier.generate('member'),
+      Identifier.generate('mbr'),
       attributes.name,
       attributes.role,
       attributes.userId,
