@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package turnly.branch_management.v1.opening_hours;
+
+import "common.proto";
+
+message OpeningHour {
+  string id = 1;
+  string name = 2;
+  int32 day_of_week = 3;
+  bool closed_all_day = 4;
+  bool open_all_day = 5;
+  int32 open_hour = 6;
+  int32 open_minutes = 7;
+  int32 close_hour = 8;
+  int32 close_minutes = 9;
+  string location_id = 10;
+}
+
+message ListLocationHoursResponse {
+  repeated OpeningHour data = 1;
+  turnly.common.v1.Meta meta = 2;
+}
+
+message BulkResponse {
+  repeated OpeningHour data = 1;
+  turnly.common.v1.Meta meta = 2;
+}

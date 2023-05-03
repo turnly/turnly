@@ -22,6 +22,8 @@ export class Location extends jspb.Message {
     setLongitude(value: string): Location;
     getStopServingBeforeInMinutes(): number;
     setStopServingBeforeInMinutes(value: number): Location;
+    getTimezone(): string;
+    setTimezone(value: string): Location;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): Location.AsObject;
@@ -42,6 +44,7 @@ export namespace Location {
         latitude: string,
         longitude: string,
         stopServingBeforeInMinutes: number,
+        timezone: string,
     }
 }
 

@@ -15,6 +15,7 @@ export class LocationMother {
   static create(
     name: string = ObjectMother.names(),
     address: string = ObjectMother.word(),
+    timezone: string = ObjectMother.word(),
     status: LocationStatus = LocationStatus.COMPLETE,
     coordinates = ObjectMother.coords(),
     country: string = ObjectMother.names(),
@@ -25,6 +26,7 @@ export class LocationMother {
       organizationId,
       name,
       address,
+      timezone,
       status,
       coordinates,
       stopServingBeforeInMinutes,
