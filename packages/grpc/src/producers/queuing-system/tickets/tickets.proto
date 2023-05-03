@@ -22,4 +22,6 @@ service Tickets {
   rpc Discard(DiscardTicketRequest) returns (DiscardTicketResponse) {}
   rpc ReturnToQueue(ReturnToQueueRequest)
     returns (ReturnToQueueResponse) {}
+  rpc ListTicketsForSignageDisplays(ListTicketsForSignageDisplaysRequest)
+    returns (ListTicketsForSignageDisplaysResponse) {}
 }

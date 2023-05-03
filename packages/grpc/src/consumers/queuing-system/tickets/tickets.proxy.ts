@@ -30,6 +30,8 @@ import type {
   IGetTicketsWaitingForServiceResponse,
   ILeaveTicketRequest,
   ILeaveTicketResponse,
+  IListTicketsForSignageDisplaysRequest,
+  IListTicketsForSignageDisplaysResponse,
   IReturnToQueueRequest,
   IReturnToQueueResponse,
   IServeTicketRequest,
@@ -84,6 +86,11 @@ export class Tickets extends Proxy<Service> {
   private getTicketDetailsBreaker: CircuitBreaker<
     IGetTicketDetailsRequest[],
     IGetTicketDetailsResponse
+  >
+
+  private listTicketsForSignageDisplaysBreaker: CircuitBreaker<
+    IListTicketsForSignageDisplaysRequest[],
+    IListTicketsForSignageDisplaysResponse
   >
 
   public constructor(config?: ClientConfig) {
@@ -188,6 +195,14 @@ export class Tickets extends Proxy<Service> {
       this.service.getTicketsForServingFromLocation.bind(this.service),
       { name: 'QueuingSystem.Tickets.getTicketsForServingFromLocation' }
     )
+
+    /**
+     * Search Tickets To Display on Digital Signage Breaker
+     */
+    this.listTicketsForSignageDisplaysBreaker = new CircuitBreaker(
+      this.service.listTicketsForSignageDisplays.bind(this.service),
+      { name: 'QueuingSystem.Tickets.listTicketsForSignageDisplays' }
+    )
   }
 
   public async create(request: ICreateTicketRequest) {
@@ -240,5 +255,11 @@ export class Tickets extends Proxy<Service> {
     request: IGetTicketsForServingFromLocationRequest
   ) {
     return this.getTicketsForServingFromLocationBreaker.execute(request)
+  }
+
+  public async listTicketsForSignageDisplays(
+    request: IListTicketsForSignageDisplaysRequest
+  ) {
+    return this.listTicketsForSignageDisplaysBreaker.execute(request)
   }
 }

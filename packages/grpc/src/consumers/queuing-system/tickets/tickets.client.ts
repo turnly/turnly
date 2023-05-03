@@ -15,6 +15,7 @@ import {
   GetTicketsForServingFromLocationRequest,
   GetTicketsWaitingForServiceRequest,
   LeaveTicketRequest,
+  ListTicketsForSignageDisplaysRequest,
   ReturnToQueueRequest,
   ServeTicketRequest,
 } from '../../../producers/queuing-system'
@@ -47,6 +48,8 @@ import {
   IGetTicketsWaitingForServiceResponse,
   ILeaveTicketRequest,
   ILeaveTicketResponse,
+  IListTicketsForSignageDisplaysRequest,
+  IListTicketsForSignageDisplaysResponse,
   IReturnToQueueRequest,
   IReturnToQueueResponse,
   IServeTicketRequest,
@@ -248,6 +251,24 @@ export class Tickets extends Client<TicketsClient> implements ITicketsClient {
     return (
       await promisify(
         this.client.getTicketsForServingFromLocation.bind(this.client)
+      )(req, this.getMeta(), {})
+    ).toObject()
+  }
+
+  public async listTicketsForSignageDisplays(
+    request: IListTicketsForSignageDisplaysRequest
+  ): Promise<IListTicketsForSignageDisplaysResponse> {
+    const req = new ListTicketsForSignageDisplaysRequest()
+      .setLocationId(request.locationId)
+      .setServiceIdsList(request.serviceIdsList)
+      .setLimit(request.limit)
+      .setOffset(request.offset)
+      .setClearTicketsAfter(request.clearTicketsAfter)
+      .setOrder(request.order)
+
+    return (
+      await promisify(
+        this.client.listTicketsForSignageDisplays.bind(this.client)
       )(req, this.getMeta(), {})
     ).toObject()
   }

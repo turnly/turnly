@@ -225,6 +225,28 @@ function deserialize_turnly_queuing_system_v1_tickets_LeaveTicketResponse(buffer
   return tickets_responses_pb.LeaveTicketResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_turnly_queuing_system_v1_tickets_ListTicketsForSignageDisplaysRequest(arg) {
+  if (!(arg instanceof tickets_requests_pb.ListTicketsForSignageDisplaysRequest)) {
+    throw new Error('Expected argument of type turnly.queuing_system.v1.tickets.ListTicketsForSignageDisplaysRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_turnly_queuing_system_v1_tickets_ListTicketsForSignageDisplaysRequest(buffer_arg) {
+  return tickets_requests_pb.ListTicketsForSignageDisplaysRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_turnly_queuing_system_v1_tickets_ListTicketsForSignageDisplaysResponse(arg) {
+  if (!(arg instanceof tickets_responses_pb.ListTicketsForSignageDisplaysResponse)) {
+    throw new Error('Expected argument of type turnly.queuing_system.v1.tickets.ListTicketsForSignageDisplaysResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_turnly_queuing_system_v1_tickets_ListTicketsForSignageDisplaysResponse(buffer_arg) {
+  return tickets_responses_pb.ListTicketsForSignageDisplaysResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_turnly_queuing_system_v1_tickets_ReturnToQueueRequest(arg) {
   if (!(arg instanceof tickets_requests_pb.ReturnToQueueRequest)) {
     throw new Error('Expected argument of type turnly.queuing_system.v1.tickets.ReturnToQueueRequest');
@@ -402,6 +424,17 @@ var TicketsService = exports.TicketsService = {
     requestDeserialize: deserialize_turnly_queuing_system_v1_tickets_ReturnToQueueRequest,
     responseSerialize: serialize_turnly_queuing_system_v1_tickets_ReturnToQueueResponse,
     responseDeserialize: deserialize_turnly_queuing_system_v1_tickets_ReturnToQueueResponse,
+  },
+  listTicketsForSignageDisplays: {
+    path: '/turnly.queuing_system.v1.tickets.Tickets/ListTicketsForSignageDisplays',
+    requestStream: false,
+    responseStream: false,
+    requestType: tickets_requests_pb.ListTicketsForSignageDisplaysRequest,
+    responseType: tickets_responses_pb.ListTicketsForSignageDisplaysResponse,
+    requestSerialize: serialize_turnly_queuing_system_v1_tickets_ListTicketsForSignageDisplaysRequest,
+    requestDeserialize: deserialize_turnly_queuing_system_v1_tickets_ListTicketsForSignageDisplaysRequest,
+    responseSerialize: serialize_turnly_queuing_system_v1_tickets_ListTicketsForSignageDisplaysResponse,
+    responseDeserialize: deserialize_turnly_queuing_system_v1_tickets_ListTicketsForSignageDisplaysResponse,
   },
 };
 
