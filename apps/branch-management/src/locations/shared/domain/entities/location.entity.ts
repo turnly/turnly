@@ -48,7 +48,7 @@ export class Location extends AggregateRoot {
     private country: string,
 
     /**
-     * Country
+     * Timezone
      *
      * @description The timezone of the Location.
      */
