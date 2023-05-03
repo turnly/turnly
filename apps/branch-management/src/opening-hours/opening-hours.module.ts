@@ -12,6 +12,7 @@
  */
 import 'opening-hours/shared/shared.dependency'
 import 'opening-hours/bulk-opening-hours/bulk-opening-hours.dependency'
+import 'opening-hours/list-location-hours/list-location-hours.dependency'
 
 import type {
   ICommandHandler,
@@ -27,7 +28,6 @@ import { Box } from '@turnly/core'
  * @description Module definition.
  */
 import type { Producers } from '@turnly/grpc'
-import { NotImplementedError } from '@turnly/observability'
 import type { OpeningHour } from 'opening-hours/shared/domain/entities/opening-hour.entity'
 
 export class OpeningHoursModule {
@@ -35,7 +35,8 @@ export class OpeningHoursModule {
     return {
       create: (...args) =>
         Box.resolve('bulkOpeningHoursServer').execute(...args),
-      listLocationHours: () => new NotImplementedError(),
+      listLocationHours: (...args) =>
+        Box.resolve('listLocationHoursServer').execute(...args),
     }
   }
 
@@ -48,7 +49,7 @@ export class OpeningHoursModule {
   }
 
   public static getQueryHandlers(): IQueryHandler[] {
-    return []
+    return [Box.resolve('listLocationHoursQueryHandler')]
   }
 
   public static getCommandHandlers(): ICommandHandler[] {

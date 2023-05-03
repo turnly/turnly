@@ -7,6 +7,7 @@
 import { config, oidc } from '@turnly/core'
 import { AuthGuard, Producers } from '@turnly/grpc'
 import { LocationsModule } from 'locations/locations.module'
+import { OpeningHoursModule } from 'opening-hours/opening-hours.module'
 import { ServicesModule } from 'services/services.module'
 
 /**
@@ -22,6 +23,10 @@ const services: Producers.Service[] = [
   {
     definition: Producers.BranchManagement.LocationsService,
     implementation: LocationsModule.getServer(),
+  },
+  {
+    definition: Producers.BranchManagement.OpeningHoursService,
+    implementation: OpeningHoursModule.getServer(),
   },
 ]
 

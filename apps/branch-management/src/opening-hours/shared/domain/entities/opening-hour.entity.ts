@@ -20,70 +20,70 @@ export class OpeningHour extends AggregateRoot {
     /**
      * ID
      *
-     * @description Unique identifier for the Service
+     * @description Unique identifier for the Opening Hour.
      */
     id: Guid,
 
     /**
      * Name
      *
-     * @description A human-readable name for the Service.
+     * @description A human-readable name for the Opening Hour.
      */
     private name: string,
 
     /**
      * Description
      *
-     * @description A human-readable description of the Service.
+     * @description The number of the day of the week it belongs to.
      */
     private dayOfWeek: number,
 
     /**
      * Description
      *
-     * @description A human-readable description of the Service.
+     * @description True if the location works 24 hours.
      */
     private openAllDay: boolean,
 
     /**
      * Description
      *
-     * @description A human-readable description of the Service.
+     * @description True if the location is closed all day, like holydays etc.
      */
     private closedAllDay: boolean,
 
     /**
      * Description
      *
-     * @description A human-readable description of the Service.
+     * @description The hour that the location opens at (only the hour).
      */
     private openHour: number,
 
     /**
      * Description
      *
-     * @description A human-readable description of the Service.
+     * @description The minutes that the location opens at (only the minutes).
      */
     private openMinutes: number,
 
     /**
      * Description
      *
-     * @description A human-readable description of the Service.
+     * @description The hour that the location closes at (only the hour).
      */
     private closeHour: number,
 
     /**
      * Description
      *
-     * @description A human-readable description of the Service.
+     * @description The minutes that the location closes at (only the minutes).
      */
     private closeMinutes: number,
 
     /**
      * Organization
      *
-     * @description The Organization that the Service belongs to.
+     * @description The Organization that the Open Hour belongs to.
      */
     private readonly organizationId: Guid,
 
