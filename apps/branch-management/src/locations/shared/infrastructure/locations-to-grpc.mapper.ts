@@ -20,6 +20,7 @@ export class LocationsMapper {
       location.setName(entity.name)
       location.setAddress(entity.address)
       location.setCountry(entity.country)
+      location.setTimezone(entity.timezone)
       location.setLatitude(entity.coordinates.lat.toString())
       location.setLongitude(entity.coordinates.lng.toString())
       location.setStopServingBeforeInMinutes(entity.stopServingBeforeInMinutes)

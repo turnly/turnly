@@ -14,13 +14,13 @@ export class BulkOpeningHoursServer {
     private readonly bulkOpeningHoursController: BulkOpeningHoursController
   ) {}
 
-  @Producers.CallHandler(Producers.BranchManagement.CreateResponse)
+  @Producers.CallHandler(Producers.BranchManagement.BulkResponse)
   public async execute(
     call: Producers.ServerUnaryCall<
-      Producers.BranchManagement.CreateRequest,
-      Producers.BranchManagement.CreateResponse
+      Producers.BranchManagement.BulkRequest,
+      Producers.BranchManagement.BulkResponse
     >,
-    callback: Producers.ICallback<Producers.BranchManagement.CreateResponse>
+    callback: Producers.ICallback<Producers.BranchManagement.BulkResponse>
   ) {
     const openingHours = call.request
       .getOpeningHoursList()
@@ -32,7 +32,7 @@ export class BulkOpeningHoursServer {
       organizationId: Consumers.Client.getOrganizationId(call),
     })
 
-    const response = new Producers.BranchManagement.CreateResponse()
+    const response = new Producers.BranchManagement.BulkResponse()
 
     if (data) response.setDataList(data.map(OpeningHoursMapper.toRPC))
 

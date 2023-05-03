@@ -4,7 +4,6 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-
 /**
  * Handlers
  *
@@ -14,9 +13,9 @@ import { commandBus, eventBus, queryBus } from '@turnly/core'
 
 import { OpeningHoursModule } from '../opening-hours.module'
 
-// /**
-//  * Opening Hour module
-//  */
+/**
+ * Opening Hour module
+ */
 queryBus.register(OpeningHoursModule.getQueryHandlers())
 commandBus.register(OpeningHoursModule.getCommandHandlers())
 eventBus.subscribe(OpeningHoursModule.getEventSubscribers())

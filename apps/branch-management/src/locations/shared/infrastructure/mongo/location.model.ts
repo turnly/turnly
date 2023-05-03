@@ -40,6 +40,10 @@ const schema = new Schema<ILocationDocument>(
       type: String,
       required: true,
     },
+    timezone: {
+      type: String,
+      required: true,
+    },
     status: {
       type: String,
       enum: LocationStatus,

@@ -26,37 +26,37 @@ export namespace ListLocationHoursRequest {
     }
 }
 
-export class CreateOpeningHoursObject extends jspb.Message { 
+export class BulkOpeningHoursObject extends jspb.Message { 
     getId(): string;
-    setId(value: string): CreateOpeningHoursObject;
+    setId(value: string): BulkOpeningHoursObject;
     getName(): string;
-    setName(value: string): CreateOpeningHoursObject;
+    setName(value: string): BulkOpeningHoursObject;
     getDayOfWeek(): number;
-    setDayOfWeek(value: number): CreateOpeningHoursObject;
+    setDayOfWeek(value: number): BulkOpeningHoursObject;
     getClosedAllDay(): boolean;
-    setClosedAllDay(value: boolean): CreateOpeningHoursObject;
+    setClosedAllDay(value: boolean): BulkOpeningHoursObject;
     getOpenAllDay(): boolean;
-    setOpenAllDay(value: boolean): CreateOpeningHoursObject;
+    setOpenAllDay(value: boolean): BulkOpeningHoursObject;
     getOpenHour(): number;
-    setOpenHour(value: number): CreateOpeningHoursObject;
+    setOpenHour(value: number): BulkOpeningHoursObject;
     getOpenMinutes(): number;
-    setOpenMinutes(value: number): CreateOpeningHoursObject;
+    setOpenMinutes(value: number): BulkOpeningHoursObject;
     getCloseHour(): number;
-    setCloseHour(value: number): CreateOpeningHoursObject;
+    setCloseHour(value: number): BulkOpeningHoursObject;
     getCloseMinutes(): number;
-    setCloseMinutes(value: number): CreateOpeningHoursObject;
+    setCloseMinutes(value: number): BulkOpeningHoursObject;
 
     serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): CreateOpeningHoursObject.AsObject;
-    static toObject(includeInstance: boolean, msg: CreateOpeningHoursObject): CreateOpeningHoursObject.AsObject;
+    toObject(includeInstance?: boolean): BulkOpeningHoursObject.AsObject;
+    static toObject(includeInstance: boolean, msg: BulkOpeningHoursObject): BulkOpeningHoursObject.AsObject;
     static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
     static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: CreateOpeningHoursObject, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): CreateOpeningHoursObject;
-    static deserializeBinaryFromReader(message: CreateOpeningHoursObject, reader: jspb.BinaryReader): CreateOpeningHoursObject;
+    static serializeBinaryToWriter(message: BulkOpeningHoursObject, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): BulkOpeningHoursObject;
+    static deserializeBinaryFromReader(message: BulkOpeningHoursObject, reader: jspb.BinaryReader): BulkOpeningHoursObject;
 }
 
-export namespace CreateOpeningHoursObject {
+export namespace BulkOpeningHoursObject {
     export type AsObject = {
         id: string,
         name: string,
@@ -70,27 +70,27 @@ export namespace CreateOpeningHoursObject {
     }
 }
 
-export class CreateRequest extends jspb.Message { 
+export class BulkRequest extends jspb.Message { 
     getLocationId(): string;
-    setLocationId(value: string): CreateRequest;
+    setLocationId(value: string): BulkRequest;
     clearOpeningHoursList(): void;
-    getOpeningHoursList(): Array<CreateOpeningHoursObject>;
-    setOpeningHoursList(value: Array<CreateOpeningHoursObject>): CreateRequest;
-    addOpeningHours(value?: CreateOpeningHoursObject, index?: number): CreateOpeningHoursObject;
+    getOpeningHoursList(): Array<BulkOpeningHoursObject>;
+    setOpeningHoursList(value: Array<BulkOpeningHoursObject>): BulkRequest;
+    addOpeningHours(value?: BulkOpeningHoursObject, index?: number): BulkOpeningHoursObject;
 
     serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): CreateRequest.AsObject;
-    static toObject(includeInstance: boolean, msg: CreateRequest): CreateRequest.AsObject;
+    toObject(includeInstance?: boolean): BulkRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: BulkRequest): BulkRequest.AsObject;
     static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
     static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: CreateRequest, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): CreateRequest;
-    static deserializeBinaryFromReader(message: CreateRequest, reader: jspb.BinaryReader): CreateRequest;
+    static serializeBinaryToWriter(message: BulkRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): BulkRequest;
+    static deserializeBinaryFromReader(message: BulkRequest, reader: jspb.BinaryReader): BulkRequest;
 }
 
-export namespace CreateRequest {
+export namespace BulkRequest {
     export type AsObject = {
         locationId: string,
-        openingHoursList: Array<CreateOpeningHoursObject.AsObject>,
+        openingHoursList: Array<BulkOpeningHoursObject.AsObject>,
     }
 }

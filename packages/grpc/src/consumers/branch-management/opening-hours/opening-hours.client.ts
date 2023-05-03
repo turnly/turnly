@@ -5,8 +5,8 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import {
-  CreateOpeningHoursObject,
-  CreateRequest,
+  BulkOpeningHoursObject,
+  BulkRequest,
   ListLocationHoursRequest,
   OpeningHoursClient,
 } from '../../../producers/branch-management'
@@ -14,8 +14,8 @@ import { Client } from '../../common/base.client'
 import type { ClientConfig } from '../../common/client-options.type'
 import { promisify } from '../../common/promisify.util'
 import {
-  ICreateRequest,
-  ICreateResponse,
+  IBulkRequest,
+  IBulkResponse,
   IListLocationHoursRequest,
   IListLocationHoursResponse,
   IOpeningHoursClient,
@@ -46,9 +46,9 @@ export class OpeningHours
     ).toObject()
   }
 
-  public async create(request: ICreateRequest): Promise<ICreateResponse> {
+  public async bulk(request: IBulkRequest): Promise<IBulkResponse> {
     const hours = request.openingHoursList.map(hour =>
-      new CreateOpeningHoursObject()
+      new BulkOpeningHoursObject()
         .setName(hour.name)
         .setDayOfWeek(hour.dayOfWeek)
         .setOpenAllDay(hour.openAllDay)
@@ -59,12 +59,12 @@ export class OpeningHours
         .setCloseMinutes(hour.closeMinutes)
     )
 
-    const req = new CreateRequest()
+    const req = new BulkRequest()
       .setOpeningHoursList(hours)
       .setLocationId(request.locationId)
 
     return (
-      await promisify(this.client.create.bind(this.client))(
+      await promisify(this.client.bulk.bind(this.client))(
         req,
         this.getMeta(),
         {}

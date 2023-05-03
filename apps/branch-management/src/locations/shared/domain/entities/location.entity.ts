@@ -48,6 +48,13 @@ export class Location extends AggregateRoot {
     private country: string,
 
     /**
+     * Country
+     *
+     * @description The timezone of the Location.
+     */
+    private timezone: string,
+
+    /**
      * Status
      *
      * @description The status of the Location.
@@ -94,6 +101,7 @@ export class Location extends AggregateRoot {
       attributes.name,
       attributes.address,
       attributes.country,
+      attributes.timezone,
       attributes.status,
       attributes.coordinates,
       attributes.stopServingBeforeInMinutes,
@@ -116,6 +124,7 @@ export class Location extends AggregateRoot {
       attributes.name,
       attributes.address,
       attributes.country,
+      attributes.timezone,
       attributes.status,
       attributes.coordinates,
       attributes.stopServingBeforeInMinutes,
@@ -134,6 +143,7 @@ export class Location extends AggregateRoot {
       name: this.name,
       address: this.address,
       country: this.country,
+      timezone: this.timezone,
       status: this.status,
       coordinates: this.coordinates,
       organizationId: this.organizationId,

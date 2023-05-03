@@ -11,7 +11,7 @@ import * as opening_hours_responses_pb from "./opening-hours.responses_pb";
 
 interface IOpeningHoursService extends grpc.ServiceDefinition<grpc.UntypedServiceImplementation> {
     listLocationHours: IOpeningHoursService_IListLocationHours;
-    create: IOpeningHoursService_ICreate;
+    bulk: IOpeningHoursService_IBulk;
 }
 
 interface IOpeningHoursService_IListLocationHours extends grpc.MethodDefinition<opening_hours_requests_pb.ListLocationHoursRequest, opening_hours_responses_pb.ListLocationHoursResponse> {
@@ -23,30 +23,30 @@ interface IOpeningHoursService_IListLocationHours extends grpc.MethodDefinition<
     responseSerialize: grpc.serialize<opening_hours_responses_pb.ListLocationHoursResponse>;
     responseDeserialize: grpc.deserialize<opening_hours_responses_pb.ListLocationHoursResponse>;
 }
-interface IOpeningHoursService_ICreate extends grpc.MethodDefinition<opening_hours_requests_pb.CreateRequest, opening_hours_responses_pb.CreateResponse> {
-    path: "/turnly.branch_management.v1.opening_hours.OpeningHours/Create";
+interface IOpeningHoursService_IBulk extends grpc.MethodDefinition<opening_hours_requests_pb.BulkRequest, opening_hours_responses_pb.BulkResponse> {
+    path: "/turnly.branch_management.v1.opening_hours.OpeningHours/Bulk";
     requestStream: false;
     responseStream: false;
-    requestSerialize: grpc.serialize<opening_hours_requests_pb.CreateRequest>;
-    requestDeserialize: grpc.deserialize<opening_hours_requests_pb.CreateRequest>;
-    responseSerialize: grpc.serialize<opening_hours_responses_pb.CreateResponse>;
-    responseDeserialize: grpc.deserialize<opening_hours_responses_pb.CreateResponse>;
+    requestSerialize: grpc.serialize<opening_hours_requests_pb.BulkRequest>;
+    requestDeserialize: grpc.deserialize<opening_hours_requests_pb.BulkRequest>;
+    responseSerialize: grpc.serialize<opening_hours_responses_pb.BulkResponse>;
+    responseDeserialize: grpc.deserialize<opening_hours_responses_pb.BulkResponse>;
 }
 
 export const OpeningHoursService: IOpeningHoursService;
 
 export interface IOpeningHoursServer extends grpc.UntypedServiceImplementation {
     listLocationHours: grpc.handleUnaryCall<opening_hours_requests_pb.ListLocationHoursRequest, opening_hours_responses_pb.ListLocationHoursResponse>;
-    create: grpc.handleUnaryCall<opening_hours_requests_pb.CreateRequest, opening_hours_responses_pb.CreateResponse>;
+    bulk: grpc.handleUnaryCall<opening_hours_requests_pb.BulkRequest, opening_hours_responses_pb.BulkResponse>;
 }
 
 export interface IOpeningHoursClient {
     listLocationHours(request: opening_hours_requests_pb.ListLocationHoursRequest, callback: (error: grpc.ServiceError | null, response: opening_hours_responses_pb.ListLocationHoursResponse) => void): grpc.ClientUnaryCall;
     listLocationHours(request: opening_hours_requests_pb.ListLocationHoursRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: opening_hours_responses_pb.ListLocationHoursResponse) => void): grpc.ClientUnaryCall;
     listLocationHours(request: opening_hours_requests_pb.ListLocationHoursRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: opening_hours_responses_pb.ListLocationHoursResponse) => void): grpc.ClientUnaryCall;
-    create(request: opening_hours_requests_pb.CreateRequest, callback: (error: grpc.ServiceError | null, response: opening_hours_responses_pb.CreateResponse) => void): grpc.ClientUnaryCall;
-    create(request: opening_hours_requests_pb.CreateRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: opening_hours_responses_pb.CreateResponse) => void): grpc.ClientUnaryCall;
-    create(request: opening_hours_requests_pb.CreateRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: opening_hours_responses_pb.CreateResponse) => void): grpc.ClientUnaryCall;
+    bulk(request: opening_hours_requests_pb.BulkRequest, callback: (error: grpc.ServiceError | null, response: opening_hours_responses_pb.BulkResponse) => void): grpc.ClientUnaryCall;
+    bulk(request: opening_hours_requests_pb.BulkRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: opening_hours_responses_pb.BulkResponse) => void): grpc.ClientUnaryCall;
+    bulk(request: opening_hours_requests_pb.BulkRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: opening_hours_responses_pb.BulkResponse) => void): grpc.ClientUnaryCall;
 }
 
 export class OpeningHoursClient extends grpc.Client implements IOpeningHoursClient {
@@ -54,7 +54,7 @@ export class OpeningHoursClient extends grpc.Client implements IOpeningHoursClie
     public listLocationHours(request: opening_hours_requests_pb.ListLocationHoursRequest, callback: (error: grpc.ServiceError | null, response: opening_hours_responses_pb.ListLocationHoursResponse) => void): grpc.ClientUnaryCall;
     public listLocationHours(request: opening_hours_requests_pb.ListLocationHoursRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: opening_hours_responses_pb.ListLocationHoursResponse) => void): grpc.ClientUnaryCall;
     public listLocationHours(request: opening_hours_requests_pb.ListLocationHoursRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: opening_hours_responses_pb.ListLocationHoursResponse) => void): grpc.ClientUnaryCall;
-    public create(request: opening_hours_requests_pb.CreateRequest, callback: (error: grpc.ServiceError | null, response: opening_hours_responses_pb.CreateResponse) => void): grpc.ClientUnaryCall;
-    public create(request: opening_hours_requests_pb.CreateRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: opening_hours_responses_pb.CreateResponse) => void): grpc.ClientUnaryCall;
-    public create(request: opening_hours_requests_pb.CreateRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: opening_hours_responses_pb.CreateResponse) => void): grpc.ClientUnaryCall;
+    public bulk(request: opening_hours_requests_pb.BulkRequest, callback: (error: grpc.ServiceError | null, response: opening_hours_responses_pb.BulkResponse) => void): grpc.ClientUnaryCall;
+    public bulk(request: opening_hours_requests_pb.BulkRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: opening_hours_responses_pb.BulkResponse) => void): grpc.ClientUnaryCall;
+    public bulk(request: opening_hours_requests_pb.BulkRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: opening_hours_responses_pb.BulkResponse) => void): grpc.ClientUnaryCall;
 }

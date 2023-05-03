@@ -5,26 +5,26 @@ var grpc = require('@grpc/grpc-js');
 var opening$hours_requests_pb = require('./opening-hours.requests_pb.js');
 var opening$hours_responses_pb = require('./opening-hours.responses_pb.js');
 
-function serialize_turnly_branch_management_v1_opening_hours_CreateRequest(arg) {
-  if (!(arg instanceof opening$hours_requests_pb.CreateRequest)) {
-    throw new Error('Expected argument of type turnly.branch_management.v1.opening_hours.CreateRequest');
+function serialize_turnly_branch_management_v1_opening_hours_BulkRequest(arg) {
+  if (!(arg instanceof opening$hours_requests_pb.BulkRequest)) {
+    throw new Error('Expected argument of type turnly.branch_management.v1.opening_hours.BulkRequest');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_turnly_branch_management_v1_opening_hours_CreateRequest(buffer_arg) {
-  return opening$hours_requests_pb.CreateRequest.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_turnly_branch_management_v1_opening_hours_BulkRequest(buffer_arg) {
+  return opening$hours_requests_pb.BulkRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_turnly_branch_management_v1_opening_hours_CreateResponse(arg) {
-  if (!(arg instanceof opening$hours_responses_pb.CreateResponse)) {
-    throw new Error('Expected argument of type turnly.branch_management.v1.opening_hours.CreateResponse');
+function serialize_turnly_branch_management_v1_opening_hours_BulkResponse(arg) {
+  if (!(arg instanceof opening$hours_responses_pb.BulkResponse)) {
+    throw new Error('Expected argument of type turnly.branch_management.v1.opening_hours.BulkResponse');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_turnly_branch_management_v1_opening_hours_CreateResponse(buffer_arg) {
-  return opening$hours_responses_pb.CreateResponse.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_turnly_branch_management_v1_opening_hours_BulkResponse(buffer_arg) {
+  return opening$hours_responses_pb.BulkResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_turnly_branch_management_v1_opening_hours_ListLocationHoursRequest(arg) {
@@ -62,16 +62,16 @@ var OpeningHoursService = exports.OpeningHoursService = {
     responseSerialize: serialize_turnly_branch_management_v1_opening_hours_ListLocationHoursResponse,
     responseDeserialize: deserialize_turnly_branch_management_v1_opening_hours_ListLocationHoursResponse,
   },
-  create: {
-    path: '/turnly.branch_management.v1.opening_hours.OpeningHours/Create',
+  bulk: {
+    path: '/turnly.branch_management.v1.opening_hours.OpeningHours/Bulk',
     requestStream: false,
     responseStream: false,
-    requestType: opening$hours_requests_pb.CreateRequest,
-    responseType: opening$hours_responses_pb.CreateResponse,
-    requestSerialize: serialize_turnly_branch_management_v1_opening_hours_CreateRequest,
-    requestDeserialize: deserialize_turnly_branch_management_v1_opening_hours_CreateRequest,
-    responseSerialize: serialize_turnly_branch_management_v1_opening_hours_CreateResponse,
-    responseDeserialize: deserialize_turnly_branch_management_v1_opening_hours_CreateResponse,
+    requestType: opening$hours_requests_pb.BulkRequest,
+    responseType: opening$hours_responses_pb.BulkResponse,
+    requestSerialize: serialize_turnly_branch_management_v1_opening_hours_BulkRequest,
+    requestDeserialize: deserialize_turnly_branch_management_v1_opening_hours_BulkRequest,
+    responseSerialize: serialize_turnly_branch_management_v1_opening_hours_BulkResponse,
+    responseDeserialize: deserialize_turnly_branch_management_v1_opening_hours_BulkResponse,
   },
 };
 

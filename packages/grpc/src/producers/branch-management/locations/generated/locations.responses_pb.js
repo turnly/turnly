@@ -127,7 +127,8 @@ proto.turnly.branch_management.v1.locations.Location.toObject = function(include
     country: jspb.Message.getFieldWithDefault(msg, 4, ""),
     latitude: jspb.Message.getFieldWithDefault(msg, 5, ""),
     longitude: jspb.Message.getFieldWithDefault(msg, 6, ""),
-    stopServingBeforeInMinutes: jspb.Message.getFieldWithDefault(msg, 7, 0)
+    stopServingBeforeInMinutes: jspb.Message.getFieldWithDefault(msg, 7, 0),
+    timezone: jspb.Message.getFieldWithDefault(msg, 8, "")
   };
 
   if (includeInstance) {
@@ -191,6 +192,10 @@ proto.turnly.branch_management.v1.locations.Location.deserializeBinaryFromReader
     case 7:
       var value = /** @type {number} */ (reader.readInt32());
       msg.setStopServingBeforeInMinutes(value);
+      break;
+    case 8:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setTimezone(value);
       break;
     default:
       reader.skipField();
@@ -267,6 +272,13 @@ proto.turnly.branch_management.v1.locations.Location.serializeBinaryToWriter = f
   if (f !== 0) {
     writer.writeInt32(
       7,
+      f
+    );
+  }
+  f = message.getTimezone();
+  if (f.length > 0) {
+    writer.writeString(
+      8,
       f
     );
   }
@@ -396,6 +408,24 @@ proto.turnly.branch_management.v1.locations.Location.prototype.getStopServingBef
  */
 proto.turnly.branch_management.v1.locations.Location.prototype.setStopServingBeforeInMinutes = function(value) {
   return jspb.Message.setProto3IntField(this, 7, value);
+};
+
+
+/**
+ * optional string timezone = 8;
+ * @return {string}
+ */
+proto.turnly.branch_management.v1.locations.Location.prototype.getTimezone = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 8, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.turnly.branch_management.v1.locations.Location} returns this
+ */
+proto.turnly.branch_management.v1.locations.Location.prototype.setTimezone = function(value) {
+  return jspb.Message.setProto3StringField(this, 8, value);
 };
 
 

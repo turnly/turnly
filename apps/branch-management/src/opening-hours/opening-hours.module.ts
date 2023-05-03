@@ -33,19 +33,18 @@ import type { OpeningHour } from 'opening-hours/shared/domain/entities/opening-h
 export class OpeningHoursModule {
   public static getServer(): Producers.BranchManagement.IOpeningHoursServer {
     return {
-      create: (...args) =>
-        Box.resolve('bulkOpeningHoursServer').execute(...args),
+      bulk: (...args) => Box.resolve('bulkOpeningHoursServer').execute(...args),
       listLocationHours: (...args) =>
         Box.resolve('listLocationHoursServer').execute(...args),
     }
   }
 
   public static getWritableRepo(): IWritableRepository<OpeningHour> {
-    return Box.resolve('opening-hoursWritableRepo')
+    return Box.resolve('openingHoursWritableRepo')
   }
 
   public static getReadableRepo(): IReadableRepository<OpeningHour> {
-    return Box.resolve('opening-hoursReadableRepo')
+    return Box.resolve('openingHoursReadableRepo')
   }
 
   public static getQueryHandlers(): IQueryHandler[] {

@@ -10,8 +10,8 @@ import { Proxy } from '../../common/base.proxy'
 import type { ClientConfig } from '../../common/client-options.type'
 import { OpeningHours as Service } from './opening-hours.client'
 import type {
-  ICreateRequest,
-  ICreateResponse,
+  IBulkRequest,
+  IBulkResponse,
   IListLocationHoursRequest,
   IListLocationHoursResponse,
 } from './opening-hours.type'
@@ -24,7 +24,7 @@ export class OpeningHours extends Proxy<Service> {
     IListLocationHoursRequest[],
     IListLocationHoursResponse
   >
-  private createBreaker: CircuitBreaker<ICreateRequest[], ICreateResponse>
+  private bulkBreaker: CircuitBreaker<IBulkRequest[], IBulkResponse>
 
   public constructor(config?: ClientConfig) {
     super(Service, config)
@@ -46,9 +46,9 @@ export class OpeningHours extends Proxy<Service> {
     /**
      * Create Opening Hours Breaker
      */
-    this.createBreaker = new CircuitBreaker(
-      this.service.create.bind(this.service),
-      { name: 'BranchManagement.OpeningHours.create' }
+    this.bulkBreaker = new CircuitBreaker(
+      this.service.bulk.bind(this.service),
+      { name: 'BranchManagement.OpeningHours.bulk' }
     )
   }
 
@@ -56,7 +56,7 @@ export class OpeningHours extends Proxy<Service> {
     return this.listLocationsHoursBreaker.execute(request)
   }
 
-  public async create(request: ICreateRequest) {
-    return this.createBreaker.execute(request)
+  public async bulk(request: IBulkRequest) {
+    return this.bulkBreaker.execute(request)
   }
 }

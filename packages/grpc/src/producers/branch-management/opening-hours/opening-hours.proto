@@ -7,5 +7,5 @@ import "opening-hours.responses.proto";
 
 service OpeningHours {
   rpc ListLocationHours(ListLocationHoursRequest) returns (ListLocationHoursResponse) {};
-  rpc Create(CreateRequest) returns (CreateResponse) {};
+  rpc Bulk(BulkRequest) returns (BulkResponse) {};
 }

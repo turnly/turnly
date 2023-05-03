@@ -6,7 +6,7 @@ message ListLocationHoursRequest {
   string location_id = 1;
 }
 
-message CreateOpeningHoursObject {
+message BulkOpeningHoursObject {
   string id = 1;
   string name = 2;
   int32 day_of_week = 3;
@@ -18,7 +18,7 @@ message CreateOpeningHoursObject {
   int32 close_minutes = 9;
 }
 
-message CreateRequest {
+message BulkRequest {
   string location_id = 1;
-  repeated CreateOpeningHoursObject opening_hours = 2;
+  repeated BulkOpeningHoursObject opening_hours = 2;
 }

@@ -23,7 +23,7 @@ var global = (function() {
 
 var common_pb = require('./common_pb.js');
 goog.object.extend(proto, common_pb);
-goog.exportSymbol('proto.turnly.branch_management.v1.opening_hours.CreateResponse', null, global);
+goog.exportSymbol('proto.turnly.branch_management.v1.opening_hours.BulkResponse', null, global);
 goog.exportSymbol('proto.turnly.branch_management.v1.opening_hours.ListLocationHoursResponse', null, global);
 goog.exportSymbol('proto.turnly.branch_management.v1.opening_hours.OpeningHour', null, global);
 /**
@@ -78,16 +78,16 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.turnly.branch_management.v1.opening_hours.CreateResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, proto.turnly.branch_management.v1.opening_hours.CreateResponse.repeatedFields_, null);
+proto.turnly.branch_management.v1.opening_hours.BulkResponse = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.turnly.branch_management.v1.opening_hours.BulkResponse.repeatedFields_, null);
 };
-goog.inherits(proto.turnly.branch_management.v1.opening_hours.CreateResponse, jspb.Message);
+goog.inherits(proto.turnly.branch_management.v1.opening_hours.BulkResponse, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.turnly.branch_management.v1.opening_hours.CreateResponse.displayName = 'proto.turnly.branch_management.v1.opening_hours.CreateResponse';
+  proto.turnly.branch_management.v1.opening_hours.BulkResponse.displayName = 'proto.turnly.branch_management.v1.opening_hours.BulkResponse';
 }
 
 
@@ -706,7 +706,7 @@ proto.turnly.branch_management.v1.opening_hours.ListLocationHoursResponse.protot
  * @private {!Array<number>}
  * @const
  */
-proto.turnly.branch_management.v1.opening_hours.CreateResponse.repeatedFields_ = [1];
+proto.turnly.branch_management.v1.opening_hours.BulkResponse.repeatedFields_ = [1];
 
 
 
@@ -723,8 +723,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.turnly.branch_management.v1.opening_hours.CreateResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.turnly.branch_management.v1.opening_hours.CreateResponse.toObject(opt_includeInstance, this);
+proto.turnly.branch_management.v1.opening_hours.BulkResponse.prototype.toObject = function(opt_includeInstance) {
+  return proto.turnly.branch_management.v1.opening_hours.BulkResponse.toObject(opt_includeInstance, this);
 };
 
 
@@ -733,11 +733,11 @@ proto.turnly.branch_management.v1.opening_hours.CreateResponse.prototype.toObjec
  * @param {boolean|undefined} includeInstance Deprecated. Whether to include
  *     the JSPB instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.turnly.branch_management.v1.opening_hours.CreateResponse} msg The msg instance to transform.
+ * @param {!proto.turnly.branch_management.v1.opening_hours.BulkResponse} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.turnly.branch_management.v1.opening_hours.CreateResponse.toObject = function(includeInstance, msg) {
+proto.turnly.branch_management.v1.opening_hours.BulkResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
     dataList: jspb.Message.toObjectList(msg.getDataList(),
     proto.turnly.branch_management.v1.opening_hours.OpeningHour.toObject, includeInstance),
@@ -755,23 +755,23 @@ proto.turnly.branch_management.v1.opening_hours.CreateResponse.toObject = functi
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.turnly.branch_management.v1.opening_hours.CreateResponse}
+ * @return {!proto.turnly.branch_management.v1.opening_hours.BulkResponse}
  */
-proto.turnly.branch_management.v1.opening_hours.CreateResponse.deserializeBinary = function(bytes) {
+proto.turnly.branch_management.v1.opening_hours.BulkResponse.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.turnly.branch_management.v1.opening_hours.CreateResponse;
-  return proto.turnly.branch_management.v1.opening_hours.CreateResponse.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.turnly.branch_management.v1.opening_hours.BulkResponse;
+  return proto.turnly.branch_management.v1.opening_hours.BulkResponse.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.turnly.branch_management.v1.opening_hours.CreateResponse} msg The message object to deserialize into.
+ * @param {!proto.turnly.branch_management.v1.opening_hours.BulkResponse} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.turnly.branch_management.v1.opening_hours.CreateResponse}
+ * @return {!proto.turnly.branch_management.v1.opening_hours.BulkResponse}
  */
-proto.turnly.branch_management.v1.opening_hours.CreateResponse.deserializeBinaryFromReader = function(msg, reader) {
+proto.turnly.branch_management.v1.opening_hours.BulkResponse.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -801,9 +801,9 @@ proto.turnly.branch_management.v1.opening_hours.CreateResponse.deserializeBinary
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.turnly.branch_management.v1.opening_hours.CreateResponse.prototype.serializeBinary = function() {
+proto.turnly.branch_management.v1.opening_hours.BulkResponse.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.turnly.branch_management.v1.opening_hours.CreateResponse.serializeBinaryToWriter(this, writer);
+  proto.turnly.branch_management.v1.opening_hours.BulkResponse.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -811,11 +811,11 @@ proto.turnly.branch_management.v1.opening_hours.CreateResponse.prototype.seriali
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.turnly.branch_management.v1.opening_hours.CreateResponse} message
+ * @param {!proto.turnly.branch_management.v1.opening_hours.BulkResponse} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.turnly.branch_management.v1.opening_hours.CreateResponse.serializeBinaryToWriter = function(message, writer) {
+proto.turnly.branch_management.v1.opening_hours.BulkResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getDataList();
   if (f.length > 0) {
@@ -840,7 +840,7 @@ proto.turnly.branch_management.v1.opening_hours.CreateResponse.serializeBinaryTo
  * repeated OpeningHour data = 1;
  * @return {!Array<!proto.turnly.branch_management.v1.opening_hours.OpeningHour>}
  */
-proto.turnly.branch_management.v1.opening_hours.CreateResponse.prototype.getDataList = function() {
+proto.turnly.branch_management.v1.opening_hours.BulkResponse.prototype.getDataList = function() {
   return /** @type{!Array<!proto.turnly.branch_management.v1.opening_hours.OpeningHour>} */ (
     jspb.Message.getRepeatedWrapperField(this, proto.turnly.branch_management.v1.opening_hours.OpeningHour, 1));
 };
@@ -848,9 +848,9 @@ proto.turnly.branch_management.v1.opening_hours.CreateResponse.prototype.getData
 
 /**
  * @param {!Array<!proto.turnly.branch_management.v1.opening_hours.OpeningHour>} value
- * @return {!proto.turnly.branch_management.v1.opening_hours.CreateResponse} returns this
+ * @return {!proto.turnly.branch_management.v1.opening_hours.BulkResponse} returns this
 */
-proto.turnly.branch_management.v1.opening_hours.CreateResponse.prototype.setDataList = function(value) {
+proto.turnly.branch_management.v1.opening_hours.BulkResponse.prototype.setDataList = function(value) {
   return jspb.Message.setRepeatedWrapperField(this, 1, value);
 };
 
@@ -860,16 +860,16 @@ proto.turnly.branch_management.v1.opening_hours.CreateResponse.prototype.setData
  * @param {number=} opt_index
  * @return {!proto.turnly.branch_management.v1.opening_hours.OpeningHour}
  */
-proto.turnly.branch_management.v1.opening_hours.CreateResponse.prototype.addData = function(opt_value, opt_index) {
+proto.turnly.branch_management.v1.opening_hours.BulkResponse.prototype.addData = function(opt_value, opt_index) {
   return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.turnly.branch_management.v1.opening_hours.OpeningHour, opt_index);
 };
 
 
 /**
  * Clears the list making it empty but non-null.
- * @return {!proto.turnly.branch_management.v1.opening_hours.CreateResponse} returns this
+ * @return {!proto.turnly.branch_management.v1.opening_hours.BulkResponse} returns this
  */
-proto.turnly.branch_management.v1.opening_hours.CreateResponse.prototype.clearDataList = function() {
+proto.turnly.branch_management.v1.opening_hours.BulkResponse.prototype.clearDataList = function() {
   return this.setDataList([]);
 };
 
@@ -878,7 +878,7 @@ proto.turnly.branch_management.v1.opening_hours.CreateResponse.prototype.clearDa
  * optional turnly.common.v1.Meta meta = 2;
  * @return {?proto.turnly.common.v1.Meta}
  */
-proto.turnly.branch_management.v1.opening_hours.CreateResponse.prototype.getMeta = function() {
+proto.turnly.branch_management.v1.opening_hours.BulkResponse.prototype.getMeta = function() {
   return /** @type{?proto.turnly.common.v1.Meta} */ (
     jspb.Message.getWrapperField(this, common_pb.Meta, 2));
 };
@@ -886,18 +886,18 @@ proto.turnly.branch_management.v1.opening_hours.CreateResponse.prototype.getMeta
 
 /**
  * @param {?proto.turnly.common.v1.Meta|undefined} value
- * @return {!proto.turnly.branch_management.v1.opening_hours.CreateResponse} returns this
+ * @return {!proto.turnly.branch_management.v1.opening_hours.BulkResponse} returns this
 */
-proto.turnly.branch_management.v1.opening_hours.CreateResponse.prototype.setMeta = function(value) {
+proto.turnly.branch_management.v1.opening_hours.BulkResponse.prototype.setMeta = function(value) {
   return jspb.Message.setWrapperField(this, 2, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
- * @return {!proto.turnly.branch_management.v1.opening_hours.CreateResponse} returns this
+ * @return {!proto.turnly.branch_management.v1.opening_hours.BulkResponse} returns this
  */
-proto.turnly.branch_management.v1.opening_hours.CreateResponse.prototype.clearMeta = function() {
+proto.turnly.branch_management.v1.opening_hours.BulkResponse.prototype.clearMeta = function() {
   return this.setMeta(undefined);
 };
 
@@ -906,7 +906,7 @@ proto.turnly.branch_management.v1.opening_hours.CreateResponse.prototype.clearMe
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.turnly.branch_management.v1.opening_hours.CreateResponse.prototype.hasMeta = function() {
+proto.turnly.branch_management.v1.opening_hours.BulkResponse.prototype.hasMeta = function() {
   return jspb.Message.getField(this, 2) != null;
 };
 

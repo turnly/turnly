@@ -12,6 +12,7 @@ message Location {
   string latitude = 5;
   string longitude = 6;
   int32 stop_serving_before_in_minutes = 7;
+  string timezone = 8;
 }
 
 message SearchAvailableLocationsForServingResponse {
