@@ -16,9 +16,9 @@ message CreateOpeningHoursObject {
   int32 open_minutes = 7;
   int32 close_hour = 8;
   int32 close_minutes = 9;
-  string location_id = 10;
 }
 
 message CreateRequest {
-  repeated CreateOpeningHoursObject opening_hours = 1;
+  string location_id = 1;
+  repeated CreateOpeningHoursObject opening_hours = 2;
 }

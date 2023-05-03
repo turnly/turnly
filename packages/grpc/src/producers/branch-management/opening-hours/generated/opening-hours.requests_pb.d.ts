@@ -45,8 +45,6 @@ export class CreateOpeningHoursObject extends jspb.Message {
     setCloseHour(value: number): CreateOpeningHoursObject;
     getCloseMinutes(): number;
     setCloseMinutes(value: number): CreateOpeningHoursObject;
-    getLocationId(): string;
-    setLocationId(value: string): CreateOpeningHoursObject;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): CreateOpeningHoursObject.AsObject;
@@ -69,11 +67,12 @@ export namespace CreateOpeningHoursObject {
         openMinutes: number,
         closeHour: number,
         closeMinutes: number,
-        locationId: string,
     }
 }
 
 export class CreateRequest extends jspb.Message { 
+    getLocationId(): string;
+    setLocationId(value: string): CreateRequest;
     clearOpeningHoursList(): void;
     getOpeningHoursList(): Array<CreateOpeningHoursObject>;
     setOpeningHoursList(value: Array<CreateOpeningHoursObject>): CreateRequest;
@@ -91,6 +90,7 @@ export class CreateRequest extends jspb.Message {
 
 export namespace CreateRequest {
     export type AsObject = {
+        locationId: string,
         openingHoursList: Array<CreateOpeningHoursObject.AsObject>,
     }
 }

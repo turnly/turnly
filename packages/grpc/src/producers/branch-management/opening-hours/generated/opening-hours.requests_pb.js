@@ -257,8 +257,7 @@ proto.turnly.branch_management.v1.opening_hours.CreateOpeningHoursObject.toObjec
     openHour: jspb.Message.getFieldWithDefault(msg, 6, 0),
     openMinutes: jspb.Message.getFieldWithDefault(msg, 7, 0),
     closeHour: jspb.Message.getFieldWithDefault(msg, 8, 0),
-    closeMinutes: jspb.Message.getFieldWithDefault(msg, 9, 0),
-    locationId: jspb.Message.getFieldWithDefault(msg, 10, "")
+    closeMinutes: jspb.Message.getFieldWithDefault(msg, 9, 0)
   };
 
   if (includeInstance) {
@@ -330,10 +329,6 @@ proto.turnly.branch_management.v1.opening_hours.CreateOpeningHoursObject.deseria
     case 9:
       var value = /** @type {number} */ (reader.readInt32());
       msg.setCloseMinutes(value);
-      break;
-    case 10:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setLocationId(value);
       break;
     default:
       reader.skipField();
@@ -424,13 +419,6 @@ proto.turnly.branch_management.v1.opening_hours.CreateOpeningHoursObject.seriali
   if (f !== 0) {
     writer.writeInt32(
       9,
-      f
-    );
-  }
-  f = message.getLocationId();
-  if (f.length > 0) {
-    writer.writeString(
-      10,
       f
     );
   }
@@ -599,31 +587,13 @@ proto.turnly.branch_management.v1.opening_hours.CreateOpeningHoursObject.prototy
 };
 
 
-/**
- * optional string location_id = 10;
- * @return {string}
- */
-proto.turnly.branch_management.v1.opening_hours.CreateOpeningHoursObject.prototype.getLocationId = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 10, ""));
-};
-
-
-/**
- * @param {string} value
- * @return {!proto.turnly.branch_management.v1.opening_hours.CreateOpeningHoursObject} returns this
- */
-proto.turnly.branch_management.v1.opening_hours.CreateOpeningHoursObject.prototype.setLocationId = function(value) {
-  return jspb.Message.setProto3StringField(this, 10, value);
-};
-
-
 
 /**
  * List of repeated fields within this message type.
  * @private {!Array<number>}
  * @const
  */
-proto.turnly.branch_management.v1.opening_hours.CreateRequest.repeatedFields_ = [1];
+proto.turnly.branch_management.v1.opening_hours.CreateRequest.repeatedFields_ = [2];
 
 
 
@@ -656,6 +626,7 @@ proto.turnly.branch_management.v1.opening_hours.CreateRequest.prototype.toObject
  */
 proto.turnly.branch_management.v1.opening_hours.CreateRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
+    locationId: jspb.Message.getFieldWithDefault(msg, 1, ""),
     openingHoursList: jspb.Message.toObjectList(msg.getOpeningHoursList(),
     proto.turnly.branch_management.v1.opening_hours.CreateOpeningHoursObject.toObject, includeInstance)
   };
@@ -695,6 +666,10 @@ proto.turnly.branch_management.v1.opening_hours.CreateRequest.deserializeBinaryF
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setLocationId(value);
+      break;
+    case 2:
       var value = new proto.turnly.branch_management.v1.opening_hours.CreateOpeningHoursObject;
       reader.readMessage(value,proto.turnly.branch_management.v1.opening_hours.CreateOpeningHoursObject.deserializeBinaryFromReader);
       msg.addOpeningHours(value);
@@ -728,10 +703,17 @@ proto.turnly.branch_management.v1.opening_hours.CreateRequest.prototype.serializ
  */
 proto.turnly.branch_management.v1.opening_hours.CreateRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
+  f = message.getLocationId();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
   f = message.getOpeningHoursList();
   if (f.length > 0) {
     writer.writeRepeatedMessage(
-      1,
+      2,
       f,
       proto.turnly.branch_management.v1.opening_hours.CreateOpeningHoursObject.serializeBinaryToWriter
     );
@@ -740,12 +722,30 @@ proto.turnly.branch_management.v1.opening_hours.CreateRequest.serializeBinaryToW
 
 
 /**
- * repeated CreateOpeningHoursObject opening_hours = 1;
+ * optional string location_id = 1;
+ * @return {string}
+ */
+proto.turnly.branch_management.v1.opening_hours.CreateRequest.prototype.getLocationId = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.turnly.branch_management.v1.opening_hours.CreateRequest} returns this
+ */
+proto.turnly.branch_management.v1.opening_hours.CreateRequest.prototype.setLocationId = function(value) {
+  return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * repeated CreateOpeningHoursObject opening_hours = 2;
  * @return {!Array<!proto.turnly.branch_management.v1.opening_hours.CreateOpeningHoursObject>}
  */
 proto.turnly.branch_management.v1.opening_hours.CreateRequest.prototype.getOpeningHoursList = function() {
   return /** @type{!Array<!proto.turnly.branch_management.v1.opening_hours.CreateOpeningHoursObject>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.turnly.branch_management.v1.opening_hours.CreateOpeningHoursObject, 1));
+    jspb.Message.getRepeatedWrapperField(this, proto.turnly.branch_management.v1.opening_hours.CreateOpeningHoursObject, 2));
 };
 
 
@@ -754,7 +754,7 @@ proto.turnly.branch_management.v1.opening_hours.CreateRequest.prototype.getOpeni
  * @return {!proto.turnly.branch_management.v1.opening_hours.CreateRequest} returns this
 */
 proto.turnly.branch_management.v1.opening_hours.CreateRequest.prototype.setOpeningHoursList = function(value) {
-  return jspb.Message.setRepeatedWrapperField(this, 1, value);
+  return jspb.Message.setRepeatedWrapperField(this, 2, value);
 };
 
 
@@ -764,7 +764,7 @@ proto.turnly.branch_management.v1.opening_hours.CreateRequest.prototype.setOpeni
  * @return {!proto.turnly.branch_management.v1.opening_hours.CreateOpeningHoursObject}
  */
 proto.turnly.branch_management.v1.opening_hours.CreateRequest.prototype.addOpeningHours = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.turnly.branch_management.v1.opening_hours.CreateOpeningHoursObject, opt_index);
+  return jspb.Message.addToRepeatedWrapperField(this, 2, opt_value, proto.turnly.branch_management.v1.opening_hours.CreateOpeningHoursObject, opt_index);
 };
 
 

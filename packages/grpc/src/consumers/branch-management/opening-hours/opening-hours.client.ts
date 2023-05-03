@@ -57,10 +57,11 @@ export class OpeningHours
         .setOpenMinutes(hour.openMinutes)
         .setCloseHour(hour.closeHour)
         .setCloseMinutes(hour.closeMinutes)
-        .setLocationId(hour.locationId)
     )
 
-    const req = new CreateRequest().setOpeningHoursList(hours)
+    const req = new CreateRequest()
+      .setOpeningHoursList(hours)
+      .setLocationId(request.locationId)
 
     return (
       await promisify(this.client.create.bind(this.client))(
