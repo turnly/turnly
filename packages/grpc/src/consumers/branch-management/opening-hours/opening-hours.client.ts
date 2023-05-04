@@ -5,20 +5,20 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import {
-  BulkOpeningHoursObject,
-  BulkRequest,
   ListLocationHoursRequest,
   OpeningHoursClient,
+  SaveOpeningHoursObject,
+  SaveOpeningHoursRequest,
 } from '../../../producers/branch-management'
 import { Client } from '../../common/base.client'
 import type { ClientConfig } from '../../common/client-options.type'
 import { promisify } from '../../common/promisify.util'
 import {
-  IBulkRequest,
-  IBulkResponse,
   IListLocationHoursRequest,
   IListLocationHoursResponse,
   IOpeningHoursClient,
+  ISaveOpeningHoursRequest,
+  ISaveOpeningHoursResponse,
 } from './opening-hours.type'
 
 export class OpeningHours
@@ -46,10 +46,11 @@ export class OpeningHours
     ).toObject()
   }
 
-  public async bulk(request: IBulkRequest): Promise<IBulkResponse> {
+  public async save(
+    request: ISaveOpeningHoursRequest
+  ): Promise<ISaveOpeningHoursResponse> {
     const hours = request.openingHoursList.map(hour =>
-      new BulkOpeningHoursObject()
-        .setName(hour.name)
+      new SaveOpeningHoursObject()
         .setDayOfWeek(hour.dayOfWeek)
         .setOpenAllDay(hour.openAllDay)
         .setClosedAllDay(hour.closedAllDay)
@@ -59,12 +60,12 @@ export class OpeningHours
         .setCloseMinutes(hour.closeMinutes)
     )
 
-    const req = new BulkRequest()
+    const req = new SaveOpeningHoursRequest()
       .setOpeningHoursList(hours)
       .setLocationId(request.locationId)
 
     return (
-      await promisify(this.client.bulk.bind(this.client))(
+      await promisify(this.client.save.bind(this.client))(
         req,
         this.getMeta(),
         {}

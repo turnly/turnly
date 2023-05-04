@@ -82,28 +82,28 @@ export namespace ListLocationHoursResponse {
     }
 }
 
-export class BulkResponse extends jspb.Message { 
+export class SaveOpeningHoursResponse extends jspb.Message { 
     clearDataList(): void;
     getDataList(): Array<OpeningHour>;
-    setDataList(value: Array<OpeningHour>): BulkResponse;
+    setDataList(value: Array<OpeningHour>): SaveOpeningHoursResponse;
     addData(value?: OpeningHour, index?: number): OpeningHour;
 
     hasMeta(): boolean;
     clearMeta(): void;
     getMeta(): common_pb.Meta | undefined;
-    setMeta(value?: common_pb.Meta): BulkResponse;
+    setMeta(value?: common_pb.Meta): SaveOpeningHoursResponse;
 
     serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): BulkResponse.AsObject;
-    static toObject(includeInstance: boolean, msg: BulkResponse): BulkResponse.AsObject;
+    toObject(includeInstance?: boolean): SaveOpeningHoursResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: SaveOpeningHoursResponse): SaveOpeningHoursResponse.AsObject;
     static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
     static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: BulkResponse, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): BulkResponse;
-    static deserializeBinaryFromReader(message: BulkResponse, reader: jspb.BinaryReader): BulkResponse;
+    static serializeBinaryToWriter(message: SaveOpeningHoursResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): SaveOpeningHoursResponse;
+    static deserializeBinaryFromReader(message: SaveOpeningHoursResponse, reader: jspb.BinaryReader): SaveOpeningHoursResponse;
 }
 
-export namespace BulkResponse {
+export namespace SaveOpeningHoursResponse {
     export type AsObject = {
         dataList: Array<OpeningHour.AsObject>,
         meta?: common_pb.Meta.AsObject,

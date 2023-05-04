@@ -10,22 +10,22 @@ import {
   InputValidator,
   TimeoutHandler,
 } from '@turnly/core'
-import { BulkOpeningHoursCommand } from 'opening-hours/bulk-opening-hours'
+import { SaveOpeningHoursCommand } from 'opening-hours/save-opening-hours'
 import { OpeningHour } from 'opening-hours/shared/domain/entities/opening-hour.entity'
 
-import { BulkOpeningHoursValidator } from './bulk-opening-hours.validator'
+import { SaveOpeningHoursValidator } from './save-opening-hours.validator'
 
-export class BulkOpeningHoursController extends Controller {
+export class SaveOpeningHoursController extends Controller {
   public constructor(private readonly commandBus: ICommandBus) {
     super()
   }
   @TimeoutHandler()
-  @InputValidator(BulkOpeningHoursValidator)
-  public async execute(params: BulkOpeningHoursCommand) {
+  @InputValidator(SaveOpeningHoursValidator)
+  public async execute(params: SaveOpeningHoursCommand) {
     const openingHours = await this.commandBus.execute<
       OpeningHour[],
-      BulkOpeningHoursCommand
-    >(BulkOpeningHoursCommand.build(params))
+      SaveOpeningHoursCommand
+    >(SaveOpeningHoursCommand.build(params))
 
     return this.respond.created(
       openingHours.map(openingHour => openingHour.toObject())

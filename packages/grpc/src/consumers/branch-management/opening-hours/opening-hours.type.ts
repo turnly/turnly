@@ -5,19 +5,19 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import {
-  BulkRequest,
-  BulkResponse,
   ListLocationHoursRequest,
   ListLocationHoursResponse,
+  SaveOpeningHoursRequest,
+  SaveOpeningHoursResponse,
 } from '../../../producers/branch-management'
 
-export type IBulkRequest = BulkRequest.AsObject
-export type IBulkResponse = BulkResponse.AsObject
+export type ISaveOpeningHoursRequest = SaveOpeningHoursRequest.AsObject
+export type ISaveOpeningHoursResponse = SaveOpeningHoursResponse.AsObject
 export type IListLocationHoursRequest = ListLocationHoursRequest.AsObject
 export type IListLocationHoursResponse = ListLocationHoursResponse.AsObject
 
 export interface IOpeningHoursClient {
-  bulk(request: IBulkRequest): Promise<IBulkResponse>
+  save(request: ISaveOpeningHoursRequest): Promise<ISaveOpeningHoursResponse>
   listLocationsHours(
     request: IListLocationHoursRequest
   ): Promise<IListLocationHoursResponse>

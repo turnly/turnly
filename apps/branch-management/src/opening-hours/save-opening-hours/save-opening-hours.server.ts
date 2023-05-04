@@ -7,32 +7,32 @@
 import { Consumers, Producers } from '@turnly/grpc'
 import { OpeningHoursMapper } from 'opening-hours/shared/infrastructure/opening-hours-to-grpc.mapper'
 
-import { BulkOpeningHoursController } from './bulk-opening-hours.controller'
+import { SaveOpeningHoursController } from './save-opening-hours.controller'
 
-export class BulkOpeningHoursServer {
+export class SaveOpeningHoursServer {
   public constructor(
-    private readonly bulkOpeningHoursController: BulkOpeningHoursController
+    private readonly saveOpeningHoursController: SaveOpeningHoursController
   ) {}
 
-  @Producers.CallHandler(Producers.BranchManagement.BulkResponse)
+  @Producers.CallHandler(Producers.BranchManagement.SaveOpeningHoursResponse)
   public async execute(
     call: Producers.ServerUnaryCall<
-      Producers.BranchManagement.BulkRequest,
-      Producers.BranchManagement.BulkResponse
+      Producers.BranchManagement.SaveOpeningHoursRequest,
+      Producers.BranchManagement.SaveOpeningHoursResponse
     >,
-    callback: Producers.ICallback<Producers.BranchManagement.BulkResponse>
+    callback: Producers.ICallback<Producers.BranchManagement.SaveOpeningHoursResponse>
   ) {
     const openingHours = call.request
       .getOpeningHoursList()
       .map(openingHour => openingHour.toObject())
 
-    const { data, meta } = await this.bulkOpeningHoursController.execute({
+    const { data, meta } = await this.saveOpeningHoursController.execute({
       openingHours,
       locationId: call.request.getLocationId(),
       organizationId: Consumers.Client.getOrganizationId(call),
     })
 
-    const response = new Producers.BranchManagement.BulkResponse()
+    const response = new Producers.BranchManagement.SaveOpeningHoursResponse()
 
     if (data) response.setDataList(data.map(OpeningHoursMapper.toRPC))
 

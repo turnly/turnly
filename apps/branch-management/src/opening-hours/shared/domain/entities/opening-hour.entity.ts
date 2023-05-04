@@ -7,7 +7,7 @@
 import { Guid, Identifier } from '@turnly/common'
 import { AggregateRoot, EntityAttributes } from '@turnly/core'
 import { BadRequestException } from '@turnly/observability'
-import { OpeningHourCreatedEvent } from 'opening-hours/bulk-opening-hours/opening-hour-created.event'
+import { OpeningHourCreatedEvent } from 'opening-hours/save-opening-hours/opening-hour-created.event'
 
 /**
  * Opening Hour
@@ -23,6 +23,21 @@ export class OpeningHour extends AggregateRoot {
    * @description The days of the week that the location is open at (0 = Sunday, 1 = Monday, etc.).
    */
   public static readonly DAY_OF_WEEK = [0, 1, 2, 3, 4, 5, 6]
+
+  /**
+   * Day of Week Names
+   *
+   * @description The days of the week that the location is open at (0 = Sunday, 1 = Monday, etc.).
+   */
+  public static readonly DAY_OF_WEEK_NAMES = [
+    'Sunday',
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
+  ]
 
   protected constructor(
     /**
@@ -109,8 +124,16 @@ export class OpeningHour extends AggregateRoot {
     return OpeningHour.DAY_OF_WEEK.includes(dayOfWeek)
   }
 
+  public static getDayOfWeekName(dayOfWeek: number): string {
+    return OpeningHour.DAY_OF_WEEK_NAMES[dayOfWeek]
+  }
+
   public isSameDayOfWeek(dayOfWeek: number): boolean {
     return this.dayOfWeek === dayOfWeek
+  }
+
+  public getDay(): number {
+    return this.dayOfWeek
   }
 
   /**
@@ -119,7 +142,7 @@ export class OpeningHour extends AggregateRoot {
    * @description Creates a new Opening Hour.
    */
   public static create(
-    attributes: Omit<EntityAttributes<OpeningHour>, 'id'>
+    attributes: Omit<EntityAttributes<OpeningHour>, 'id' | 'name'>
   ): OpeningHour {
     if (!OpeningHour.isDayOfWeek(attributes.dayOfWeek)) {
       throw new BadRequestException(
@@ -129,7 +152,7 @@ export class OpeningHour extends AggregateRoot {
 
     const openingHour = new OpeningHour(
       Identifier.generate('hour'),
-      attributes.name,
+      this.getDayOfWeekName(attributes.dayOfWeek),
       attributes.dayOfWeek,
       attributes.openAllDay,
       attributes.closedAllDay,
@@ -160,7 +183,7 @@ export class OpeningHour extends AggregateRoot {
 
     return new OpeningHour(
       attributes.id,
-      attributes.name,
+      this.getDayOfWeekName(attributes.dayOfWeek),
       attributes.dayOfWeek,
       attributes.openAllDay,
       attributes.closedAllDay,

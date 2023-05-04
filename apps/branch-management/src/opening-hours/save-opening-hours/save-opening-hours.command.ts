@@ -9,10 +9,10 @@ import { OpeningHour } from 'opening-hours/shared/domain/entities/opening-hour.e
 
 export type OpeningHourAttributes = Omit<
   EntityAttributes<OpeningHour>,
-  'id' | 'organizationId' | 'locationId'
+  'id' | 'organizationId' | 'locationId' | 'name'
 >
 
-export class BulkOpeningHoursCommand extends OrganizationCommand {
+export class SaveOpeningHoursCommand extends OrganizationCommand {
   public readonly locationId: string
   public readonly openingHours: OpeningHourAttributes[]
 }
