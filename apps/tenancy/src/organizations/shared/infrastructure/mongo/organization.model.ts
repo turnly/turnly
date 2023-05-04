@@ -7,7 +7,6 @@
 import { EntityAttributes, timestamps } from '@turnly/core'
 import mongoose, { Document, Model, Schema } from 'mongoose'
 import { Organization } from 'organizations/shared/domain/entities/organization.entity'
-import { OrganizationPlans } from 'organizations/shared/domain/enums/organization-plans.enum'
 import { OrganizationStatus } from 'organizations/shared/domain/enums/organization-status.enum'
 
 export interface IOrganizationDocument
@@ -33,32 +32,13 @@ const schema = new Schema(
       unique: true,
       required: true,
     },
-    plan: {
-      type: String,
-      enum: OrganizationPlans,
-      required: true,
-    },
-    disabledTelemetry: {
-      type: Boolean,
-      default: false,
-    },
-    brandingLogo: {
-      type: String,
-    },
-    brandingPrimaryColor: {
-      type: String,
-    },
-    brandingSecondaryColor: {
-      type: String,
-    },
-    brandingPrimaryBackground: {
-      type: String,
-    },
-    brandingSecondaryBackground: {
-      type: String,
-    },
-    brandingDesignType: {
-      type: String,
+    metadata: {
+      type: [
+        {
+          key: String,
+          value: String,
+        },
+      ],
     },
   },
   { timestamps }

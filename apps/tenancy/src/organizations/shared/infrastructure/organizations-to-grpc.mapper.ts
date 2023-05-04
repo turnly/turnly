@@ -21,29 +21,12 @@ export class OrganizationsMapper {
         .setName(entity.name)
         .setSubdomain(entity.subdomain)
         .setStatus(entity.status)
-        .setPlan(entity.plan)
-        .setDisabledTelemetry(entity.disabledTelemetry)
 
-      if (entity.brandingLogo) organization.setBrandingLogo(entity.brandingLogo)
-
-      if (entity.brandingPrimaryColor)
-        organization.setBrandingPrimaryColor(entity.brandingPrimaryColor)
-
-      if (entity.brandingSecondaryColor)
-        organization.setBrandingSecondaryColor(entity.brandingSecondaryColor)
-
-      if (entity.brandingPrimaryBackground)
-        organization.setBrandingPrimaryBackground(
-          entity.brandingPrimaryBackground
+      organization.setMetadataList(
+        entity.metadata.map(({ key, value }) =>
+          new Producers.Tenancy.Extra().setKey(key).setValue(value)
         )
-
-      if (entity.brandingSecondaryBackground)
-        organization.setBrandingSecondaryBackground(
-          entity.brandingSecondaryBackground
-        )
-
-      if (entity.brandingDesignType)
-        organization.setBrandingDesignType(entity.brandingDesignType)
+      )
     }
 
     return organization

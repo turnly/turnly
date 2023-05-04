@@ -36,7 +36,7 @@ goog.exportSymbol('proto.turnly.tenancy.v1.organizations.Organization', null, gl
  * @constructor
  */
 proto.turnly.tenancy.v1.organizations.Organization = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.turnly.tenancy.v1.organizations.Organization.repeatedFields_, null);
 };
 goog.inherits(proto.turnly.tenancy.v1.organizations.Organization, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
@@ -67,6 +67,13 @@ if (goog.DEBUG && !COMPILED) {
    */
   proto.turnly.tenancy.v1.organizations.GetOrganizationResponse.displayName = 'proto.turnly.tenancy.v1.organizations.GetOrganizationResponse';
 }
+
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.turnly.tenancy.v1.organizations.Organization.repeatedFields_ = [5];
 
 
 
@@ -103,14 +110,8 @@ proto.turnly.tenancy.v1.organizations.Organization.toObject = function(includeIn
     name: jspb.Message.getFieldWithDefault(msg, 2, ""),
     status: jspb.Message.getFieldWithDefault(msg, 3, ""),
     subdomain: jspb.Message.getFieldWithDefault(msg, 4, ""),
-    plan: jspb.Message.getFieldWithDefault(msg, 5, ""),
-    brandingLogo: jspb.Message.getFieldWithDefault(msg, 6, ""),
-    brandingPrimaryColor: jspb.Message.getFieldWithDefault(msg, 7, ""),
-    brandingSecondaryColor: jspb.Message.getFieldWithDefault(msg, 8, ""),
-    brandingDesignType: jspb.Message.getFieldWithDefault(msg, 9, ""),
-    brandingPrimaryBackground: jspb.Message.getFieldWithDefault(msg, 10, ""),
-    brandingSecondaryBackground: jspb.Message.getFieldWithDefault(msg, 11, ""),
-    disabledTelemetry: jspb.Message.getBooleanFieldWithDefault(msg, 12, false)
+    metadataList: jspb.Message.toObjectList(msg.getMetadataList(),
+    common_pb.Extra.toObject, includeInstance)
   };
 
   if (includeInstance) {
@@ -164,36 +165,9 @@ proto.turnly.tenancy.v1.organizations.Organization.deserializeBinaryFromReader =
       msg.setSubdomain(value);
       break;
     case 5:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setPlan(value);
-      break;
-    case 6:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setBrandingLogo(value);
-      break;
-    case 7:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setBrandingPrimaryColor(value);
-      break;
-    case 8:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setBrandingSecondaryColor(value);
-      break;
-    case 9:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setBrandingDesignType(value);
-      break;
-    case 10:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setBrandingPrimaryBackground(value);
-      break;
-    case 11:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setBrandingSecondaryBackground(value);
-      break;
-    case 12:
-      var value = /** @type {boolean} */ (reader.readBool());
-      msg.setDisabledTelemetry(value);
+      var value = new common_pb.Extra;
+      reader.readMessage(value,common_pb.Extra.deserializeBinaryFromReader);
+      msg.addMetadata(value);
       break;
     default:
       reader.skipField();
@@ -252,60 +226,12 @@ proto.turnly.tenancy.v1.organizations.Organization.serializeBinaryToWriter = fun
       f
     );
   }
-  f = message.getPlan();
+  f = message.getMetadataList();
   if (f.length > 0) {
-    writer.writeString(
+    writer.writeRepeatedMessage(
       5,
-      f
-    );
-  }
-  f = message.getBrandingLogo();
-  if (f.length > 0) {
-    writer.writeString(
-      6,
-      f
-    );
-  }
-  f = message.getBrandingPrimaryColor();
-  if (f.length > 0) {
-    writer.writeString(
-      7,
-      f
-    );
-  }
-  f = message.getBrandingSecondaryColor();
-  if (f.length > 0) {
-    writer.writeString(
-      8,
-      f
-    );
-  }
-  f = message.getBrandingDesignType();
-  if (f.length > 0) {
-    writer.writeString(
-      9,
-      f
-    );
-  }
-  f = message.getBrandingPrimaryBackground();
-  if (f.length > 0) {
-    writer.writeString(
-      10,
-      f
-    );
-  }
-  f = message.getBrandingSecondaryBackground();
-  if (f.length > 0) {
-    writer.writeString(
-      11,
-      f
-    );
-  }
-  f = message.getDisabledTelemetry();
-  if (f) {
-    writer.writeBool(
-      12,
-      f
+      f,
+      common_pb.Extra.serializeBinaryToWriter
     );
   }
 };
@@ -384,146 +310,40 @@ proto.turnly.tenancy.v1.organizations.Organization.prototype.setSubdomain = func
 
 
 /**
- * optional string plan = 5;
- * @return {string}
+ * repeated turnly.common.v1.Extra metadata = 5;
+ * @return {!Array<!proto.turnly.common.v1.Extra>}
  */
-proto.turnly.tenancy.v1.organizations.Organization.prototype.getPlan = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
+proto.turnly.tenancy.v1.organizations.Organization.prototype.getMetadataList = function() {
+  return /** @type{!Array<!proto.turnly.common.v1.Extra>} */ (
+    jspb.Message.getRepeatedWrapperField(this, common_pb.Extra, 5));
 };
 
 
 /**
- * @param {string} value
+ * @param {!Array<!proto.turnly.common.v1.Extra>} value
+ * @return {!proto.turnly.tenancy.v1.organizations.Organization} returns this
+*/
+proto.turnly.tenancy.v1.organizations.Organization.prototype.setMetadataList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 5, value);
+};
+
+
+/**
+ * @param {!proto.turnly.common.v1.Extra=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.turnly.common.v1.Extra}
+ */
+proto.turnly.tenancy.v1.organizations.Organization.prototype.addMetadata = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 5, opt_value, proto.turnly.common.v1.Extra, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
  * @return {!proto.turnly.tenancy.v1.organizations.Organization} returns this
  */
-proto.turnly.tenancy.v1.organizations.Organization.prototype.setPlan = function(value) {
-  return jspb.Message.setProto3StringField(this, 5, value);
-};
-
-
-/**
- * optional string branding_logo = 6;
- * @return {string}
- */
-proto.turnly.tenancy.v1.organizations.Organization.prototype.getBrandingLogo = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 6, ""));
-};
-
-
-/**
- * @param {string} value
- * @return {!proto.turnly.tenancy.v1.organizations.Organization} returns this
- */
-proto.turnly.tenancy.v1.organizations.Organization.prototype.setBrandingLogo = function(value) {
-  return jspb.Message.setProto3StringField(this, 6, value);
-};
-
-
-/**
- * optional string branding_primary_color = 7;
- * @return {string}
- */
-proto.turnly.tenancy.v1.organizations.Organization.prototype.getBrandingPrimaryColor = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 7, ""));
-};
-
-
-/**
- * @param {string} value
- * @return {!proto.turnly.tenancy.v1.organizations.Organization} returns this
- */
-proto.turnly.tenancy.v1.organizations.Organization.prototype.setBrandingPrimaryColor = function(value) {
-  return jspb.Message.setProto3StringField(this, 7, value);
-};
-
-
-/**
- * optional string branding_secondary_color = 8;
- * @return {string}
- */
-proto.turnly.tenancy.v1.organizations.Organization.prototype.getBrandingSecondaryColor = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 8, ""));
-};
-
-
-/**
- * @param {string} value
- * @return {!proto.turnly.tenancy.v1.organizations.Organization} returns this
- */
-proto.turnly.tenancy.v1.organizations.Organization.prototype.setBrandingSecondaryColor = function(value) {
-  return jspb.Message.setProto3StringField(this, 8, value);
-};
-
-
-/**
- * optional string branding_design_type = 9;
- * @return {string}
- */
-proto.turnly.tenancy.v1.organizations.Organization.prototype.getBrandingDesignType = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 9, ""));
-};
-
-
-/**
- * @param {string} value
- * @return {!proto.turnly.tenancy.v1.organizations.Organization} returns this
- */
-proto.turnly.tenancy.v1.organizations.Organization.prototype.setBrandingDesignType = function(value) {
-  return jspb.Message.setProto3StringField(this, 9, value);
-};
-
-
-/**
- * optional string branding_primary_background = 10;
- * @return {string}
- */
-proto.turnly.tenancy.v1.organizations.Organization.prototype.getBrandingPrimaryBackground = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 10, ""));
-};
-
-
-/**
- * @param {string} value
- * @return {!proto.turnly.tenancy.v1.organizations.Organization} returns this
- */
-proto.turnly.tenancy.v1.organizations.Organization.prototype.setBrandingPrimaryBackground = function(value) {
-  return jspb.Message.setProto3StringField(this, 10, value);
-};
-
-
-/**
- * optional string branding_secondary_background = 11;
- * @return {string}
- */
-proto.turnly.tenancy.v1.organizations.Organization.prototype.getBrandingSecondaryBackground = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 11, ""));
-};
-
-
-/**
- * @param {string} value
- * @return {!proto.turnly.tenancy.v1.organizations.Organization} returns this
- */
-proto.turnly.tenancy.v1.organizations.Organization.prototype.setBrandingSecondaryBackground = function(value) {
-  return jspb.Message.setProto3StringField(this, 11, value);
-};
-
-
-/**
- * optional bool disabled_telemetry = 12;
- * @return {boolean}
- */
-proto.turnly.tenancy.v1.organizations.Organization.prototype.getDisabledTelemetry = function() {
-  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 12, false));
-};
-
-
-/**
- * @param {boolean} value
- * @return {!proto.turnly.tenancy.v1.organizations.Organization} returns this
- */
-proto.turnly.tenancy.v1.organizations.Organization.prototype.setDisabledTelemetry = function(value) {
-  return jspb.Message.setProto3BooleanField(this, 12, value);
+proto.turnly.tenancy.v1.organizations.Organization.prototype.clearMetadataList = function() {
+  return this.setMetadataList([]);
 };
 
 

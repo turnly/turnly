@@ -4,11 +4,10 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { Guid, Identifier, Nullable } from '@turnly/common'
+import { Extra, Guid, Identifier } from '@turnly/common'
 import { AggregateRoot, EntityAttributes } from '@turnly/core'
 
 import { OrganizationCreatedEvent } from '../../../create-organization/organization-created.event'
-import { OrganizationPlans } from '../enums/organization-plans.enum'
 import { OrganizationStatus } from '../enums/organization-status.enum'
 
 /**
@@ -50,101 +49,28 @@ export class Organization extends AggregateRoot {
     private subdomain: string,
 
     /**
-     * Plan
+     * Created At
      *
-     * @description The current plan of the Organization (open-source, basic, etc.).
+     * @description The date and time the Organization was created.
      */
-    private plan: OrganizationPlans,
+    private readonly createdAt: Date,
 
     /**
-     * Disabled Telemetry
+     * Update At
      *
-     * @description Our application collects telemetry data to help us improve the application.
+     * @description The date and time the Organization was last updated.
      */
-    private disabledTelemetry: boolean = false,
+    private readonly updatedAt: Date,
 
     /**
-     * Branding Logo
+     * Metadata
      *
-     * @description The logo of the Organization.
+     * @description Free-form data as name/value pairs that can be used
+     * to store additional information about the Organization.
      */
-    private brandingLogo: Nullable<string> = null,
-
-    /**
-     * Branding Primary Color
-     *
-     * @description The primary color of the Organization branding.
-     */
-    private brandingPrimaryColor: Nullable<string> = null,
-
-    /**
-     * Branding Secondary Color
-     *
-     * @description The secondary color of the Organization branding.
-     */
-    private brandingSecondaryColor: Nullable<string> = null,
-
-    /**
-     * Branding Primary Background
-     *
-     * @description The primary background of the Organization branding.
-     */
-    private brandingPrimaryBackground: Nullable<string> = null,
-
-    /**
-     * Branding Secondary Background
-     *
-     * @description The secondary background of the Organization branding.
-     */
-    private brandingSecondaryBackground: Nullable<string> = null,
-
-    /**
-     * Branding Design Type
-     *
-     * @description The design type of the Organization branding (flat, rounded, etc.).
-     */
-    private brandingDesignType: Nullable<string> = null
+    private readonly metadata: Extra[] = []
   ) {
     super(id)
-  }
-
-  public canCustomizeBranding(): boolean {
-    const plans = [
-      OrganizationPlans.PLUS,
-      OrganizationPlans.BUSINESS,
-      OrganizationPlans.ENTERPRISE,
-    ]
-
-    return plans.includes(this.plan)
-  }
-
-  public setBranding(branding: {
-    brandingLogo?: Nullable<string>
-    brandingPrimaryColor?: Nullable<string>
-    brandingSecondaryColor?: Nullable<string>
-    brandingPrimaryBackground?: Nullable<string>
-    brandingSecondaryBackground?: Nullable<string>
-    brandingDesignType?: Nullable<string>
-  }): Organization {
-    const {
-      brandingLogo,
-      brandingPrimaryColor,
-      brandingSecondaryColor,
-      brandingPrimaryBackground,
-      brandingSecondaryBackground,
-      brandingDesignType,
-    } = branding
-
-    if (this.canCustomizeBranding()) {
-      this.brandingLogo = brandingLogo ?? null
-      this.brandingPrimaryColor = brandingPrimaryColor ?? null
-      this.brandingSecondaryColor = brandingSecondaryColor ?? null
-      this.brandingPrimaryBackground = brandingPrimaryBackground ?? null
-      this.brandingSecondaryBackground = brandingSecondaryBackground ?? null
-      this.brandingDesignType = brandingDesignType ?? null
-    }
-
-    return this
   }
 
   public isActive(): boolean {
@@ -154,11 +80,7 @@ export class Organization extends AggregateRoot {
   public isBlocked(): boolean {
     const statuses = [
       OrganizationStatus.BLOCKED,
-      OrganizationStatus.SUSPENDED,
       OrganizationStatus.PENDING_FOR_APPROVAL,
-      OrganizationStatus.PENDING_FOR_PAYMENT,
-      OrganizationStatus.PENDING_FOR_TRIAL,
-      OrganizationStatus.PENDING_FOR_VERIFICATION,
     ]
 
     return statuses.includes(this.status)
@@ -169,9 +91,17 @@ export class Organization extends AggregateRoot {
    *
    * @description Creates a new Organization.
    */
-  public static create(
-    attributes: Omit<EntityAttributes<Organization>, 'id'>
-  ): Organization {
+  public static create({
+    createdAt = new Date(),
+    metadata = [],
+    ...attributes
+  }: Omit<
+    EntityAttributes<Organization>,
+    'id' | 'createdAt' | 'updatedAt' | 'metadata'
+  > & {
+    createdAt?: Date
+    metadata?: Extra[]
+  }): Organization {
     const organizationId = Identifier.generate('org')
 
     const organization = new Organization(
@@ -179,11 +109,10 @@ export class Organization extends AggregateRoot {
       attributes.name,
       attributes.status,
       attributes.subdomain,
-      attributes.plan,
-      attributes.disabledTelemetry
+      createdAt,
+      createdAt,
+      metadata
     )
-
-    organization.setBranding(attributes)
 
     organization.register(
       new OrganizationCreatedEvent({
@@ -203,18 +132,15 @@ export class Organization extends AggregateRoot {
   public static build(
     attributes: EntityAttributes<Organization>
   ): Organization {
-    const organization = new Organization(
+    return new Organization(
       attributes.id,
       attributes.name,
       attributes.status,
       attributes.subdomain,
-      attributes.plan,
-      attributes.disabledTelemetry
+      attributes.createdAt,
+      attributes.updatedAt,
+      attributes.metadata
     )
-
-    organization.setBranding(attributes)
-
-    return organization
   }
 
   /**
@@ -228,14 +154,9 @@ export class Organization extends AggregateRoot {
       name: this.name,
       status: this.status,
       subdomain: this.subdomain,
-      plan: this.plan,
-      disabledTelemetry: this.disabledTelemetry,
-      brandingLogo: this.brandingLogo,
-      brandingPrimaryColor: this.brandingPrimaryColor,
-      brandingSecondaryColor: this.brandingSecondaryColor,
-      brandingPrimaryBackground: this.brandingPrimaryBackground,
-      brandingSecondaryBackground: this.brandingSecondaryBackground,
-      brandingDesignType: this.brandingDesignType,
+      createdAt: this.createdAt,
+      updatedAt: this.updatedAt,
+      metadata: this.metadata,
     }
   }
 }
