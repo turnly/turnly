@@ -6,21 +6,21 @@
 
 import * as jspb from "google-protobuf";
 
-export class GetPairingCodeSignageDisplayRequest extends jspb.Message { 
+export class GeneratePairingCodeSignageDisplayRequest extends jspb.Message { 
     getName(): string;
-    setName(value: string): GetPairingCodeSignageDisplayRequest;
+    setName(value: string): GeneratePairingCodeSignageDisplayRequest;
 
     serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): GetPairingCodeSignageDisplayRequest.AsObject;
-    static toObject(includeInstance: boolean, msg: GetPairingCodeSignageDisplayRequest): GetPairingCodeSignageDisplayRequest.AsObject;
+    toObject(includeInstance?: boolean): GeneratePairingCodeSignageDisplayRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: GeneratePairingCodeSignageDisplayRequest): GeneratePairingCodeSignageDisplayRequest.AsObject;
     static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
     static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: GetPairingCodeSignageDisplayRequest, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): GetPairingCodeSignageDisplayRequest;
-    static deserializeBinaryFromReader(message: GetPairingCodeSignageDisplayRequest, reader: jspb.BinaryReader): GetPairingCodeSignageDisplayRequest;
+    static serializeBinaryToWriter(message: GeneratePairingCodeSignageDisplayRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): GeneratePairingCodeSignageDisplayRequest;
+    static deserializeBinaryFromReader(message: GeneratePairingCodeSignageDisplayRequest, reader: jspb.BinaryReader): GeneratePairingCodeSignageDisplayRequest;
 }
 
-export namespace GetPairingCodeSignageDisplayRequest {
+export namespace GeneratePairingCodeSignageDisplayRequest {
     export type AsObject = {
         name: string,
     }

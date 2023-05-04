@@ -18,13 +18,13 @@ import { ISignageDisplaysWritableRepo } from 'signage-displays/shared/domain/con
 import { SignageDisplay } from 'signage-displays/shared/domain/entities/signage-display.entity'
 import { ClearTicketsAfter } from 'signage-displays/shared/domain/enums'
 
-import { GetPairingCodeCommand } from './get-pairing-code.command'
+import { GeneratePairingCodeCommand } from './generate-pairing-code.command'
 
-@CommandHandler(GetPairingCodeCommand)
-export class GetPairingCodeCommandHandler
+@CommandHandler(GeneratePairingCodeCommand)
+export class GeneratePairingCodeCommandHandler
   implements
     ICommandHandler<
-      GetPairingCodeCommand,
+      GeneratePairingCodeCommand,
       { signageDisplay: SignageDisplay; device: Device }
     >
 {
@@ -34,7 +34,7 @@ export class GetPairingCodeCommandHandler
     private readonly signageDisplaysWritableRepo: ISignageDisplaysWritableRepo
   ) {}
 
-  public async execute(command: GetPairingCodeCommand) {
+  public async execute(command: GeneratePairingCodeCommand) {
     const params = {
       name: command.name,
       status: DeviceStatus.UNPAIRED,

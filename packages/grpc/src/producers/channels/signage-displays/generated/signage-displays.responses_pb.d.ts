@@ -56,51 +56,51 @@ export namespace SignageDisplay {
     }
 }
 
-export class GetPairingCodeObject extends jspb.Message { 
+export class GeneratePairingCodeObject extends jspb.Message { 
     getPairingCode(): string;
-    setPairingCode(value: string): GetPairingCodeObject;
+    setPairingCode(value: string): GeneratePairingCodeObject;
 
     serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): GetPairingCodeObject.AsObject;
-    static toObject(includeInstance: boolean, msg: GetPairingCodeObject): GetPairingCodeObject.AsObject;
+    toObject(includeInstance?: boolean): GeneratePairingCodeObject.AsObject;
+    static toObject(includeInstance: boolean, msg: GeneratePairingCodeObject): GeneratePairingCodeObject.AsObject;
     static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
     static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: GetPairingCodeObject, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): GetPairingCodeObject;
-    static deserializeBinaryFromReader(message: GetPairingCodeObject, reader: jspb.BinaryReader): GetPairingCodeObject;
+    static serializeBinaryToWriter(message: GeneratePairingCodeObject, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): GeneratePairingCodeObject;
+    static deserializeBinaryFromReader(message: GeneratePairingCodeObject, reader: jspb.BinaryReader): GeneratePairingCodeObject;
 }
 
-export namespace GetPairingCodeObject {
+export namespace GeneratePairingCodeObject {
     export type AsObject = {
         pairingCode: string,
     }
 }
 
-export class GetPairingCodeSignageDisplayResponse extends jspb.Message { 
+export class GeneratePairingCodeSignageDisplayResponse extends jspb.Message { 
 
     hasData(): boolean;
     clearData(): void;
-    getData(): GetPairingCodeObject | undefined;
-    setData(value?: GetPairingCodeObject): GetPairingCodeSignageDisplayResponse;
+    getData(): GeneratePairingCodeObject | undefined;
+    setData(value?: GeneratePairingCodeObject): GeneratePairingCodeSignageDisplayResponse;
 
     hasMeta(): boolean;
     clearMeta(): void;
     getMeta(): common_pb.Meta | undefined;
-    setMeta(value?: common_pb.Meta): GetPairingCodeSignageDisplayResponse;
+    setMeta(value?: common_pb.Meta): GeneratePairingCodeSignageDisplayResponse;
 
     serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): GetPairingCodeSignageDisplayResponse.AsObject;
-    static toObject(includeInstance: boolean, msg: GetPairingCodeSignageDisplayResponse): GetPairingCodeSignageDisplayResponse.AsObject;
+    toObject(includeInstance?: boolean): GeneratePairingCodeSignageDisplayResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: GeneratePairingCodeSignageDisplayResponse): GeneratePairingCodeSignageDisplayResponse.AsObject;
     static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
     static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: GetPairingCodeSignageDisplayResponse, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): GetPairingCodeSignageDisplayResponse;
-    static deserializeBinaryFromReader(message: GetPairingCodeSignageDisplayResponse, reader: jspb.BinaryReader): GetPairingCodeSignageDisplayResponse;
+    static serializeBinaryToWriter(message: GeneratePairingCodeSignageDisplayResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): GeneratePairingCodeSignageDisplayResponse;
+    static deserializeBinaryFromReader(message: GeneratePairingCodeSignageDisplayResponse, reader: jspb.BinaryReader): GeneratePairingCodeSignageDisplayResponse;
 }
 
-export namespace GetPairingCodeSignageDisplayResponse {
+export namespace GeneratePairingCodeSignageDisplayResponse {
     export type AsObject = {
-        data?: GetPairingCodeObject.AsObject,
+        data?: GeneratePairingCodeObject.AsObject,
         meta?: common_pb.Meta.AsObject,
     }
 }

@@ -6,7 +6,7 @@
  */
 import { Guid, Identifier, Nullable } from '@turnly/common'
 import { AggregateRoot, EntityAttributes } from '@turnly/core'
-import { SignageDisplayCreatedEvent } from 'signage-displays/get-pairing-code/signage-display-created.event'
+import { SignageDisplayCreatedEvent } from 'signage-displays/generate-pairing-code/signage-display-created.event'
 
 import { ClearTicketsAfter } from '../enums/clear_tickets_after.enum'
 import { Order } from '../enums/order.enum'

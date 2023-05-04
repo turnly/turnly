@@ -6,7 +6,7 @@
  */
 import { Validator } from '@turnly/core'
 
-export const GetPairingCodeValidator = Validator.object({
+export const GeneratePairingCodeValidator = Validator.object({
   name: Validator.string(),
   organizationId: Validator.isId(),
 })

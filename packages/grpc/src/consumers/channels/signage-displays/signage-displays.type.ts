@@ -5,10 +5,10 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import type {
+  GeneratePairingCodeSignageDisplayRequest,
+  GeneratePairingCodeSignageDisplayResponse,
   GetOneSignageDisplayRequest,
   GetOneSignageDisplayResponse,
-  GetPairingCodeSignageDisplayRequest,
-  GetPairingCodeSignageDisplayResponse,
   ListSignageDisplaysRequest,
   ListSignageDisplaysResponse,
   PairToLocationSignageDisplayRequest,
@@ -19,10 +19,10 @@ import type {
   UpdateSignageDisplayResponse,
 } from '../../../producers/channels'
 
-export type IGetPairingCodeSignageDisplayRequest =
-  GetPairingCodeSignageDisplayRequest.AsObject
-export type IGetPairingCodeSignageDisplayResponse =
-  GetPairingCodeSignageDisplayResponse.AsObject
+export type IGeneratePairingCodeSignageDisplayRequest =
+  GeneratePairingCodeSignageDisplayRequest.AsObject
+export type IGeneratePairingCodeSignageDisplayResponse =
+  GeneratePairingCodeSignageDisplayResponse.AsObject
 
 export type IPairToLocationSignageDisplayRequest =
   PairToLocationSignageDisplayRequest.AsObject
@@ -45,9 +45,9 @@ export type IUpdateSignageDisplayResponse =
   UpdateSignageDisplayResponse.AsObject
 
 export interface ISignageDisplaysClient {
-  getPairingCode(
-    request: IGetPairingCodeSignageDisplayRequest
-  ): Promise<IGetPairingCodeSignageDisplayResponse>
+  generatePairingCode(
+    request: IGeneratePairingCodeSignageDisplayRequest
+  ): Promise<IGeneratePairingCodeSignageDisplayResponse>
   pairToLocation(
     request: IPairToLocationSignageDisplayRequest
   ): Promise<IPairToLocationSignageDisplayResponse>

@@ -6,8 +6,8 @@ import "signage-displays.requests.proto";
 import "signage-displays.responses.proto";
 
 service SignageDisplays {
-  rpc GetPairingCode(GetPairingCodeSignageDisplayRequest)
-    returns (GetPairingCodeSignageDisplayResponse) {}
+  rpc GeneratePairingCode(GeneratePairingCodeSignageDisplayRequest)
+    returns (GeneratePairingCodeSignageDisplayResponse) {}
   rpc PairToLocation(PairToLocationSignageDisplayRequest)
     returns (PairToLocationSignageDisplayResponse) {}
   rpc Unpair(UnpairSignageDisplayRequest)

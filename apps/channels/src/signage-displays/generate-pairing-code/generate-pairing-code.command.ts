@@ -6,6 +6,6 @@
  */
 import { OrganizationCommand } from '@turnly/core'
 
-export class GetPairingCodeCommand extends OrganizationCommand {
+export class GeneratePairingCodeCommand extends OrganizationCommand {
   public readonly name: string
 }

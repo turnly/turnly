@@ -13,21 +13,21 @@ import {
 import { Device } from 'devices/shared/domain/entities/device.entity'
 import { SignageDisplay } from 'signage-displays/shared/domain/entities/signage-display.entity'
 
-import { GetPairingCodeCommand } from './get-pairing-code.command'
-import { GetPairingCodeValidator } from './get-pairing-code.validator'
+import { GeneratePairingCodeCommand } from './generate-pairing-code.command'
+import { GeneratePairingCodeValidator } from './generate-pairing-code.validator'
 
-export class GetPairingCodeController extends Controller {
+export class GeneratePairingCodeController extends Controller {
   public constructor(private readonly commandBus: ICommandBus) {
     super()
   }
 
   @TimeoutHandler()
-  @InputValidator(GetPairingCodeValidator)
-  public async execute(params: GetPairingCodeCommand) {
+  @InputValidator(GeneratePairingCodeValidator)
+  public async execute(params: GeneratePairingCodeCommand) {
     const { device } = await this.commandBus.execute<
       { signageDisplay: SignageDisplay; device: Device },
-      GetPairingCodeCommand
-    >(GetPairingCodeCommand.build(params))
+      GeneratePairingCodeCommand
+    >(GeneratePairingCodeCommand.build(params))
 
     return this.respond.created(device.toObject())
   }

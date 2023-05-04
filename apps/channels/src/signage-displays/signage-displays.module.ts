@@ -11,7 +11,7 @@
  * @description Register dependencies to the dependency injection container.
  */
 import 'signage-displays/shared/shared.dependency'
-import 'signage-displays/get-pairing-code/get-pairing-code.dependency'
+import 'signage-displays/generate-pairing-code/generate-pairing-code.dependency'
 import 'signage-displays/get-one-signage-display/get-one-signage-display.dependency'
 import 'signage-displays/list-signage-displays/list-signage-displays.dependency'
 
@@ -35,8 +35,8 @@ import type { SignageDisplay } from 'signage-displays/shared/domain/entities/sig
 export class SignageDisplaysModule {
   public static getServer(): Producers.Channels.ISignageDisplaysServer {
     return {
-      getPairingCode: (...args) =>
-        Box.resolve('getPairingCodeServer').execute(...args),
+      generatePairingCode: (...args) =>
+        Box.resolve('generatePairingCodeServer').execute(...args),
       unpair: () => new NotImplementedError(),
       pairToLocation: () => new NotImplementedError(),
       list: (...args) =>
@@ -63,7 +63,7 @@ export class SignageDisplaysModule {
   }
 
   public static getCommandHandlers(): ICommandHandler[] {
-    return [Box.resolve('getPairingCodeCommandHandler')]
+    return [Box.resolve('generatePairingCodeCommandHandler')]
   }
 
   public static getEventSubscribers(): IEventSubscriber[] {
