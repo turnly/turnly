@@ -57,6 +57,14 @@ export class DateTime {
     return this.mutable(this.time.plus({ days }))
   }
 
+  public change(values: DateObjectUnits) {
+    return this.mutable(this.time.set(values))
+  }
+
+  public inRange(start: DateTime, end: DateTime) {
+    return this.time >= start.time && this.time <= end.time
+  }
+
   /**
    * Add months to the date
    *

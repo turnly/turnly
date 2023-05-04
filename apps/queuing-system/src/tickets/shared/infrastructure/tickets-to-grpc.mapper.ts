@@ -26,8 +26,11 @@ export class TicketsMapper {
       ticket.setPriority(entity.priority)
       ticket.setSource(entity.source)
 
-      if (entity.createdAt)
-        ticket.setCreatedAt(DateTime.fromJSDate(entity.createdAt).toISO())
+      if (entity.createdAt) {
+        ticket.setCreatedAt(
+          String(DateTime.fromJSDate(entity.createdAt).toISO())
+        )
+      }
 
       if (entity.assigneeId) ticket.setAssigneeId(entity.assigneeId)
 

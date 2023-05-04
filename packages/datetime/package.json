@@ -41,7 +41,8 @@
     "**/esquery": "1.4.0"
   },
   "dependencies": {
-    "luxon": "^3.2.1"
+    "luxon": "^3.3.0",
+    "@types/luxon": "^3.3.0"
   },
   "devDependencies": {
     "@turnly/eslint-config": "github:turnly/configs",
