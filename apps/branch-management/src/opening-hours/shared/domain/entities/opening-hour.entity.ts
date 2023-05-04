@@ -6,6 +6,7 @@
  */
 import { Guid, Identifier } from '@turnly/common'
 import { AggregateRoot, EntityAttributes } from '@turnly/core'
+import { DateTime } from '@turnly/datetime'
 import { BadRequestException } from '@turnly/observability'
 import { OpeningHourCreatedEvent } from 'opening-hours/save-opening-hours/opening-hour-created.event'
 
@@ -136,6 +137,57 @@ export class OpeningHour extends AggregateRoot {
     return this.dayOfWeek
   }
 
+  public getOpenHour(timezone = 'UTC'): DateTime {
+    return DateTime.today().setZone(timezone).change({
+      hour: this.openHour,
+      minute: this.openMinutes,
+    })
+  }
+
+  public getCloseHour(timezone = 'UTC'): DateTime {
+    return DateTime.today().setZone(timezone).change({
+      hour: this.closeHour,
+      minute: this.closeMinutes,
+    })
+  }
+
+  public isOpen(timezone = 'UTC'): boolean {
+    if (this.closedAllDay) return false
+    if (this.openAllDay) return true
+
+    const now = DateTime.now().setZone(timezone)
+    const openHour = this.getOpenHour(timezone)
+    const closeHour = this.getCloseHour(timezone)
+
+    return now.inRange(openHour, closeHour)
+  }
+
+  public isClosed(timezone = 'UTC'): boolean {
+    return !this.isOpen(timezone)
+  }
+
+  public validate(): OpeningHour {
+    if (!OpeningHour.isDayOfWeek(this.dayOfWeek)) {
+      throw new BadRequestException(
+        'Oops!, You are trying to create an Opening Hour with an invalid day of week.'
+      )
+    }
+
+    if (this.openAllDay && this.closedAllDay) {
+      throw new BadRequestException(
+        'Oops!, You are trying to create an Opening Hour with open all day and closed all day.'
+      )
+    }
+
+    if (this.getOpenHour().isAfter(this.getCloseHour().toJSDate())) {
+      throw new BadRequestException(
+        'Oops!, You are trying to create an Opening Hour with an invalid open hour and close hour.'
+      )
+    }
+
+    return this
+  }
+
   /**
    * Create Opening Hour
    *
@@ -144,12 +196,6 @@ export class OpeningHour extends AggregateRoot {
   public static create(
     attributes: Omit<EntityAttributes<OpeningHour>, 'id' | 'name'>
   ): OpeningHour {
-    if (!OpeningHour.isDayOfWeek(attributes.dayOfWeek)) {
-      throw new BadRequestException(
-        'Oops!, You are trying to create an Opening Hour with an invalid day of week.'
-      )
-    }
-
     const openingHour = new OpeningHour(
       Identifier.generate('hour'),
       this.getDayOfWeekName(attributes.dayOfWeek),
@@ -164,7 +210,9 @@ export class OpeningHour extends AggregateRoot {
       attributes.locationId
     )
 
-    openingHour.register(new OpeningHourCreatedEvent(openingHour.toObject()))
+    openingHour
+      .validate()
+      .register(new OpeningHourCreatedEvent(openingHour.toObject()))
 
     return openingHour
   }
@@ -175,13 +223,7 @@ export class OpeningHour extends AggregateRoot {
    * @description Builds a Opening Hour from an object.
    */
   public static build(attributes: EntityAttributes<OpeningHour>): OpeningHour {
-    if (!OpeningHour.isDayOfWeek(attributes.dayOfWeek)) {
-      throw new BadRequestException(
-        'Oops!, You are trying to create an Opening Hour with an invalid day of week.'
-      )
-    }
-
-    return new OpeningHour(
+    const hour = new OpeningHour(
       attributes.id,
       this.getDayOfWeekName(attributes.dayOfWeek),
       attributes.dayOfWeek,
@@ -194,6 +236,10 @@ export class OpeningHour extends AggregateRoot {
       attributes.organizationId,
       attributes.locationId
     )
+
+    hour.validate()
+
+    return hour
   }
 
   /**
