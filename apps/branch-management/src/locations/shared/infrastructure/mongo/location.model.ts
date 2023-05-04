@@ -8,14 +8,19 @@ import { EntityAttributes, timestamps } from '@turnly/core'
 import { Location } from 'locations/shared/domain/entities/location.entity'
 import { LocationStatus } from 'locations/shared/domain/enums/location-status.enum'
 import mongoose, { Document, Model, Schema } from 'mongoose'
+import { IOpeningHourDocument } from 'opening-hours/shared/infrastructure/mongo/opening-hours.model'
 
 export interface ILocationDocument
-  extends Omit<EntityAttributes<Location>, 'id' | 'coordinates'>,
+  extends Omit<
+      EntityAttributes<Location>,
+      'id' | 'coordinates' | 'openingHours'
+    >,
     Document {
   coordinates: {
     type: string
     coordinates: number[]
   }
+  openingHours: IOpeningHourDocument[]
 }
 
 export type ILocationModel = Model<ILocationDocument>
@@ -63,6 +68,12 @@ const schema = new Schema<ILocationDocument>(
     stopServingBeforeInMinutes: {
       type: Number,
     },
+    openingHours: [
+      {
+        type: String,
+        ref: 'OpeningHour',
+      },
+    ],
   },
   { timestamps }
 )
