@@ -13,19 +13,19 @@ import {
 } from '@turnly/core'
 import { Organization } from 'organizations/shared/domain/entities/organization.entity'
 
-import { GetOneOrganizationQuery } from './get-one-organization.query'
-import { GetOneOrganizationValidator } from './get-one-organization.validator'
+import { ListMyOrganizationsQuery } from './list-my-organizations.query'
+import { ListMyOrganizationsValidator } from './list-my-organizations.validator'
 
-export class GetOneOrganizationController extends Controller {
+export class ListMyOrganizationsController extends Controller {
   public constructor(private readonly queryBus: IQueryBus) {
     super()
   }
 
   @TimeoutHandler()
-  @InputValidator(GetOneOrganizationValidator)
+  @InputValidator(ListMyOrganizationsValidator)
   public async execute(params: { id: Guid }) {
     const organization = await this.queryBus.ask<Organization>(
-      GetOneOrganizationQuery.build(params)
+      ListMyOrganizationsQuery.build(params)
     )
 
     return this.respond.ok(organization.toObject())

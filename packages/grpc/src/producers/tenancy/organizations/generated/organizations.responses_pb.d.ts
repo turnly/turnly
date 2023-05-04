@@ -41,29 +41,57 @@ export namespace Organization {
     }
 }
 
-export class GetOrganizationResponse extends jspb.Message { 
-
-    hasData(): boolean;
-    clearData(): void;
-    getData(): Organization | undefined;
-    setData(value?: Organization): GetOrganizationResponse;
+export class ListMyOrganizationsResponse extends jspb.Message { 
+    clearDataList(): void;
+    getDataList(): Array<Organization>;
+    setDataList(value: Array<Organization>): ListMyOrganizationsResponse;
+    addData(value?: Organization, index?: number): Organization;
 
     hasMeta(): boolean;
     clearMeta(): void;
     getMeta(): common_pb.Meta | undefined;
-    setMeta(value?: common_pb.Meta): GetOrganizationResponse;
+    setMeta(value?: common_pb.Meta): ListMyOrganizationsResponse;
 
     serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): GetOrganizationResponse.AsObject;
-    static toObject(includeInstance: boolean, msg: GetOrganizationResponse): GetOrganizationResponse.AsObject;
+    toObject(includeInstance?: boolean): ListMyOrganizationsResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: ListMyOrganizationsResponse): ListMyOrganizationsResponse.AsObject;
     static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
     static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: GetOrganizationResponse, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): GetOrganizationResponse;
-    static deserializeBinaryFromReader(message: GetOrganizationResponse, reader: jspb.BinaryReader): GetOrganizationResponse;
+    static serializeBinaryToWriter(message: ListMyOrganizationsResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): ListMyOrganizationsResponse;
+    static deserializeBinaryFromReader(message: ListMyOrganizationsResponse, reader: jspb.BinaryReader): ListMyOrganizationsResponse;
 }
 
-export namespace GetOrganizationResponse {
+export namespace ListMyOrganizationsResponse {
+    export type AsObject = {
+        dataList: Array<Organization.AsObject>,
+        meta?: common_pb.Meta.AsObject,
+    }
+}
+
+export class GetOrganizationBySubdomainResponse extends jspb.Message { 
+
+    hasData(): boolean;
+    clearData(): void;
+    getData(): Organization | undefined;
+    setData(value?: Organization): GetOrganizationBySubdomainResponse;
+
+    hasMeta(): boolean;
+    clearMeta(): void;
+    getMeta(): common_pb.Meta | undefined;
+    setMeta(value?: common_pb.Meta): GetOrganizationBySubdomainResponse;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): GetOrganizationBySubdomainResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: GetOrganizationBySubdomainResponse): GetOrganizationBySubdomainResponse.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: GetOrganizationBySubdomainResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): GetOrganizationBySubdomainResponse;
+    static deserializeBinaryFromReader(message: GetOrganizationBySubdomainResponse, reader: jspb.BinaryReader): GetOrganizationBySubdomainResponse;
+}
+
+export namespace GetOrganizationBySubdomainResponse {
     export type AsObject = {
         data?: Organization.AsObject,
         meta?: common_pb.Meta.AsObject,

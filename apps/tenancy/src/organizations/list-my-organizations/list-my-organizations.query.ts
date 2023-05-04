@@ -7,6 +7,6 @@
 import { Guid } from '@turnly/common'
 import { Query } from '@turnly/core'
 
-export class GetOneOrganizationQuery extends Query {
+export class ListMyOrganizationsQuery extends Query {
   public readonly id: Guid
 }

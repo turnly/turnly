@@ -11,22 +11,23 @@ import type { ClientConfig } from '../../common/client-options.type'
 import { Organizations as Service } from './organizations.client'
 import type {
   IGetOrganizationBySubdomainRequest,
-  IGetOrganizationRequest,
-  IGetOrganizationResponse,
+  IGetOrganizationBySubdomainResponse,
+  IListMyOrganizationsRequest,
+  IListMyOrganizationsResponse,
 } from './organizations.types'
 
 export class Organizations extends Proxy<Service> {
   /**
    * Circuit breakers
    */
-  private getOrganizationBreaker: CircuitBreaker<
-    IGetOrganizationRequest[],
-    IGetOrganizationResponse
+  private listMyOrganizationsBreaker: CircuitBreaker<
+    IListMyOrganizationsRequest[],
+    IListMyOrganizationsResponse
   >
 
   private getBySubdomainBreaker: CircuitBreaker<
     IGetOrganizationBySubdomainRequest[],
-    IGetOrganizationResponse
+    IGetOrganizationBySubdomainResponse
   >
 
   public constructor(config?: ClientConfig) {
@@ -37,11 +38,11 @@ export class Organizations extends Proxy<Service> {
 
   protected setupBreakers() {
     /**
-     * Get Organization Breaker
+     * List my organizations Breaker
      */
-    this.getOrganizationBreaker = new CircuitBreaker(
-      this.service.getOne.bind(this.service),
-      { name: 'Tenancy.Organizations.getOne' }
+    this.listMyOrganizationsBreaker = new CircuitBreaker(
+      this.service.listMyOrganizations.bind(this.service),
+      { name: 'Tenancy.Organizations.listMyOrganizations' }
     )
 
     /**
@@ -53,8 +54,8 @@ export class Organizations extends Proxy<Service> {
     )
   }
 
-  public async getOne(request: IGetOrganizationRequest) {
-    return this.getOrganizationBreaker.execute(request)
+  public async listMyOrganizations(request: IListMyOrganizationsRequest) {
+    return this.listMyOrganizationsBreaker.execute(request)
   }
 
   public async getBySubdomain(request: IGetOrganizationBySubdomainRequest) {

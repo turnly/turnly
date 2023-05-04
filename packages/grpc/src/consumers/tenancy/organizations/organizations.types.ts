@@ -6,18 +6,23 @@
  */
 import type {
   GetOrganizationBySubdomainRequest,
-  GetOrganizationRequest,
-  GetOrganizationResponse,
+  GetOrganizationBySubdomainResponse,
+  ListMyOrganizationsRequest,
+  ListMyOrganizationsResponse,
 } from '../../../producers/tenancy'
 
-export type IGetOrganizationRequest = GetOrganizationRequest.AsObject
-export type IGetOrganizationResponse = GetOrganizationResponse.AsObject
+export type IListMyOrganizationsRequest = ListMyOrganizationsRequest.AsObject
+export type IListMyOrganizationsResponse = ListMyOrganizationsResponse.AsObject
 export type IGetOrganizationBySubdomainRequest =
   GetOrganizationBySubdomainRequest.AsObject
+export type IGetOrganizationBySubdomainResponse =
+  GetOrganizationBySubdomainResponse.AsObject
 
 export interface IOrganizationsClient {
-  getOne(request: IGetOrganizationRequest): Promise<IGetOrganizationResponse>
+  listMyOrganizations(
+    request: IListMyOrganizationsRequest
+  ): Promise<IListMyOrganizationsResponse>
   getBySubdomain(
     request: IGetOrganizationBySubdomainRequest
-  ): Promise<IGetOrganizationResponse>
+  ): Promise<IGetOrganizationBySubdomainResponse>
 }

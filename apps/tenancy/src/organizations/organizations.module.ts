@@ -11,7 +11,7 @@
  * @description Register dependencies to the dependency injection container.
  */
 import 'organizations/shared/shared.dependency'
-import 'organizations/get-one-organization/get-one-organization.dependency'
+import 'organizations/list-my-organizations/list-my-organizations.dependency'
 import 'organizations/get-organization-by-subdomain/get-organization-by-subdomain.dependency'
 
 import type {
@@ -33,10 +33,10 @@ import type { Organization } from 'organizations/shared/domain/entities/organiza
 export class OrganizationsModule {
   public static getServer(): Producers.Tenancy.IOrganizationsServer {
     return {
-      getOne: (...args) =>
-        Box.resolve('getOneOrganizationServer').execute(...args),
+      listMyOrganizations: (...args) =>
+        Box.resolve('listMyOrganizationsServer').execute(...args),
       getBySubdomain: (...args) =>
-        Box.resolve('getOneOrganizationServer').execute(...args),
+        Box.resolve('getOrganizationBySubdomainServer').execute(...args),
     }
   }
 
@@ -50,7 +50,7 @@ export class OrganizationsModule {
 
   public static getQueryHandlers(): IQueryHandler[] {
     return [
-      Box.resolve('getOneOrganizationQueryHandler'),
+      Box.resolve('listMyOrganizationsQueryHandler'),
       Box.resolve('getOrganizationBySubdomainQueryHandler'),
     ]
   }

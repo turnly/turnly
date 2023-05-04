@@ -13,17 +13,17 @@ import {
 import { IOrganizationsReadableRepo } from 'organizations/shared/domain/contracts/organizations-repo.interface'
 import { Organization } from 'organizations/shared/domain/entities/organization.entity'
 
-import { GetOneOrganizationQuery } from './get-one-organization.query'
+import { ListMyOrganizationsQuery } from './list-my-organizations.query'
 
-@QueryHandler(GetOneOrganizationQuery)
-export class GetOneOrganizationQueryHandler
-  implements IQueryHandler<GetOneOrganizationQuery, Nullable<Organization>>
+@QueryHandler(ListMyOrganizationsQuery)
+export class ListMyOrganizationsQueryHandler
+  implements IQueryHandler<ListMyOrganizationsQuery, Nullable<Organization>>
 {
   public constructor(
     private readonly organizationsReadableRepo: IOrganizationsReadableRepo
   ) {}
 
-  public async execute({ id }: GetOneOrganizationQuery) {
+  public async execute({ id }: ListMyOrganizationsQuery) {
     const query = new QueryBuilder<Organization>().equal('id', id).getOne()
 
     const organization = await this.organizationsReadableRepo.getOne(query)

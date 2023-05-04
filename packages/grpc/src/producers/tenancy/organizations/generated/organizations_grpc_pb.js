@@ -16,51 +16,62 @@ function deserialize_turnly_tenancy_v1_organizations_GetOrganizationBySubdomainR
   return organizations_requests_pb.GetOrganizationBySubdomainRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_turnly_tenancy_v1_organizations_GetOrganizationRequest(arg) {
-  if (!(arg instanceof organizations_requests_pb.GetOrganizationRequest)) {
-    throw new Error('Expected argument of type turnly.tenancy.v1.organizations.GetOrganizationRequest');
+function serialize_turnly_tenancy_v1_organizations_GetOrganizationBySubdomainResponse(arg) {
+  if (!(arg instanceof organizations_responses_pb.GetOrganizationBySubdomainResponse)) {
+    throw new Error('Expected argument of type turnly.tenancy.v1.organizations.GetOrganizationBySubdomainResponse');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_turnly_tenancy_v1_organizations_GetOrganizationRequest(buffer_arg) {
-  return organizations_requests_pb.GetOrganizationRequest.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_turnly_tenancy_v1_organizations_GetOrganizationBySubdomainResponse(buffer_arg) {
+  return organizations_responses_pb.GetOrganizationBySubdomainResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_turnly_tenancy_v1_organizations_GetOrganizationResponse(arg) {
-  if (!(arg instanceof organizations_responses_pb.GetOrganizationResponse)) {
-    throw new Error('Expected argument of type turnly.tenancy.v1.organizations.GetOrganizationResponse');
+function serialize_turnly_tenancy_v1_organizations_ListMyOrganizationsRequest(arg) {
+  if (!(arg instanceof organizations_requests_pb.ListMyOrganizationsRequest)) {
+    throw new Error('Expected argument of type turnly.tenancy.v1.organizations.ListMyOrganizationsRequest');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_turnly_tenancy_v1_organizations_GetOrganizationResponse(buffer_arg) {
-  return organizations_responses_pb.GetOrganizationResponse.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_turnly_tenancy_v1_organizations_ListMyOrganizationsRequest(buffer_arg) {
+  return organizations_requests_pb.ListMyOrganizationsRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_turnly_tenancy_v1_organizations_ListMyOrganizationsResponse(arg) {
+  if (!(arg instanceof organizations_responses_pb.ListMyOrganizationsResponse)) {
+    throw new Error('Expected argument of type turnly.tenancy.v1.organizations.ListMyOrganizationsResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_turnly_tenancy_v1_organizations_ListMyOrganizationsResponse(buffer_arg) {
+  return organizations_responses_pb.ListMyOrganizationsResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 
 var OrganizationsService = exports.OrganizationsService = {
-  getOne: {
-    path: '/turnly.tenancy.v1.organizations.Organizations/GetOne',
+  listMyOrganizations: {
+    path: '/turnly.tenancy.v1.organizations.Organizations/ListMyOrganizations',
     requestStream: false,
     responseStream: false,
-    requestType: organizations_requests_pb.GetOrganizationRequest,
-    responseType: organizations_responses_pb.GetOrganizationResponse,
-    requestSerialize: serialize_turnly_tenancy_v1_organizations_GetOrganizationRequest,
-    requestDeserialize: deserialize_turnly_tenancy_v1_organizations_GetOrganizationRequest,
-    responseSerialize: serialize_turnly_tenancy_v1_organizations_GetOrganizationResponse,
-    responseDeserialize: deserialize_turnly_tenancy_v1_organizations_GetOrganizationResponse,
+    requestType: organizations_requests_pb.ListMyOrganizationsRequest,
+    responseType: organizations_responses_pb.ListMyOrganizationsResponse,
+    requestSerialize: serialize_turnly_tenancy_v1_organizations_ListMyOrganizationsRequest,
+    requestDeserialize: deserialize_turnly_tenancy_v1_organizations_ListMyOrganizationsRequest,
+    responseSerialize: serialize_turnly_tenancy_v1_organizations_ListMyOrganizationsResponse,
+    responseDeserialize: deserialize_turnly_tenancy_v1_organizations_ListMyOrganizationsResponse,
   },
   getBySubdomain: {
     path: '/turnly.tenancy.v1.organizations.Organizations/GetBySubdomain',
     requestStream: false,
     responseStream: false,
     requestType: organizations_requests_pb.GetOrganizationBySubdomainRequest,
-    responseType: organizations_responses_pb.GetOrganizationResponse,
+    responseType: organizations_responses_pb.GetOrganizationBySubdomainResponse,
     requestSerialize: serialize_turnly_tenancy_v1_organizations_GetOrganizationBySubdomainRequest,
     requestDeserialize: deserialize_turnly_tenancy_v1_organizations_GetOrganizationBySubdomainRequest,
-    responseSerialize: serialize_turnly_tenancy_v1_organizations_GetOrganizationResponse,
-    responseDeserialize: deserialize_turnly_tenancy_v1_organizations_GetOrganizationResponse,
+    responseSerialize: serialize_turnly_tenancy_v1_organizations_GetOrganizationBySubdomainResponse,
+    responseDeserialize: deserialize_turnly_tenancy_v1_organizations_GetOrganizationBySubdomainResponse,
   },
 };
 

@@ -6,7 +6,7 @@
  */
 import {
   GetOrganizationBySubdomainRequest,
-  GetOrganizationRequest,
+  ListMyOrganizationsRequest,
   OrganizationsClient,
 } from '../../../producers/tenancy'
 import { Client } from '../../common/base.client'
@@ -14,8 +14,9 @@ import type { ClientConfig } from '../../common/client-options.type'
 import { promisify } from '../../common/promisify.util'
 import {
   IGetOrganizationBySubdomainRequest,
-  IGetOrganizationRequest,
-  IGetOrganizationResponse,
+  IGetOrganizationBySubdomainResponse,
+  IListMyOrganizationsRequest,
+  IListMyOrganizationsResponse,
   IOrganizationsClient,
 } from './organizations.types'
 
@@ -30,13 +31,15 @@ export class Organizations
     })
   }
 
-  public async getOne(
-    request: IGetOrganizationRequest
-  ): Promise<IGetOrganizationResponse> {
-    const req = new GetOrganizationRequest().setId(request.id)
+  public async listMyOrganizations(
+    request: IListMyOrganizationsRequest
+  ): Promise<IListMyOrganizationsResponse> {
+    const req = new ListMyOrganizationsRequest()
+      .setLimit(request.limit)
+      .setOffset(request.offset)
 
     return (
-      await promisify(this.client.getOne.bind(this.client))(
+      await promisify(this.client.listMyOrganizations.bind(this.client))(
         req,
         this.getMeta(),
         {}
@@ -46,7 +49,7 @@ export class Organizations
 
   public async getBySubdomain(
     request: IGetOrganizationBySubdomainRequest
-  ): Promise<IGetOrganizationResponse> {
+  ): Promise<IGetOrganizationBySubdomainResponse> {
     const req = new GetOrganizationBySubdomainRequest().setSubdomain(
       request.subdomain
     )

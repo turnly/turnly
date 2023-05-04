@@ -14,20 +14,20 @@ export class GetOrganizationBySubdomainServer {
     private readonly getOrganizationBySubdomainController: GetOrganizationBySubdomainController
   ) {}
 
-  @Producers.CallHandler(Producers.Tenancy.GetOrganizationResponse)
+  @Producers.CallHandler(Producers.Tenancy.GetOrganizationBySubdomainResponse)
   public async execute(
     call: Producers.ServerUnaryCall<
       Producers.Tenancy.GetOrganizationBySubdomainRequest,
-      Producers.Tenancy.GetOrganizationResponse
+      Producers.Tenancy.GetOrganizationBySubdomainResponse
     >,
-    callback: Producers.ICallback<Producers.Tenancy.GetOrganizationResponse>
+    callback: Producers.ICallback<Producers.Tenancy.GetOrganizationBySubdomainResponse>
   ) {
     const { data, meta } =
       await this.getOrganizationBySubdomainController.execute({
         subdomain: call.request.getSubdomain(),
       })
 
-    const response = new Producers.Tenancy.GetOrganizationResponse()
+    const response = new Producers.Tenancy.GetOrganizationBySubdomainResponse()
     const organization = OrganizationsMapper.toRPC(data)
 
     response.setData(organization)

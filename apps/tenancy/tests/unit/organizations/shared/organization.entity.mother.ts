@@ -7,7 +7,6 @@
 import { ObjectMother } from '@turnly/testing'
 import { OrganizationStatus } from 'organizations/shared/domain/enums/organization-status.enum'
 
-import { GetOneOrganizationQuery } from '../../../../src/organizations/get-one-organization'
 import { GetOrganizationBySubdomainQuery } from '../../../../src/organizations/get-organization-by-subdomain'
 import { Organization } from '../../../../src/organizations/shared/domain/entities/organization.entity'
 
@@ -30,15 +29,6 @@ export class OrganizationMother {
 
   static collection(max = ObjectMother.integer(2)): Organization[] {
     return ObjectMother.repeater(OrganizationMother.random, max)
-  }
-
-  static fromExistingOrganizationOnQuery(
-    query: GetOneOrganizationQuery
-  ): Organization {
-    return Organization.build({
-      ...this.random().toObject(),
-      id: query.id,
-    })
   }
 
   static fromExistingOrganizationOnQueryBySubdomain(

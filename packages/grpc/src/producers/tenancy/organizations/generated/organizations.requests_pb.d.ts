@@ -6,23 +6,26 @@
 
 import * as jspb from "google-protobuf";
 
-export class GetOrganizationRequest extends jspb.Message { 
-    getId(): string;
-    setId(value: string): GetOrganizationRequest;
+export class ListMyOrganizationsRequest extends jspb.Message { 
+    getLimit(): number;
+    setLimit(value: number): ListMyOrganizationsRequest;
+    getOffset(): number;
+    setOffset(value: number): ListMyOrganizationsRequest;
 
     serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): GetOrganizationRequest.AsObject;
-    static toObject(includeInstance: boolean, msg: GetOrganizationRequest): GetOrganizationRequest.AsObject;
+    toObject(includeInstance?: boolean): ListMyOrganizationsRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: ListMyOrganizationsRequest): ListMyOrganizationsRequest.AsObject;
     static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
     static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: GetOrganizationRequest, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): GetOrganizationRequest;
-    static deserializeBinaryFromReader(message: GetOrganizationRequest, reader: jspb.BinaryReader): GetOrganizationRequest;
+    static serializeBinaryToWriter(message: ListMyOrganizationsRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): ListMyOrganizationsRequest;
+    static deserializeBinaryFromReader(message: ListMyOrganizationsRequest, reader: jspb.BinaryReader): ListMyOrganizationsRequest;
 }
 
-export namespace GetOrganizationRequest {
+export namespace ListMyOrganizationsRequest {
     export type AsObject = {
-        id: string,
+        limit: number,
+        offset: number,
     }
 }
 

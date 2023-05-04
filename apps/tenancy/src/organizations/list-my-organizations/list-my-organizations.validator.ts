@@ -6,6 +6,6 @@
  */
 import { Validator } from '@turnly/core'
 
-export const GetOneOrganizationValidator = Validator.object({
+export const ListMyOrganizationsValidator = Validator.object({
   id: Validator.isId(),
 })

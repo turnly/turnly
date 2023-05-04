@@ -12,7 +12,12 @@ message Organization {
   repeated turnly.common.v1.Extra metadata = 5;
 }
 
-message GetOrganizationResponse {
+message ListMyOrganizationsResponse {
+  repeated Organization data = 1;
+  turnly.common.v1.Meta meta = 2;
+}
+
+message GetOrganizationBySubdomainResponse {
   Organization data = 1;
   turnly.common.v1.Meta meta = 2;
 }

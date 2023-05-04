@@ -6,6 +6,8 @@ import "organizations.requests.proto";
 import "organizations.responses.proto";
 
 service Organizations {
-  rpc GetOne(GetOrganizationRequest) returns (GetOrganizationResponse) {}
-  rpc GetBySubdomain(GetOrganizationBySubdomainRequest) returns (GetOrganizationResponse) {}
+  rpc ListMyOrganizations(ListMyOrganizationsRequest)
+    returns (ListMyOrganizationsResponse) {}
+  rpc GetBySubdomain(GetOrganizationBySubdomainRequest)
+    returns (GetOrganizationBySubdomainResponse) {}
 }
