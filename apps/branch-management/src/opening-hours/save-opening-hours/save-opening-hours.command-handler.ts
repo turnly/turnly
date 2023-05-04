@@ -14,6 +14,7 @@ import { ListLocationHoursQuery } from 'opening-hours/list-location-hours'
 import { IOpeningHoursWritableRepo } from 'opening-hours/shared/domain/contracts/opening-hours-repo.interface'
 import { OpeningHour } from 'opening-hours/shared/domain/entities/opening-hour.entity'
 
+import { OpeningHoursUpdatedEvent } from './opening-hours-updated.event'
 import { SaveOpeningHoursCommand } from './save-opening-hours.command'
 
 @CommandHandler(SaveOpeningHoursCommand)
@@ -44,6 +45,14 @@ export class SaveOpeningHoursCommandHandler
     for (const hour of hours) {
       this.eventBus.publish(hour.pull())
     }
+
+    this.eventBus.publish([
+      new OpeningHoursUpdatedEvent({
+        hours: hours.map(hour => hour.toObject()),
+        locationId: command.locationId,
+        organizationId: command.organizationId,
+      }),
+    ])
 
     return hours
   }

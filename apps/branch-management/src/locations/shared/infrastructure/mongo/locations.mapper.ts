@@ -6,14 +6,18 @@
  */
 import { ILocationsMapper } from 'locations/shared/domain/contracts/locations-mapper.interface'
 import { Location } from 'locations/shared/domain/entities/location.entity'
+import { OpeningHoursMapper } from 'opening-hours/shared/infrastructure/mongo/opening-hours.mapper'
 
 import { ILocationDocument, LocationModel } from './location.model'
 
 export class LocationsMapper implements ILocationsMapper<ILocationDocument> {
+  public constructor(private readonly openingHoursMapper: OpeningHoursMapper) {}
+
   public toEntity(document: ILocationDocument): Location {
     const {
       _id,
       coordinates: { coordinates },
+      openingHours,
       ...attrs
     } = document.toObject<ILocationDocument>()
 
@@ -26,11 +30,12 @@ export class LocationsMapper implements ILocationsMapper<ILocationDocument> {
         lng,
         lat,
       },
+      openingHours: this.openingHoursMapper.toEntityList(openingHours),
     })
   }
 
   public toModel(entity: Location): ILocationDocument {
-    const { id: _id, coordinates, ...attrs } = entity.toObject()
+    const { id: _id, coordinates, openingHours, ...attrs } = entity.toObject()
 
     return new LocationModel({
       ...attrs,
@@ -39,6 +44,7 @@ export class LocationsMapper implements ILocationsMapper<ILocationDocument> {
         type: 'Point',
         coordinates: [coordinates.lng, coordinates.lat],
       },
+      openingHours: this.openingHoursMapper.toModelList(openingHours),
     })
   }
 
