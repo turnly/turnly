@@ -23,13 +23,13 @@ import { Device } from 'devices/shared/domain/entities/device.entity'
 
 import { PairToLocationCommand } from './pair-to-location.command'
 
-type Token = Producers.BusinessManagement.Token.AsObject
+type Token = Producers.Tenancy.Token.AsObject
 
 @CommandHandler(PairToLocationCommand)
 export class PairToLocationCommandHandler
   implements ICommandHandler<PairToLocationCommand, Device>
 {
-  private readonly tokensClient = new Consumers.BusinessManagement.Tokens()
+  private readonly tokensClient = new Consumers.Tenancy.Tokens()
 
   public constructor(
     private readonly eventBus: IEventBus,

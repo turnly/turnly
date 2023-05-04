@@ -81,26 +81,26 @@ services:
       - traefik.http.services.business-data-fields.loadbalancer.server.port=${APP_PORT}
       - traefik.http.routers.business-data-fields.rule=PathPrefix(`/turnly.business_data_fields.v1`)
 
-  business-management:
-    image: ghcr.io/turnly/business-management:latest
-    build: ./apps/business-management
+  tenancy:
+    image: ghcr.io/turnly/tenancy:latest
+    build: ./apps/tenancy
     restart: unless-stopped
     environment:
       <<: *environment
-      APP_NAME: business-management
-      MONGO_DB: business-management-db
-      RABBITMQ_QUEUE: turnly.ms.business-management.queue
+      APP_NAME: tenancy
+      MONGO_DB: tenancy-db
+      RABBITMQ_QUEUE: turnly.ms.tenancy.queue
     networks:
       turnly.vpc.internal:
         aliases:
-          - business-management.turnly.local
+          - tenancy.turnly.local
     labels:
       - traefik.enable=true
-      - traefik.http.routers.business-management.entrypoints=web
-      - traefik.http.routers.business-management.service=business-management
-      - traefik.http.services.business-management.loadbalancer.server.scheme=h2c
-      - traefik.http.services.business-management.loadbalancer.server.port=${APP_PORT}
-      - traefik.http.routers.business-management.rule=PathPrefix(`/turnly.business_management.v1`)
+      - traefik.http.routers.tenancy.entrypoints=web
+      - traefik.http.routers.tenancy.service=tenancy
+      - traefik.http.services.tenancy.loadbalancer.server.scheme=h2c
+      - traefik.http.services.tenancy.loadbalancer.server.port=${APP_PORT}
+      - traefik.http.routers.tenancy.rule=PathPrefix(`/turnly.tenancy.v1`)
 
   channels:
     image: ghcr.io/turnly/channels:latest

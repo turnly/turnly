@@ -29,18 +29,18 @@ services:
       - ./apps/business-data-fields/tsconfig.json:/app/tsconfig.json
       - ./apps/business-data-fields/jest.config.js:/app/jest.config.js
 
-  business-management:
+  tenancy:
     depends_on:
       elasticsearch:
         condition: service_healthy
       mongo:
         condition: service_healthy
     volumes:
-      - ./apps/business-management/src:/app/src
-      - ./apps/business-management/tests:/app/tests
-      - ./apps/business-management/package.json:/app/package.json
-      - ./apps/business-management/tsconfig.json:/app/tsconfig.json
-      - ./apps/business-management/jest.config.js:/app/jest.config.js
+      - ./apps/tenancy/src:/app/src
+      - ./apps/tenancy/tests:/app/tests
+      - ./apps/tenancy/package.json:/app/package.json
+      - ./apps/tenancy/tsconfig.json:/app/tsconfig.json
+      - ./apps/tenancy/jest.config.js:/app/jest.config.js
 
   channels:
     depends_on:

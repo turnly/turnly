@@ -27,9 +27,9 @@ export * as BranchManagement from './branch-management'
 export * as Channels from './channels'
 
 /**
- * Business Management
+ * Tenancy
  */
-export * as BusinessManagement from './business-management'
+export * as Tenancy from './tenancy'
 
 /**
  * Client
