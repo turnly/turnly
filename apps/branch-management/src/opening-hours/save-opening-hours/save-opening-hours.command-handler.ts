@@ -14,11 +14,11 @@ import { ListLocationHoursQuery } from 'opening-hours/list-location-hours'
 import { IOpeningHoursWritableRepo } from 'opening-hours/shared/domain/contracts/opening-hours-repo.interface'
 import { OpeningHour } from 'opening-hours/shared/domain/entities/opening-hour.entity'
 
-import { BulkOpeningHoursCommand } from './bulk-opening-hours.command'
+import { SaveOpeningHoursCommand } from './save-opening-hours.command'
 
-@CommandHandler(BulkOpeningHoursCommand)
-export class BulkOpeningHoursCommandHandler
-  implements ICommandHandler<BulkOpeningHoursCommand, OpeningHour[]>
+@CommandHandler(SaveOpeningHoursCommand)
+export class SaveOpeningHoursCommandHandler
+  implements ICommandHandler<SaveOpeningHoursCommand, OpeningHour[]>
 {
   public constructor(
     private readonly eventBus: IEventBus,
@@ -26,15 +26,18 @@ export class BulkOpeningHoursCommandHandler
     private readonly openingHoursWritableRepo: IOpeningHoursWritableRepo
   ) {}
 
-  public async execute(command: BulkOpeningHoursCommand) {
+  public async execute(command: SaveOpeningHoursCommand) {
     const hours = await this.updateExistingHours(command)
 
-    for (const { dayOfWeek, ...hour } of command.openingHours) {
-      const isHour = hours.find(h => h.isSameDayOfWeek(dayOfWeek))
+    const newHours = command.openingHours.map(hour =>
+      OpeningHour.create({ ...hour, ...command })
+    )
 
-      if (!isHour)
-        hours.push(OpeningHour.create({ ...hour, dayOfWeek, ...command }))
-    }
+    hours.push(
+      ...newHours.filter(
+        newHour => !hours.find(hour => hour.isSameDayOfWeek(newHour.getDay()))
+      )
+    )
 
     await this.openingHoursWritableRepo.save(hours)
 
@@ -48,7 +51,7 @@ export class BulkOpeningHoursCommandHandler
   private async updateExistingHours({
     openingHours,
     ...command
-  }: BulkOpeningHoursCommand) {
+  }: SaveOpeningHoursCommand) {
     const hours = await this.queryBus.ask<OpeningHour[]>(
       ListLocationHoursQuery.build({ ...command })
     )

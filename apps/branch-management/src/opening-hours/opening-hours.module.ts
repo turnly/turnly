@@ -11,7 +11,7 @@
  * @description Register dependencies to the dependency injection container.
  */
 import 'opening-hours/shared/shared.dependency'
-import 'opening-hours/bulk-opening-hours/bulk-opening-hours.dependency'
+import 'opening-hours/save-opening-hours/save-opening-hours.dependency'
 import 'opening-hours/list-location-hours/list-location-hours.dependency'
 
 import type {
@@ -33,7 +33,7 @@ import type { OpeningHour } from 'opening-hours/shared/domain/entities/opening-h
 export class OpeningHoursModule {
   public static getServer(): Producers.BranchManagement.IOpeningHoursServer {
     return {
-      bulk: (...args) => Box.resolve('bulkOpeningHoursServer').execute(...args),
+      save: (...args) => Box.resolve('saveOpeningHoursServer').execute(...args),
       listLocationHours: (...args) =>
         Box.resolve('listLocationHoursServer').execute(...args),
     }
@@ -52,7 +52,7 @@ export class OpeningHoursModule {
   }
 
   public static getCommandHandlers(): ICommandHandler[] {
-    return [Box.resolve('bulkOpeningHoursCommandHandler')]
+    return [Box.resolve('saveOpeningHoursCommandHandler')]
   }
 
   public static getEventSubscribers(): IEventSubscriber[] {

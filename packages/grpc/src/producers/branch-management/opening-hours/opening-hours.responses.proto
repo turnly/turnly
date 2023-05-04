@@ -22,7 +22,7 @@ message ListLocationHoursResponse {
   turnly.common.v1.Meta meta = 2;
 }
 
-message BulkResponse {
+message SaveOpeningHoursResponse {
   repeated OpeningHour data = 1;
   turnly.common.v1.Meta meta = 2;
 }

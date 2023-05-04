@@ -6,19 +6,18 @@ message ListLocationHoursRequest {
   string location_id = 1;
 }
 
-message BulkOpeningHoursObject {
+message SaveOpeningHoursObject {
   string id = 1;
-  string name = 2;
-  int32 day_of_week = 3;
-  bool closed_all_day = 4;
-  bool open_all_day = 5;
-  int32 open_hour = 6;
-  int32 open_minutes = 7;
-  int32 close_hour = 8;
-  int32 close_minutes = 9;
+  int32 day_of_week = 2;
+  bool closed_all_day = 3;
+  bool open_all_day = 4;
+  int32 open_hour = 5;
+  int32 open_minutes = 6;
+  int32 close_hour = 7;
+  int32 close_minutes = 8;
 }
 
-message BulkRequest {
+message SaveOpeningHoursRequest {
   string location_id = 1;
-  repeated BulkOpeningHoursObject opening_hours = 2;
+  repeated SaveOpeningHoursObject opening_hours = 2;
 }

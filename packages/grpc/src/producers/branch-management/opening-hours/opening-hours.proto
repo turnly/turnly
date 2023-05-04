@@ -6,6 +6,7 @@ import "opening-hours.requests.proto";
 import "opening-hours.responses.proto";
 
 service OpeningHours {
-  rpc ListLocationHours(ListLocationHoursRequest) returns (ListLocationHoursResponse) {};
-  rpc Bulk(BulkRequest) returns (BulkResponse) {};
+  rpc Save(SaveOpeningHoursRequest) returns (SaveOpeningHoursResponse) {};
+  rpc ListLocationHours(ListLocationHoursRequest)
+    returns (ListLocationHoursResponse) {};
 }
