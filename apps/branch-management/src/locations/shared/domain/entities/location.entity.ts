@@ -6,7 +6,9 @@
  */
 import { Guid, Identifier } from '@turnly/common'
 import { AggregateRoot, EntityAttributes } from '@turnly/core'
+import { DateTime } from '@turnly/datetime'
 import { LocationCreatedEvent } from 'locations/create-location/location-created.event'
+import { OpeningHour } from 'opening-hours/shared/domain/entities/opening-hour.entity'
 
 import { LocationStatus } from '../enums/location-status.enum'
 
@@ -83,9 +85,32 @@ export class Location extends AggregateRoot {
      *
      * @description The Organization that the Location belongs to.
      */
-    private readonly organizationId: Guid
+    private readonly organizationId: Guid,
+
+    /**
+     * Opening Hours
+     *
+     * @description The opening hours of the Location.
+     */
+    private readonly openingHours: OpeningHour[] = []
   ) {
     super(id)
+  }
+
+  public getHourOfToday() {
+    const today = DateTime.today().setZone(this.timezone)
+
+    return this.openingHours.find(hour =>
+      hour.isSameDayOfWeek(today.getWeekday())
+    )
+  }
+
+  public isOpen() {
+    const hourOfToday = this.getHourOfToday()
+
+    if (!hourOfToday) return false
+
+    return hourOfToday.isOpen(this.timezone)
   }
 
   /**
@@ -105,7 +130,8 @@ export class Location extends AggregateRoot {
       attributes.status,
       attributes.coordinates,
       attributes.stopServingBeforeInMinutes,
-      attributes.organizationId
+      attributes.organizationId,
+      attributes.openingHours
     )
 
     location.register(new LocationCreatedEvent(location.toObject()))
@@ -128,7 +154,8 @@ export class Location extends AggregateRoot {
       attributes.status,
       attributes.coordinates,
       attributes.stopServingBeforeInMinutes,
-      attributes.organizationId
+      attributes.organizationId,
+      attributes.openingHours
     )
   }
 
@@ -148,6 +175,7 @@ export class Location extends AggregateRoot {
       coordinates: this.coordinates,
       organizationId: this.organizationId,
       stopServingBeforeInMinutes: this.stopServingBeforeInMinutes,
+      openingHours: this.openingHours,
     }
   }
 }
