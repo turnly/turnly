@@ -37,16 +37,16 @@ export class SearchAvailableLocationsForServingQueryHandler
       .equal('organizationId', organizationId)
       .equal('status', LocationStatus.COMPLETE)
       .orderByAlphabetical(['name'])
+      .relations(['openingHours'])
 
     if (country) query.equal('country', country)
     if (searchQuery) query.matches(['name', 'address', 'country'], searchQuery)
     if (lat && lng) query.orderByGeo('coordinates', { lat, lng })
 
-    /**
-     * TODO: Implement location status filter-- (Testing it)
-     * TODO: Add filters for open locations (Schedules and Holidays)
-     */
+    const locations = await this.locationsReadableRepo.find(
+      query.getMany(offset, limit)
+    )
 
-    return await this.locationsReadableRepo.find(query.getMany(offset, limit))
+    return locations.filter(location => location.isOpen())
   }
 }

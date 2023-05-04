@@ -19,25 +19,27 @@ import { OpeningHourCreatedEvent } from 'opening-hours/save-opening-hours/openin
  */
 export class OpeningHour extends AggregateRoot {
   /**
-   * Day of Week
+   * Day of the week.
    *
-   * @description The days of the week that the location is open at (0 = Sunday, 1 = Monday, etc.).
+   * 1 is Monday and 7 is Sunday
+   * @see https://en.wikipedia.org/wiki/ISO_week_date
+   *
    */
-  public static readonly DAY_OF_WEEK = [0, 1, 2, 3, 4, 5, 6]
+  public static readonly DAY_OF_WEEK = [1, 2, 3, 4, 5, 6, 7]
 
   /**
    * Day of Week Names
    *
-   * @description The days of the week that the location is open at (0 = Sunday, 1 = Monday, etc.).
+   * @description The name of the days of the week in order.
    */
   public static readonly DAY_OF_WEEK_NAMES = [
-    'Sunday',
     'Monday',
     'Tuesday',
     'Wednesday',
     'Thursday',
     'Friday',
     'Saturday',
+    'Sunday',
   ]
 
   protected constructor(
@@ -126,7 +128,7 @@ export class OpeningHour extends AggregateRoot {
   }
 
   public static getDayOfWeekName(dayOfWeek: number): string {
-    return OpeningHour.DAY_OF_WEEK_NAMES[dayOfWeek]
+    return OpeningHour.DAY_OF_WEEK_NAMES[dayOfWeek - 1]
   }
 
   public isSameDayOfWeek(dayOfWeek: number): boolean {

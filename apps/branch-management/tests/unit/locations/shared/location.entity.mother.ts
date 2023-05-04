@@ -20,7 +20,8 @@ export class LocationMother {
     coordinates = ObjectMother.coords(),
     country: string = ObjectMother.names(),
     stopServingBeforeInMinutes: number = ObjectMother.integer(2),
-    organizationId: Guid = ObjectMother.uuid('org')
+    organizationId: Guid = ObjectMother.uuid('org'),
+    openingHours = []
   ): Location {
     return Location.create({
       organizationId,
@@ -31,6 +32,7 @@ export class LocationMother {
       coordinates,
       stopServingBeforeInMinutes,
       country,
+      openingHours,
     })
   }
 

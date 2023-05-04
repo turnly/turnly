@@ -7,7 +7,7 @@
 import { Validator } from '@turnly/core'
 
 const openingHour = Validator.object({
-  dayOfWeek: Validator.getBuilder().number().min(0).max(6).required(),
+  dayOfWeek: Validator.getBuilder().number().min(1).max(7).required(),
   openAllDay: Validator.getBuilder().boolean().optional(),
   closedAllDay: Validator.getBuilder().boolean().optional(),
   openHour: Validator.getBuilder().number().min(0).max(23).required(),
