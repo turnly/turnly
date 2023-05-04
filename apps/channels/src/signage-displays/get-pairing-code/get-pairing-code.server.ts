@@ -5,7 +5,6 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import { Consumers, Producers } from '@turnly/grpc'
-import { SignageDisplaysMapper } from 'signage-displays/shared/infrastructure/signage-displays-to-grpc.mapper'
 
 import { GetPairingCodeController } from './get-pairing-code.controller'
 
@@ -31,9 +30,14 @@ export class GetPairingCodeServer {
 
     const response =
       new Producers.Channels.GetPairingCodeSignageDisplayResponse()
-    const signageDisplay = SignageDisplaysMapper.toRPC(data)
 
-    response.setData(signageDisplay)
+    const payload = new Producers.Channels.GetPairingCodeObject()
+
+    if (data?.pairingCode) {
+      payload.setPairingCode(data.pairingCode)
+    }
+
+    response.setData(payload)
     response.setMeta(Producers.MetaMapper.toRPC(meta))
 
     callback(null, response)

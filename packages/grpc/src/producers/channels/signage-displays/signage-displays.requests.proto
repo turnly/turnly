@@ -15,3 +15,23 @@ message UnpairSignageDisplayRequest {
   string id = 1;
   string location_id = 2;
 }
+
+message GetOneSignageDisplayRequest {
+  string id = 1;
+}
+
+message ListSignageDisplaysRequest {
+  string location_id = 1;
+  int32 limit = 2;
+  int32 offset = 3;
+}
+
+message UpdateSignageDisplayRequest {
+  string id = 1;
+  string name = 2;
+  string refresh_time_unit = 3;
+  int32 refresh_time_value = 4;
+  string clear_tickets_after = 5;
+  repeated string service_ids = 6;
+  string order = 7;
+}

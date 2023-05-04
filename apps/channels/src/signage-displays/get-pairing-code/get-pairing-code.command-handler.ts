@@ -22,7 +22,11 @@ import { GetPairingCodeCommand } from './get-pairing-code.command'
 
 @CommandHandler(GetPairingCodeCommand)
 export class GetPairingCodeCommandHandler
-  implements ICommandHandler<GetPairingCodeCommand, SignageDisplay>
+  implements
+    ICommandHandler<
+      GetPairingCodeCommand,
+      { signageDisplay: SignageDisplay; device: Device }
+    >
 {
   public constructor(
     private readonly commandBus: ICommandBus,
@@ -51,6 +55,6 @@ export class GetPairingCodeCommandHandler
 
     this.eventBus.publish(signageDisplay.pull())
 
-    return signageDisplay
+    return { signageDisplay, device }
   }
 }

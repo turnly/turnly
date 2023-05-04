@@ -94,7 +94,7 @@ export class SignageDisplay extends AggregateRoot {
      *
      * @description Represents the life-cycle of an SignageDisplay.
      */
-    private serviceIds: Nullable<[]> = [],
+    private serviceIds: Guid[] = [],
 
     /**
      * Status

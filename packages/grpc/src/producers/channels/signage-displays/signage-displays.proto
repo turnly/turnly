@@ -12,4 +12,10 @@ service SignageDisplays {
     returns (PairToLocationSignageDisplayResponse) {}
   rpc Unpair(UnpairSignageDisplayRequest)
     returns (UnpairSignageDisplayResponse) {}
+  rpc GetOne(GetOneSignageDisplayRequest)
+    returns (GetOneSignageDisplayResponse) {}
+  rpc List(ListSignageDisplaysRequest)
+    returns (ListSignageDisplaysResponse) {}
+  rpc Update(UpdateSignageDisplayRequest)
+    returns (UpdateSignageDisplayResponse) {}
 }

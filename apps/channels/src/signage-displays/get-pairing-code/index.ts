@@ -7,3 +7,4 @@
 export * from './get-pairing-code.command'
 export * from './get-pairing-code.command-handler'
 export * from './get-pairing-code.controller'
+export * from './get-pairing-code.server'
