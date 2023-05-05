@@ -39,13 +39,11 @@ export class UpdateSignageDisplayCommandHandler
     if (!signageDisplay) throw new ResourceNotFoundException()
 
     const newSignageDisplay = SignageDisplay.build({
-      ...signageDisplay,
-      name: command.name,
-      refreshTime: command.refreshTime,
-      clearTicketsAfter: command.clearTicketsAfter,
-      serviceIds: command.serviceIds,
-      order: command.order,
+      ...signageDisplay.toObject(),
+      ...command,
     })
+
+    this.eventBus.publish(newSignageDisplay.pull())
 
     await this.signageDisplaysWritableRepo.save(newSignageDisplay)
 

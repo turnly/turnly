@@ -6,7 +6,10 @@
  */
 import { Guid } from '@turnly/common'
 import { OrganizationCommand } from '@turnly/core'
-import { ClearTicketsAfter, Order } from 'signage-displays/shared/domain/enums'
+import {
+  ClearTicketsAfter,
+  DisplayOrder,
+} from 'signage-displays/shared/domain/enums'
 
 export class UpdateSignageDisplayCommand extends OrganizationCommand {
   public readonly id: Guid
@@ -14,5 +17,5 @@ export class UpdateSignageDisplayCommand extends OrganizationCommand {
   public readonly refreshTime: number
   public readonly clearTicketsAfter: ClearTicketsAfter
   public readonly serviceIds: Guid[]
-  public readonly order: Order
+  public readonly order: DisplayOrder
 }

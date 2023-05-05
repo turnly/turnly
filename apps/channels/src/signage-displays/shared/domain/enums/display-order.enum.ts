@@ -10,7 +10,7 @@
  * @enum
  * @author Turnly
  */
-export enum Order {
+export enum DisplayOrder {
   ASC = 'asc',
   DESC = 'desc',
 }

@@ -14,6 +14,7 @@ import 'signage-displays/shared/shared.dependency'
 import 'signage-displays/generate-pairing-code/generate-pairing-code.dependency'
 import 'signage-displays/get-one-signage-display/get-one-signage-display.dependency'
 import 'signage-displays/list-signage-displays/list-signage-displays.dependency'
+import 'signage-displays/update-signage-display/update-signage-display.dependency'
 
 import type {
   ICommandHandler,
@@ -41,7 +42,8 @@ export class SignageDisplaysModule {
       pairToLocation: () => new NotImplementedError(),
       list: (...args) =>
         Box.resolve('listSignageDisplaysServer').execute(...args),
-      update: () => new NotImplementedError(),
+      update: (...args) =>
+        Box.resolve('updateSignageDisplayServer').execute(...args),
       getOne: (...args) =>
         Box.resolve('getOneSignageDisplayServer').execute(...args),
     }
@@ -63,7 +65,10 @@ export class SignageDisplaysModule {
   }
 
   public static getCommandHandlers(): ICommandHandler[] {
-    return [Box.resolve('generatePairingCodeCommandHandler')]
+    return [
+      Box.resolve('generatePairingCodeCommandHandler'),
+      Box.resolve('updateSignageDisplayCommandHandler'),
+    ]
   }
 
   public static getEventSubscribers(): IEventSubscriber[] {

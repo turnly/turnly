@@ -9,7 +9,7 @@ import { AggregateRoot, EntityAttributes } from '@turnly/core'
 import { SignageDisplayCreatedEvent } from 'signage-displays/generate-pairing-code/signage-display-created.event'
 
 import { ClearTicketsAfter } from '../enums/clear_tickets_after.enum'
-import { Order } from '../enums/order.enum'
+import { DisplayOrder } from '../enums/display-order.enum'
 import { RefreshTimeUnit } from '../enums/refresh_time_unit.enum'
 
 type IgnoreAttrs =
@@ -101,7 +101,7 @@ export class SignageDisplay extends AggregateRoot {
      *
      * @description Represents the life-cycle of an SignageDisplay.
      */
-    private order: Order = Order.ASC
+    private order: DisplayOrder = DisplayOrder.ASC
   ) {
     super(id)
   }
