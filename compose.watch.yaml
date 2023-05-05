@@ -29,22 +29,6 @@ services:
       - ./apps/business-data-fields/tsconfig.json:/app/tsconfig.json
       - ./apps/business-data-fields/jest.config.js:/app/jest.config.js
 
-<<<<<<< HEAD
-=======
-  tenancy:
-    depends_on:
-      elasticsearch:
-        condition: service_healthy
-      mongo:
-        condition: service_healthy
-    volumes:
-      - ./apps/tenancy/src:/app/src
-      - ./apps/tenancy/tests:/app/tests
-      - ./apps/tenancy/package.json:/app/package.json
-      - ./apps/tenancy/tsconfig.json:/app/tsconfig.json
-      - ./apps/tenancy/jest.config.js:/app/jest.config.js
-
->>>>>>> 2a25d5d8ede4f54c842fa84e722a5ad1116875ec
   channels:
     depends_on:
       elasticsearch:
