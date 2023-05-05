@@ -51,7 +51,9 @@ function deserialize_turnly_tenancy_v1_organizations_ListMyOrganizationsResponse
 
 
 var OrganizationsService = exports.OrganizationsService = {
-  listMyOrganizations: {
+  // *
+// Lists all organizations that the user is a member of.
+listMyOrganizations: {
     path: '/turnly.tenancy.v1.organizations.Organizations/ListMyOrganizations',
     requestStream: false,
     responseStream: false,
@@ -62,7 +64,10 @@ var OrganizationsService = exports.OrganizationsService = {
     responseSerialize: serialize_turnly_tenancy_v1_organizations_ListMyOrganizationsResponse,
     responseDeserialize: deserialize_turnly_tenancy_v1_organizations_ListMyOrganizationsResponse,
   },
-  getBySubdomain: {
+  // *
+// Gets an organization by public subdomain.
+// e.g. https://<subdomain>.turnly.app
+getBySubdomain: {
     path: '/turnly.tenancy.v1.organizations.Organizations/GetBySubdomain',
     requestStream: false,
     responseStream: false,

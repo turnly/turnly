@@ -6,8 +6,16 @@ import "organizations.requests.proto";
 import "organizations.responses.proto";
 
 service Organizations {
+  /**
+  * Lists all organizations that the user is a member of.
+  */
   rpc ListMyOrganizations(ListMyOrganizationsRequest)
     returns (ListMyOrganizationsResponse) {}
+
+  /**
+  * Gets an organization by public subdomain.
+  * e.g. https://<subdomain>.turnly.app
+  */
   rpc GetBySubdomain(GetOrganizationBySubdomainRequest)
     returns (GetOrganizationBySubdomainResponse) {}
 }

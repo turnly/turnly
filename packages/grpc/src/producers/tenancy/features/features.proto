@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package turnly.tenancy.v1.features;
+
+import "features.requests.proto";
+import "features.responses.proto";
+
+service Features {
+  /**
+  * Insert a list of features into your tenancy and return the list of features.
+  */
+  rpc Bulk(BulkFeaturesRequest) returns (BulkFeaturesResponse) {}
+
+  /**
+  * Delete a feature from your tenancy by its ID.
+  */
+  rpc Delete(DeleteFeatureRequest) returns (DeleteFeatureResponse) {}
+
+  /**
+  * Get the features in your tenancy.
+  */
+  rpc List(ListFeaturesRequest) returns (ListFeaturesResponse) {}
+}

@@ -19,3 +19,9 @@ export * from './members'
  * Access Tokens generated
  */
 export * from './tokens'
+
+/**
+ * Features generated
+ *
+ */
+export * from './features'
