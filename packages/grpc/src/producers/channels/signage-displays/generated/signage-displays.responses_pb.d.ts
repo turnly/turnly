@@ -56,31 +56,51 @@ export namespace SignageDisplay {
     }
 }
 
-export class GetPairingCodeSignageDisplayResponse extends jspb.Message { 
+export class GeneratePairingCodeObject extends jspb.Message { 
+    getPairingCode(): string;
+    setPairingCode(value: string): GeneratePairingCodeObject;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): GeneratePairingCodeObject.AsObject;
+    static toObject(includeInstance: boolean, msg: GeneratePairingCodeObject): GeneratePairingCodeObject.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: GeneratePairingCodeObject, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): GeneratePairingCodeObject;
+    static deserializeBinaryFromReader(message: GeneratePairingCodeObject, reader: jspb.BinaryReader): GeneratePairingCodeObject;
+}
+
+export namespace GeneratePairingCodeObject {
+    export type AsObject = {
+        pairingCode: string,
+    }
+}
+
+export class GeneratePairingCodeSignageDisplayResponse extends jspb.Message { 
 
     hasData(): boolean;
     clearData(): void;
-    getData(): SignageDisplay | undefined;
-    setData(value?: SignageDisplay): GetPairingCodeSignageDisplayResponse;
+    getData(): GeneratePairingCodeObject | undefined;
+    setData(value?: GeneratePairingCodeObject): GeneratePairingCodeSignageDisplayResponse;
 
     hasMeta(): boolean;
     clearMeta(): void;
     getMeta(): common_pb.Meta | undefined;
-    setMeta(value?: common_pb.Meta): GetPairingCodeSignageDisplayResponse;
+    setMeta(value?: common_pb.Meta): GeneratePairingCodeSignageDisplayResponse;
 
     serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): GetPairingCodeSignageDisplayResponse.AsObject;
-    static toObject(includeInstance: boolean, msg: GetPairingCodeSignageDisplayResponse): GetPairingCodeSignageDisplayResponse.AsObject;
+    toObject(includeInstance?: boolean): GeneratePairingCodeSignageDisplayResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: GeneratePairingCodeSignageDisplayResponse): GeneratePairingCodeSignageDisplayResponse.AsObject;
     static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
     static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: GetPairingCodeSignageDisplayResponse, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): GetPairingCodeSignageDisplayResponse;
-    static deserializeBinaryFromReader(message: GetPairingCodeSignageDisplayResponse, reader: jspb.BinaryReader): GetPairingCodeSignageDisplayResponse;
+    static serializeBinaryToWriter(message: GeneratePairingCodeSignageDisplayResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): GeneratePairingCodeSignageDisplayResponse;
+    static deserializeBinaryFromReader(message: GeneratePairingCodeSignageDisplayResponse, reader: jspb.BinaryReader): GeneratePairingCodeSignageDisplayResponse;
 }
 
-export namespace GetPairingCodeSignageDisplayResponse {
+export namespace GeneratePairingCodeSignageDisplayResponse {
     export type AsObject = {
-        data?: SignageDisplay.AsObject,
+        data?: GeneratePairingCodeObject.AsObject,
         meta?: common_pb.Meta.AsObject,
     }
 }
@@ -137,6 +157,92 @@ export class UnpairSignageDisplayResponse extends jspb.Message {
 }
 
 export namespace UnpairSignageDisplayResponse {
+    export type AsObject = {
+        data?: SignageDisplay.AsObject,
+        meta?: common_pb.Meta.AsObject,
+    }
+}
+
+export class GetOneSignageDisplayResponse extends jspb.Message { 
+
+    hasData(): boolean;
+    clearData(): void;
+    getData(): SignageDisplay | undefined;
+    setData(value?: SignageDisplay): GetOneSignageDisplayResponse;
+
+    hasMeta(): boolean;
+    clearMeta(): void;
+    getMeta(): common_pb.Meta | undefined;
+    setMeta(value?: common_pb.Meta): GetOneSignageDisplayResponse;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): GetOneSignageDisplayResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: GetOneSignageDisplayResponse): GetOneSignageDisplayResponse.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: GetOneSignageDisplayResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): GetOneSignageDisplayResponse;
+    static deserializeBinaryFromReader(message: GetOneSignageDisplayResponse, reader: jspb.BinaryReader): GetOneSignageDisplayResponse;
+}
+
+export namespace GetOneSignageDisplayResponse {
+    export type AsObject = {
+        data?: SignageDisplay.AsObject,
+        meta?: common_pb.Meta.AsObject,
+    }
+}
+
+export class ListSignageDisplaysResponse extends jspb.Message { 
+    clearDataList(): void;
+    getDataList(): Array<SignageDisplay>;
+    setDataList(value: Array<SignageDisplay>): ListSignageDisplaysResponse;
+    addData(value?: SignageDisplay, index?: number): SignageDisplay;
+
+    hasMeta(): boolean;
+    clearMeta(): void;
+    getMeta(): common_pb.Meta | undefined;
+    setMeta(value?: common_pb.Meta): ListSignageDisplaysResponse;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): ListSignageDisplaysResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: ListSignageDisplaysResponse): ListSignageDisplaysResponse.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: ListSignageDisplaysResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): ListSignageDisplaysResponse;
+    static deserializeBinaryFromReader(message: ListSignageDisplaysResponse, reader: jspb.BinaryReader): ListSignageDisplaysResponse;
+}
+
+export namespace ListSignageDisplaysResponse {
+    export type AsObject = {
+        dataList: Array<SignageDisplay.AsObject>,
+        meta?: common_pb.Meta.AsObject,
+    }
+}
+
+export class UpdateSignageDisplayResponse extends jspb.Message { 
+
+    hasData(): boolean;
+    clearData(): void;
+    getData(): SignageDisplay | undefined;
+    setData(value?: SignageDisplay): UpdateSignageDisplayResponse;
+
+    hasMeta(): boolean;
+    clearMeta(): void;
+    getMeta(): common_pb.Meta | undefined;
+    setMeta(value?: common_pb.Meta): UpdateSignageDisplayResponse;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): UpdateSignageDisplayResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: UpdateSignageDisplayResponse): UpdateSignageDisplayResponse.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: UpdateSignageDisplayResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): UpdateSignageDisplayResponse;
+    static deserializeBinaryFromReader(message: UpdateSignageDisplayResponse, reader: jspb.BinaryReader): UpdateSignageDisplayResponse;
+}
+
+export namespace UpdateSignageDisplayResponse {
     export type AsObject = {
         data?: SignageDisplay.AsObject,
         meta?: common_pb.Meta.AsObject,

@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package turnly.tenancy.v1.organizations;
+
+import "organizations.requests.proto";
+import "organizations.responses.proto";
+
+service Organizations {
+  rpc GetOne(GetOrganizationRequest) returns (GetOrganizationResponse) {}
+  rpc GetBySubdomain(GetOrganizationBySubdomainRequest) returns (GetOrganizationResponse) {}
+}

@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package turnly.tenancy.v1.members;
+
+import "members.requests.proto";
+import "members.responses.proto";
+
+service Members {
+  rpc GetOne(GetMemberRequest) returns (GetMemberResponse) {}
+  rpc GetByUserId(GetMemberByUserIdRequest) returns (GetMemberByUserIdResponse) {}
+}

@@ -27,6 +27,14 @@ export * as BranchManagement from './branch-management'
 export * as Channels from './channels'
 
 /**
+<<<<<<< HEAD
+=======
+ * Tenancy
+ */
+export * as Tenancy from './tenancy'
+
+/**
+>>>>>>> 2a25d5d8ede4f54c842fa84e722a5ad1116875ec
  * Client
  */
 export { Client } from './common/base.client'

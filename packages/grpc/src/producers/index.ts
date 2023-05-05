@@ -30,3 +30,11 @@ export * as BranchManagement from './branch-management'
  * Channels generated
  */
 export * as Channels from './channels'
+<<<<<<< HEAD
+=======
+
+/**
+ * Tenancy generated
+ */
+export * as Tenancy from './tenancy'
+>>>>>>> 2a25d5d8ede4f54c842fa84e722a5ad1116875ec

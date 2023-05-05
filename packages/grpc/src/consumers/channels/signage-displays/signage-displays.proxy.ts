@@ -10,21 +10,27 @@ import { Proxy } from '../../common/base.proxy'
 import type { ClientConfig } from '../../common/client-options.type'
 import { SignageDisplays as Service } from './signage-displays.client'
 import type {
-  IGetPairingCodeSignageDisplayRequest,
-  IGetPairingCodeSignageDisplayResponse,
+  IGeneratePairingCodeSignageDisplayRequest,
+  IGeneratePairingCodeSignageDisplayResponse,
+  IGetOneSignageDisplayRequest,
+  IGetOneSignageDisplayResponse,
+  IListSignageDisplaysRequest,
+  IListSignageDisplaysResponse,
   IPairToLocationSignageDisplayRequest,
   IPairToLocationSignageDisplayResponse,
   IUnpairSignageDisplayRequest,
   IUnpairSignageDisplayResponse,
+  IUpdateSignageDisplayRequest,
+  IUpdateSignageDisplayResponse,
 } from './signage-displays.type'
 
 export class SignageDisplays extends Proxy<Service> {
   /**
    * Circuit breakers
    */
-  private getPairingCodeBreaker: CircuitBreaker<
-    IGetPairingCodeSignageDisplayRequest[],
-    IGetPairingCodeSignageDisplayResponse
+  private generatePairingCodeBreaker: CircuitBreaker<
+    IGeneratePairingCodeSignageDisplayRequest[],
+    IGeneratePairingCodeSignageDisplayResponse
   >
 
   private pairToLocationBreaker: CircuitBreaker<
@@ -37,6 +43,21 @@ export class SignageDisplays extends Proxy<Service> {
     IUnpairSignageDisplayResponse
   >
 
+  private getOneBreaker: CircuitBreaker<
+    IGetOneSignageDisplayRequest[],
+    IGetOneSignageDisplayResponse
+  >
+
+  private listBreaker: CircuitBreaker<
+    IListSignageDisplaysRequest[],
+    IListSignageDisplaysResponse
+  >
+
+  private updateBreaker: CircuitBreaker<
+    IUpdateSignageDisplayRequest[],
+    IUpdateSignageDisplayResponse
+  >
+
   public constructor(config?: ClientConfig) {
     super(Service, config)
 
@@ -47,9 +68,9 @@ export class SignageDisplays extends Proxy<Service> {
     /**
      * Get SignageDisplay Breaker
      */
-    this.getPairingCodeBreaker = new CircuitBreaker(
-      this.service.getPairingCode.bind(this.service),
-      { name: 'Channels.SignageDisplays.getPairingCode' }
+    this.generatePairingCodeBreaker = new CircuitBreaker(
+      this.service.generatePairingCode.bind(this.service),
+      { name: 'Channels.SignageDisplays.generatePairingCode' }
     )
 
     this.pairToLocationBreaker = new CircuitBreaker(
@@ -61,10 +82,27 @@ export class SignageDisplays extends Proxy<Service> {
       this.service.unpair.bind(this.service),
       { name: 'Channels.SignageDisplays.unpair' }
     )
+
+    this.getOneBreaker = new CircuitBreaker(
+      this.service.getOne.bind(this.service),
+      { name: 'Channels.SignageDisplays.getOne' }
+    )
+
+    this.listBreaker = new CircuitBreaker(
+      this.service.list.bind(this.service),
+      { name: 'Channels.SignageDisplays.list' }
+    )
+
+    this.updateBreaker = new CircuitBreaker(
+      this.service.update.bind(this.service),
+      { name: 'Channels.SignageDisplays.update' }
+    )
   }
 
-  public async getPairingCode(request: IGetPairingCodeSignageDisplayRequest) {
-    return this.getPairingCodeBreaker.execute(request)
+  public async generatePairingCode(
+    request: IGeneratePairingCodeSignageDisplayRequest
+  ) {
+    return this.generatePairingCodeBreaker.execute(request)
   }
 
   public async pairToLocation(request: IPairToLocationSignageDisplayRequest) {
@@ -73,5 +111,17 @@ export class SignageDisplays extends Proxy<Service> {
 
   public async unpair(request: IUnpairSignageDisplayRequest) {
     return this.unpairBreaker.execute(request)
+  }
+
+  public async getOne(request: IGetOneSignageDisplayRequest) {
+    return this.getOneBreaker.execute(request)
+  }
+
+  public async list(request: IListSignageDisplaysRequest) {
+    return this.listBreaker.execute(request)
+  }
+
+  public async update(request: IUpdateSignageDisplayRequest) {
+    return this.updateBreaker.execute(request)
   }
 }
