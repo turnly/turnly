@@ -1,6 +1,6 @@
 {
   "name": "@turnly/branch-management",
-  "version": "0.1.24",
+  "version": "0.1.25",
   "private": true,
   "description": "This service manages the creation of locations, services offered, working hours, etc.",
   "license": "BSD-3-Clause",
@@ -31,7 +31,7 @@
     "@turnly/common": "^0.1.24",
     "@turnly/core": "^0.1.24",
     "@turnly/datetime": "^0.1.24",
-    "@turnly/grpc": "^0.1.24",
+    "@turnly/grpc": "^0.1.25",
     "@turnly/observability": "^0.1.24",
     "dotenv": "^16.0.1",
     "mongoose": "^7.1.0"
