@@ -4,5 +4,5 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-export * from './signage-displays'
+export * from './devices'
 export * from './widgets'

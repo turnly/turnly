@@ -1,0 +1,74 @@
+syntax = "proto3";
+
+package turnly.channels.v1.devices;
+
+import "common.proto";
+
+message Device {
+  /**
+  * The ID of the device.
+  *
+  * The field is required.
+  */
+  string id = 1;
+
+  /**
+  * The human-readable name of the device. Used for display purposes.
+  *
+  * The field is required.
+  */
+  string name = 2;
+
+  /**
+  * The type of the device (e.g. "kiosk", "digital-display", "smartphone").
+  *
+  * The field is required.
+  */
+  string type = 3;
+
+  /**
+  * The current status of the device based on the pairing process.
+  *
+  * The field is required.
+  */
+  string status = 4;
+
+  /**
+  * The ID of the location the device is paired to.
+  *
+  * The field is optional.
+  */
+  string location_id = 5;
+
+  /**
+  * The metadata of the device. This is useful for storing additional information.
+  *
+  * The field is optional.
+  */
+  repeated turnly.common.v1.Extra metadata = 6;
+}
+
+message GeneratePairingCodeDeviceResponse {
+  Device data = 1;
+  turnly.common.v1.Meta meta = 2;
+}
+
+message PairToLocationDeviceResponse {
+  Device data = 1;
+  turnly.common.v1.Meta meta = 2;
+}
+
+message UnpairDeviceResponse {
+  Device data = 1;
+  turnly.common.v1.Meta meta = 2;
+}
+
+message GetOneDeviceResponse {
+  Device data = 1;
+  turnly.common.v1.Meta meta = 2;
+}
+
+message ListDevicesResponse {
+  repeated Device data = 1;
+  turnly.common.v1.Meta meta = 2;
+}

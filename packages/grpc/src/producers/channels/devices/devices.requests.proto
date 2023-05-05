@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package turnly.channels.v1.devices;
+
+message GeneratePairingCodeDeviceRequest {
+  string name = 1;
+}
+
+message PairToLocationDeviceRequest {
+  string pairing_code = 1;
+  string location_id = 2;
+  string type = 3;
+}
+
+message UnpairDeviceRequest {
+  string id = 1;
+  string location_id = 2;
+}
+
+message GetOneDeviceRequest {
+  string id = 1;
+  string location_id = 2;
+}
+
+message ListDevicesRequest {
+  string location_id = 1;
+  int32 limit = 2;
+  int32 offset = 3;
+}

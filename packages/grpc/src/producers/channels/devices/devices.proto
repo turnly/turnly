@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package turnly.channels.v1.devices;
+
+import "devices.requests.proto";
+import "devices.responses.proto";
+
+service Devices {
+  rpc GeneratePairingCode(GeneratePairingCodeDeviceRequest)
+    returns (GeneratePairingCodeDeviceResponse) {}
+  rpc PairToLocation(PairToLocationDeviceRequest)
+    returns (PairToLocationDeviceResponse) {}
+  rpc Unpair(UnpairDeviceRequest) returns (UnpairDeviceResponse) {}
+  rpc GetOne(GetOneDeviceRequest) returns (GetOneDeviceResponse) {}
+  rpc List(ListDevicesRequest) returns (ListDevicesResponse) {}
+}
