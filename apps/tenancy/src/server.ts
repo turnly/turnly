@@ -6,6 +6,7 @@
  */
 import { config, oidc } from '@turnly/core'
 import { AuthGuard, Producers } from '@turnly/grpc'
+import { FeaturesModule } from 'features/features.module'
 import { MembersModule } from 'members/members.module'
 import { OrganizationsModule } from 'organizations/organizations.module'
 import { TokensModule } from 'tokens/tokens.module'
@@ -27,6 +28,10 @@ const services: Producers.Service[] = [
   {
     definition: Producers.Tenancy.TokensService,
     implementation: TokensModule.getServer(),
+  },
+  {
+    definition: Producers.Tenancy.FeaturesService,
+    implementation: FeaturesModule.getServer(),
   },
 ]
 

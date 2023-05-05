@@ -17,6 +17,7 @@ Tracing.Trace.initialize({ name: config.get('app.name') })
  *
  * @description Register dependencies to the dependency injection container.
  */
+import 'features/shared/register.dependency'
 import 'organizations/shared/register.dependency'
 import 'members/shared/register.dependency'
 import 'tokens/shared/register.dependency'
