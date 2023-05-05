@@ -5,12 +5,11 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import { Guid } from '@turnly/common'
-import type { Producers } from '@turnly/grpc'
 import { Sources } from 'datasources'
 import type { Request, Response } from 'express'
 
 interface IRequest extends Request {
-  member: Producers.Tenancy.Member.AsObject
+  // member: Producers.Tenancy.Member.AsObject
   organizationId: Guid
 }
 

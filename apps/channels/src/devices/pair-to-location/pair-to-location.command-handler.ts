@@ -4,32 +4,28 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { Scopes } from '@turnly/auth'
-import { Guid, Nullable } from '@turnly/common'
+
+import { Nullable } from '@turnly/common'
 import {
   CommandHandler,
   ICommandHandler,
   IEventBus,
   IQueryBus,
 } from '@turnly/core'
-import { Consumers, Producers } from '@turnly/grpc'
-import {
-  ConflictException,
-  ResourceNotFoundException,
-} from '@turnly/observability'
+import { ResourceNotFoundException } from '@turnly/observability'
 import { GetOneDeviceByCriteriaQuery } from 'devices/get-one-device-by-criteria'
 import { IDevicesWritableRepo } from 'devices/shared/domain/contratcs/devices-repo.interface'
 import { Device } from 'devices/shared/domain/entities/device.entity'
 
 import { PairToLocationCommand } from './pair-to-location.command'
 
-type Token = Producers.Tenancy.Token.AsObject
+// type Token = Producers.Tenancy.Token.AsObject
 
 @CommandHandler(PairToLocationCommand)
 export class PairToLocationCommandHandler
   implements ICommandHandler<PairToLocationCommand, Device>
 {
-  private readonly tokensClient = new Consumers.Tenancy.Tokens()
+  // private readonly tokensClient = new Consumers.Tenancy.Tokens()
 
   public constructor(
     private readonly eventBus: IEventBus,
@@ -44,10 +40,13 @@ export class PairToLocationCommandHandler
 
     if (!device) throw new ResourceNotFoundException()
 
-    const { name } = device.toObject()
-    const { secret } = await this.getToken({ ...command, name })
+    // const { name } = device.toObject()
+    // const { secret } = await this.getToken({ ...command, name })
 
-    device.pairTo({ ...command, secret })
+    /**
+     * TODO: Generate secret and send it to the device when the tokens service is ready
+     */
+    device.pairTo({ ...command, secret: '__SECRET__' })
 
     await this.devicesWritableRepo.save(device)
 
@@ -56,20 +55,20 @@ export class PairToLocationCommandHandler
     return device
   }
 
-  private async getToken(params: {
-    name: string
-    scopes: Scopes[]
-    organizationId: Guid
-  }): Promise<Token> {
-    this.tokensClient.setOrganizationId(params.organizationId)
+  // private async getToken(params: {
+  //   name: string
+  //   scopes: Scopes[]
+  //   organizationId: Guid
+  // }): Promise<Token> {
+  //   this.tokensClient.setOrganizationId(params.organizationId)
 
-    const { data, meta } = await this.tokensClient.create({
-      name: params.name,
-      scopesList: params.scopes,
-    })
+  //   const { data, meta } = await this.tokensClient.create({
+  //     name: params.name,
+  //     scopesList: params.scopes,
+  //   })
 
-    if (!data) throw new ConflictException(String(meta?.message))
+  //   if (!data) throw new ConflictException(String(meta?.message))
 
-    return data
-  }
+  //   return data
+  // }
 }

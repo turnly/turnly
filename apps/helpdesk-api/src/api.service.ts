@@ -19,11 +19,6 @@ export const Answers = new Consumers.BusinessDataFields.Answers()
 export const Fields = new Consumers.BusinessDataFields.Fields()
 
 /**
- * Members Service
- */
-export const Members = new Consumers.Tenancy.Members()
-
-/**
  * Queuing System Service
  */
 export const Customers = new Consumers.QueuingSystem.Customers()
@@ -34,7 +29,6 @@ export const setOrganizationId = (organizationId: string) => {
   Services.destroyOrganizationId().setOrganizationId(organizationId)
   Answers.destroyOrganizationId().setOrganizationId(organizationId)
   Fields.destroyOrganizationId().setOrganizationId(organizationId)
-  Members.destroyOrganizationId().setOrganizationId(organizationId)
   Customers.destroyOrganizationId().setOrganizationId(organizationId)
   Tickets.destroyOrganizationId().setOrganizationId(organizationId)
 }
