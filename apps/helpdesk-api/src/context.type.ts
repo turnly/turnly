@@ -10,7 +10,7 @@ import { Sources } from 'datasources'
 import type { Request, Response } from 'express'
 
 interface IRequest extends Request {
-  member: Producers.BusinessManagement.Member.AsObject
+  member: Producers.Tenancy.Member.AsObject
   organizationId: Guid
 }
 

@@ -5,11 +5,15 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import { EntityAttributes, Event, EventType } from '@turnly/core'
-import { Member } from 'members/shared/domain/entity/member.entity'
+import { OpeningHour } from 'opening-hours/shared/domain/entities/opening-hour.entity'
 
-type Payload = EntityAttributes<Member>
+type Payload = {
+  hours: EntityAttributes<OpeningHour>[]
+  locationId: string
+  organizationId: string
+}
 
-export class MemberCreatedEvent extends Event<Payload> {
+export class OpeningHoursUpdatedEvent extends Event<Payload> {
   public constructor(payload: Payload) {
     super(EventType.CREATE, payload)
   }

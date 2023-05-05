@@ -21,7 +21,7 @@ export const Fields = new Consumers.BusinessDataFields.Fields()
 /**
  * Members Service
  */
-export const Members = new Consumers.BusinessManagement.Members()
+export const Members = new Consumers.Tenancy.Members()
 
 /**
  * Queuing System Service

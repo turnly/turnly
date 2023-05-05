@@ -27,11 +27,9 @@ export * as BranchManagement from './branch-management'
 export * as Channels from './channels'
 
 /**
- * Business Management
- */
-export * as BusinessManagement from './business-management'
-
-/**
  * Client
  */
 export { Client } from './common/base.client'
+export * from './common/base.proxy'
+export * from './common/promisify.util'
+export * from './common/promisify-client-methods.type'

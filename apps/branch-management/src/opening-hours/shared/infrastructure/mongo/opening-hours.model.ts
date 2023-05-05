@@ -54,6 +54,7 @@ const schema = new Schema(
     },
     locationId: {
       type: String,
+      ref: 'Location',
       required: true,
       index: true,
     },

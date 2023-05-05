@@ -9,7 +9,6 @@ const databases = [
   "testing-db",
   "branch-management-db",
   "business-data-fields-db",
-  "business-management-db",
   "channels-db",
   "queuing-system-db",
 ];

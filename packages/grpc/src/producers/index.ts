@@ -30,8 +30,3 @@ export * as BranchManagement from './branch-management'
  * Channels generated
  */
 export * as Channels from './channels'
-
-/**
- * Business Management generated
- */
-export * as BusinessManagement from './business-management'
