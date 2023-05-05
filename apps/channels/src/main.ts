@@ -19,7 +19,6 @@ Tracing.Trace.initialize({ name: config.get('app.name') })
  */
 import 'devices/shared/register.dependency'
 import 'widgets/shared/register.dependency'
-import 'signage-displays/shared/register.dependency'
 
 async function bootstrap() {
   const { Application } = await import('./application')
