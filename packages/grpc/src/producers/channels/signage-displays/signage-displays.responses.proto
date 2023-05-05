@@ -17,12 +17,12 @@ message SignageDisplay {
   string order = 10;
 }
 
-message GetPairingCodeObject {
+message GeneratePairingCodeObject {
   string pairing_code = 1;
 }
 
-message GetPairingCodeSignageDisplayResponse {
-  GetPairingCodeObject data = 1;
+message GeneratePairingCodeSignageDisplayResponse {
+  GeneratePairingCodeObject data = 1;
   turnly.common.v1.Meta meta = 2;
 }
 

@@ -10,10 +10,10 @@ import { Proxy } from '../../common/base.proxy'
 import type { ClientConfig } from '../../common/client-options.type'
 import { SignageDisplays as Service } from './signage-displays.client'
 import type {
+  IGeneratePairingCodeSignageDisplayRequest,
+  IGeneratePairingCodeSignageDisplayResponse,
   IGetOneSignageDisplayRequest,
   IGetOneSignageDisplayResponse,
-  IGetPairingCodeSignageDisplayRequest,
-  IGetPairingCodeSignageDisplayResponse,
   IListSignageDisplaysRequest,
   IListSignageDisplaysResponse,
   IPairToLocationSignageDisplayRequest,
@@ -28,9 +28,9 @@ export class SignageDisplays extends Proxy<Service> {
   /**
    * Circuit breakers
    */
-  private getPairingCodeBreaker: CircuitBreaker<
-    IGetPairingCodeSignageDisplayRequest[],
-    IGetPairingCodeSignageDisplayResponse
+  private generatePairingCodeBreaker: CircuitBreaker<
+    IGeneratePairingCodeSignageDisplayRequest[],
+    IGeneratePairingCodeSignageDisplayResponse
   >
 
   private pairToLocationBreaker: CircuitBreaker<
@@ -68,9 +68,9 @@ export class SignageDisplays extends Proxy<Service> {
     /**
      * Get SignageDisplay Breaker
      */
-    this.getPairingCodeBreaker = new CircuitBreaker(
-      this.service.getPairingCode.bind(this.service),
-      { name: 'Channels.SignageDisplays.getPairingCode' }
+    this.generatePairingCodeBreaker = new CircuitBreaker(
+      this.service.generatePairingCode.bind(this.service),
+      { name: 'Channels.SignageDisplays.generatePairingCode' }
     )
 
     this.pairToLocationBreaker = new CircuitBreaker(
@@ -99,8 +99,10 @@ export class SignageDisplays extends Proxy<Service> {
     )
   }
 
-  public async getPairingCode(request: IGetPairingCodeSignageDisplayRequest) {
-    return this.getPairingCodeBreaker.execute(request)
+  public async generatePairingCode(
+    request: IGeneratePairingCodeSignageDisplayRequest
+  ) {
+    return this.generatePairingCodeBreaker.execute(request)
   }
 
   public async pairToLocation(request: IPairToLocationSignageDisplayRequest) {

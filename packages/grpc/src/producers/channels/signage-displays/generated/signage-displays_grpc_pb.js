@@ -5,6 +5,28 @@ var grpc = require('@grpc/grpc-js');
 var signage$displays_requests_pb = require('./signage-displays.requests_pb.js');
 var signage$displays_responses_pb = require('./signage-displays.responses_pb.js');
 
+function serialize_turnly_channels_v1_signage_displays_GeneratePairingCodeSignageDisplayRequest(arg) {
+  if (!(arg instanceof signage$displays_requests_pb.GeneratePairingCodeSignageDisplayRequest)) {
+    throw new Error('Expected argument of type turnly.channels.v1.signage_displays.GeneratePairingCodeSignageDisplayRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_turnly_channels_v1_signage_displays_GeneratePairingCodeSignageDisplayRequest(buffer_arg) {
+  return signage$displays_requests_pb.GeneratePairingCodeSignageDisplayRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_turnly_channels_v1_signage_displays_GeneratePairingCodeSignageDisplayResponse(arg) {
+  if (!(arg instanceof signage$displays_responses_pb.GeneratePairingCodeSignageDisplayResponse)) {
+    throw new Error('Expected argument of type turnly.channels.v1.signage_displays.GeneratePairingCodeSignageDisplayResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_turnly_channels_v1_signage_displays_GeneratePairingCodeSignageDisplayResponse(buffer_arg) {
+  return signage$displays_responses_pb.GeneratePairingCodeSignageDisplayResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_turnly_channels_v1_signage_displays_GetOneSignageDisplayRequest(arg) {
   if (!(arg instanceof signage$displays_requests_pb.GetOneSignageDisplayRequest)) {
     throw new Error('Expected argument of type turnly.channels.v1.signage_displays.GetOneSignageDisplayRequest');
@@ -25,28 +47,6 @@ function serialize_turnly_channels_v1_signage_displays_GetOneSignageDisplayRespo
 
 function deserialize_turnly_channels_v1_signage_displays_GetOneSignageDisplayResponse(buffer_arg) {
   return signage$displays_responses_pb.GetOneSignageDisplayResponse.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_turnly_channels_v1_signage_displays_GetPairingCodeSignageDisplayRequest(arg) {
-  if (!(arg instanceof signage$displays_requests_pb.GetPairingCodeSignageDisplayRequest)) {
-    throw new Error('Expected argument of type turnly.channels.v1.signage_displays.GetPairingCodeSignageDisplayRequest');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_turnly_channels_v1_signage_displays_GetPairingCodeSignageDisplayRequest(buffer_arg) {
-  return signage$displays_requests_pb.GetPairingCodeSignageDisplayRequest.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_turnly_channels_v1_signage_displays_GetPairingCodeSignageDisplayResponse(arg) {
-  if (!(arg instanceof signage$displays_responses_pb.GetPairingCodeSignageDisplayResponse)) {
-    throw new Error('Expected argument of type turnly.channels.v1.signage_displays.GetPairingCodeSignageDisplayResponse');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_turnly_channels_v1_signage_displays_GetPairingCodeSignageDisplayResponse(buffer_arg) {
-  return signage$displays_responses_pb.GetPairingCodeSignageDisplayResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_turnly_channels_v1_signage_displays_ListSignageDisplaysRequest(arg) {
@@ -139,16 +139,16 @@ function deserialize_turnly_channels_v1_signage_displays_UpdateSignageDisplayRes
 
 
 var SignageDisplaysService = exports.SignageDisplaysService = {
-  getPairingCode: {
-    path: '/turnly.channels.v1.signage_displays.SignageDisplays/GetPairingCode',
+  generatePairingCode: {
+    path: '/turnly.channels.v1.signage_displays.SignageDisplays/GeneratePairingCode',
     requestStream: false,
     responseStream: false,
-    requestType: signage$displays_requests_pb.GetPairingCodeSignageDisplayRequest,
-    responseType: signage$displays_responses_pb.GetPairingCodeSignageDisplayResponse,
-    requestSerialize: serialize_turnly_channels_v1_signage_displays_GetPairingCodeSignageDisplayRequest,
-    requestDeserialize: deserialize_turnly_channels_v1_signage_displays_GetPairingCodeSignageDisplayRequest,
-    responseSerialize: serialize_turnly_channels_v1_signage_displays_GetPairingCodeSignageDisplayResponse,
-    responseDeserialize: deserialize_turnly_channels_v1_signage_displays_GetPairingCodeSignageDisplayResponse,
+    requestType: signage$displays_requests_pb.GeneratePairingCodeSignageDisplayRequest,
+    responseType: signage$displays_responses_pb.GeneratePairingCodeSignageDisplayResponse,
+    requestSerialize: serialize_turnly_channels_v1_signage_displays_GeneratePairingCodeSignageDisplayRequest,
+    requestDeserialize: deserialize_turnly_channels_v1_signage_displays_GeneratePairingCodeSignageDisplayRequest,
+    responseSerialize: serialize_turnly_channels_v1_signage_displays_GeneratePairingCodeSignageDisplayResponse,
+    responseDeserialize: deserialize_turnly_channels_v1_signage_displays_GeneratePairingCodeSignageDisplayResponse,
   },
   pairToLocation: {
     path: '/turnly.channels.v1.signage_displays.SignageDisplays/PairToLocation',

@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package turnly.channels.v1.signage_displays;
 
-message GetPairingCodeSignageDisplayRequest {
+message GeneratePairingCodeSignageDisplayRequest {
   string name = 1;
 }
 

@@ -5,8 +5,8 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import {
+  GeneratePairingCodeSignageDisplayRequest,
   GetOneSignageDisplayRequest,
-  GetPairingCodeSignageDisplayRequest,
   ListSignageDisplaysRequest,
   PairToLocationSignageDisplayRequest,
   SignageDisplaysClient,
@@ -17,10 +17,10 @@ import { Client } from '../../common/base.client'
 import type { ClientConfig } from '../../common/client-options.type'
 import { promisify } from '../../common/promisify.util'
 import {
+  IGeneratePairingCodeSignageDisplayRequest,
+  IGeneratePairingCodeSignageDisplayResponse,
   IGetOneSignageDisplayRequest,
   IGetOneSignageDisplayResponse,
-  IGetPairingCodeSignageDisplayRequest,
-  IGetPairingCodeSignageDisplayResponse,
   IListSignageDisplaysRequest,
   IListSignageDisplaysResponse,
   IPairToLocationSignageDisplayRequest,
@@ -43,13 +43,15 @@ export class SignageDisplays
     })
   }
 
-  public async getPairingCode(
-    request: IGetPairingCodeSignageDisplayRequest
-  ): Promise<IGetPairingCodeSignageDisplayResponse> {
-    const req = new GetPairingCodeSignageDisplayRequest().setName(request.name)
+  public async generatePairingCode(
+    request: IGeneratePairingCodeSignageDisplayRequest
+  ): Promise<IGeneratePairingCodeSignageDisplayResponse> {
+    const req = new GeneratePairingCodeSignageDisplayRequest().setName(
+      request.name
+    )
 
     return (
-      await promisify(this.client.getPairingCode.bind(this.client))(
+      await promisify(this.client.generatePairingCode.bind(this.client))(
         req,
         this.getMeta(),
         {}
