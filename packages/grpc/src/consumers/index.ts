@@ -31,5 +31,6 @@ export * as Channels from './channels'
  */
 export { Client } from './common/base.client'
 export * from './common/base.proxy'
+export * from './common/client-options.type'
 export * from './common/promisify.util'
 export * from './common/promisify-client-methods.type'
