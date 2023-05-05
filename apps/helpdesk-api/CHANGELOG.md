@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.24](https://github.com/turnly/turnly/compare/v0.1.23...v0.1.24) (2023-05-05)
+
+
+### Features
+
+* add tenancy ms ([335c3c5](https://github.com/turnly/turnly/commit/335c3c50c030a895c6afff8dc443ba75ef2c2544))
+
+
+
+
+
 ## [0.1.23](https://github.com/turnly/turnly/compare/v0.1.22...v0.1.23) (2023-05-02)
 
 **Note:** Version bump only for package @turnly/helpdesk-api

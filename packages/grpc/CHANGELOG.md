@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.24](https://github.com/turnly/turnly/compare/v0.1.23...v0.1.24) (2023-05-05)
+
+
+### Features
+
+* add grpc client for feature management api ([6971df6](https://github.com/turnly/turnly/commit/6971df674a8ab5eb58a6d0f3d8f42111a58b4408))
+* add list my organizations ([9da5ffd](https://github.com/turnly/turnly/commit/9da5ffdd74a6f0f04c144fbf49672abc49d8fb15))
+* add tenancy ms ([4bc383e](https://github.com/turnly/turnly/commit/4bc383e0baa4333fd1dec0d9592303bc0f70bc22))
+* add tenancy ms ([335c3c5](https://github.com/turnly/turnly/commit/335c3c50c030a895c6afff8dc443ba75ef2c2544))
+* **branch-management:** add create and list location hours endpoint, client and proxy grpc ([689da69](https://github.com/turnly/turnly/commit/689da69a8d7919e662739e1b3f1bffe3ecb16ec9))
+* **branch-management:** add opening hours module with bulk opening hours command and endpoint ([b618eac](https://github.com/turnly/turnly/commit/b618eac1d725c011d0e16ff713c12abdcc7f5549))
+* **branch-management:** rename create opening hours to bulk, add timezone attr to location entity ([31fa64f](https://github.com/turnly/turnly/commit/31fa64fab056473999215e656b6a2fdd798521db))
+* **channels:** add get one and list signage displays endpoint ([ff8cae3](https://github.com/turnly/turnly/commit/ff8cae3ebcebbb37a4b148eb50698a77ff134bf5))
+* **queuing-system:** add search tickets to display on digital signage endpoint ([5c38f9a](https://github.com/turnly/turnly/commit/5c38f9af80ea9b04481870026bd904f860fc4455))
+* update opening hours ([e8c3d22](https://github.com/turnly/turnly/commit/e8c3d223d7b0318e1608381b37c6c85c8733a5fb))
+
+
+
+
+
 ## [0.1.23](https://github.com/turnly/turnly/compare/v0.1.22...v0.1.23) (2023-05-02)
 
 

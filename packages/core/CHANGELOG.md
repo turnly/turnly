@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.24](https://github.com/turnly/turnly/compare/v0.1.23...v0.1.24) (2023-05-05)
+
+
+### Features
+
+* add endpoint to delete a feature ([a22aec0](https://github.com/turnly/turnly/commit/a22aec04dcd22b53a12a47e6e0fbed2904cd3509))
+
+
+
+
+
 ## [0.1.23](https://github.com/turnly/turnly/compare/v0.1.22...v0.1.23) (2023-05-02)
 
 

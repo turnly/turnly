@@ -1,6 +1,6 @@
 {
   "name": "@turnly/datetime",
-  "version": "0.1.19",
+  "version": "0.1.24",
   "description": "Library for working with dates and times in JavaScript",
   "homepage": "https://github.com/turnly/turnly#readme",
   "bugs": {
@@ -41,8 +41,8 @@
     "**/esquery": "1.4.0"
   },
   "dependencies": {
-    "luxon": "^3.3.0",
-    "@types/luxon": "^3.3.0"
+    "@types/luxon": "^3.3.0",
+    "luxon": "^3.3.0"
   },
   "devDependencies": {
     "@turnly/eslint-config": "github:turnly/configs",

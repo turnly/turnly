@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.24](https://github.com/turnly/turnly/compare/v0.1.23...v0.1.24) (2023-05-05)
+
+
+### Bug Fixes
+
+* **branch-management:** fix typo ([5484220](https://github.com/turnly/turnly/commit/54842208ddb7c1eac0dd11fbd65468d1bbd748ef))
+
+
+### Features
+
+* add logic to validate opening hours ([d1b82bc](https://github.com/turnly/turnly/commit/d1b82bc4e3a1cba323e4b8a9b160f36582bcf898))
+* add opening-hours to location ([04e84ed](https://github.com/turnly/turnly/commit/04e84edf24bbcaf88aedec239d4b7281f420fdb7))
+* **branch-management:** add list location hours endpoint ([6e8311f](https://github.com/turnly/turnly/commit/6e8311f5db38b5c6d7f3ce789c8c6f4d5a8a5f59))
+* **branch-management:** add opening hours module with bulk opening hours command and endpoint ([b618eac](https://github.com/turnly/turnly/commit/b618eac1d725c011d0e16ff713c12abdcc7f5549))
+* **branch-management:** rename create opening hours to bulk, add timezone attr to location entity ([31fa64f](https://github.com/turnly/turnly/commit/31fa64fab056473999215e656b6a2fdd798521db))
+* map hours from db to entities ([834ce4a](https://github.com/turnly/turnly/commit/834ce4a64375e2f70debb68aa89a11512d12ad24))
+* **opening-hours:** add logic to merge existing hours ([b1f1966](https://github.com/turnly/turnly/commit/b1f19668246bae46b41b95d77210f44542336e20))
+* update opening hours ([e8c3d22](https://github.com/turnly/turnly/commit/e8c3d223d7b0318e1608381b37c6c85c8733a5fb))
+
+
+
+
+
 ## [0.1.23](https://github.com/turnly/turnly/compare/v0.1.22...v0.1.23) (2023-05-02)
 
 

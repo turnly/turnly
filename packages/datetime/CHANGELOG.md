@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.24](https://github.com/turnly/turnly/compare/v0.1.23...v0.1.24) (2023-05-05)
+
+
+### Features
+
+* add logic to validate opening hours ([d1b82bc](https://github.com/turnly/turnly/commit/d1b82bc4e3a1cba323e4b8a9b160f36582bcf898))
+
+
+
+
+
 ## 0.1.19 (2023-05-01)
 
 **Note:** Version bump only for package @turnly/datetime

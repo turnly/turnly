@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.24](https://github.com/turnly/turnly/compare/v0.1.23...v0.1.24) (2023-05-05)
+
+
+### Features
+
+* add logic to validate opening hours ([d1b82bc](https://github.com/turnly/turnly/commit/d1b82bc4e3a1cba323e4b8a9b160f36582bcf898))
+* **queuing-system:** add search tickets to display on digital signage endpoint ([5c38f9a](https://github.com/turnly/turnly/commit/5c38f9af80ea9b04481870026bd904f860fc4455))
+
+
+
+
+
 ## [0.1.23](https://github.com/turnly/turnly/compare/v0.1.22...v0.1.23) (2023-05-02)
 
 

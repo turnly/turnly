@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.24](https://github.com/turnly/turnly/compare/v0.1.23...v0.1.24) (2023-05-05)
+
+
+### Features
+
+* add tenancy ms ([4bc383e](https://github.com/turnly/turnly/commit/4bc383e0baa4333fd1dec0d9592303bc0f70bc22))
+* add tenancy ms ([335c3c5](https://github.com/turnly/turnly/commit/335c3c50c030a895c6afff8dc443ba75ef2c2544))
+* **channels:** add get one and list signage displays endpoint ([ff8cae3](https://github.com/turnly/turnly/commit/ff8cae3ebcebbb37a4b148eb50698a77ff134bf5))
+* **channels:** add get-pairing-code endpoint and signage display module ([4214235](https://github.com/turnly/turnly/commit/4214235ea3de24679e803972426fb916519b1357))
+* **channels:** add update signage display endpoint ([4ac547f](https://github.com/turnly/turnly/commit/4ac547f2d657a1b1903dd391d7897026a22729cf))
+* **devices:** add pair-to-location ([eb70a16](https://github.com/turnly/turnly/commit/eb70a16f28ac85718a28b97d3fae3428f7b3a5a6))
+
+
+
+
+
 ## [0.1.23](https://github.com/turnly/turnly/compare/v0.1.22...v0.1.23) (2023-05-02)
 
 
