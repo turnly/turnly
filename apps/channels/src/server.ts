@@ -6,6 +6,7 @@
  */
 import { config, oidc } from '@turnly/core'
 import { AuthGuard, Producers } from '@turnly/grpc'
+import { DevicesModule } from 'devices/devices.module'
 import { WidgetsModule } from 'widgets/widgets.module'
 
 /**
@@ -17,6 +18,10 @@ const services: Producers.Service[] = [
   {
     definition: Producers.Channels.WidgetsService,
     implementation: WidgetsModule.getServer(),
+  },
+  {
+    definition: Producers.Channels.DevicesService,
+    implementation: DevicesModule.getServer(),
   },
 ]
 

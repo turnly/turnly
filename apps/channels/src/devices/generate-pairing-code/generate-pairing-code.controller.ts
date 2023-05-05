@@ -12,20 +12,21 @@ import {
 } from '@turnly/core'
 import { Device } from 'devices/shared/domain/entities/device.entity'
 
-import { CreateDeviceCommand } from './create-device.command'
-import { CreateDeviceValidator } from './create-device.validator'
+import { GeneratePairingCodeCommand } from './generate-pairing-code.command'
+import { GeneratePairingCodeValidator } from './generate-pairing-code.validator'
 
-export class CreateDeviceController extends Controller {
+export class GeneratePairingCodeController extends Controller {
   public constructor(private readonly commandBus: ICommandBus) {
     super()
   }
 
   @TimeoutHandler()
-  @InputValidator(CreateDeviceValidator)
-  public async execute(params: CreateDeviceCommand) {
-    const device = await this.commandBus.execute<Device, CreateDeviceCommand>(
-      CreateDeviceCommand.build(params)
-    )
+  @InputValidator(GeneratePairingCodeValidator)
+  public async execute(params: GeneratePairingCodeCommand) {
+    const device = await this.commandBus.execute<
+      Device,
+      GeneratePairingCodeCommand
+    >(GeneratePairingCodeCommand.build(params))
 
     return this.respond.created(device.toObject())
   }

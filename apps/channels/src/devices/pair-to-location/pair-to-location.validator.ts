@@ -10,5 +10,5 @@ export const PairToLocationValidator = Validator.object({
   pairingCode: Validator.string(),
   locationId: Validator.isId(),
   organizationId: Validator.isId(),
-  scopes: Validator.getBuilder().array().items(Validator.string()),
+  type: Validator.string(),
 })

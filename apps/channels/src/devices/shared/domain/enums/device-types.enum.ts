@@ -17,4 +17,5 @@ export enum DeviceTypes {
   WIDGET = 'widget',
   KIOSK = 'kiosk',
   DIGITAL_SIGNAGE = 'digital_signage',
+  UNKNOWN = 'unknown',
 }

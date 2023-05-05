@@ -4,11 +4,11 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { Guid, Identifier, Nullable } from '@turnly/common'
+import { Extra, Guid, Identifier, Nullable } from '@turnly/common'
 import { AggregateRoot, EntityAttributes } from '@turnly/core'
 import { DateTime } from '@turnly/datetime'
 import { BadRequestException } from '@turnly/observability'
-import { DeviceCreatedEvent } from 'devices/create-device/device-created.event'
+import { DeviceCreatedEvent } from 'devices/generate-pairing-code/device-created.event'
 import { DevicePairedEvent } from 'devices/pair-to-location'
 
 import { DeviceStatus } from '../enums/device-status.enum'
@@ -60,6 +60,14 @@ export class Device extends AggregateRoot {
     private readonly organizationId: Guid,
 
     /**
+     * Metadata
+     *
+     * @description Free-form data as name/value pairs that can be used
+     * to store additional information about the Device.
+     */
+    private readonly metadata: Extra[] = [],
+
+    /**
      * Code
      *
      * @description The code that is used to pair the Device.
@@ -94,6 +102,7 @@ export class Device extends AggregateRoot {
     locationId: Guid
     secret: string
     pairedBy?: Guid
+    type: DeviceTypes
   }): Device {
     if (this.locationId || this.status === DeviceStatus.PAIRED) {
       throw new BadRequestException(
@@ -107,10 +116,17 @@ export class Device extends AggregateRoot {
       )
     }
 
+    if (!Object.values(DeviceTypes).includes(params.type)) {
+      throw new BadRequestException(
+        'Oops, You must provide a valid type for the Device'
+      )
+    }
+
     this.locationId = params.locationId
     this.status = DeviceStatus.PAIRED
     this.pairedBy = params.pairedBy || this.pairedBy
     this.pairedAt = DateTime.now().toJSDate()
+    this.type = params.type
 
     this.register(
       new DevicePairedEvent({ ...this.toObject(), secret: params.secret })
@@ -132,6 +148,7 @@ export class Device extends AggregateRoot {
     status: DeviceStatus
     type: DeviceTypes
     organizationId: Guid
+    metadata?: Extra[]
   }): Device {
     if (!Object.values(DeviceStatus).includes(status)) {
       throw new BadRequestException(
@@ -153,6 +170,7 @@ export class Device extends AggregateRoot {
       status,
       attributes.type,
       attributes.organizationId,
+      attributes.metadata,
       pairingCode
     )
 
@@ -173,6 +191,7 @@ export class Device extends AggregateRoot {
       attributes.status,
       attributes.type,
       attributes.organizationId,
+      attributes.metadata,
       attributes.pairingCode,
       attributes.pairedBy,
       attributes.pairedAt,
@@ -192,6 +211,7 @@ export class Device extends AggregateRoot {
       status: this.status,
       type: this.type,
       organizationId: this.organizationId,
+      metadata: this.metadata,
       locationId: this.locationId,
       pairingCode: this.pairingCode,
       pairedBy: this.pairedBy,

@@ -16,6 +16,7 @@ import { ResourceNotFoundException } from '@turnly/observability'
 import { GetOneDeviceByCriteriaQuery } from 'devices/get-one-device-by-criteria'
 import { IDevicesWritableRepo } from 'devices/shared/domain/contratcs/devices-repo.interface'
 import { Device } from 'devices/shared/domain/entities/device.entity'
+import { DeviceStatus } from 'devices/shared/domain/enums/device-status.enum'
 
 import { PairToLocationCommand } from './pair-to-location.command'
 
@@ -35,7 +36,10 @@ export class PairToLocationCommandHandler
 
   public async execute(command: PairToLocationCommand) {
     const device = await this.queryBus.ask<Nullable<Device>>(
-      GetOneDeviceByCriteriaQuery.build(command)
+      GetOneDeviceByCriteriaQuery.build({
+        ...command,
+        status: DeviceStatus.UNPAIRED,
+      })
     )
 
     if (!device) throw new ResourceNotFoundException()

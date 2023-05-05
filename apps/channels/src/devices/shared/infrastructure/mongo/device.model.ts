@@ -50,6 +50,14 @@ const schema = new Schema(
     pairedAt: {
       type: Date,
     },
+    metadata: {
+      type: [
+        {
+          key: String,
+          value: String,
+        },
+      ],
+    },
   },
   { timestamps }
 )

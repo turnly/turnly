@@ -11,7 +11,7 @@
  * @description Register dependencies to the dependency injection container.
  */
 import 'devices/shared/shared.dependency'
-import 'devices/create-device/create-device.dependency'
+import 'devices/generate-pairing-code/generate-pairing-code.dependency'
 import 'devices/get-one-device-by-criteria/get-one-device-by-criteria.dependency'
 import 'devices/pair-to-location/pair-to-location.dependency'
 
@@ -23,6 +23,7 @@ import type {
   IWritableRepository,
 } from '@turnly/core'
 import { Box } from '@turnly/core'
+import { Producers } from '@turnly/grpc'
 /**
  * Module
  *
@@ -31,6 +32,18 @@ import { Box } from '@turnly/core'
 import type { Device } from 'devices/shared/domain/entities/device.entity'
 
 export class DevicesModule {
+  public static getServer(): Producers.Channels.IDevicesServer {
+    return {
+      generatePairingCode: (...args) =>
+        Box.resolve('generatePairingCodeServer').execute(...args),
+      pairToLocation: (...args) =>
+        Box.resolve('pairToLocationServer').execute(...args),
+      unpair: (...args) => Box.resolve('unpairServer').execute(...args),
+      list: (...args) => Box.resolve('listDevicesServer').execute(...args),
+      getOne: (...args) => Box.resolve('getOneDeviceServer').execute(...args),
+    }
+  }
+
   public static getWritableRepo(): IWritableRepository<Device> {
     return Box.resolve('devicesWritableRepo')
   }
@@ -45,7 +58,7 @@ export class DevicesModule {
 
   public static getCommandHandlers(): ICommandHandler[] {
     return [
-      Box.resolve('createDeviceCommandHandler'),
+      Box.resolve('generatePairingCodeCommandHandler'),
       Box.resolve('pairToLocationCommandHandler'),
     ]
   }

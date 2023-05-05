@@ -7,20 +7,26 @@
 import { CommandHandler, ICommandHandler, IEventBus } from '@turnly/core'
 import { IDevicesWritableRepo } from 'devices/shared/domain/contratcs/devices-repo.interface'
 import { Device } from 'devices/shared/domain/entities/device.entity'
+import { DeviceStatus } from 'devices/shared/domain/enums/device-status.enum'
+import { DeviceTypes } from 'devices/shared/domain/enums/device-types.enum'
 
-import { CreateDeviceCommand } from './create-device.command'
+import { GeneratePairingCodeCommand } from './generate-pairing-code.command'
 
-@CommandHandler(CreateDeviceCommand)
-export class CreateDeviceCommandHandler
-  implements ICommandHandler<CreateDeviceCommand, Device>
+@CommandHandler(GeneratePairingCodeCommand)
+export class GeneratePairingCodeCommandHandler
+  implements ICommandHandler<GeneratePairingCodeCommand, Device>
 {
   public constructor(
     private readonly eventBus: IEventBus,
     private readonly devicesWritableRepo: IDevicesWritableRepo
   ) {}
 
-  public async execute(command: CreateDeviceCommand) {
-    const device = Device.create(command)
+  public async execute(command: GeneratePairingCodeCommand) {
+    const device = Device.create({
+      ...command,
+      status: DeviceStatus.UNPAIRED,
+      type: DeviceTypes.UNKNOWN,
+    })
 
     await this.devicesWritableRepo.save(device)
 
