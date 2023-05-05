@@ -104,3 +104,32 @@ export namespace GetLocationResponse {
         meta?: common_pb.Meta.AsObject,
     }
 }
+
+export class GetLocationReadyForServingResponse extends jspb.Message { 
+
+    hasData(): boolean;
+    clearData(): void;
+    getData(): Location | undefined;
+    setData(value?: Location): GetLocationReadyForServingResponse;
+
+    hasMeta(): boolean;
+    clearMeta(): void;
+    getMeta(): common_pb.Meta | undefined;
+    setMeta(value?: common_pb.Meta): GetLocationReadyForServingResponse;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): GetLocationReadyForServingResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: GetLocationReadyForServingResponse): GetLocationReadyForServingResponse.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: GetLocationReadyForServingResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): GetLocationReadyForServingResponse;
+    static deserializeBinaryFromReader(message: GetLocationReadyForServingResponse, reader: jspb.BinaryReader): GetLocationReadyForServingResponse;
+}
+
+export namespace GetLocationReadyForServingResponse {
+    export type AsObject = {
+        data?: Location.AsObject,
+        meta?: common_pb.Meta.AsObject,
+    }
+}

@@ -12,6 +12,7 @@ import * as locations_responses_pb from "./locations.responses_pb";
 interface ILocationsService extends grpc.ServiceDefinition<grpc.UntypedServiceImplementation> {
     searchAvailableLocationsForServing: ILocationsService_ISearchAvailableLocationsForServing;
     getOne: ILocationsService_IGetOne;
+    getReadyForServing: ILocationsService_IGetReadyForServing;
 }
 
 interface ILocationsService_ISearchAvailableLocationsForServing extends grpc.MethodDefinition<locations_requests_pb.SearchAvailableLocationsForServingRequest, locations_responses_pb.SearchAvailableLocationsForServingResponse> {
@@ -32,12 +33,22 @@ interface ILocationsService_IGetOne extends grpc.MethodDefinition<locations_requ
     responseSerialize: grpc.serialize<locations_responses_pb.GetLocationResponse>;
     responseDeserialize: grpc.deserialize<locations_responses_pb.GetLocationResponse>;
 }
+interface ILocationsService_IGetReadyForServing extends grpc.MethodDefinition<locations_requests_pb.GetLocationReadyForServingRequest, locations_responses_pb.GetLocationReadyForServingResponse> {
+    path: "/turnly.branch_management.v1.locations.Locations/GetReadyForServing";
+    requestStream: false;
+    responseStream: false;
+    requestSerialize: grpc.serialize<locations_requests_pb.GetLocationReadyForServingRequest>;
+    requestDeserialize: grpc.deserialize<locations_requests_pb.GetLocationReadyForServingRequest>;
+    responseSerialize: grpc.serialize<locations_responses_pb.GetLocationReadyForServingResponse>;
+    responseDeserialize: grpc.deserialize<locations_responses_pb.GetLocationReadyForServingResponse>;
+}
 
 export const LocationsService: ILocationsService;
 
 export interface ILocationsServer extends grpc.UntypedServiceImplementation {
     searchAvailableLocationsForServing: grpc.handleUnaryCall<locations_requests_pb.SearchAvailableLocationsForServingRequest, locations_responses_pb.SearchAvailableLocationsForServingResponse>;
     getOne: grpc.handleUnaryCall<locations_requests_pb.GetLocationRequest, locations_responses_pb.GetLocationResponse>;
+    getReadyForServing: grpc.handleUnaryCall<locations_requests_pb.GetLocationReadyForServingRequest, locations_responses_pb.GetLocationReadyForServingResponse>;
 }
 
 export interface ILocationsClient {
@@ -47,6 +58,9 @@ export interface ILocationsClient {
     getOne(request: locations_requests_pb.GetLocationRequest, callback: (error: grpc.ServiceError | null, response: locations_responses_pb.GetLocationResponse) => void): grpc.ClientUnaryCall;
     getOne(request: locations_requests_pb.GetLocationRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: locations_responses_pb.GetLocationResponse) => void): grpc.ClientUnaryCall;
     getOne(request: locations_requests_pb.GetLocationRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: locations_responses_pb.GetLocationResponse) => void): grpc.ClientUnaryCall;
+    getReadyForServing(request: locations_requests_pb.GetLocationReadyForServingRequest, callback: (error: grpc.ServiceError | null, response: locations_responses_pb.GetLocationReadyForServingResponse) => void): grpc.ClientUnaryCall;
+    getReadyForServing(request: locations_requests_pb.GetLocationReadyForServingRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: locations_responses_pb.GetLocationReadyForServingResponse) => void): grpc.ClientUnaryCall;
+    getReadyForServing(request: locations_requests_pb.GetLocationReadyForServingRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: locations_responses_pb.GetLocationReadyForServingResponse) => void): grpc.ClientUnaryCall;
 }
 
 export class LocationsClient extends grpc.Client implements ILocationsClient {
@@ -57,4 +71,7 @@ export class LocationsClient extends grpc.Client implements ILocationsClient {
     public getOne(request: locations_requests_pb.GetLocationRequest, callback: (error: grpc.ServiceError | null, response: locations_responses_pb.GetLocationResponse) => void): grpc.ClientUnaryCall;
     public getOne(request: locations_requests_pb.GetLocationRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: locations_responses_pb.GetLocationResponse) => void): grpc.ClientUnaryCall;
     public getOne(request: locations_requests_pb.GetLocationRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: locations_responses_pb.GetLocationResponse) => void): grpc.ClientUnaryCall;
+    public getReadyForServing(request: locations_requests_pb.GetLocationReadyForServingRequest, callback: (error: grpc.ServiceError | null, response: locations_responses_pb.GetLocationReadyForServingResponse) => void): grpc.ClientUnaryCall;
+    public getReadyForServing(request: locations_requests_pb.GetLocationReadyForServingRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: locations_responses_pb.GetLocationReadyForServingResponse) => void): grpc.ClientUnaryCall;
+    public getReadyForServing(request: locations_requests_pb.GetLocationReadyForServingRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: locations_responses_pb.GetLocationReadyForServingResponse) => void): grpc.ClientUnaryCall;
 }

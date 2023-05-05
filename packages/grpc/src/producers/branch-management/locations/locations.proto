@@ -9,4 +9,5 @@ service Locations {
   rpc SearchAvailableLocationsForServing(SearchAvailableLocationsForServingRequest)
     returns (SearchAvailableLocationsForServingResponse) {}
   rpc GetOne(GetLocationRequest) returns (GetLocationResponse) {}
+  rpc GetReadyForServing(GetLocationReadyForServingRequest) returns (GetLocationReadyForServingResponse) {}
 }
