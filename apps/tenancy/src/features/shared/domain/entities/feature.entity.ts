@@ -6,6 +6,7 @@
  */
 import { Extra, Guid, Identifier } from '@turnly/common'
 import { AggregateRoot, EntityAttributes } from '@turnly/core'
+import { BadRequestException } from '@turnly/observability'
 
 import { FeatureTypes } from '../enums/feature-types.enum'
 import { FeatureUnits } from '../enums/feature-units.enum'
@@ -106,6 +107,18 @@ export class Feature extends AggregateRoot {
     createdAt?: Date
     metadata?: Extra[]
   }): Feature {
+    if (!Object.values(FeatureTypes).includes(attributes.type)) {
+      throw new BadRequestException(
+        'Oops! You are trying to create a Feature with an invalid type.'
+      )
+    }
+
+    if (!Object.values(FeatureUnits).includes(attributes.unit)) {
+      throw new BadRequestException(
+        'Oops! You are trying to create a Feature with an invalid unit.'
+      )
+    }
+
     return new Feature(
       Identifier.generate('feat'),
       attributes.name,

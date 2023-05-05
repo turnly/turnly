@@ -7,5 +7,6 @@
 export * from './mongo.builder-adapter'
 export * from './mongo-client'
 export * from './mongo-config'
+export * from './mongo-destroyable.repo'
 export * from './mongo-readable.repo'
 export * from './mongo-writable.repo'

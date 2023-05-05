@@ -8,9 +8,11 @@
 /**
  * OIDC
  */
+export * from './features.value-object'
 export * from './jwks.service'
 export * from './jwt.type'
 export * from './member-roles.enum'
 export * from './messages.enum'
 export * from './oidc.service'
+export * from './permissions.value-object'
 export * from './scopes.enum'

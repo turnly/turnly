@@ -7,6 +7,7 @@
 import { Box, ioc } from '@turnly/core'
 
 import { FeaturesMapper } from './infrastructure/mongo/features.mapper'
+import { FeaturesDestroyableRepo } from './infrastructure/mongo/features-destroyable.repo'
 import { FeaturesReadableRepo } from './infrastructure/mongo/features-readable.repo'
 import { FeaturesWritableRepo } from './infrastructure/mongo/features-writable.repo'
 
@@ -14,4 +15,5 @@ Box.register({
   featuresMapper: ioc.asClass(FeaturesMapper).singleton(),
   featuresReadableRepo: ioc.asClass(FeaturesReadableRepo).singleton(),
   featuresWritableRepo: ioc.asClass(FeaturesWritableRepo).singleton(),
+  featuresDestroyableRepo: ioc.asClass(FeaturesDestroyableRepo).singleton(),
 })

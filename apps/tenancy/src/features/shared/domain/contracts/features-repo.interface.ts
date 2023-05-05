@@ -4,9 +4,14 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { IReadableRepository, IWritableRepository } from '@turnly/core'
+import {
+  IDestroyableRepository,
+  IReadableRepository,
+  IWritableRepository,
+} from '@turnly/core'
 
 import { Feature } from '../entities/feature.entity'
 
 export type IFeaturesReadableRepo = IReadableRepository<Feature>
 export type IFeaturesWritableRepo = IWritableRepository<Feature>
+export type IFeaturesDestroyableRepo = IDestroyableRepository
