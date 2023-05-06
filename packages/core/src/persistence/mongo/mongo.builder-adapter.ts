@@ -68,7 +68,7 @@ export class MongoBuilderAdapter<Entity extends AggregateRoot> {
       Logger.debug('---------------- MongoBuilderAdapter ----------------')
     }
 
-    return this.builder
+    return this.builder.$and?.length ? this.builder : {}
   }
 
   public getOrderBy() {
