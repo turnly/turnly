@@ -11,7 +11,10 @@ import { registerInstrumentations } from '@opentelemetry/instrumentation'
 import { GrpcInstrumentation } from '@opentelemetry/instrumentation-grpc'
 import { HttpInstrumentation } from '@opentelemetry/instrumentation-http'
 import { Resource } from '@opentelemetry/resources'
-import { BatchSpanProcessor } from '@opentelemetry/sdk-trace-base'
+import {
+  BatchSpanProcessor,
+  ConsoleSpanExporter,
+} from '@opentelemetry/sdk-trace-base'
 import { NodeTracerProvider } from '@opentelemetry/sdk-trace-node'
 import { SemanticResourceAttributes } from '@opentelemetry/semantic-conventions'
 import { SocketIoInstrumentation } from 'opentelemetry-instrumentation-socket.io'
@@ -42,9 +45,9 @@ export const createTracer = (
     }),
   })
 
-  const exporter = new JaegerExporter({
-    endpoint: process.env.TRACING_ENDPOINT,
-  })
+  const exporter = process.env.TRACING_ENDPOINT
+    ? new JaegerExporter({ endpoint: process.env.TRACING_ENDPOINT })
+    : new ConsoleSpanExporter()
 
   provider.addSpanProcessor(new BatchSpanProcessor(exporter))
 
