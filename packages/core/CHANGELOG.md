@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.29](https://github.com/turnly/turnly/compare/v0.1.28...v0.1.29) (2023-05-09)
+
+
+### Features
+
+* add auth command ([40a8ab9](https://github.com/turnly/turnly/commit/40a8ab9e58c3ce1cf06a190d82234ea4f3a15383))
+
+
+
+
+
 ## [0.1.28](https://github.com/turnly/turnly/compare/v0.1.27...v0.1.28) (2023-05-09)
 
 **Note:** Version bump only for package @turnly/core
