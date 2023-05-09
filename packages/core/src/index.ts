@@ -153,9 +153,11 @@ export { AbortError as AbortRetryingError } from 'p-retry'
 /**
  * CQRS
  */
+export * from './commands/authenticated.command'
 export * from './commands/base.command'
 export * from './commands/with-extra.command'
 export * from './commands/with-organization.command'
+export * from './queries/authenticated.query'
 export * from './queries/base.query'
 export * from './queries/with-extra.query'
 export * from './queries/with-organization.query'
