@@ -59,7 +59,10 @@ export class Winston {
 
   private getTransports() {
     const transports: any[] = [
-      new winston.transports.Console({ level: 'error' }),
+      new winston.transports.Console({
+        level: 'error',
+        handleExceptions: true,
+      }),
     ]
 
     if (process.env.FLUENT_HOST) transports.push(this.fluent)
