@@ -1,6 +1,6 @@
 {
   "name": "@turnly/realtime",
-  "version": "0.1.30",
+  "version": "0.1.31",
   "description": "Realtime exports the libs, snippets, events, or whatever is useful for any of our services.",
   "homepage": "https://github.com/turnly/turnly#readme",
   "bugs": {
@@ -42,7 +42,7 @@
   },
   "dependencies": {
     "@turnly/common": "^0.1.24",
-    "@turnly/core": "^0.1.30",
+    "@turnly/core": "^0.1.31",
     "@turnly/observability": "^0.1.30",
     "socket.io": "^4.5.1"
   },
