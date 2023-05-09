@@ -46,6 +46,7 @@
     "@turnly/common": "^0.1.24",
     "@turnly/datetime": "^0.1.24",
     "@turnly/observability": "^0.1.30",
+    "@turnly/tenancy": "^0.1.24",
     "amqp-ts": "^1.8.0",
     "awilix": "^7.0.3",
     "bodybuilder": "^2.4.0",
@@ -72,7 +73,6 @@
   },
   "devDependencies": {
     "@turnly/eslint-config": "github:turnly/configs",
-    "@turnly/tenancy": "^0.1.24",
     "@types/compression": "^1.7.1",
     "@types/convict": "^6.1.1",
     "@types/cors": "^2.8.12",
