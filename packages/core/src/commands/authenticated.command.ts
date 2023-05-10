@@ -4,8 +4,8 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import type { User } from '@turnly/tenancy'
-import { IsNotEmpty } from 'class-validator'
+import type { Memberships } from '@turnly/tenancy'
+import { IsObject } from 'class-validator'
 
 import { Command } from './base.command'
 
@@ -16,12 +16,13 @@ import { Command } from './base.command'
  */
 export abstract class AuthenticatedCommand extends Command {
   /**
-   * Identity
+   * The Memberships
    *
-   * @description The identity of the user that is executing the command.
+   * @description The memberships of the authenticated user
    */
-  @IsNotEmpty({
-    message: 'Oops! The identity is required, but was not provided.',
+  @IsObject({
+    message:
+      'Oops! The memberships of the authenticated user are required to perform this action.',
   })
-  public readonly identity: User
+  public readonly memberships: Memberships
 }
