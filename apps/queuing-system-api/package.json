@@ -1,6 +1,6 @@
 {
   "name": "@turnly/queuing-system-api",
-  "version": "0.1.31",
+  "version": "0.1.32",
   "private": true,
   "description": "Self-service ticketing via web-widget on any website or app",
   "license": "BSD-3-Clause",
@@ -24,9 +24,9 @@
   },
   "dependencies": {
     "@turnly/common": "^0.1.24",
-    "@turnly/core": "^0.1.31",
-    "@turnly/graph": "^0.1.31",
-    "@turnly/grpc": "^0.1.31",
+    "@turnly/core": "^0.1.32",
+    "@turnly/graph": "^0.1.32",
+    "@turnly/grpc": "^0.1.32",
     "@turnly/observability": "^0.1.30",
     "class-validator": "0.13.2",
     "dotenv": "^16.0.1",

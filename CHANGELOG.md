@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.32](https://github.com/turnly/turnly/compare/v0.1.31...v0.1.32) (2023-05-10)
+
+**Note:** Version bump only for package @turnly/turnly
+
+
+
+
+
 ## [0.1.31](https://github.com/turnly/turnly/compare/v0.1.30...v0.1.31) (2023-05-09)
 
 **Note:** Version bump only for package @turnly/turnly
