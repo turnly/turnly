@@ -79,7 +79,7 @@ export class Response<T> {
      *
      * @type {T}
      */
-    public readonly data?: T
+    public readonly data: T
   ) {
     this.meta.timestamp = Date.now()
 
@@ -129,7 +129,7 @@ export class Response<T> {
    * @template T
    * @memberof Response
    */
-  public static ok<T>(data?: T, message?: string): Response<T> {
+  public static ok<T>(data: T, message?: string): Response<T> {
     return new Response(
       {
         status: ResponseCodes.OK,
@@ -147,7 +147,7 @@ export class Response<T> {
    * @template T
    * @memberof Response
    */
-  public static created<T>(data?: T, message?: string): Response<T> {
+  public static created<T>(data: T, message?: string): Response<T> {
     return new Response(
       {
         status: ResponseCodes.CREATED,
@@ -167,13 +167,16 @@ export class Response<T> {
   public static accepted(
     message?: string,
     title: string = ResponseMessages.ACCEPTED_TITLE
-  ): Response<null> {
-    return new Response({
-      status: ResponseCodes.ACCEPTED,
-      title,
-      message,
-      errors: [],
-    })
+  ): Response<undefined> {
+    return new Response(
+      {
+        status: ResponseCodes.ACCEPTED,
+        title,
+        message,
+        errors: [],
+      },
+      undefined
+    )
   }
 
   /**
@@ -184,12 +187,15 @@ export class Response<T> {
    */
   public static noContent(
     title: string = ResponseMessages.NO_CONTENT_TITLE
-  ): Response<null> {
-    return new Response({
-      status: ResponseCodes.NO_CONTENT,
-      title,
-      errors: [],
-    })
+  ): Response<undefined> {
+    return new Response(
+      {
+        status: ResponseCodes.NO_CONTENT,
+        title,
+        errors: [],
+      },
+      undefined
+    )
   }
 
   /**
@@ -206,12 +212,15 @@ export class Response<T> {
     }[] = [],
     title: string = ResponseMessages.BAD_REQUEST_TITLE
   ): Response<undefined> {
-    return new Response({
-      status: ResponseCodes.BAD_REQUEST,
-      title,
-      message,
-      errors,
-    })
+    return new Response(
+      {
+        status: ResponseCodes.BAD_REQUEST,
+        title,
+        message,
+        errors,
+      },
+      undefined
+    )
   }
 
   /**
@@ -223,13 +232,16 @@ export class Response<T> {
   public static unauthorized(
     message: string,
     title: string = ResponseMessages.UNAUTHORIZED_TITLE
-  ): Response<null> {
-    return new Response({
-      status: ResponseCodes.UNAUTHORIZED,
-      title,
-      message,
-      errors: [],
-    })
+  ): Response<undefined> {
+    return new Response(
+      {
+        status: ResponseCodes.UNAUTHORIZED,
+        title,
+        message,
+        errors: [],
+      },
+      undefined
+    )
   }
 
   /**
@@ -241,13 +253,16 @@ export class Response<T> {
   public static forbidden(
     message: string,
     title: string = ResponseMessages.FORBIDDEN_TITLE
-  ): Response<null> {
-    return new Response({
-      status: ResponseCodes.FORBIDDEN,
-      title,
-      message,
-      errors: [],
-    })
+  ): Response<undefined> {
+    return new Response(
+      {
+        status: ResponseCodes.FORBIDDEN,
+        title,
+        message,
+        errors: [],
+      },
+      undefined
+    )
   }
 
   /**
@@ -259,13 +274,16 @@ export class Response<T> {
   public static notFound(
     message: string,
     title: string = ResponseMessages.NOT_FOUND_TITLE
-  ): Response<null> {
-    return new Response({
-      status: ResponseCodes.NOT_FOUND,
-      title,
-      message,
-      errors: [],
-    })
+  ): Response<undefined> {
+    return new Response(
+      {
+        status: ResponseCodes.NOT_FOUND,
+        title,
+        message,
+        errors: [],
+      },
+      undefined
+    )
   }
 
   /**
@@ -277,13 +295,16 @@ export class Response<T> {
   public static notAcceptable(
     message: string,
     title: string = ResponseMessages.NOT_ACCEPTABLE_TITLE
-  ): Response<null> {
-    return new Response({
-      status: ResponseCodes.NOT_ACCEPTABLE,
-      title,
-      message,
-      errors: [],
-    })
+  ): Response<undefined> {
+    return new Response(
+      {
+        status: ResponseCodes.NOT_ACCEPTABLE,
+        title,
+        message,
+        errors: [],
+      },
+      undefined
+    )
   }
 
   /**
@@ -295,13 +316,16 @@ export class Response<T> {
   public static conflict(
     message: string,
     title: string = ResponseMessages.CONFLICT_TITLE
-  ): Response<null> {
-    return new Response({
-      status: ResponseCodes.CONFLICT,
-      title,
-      message,
-      errors: [],
-    })
+  ): Response<undefined> {
+    return new Response(
+      {
+        status: ResponseCodes.CONFLICT,
+        title,
+        message,
+        errors: [],
+      },
+      undefined
+    )
   }
 
   /**
@@ -313,13 +337,16 @@ export class Response<T> {
   public static unprocessable(
     message: string,
     title: string = ResponseMessages.UNPROCESSABLE_TITLE
-  ): Response<null> {
-    return new Response({
-      status: ResponseCodes.UNPROCESSABLE,
-      title,
-      message,
-      errors: [],
-    })
+  ): Response<undefined> {
+    return new Response(
+      {
+        status: ResponseCodes.UNPROCESSABLE,
+        title,
+        message,
+        errors: [],
+      },
+      undefined
+    )
   }
 
   /**
@@ -331,13 +358,16 @@ export class Response<T> {
   public static timeout(
     message: string = ExceptionMessages.REQUEST_TIMEOUT,
     title: string = ResponseMessages.REQUEST_TIMEOUT_TITLE
-  ): Response<null> {
-    return new Response({
-      status: ResponseCodes.REQUEST_TIMEOUT,
-      title,
-      message,
-      errors: [],
-    })
+  ): Response<undefined> {
+    return new Response(
+      {
+        status: ResponseCodes.REQUEST_TIMEOUT,
+        title,
+        message,
+        errors: [],
+      },
+      undefined
+    )
   }
 
   /**
@@ -349,15 +379,18 @@ export class Response<T> {
   public static invalidState(
     message: string,
     title: string = ResponseMessages.INVALID_STATE_TITLE
-  ): Response<null> {
+  ): Response<undefined> {
     const status = ResponseCodes.CONFLICT
 
-    return new Response({
-      status,
-      title,
-      message,
-      errors: [],
-    })
+    return new Response(
+      {
+        status,
+        title,
+        message,
+        errors: [],
+      },
+      undefined
+    )
   }
 
   /**
@@ -369,13 +402,16 @@ export class Response<T> {
   public static tooManyRequests(
     message: string = ExceptionMessages.TOO_MANY_REQUESTS,
     title: string = ResponseMessages.TOO_MANY_REQUESTS
-  ): Response<null> {
-    return new Response({
-      status: ResponseCodes.TOO_MANY_REQUESTS,
-      title,
-      message,
-      errors: [],
-    })
+  ): Response<undefined> {
+    return new Response(
+      {
+        status: ResponseCodes.TOO_MANY_REQUESTS,
+        title,
+        message,
+        errors: [],
+      },
+      undefined
+    )
   }
 
   /**
@@ -387,13 +423,16 @@ export class Response<T> {
   public static serviceUnavailable(
     message: string = ExceptionMessages.SERVICE_UNAVAILABLE,
     title: string = ResponseMessages.SERVICE_UNAVAILABLE
-  ): Response<null> {
-    return new Response({
-      status: ResponseCodes.SERVICE_UNAVAILABLE,
-      title,
-      message,
-      errors: [],
-    })
+  ): Response<undefined> {
+    return new Response(
+      {
+        status: ResponseCodes.SERVICE_UNAVAILABLE,
+        title,
+        message,
+        errors: [],
+      },
+      undefined
+    )
   }
 
   /**
@@ -405,12 +444,15 @@ export class Response<T> {
   public static error(
     message: string = SharedMessages.UNKNOWN_EXCEPTION,
     title: string = ResponseMessages.INTERNAL_ERROR_TITLE
-  ): Response<null> {
-    return new Response({
-      status: ResponseCodes.INTERNAL_ERROR,
-      title,
-      message,
-      errors: [],
-    })
+  ): Response<undefined> {
+    return new Response(
+      {
+        status: ResponseCodes.INTERNAL_ERROR,
+        title,
+        message,
+        errors: [],
+      },
+      undefined
+    )
   }
 }
