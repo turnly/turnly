@@ -68,7 +68,7 @@ export class Response<T> {
        *
        * @type {(unknown[])}
        */
-      errors?: {
+      errors: {
         parameter?: string
         message: string
       }[]
@@ -134,6 +134,7 @@ export class Response<T> {
       {
         status: ResponseCodes.OK,
         message,
+        errors: [],
       },
       data
     )
@@ -151,6 +152,7 @@ export class Response<T> {
       {
         status: ResponseCodes.CREATED,
         message,
+        errors: [],
       },
       data
     )
@@ -170,6 +172,7 @@ export class Response<T> {
       status: ResponseCodes.ACCEPTED,
       title,
       message,
+      errors: [],
     })
   }
 
@@ -185,6 +188,7 @@ export class Response<T> {
     return new Response({
       status: ResponseCodes.NO_CONTENT,
       title,
+      errors: [],
     })
   }
 
@@ -196,10 +200,10 @@ export class Response<T> {
    */
   public static badRequest(
     message?: string,
-    errors?: {
+    errors: {
       parameter?: string
       message: string
-    }[],
+    }[] = [],
     title: string = ResponseMessages.BAD_REQUEST_TITLE
   ): Response<undefined> {
     return new Response({
@@ -224,6 +228,7 @@ export class Response<T> {
       status: ResponseCodes.UNAUTHORIZED,
       title,
       message,
+      errors: [],
     })
   }
 
@@ -241,6 +246,7 @@ export class Response<T> {
       status: ResponseCodes.FORBIDDEN,
       title,
       message,
+      errors: [],
     })
   }
 
@@ -258,6 +264,7 @@ export class Response<T> {
       status: ResponseCodes.NOT_FOUND,
       title,
       message,
+      errors: [],
     })
   }
 
@@ -275,6 +282,7 @@ export class Response<T> {
       status: ResponseCodes.NOT_ACCEPTABLE,
       title,
       message,
+      errors: [],
     })
   }
 
@@ -292,6 +300,7 @@ export class Response<T> {
       status: ResponseCodes.CONFLICT,
       title,
       message,
+      errors: [],
     })
   }
 
@@ -309,6 +318,7 @@ export class Response<T> {
       status: ResponseCodes.UNPROCESSABLE,
       title,
       message,
+      errors: [],
     })
   }
 
@@ -326,6 +336,7 @@ export class Response<T> {
       status: ResponseCodes.REQUEST_TIMEOUT,
       title,
       message,
+      errors: [],
     })
   }
 
@@ -345,6 +356,7 @@ export class Response<T> {
       status,
       title,
       message,
+      errors: [],
     })
   }
 
@@ -362,6 +374,7 @@ export class Response<T> {
       status: ResponseCodes.TOO_MANY_REQUESTS,
       title,
       message,
+      errors: [],
     })
   }
 
@@ -379,6 +392,7 @@ export class Response<T> {
       status: ResponseCodes.SERVICE_UNAVAILABLE,
       title,
       message,
+      errors: [],
     })
   }
 
@@ -396,6 +410,7 @@ export class Response<T> {
       status: ResponseCodes.INTERNAL_ERROR,
       title,
       message,
+      errors: [],
     })
   }
 }
