@@ -96,7 +96,7 @@ export class Response<T> {
     }
   }
 
-  public toGrpcCode() {
+  public toGrpcCode(): GRPCCodes {
     const grpcCode = {
       [ResponseCodes.OK]: GRPCCodes.OK,
       [ResponseCodes.CREATED]: GRPCCodes.OK,
