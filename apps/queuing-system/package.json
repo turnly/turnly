@@ -1,6 +1,6 @@
 {
   "name": "@turnly/queuing-system",
-  "version": "0.1.32",
+  "version": "0.1.33",
   "private": true,
   "description": "The core service for the queuing system, customer management and everything related to the life-cycle of a ticket.",
   "license": "BSD-3-Clause",
@@ -28,17 +28,17 @@
     ]
   },
   "dependencies": {
-    "@turnly/common": "^0.1.24",
-    "@turnly/core": "^0.1.32",
+    "@turnly/common": "^0.1.33",
+    "@turnly/core": "^0.1.33",
     "@turnly/datetime": "^0.1.24",
-    "@turnly/grpc": "^0.1.32",
-    "@turnly/observability": "^0.1.30",
+    "@turnly/grpc": "^0.1.33",
+    "@turnly/observability": "^0.1.33",
     "dotenv": "^16.0.1",
     "mongoose": "^7.1.0"
   },
   "devDependencies": {
     "@turnly/eslint-config": "github:turnly/configs",
-    "@turnly/testing": "^0.1.32",
+    "@turnly/testing": "^0.1.33",
     "@types/jest": "^28.1.4",
     "@types/node": "^18.14.0",
     "cross-env": "^7.0.3",
