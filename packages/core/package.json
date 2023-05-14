@@ -1,6 +1,6 @@
 {
   "name": "@turnly/core",
-  "version": "0.1.33",
+  "version": "0.1.34",
   "description": "This module is the shared abstraction by all applications.",
   "homepage": "https://github.com/turnly/turnly#readme",
   "bugs": {
@@ -43,9 +43,9 @@
   "dependencies": {
     "@elastic/elasticsearch": "7.17.0",
     "@turnly/auth": "^0.1.23",
-    "@turnly/common": "^0.1.33",
+    "@turnly/common": "^0.1.34",
     "@turnly/datetime": "^0.1.24",
-    "@turnly/observability": "^0.1.33",
+    "@turnly/observability": "^0.1.34",
     "@turnly/tenancy": "^0.1.24",
     "amqp-ts": "^1.8.0",
     "awilix": "^7.0.3",
