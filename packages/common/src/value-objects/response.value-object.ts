@@ -6,11 +6,11 @@
  */
 import {
   ExceptionMessages,
+  GRPCCodes,
   ResponseCodes,
   ResponseMessages,
   SharedMessages,
 } from '../constants'
-import { Nullable } from '../types/nullable.type'
 
 /**
  * Response
@@ -35,18 +35,18 @@ export class Response<T> {
       /**
        * Response optional title.
        *
-       * @type {(Nullable<string>)}
+       * @type {(string | undefined)}
        * @memberof Response
        */
-      title?: Nullable<string>
+      title?: string
 
       /**
        * Response optional message.
        *
-       * @type {(Nullable<string>)}
+       * @type {(string | undefined)}
        * @memberof Response
        */
-      message?: Nullable<string>
+      message?: string
 
       /**
        * Indicate if the request was completed successfully based on the response codes.
@@ -66,28 +66,60 @@ export class Response<T> {
       /**
        * Response details.
        *
-       * @type {(Nullable<unknown[]>)}
+       * @type {(unknown[])}
        */
-      errors?: Nullable<
-        {
-          parameter?: string
-          message: string
-        }[]
-      >
+      errors?: {
+        parameter?: string
+        message: string
+      }[]
     },
 
     /**
      * Response content.
      *
-     * @type {(Nullable<T>)}
+     * @type {T}
      */
-    public readonly data?: Nullable<T>
+    public readonly data?: T
   ) {
     this.meta.timestamp = Date.now()
 
     this.meta.success =
       this.meta.status >= ResponseCodes.OK &&
       this.meta.status < ResponseCodes.BAD_REQUEST
+  }
+
+  public grpc() {
+    return {
+      code: this.toGrpcCode(),
+      message: this.meta.message,
+      details: this.meta.errors,
+    }
+  }
+
+  public toGrpcCode() {
+    const grpcCode = {
+      [ResponseCodes.OK]: GRPCCodes.OK,
+      [ResponseCodes.CREATED]: GRPCCodes.OK,
+      [ResponseCodes.ACCEPTED]: GRPCCodes.OK,
+      [ResponseCodes.NO_CONTENT]: GRPCCodes.OK,
+      [ResponseCodes.BAD_REQUEST]: GRPCCodes.INVALID_ARGUMENT,
+      [ResponseCodes.UNAUTHORIZED]: GRPCCodes.UNAUTHENTICATED,
+      [ResponseCodes.FORBIDDEN]: GRPCCodes.PERMISSION_DENIED,
+      [ResponseCodes.NOT_FOUND]: GRPCCodes.NOT_FOUND,
+      [ResponseCodes.NOT_ACCEPTABLE]: GRPCCodes.INVALID_ARGUMENT,
+      [ResponseCodes.REQUEST_TIMEOUT]: GRPCCodes.DEADLINE_EXCEEDED,
+      [ResponseCodes.CONFLICT]: GRPCCodes.ALREADY_EXISTS,
+      [ResponseCodes.REQUEST_ENTITY_TOO_LARGE]: GRPCCodes.RESOURCE_EXHAUSTED,
+      [ResponseCodes.UNPROCESSABLE]: GRPCCodes.INVALID_ARGUMENT,
+      [ResponseCodes.TOO_MANY_REQUESTS]: GRPCCodes.RESOURCE_EXHAUSTED,
+      [ResponseCodes.INTERNAL_ERROR]: GRPCCodes.INTERNAL,
+      [ResponseCodes.NOT_IMPLEMENTED]: GRPCCodes.UNIMPLEMENTED,
+      [ResponseCodes.BAD_GATEWAY]: GRPCCodes.UNAVAILABLE,
+      [ResponseCodes.SERVICE_UNAVAILABLE]: GRPCCodes.UNAVAILABLE,
+      [ResponseCodes.GATEWAY_TIMEOUT]: GRPCCodes.DEADLINE_EXCEEDED,
+    }
+
+    return grpcCode[this.meta.status] || GRPCCodes.UNKNOWN
   }
 
   /**
