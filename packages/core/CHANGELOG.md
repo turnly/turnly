@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.37](https://github.com/turnly/turnly/compare/v0.1.36...v0.1.37) (2023-05-16)
+
+
+### Features
+
+* **bus:** add in-memory event publisher ([3fc0ce5](https://github.com/turnly/turnly/commit/3fc0ce5a41bfc36609096fa0dfc9faa3a93399aa))
+
+
+
+
+
 ## [0.1.36](https://github.com/turnly/turnly/compare/v0.1.35...v0.1.36) (2023-05-14)
 
 **Note:** Version bump only for package @turnly/core
