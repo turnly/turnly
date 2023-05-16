@@ -1,6 +1,6 @@
 {
   "name": "@turnly/queuing-system-rtm",
-  "version": "0.1.37",
+  "version": "0.1.38",
   "private": true,
   "description": "It's the real-time event bridge that sends data between internal services and applications.",
   "license": "BSD-3-Clause",
@@ -24,10 +24,10 @@
   },
   "dependencies": {
     "@turnly/common": "^0.1.36",
-    "@turnly/core": "^0.1.37",
-    "@turnly/grpc": "^0.1.37",
+    "@turnly/core": "^0.1.38",
+    "@turnly/grpc": "^0.1.38",
     "@turnly/observability": "^0.1.36",
-    "@turnly/realtime": "^0.1.37",
+    "@turnly/realtime": "^0.1.38",
     "dotenv": "^16.0.1",
     "mongoose": "^7.1.0"
   },
