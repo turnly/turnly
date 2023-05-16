@@ -128,6 +128,7 @@ export * from './persistence'
  */
 export * from './bus/base.event-bus'
 export * from './bus/in-memory.command-bus'
+export * from './bus/in-memory.event-publisher'
 export * from './bus/in-memory.query-bus'
 export * from './bus/rabbitmq'
 
