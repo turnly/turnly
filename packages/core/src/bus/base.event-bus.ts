@@ -32,7 +32,7 @@ export class EventBus<T extends Event = Event> implements IEventBus<T> {
   private subscribers: Map<string, IEventSubscriber<T>[]> = new Map()
 
   public constructor(
-    private readonly publisher: IEventPublisher<T> = new RabbitMQEventPublisher()
+    private publisher: IEventPublisher<T> = new RabbitMQEventPublisher()
   ) {}
 
   public async setup() {
@@ -45,6 +45,12 @@ export class EventBus<T extends Event = Event> implements IEventBus<T> {
     })
 
     Logger.info('Event bus setup successfully.')
+
+    return this
+  }
+
+  public registerPublisher(publisher: IEventPublisher<T>) {
+    this.publisher = publisher
 
     return this
   }
