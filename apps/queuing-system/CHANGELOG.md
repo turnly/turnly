@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.39](https://github.com/turnly/turnly/compare/v0.1.38...v0.1.39) (2023-05-24)
+
+**Note:** Version bump only for package @turnly/queuing-system
+
+
+
+
+
 ## [0.1.38](https://github.com/turnly/turnly/compare/v0.1.37...v0.1.38) (2023-05-16)
 
 **Note:** Version bump only for package @turnly/queuing-system

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.39](https://github.com/turnly/turnly/compare/v0.1.38...v0.1.39) (2023-05-24)
+
+
+### Bug Fixes
+
+* initialize the event publisher ([c6160a2](https://github.com/turnly/turnly/commit/c6160a2d880df483bf1d01663021ca4f444500a5))
+
+
+
+
+
 ## [0.1.38](https://github.com/turnly/turnly/compare/v0.1.37...v0.1.38) (2023-05-16)
 
 **Note:** Version bump only for package @turnly/core
