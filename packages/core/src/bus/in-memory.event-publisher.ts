@@ -12,7 +12,7 @@ import { LISTEN_TO_ALL_EVENTS } from './base.event-bus.config'
 export class InMemoryEventPublisher<CEvent extends Event = Event>
   implements IEventPublisher<CEvent>
 {
-  private subscribers: Map<string, IEventSubscriber<CEvent>[]>
+  private subscribers: Map<string, IEventSubscriber<CEvent>[]> = new Map()
 
   public async setup(): Promise<void> {
     /**
