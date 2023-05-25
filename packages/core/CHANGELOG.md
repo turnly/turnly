@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.43](https://github.com/turnly/turnly/compare/v0.1.42...v0.1.43) (2023-05-25)
+
+
+### Bug Fixes
+
+* change the inverse params ([bab1896](https://github.com/turnly/turnly/commit/bab189626a1f349cd5f9eba5192b4fda3253436f))
+
+
+
+
+
 ## [0.1.42](https://github.com/turnly/turnly/compare/v0.1.41...v0.1.42) (2023-05-25)
 
 **Note:** Version bump only for package @turnly/core
