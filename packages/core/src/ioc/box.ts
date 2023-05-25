@@ -9,12 +9,12 @@
  */
 import { OIDC } from '@turnly/auth'
 import * as ioc from 'awilix'
-import { InMemoryEventPublisher } from 'bus/in-memory.event-publisher'
-import { RabbitMQEventPublisher } from 'bus/rabbitmq'
 
 import { EventBus } from '../bus/base.event-bus'
 import { InMemoryCommandBus } from '../bus/in-memory.command-bus'
+import { InMemoryEventPublisher } from '../bus/in-memory.event-publisher'
 import { InMemoryQueryBus } from '../bus/in-memory.query-bus'
+import { RabbitMQEventPublisher } from '../bus/rabbitmq'
 import { config } from '../config'
 import { NotificationsProvider } from '../notifications/notifications-provider'
 import { TwilioNotificationsProvider } from '../notifications/twilio.notifications-provider'
