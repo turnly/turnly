@@ -9,6 +9,8 @@
  */
 import { OIDC } from '@turnly/auth'
 import * as ioc from 'awilix'
+import { InMemoryEventPublisher } from 'bus/in-memory.event-publisher'
+import { RabbitMQEventPublisher } from 'bus/rabbitmq'
 
 import { EventBus } from '../bus/base.event-bus'
 import { InMemoryCommandBus } from '../bus/in-memory.command-bus'
@@ -31,7 +33,6 @@ Box.register({
   commandBus: ioc.asFunction(() => new InMemoryCommandBus()).singleton(),
 })
 
-let eventBus: EventBus
 let elasticClient: ElasticClient
 let notificationsProvider: NotificationsProvider
 let oidc: OIDC
@@ -50,14 +51,17 @@ if (config.get('elasticsearch.uri')) {
   elasticClient = Box.resolve<ElasticClient>('elasticClient')
 }
 
-if (
-  config.get('rabbitmq.uri') &&
-  config.get('rabbitmq.queue') &&
-  config.get('rabbitmq.exchange')
-) {
-  Box.register({ eventBus: ioc.asFunction(() => new EventBus()).singleton() })
-  eventBus = Box.resolve<EventBus>('eventBus')
-}
+const isRabbit = config.get('rabbitmq.uri') && config.get('rabbitmq.exchange')
+
+const publisher = isRabbit
+  ? new RabbitMQEventPublisher()
+  : new InMemoryEventPublisher()
+
+Box.register({
+  eventBus: ioc.asFunction(() => new EventBus(publisher)).singleton(),
+})
+
+const eventBus = Box.resolve<EventBus>('eventBus')
 
 if (config.get('twilio.sid') && config.get('twilio.token')) {
   Box.register({
