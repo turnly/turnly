@@ -39,14 +39,14 @@ export class QueryBuilder<Entity extends AggregateRoot<Attrs<Entity>>> {
    *
    * @description The maximum number of results to return.
    */
-  private limit = config.get('collections.limit')
+  private limit: number
 
   /**
    * Offset
    *
    * @description The number of results to skip.
    */
-  private offset = config.get('collections.offset')
+  private offset: number
 
   /**
    * Filters
@@ -83,6 +83,24 @@ export class QueryBuilder<Entity extends AggregateRoot<Attrs<Entity>>> {
    * @description The relationships to include in the query.
    */
   private relationships: Property<Entity>[] = []
+
+  /**
+   * Not Limits
+   *
+   * @description If the query should not have limits
+   */
+  private hasLimits = true
+
+  /**
+   * Not Limits
+   *
+   * @description If the query should not have limits
+   */
+  public notLimits(): QueryBuilder<Entity> {
+    this.hasLimits = false
+
+    return this
+  }
 
   /**
    * Equal
@@ -409,8 +427,15 @@ export class QueryBuilder<Entity extends AggregateRoot<Attrs<Entity>>> {
    * @description Paginates the query.
    */
   public paginate(offset?: number, limit?: number): QueryBuilder<Entity> {
-    this.offset = offset || this.offset
-    this.limit = limit || this.limit
+    if (!this.hasLimits) {
+      this.offset = 0
+      this.limit = 0
+
+      return this
+    }
+
+    this.offset = offset || config.get('collections.limit')
+    this.limit = limit || config.get('collections.offset')
 
     return this
   }
