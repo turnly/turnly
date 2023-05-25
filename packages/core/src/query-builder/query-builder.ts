@@ -434,8 +434,8 @@ export class QueryBuilder<Entity extends AggregateRoot<Attrs<Entity>>> {
       return this
     }
 
-    this.offset = offset || config.get('collections.limit')
-    this.limit = limit || config.get('collections.offset')
+    this.offset = offset || config.get('collections.offset')
+    this.limit = limit || config.get('collections.limit')
 
     return this
   }
