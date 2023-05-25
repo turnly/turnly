@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.41](https://github.com/turnly/turnly/compare/v0.1.40...v0.1.41) (2023-05-25)
+
+
+### Bug Fixes
+
+* remove absolute import ([0684d6b](https://github.com/turnly/turnly/commit/0684d6b8063c65619bfa03887bdf9adcc214817d))
+
+
+
+
+
 ## [0.1.40](https://github.com/turnly/turnly/compare/v0.1.39...v0.1.40) (2023-05-25)
 
 **Note:** Version bump only for package @turnly/turnly
