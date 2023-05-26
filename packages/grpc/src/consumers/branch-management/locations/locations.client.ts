@@ -5,6 +5,7 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import {
+  GetLocationReadyForServingRequest,
   GetLocationRequest,
   LocationsClient,
   SearchAvailableLocationsForServingRequest,
@@ -13,6 +14,8 @@ import { Client } from '../../common/base.client'
 import type { ClientConfig } from '../../common/client-options.type'
 import { promisify } from '../../common/promisify.util'
 import {
+  IGetLocationReadyForServingRequest,
+  IGetLocationReadyForServingResponse,
   IGetLocationRequest,
   IGetLocationResponse,
   ILocationsClient,
@@ -56,6 +59,22 @@ export class Locations
 
     return (
       await promisify(this.client.getOne.bind(this.client))(
+        req,
+        this.getMeta(),
+        {}
+      )
+    ).toObject()
+  }
+
+  public async getReadyForServing(
+    request: IGetLocationReadyForServingRequest
+  ): Promise<IGetLocationReadyForServingResponse> {
+    const req = new GetLocationReadyForServingRequest()
+      .setId(request.id)
+      .setServiceId(request.serviceId)
+
+    return (
+      await promisify(this.client.getReadyForServing.bind(this.client))(
         req,
         this.getMeta(),
         {}

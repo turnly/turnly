@@ -60,3 +60,26 @@ export namespace GetLocationRequest {
         id: string,
     }
 }
+
+export class GetLocationReadyForServingRequest extends jspb.Message { 
+    getId(): string;
+    setId(value: string): GetLocationReadyForServingRequest;
+    getServiceId(): string;
+    setServiceId(value: string): GetLocationReadyForServingRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): GetLocationReadyForServingRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: GetLocationReadyForServingRequest): GetLocationReadyForServingRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: GetLocationReadyForServingRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): GetLocationReadyForServingRequest;
+    static deserializeBinaryFromReader(message: GetLocationReadyForServingRequest, reader: jspb.BinaryReader): GetLocationReadyForServingRequest;
+}
+
+export namespace GetLocationReadyForServingRequest {
+    export type AsObject = {
+        id: string,
+        serviceId: string,
+    }
+}

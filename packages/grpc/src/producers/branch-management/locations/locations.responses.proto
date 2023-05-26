@@ -24,3 +24,8 @@ message GetLocationResponse {
   Location data = 1;
   turnly.common.v1.Meta meta = 2;
 }
+
+message GetLocationReadyForServingResponse {
+  Location data = 1;
+  turnly.common.v1.Meta meta = 2;
+}

@@ -113,6 +113,14 @@ export class Location extends AggregateRoot {
     return hourOfToday.isOpen(this.timezone)
   }
 
+  public isInValidStatus(): boolean {
+    return Location.getCompletedStatus().includes(this.status)
+  }
+
+  public static getCompletedStatus(): LocationStatus[] {
+    return [LocationStatus.COMPLETE]
+  }
+
   /**
    * Create Location
    *

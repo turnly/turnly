@@ -14,3 +14,8 @@ message SearchAvailableLocationsForServingRequest {
 message GetLocationRequest {
   string id = 1;
 }
+
+message GetLocationReadyForServingRequest {
+  string id = 1;
+  string service_id = 2;
+}

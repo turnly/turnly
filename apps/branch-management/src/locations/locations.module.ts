@@ -13,6 +13,7 @@
 import 'locations/shared/shared.dependency'
 import 'locations/search-available-locations-for-serving/search-available-locations-for-serving.dependency'
 import 'locations/get-one-location/get-one-location.dependency'
+import 'locations/get-location-ready-for-serving/get-location-ready-for-serving.dependency'
 
 import type {
   ICommandHandler,
@@ -38,6 +39,8 @@ export class LocationsModule {
         Box.resolve('searchAvailableLocationsForServingServer').execute(
           ...args
         ),
+      getReadyForServing: (...args) =>
+        Box.resolve('getLocationReadyForServingServer').execute(...args),
     }
   }
 
@@ -53,6 +56,7 @@ export class LocationsModule {
     return [
       Box.resolve('searchAvailableLocationsForServingQueryHandler'),
       Box.resolve('getOneLocationQueryHandler'),
+      Box.resolve('getLocationReadyForServingQueryHandler'),
     ]
   }
 

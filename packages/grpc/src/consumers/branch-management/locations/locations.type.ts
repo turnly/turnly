@@ -5,6 +5,8 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import {
+  GetLocationReadyForServingRequest,
+  GetLocationReadyForServingResponse,
   GetLocationRequest,
   GetLocationResponse,
   SearchAvailableLocationsForServingRequest,
@@ -17,10 +19,17 @@ export type ISearchAvailableLocationsForServingResponse =
   SearchAvailableLocationsForServingResponse.AsObject
 export type IGetLocationRequest = GetLocationRequest.AsObject
 export type IGetLocationResponse = GetLocationResponse.AsObject
+export type IGetLocationReadyForServingRequest =
+  GetLocationReadyForServingRequest.AsObject
+export type IGetLocationReadyForServingResponse =
+  GetLocationReadyForServingResponse.AsObject
 
 export interface ILocationsClient {
   searchAvailableLocationsForServing(
     request: ISearchAvailableLocationsForServingRequest
   ): Promise<ISearchAvailableLocationsForServingResponse>
   getOne(request: IGetLocationRequest): Promise<IGetLocationResponse>
+  getReadyForServing(
+    request: IGetLocationReadyForServingRequest
+  ): Promise<IGetLocationReadyForServingResponse>
 }
