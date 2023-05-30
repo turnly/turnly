@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.45](https://github.com/turnly/turnly/compare/v0.1.44...v0.1.45) (2023-05-30)
+
+
+### Bug Fixes
+
+* remove class validation ([41dba4d](https://github.com/turnly/turnly/commit/41dba4d58ba6a06c1670a86bb823746c9aa5734f))
+
+
+
+
+
 ## [0.1.44](https://github.com/turnly/turnly/compare/v0.1.43...v0.1.44) (2023-05-30)
 
 
