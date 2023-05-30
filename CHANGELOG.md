@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.50](https://github.com/turnly/turnly/compare/v0.1.49...v0.1.50) (2023-05-30)
+
+
+### Bug Fixes
+
+* the logger not show stack ([e8f7f68](https://github.com/turnly/turnly/commit/e8f7f68e51cd124a735d871c34152c3873203982))
+
+
+
+
+
 ## [0.1.49](https://github.com/turnly/turnly/compare/v0.1.48...v0.1.49) (2023-05-30)
 
 **Note:** Version bump only for package @turnly/turnly
