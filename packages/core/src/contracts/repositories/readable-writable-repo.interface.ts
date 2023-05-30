@@ -12,8 +12,9 @@ import {
 import { IWritableRepository as IWritable } from './writable-repo.interface'
 
 interface IReadableWritableRepository<
-  Entity extends AggregateRoot<Attrs<Entity>>
+  Entity extends AggregateRoot<Attrs<Entity>>,
+  Transaction = unknown
 > extends IReadable<Entity>,
-    IWritable<Entity> {}
+    IWritable<Entity, Transaction> {}
 
 export { IReadableWritableRepository }

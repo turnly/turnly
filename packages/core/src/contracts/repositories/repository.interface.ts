@@ -9,6 +9,8 @@ import { IDestroyableRepository as IDestroyable } from './destroyable-repo.inter
 import { Attrs } from './readable-repo.interface'
 import { IReadableWritableRepository as IReadableWritable } from './readable-writable-repo.interface'
 
-export interface IRepository<Entity extends AggregateRoot<Attrs<Entity>>>
-  extends IReadableWritable<Entity>,
-    IDestroyable {}
+export interface IRepository<
+  Entity extends AggregateRoot<Attrs<Entity>>,
+  Transaction = unknown
+> extends IReadableWritable<Entity, Transaction>,
+    IDestroyable<Transaction> {}

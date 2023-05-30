@@ -6,23 +6,16 @@
  */
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Guid } from '@turnly/common'
-import { Document, Model } from 'mongoose'
+import { ClientSession, Document, Model } from 'mongoose'
 
-import { IEntityMapper } from '../../contracts/persistence/entity-mapper.interface'
 import { IDestroyableRepository } from '../../contracts/repositories'
-import { AggregateRoot } from '../../entities/aggregate-root'
 
-export abstract class MongoDestroyableRepo<
-  Entity extends AggregateRoot,
-  D extends Document
-> implements IDestroyableRepository
+export abstract class MongoDestroyableRepo<D extends Document>
+  implements IDestroyableRepository<ClientSession>
 {
-  protected constructor(
-    protected readonly model: Model<D>,
-    private readonly mapper: IEntityMapper<Entity, D>
-  ) {}
+  protected constructor(protected readonly model: Model<D>) {}
 
-  public async destroy(id: Guid): Promise<void> {
-    await this.model.deleteOne({ _id: id })
+  public async destroy(id: Guid, transaction?: ClientSession): Promise<void> {
+    await this.model.deleteOne({ _id: id }, { session: transaction })
   }
 }
