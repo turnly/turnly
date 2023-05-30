@@ -4,10 +4,8 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { Logger } from '@turnly/observability'
-
 import { Command } from '../../commands/base.command'
-import { MongoClient } from './mongo-client'
+import { Mongo } from './mongo-client'
 
 export const Transactional = function (): MethodDecorator {
   return function (
@@ -20,47 +18,14 @@ export const Transactional = function (): MethodDecorator {
     descriptor.value = async function (...args) {
       const command: Command = args?.[0]
 
-      if (!command) throw new Error('Missing command argument')
-
       if (typeof command !== 'object')
-        throw new Error('Invalid command argument')
+        throw new Error(
+          'One argument is required to use @Transactional() decorator. The first argument must be a Command instance.'
+        )
 
-      const connection = new MongoClient().getConnection()
-
-      if (!connection) throw new Error('Missing connection')
-
-      const transaction = await connection.startSession()
-
-      try {
-        const { id: transactionId } = transaction
-
-        Logger.debug('Starting transaction...', { transactionId })
-
-        transaction.startTransaction()
-
-        /**
-         * Append transaction to command arguments so that it can be used in the command handler
-         */
-        args[0] = { ...command, transaction }
-
-        const response = await method.apply(this, args)
-
-        await transaction.commitTransaction()
-
-        Logger.debug('Transaction committed successfully', { transactionId })
-
-        return response
-      } catch (error) {
-        const { id: transactionId } = transaction
-
-        await transaction.abortTransaction()
-
-        Logger.debug('Transaction aborted', { transactionId })
-
-        throw error
-      } finally {
-        transaction.endSession()
-      }
+      return Mongo.transactional(async transaction =>
+        method.apply(this, [{ ...command, transaction }, ...args.slice(1)])
+      )
     }
 
     return descriptor

@@ -4,7 +4,7 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { MongoClient, mongoConfig, Startup } from '@turnly/core'
+import { Mongo, mongoConfig, Startup } from '@turnly/core'
 
 export class Application extends Startup {
   /**
@@ -26,6 +26,6 @@ export class Application extends Startup {
   }
 
   private async setupDatabase(): Promise<void> {
-    await new MongoClient().connect(mongoConfig)
+    await new Mongo().connect(mongoConfig)
   }
 }

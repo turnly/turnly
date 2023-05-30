@@ -6,7 +6,7 @@
  */
 import type { Mongoose } from 'mongoose'
 
-import { MongoClient, MongoConfig, mongoConfig } from '../persistence'
+import { Mongo, MongoConfig, mongoConfig } from '../persistence'
 import { EnvironmentArranger } from './base.arranger'
 
 export class MongoEnvironmentArranger extends EnvironmentArranger {
@@ -46,6 +46,6 @@ export class MongoEnvironmentArranger extends EnvironmentArranger {
   }
 
   public static async connect(config: MongoConfig): Promise<Mongoose> {
-    return new MongoClient().connect(config)
+    return new Mongo().connect(config)
   }
 }
