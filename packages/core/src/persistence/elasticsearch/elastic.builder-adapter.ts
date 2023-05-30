@@ -8,7 +8,6 @@
 import { Logger } from '@turnly/observability'
 import bodybuilder from 'bodybuilder'
 
-import { config } from '../../config'
 import { AggregateRoot } from '../../entities/aggregate-root'
 import { Filter } from '../../query-builder/filter.value-object'
 import { Operator } from '../../query-builder/filter-operator.value-object'
@@ -71,18 +70,7 @@ export class ElasticBuilderAdapter<Entity extends AggregateRoot> {
     this.handleRelations()
     this.handleGeoCoordinates()
 
-    const queryObject = this.builder
-      .from(this.query.offset)
-      .size(this.query.limit)
-      .build()
-
-    if (config.get('observability.db_debug')) {
-      Logger.debug('---------------- ElasticBuilderAdapter ----------------')
-      Logger.debug(JSON.stringify(queryObject, null, 2))
-      Logger.debug('---------------- ElasticBuilderAdapter ----------------')
-    }
-
-    return queryObject
+    return this.builder.from(this.query.offset).size(this.query.limit).build()
   }
 
   private handleGeoCoordinates() {

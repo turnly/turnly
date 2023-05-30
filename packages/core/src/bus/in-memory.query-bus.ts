@@ -31,11 +31,11 @@ export class InMemoryQueryBus<Query extends IQuery = IQuery>
 
     stopWatch.mark(name)
 
-    Logger.verbose(`Executing query ${name} ...`, { ...query.valueOf() })
+    Logger.debug(`Executing query ${name} ...`)
 
     const executed = await handler.execute(query)
 
-    Logger.verbose(`Successfully executed the ${name} query`, {
+    Logger.debug(`Successfully executed the ${name} query`, {
       ...stopWatch.stop(name),
     })
 

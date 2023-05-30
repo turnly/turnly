@@ -4,7 +4,6 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { Logger } from '@turnly/observability'
 import type {
   FilterQuery,
   QuerySelector,
@@ -12,7 +11,6 @@ import type {
   SortOrder,
 } from 'mongoose'
 
-import { config } from '../../config'
 import { AggregateRoot } from '../../entities/aggregate-root'
 import { Filter } from '../../query-builder/filter.value-object'
 import { Operator } from '../../query-builder/filter-operator.value-object'
@@ -61,12 +59,6 @@ export class MongoBuilderAdapter<Entity extends AggregateRoot> {
     this.handleFilters()
     this.handleMatches()
     this.handleGeoCoordinates()
-
-    if (config.get('observability.db_debug')) {
-      Logger.debug('---------------- MongoBuilderAdapter ----------------')
-      Logger.debug(JSON.stringify(this.builder, null, 2))
-      Logger.debug('---------------- MongoBuilderAdapter ----------------')
-    }
 
     return this.builder.$and?.length ? this.builder : {}
   }

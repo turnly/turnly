@@ -37,11 +37,11 @@ export class InMemoryCommandBus<Command extends ICommand = ICommand>
 
     stopWatch.mark(name)
 
-    Logger.verbose(`Executing command ${name} ...`, { ...command.valueOf() })
+    Logger.debug(`Executing command ${name} ...`)
 
     const executed = await handler.execute(command)
 
-    Logger.verbose(`Successfully executed the ${name} command`, {
+    Logger.debug(`Successfully executed the ${name} command`, {
       ...stopWatch.stop(name),
     })
 

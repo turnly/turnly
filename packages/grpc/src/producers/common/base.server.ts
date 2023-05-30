@@ -62,7 +62,7 @@ export class Server {
   private setupServices(services: Service[]): void {
     if (!services) throw new Error('Services are not defined')
 
-    Logger.verbose('Setting up services for gRPC server...')
+    Logger.debug('Setting up services for gRPC server...')
 
     for (const service of services) {
       this._server.addService(service.definition, service.implementation)
@@ -78,7 +78,7 @@ export class Server {
   private setupMiddlewares(middlewares: MiddlewareHandler[] = []): void {
     if (!middlewares?.length) return
 
-    Logger.verbose('Setting up middlewares for gRPC server...')
+    Logger.debug('Setting up middlewares for gRPC server...')
 
     for (const middleware of middlewares) {
       this._server.use((...args) => middleware.execute(...args))

@@ -24,11 +24,11 @@ const executeSubscriber = async (name = 'Subscriber', subscriber: Function) =>
       async () => {
         stopWatch.mark(name)
 
-        Logger.verbose('Consuming event from events bus...')
+        Logger.debug('Consuming event from events bus...')
 
         await subscriber()
 
-        Logger.verbose('Consumed event successfully.', {
+        Logger.debug('Consumed event successfully.', {
           ...stopWatch.stop(name),
         })
       },

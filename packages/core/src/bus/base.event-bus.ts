@@ -62,11 +62,11 @@ export class EventBus<T extends Event = Event> implements IEventBus<T> {
 
     stopWatch.mark(STOP_WATCH_NAME)
 
-    Logger.verbose(`Publishing ${events.length} events ...`, { events })
+    Logger.debug(`Publishing ${events.length} events ...`, { events })
 
     await this.publisher.publish(events)
 
-    Logger.verbose(`Published ${events.length} events.`, {
+    Logger.debug(`Published ${events.length} events.`, {
       ...stopWatch.stop(STOP_WATCH_NAME),
     })
   }

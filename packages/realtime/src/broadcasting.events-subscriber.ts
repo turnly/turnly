@@ -27,7 +27,7 @@ export class BroadcastingEventsSubscriber<E extends string>
   ) {}
 
   public async execute(event: Event) {
-    Logger.verbose(`Broadcasting event: ${event.getName()}`)
+    Logger.debug(`Broadcasting event: ${event.getName()}`)
 
     for (const channel of this.broadcastOn(event)) {
       channel.onBroadcast(event.getName(), event)
