@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.47](https://github.com/turnly/turnly/compare/v0.1.46...v0.1.47) (2023-05-30)
+
+
+### Bug Fixes
+
+* save connection to singleton ([7e31301](https://github.com/turnly/turnly/commit/7e313010dbe47e753c7d47a0bc7f906b6942f7fb))
+
+
+
+
+
 ## [0.1.46](https://github.com/turnly/turnly/compare/v0.1.45...v0.1.46) (2023-05-30)
 
 **Note:** Version bump only for package @turnly/business-data-fields
