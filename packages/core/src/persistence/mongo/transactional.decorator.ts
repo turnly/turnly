@@ -5,11 +5,11 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import { Logger } from '@turnly/observability'
-import mongoose from 'mongoose'
 
 import { Command } from '../../commands/base.command'
+import { MongoClient } from './mongo-client'
 
-export const Transaction = function (): MethodDecorator {
+export const Transactional = function (): MethodDecorator {
   return function (
     _target: Object,
     _propertyKey: string | symbol,
@@ -25,7 +25,7 @@ export const Transaction = function (): MethodDecorator {
       if (typeof command !== 'object')
         throw new Error('Invalid command argument')
 
-      const transaction = await mongoose.startSession()
+      const transaction = await MongoClient.getConnection().startSession()
 
       try {
         const { id: transactionId } = transaction

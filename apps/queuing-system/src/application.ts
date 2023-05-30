@@ -26,6 +26,6 @@ export class Application extends Startup {
   }
 
   private async setupDatabase(): Promise<void> {
-    await new MongoClient(mongoConfig).connect()
+    await new MongoClient().connect(mongoConfig)
   }
 }

@@ -9,15 +9,23 @@ import mongoose, { Mongoose } from 'mongoose'
 import { MongoConfig } from './mongo-config'
 
 export class MongoClient {
+  private static instance: MongoClient = new MongoClient()
+
   private client: Mongoose
 
-  public constructor(private readonly config: MongoConfig) {}
+  public constructor() {
+    return MongoClient.instance
+  }
 
-  public async connect() {
+  public async connect(config: MongoConfig) {
     if (!this.client) mongoose.set('strictQuery', true)
 
-    this.client = await mongoose.connect(this.config.url)
+    this.client = await mongoose.connect(config.url)
 
     return this.client
+  }
+
+  public static getConnection() {
+    return this.instance.client.connection
   }
 }

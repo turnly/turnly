@@ -46,6 +46,6 @@ export class MongoEnvironmentArranger extends EnvironmentArranger {
   }
 
   public static async connect(config: MongoConfig): Promise<Mongoose> {
-    return new MongoClient(config).connect()
+    return new MongoClient().connect(config)
   }
 }
