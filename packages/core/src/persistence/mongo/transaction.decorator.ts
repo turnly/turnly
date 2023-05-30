@@ -28,7 +28,9 @@ export const Transaction = function (): MethodDecorator {
       const transaction = await mongoose.startSession()
 
       try {
-        Logger.debug('Starting transaction...')
+        const { id: transactionId } = transaction
+
+        Logger.debug('Starting transaction...', { transactionId })
 
         transaction.startTransaction()
 
@@ -41,15 +43,15 @@ export const Transaction = function (): MethodDecorator {
 
         await transaction.commitTransaction()
 
-        const { id: transactionId } = transaction
-
         Logger.debug('Transaction committed successfully', { transactionId })
 
         return response
       } catch (error) {
+        const { id: transactionId } = transaction
+
         await transaction.abortTransaction()
 
-        Logger.debug('Transaction aborted')
+        Logger.debug('Transaction aborted', { transactionId })
 
         throw error
       } finally {
