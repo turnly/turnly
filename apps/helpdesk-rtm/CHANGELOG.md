@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.44](https://github.com/turnly/turnly/compare/v0.1.43...v0.1.44) (2023-05-30)
+
+**Note:** Version bump only for package @turnly/helpdesk-rtm
+
+
+
+
+
 ## [0.1.43](https://github.com/turnly/turnly/compare/v0.1.42...v0.1.43) (2023-05-25)
 
 **Note:** Version bump only for package @turnly/helpdesk-rtm
