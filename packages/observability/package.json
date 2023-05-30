@@ -1,6 +1,6 @@
 {
   "name": "@turnly/observability",
-  "version": "0.1.36",
+  "version": "0.1.49",
   "description": "Identify the underlying cause of problems.",
   "homepage": "https://github.com/turnly/turnly#readme",
   "bugs": {
