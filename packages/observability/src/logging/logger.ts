@@ -5,7 +5,6 @@
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
 import opentelemetry from '@opentelemetry/api'
-import { Environment } from '@turnly/common'
 
 import type { ILogger } from './logger.interface'
 import { Winston } from './transports/winston-logger.transport'
@@ -112,8 +111,14 @@ export class Loggable {
     return this
   }
 
-  private format(message: string, payload?: Record<string, unknown>) {
-    const output = `🔔 [${this.namespace.toUpperCase()}]: ${message}`
+  private format(message: string | Error, payload?: Record<string, unknown>) {
+    const namespace = this.namespace.toUpperCase()
+
+    const output =
+      message instanceof Error
+        ? `🔔 [${namespace}]: ${message.message} \n ${message.stack}`
+        : `🔔 [${namespace}]: ${message}`
+
     const context = this.getContextData(payload)
 
     return `${output}${context}`
@@ -133,13 +138,9 @@ export class Loggable {
 
     if (!additionalData && !Object.keys(context).length) return ''
 
-    const data = JSON.stringify(
-      { ...context, ...additionalData, environment: Environment.getEnv() },
-      null,
-      2
-    )
+    const data = JSON.stringify({ ...context, ...additionalData }, null, 2)
 
-    return `\nAdditional context data: ${data}`
+    return `\nmetadata: ${data}\n`
   }
 }
 
