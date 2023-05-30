@@ -25,7 +25,11 @@ export const Transactional = function (): MethodDecorator {
       if (typeof command !== 'object')
         throw new Error('Invalid command argument')
 
-      const transaction = await MongoClient.getConnection().startSession()
+      const connection = new MongoClient().getConnection()
+
+      if (!connection) throw new Error('Missing connection')
+
+      const transaction = await connection.startSession()
 
       try {
         const { id: transactionId } = transaction
