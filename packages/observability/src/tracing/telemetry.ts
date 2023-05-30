@@ -6,16 +6,15 @@
  */
 import opentelemetry from '@opentelemetry/api'
 import { diag, DiagConsoleLogger, DiagLogLevel } from '@opentelemetry/api'
-import { JaegerExporter } from '@opentelemetry/exporter-jaeger'
+import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-proto'
 import { registerInstrumentations } from '@opentelemetry/instrumentation'
 import { GrpcInstrumentation } from '@opentelemetry/instrumentation-grpc'
 import { HttpInstrumentation } from '@opentelemetry/instrumentation-http'
 import { Resource } from '@opentelemetry/resources'
 import {
-  BatchSpanProcessor,
-  ConsoleSpanExporter,
-} from '@opentelemetry/sdk-trace-base'
-import { NodeTracerProvider } from '@opentelemetry/sdk-trace-node'
+  NodeTracerProvider,
+  SimpleSpanProcessor,
+} from '@opentelemetry/sdk-trace-node'
 import { SemanticResourceAttributes } from '@opentelemetry/semantic-conventions'
 import { SocketIoInstrumentation } from 'opentelemetry-instrumentation-socket.io'
 
@@ -45,11 +44,13 @@ export const createTracer = (
     }),
   })
 
-  const exporter = process.env.TRACING_ENDPOINT
-    ? new JaegerExporter({ endpoint: process.env.TRACING_ENDPOINT })
-    : new ConsoleSpanExporter()
+  if (process.env.TRACING_ENDPOINT) {
+    const exporter = new OTLPTraceExporter({
+      url: process.env.TRACING_ENDPOINT,
+    })
 
-  provider.addSpanProcessor(new BatchSpanProcessor(exporter))
+    provider.addSpanProcessor(new SimpleSpanProcessor(exporter))
+  }
 
   provider.register()
 
