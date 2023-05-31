@@ -43,6 +43,11 @@ export class InMemoryCommandBus<Command extends ICommand = ICommand>
 
     Logger.debug(`Successfully executed the ${name} command`)
 
+    Logger.debug(
+      'Dropping the transaction to avoid using of expired sessions ...'
+    )
+    this.transaction = undefined
+
     return executed
   }
 
