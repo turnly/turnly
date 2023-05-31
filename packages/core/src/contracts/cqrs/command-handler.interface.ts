@@ -7,5 +7,5 @@
 import { ICommand } from './command.interface'
 
 export interface ICommandHandler<C extends ICommand = any, R = any> {
-  execute(command: C): Promise<R>
+  execute<T = unknown>(command: C, transaction?: T): Promise<R>
 }

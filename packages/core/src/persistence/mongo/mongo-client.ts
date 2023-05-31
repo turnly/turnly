@@ -36,7 +36,11 @@ export class Mongo {
   }
 
   public static async session() {
-    return await Mongo.getConnection().startSession()
+    const session = await Mongo.getConnection().startSession()
+
+    session.startTransaction()
+
+    return session
   }
 
   public static isTransactionSupported() {
@@ -49,13 +53,22 @@ export class Mongo {
     if (!Mongo.isTransactionSupported()) return transaction()
 
     const session = await Mongo.session()
+    const { id: transactionId } = session
 
     try {
-      Logger.debug('Starting transaction...')
+      Logger.debug('Starting transaction...', { transactionId })
 
-      return session.withTransaction(async () => transaction(session))
+      const response = await transaction(session)
+
+      await session.commitTransaction()
+
+      Logger.debug('Transaction committed successfully', { transactionId })
+
+      return response
     } catch (error) {
-      Logger.error('Transaction aborted')
+      await session.abortTransaction()
+
+      Logger.debug('Transaction aborted', { transactionId })
 
       throw error
     } finally {

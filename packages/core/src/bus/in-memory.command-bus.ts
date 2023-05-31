@@ -7,7 +7,6 @@
 import 'reflect-metadata'
 
 import { Logger } from '@turnly/observability'
-import * as stopWatch from 'marky'
 
 import { ICommand } from '../contracts/cqrs/command.interface'
 import { ICommandBus } from '../contracts/cqrs/command-bus.interface'
@@ -29,21 +28,20 @@ export class InMemoryCommandBus<Command extends ICommand = ICommand>
 {
   private readonly handlers = new Map<string, ICommandHandler<Command>>()
 
-  public async execute<T extends Command, R = any>(command: T): Promise<R> {
+  public async execute<T extends Command, R = any, Transaction = unknown>(
+    command: T,
+    transaction?: Transaction
+  ): Promise<R> {
     const handler = this.getHandlerForCommand(command)
     const {
       constructor: { name },
     } = this.getCommandType(command)
 
-    stopWatch.mark(name)
-
     Logger.debug(`Executing command ${name} ...`)
 
-    const executed = await handler.execute(command)
+    const executed = await handler.execute(command, transaction)
 
-    Logger.debug(`Successfully executed the ${name} command`, {
-      ...stopWatch.stop(name),
-    })
+    Logger.debug(`Successfully executed the ${name} command`)
 
     return executed
   }

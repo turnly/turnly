@@ -7,7 +7,6 @@
 import 'reflect-metadata'
 
 import { Logger } from '@turnly/observability'
-import * as stopWatch from 'marky'
 import PQueue from 'p-queue'
 import pRetry from 'p-retry'
 
@@ -18,19 +17,15 @@ import { EVENT_METADATA, EVENTS_SUBSCRIBER_METADATA } from './constants'
 
 const queue = new PQueue({ concurrency: 1 })
 
-const executeSubscriber = async (name = 'Subscriber', subscriber: Function) =>
+const executeSubscriber = async (subscriber: Function) =>
   queue.add(async () =>
     pRetry(
       async () => {
-        stopWatch.mark(name)
-
         Logger.debug('Consuming event from events bus...')
 
         await subscriber()
 
-        Logger.debug('Consumed event successfully.', {
-          ...stopWatch.stop(name),
-        })
+        Logger.debug('Consumed event successfully.')
       },
       {
         retries: 3,
@@ -40,9 +35,7 @@ const executeSubscriber = async (name = 'Subscriber', subscriber: Function) =>
           )
 
           if (error.retriesLeft === 0) {
-            Logger.error('Consume event failed.', {
-              ...stopWatch.stop(name),
-            })
+            Logger.error('Consume event failed.')
           }
         },
       }
@@ -69,9 +62,7 @@ const monitorSubscriberExecution = <T extends Function>(target: T) => {
             'Oops!, unable to execute subscriber because we did not find the event.'
           )
 
-        await executeSubscriber(target?.name, async () =>
-          method.apply(this, args)
-        )
+        await executeSubscriber(async () => method.apply(this, args))
       }
 
       if (method != descriptor.value) {

@@ -7,7 +7,6 @@
 import 'reflect-metadata'
 
 import { Logger } from '@turnly/observability'
-import * as stopWatch from 'marky'
 
 import { Event } from '../contracts/events/base.event'
 import type { IEventBus } from '../contracts/events/event-bus.interface'
@@ -56,19 +55,13 @@ export class EventBus<T extends Event = Event> implements IEventBus<T> {
   }
 
   public async publish<E extends T = T>(events: E[]): Promise<void> {
-    const STOP_WATCH_NAME = 'EventBus.publish'
-
     if (!this.isReadyToWork() || !events?.length) return
-
-    stopWatch.mark(STOP_WATCH_NAME)
 
     Logger.debug(`Publishing ${events.length} events ...`, { events })
 
     await this.publisher.publish(events)
 
-    Logger.debug(`Published ${events.length} events.`, {
-      ...stopWatch.stop(STOP_WATCH_NAME),
-    })
+    Logger.debug(`Published ${events.length} events.`)
   }
 
   public subscribe<S extends IEventSubscriber<T>>(subscribers: S[]): void {

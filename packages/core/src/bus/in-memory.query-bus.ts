@@ -7,7 +7,6 @@
 import 'reflect-metadata'
 
 import { Logger } from '@turnly/observability'
-import * as stopWatch from 'marky'
 
 import { IQuery } from '../contracts/cqrs/query.interface'
 import { IQueryBus } from '../contracts/cqrs/query-bus.interface'
@@ -29,15 +28,11 @@ export class InMemoryQueryBus<Query extends IQuery = IQuery>
       constructor: { name },
     } = this.getQueryType(query)
 
-    stopWatch.mark(name)
-
     Logger.debug(`Executing query ${name} ...`)
 
     const executed = await handler.execute(query)
 
-    Logger.debug(`Successfully executed the ${name} query`, {
-      ...stopWatch.stop(name),
-    })
+    Logger.debug(`Successfully executed the ${name} query`)
 
     return executed
   }
