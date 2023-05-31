@@ -36,11 +36,7 @@ export class Mongo {
   }
 
   public static async session() {
-    const session = await Mongo.getConnection().startSession()
-
-    session.startTransaction()
-
-    return session
+    return await Mongo.getConnection().startSession()
   }
 
   public static isTransactionSupported() {
@@ -50,25 +46,16 @@ export class Mongo {
   public static async transactional<T>(
     transaction: (session?: mongoose.ClientSession) => Promise<T>
   ) {
-    if (!Mongo.isTransactionSupported()) return await transaction()
+    if (!Mongo.isTransactionSupported()) return transaction()
 
     const session = await Mongo.session()
-    const { id: transactionId } = session
 
     try {
-      Logger.debug('Starting transaction...', { transactionId })
+      Logger.debug('Starting transaction...')
 
-      const response = await transaction(session)
-
-      await session.commitTransaction()
-
-      Logger.debug('Transaction committed successfully', { transactionId })
-
-      return response
+      return session.withTransaction(async () => transaction(session))
     } catch (error) {
-      await session.abortTransaction()
-
-      Logger.debug('Transaction aborted', { transactionId })
+      Logger.error('Transaction aborted')
 
       throw error
     } finally {
