@@ -1,6 +1,6 @@
 {
   "name": "@turnly/channels",
-  "version": "0.1.52",
+  "version": "0.1.53",
   "private": true,
   "description": "Enables integrations between external systems to share data.",
   "license": "BSD-3-Clause",
@@ -29,16 +29,16 @@
   },
   "dependencies": {
     "@turnly/common": "^0.1.36",
-    "@turnly/core": "^0.1.52",
+    "@turnly/core": "^0.1.53",
     "@turnly/datetime": "^0.1.24",
-    "@turnly/grpc": "^0.1.52",
+    "@turnly/grpc": "^0.1.53",
     "@turnly/observability": "^0.1.50",
     "dotenv": "^16.0.1",
     "mongoose": "^7.1.0"
   },
   "devDependencies": {
     "@turnly/eslint-config": "github:turnly/configs",
-    "@turnly/testing": "^0.1.52",
+    "@turnly/testing": "^0.1.53",
     "@types/jest": "^28.1.4",
     "@types/node": "^16.10.2",
     "cross-env": "^7.0.3",
