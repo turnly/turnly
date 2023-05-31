@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.57](https://github.com/turnly/turnly/compare/v0.1.56...v0.1.57) (2023-05-31)
+
+
+### Bug Fixes
+
+* use of expired sessions is not permitted ([499dd32](https://github.com/turnly/turnly/commit/499dd325c77a592e037dfb7037e752d6832f7eac))
+
+
+
+
+
 ## [0.1.56](https://github.com/turnly/turnly/compare/v0.1.55...v0.1.56) (2023-05-31)
 
 **Note:** Version bump only for package @turnly/core

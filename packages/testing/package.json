@@ -1,6 +1,6 @@
 {
   "name": "@turnly/testing",
-  "version": "0.1.56",
+  "version": "0.1.57",
   "description": "Some stuff for testing, such as mocks, object mother, etc.",
   "homepage": "https://github.com/turnly/turnly#readme",
   "bugs": {
@@ -43,7 +43,7 @@
   "dependencies": {
     "@faker-js/faker": "8.0.0-alpha.0",
     "@turnly/common": "^0.1.36",
-    "@turnly/core": "^0.1.56",
+    "@turnly/core": "^0.1.57",
     "jest": "^29.4.3"
   },
   "devDependencies": {
