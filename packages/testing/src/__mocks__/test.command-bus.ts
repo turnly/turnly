@@ -4,10 +4,14 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import { ICommand, ICommandBus } from '@turnly/core'
+import { ICommand, ICommandBus, Transaction } from '@turnly/core'
 
 export class TestCommandBus implements ICommandBus {
   private readonly executeMock = jest.fn()
+
+  public transactional(_transaction?: Transaction): this {
+    return this
+  }
 
   public async execute(command: ICommand) {
     return this.executeMock(command)

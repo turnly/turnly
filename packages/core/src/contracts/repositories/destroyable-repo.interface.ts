@@ -6,6 +6,8 @@
  */
 import { Guid } from '@turnly/common'
 
-export interface IDestroyableRepository<Transaction = unknown> {
+import { Transaction } from '../../types/transaction.type'
+
+export interface IDestroyableRepository {
   destroy(id: Guid, transaction?: Transaction): Promise<void>
 }

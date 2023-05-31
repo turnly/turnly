@@ -4,7 +4,9 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-export interface IWritableRepository<Entity, Transaction = unknown> {
+import { Transaction } from '../../types/transaction.type'
+
+export interface IWritableRepository<Entity> {
   save(
     entities: Entity | Entity[],
     transaction?: Transaction

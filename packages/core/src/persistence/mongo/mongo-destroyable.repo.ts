@@ -6,16 +6,17 @@
  */
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Guid } from '@turnly/common'
-import { ClientSession, Document, Model } from 'mongoose'
+import { Document, Model } from 'mongoose'
 
 import { IDestroyableRepository } from '../../contracts/repositories'
+import { Transaction } from '../../types/transaction.type'
 
 export abstract class MongoDestroyableRepo<D extends Document>
-  implements IDestroyableRepository<ClientSession>
+  implements IDestroyableRepository
 {
   protected constructor(protected readonly model: Model<D>) {}
 
-  public async destroy(id: Guid, transaction?: ClientSession): Promise<void> {
+  public async destroy(id: Guid, transaction?: Transaction): Promise<void> {
     await this.model.deleteOne({ _id: id }, { session: transaction })
   }
 }

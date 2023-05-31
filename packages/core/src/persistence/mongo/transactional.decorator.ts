@@ -4,12 +4,12 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
-import type mongoose from 'mongoose'
 
 import { Command } from '../../commands/base.command'
+import { Transaction } from '../../types/transaction.type'
 import { Mongo } from './mongo-client'
 
-const merge = (args: unknown[], transaction?: mongoose.ClientSession) => {
+const merge = (args: unknown[], transaction?: Transaction) => {
   if (!transaction) return args
 
   if (!args.length)
@@ -38,7 +38,7 @@ export const Transactional = function (): MethodDecorator {
           'One argument is required to use @Transactional() decorator. The first argument must be a Command instance.'
         )
 
-      const session: mongoose.ClientSession = args?.[1]
+      const session: Transaction = args?.[1]
 
       const isSession = Boolean(
         session && session['inTransaction'] !== undefined

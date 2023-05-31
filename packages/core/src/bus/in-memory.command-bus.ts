@@ -22,16 +22,16 @@ import type {
   CommandMetadata,
   Type,
 } from '../types/command.type'
+import { Transaction } from '../types/transaction.type'
 
 export class InMemoryCommandBus<Command extends ICommand = ICommand>
   implements ICommandBus<Command>
 {
   private readonly handlers = new Map<string, ICommandHandler<Command>>()
 
-  public async execute<T extends Command, R = any, Transaction = unknown>(
-    command: T,
-    transaction?: Transaction
-  ): Promise<R> {
+  private transaction?: Transaction
+
+  public async execute<T extends Command, R = any>(command: T): Promise<R> {
     const handler = this.getHandlerForCommand(command)
     const {
       constructor: { name },
@@ -39,11 +39,17 @@ export class InMemoryCommandBus<Command extends ICommand = ICommand>
 
     Logger.debug(`Executing command ${name} ...`)
 
-    const executed = await handler.execute(command, transaction)
+    const executed = await handler.execute(command, this.transaction)
 
     Logger.debug(`Successfully executed the ${name} command`)
 
     return executed
+  }
+
+  public transactional(transaction?: Transaction) {
+    this.transaction = transaction
+
+    return this
   }
 
   public register(handlers: ICommandHandler<Command>[]) {

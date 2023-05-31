@@ -57,7 +57,7 @@ export class EventBus<T extends Event = Event> implements IEventBus<T> {
   public async publish<E extends T = T>(events: E[]): Promise<void> {
     if (!this.isReadyToWork() || !events?.length) return
 
-    Logger.debug(`Publishing ${events.length} events ...`, { events })
+    Logger.debug(`Publishing ${events.length} events ...`)
 
     await this.publisher.publish(events)
 

@@ -6,16 +6,17 @@
  */
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Guid } from '@turnly/common'
-import { ClientSession, Document, FilterQuery, Model } from 'mongoose'
+import { Document, FilterQuery, Model } from 'mongoose'
 
 import { IEntityMapper } from '../../contracts/persistence/entity-mapper.interface'
 import { IWritableRepository } from '../../contracts/repositories'
 import { AggregateRoot } from '../../entities/aggregate-root'
+import { Transaction } from '../../types/transaction.type'
 
 export abstract class MongoWritableRepo<
   Entity extends AggregateRoot,
   D extends Document
-> implements IWritableRepository<Entity, ClientSession>
+> implements IWritableRepository<Entity>
 {
   protected constructor(
     protected readonly model: Model<D>,
@@ -24,7 +25,7 @@ export abstract class MongoWritableRepo<
 
   public async save(
     entities: Entity | Entity[],
-    transaction?: ClientSession
+    transaction?: Transaction
   ): Promise<void> {
     Array.isArray(entities)
       ? await this.bulk(
@@ -40,7 +41,7 @@ export abstract class MongoWritableRepo<
   protected async persist(
     _id: Guid,
     entity: Entity,
-    transaction?: ClientSession
+    transaction?: Transaction
   ) {
     const doc = this.toDocument(entity)
 
@@ -56,7 +57,7 @@ export abstract class MongoWritableRepo<
       id: Guid
       entity: Entity
     }[],
-    transaction?: ClientSession
+    transaction?: Transaction
   ) {
     return this.model.bulkWrite(
       entities.map(({ id: _id, entity }) => ({

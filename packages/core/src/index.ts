@@ -99,6 +99,7 @@ export * from './helpers/simple-name.util'
 export * from './types/command.type'
 export * from './types/entity-attributes.type'
 export * from './types/query.type'
+export * from './types/transaction.type'
 
 /**
  * Infrastructure

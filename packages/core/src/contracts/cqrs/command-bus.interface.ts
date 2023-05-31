@@ -4,11 +4,11 @@
  *
  * Licensed under BSD 3-Clause License. See LICENSE for terms.
  */
+import { Transaction } from '../../types/transaction.type'
 import { ICommand } from './command.interface'
 
 export interface ICommandBus<C extends ICommand = ICommand> {
-  execute<R, T extends C, Transaction = unknown>(
-    command: T,
-    transaction?: Transaction
-  ): Promise<R>
+  execute<R, T extends C>(command: T): Promise<R>
+
+  transactional(transaction?: Transaction): this
 }
