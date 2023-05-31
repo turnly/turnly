@@ -10,6 +10,13 @@ import { Command } from '../../commands/base.command'
 import { Mongo } from './mongo-client'
 
 const merge = (args: unknown[], transaction?: mongoose.ClientSession) => {
+  if (!transaction) return args
+
+  if (!args.length)
+    throw new Error(
+      'Oops! You are trying to use @Transactional() decorator without arguments. Please, add the Command instance as the first argument.'
+    )
+
   args[1] = transaction
 
   return args
@@ -33,9 +40,15 @@ export const Transactional = function (): MethodDecorator {
 
       const session: mongoose.ClientSession = args?.[1]
 
+      const isSession = Boolean(
+        session && session['inTransaction'] !== undefined
+      )
+
+      if (isSession) return method.apply(this, args)
+
       if (session)
         throw new Error(
-          'Oops! You are trying to use @Transactional() decorator with a session. Please, remove the session argument from the method.'
+          'Oops! You are trying to use @Transactional() decorator with a non-transactional session. Please, remove the second argument.'
         )
 
       return Mongo.transactional(async transaction =>
