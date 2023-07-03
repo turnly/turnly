@@ -7,28 +7,112 @@
 import './warnings.util'
 
 import { Tracer } from '@opentelemetry/api'
+import { diag, DiagConsoleLogger, DiagLogLevel } from '@opentelemetry/api'
+import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-http'
+import {
+  Instrumentation,
+  registerInstrumentations,
+} from '@opentelemetry/instrumentation'
+import { ExpressInstrumentation } from '@opentelemetry/instrumentation-express'
+import { GraphQLInstrumentation } from '@opentelemetry/instrumentation-graphql'
+import { GrpcInstrumentation } from '@opentelemetry/instrumentation-grpc'
+import { HttpInstrumentation } from '@opentelemetry/instrumentation-http'
+import { Resource } from '@opentelemetry/resources'
+import {
+  BatchSpanProcessor,
+  NodeTracerProvider,
+} from '@opentelemetry/sdk-trace-node'
+import { SemanticResourceAttributes } from '@opentelemetry/semantic-conventions'
+import { SocketIoInstrumentation } from 'opentelemetry-instrumentation-socket.io'
 
-import { createTracer, InstrumentationType } from './telemetry'
+import { getLoggingLevel } from '../logging/logger-options.util'
+
+export enum InstrumentationType {
+  GRPC = 'grpc',
+  REALTIME = 'realtime',
+  GRAPHQL = 'graphql',
+  GATEWAY = 'graphql_gateway',
+}
+
+export type TraceOptions = {
+  name: string
+  instrumentations: InstrumentationType[]
+}
 
 export class Trace {
-  private static tracer: Tracer
+  private readonly tracer: Tracer
 
-  private static setup(name: string, instrumentations?: InstrumentationType[]) {
-    if (this.tracer) return
-
-    this.tracer = createTracer(name, instrumentations)
+  public constructor(private readonly options: TraceOptions) {
+    this.setLogger()
   }
 
-  public static initialize(options: {
-    name: string
-    instrumentations?: InstrumentationType[]
-  }) {
-    this.setup(options.name, options.instrumentations)
+  public setup() {
+    this.registerInstrumentations()
 
-    return this
+    const resource = new Resource({
+      [SemanticResourceAttributes.SERVICE_NAME]: this.options.name,
+    })
+
+    const provider = new NodeTracerProvider({
+      resource: Resource.default().merge(resource),
+    })
+
+    if (process.env.TRACING_ENDPOINT) {
+      const exporter = new OTLPTraceExporter({
+        url: process.env.TRACING_ENDPOINT,
+      })
+
+      provider.addSpanProcessor(
+        new BatchSpanProcessor(exporter, {
+          maxQueueSize: 1000,
+          scheduledDelayMillis: 1000,
+        })
+      )
+    }
+
+    provider.register()
   }
 
-  public static getTracer() {
+  private registerInstrumentations() {
+    const instrumentations: Instrumentation[] = []
+
+    for (const instrumentation of this.options.instrumentations) {
+      if (instrumentation === InstrumentationType.GRPC) {
+        instrumentations.push(new GrpcInstrumentation())
+      }
+
+      if (instrumentation === InstrumentationType.REALTIME) {
+        instrumentations.push(new HttpInstrumentation())
+        instrumentations.push(new SocketIoInstrumentation())
+      }
+
+      if (instrumentation === InstrumentationType.GRAPHQL) {
+        instrumentations.push(new HttpInstrumentation())
+        instrumentations.push(new ExpressInstrumentation())
+        instrumentations.push(
+          new GraphQLInstrumentation({ allowValues: true, depth: 10 })
+        )
+      }
+
+      if (instrumentation === InstrumentationType.GATEWAY) {
+        instrumentations.push(new HttpInstrumentation())
+        instrumentations.push(new ExpressInstrumentation())
+      }
+    }
+
+    registerInstrumentations({ instrumentations })
+  }
+
+  private setLogger() {
+    const level = getLoggingLevel().toUpperCase()
+
+    diag.setLogger(
+      new DiagConsoleLogger(),
+      DiagLogLevel[level] ?? DiagLogLevel.INFO
+    )
+  }
+
+  public getTracer() {
     return this.tracer
   }
 }
