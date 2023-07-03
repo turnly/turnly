@@ -35,14 +35,21 @@ export enum InstrumentationType {
 }
 
 export type TraceOptions = {
-  name: string
+  name?: string
   instrumentations: InstrumentationType[]
 }
 
 export class Trace {
   private readonly tracer: Tracer
 
-  public constructor(private readonly options: TraceOptions) {
+  private readonly options: TraceOptions = {
+    name: process.env.APP_NAME as string,
+    instrumentations: [InstrumentationType.GRPC, InstrumentationType.GRAPHQL],
+  }
+
+  public constructor(options: TraceOptions) {
+    this.options = { ...this.options, ...options }
+
     this.setLogger()
   }
 
