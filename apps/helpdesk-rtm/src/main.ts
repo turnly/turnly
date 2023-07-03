@@ -10,7 +10,12 @@ dotenv.config()
 import { config, eventBus } from '@turnly/core'
 import { Tracing } from '@turnly/observability'
 
-Tracing.Trace.initialize({ name: config.get('app.name') })
+const telemetry = new Tracing.Trace({
+  name: config.get('app.name'),
+  instrumentations: [Tracing.InstrumentationType.GRPC],
+})
+
+telemetry.setup()
 
 import { Application } from 'application'
 
