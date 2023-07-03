@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.60](https://github.com/turnly/turnly/compare/v0.1.59...v0.1.60) (2023-07-03)
+
+
+### Features
+
+* allow port configuration ([dd86b22](https://github.com/turnly/turnly/commit/dd86b22a509cc14a70e8908b888169a90abb71c6))
+
+
+
+
+
 ## [0.1.59](https://github.com/turnly/turnly/compare/v0.1.58...v0.1.59) (2023-07-03)
 
 **Note:** Version bump only for package @turnly/turnly
