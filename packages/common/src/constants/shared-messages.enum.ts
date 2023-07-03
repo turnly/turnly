@@ -9,7 +9,7 @@ export enum SharedMessages {
    * Application messages
    */
   APP_STARTING = 'Starting application...',
-  APP_READY = 'Application successfully running on port: {PORT}',
+  APP_READY = 'GraphQL application successfully running on port: {PORT}',
 
   /**
    * DB messages

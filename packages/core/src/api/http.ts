@@ -197,15 +197,10 @@ export class Http {
    * @private
    * @memberof Server
    */
-  public async listen() {
+  public async listen(port: number = config.get('server.port')) {
     await new Promise<void>(resolve => {
-      this._httpServer.listen(config.get('server.port'), () => {
-        Logger.info(
-          SharedMessages.APP_READY.replace(
-            '{PORT}',
-            config.get('server.port').toString()
-          )
-        )
+      this._httpServer.listen(port, () => {
+        Logger.info(SharedMessages.APP_READY.replace('{PORT}', port.toString()))
 
         resolve()
       })
