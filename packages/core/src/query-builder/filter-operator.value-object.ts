@@ -21,6 +21,7 @@ export enum Operator {
   GTE = 'GREATER_THAN_EQUAL',
   LTE = 'LOWER_THAN_EQUAL',
   EQUAL_IN_OBJECT_ARRAY = 'EQUAL_IN_OBJECT_ARRAY',
+  CONTAINS = 'CONTAINS',
 }
 
 export class FilterOperator extends EnumValueObject<Operator> {

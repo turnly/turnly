@@ -141,6 +141,13 @@ export class QueryBuilder<Entity extends AggregateRoot<Attrs<Entity>>> {
     return this.addFilter(property, Operator.NOT_EQUAL, value)
   }
 
+  public contains<P extends Property<Entity>, V extends Value<Entity, P>>(
+    property: P,
+    value: typeof property extends Array<infer T> ? T[] : V
+  ): QueryBuilder<Entity> {
+    return this.addFilter(property, Operator.CONTAINS, value)
+  }
+
   /**
    * Equal in object array
    *

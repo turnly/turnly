@@ -49,6 +49,7 @@ export class MongoBuilderAdapter<Entity extends AggregateRoot> {
     [Operator.IN, this.inQuery],
     [Operator.NOT_IN, this.notInQuery],
     [Operator.EQUAL_IN_OBJECT_ARRAY, this.equalInObjectArrayQuery],
+    [Operator.CONTAINS, this.containsQuery],
   ])
 
   public constructor(private readonly query: QueryBuilderObject<Entity>) {
@@ -175,6 +176,17 @@ export class MongoBuilderAdapter<Entity extends AggregateRoot> {
       field: MongoBuilderAdapter.getField(filter),
       value: { $regex: new RegExp(filter.value, 'i') },
     }
+  }
+
+  private containsQuery<V>(filter: Filter<V>) {
+    if (Array.isArray(filter.value)) {
+      return {
+        field: MongoBuilderAdapter.getField(filter),
+        value: { $all: filter.value },
+      }
+    }
+
+    return this.matchQuery(filter as Filter<string>)
   }
 
   private notEqualQuery<V>(filter: Filter<V>): QueryObject<Entity, V> {
