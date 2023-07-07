@@ -1,6 +1,6 @@
 {
   "name": "@turnly/core",
-  "version": "0.1.62",
+  "version": "0.1.63",
   "description": "This module is the shared abstraction by all applications.",
   "homepage": "https://github.com/turnly/turnly#readme",
   "bugs": {
