@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.61](https://github.com/turnly/turnly/compare/v0.1.60...v0.1.61) (2023-07-07)
+
+
+### Features
+
+* add support to contains query ([0d3ba17](https://github.com/turnly/turnly/commit/0d3ba17039dfc0951176a1b0bad7d405965642c4))
+
+
+
+
+
 ## [0.1.60](https://github.com/turnly/turnly/compare/v0.1.59...v0.1.60) (2023-07-03)
 
 
