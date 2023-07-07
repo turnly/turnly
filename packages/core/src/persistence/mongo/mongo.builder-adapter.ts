@@ -31,7 +31,7 @@ type QueryObject<Entity extends AggregateRoot, V> = {
 }
 
 export class MongoBuilderAdapter<Entity extends AggregateRoot> {
-  private readonly builder: MongoQuery<Entity>
+  private readonly builder: MongoQuery<Entity>['$and'] = []
 
   private readonly transformers: Map<
     Operator,
@@ -53,7 +53,7 @@ export class MongoBuilderAdapter<Entity extends AggregateRoot> {
   ])
 
   public constructor(private readonly query: QueryBuilderObject<Entity>) {
-    this.builder = { $and: [] }
+    this.builder = []
   }
 
   public build() {
@@ -61,7 +61,11 @@ export class MongoBuilderAdapter<Entity extends AggregateRoot> {
     this.handleMatches()
     this.handleGeoCoordinates()
 
-    return this.builder.$and?.length ? this.builder : {}
+    if (this.builder?.length) {
+      return this.query.isOr ? { $or: this.builder } : { $and: this.builder }
+    }
+
+    return {}
   }
 
   public getOrderBy() {
@@ -81,7 +85,7 @@ export class MongoBuilderAdapter<Entity extends AggregateRoot> {
         coordinates: { lat, lng },
       } = this.query.geo
 
-      this.builder.$and?.push({
+      this.builder?.push({
         [property]: {
           $near: {
             $geometry: {
@@ -104,7 +108,7 @@ export class MongoBuilderAdapter<Entity extends AggregateRoot> {
           } as FilterQuery<Partial<EntityAttributes<Entity>>>)
       )
 
-      this.builder.$and?.push({ $or: matches } as FilterQuery<
+      this.builder?.push({ $or: matches } as FilterQuery<
         Partial<EntityAttributes<Entity>>
       >)
     }
@@ -115,7 +119,7 @@ export class MongoBuilderAdapter<Entity extends AggregateRoot> {
       for (const filter of this.query.filters) {
         const { value, field } = this.queryForFilter(filter)
 
-        this.builder.$and?.push({
+        this.builder?.push({
           [field]: value,
         } as FilterQuery<Partial<EntityAttributes<Entity>>>)
       }

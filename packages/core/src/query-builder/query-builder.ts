@@ -92,6 +92,19 @@ export class QueryBuilder<Entity extends AggregateRoot<Attrs<Entity>>> {
   private hasLimits = true
 
   /**
+   * Is Or
+   *
+   * @description If the query should be an OR query
+   */
+  private isOr = false
+
+  public or(): QueryBuilder<Entity> {
+    this.isOr = true
+
+    return this
+  }
+
+  /**
    * Not Limits
    *
    * @description If the query should not have limits
@@ -563,6 +576,7 @@ export class QueryBuilder<Entity extends AggregateRoot<Attrs<Entity>>> {
       hasMatches: this.hasMatches(),
       hasRelations: this.hasRelations(),
       hasOrders: this.hasOrders(),
+      isOr: this.isOr,
       limit: this.limit,
       offset: this.offset,
       orders: this.orders,
