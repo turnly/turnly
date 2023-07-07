@@ -1,6 +1,6 @@
 {
   "name": "@turnly/graph",
-  "version": "0.1.61",
+  "version": "0.1.62",
   "description": "The best way to build a production-ready TypeScript GraphQL server.",
   "homepage": "https://github.com/turnly/turnly#readme",
   "bugs": {
@@ -43,7 +43,7 @@
   "dependencies": {
     "@apollo/utils.keyvaluecache": "^1.0.1",
     "@turnly/common": "^0.1.60",
-    "@turnly/core": "^0.1.61",
+    "@turnly/core": "^0.1.62",
     "@turnly/observability": "^0.1.60",
     "apollo-datasource": "^3.3.2",
     "apollo-server-express": "^3.9.0",

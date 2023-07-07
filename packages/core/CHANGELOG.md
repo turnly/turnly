@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.62](https://github.com/turnly/turnly/compare/v0.1.61...v0.1.62) (2023-07-07)
+
+
+### Features
+
+* **query:** add support for arrays ([aa3857d](https://github.com/turnly/turnly/commit/aa3857d7f15f83dede6c87d9b4b362a226cde343))
+
+
+
+
+
 ## [0.1.61](https://github.com/turnly/turnly/compare/v0.1.60...v0.1.61) (2023-07-07)
 
 
