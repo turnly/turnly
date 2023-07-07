@@ -329,7 +329,7 @@ export class QueryBuilder<Entity extends AggregateRoot<Attrs<Entity>>> {
    */
   public in<P extends Property<Entity>, V extends Value<Entity, P>>(
     property: P,
-    values: V[]
+    values: typeof property extends Array<infer T> ? T : V | V[]
   ): QueryBuilder<Entity> {
     return this.addFilter(property, Operator.IN, values)
   }
@@ -341,7 +341,7 @@ export class QueryBuilder<Entity extends AggregateRoot<Attrs<Entity>>> {
    */
   public notIn<P extends Property<Entity>, V extends Value<Entity, P>>(
     property: P,
-    values: V[]
+    values: typeof property extends Array<infer T> ? T : V | V[]
   ): QueryBuilder<Entity> {
     return this.addFilter(property, Operator.NOT_IN, values)
   }
