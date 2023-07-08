@@ -1,6 +1,6 @@
 {
   "name": "@turnly/queuing-system",
-  "version": "0.1.63",
+  "version": "0.1.64",
   "private": true,
   "description": "The core service for the queuing system, customer management and everything related to the life-cycle of a ticket.",
   "license": "BSD-3-Clause",
@@ -31,7 +31,7 @@
     "@turnly/common": "^0.1.60",
     "@turnly/core": "^0.1.63",
     "@turnly/datetime": "^0.1.24",
-    "@turnly/grpc": "^0.1.63",
+    "@turnly/grpc": "^0.1.64",
     "@turnly/observability": "^0.1.60",
     "dotenv": "^16.0.1",
     "mongoose": "^7.1.0"
