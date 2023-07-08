@@ -41,11 +41,11 @@ export class Server {
    *
    * @memberof Server
    */
-  public setup() {
+  public async setup() {
     try {
       this.setupMiddlewares(this.options.middlewares)
       this.setupServices(this.options.services)
-      this.listen(this.options.port)
+      await this.listen(this.options.port)
     } catch (error) {
       const isTrusted = ExceptionHandler.handle(error).isTrusted()
 
@@ -91,15 +91,19 @@ export class Server {
    * @private
    * @memberof Server
    */
-  private listen(port: number): void {
-    if (!port) throw new Error('Port is not defined')
+  private async listen(port: number): Promise<void> {
+    return new Promise(resolve => {
+      if (!port) throw new Error('Port is not defined')
 
-    const ADDRESS = `0.0.0.0:${port}`
+      const ADDRESS = `0.0.0.0:${port}`
 
-    this._server.bindAsync(ADDRESS, Credentials.getForServer(), () => {
-      this._server.start()
+      this._server.bindAsync(ADDRESS, Credentials.getForServer(), () => {
+        this._server.start()
 
-      Logger.info(`gRPC server started on ${ADDRESS}`)
+        Logger.info(`gRPC application successfully running on port: ${port}`)
+
+        resolve()
+      })
     })
   }
 }
