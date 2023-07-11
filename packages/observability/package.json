@@ -1,6 +1,6 @@
 {
   "name": "@turnly/observability",
-  "version": "0.1.60",
+  "version": "0.1.65",
   "description": "Identify the underlying cause of problems.",
   "homepage": "https://github.com/turnly/turnly#readme",
   "bugs": {
@@ -47,8 +47,8 @@
     "@opentelemetry/instrumentation-graphql": "^0.34.3",
     "@opentelemetry/instrumentation-grpc": "^0.35.1",
     "@opentelemetry/instrumentation-http": "^0.35.1",
-    "@opentelemetry/sdk-trace-node": "^1.9.1",
     "@opentelemetry/propagator-jaeger": "^1.15.0",
+    "@opentelemetry/sdk-trace-node": "^1.9.1",
     "@sentry/node": "7.37.2",
     "@sentry/tracing": "7.37.2",
     "@turnly/common": "^0.1.60",

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.65](https://github.com/turnly/turnly/compare/v0.1.64...v0.1.65) (2023-07-11)
+
+
+### Features
+
+* update telemetry ([a05b22c](https://github.com/turnly/turnly/commit/a05b22c7da9bb9a288b75a64b022926d1dd08243))
+
+
+
+
+
 ## [0.1.60](https://github.com/turnly/turnly/compare/v0.1.59...v0.1.60) (2023-07-03)
 
 **Note:** Version bump only for package @turnly/observability
