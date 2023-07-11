@@ -48,6 +48,7 @@
     "@opentelemetry/instrumentation-grpc": "^0.35.1",
     "@opentelemetry/instrumentation-http": "^0.35.1",
     "@opentelemetry/sdk-trace-node": "^1.9.1",
+    "@opentelemetry/propagator-ot-trace": "^0.26.3",
     "@sentry/node": "7.37.2",
     "@sentry/tracing": "7.37.2",
     "@turnly/common": "^0.1.60",

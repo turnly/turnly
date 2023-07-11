@@ -2063,6 +2063,11 @@
   dependencies:
     "@opentelemetry/core" "1.12.0"
 
+"@opentelemetry/propagator-ot-trace@^0.26.3":
+  version "0.26.3"
+  resolved "https://registry.yarnpkg.com/@opentelemetry/propagator-ot-trace/-/propagator-ot-trace-0.26.3.tgz#ad24c8a6a1330cf85f3133c07c31345b19026f82"
+  integrity sha512-mNjtsycTGZNrqfEi1H3p5wTQouYvIDSE2v/xYMkC0TjAE1x1C2ftmPJvL18WGUduRpm4gRQXdd9kbissQFiJJQ==
+
 "@opentelemetry/resources@1.12.0":
   version "1.12.0"
   resolved "https://registry.yarnpkg.com/@opentelemetry/resources/-/resources-1.12.0.tgz#895394c727dc3e7e51d1d2cc50907ec07a626dca"

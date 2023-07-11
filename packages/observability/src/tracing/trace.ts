@@ -6,7 +6,7 @@
  */
 import './warnings.util'
 
-import { Tracer } from '@opentelemetry/api'
+import { propagation, Tracer } from '@opentelemetry/api'
 import { diag, DiagConsoleLogger, DiagLogLevel } from '@opentelemetry/api'
 import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-http'
 import {
@@ -17,6 +17,7 @@ import { ExpressInstrumentation } from '@opentelemetry/instrumentation-express'
 import { GraphQLInstrumentation } from '@opentelemetry/instrumentation-graphql'
 import { GrpcInstrumentation } from '@opentelemetry/instrumentation-grpc'
 import { HttpInstrumentation } from '@opentelemetry/instrumentation-http'
+import { OTTracePropagator } from '@opentelemetry/propagator-ot-trace'
 import { Resource } from '@opentelemetry/resources'
 import {
   BatchSpanProcessor,
@@ -38,6 +39,8 @@ export type TraceOptions = {
   name?: string
   instrumentations: InstrumentationType[]
 }
+
+propagation.setGlobalPropagator(new OTTracePropagator())
 
 export class Trace {
   private readonly tracer: Tracer
