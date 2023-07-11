@@ -6,7 +6,7 @@
  */
 import './warnings.util'
 
-import { propagation, Tracer } from '@opentelemetry/api'
+import { Tracer } from '@opentelemetry/api'
 import { diag, DiagConsoleLogger, DiagLogLevel } from '@opentelemetry/api'
 import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-http'
 import {
@@ -17,7 +17,7 @@ import { ExpressInstrumentation } from '@opentelemetry/instrumentation-express'
 import { GraphQLInstrumentation } from '@opentelemetry/instrumentation-graphql'
 import { GrpcInstrumentation } from '@opentelemetry/instrumentation-grpc'
 import { HttpInstrumentation } from '@opentelemetry/instrumentation-http'
-import { OTTracePropagator } from '@opentelemetry/propagator-ot-trace'
+import { JaegerPropagator } from '@opentelemetry/propagator-jaeger'
 import { Resource } from '@opentelemetry/resources'
 import {
   BatchSpanProcessor,
@@ -39,8 +39,6 @@ export type TraceOptions = {
   name?: string
   instrumentations: InstrumentationType[]
 }
-
-propagation.setGlobalPropagator(new OTTracePropagator())
 
 export class Trace {
   private readonly tracer: Tracer
@@ -80,7 +78,7 @@ export class Trace {
       )
     }
 
-    provider.register()
+    provider.register({ propagator: new JaegerPropagator() })
   }
 
   private registerInstrumentations() {
@@ -92,12 +90,12 @@ export class Trace {
       }
 
       if (instrumentation === InstrumentationType.REALTIME) {
-        instrumentations.push(new HttpInstrumentation())
+        instrumentations.push(this.getHttpInstrumentation())
         instrumentations.push(new SocketIoInstrumentation())
       }
 
       if (instrumentation === InstrumentationType.GRAPHQL) {
-        instrumentations.push(new HttpInstrumentation())
+        instrumentations.push(this.getHttpInstrumentation())
         instrumentations.push(new ExpressInstrumentation())
         instrumentations.push(
           new GraphQLInstrumentation({ allowValues: true, depth: 10 })
@@ -105,12 +103,29 @@ export class Trace {
       }
 
       if (instrumentation === InstrumentationType.GATEWAY) {
-        instrumentations.push(new HttpInstrumentation())
+        instrumentations.push(this.getHttpInstrumentation())
         instrumentations.push(new ExpressInstrumentation())
       }
     }
 
     registerInstrumentations({ instrumentations })
+  }
+
+  private getHttpInstrumentation() {
+    const __REQ_ID__ = 'x-request-id'
+
+    return new HttpInstrumentation({
+      headersToSpanAttributes: {
+        client: {
+          requestHeaders: [__REQ_ID__],
+          responseHeaders: [__REQ_ID__],
+        },
+        server: {
+          requestHeaders: [__REQ_ID__],
+          responseHeaders: [__REQ_ID__],
+        },
+      },
+    })
   }
 
   private setLogger() {
