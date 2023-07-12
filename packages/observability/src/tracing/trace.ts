@@ -9,6 +9,7 @@ import './warnings.util'
 import { Tracer } from '@opentelemetry/api'
 import { diag, DiagConsoleLogger, DiagLogLevel } from '@opentelemetry/api'
 import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-http'
+import { ZipkinExporter } from '@opentelemetry/exporter-zipkin'
 import {
   Instrumentation,
   registerInstrumentations,
@@ -17,10 +18,10 @@ import { ExpressInstrumentation } from '@opentelemetry/instrumentation-express'
 import { GraphQLInstrumentation } from '@opentelemetry/instrumentation-graphql'
 import { GrpcInstrumentation } from '@opentelemetry/instrumentation-grpc'
 import { HttpInstrumentation } from '@opentelemetry/instrumentation-http'
-import { JaegerPropagator } from '@opentelemetry/propagator-jaeger'
 import { Resource } from '@opentelemetry/resources'
 import {
   BatchSpanProcessor,
+  ConsoleSpanExporter,
   NodeTracerProvider,
   SimpleSpanProcessor,
 } from '@opentelemetry/sdk-trace-node'
@@ -36,8 +37,15 @@ export enum InstrumentationType {
   GATEWAY = 'graphql_gateway',
 }
 
+export enum TracingExporterType {
+  OTLP = 'otlp',
+  ZIPKIN = 'zipkin',
+  CONSOLE = 'console',
+}
+
 export type TraceOptions = {
   name?: string
+  type: TracingExporterType
   instrumentations: InstrumentationType[]
 }
 
@@ -46,10 +54,11 @@ export class Trace {
 
   private readonly options: TraceOptions = {
     name: process.env.APP_NAME as string,
+    type: process.env.TRACING_EXPORTER as TracingExporterType,
     instrumentations: [InstrumentationType.GRPC, InstrumentationType.GRAPHQL],
   }
 
-  public constructor(options: TraceOptions) {
+  public constructor(options: Partial<TraceOptions>) {
     this.options = { ...this.options, ...options }
 
     this.setLogger()
@@ -66,24 +75,32 @@ export class Trace {
       resource: Resource.default().merge(resource),
     })
 
-    if (process.env.TRACING_ENDPOINT) {
-      const exporter = new OTLPTraceExporter({
-        url: process.env.TRACING_ENDPOINT,
-        headers: {
-          'Content-Type': 'application/vnd.apache.thrift.binary',
-        },
-      })
+    const exporter = this.getExporter()
 
-      const processor =
-        process.env.TRACING_PROCESSOR === 'simple'
-          ? new SimpleSpanProcessor(exporter)
-          : new BatchSpanProcessor(exporter)
+    const processor =
+      process.env.TRACING_PROCESSOR === 'simple'
+        ? new SimpleSpanProcessor(exporter)
+        : new BatchSpanProcessor(exporter)
 
-      provider.addSpanProcessor(processor)
+    provider.addSpanProcessor(processor)
+
+    provider.register()
+  }
+
+  private getExporter() {
+    const url = process.env.TRACING_ENDPOINT
+
+    const { type } = this.options
+
+    if (url && type === TracingExporterType.OTLP) {
+      return new OTLPTraceExporter({ url })
     }
 
-    const propagator = new JaegerPropagator(process.env.TRACING_TRACE_HEADER)
-    provider.register({ propagator })
+    if (url && type === TracingExporterType.ZIPKIN) {
+      return new ZipkinExporter({ url })
+    }
+
+    return new ConsoleSpanExporter()
   }
 
   private registerInstrumentations() {

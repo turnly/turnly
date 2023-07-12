@@ -1974,6 +1974,17 @@
     "@opentelemetry/resources" "1.14.0"
     "@opentelemetry/sdk-trace-base" "1.14.0"
 
+"@opentelemetry/exporter-zipkin@^1.15.0":
+  version "1.15.0"
+  resolved "https://registry.yarnpkg.com/@opentelemetry/exporter-zipkin/-/exporter-zipkin-1.15.0.tgz#16316fd3137cf71ed6634368c3aa878cd834cd0f"
+  integrity sha512-vBE8vingVgT9jD8M2WTzhsSnkN0XPR5zEZeoy0KZzt+0g2tRyvb7qWVGucadU+nIq4Z3vhUoN855ZuInE+YJgQ==
+  dependencies:
+    "@opentelemetry/core" "1.15.0"
+    "@opentelemetry/resources" "1.15.0"
+    "@opentelemetry/sdk-trace-base" "1.15.0"
+    "@opentelemetry/semantic-conventions" "1.15.0"
+    tslib "^2.3.1"
+
 "@opentelemetry/instrumentation-express@^0.32.4":
   version "0.32.4"
   resolved "https://registry.yarnpkg.com/@opentelemetry/instrumentation-express/-/instrumentation-express-0.32.4.tgz#bced338cc6c2a5aeb3433f12302c0460207c7090"
@@ -2071,14 +2082,6 @@
   dependencies:
     "@opentelemetry/core" "1.12.0"
 
-"@opentelemetry/propagator-jaeger@^1.15.0":
-  version "1.15.0"
-  resolved "https://registry.yarnpkg.com/@opentelemetry/propagator-jaeger/-/propagator-jaeger-1.15.0.tgz#098cfebe885f8c0f4ed3073aa9a7c0aa253086c8"
-  integrity sha512-OU6WNxuqjxNZoRcIBCsmvTBktAPuBUj1bh+DI+oYAvzwP2NXLavSDJWjVMGTJQDgZuR7lFijmx9EfwyAO9x37Q==
-  dependencies:
-    "@opentelemetry/core" "1.15.0"
-    tslib "^2.3.1"
-
 "@opentelemetry/resources@1.12.0":
   version "1.12.0"
   resolved "https://registry.yarnpkg.com/@opentelemetry/resources/-/resources-1.12.0.tgz#895394c727dc3e7e51d1d2cc50907ec07a626dca"
@@ -2094,6 +2097,15 @@
   dependencies:
     "@opentelemetry/core" "1.14.0"
     "@opentelemetry/semantic-conventions" "1.14.0"
+
+"@opentelemetry/resources@1.15.0":
+  version "1.15.0"
+  resolved "https://registry.yarnpkg.com/@opentelemetry/resources/-/resources-1.15.0.tgz#748a6ae9017636b8b30f5dee1fff3e166e51f63d"
+  integrity sha512-Sb8A6ZXHXDlgHv32UNRE3y8McWE3vkb5dsSttYArYa5ZpwjiF5ge0vnnKUUnG7bY0AgF9VBIOORZE8gsrnD2WA==
+  dependencies:
+    "@opentelemetry/core" "1.15.0"
+    "@opentelemetry/semantic-conventions" "1.15.0"
+    tslib "^2.3.1"
 
 "@opentelemetry/sdk-logs@0.40.0":
   version "0.40.0"
@@ -2129,6 +2141,16 @@
     "@opentelemetry/core" "1.14.0"
     "@opentelemetry/resources" "1.14.0"
     "@opentelemetry/semantic-conventions" "1.14.0"
+
+"@opentelemetry/sdk-trace-base@1.15.0":
+  version "1.15.0"
+  resolved "https://registry.yarnpkg.com/@opentelemetry/sdk-trace-base/-/sdk-trace-base-1.15.0.tgz#92340ded8f9fec1aaa63afb40c6e7e01769c2852"
+  integrity sha512-udt1c9VHipbZwvCPIQR1VLg25Z4AMR/g0X8KmcInbFruGWQ/lptVPkz3yvWAsGSta5yHNQ3uoPwcyCygGnQ6Lg==
+  dependencies:
+    "@opentelemetry/core" "1.15.0"
+    "@opentelemetry/resources" "1.15.0"
+    "@opentelemetry/semantic-conventions" "1.15.0"
+    tslib "^2.3.1"
 
 "@opentelemetry/sdk-trace-node@^1.9.1":
   version "1.12.0"
