@@ -22,6 +22,7 @@ import { Resource } from '@opentelemetry/resources'
 import {
   BatchSpanProcessor,
   NodeTracerProvider,
+  SimpleSpanProcessor,
 } from '@opentelemetry/sdk-trace-node'
 import { SemanticResourceAttributes } from '@opentelemetry/semantic-conventions'
 import { SocketIoInstrumentation } from 'opentelemetry-instrumentation-socket.io'
@@ -70,15 +71,15 @@ export class Trace {
         url: process.env.TRACING_ENDPOINT,
       })
 
-      provider.addSpanProcessor(
-        new BatchSpanProcessor(exporter, {
-          maxQueueSize: 1000,
-          scheduledDelayMillis: 1000,
-        })
-      )
+      const processor =
+        process.env.TRACING_PROCESSOR === 'simple'
+          ? new SimpleSpanProcessor(exporter)
+          : new BatchSpanProcessor(exporter)
+
+      provider.addSpanProcessor(processor)
     }
 
-    const propagator = new JaegerPropagator('x-turnly-trace-id')
+    const propagator = new JaegerPropagator(process.env.TRACING_TRACE_HEADER)
     provider.register({ propagator })
   }
 
