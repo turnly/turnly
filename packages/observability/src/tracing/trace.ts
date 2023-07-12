@@ -69,6 +69,9 @@ export class Trace {
     if (process.env.TRACING_ENDPOINT) {
       const exporter = new OTLPTraceExporter({
         url: process.env.TRACING_ENDPOINT,
+        headers: {
+          'Content-Type': 'application/vnd.apache.thrift.binary',
+        },
       })
 
       const processor =
