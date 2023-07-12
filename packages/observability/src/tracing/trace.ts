@@ -78,7 +78,8 @@ export class Trace {
       )
     }
 
-    provider.register({ propagator: new JaegerPropagator() })
+    const propagator = new JaegerPropagator('x-turnly-trace-id')
+    provider.register({ propagator })
   }
 
   private registerInstrumentations() {
