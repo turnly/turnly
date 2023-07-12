@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.68](https://github.com/turnly/turnly/compare/v0.1.67...v0.1.68) (2023-07-12)
+
+
+### Bug Fixes
+
+* add content type to trace ([9b8142b](https://github.com/turnly/turnly/commit/9b8142b51f8b4873fec0bcd7ed5470295a314287))
+
+
+
+
+
 ## [0.1.67](https://github.com/turnly/turnly/compare/v0.1.66...v0.1.67) (2023-07-12)
 
 **Note:** Version bump only for package @turnly/turnly
