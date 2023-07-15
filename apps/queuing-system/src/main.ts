@@ -12,7 +12,7 @@ import { Tracing } from '@turnly/observability'
 
 const telemetry = new Tracing.Trace({
   name: config.get('app.name'),
-  instrumentations: [Tracing.InstrumentationType.GRPC],
+  instrumentations: [Tracing.Instrumentation.GRPC],
 })
 
 telemetry.setup()
