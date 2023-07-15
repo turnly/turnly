@@ -58,7 +58,7 @@ const config = convict({
       doc: 'The port to bind to',
       format: 'port',
       arg: 'port',
-      default: 8000,
+      default: 6024,
       env: 'APP_PORT',
     },
     payload_max_size: {
@@ -66,6 +66,15 @@ const config = convict({
       format: String,
       default: '10mb',
       env: 'HTTP_PAYLOAD_MAX_SIZE',
+    },
+  },
+  grpc: {
+    port: {
+      doc: 'The port to bind to',
+      format: 'port',
+      arg: 'port',
+      default: 6023,
+      env: 'GRPC_PORT',
     },
   },
   env: {
@@ -187,14 +196,6 @@ const config = convict({
       format: Number,
       default: 0,
       env: 'COLLECTIONS_OFFSET',
-    },
-  },
-  rpc: {
-    consumer_address: {
-      doc: 'The addresses of the rpc servers for clients',
-      format: String,
-      default: '',
-      env: 'GRPC_CONSUMER_ADDRESS',
     },
   },
 })

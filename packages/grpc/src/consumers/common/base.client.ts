@@ -95,7 +95,7 @@ export abstract class Client<IClient extends gRPCClient> {
   private getInternalAddress(): string {
     const address = this.options.internalAddress.split(':')[0]
 
-    return address ? `${address}:${process.env.APP_PORT}` : ''
+    return address ? `${address}:${process.env.GRPC_PORT}` : ''
   }
 
   protected getOptions(): gRPCOptions {

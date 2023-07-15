@@ -42,7 +42,9 @@
   },
   "dependencies": {
     "@opentelemetry/api": "^1.4.0",
-    "@opentelemetry/exporter-trace-otlp-http": "^0.40.0",
+    "@opentelemetry/exporter-trace-otlp-grpc": "^0.41.0",
+    "@opentelemetry/exporter-metrics-otlp-grpc": "^0.41.0",
+    "@opentelemetry/sdk-metrics": "^1.15.0",
     "@opentelemetry/exporter-zipkin": "^1.15.0",
     "@opentelemetry/instrumentation-express": "^0.32.4",
     "@opentelemetry/instrumentation-graphql": "^0.34.3",
@@ -54,13 +56,11 @@
     "@turnly/common": "^0.1.60",
     "fluent-logger": "^3.4.1",
     "opentelemetry-instrumentation-socket.io": "^0.34.0",
-    "opossum": "^7.1.0",
     "winston": "^3.3.3"
   },
   "devDependencies": {
     "@turnly/eslint-config": "github:turnly/configs",
     "@types/node": "^18.14.0",
-    "@types/opossum": "^6.2.1",
     "eslint": "^8.34.0",
     "prettier": "^2.8.4",
     "typescript": "^4.9.5"
