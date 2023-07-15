@@ -6,8 +6,13 @@
  */
 import './warnings.util'
 
-import { Tracer } from '@opentelemetry/api'
-import { diag, DiagConsoleLogger, DiagLogLevel } from '@opentelemetry/api'
+import {
+  diag,
+  DiagConsoleLogger,
+  DiagLogLevel,
+  metrics,
+  trace,
+} from '@opentelemetry/api'
 import { OTLPMetricExporter } from '@opentelemetry/exporter-metrics-otlp-grpc'
 import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-grpc'
 import { ZipkinExporter } from '@opentelemetry/exporter-zipkin'
@@ -43,9 +48,6 @@ import {
 } from './tracing.enum'
 
 export class Trace {
-  private _traceProvider: NodeTracerProvider
-  private _metricProvider: MeterProvider
-
   private readonly options: TraceOptions
 
   public constructor(options: Partial<TraceOptions>) {
@@ -66,16 +68,8 @@ export class Trace {
       })
     )
 
-    this._traceProvider = this.setTracing(resource)
-    this._metricProvider = this.setMetrics(resource)
-  }
-
-  public tracer(): Tracer {
-    return this._traceProvider.getTracer(this.getServiceName())
-  }
-
-  public meter() {
-    return this._metricProvider.getMeter(this.getServiceName())
+    this.setTracing(resource)
+    this.setMetrics(resource)
   }
 
   private setMetrics(resource: Resource) {
@@ -86,11 +80,11 @@ export class Trace {
     provider.addMetricReader(
       new PeriodicExportingMetricReader({
         exporter,
-        exportIntervalMillis: 1000,
+        exportIntervalMillis: 6000,
       })
     )
 
-    return provider
+    metrics.setGlobalMeterProvider(provider)
   }
 
   private setTracing(resource: Resource) {
@@ -111,7 +105,7 @@ export class Trace {
 
     provider.register()
 
-    return provider
+    trace.setGlobalTracerProvider(provider)
   }
 
   private getMetricsExporter() {
