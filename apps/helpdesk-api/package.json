@@ -1,6 +1,6 @@
 {
   "name": "@turnly/helpdesk-api",
-  "version": "0.1.71",
+  "version": "0.1.72",
   "private": true,
   "description": "...",
   "license": "BSD-3-Clause",
@@ -24,9 +24,9 @@
   },
   "dependencies": {
     "@turnly/common": "^0.1.60",
-    "@turnly/core": "^0.1.71",
-    "@turnly/graph": "^0.1.71",
-    "@turnly/grpc": "^0.1.71",
+    "@turnly/core": "^0.1.72",
+    "@turnly/graph": "^0.1.72",
+    "@turnly/grpc": "^0.1.72",
     "class-validator": "0.13.2",
     "dotenv": "^16.0.1",
     "graphql": "15.3.0",
