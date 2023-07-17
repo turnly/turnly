@@ -11,7 +11,6 @@ import {
   DiagConsoleLogger,
   DiagLogLevel,
   metrics,
-  trace,
 } from '@opentelemetry/api'
 import { OTLPMetricExporter } from '@opentelemetry/exporter-metrics-otlp-grpc'
 import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-grpc'
@@ -104,8 +103,6 @@ export class Trace {
     provider.addSpanProcessor(processor)
 
     provider.register()
-
-    trace.setGlobalTracerProvider(provider)
   }
 
   private getMetricsExporter() {
