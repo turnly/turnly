@@ -106,7 +106,7 @@ export class Trace {
   }
 
   private getMetricsExporter() {
-    const url = this.getEndpoint()
+    const url = process.env.METRICS_ENDPOINT
 
     const { type } = this.options
 
@@ -118,7 +118,7 @@ export class Trace {
   }
 
   private getTracingExporter() {
-    const url = this.getEndpoint()
+    const url = process.env.TRACING_ENDPOINT
 
     const { type } = this.options
 
@@ -135,10 +135,6 @@ export class Trace {
 
   private getServiceName(): string {
     return this.options.name ?? 'turnly'
-  }
-
-  private getEndpoint(): string {
-    return String(process.env.TRACING_GRPC_ENDPOINT)
   }
 
   private getInstrumentations() {
