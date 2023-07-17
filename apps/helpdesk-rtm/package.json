@@ -1,6 +1,6 @@
 {
   "name": "@turnly/helpdesk-rtm",
-  "version": "0.1.72",
+  "version": "0.1.73",
   "private": true,
   "description": "It's the real-time event bridge that sends data between internal services and applications.",
   "license": "BSD-3-Clause",
@@ -24,9 +24,9 @@
   },
   "dependencies": {
     "@turnly/common": "^0.1.60",
-    "@turnly/core": "^0.1.72",
-    "@turnly/grpc": "^0.1.72",
-    "@turnly/realtime": "^0.1.72",
+    "@turnly/core": "^0.1.73",
+    "@turnly/grpc": "^0.1.73",
+    "@turnly/realtime": "^0.1.73",
     "dotenv": "^16.0.1",
     "mongoose": "^7.1.0"
   },

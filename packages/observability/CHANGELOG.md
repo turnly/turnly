@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.73](https://github.com/turnly/turnly/compare/v0.1.72...v0.1.73) (2023-07-17)
+
+
+### Bug Fixes
+
+* attempted duplicate registration of API ([fe8b123](https://github.com/turnly/turnly/commit/fe8b1235c536a4bb56206a27ab8e5b8688620ad7))
+
+
+
+
+
 ## [0.1.71](https://github.com/turnly/turnly/compare/v0.1.70...v0.1.71) (2023-07-15)
 
 **Note:** Version bump only for package @turnly/observability
