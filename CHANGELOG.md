@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.74](https://github.com/turnly/turnly/compare/v0.1.73...v0.1.74) (2023-07-17)
+
+
+### Features
+
+* add metrics endpoint ([4047269](https://github.com/turnly/turnly/commit/404726910d914d721b6a9cc494f6d6908ba16e69))
+
+
+
+
+
 ## [0.1.73](https://github.com/turnly/turnly/compare/v0.1.72...v0.1.73) (2023-07-17)
 
 
