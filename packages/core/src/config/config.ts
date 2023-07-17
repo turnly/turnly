@@ -57,7 +57,6 @@ const config = convict({
     port: {
       doc: 'The port to bind to',
       format: 'port',
-      arg: 'port',
       default: 6024,
       env: 'APP_PORT',
     },
@@ -72,7 +71,6 @@ const config = convict({
     port: {
       doc: 'The port to bind to',
       format: 'port',
-      arg: 'port',
       default: 6023,
       env: 'GRPC_PORT',
     },
