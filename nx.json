@@ -17,5 +17,5 @@
       "outputs": ["dist/**"]
     }
   },
-  "defaultBase": "develop"
+  "defaultBase": "main"
 }

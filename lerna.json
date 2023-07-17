@@ -9,9 +9,8 @@
   "useWorkspaces": true,
   "command": {
     "version": {
-      "allowBranch": "develop",
-      "conventionalCommits": true,
-      "message": "chore(release): %s"
+      "allowBranch": "main",
+      "conventionalCommits": true
     },
     "publish": {
       "registry": "registry.npmjs.org"
