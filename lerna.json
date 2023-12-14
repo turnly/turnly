@@ -1,0 +1,19 @@
+{
+  "$schema": "node_modules/lerna/schemas/lerna-schema.json",
+  "packages": [
+    "packages/*",
+    "apps/*"
+  ],
+  "npmClient": "pnpm",
+  "useNx": true,
+  "command": {
+    "version": {
+      "allowBranch": "main",
+      "conventionalCommits": true
+    },
+    "publish": {
+      "registry": "registry.npmjs.org"
+    }
+  },
+  "version": "0.2.38"
+}

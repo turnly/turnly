@@ -1,0 +1,40 @@
+# Dependencies
+node_modules
+.pnp
+.pnp.js
+
+# Testing
+coverage
+
+# Production
+*.cache
+.DS_Store
+
+# Logs
+*.log
+logs/
+tmp/
+
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# Builds
+tsconfig.tsbuildinfo
+dist
+build
+
+# Husky
+.husky/_
+.husky/.gitignore
+
+# Environments
+.env*
+!.env.example
+
+# NVM
+.nvmrc

@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "editorconfig.editorconfig",
+    "hediet.vscode-drawio",
+    "folke.vscode-monorepo-workspace"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "name": "@turnly/turnly",
+  "version": "0.2.0",
+  "private": true,
+  "description": "The next modern Queue Management System (QMS)",
+  "license": "BSD-3-Clause",
+  "author": "Turnly Team <engineering@turnly.app> (https://turnly.app)",
+  "scripts": {
+    "prebuild": "nx run-many --target=prebuild --all",
+    "build": "nx run-many --target=build --all",
+    "preinstall": "npx only-allow pnpm",
+    "lint": "nx run-many --target=lint --all",
+    "lint:fix": "nx run-many --target=lint:fix --all",
+    "prepare": "husky install",
+    "release": "lerna version --no-push",
+    "release:major": "lerna version major --no-push",
+    "release:minor": "lerna version minor --no-push",
+    "release:patch": "lerna version patch --no-push",
+    "release:preminor": "lerna version preminor --no-push",
+    "release:publish": "lerna publish from-git --no-private"
+  },
+  "commitlint": {
+    "extends": [
+      "@turnly/eslint-config/commits/commitlint.js"
+    ]
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.7.1",
+    "@turnly/eslint-config": "github:turnly/configs",
+    "husky": "^8.0.3",
+    "lerna": "^7.1.5",
+    "nx": "16.7.0"
+  },
+  "packageManager": "pnpm@8.6.9",
+  "engines": {
+    "node": ">=18.14",
+    "pnpm": "^8.6.9"
+  }
+}
